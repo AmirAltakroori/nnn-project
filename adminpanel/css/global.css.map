@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIA,YAAY;EACR,SAAS,EAAE,IAAI",
+"sources": ["../sass/global.scss"],
+"names": [],
+"file": "global.css"
+}
