@@ -8,12 +8,64 @@
 
     <script src="./fontawesome/all.min.js"></script>
     <link rel="stylesheet" href="./fontawesome/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css" />
     <title>Home</title>
 </head>
 
 <body>
-    <h1>ITS WORK OMG</h1>
-    <li class="fas fa-home"></li>
+
+    <div class="create-user">
+        <div class="head">
+            <div class=" head-title">إنشاء مستخدم </div>
+            <hr>
+        </div>
+        <div class="user-info">
+            <div class="contain">
+                <form>
+                    <div class="user-fname" type="name">
+                        <div class="first-name">الاسم الأول</div>
+                        <div class="user-firstname">
+                            <input class="fname" type="text" required>
+                            <img class="user-logo" src="img/logo.png">
+                        </div>
+                    </div>
+                    <div class="user-lname">
+                        <div class="last-name">الاسم الثاني</div>
+                        <div class="user-lastname">
+                            <input class="lname" type="text" required>
+                            <img class="user-logo" src="img/logo.png">
+                        </div>
+                    </div>
+                    <div class="user-email">
+                        <div class="email-name">الإيميل</div>
+                        <div class="email-of-user">
+                        <input class="email" type="email" required unique>
+                    </div>
+                    </div>
+                    <div class="user-password" >
+                        <div class="pass-name">كلمة المرور</div>
+                        <div class="pass">
+                            <input class="password" type="text"required>
+                            <img class="hide-logo" src="img/hide.png">
+                        </div>
+                    </div>
+                    <div class="user-conpassword" >
+                        <div class="conpass-name">تأكيد كلمة المرور</div>
+                        <div class="conpass">
+                            <input class="conpassword" type="text"required>
+                            <img class="hide-logo" src="img/hide.png">
+                        </div>
+                    </div>
+                    <button class="create-new-user">إنشاء مستخدم</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
 </body>
 
 </html>
