@@ -24,11 +24,11 @@ html {
   display: flex;
   text-align: center;
   justify-content: center;
-  margin-top: 5%; }
+  margin-top: 2%; }
 
 .contain {
-  height: 92%;
-  width: 66%;
+  height: 97%;
+  width: 44%;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -38,7 +38,7 @@ html {
   display: flex;
   flex-direction: row;
   direction: rtl;
-  margin-left: 1%;
+  margin-top: 14px;
   justify-content: center; }
 
 .first-name {
@@ -47,15 +47,16 @@ html {
   font-size: 30px; }
 
 .user-firstname {
-  border: solid #000 1px;
+  border-bottom: solid #000 1px;
   text-align: center;
-  width: 39%;
-  height: 90%;
-  margin-top: 1%; }
+  width: 50%;
+  height: 70px;
+  margin-top: 1%;
+  margin-right: 6%; }
 
 .fname {
-  height: 75px;
-  width: 79%;
+  height: 96%;
+  width: 100%;
   border: none;
   outline: none;
   font-size: 31px; }
@@ -64,7 +65,7 @@ html {
   display: flex;
   flex-direction: row;
   direction: rtl;
-  margin-left: 1%;
+  margin-top: 14px;
   justify-content: center; }
 
 .last-name {
@@ -73,15 +74,16 @@ html {
   font-size: 30px; }
 
 .user-lastname {
-  border: solid #000 1px;
+  border-bottom: solid #000 1px;
   text-align: center;
-  width: 39%;
-  height: 90%;
-  margin-top: 1%; }
+  width: 50%;
+  height: 70px;
+  margin-top: 1%;
+  margin-right: 6%; }
 
 .lname {
-  height: 75px;
-  width: 79%;
+  height: 96%;
+  width: 100%;
   border: none;
   outline: none;
   font-size: 31px; }
@@ -90,7 +92,7 @@ html {
   display: flex;
   flex-direction: row;
   direction: rtl;
-  margin-right: 1%;
+  margin-top: 14px;
   justify-content: center; }
 
 .email-name {
@@ -99,15 +101,16 @@ html {
   font-size: 30px; }
 
 .email-of-user {
-  border: solid #000 1px;
+  border-bottom: solid #000 1px;
   text-align: center;
-  width: 39%;
-  height: 90%;
-  margin-top: 1%; }
+  width: 50%;
+  height: 70px;
+  margin-top: 1%;
+  margin-right: 10%; }
 
 .email {
-  height: 75px;
-  width: 91%;
+  height: 96%;
+  width: 100%;
   border: none;
   outline: none;
   font-size: 31px; }
@@ -116,7 +119,7 @@ html {
   display: flex;
   flex-direction: row;
   direction: rtl;
-  margin-left: 2%;
+  margin-top: 14px;
   justify-content: center; }
 
 .pass-name {
@@ -125,15 +128,16 @@ html {
   font-size: 30px; }
 
 .pass {
-  border: solid #000 1px;
+  border-bottom: solid #000 1px;
   text-align: center;
-  width: 39.3%;
-  height: 90%;
-  margin-top: 1%; }
+  width: 50%;
+  height: 70px;
+  margin-top: 1%;
+  margin-right: 5%; }
 
 .password {
-  height: 75px;
-  width: 86%;
+  height: 96%;
+  width: 100%;
   border: none;
   outline: none;
   font-size: 31px; }
@@ -142,7 +146,7 @@ html {
   display: flex;
   flex-direction: row;
   direction: rtl;
-  margin-left: 5.5%;
+  margin-top: 14px;
   justify-content: center; }
 
 .conpass-name {
@@ -151,36 +155,58 @@ html {
   font-size: 30px; }
 
 .conpass {
-  border: solid #000 1px;
+  border-bottom: solid #000 1px;
   text-align: center;
-  width: 41%;
-  height: 89%;
-  margin-top: 1%; }
+  width: 50%;
+  height: 70px;
+  margin-top: 1%;
+  margin-right: -1%; }
 
 .conpassword {
-  height: 75px;
-  width: 86%;
+  height: 96%;
+  width: 100%;
   border: none;
   outline: none;
   font-size: 31px; }
 
-.user-logo {
-  margin-bottom: -5%;
-  height: 61px; }
-
-.hide-logo {
-  margin-bottom: -3%;
-  height: 28px;
-  cursor: pointer; }
-
 .create-new-user {
-  margin-top: 1.5%;
+  margin-top: 14px;
   font-size: 30px;
   border-radius: 15px;
-  width: 14%;
-  height: 11%;
+  width: 31%;
+  height: 70px;
   outline: none;
   background-color: #D8CFCF;
-  cursor: pointer; }
+  cursor: pointer;
+  margin-right: 20%;
+  border: none; }
+
+.username {
+  display: flex;
+  flex-direction: row;
+  direction: rtl;
+  margin-top: 14px;
+  justify-content: center; }
+
+.name-of-user {
+  margin-top: 3%;
+  margin-left: 2.1%;
+  font-size: 30px; }
+
+.user-nname {
+  border-bottom: solid #000 1px;
+  text-align: center;
+  width: 50%;
+  height: 70px;
+  margin-top: 1%;
+  margin-right: 4%; }
+
+.name-user {
+  height: 96%;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 31px;
+  direction: ltr; }
 
 /*# sourceMappingURL=global.css.map */
