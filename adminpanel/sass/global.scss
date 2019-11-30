@@ -3,23 +3,9 @@
 // If your style is specific please use this way when naming : pagename-classname
 $font-title: #707070;
 $button-font:#D8CFCF;
-body,
-html {
+$outer-border-color:#e7e7e7;
+$create-button-color:#c8f3d9;
 
-    height: 100%;
-    margin: auto;
-
-}
-
-
-.create-user {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    
-
-}
 
 .head {
     height: 100px;
@@ -34,7 +20,7 @@ html {
 }
 
 .user-info {
-    height: calc(100% - 100px);
+    
     display: flex;
     text-align: center;
     justify-content: center;
@@ -43,12 +29,12 @@ html {
 
 .contain {
 
-    height: 97%;
-    width: 44%;
+     width: 50%;
     display: flex;
     flex-direction: column;
     text-align: center;
-    border: solid #000 1px;
+    border: solid $outer-border-color 1px;
+    margin-top: 3%;
     
 }
 
@@ -69,20 +55,21 @@ html {
 }
 
 .user-firstname {
-    border-bottom: solid #000 1px;
+    border: solid $outer-border-color 1px;
     text-align: center;
     width: 50%;
-    height: 70px;
+    height: 40px;
     margin-top: 1%;
     margin-right: 6%;
 }
 
 .fname {
-    height: 96%;
-    width: 100%;
+    height: 95%;
+    width: 96%;
     border: none;
     outline: none;
     font-size: 31px;
+    margin-right: 3%;
 
 }
 
@@ -103,21 +90,22 @@ html {
 }
 
 .user-lastname {
-    border-bottom: solid #000 1px;
+    border: solid $outer-border-color 1px;
     text-align: center;
     width: 50%;
-    height: 70px;
+    height: 40px;
     margin-top: 1%;
     margin-right: 6%;
 
 }
 
 .lname {
-    height: 96%;
-    width: 100%;
+    height: 95%;
+    width: 96%;
     border: none;
     outline: none;
     font-size: 31px;
+    margin-right: 3%;
 
 }
 
@@ -131,16 +119,16 @@ html {
 
 .email-name {
     margin-top: 3%;
-    margin-left: 3.7%;
+    margin-left: 2.7%;
     font-size: 30px;
 
 }
 
 .email-of-user {
-    border-bottom: solid #000 1px;
+    border: solid $outer-border-color 1px;
     text-align: center;
     width: 50%;
-    height: 70px;
+    height: 40px;
     margin-top: 1%;
     margin-right: 10%;
     
@@ -148,11 +136,12 @@ html {
 }
 
 .email {
-    height: 96%;
-    width: 100%;
+    height: 95%;
+    width: 96%;
     border: none;
     outline: none;
     font-size: 31px;
+    margin-right: 3%;
 
 }
 
@@ -166,25 +155,26 @@ html {
 
 .pass-name {
     margin-top: 3%;
-    margin-left: 2.6%;
+    margin-left: 2.1%;
     font-size: 30px;
 }
 
 .pass {
-    border-bottom: solid #000 1px;
+    border: solid $outer-border-color 1px;
     text-align: center;
     width: 50%;
-    height: 70px;
+    height: 40px;
     margin-top: 1%;
     margin-right: 5%;
 }
 
 .password {
-    height: 96%;
-    width: 100%;
+    height: 95%;
+    width: 96%;
     border: none;
     outline: none;
     font-size: 31px;
+    margin-right: 3%;
 
 
 }
@@ -204,20 +194,21 @@ html {
 }
 
 .conpass {
-    border-bottom: solid #000 1px;
+    border: solid $outer-border-color 1px;
     text-align: center;
     width: 50%;
-    height: 70px;
+    height: 40px;
     margin-top: 1%;
     margin-right: -1%;
 }
 
 .conpassword {
-    height: 96%;
-    width: 100%;
+    height: 95%;
+    width: 96%;
     border: none;
     outline: none;
     font-size: 31px;
+    margin-right: 3%;
 
 }
 
@@ -227,12 +218,13 @@ html {
     font-size: 30px;
     border-radius: 15px;
     width: 31%;
-    height: 70px;
+    padding: 1%;
     outline: none;
-    background-color: $button-font;
+    background-color:$create-button-color;
     cursor: pointer;
-    margin-right: 20%;
+    margin-right: 60%;
     border: none;
+    margin-bottom: 2.5%;
 }
 .username{
     display: flex;
@@ -248,18 +240,20 @@ html {
     font-size: 30px;
 }
 .user-nname{
-    border-bottom: solid #000 1px;
+    border: solid $outer-border-color 1px;
     text-align: center;
     width: 50%;
-    height: 70px;
+    height: 40px;
     margin-top: 1%;
     margin-right: 4%;
 }
 .name-user{
-    height: 96%;
-    width: 100%;
+    height: 95%;
+    width: 96%;
     border: none;
     outline: none;
     font-size: 31px;
     direction: ltr; 
+    margin-left: 3%;
+    
 }
