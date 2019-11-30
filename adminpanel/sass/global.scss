@@ -2,6 +2,11 @@
 // If your style is specific for a page you have to  create a sass file for the page and add them in it.
 // If your style is specific please use this way when naming : pagename-classname
 
-.hello-world{
-    font-size: 60px;
+
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+
+   
 }
+

@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAIA,YAAY;EACR,SAAS,EAAE,IAAI",
+"mappings": "AAKA,CAAC;EACG,WAAW,EAAE,+CAA+C;EAC5D,UAAU,EAAE,UAAU",
 "sources": ["../sass/global.scss"],
 "names": [],
 "file": "global.css"

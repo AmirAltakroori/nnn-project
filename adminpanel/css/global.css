@@ -1,4 +1,5 @@
-.hello-world {
-  font-size: 60px; }
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box; }
 
 /*# sourceMappingURL=global.css.map */
