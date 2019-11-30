@@ -1,0 +1,108 @@
+$newsElementWidth : 300px;
+$labelWidth : 200px;
+
+@mixin flexbox($direction) {
+    display: flex;
+    flex-direction: $direction ;
+    justify-content: flex-start;
+    align-items: center; 
+}
+
+.add_news_form {
+    border: 0.5px solid grey;
+    padding: 40px;
+    margin: 25px;
+    direction: rtl;
+    .center_items {
+        @include flexbox(column);
+    }
+    .content_label_div{
+        @include flexbox(row);
+    }
+    .news_element {
+        width: $newsElementWidth;
+        height:20px;
+        margin-bottom: 20px;
+    }
+    .news {
+        height: 90px;
+        border: 0.5px solid grey;
+    }
+    .description{
+        height: 50px;
+    }
+    .checkbox {
+        height: 10px;
+        width : 10px;
+    }
+    .status_div{
+        @include flexbox(row);
+        width: calc(#{$labelWidth} + #{$newsElementWidth} + 4px);
+        .status_active_div{
+            margin-left: 87px;
+        }
+    }
+    .news_type_div  {
+        @include flexbox(row);
+        width: calc(#{$labelWidth} + #{$newsElementWidth} + 4px);
+        .main_news_div{
+            margin-left: 50px;
+        }
+    }
+    .schedule_div {
+        @include flexbox(row);
+        margin-bottom: 20px;
+        width: calc(#{$labelWidth} + #{$newsElementWidth} + 4px);
+        .from_div{
+            margin-left: 50px;
+        }
+        input {
+            width:70px;
+            text-align: center;
+        }
+    }
+    .category {
+        height: 25px;
+        width: calc(#{$labelWidth} + #{$newsElementWidth} -96px);
+        direction: rtl;
+    }
+    .date_div {
+        @include flexbox(row);
+        width: calc(#{$labelWidth} + #{$newsElementWidth} + 4px);
+        .date{
+            text-align: center;
+            width: 70px;
+            height: 20px;
+            padding: 0px;
+        }
+    }
+    label {
+        width:200px;
+        text-align: center;
+    }
+    .button {
+        width: 100px;
+        height: 25px;
+        background-color: #B5AEAE;
+        border-style: none;
+        font-size: 20px;
+        margin-left:20px;
+        float: left;
+    }
+    .icons_div {
+        @include flexbox(row);
+        justify-content: flex-end;
+    }
+    a {
+        margin-left: 5px;
+    }
+    .icon {
+        height: 18px;
+        width: 15px;
+        color: grey;
+    }
+    .news_body{
+        height: 70px;
+    }
+}
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div >
+            <form class="add_news_form">
+                <div class="center_items">
+                    <div class="content_label_div">
+                        <label>العنوان</label>
+                        <input type="text" name="title" class="news_element">
+                    </div>
+                    <div class="content_label_div">
+                        <label>الخبر</label>
+                        <div class="news_element news">
+                            <div class="news_body"></div>
+                            <div class="icons_div flexbox_row">
+                                <a><i class="fa fa-paperclip icon"></i></a>
+                                <a><i class="fa fa-font icon"></i></a>
+                                <a><i class="fa fa-camera-retro icon"></i></a>
+                                <a><i class="fa fa-upload icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content_label_div">
+                        <label>الفئة</label>
+                        <select  name="category" class="news_element category"> </select>
+                    </div>
+                    <div class="content_label_div">
+                        <label>عنوان النافذة</label>
+                        <input type="text" name="tab_title" class="news_element">    
+                    </div>
+                    <div class="content_label_div">
+                        <label> الكلمات المفتاحية</label>
+                        <input type="text" name="tag"  class="news_element">
+                    </div>
+                    <div class="content_label_div">
+                        <label> الوصف</label>
+                        <textarea type="text" name="desciption" class ="news_element description"> </textarea>
+                    </div>
+                    <div class="status_div">
+                        <label>الحالة</label>
+                        <div class="status_active_div">
+                            <input type="checkbox" name="active" class ="news_element checkbox" > 
+                            <label class="checkbox_label">فعال</label>
+                        </div>
+                        <div class="status_inactive_div">
+                            <input type="checkbox" name="inactive" class ="news_element checkbox">
+                            <label class="checkbox_label">غير فعال </label>
+                        </div>
+                    </div>
+                    <div class="news_type_div">
+                        <label>التصنيف</label>
+                        <div class="main_news_div">
+                            <input type="checkbox" name="urgent_news" class ="news_element checkbox">
+                            <label>خبر رئيسي</label>
+                        </div>
+                        <div class="urgent_news_div">
+                            <input type="checkbox" name="main_news" class ="news_element checkbox">
+                            <label>خبر عاجل</label>
+                        </div>
+                    </div>
+                    <div class="schedule_div">
+                        <label>فترة العرض</label>
+                        <div class="from_div">
+                            <label>من</label>
+                            <input type="text" placeholder="يوم/شهر/سنة" class="to">
+                        </div>
+                        <div class="to_div">
+                            <label >الى</label>
+                            <input type="text" placeholder="يوم/شهر/سنة" class="to">
+                        </div>
+                    </div>
+                    <div class="date_div">
+                        <label>تاريخ العرض</label>
+                        <input type="checkbox" class ="news_element checkbox">
+                        <input type="text" placeholder="يوم/شهر/سنة" class =" news_element date">
+                    </div>
+                </div>
+                <button type="button" name="add_news" class ="news_element button"> نشر</button>
+            </form>
+        </div> 
+    </body>
+</html>
