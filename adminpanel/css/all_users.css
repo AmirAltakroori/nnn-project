@@ -1,0 +1,233 @@
+.container, html, body {
+  padding: 0px;
+  margin: 0px;
+}
+
+.container .page_header, html .page_header, body .page_header {
+  width: 100%;
+  height: 100px;
+  margin: 0;
+  border: 1px solid #707070;
+  background-color: #A5A5A5;
+}
+
+.container .page_header .logo, html .page_header .logo, body .page_header .logo {
+  width: 230px;
+  height: 90px;
+  float: right;
+}
+
+.container .page_header .admin_info, html .page_header .admin_info, body .page_header .admin_info {
+  float: left;
+  margin: 1.6%;
+}
+
+.container .page_header .admin_info .admin_name, html .page_header .admin_info .admin_name, body .page_header .admin_info .admin_name {
+  font-family: "Segoe UI";
+  font-size: 25px;
+  color: white;
+  margin: 4px;
+  display: inline;
+}
+
+.container .page_header .admin_info .logout, html .page_header .admin_info .logout, body .page_header .admin_info .logout {
+  width: 35px;
+  height: 35px;
+}
+
+.container .page_header .admin_info .admin_profile, html .page_header .admin_info .admin_profile, body .page_header .admin_info .admin_profile {
+  width: 36px;
+  height: 36px;
+}
+
+.container .path, html .path, body .path {
+  background-color: #CEC9C9;
+  width: 100%;
+  height: 48px;
+  border: 1px solid #707070;
+}
+
+.container .path .path_text, html .path .path_text, body .path .path_text {
+  font-family: "Segoe UI";
+  font-size: 24px;
+  float: right;
+  margin-right: 1%;
+  margin-top: 0;
+}
+
+.container .content_header, html .content_header, body .content_header {
+  border-bottom: 1px solid #707070;
+  width: 100%;
+  height: 137px;
+  padding: 0;
+  margin: 0;
+}
+
+.container .content_header .title, html .content_header .title, body .content_header .title {
+  float: right;
+  margin: 0;
+  position: absolute;
+  right: 40px;
+  top: 100px;
+}
+
+.container .content_header .title .title_text, html .content_header .title .title_text, body .content_header .title .title_text {
+  font-family: "Segoe UI";
+  font-size: 70px;
+  float: right;
+  color: #707070;
+}
+
+.container .content_header .search_area, html .content_header .search_area, body .content_header .search_area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 30px;
+  padding-left: 45px;
+}
+
+.container .content_header .search_area .search, html .content_header .search_area .search, body .content_header .search_area .search {
+  border: 1px solid #707070;
+  width: 472px;
+  height: 48px;
+  padding: 0px;
+}
+
+.container .content_header .search_area .search .search_field, html .content_header .search_area .search .search_field, body .content_header .search_area .search .search_field {
+  direction: rtl;
+  font-family: "Segoe UI";
+  color: black;
+  margin-right: 19px;
+  float: right;
+  font-size: 30px;
+  border: 0px;
+}
+
+.container .content_header .search_area .search ::-webkit-input-placeholder, html .content_header .search_area .search ::-webkit-input-placeholder, body .content_header .search_area .search ::-webkit-input-placeholder {
+  color: black;
+}
+
+.container .content_header .search_area .search :-ms-input-placeholder, html .content_header .search_area .search :-ms-input-placeholder, body .content_header .search_area .search :-ms-input-placeholder {
+  color: black;
+}
+
+.container .content_header .search_area .search ::-ms-input-placeholder, html .content_header .search_area .search ::-ms-input-placeholder, body .content_header .search_area .search ::-ms-input-placeholder {
+  color: black;
+}
+
+.container .content_header .search_area .search ::placeholder, html .content_header .search_area .search ::placeholder, body .content_header .search_area .search ::placeholder {
+  color: black;
+}
+
+.container .content_header .search_area .search input:focus, html .content_header .search_area .search input:focus, body .content_header .search_area .search input:focus {
+  outline: none;
+}
+
+.container .content_header .search_area .search .search_icon, html .content_header .search_area .search .search_icon, body .content_header .search_area .search .search_icon {
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+}
+
+.container .content_header .search_area .search_word, html .content_header .search_area .search_word, body .content_header .search_area .search_word {
+  font-family: "Segoe UI";
+  color: #707070;
+  font-size: 29px;
+  margin-left: 50px;
+}
+
+.container .content, html .content, body .content {
+  border-left: 1px solid #F9F9F9;
+  float: right;
+  height: 100%;
+  width: 1120px;
+  direction: rtl;
+  padding-top: 48px;
+  padding-right: 120px;
+}
+
+.container .content .first_row, html .content .first_row, body .content .first_row {
+  border-bottom: 1px solid #707070;
+  padding-bottom: 1px;
+}
+
+.container .content .first_row p, html .content .first_row p, body .content .first_row p {
+  font-family: "Segoe UI";
+  font-size: 37px;
+  display: inline;
+}
+
+.container .content .first_row .NO, html .content .first_row .NO, body .content .first_row .NO {
+  margin-left: 20px;
+}
+
+.container .content .first_row .name, html .content .first_row .name, body .content .first_row .name {
+  margin-left: 130px;
+}
+
+.container .content .first_row .role, html .content .first_row .role, body .content .first_row .role {
+  margin-left: 250px;
+}
+
+.container .content .first_row .status, html .content .first_row .status, body .content .first_row .status {
+  margin-left: 220px;
+}
+
+.container .content .rest_of_rows .user_info, html .content .rest_of_rows .user_info, body .content .rest_of_rows .user_info {
+  border-bottom: 1px solid #707070;
+  width: 100%;
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Segoe UI";
+}
+
+.container .content .rest_of_rows .user_info .user_no, html .content .rest_of_rows .user_info .user_no, body .content .rest_of_rows .user_info .user_no {
+  font-size: 55px;
+  margin-left: 20px;
+}
+
+.container .content .rest_of_rows .user_info .user_full, html .content .rest_of_rows .user_info .user_full, body .content .rest_of_rows .user_info .user_full {
+  margin-left: 120px;
+}
+
+.container .content .rest_of_rows .user_info .user_full .user_profile, html .content .rest_of_rows .user_info .user_full .user_profile, body .content .rest_of_rows .user_info .user_full .user_profile {
+  width: 49px;
+  height: 55px;
+  margin-left: 18px;
+}
+
+.container .content .rest_of_rows .user_info .user_full .user_name, html .content .rest_of_rows .user_info .user_full .user_name, body .content .rest_of_rows .user_info .user_full .user_name {
+  font-size: 24px;
+  margin-top: 1px;
+}
+
+.container .content .rest_of_rows .user_info .arrow, html .content .rest_of_rows .user_info .arrow, body .content .rest_of_rows .user_info .arrow {
+  width: 30px;
+  height: 26px;
+}
+
+.container .content .rest_of_rows .user_info .user_role_cont, html .content .rest_of_rows .user_info .user_role_cont, body .content .rest_of_rows .user_info .user_role_cont {
+  margin-left: 180px;
+}
+
+.container .content .rest_of_rows .user_info .user_role_cont .user_role, html .content .rest_of_rows .user_info .user_role_cont .user_role, body .content .rest_of_rows .user_info .user_role_cont .user_role {
+  font-size: 38px;
+  margin-left: 25px;
+}
+
+.container .content .rest_of_rows .user_info .user_status_cont, html .content .rest_of_rows .user_info .user_status_cont, body .content .rest_of_rows .user_info .user_status_cont {
+  margin-left: 140px;
+}
+
+.container .content .rest_of_rows .user_info .user_status_cont .user_status, html .content .rest_of_rows .user_info .user_status_cont .user_status, body .content .rest_of_rows .user_info .user_status_cont .user_status {
+  font-size: 37px;
+  margin-left: 55px;
+}
+
+.container .content .rest_of_rows .user_info .delete_user, html .content .rest_of_rows .user_info .delete_user, body .content .rest_of_rows .user_info .delete_user {
+  width: 66px;
+  height: 66px;
+}
+/*# sourceMappingURL=all_users.css.map */
