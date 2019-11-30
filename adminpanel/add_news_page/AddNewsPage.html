@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html dir="rtl" lang="ar">
     <head>
-        <title>
-
-        </title>
+        <title>Add News</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="./style.css">
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     </head>
@@ -18,7 +17,7 @@
                     <div class="content_label_div">
                         <label>الخبر</label>
                         <div class="news_element news">
-                            <div class="news_body"></div>
+                            <div class="news_body" contenteditable="true"></div>
                             <div class="icons_div flexbox_row">
                                 <a><i class="fa fa-paperclip icon"></i></a>
                                 <a><i class="fa fa-font icon"></i></a>
@@ -46,22 +45,22 @@
                     <div class="status_div">
                         <label>الحالة</label>
                         <div class="status_active_div">
-                            <input type="checkbox" name="active" class ="news_element checkbox" > 
+                            <input type="radio" name="active" class ="news_element checkbox" > 
                             <label class="checkbox_label">فعال</label>
                         </div>
                         <div class="status_inactive_div">
-                            <input type="checkbox" name="inactive" class ="news_element checkbox">
+                            <input type="radio" name="inactive" class ="news_element checkbox">
                             <label class="checkbox_label">غير فعال </label>
                         </div>
                     </div>
                     <div class="news_type_div">
                         <label>التصنيف</label>
                         <div class="main_news_div">
-                            <input type="checkbox" name="urgent_news" class ="news_element checkbox">
+                            <input type="radio" name="urgent_news" class ="news_element checkbox">
                             <label>خبر رئيسي</label>
                         </div>
                         <div class="urgent_news_div">
-                            <input type="checkbox" name="main_news" class ="news_element checkbox">
+                            <input type="radio" name="main_news" class ="news_element checkbox">
                             <label>خبر عاجل</label>
                         </div>
                     </div>
@@ -69,17 +68,17 @@
                         <label>فترة العرض</label>
                         <div class="from_div">
                             <label>من</label>
-                            <input type="text" placeholder="يوم/شهر/سنة" class="to">
+                            <input type="date" class="to">
                         </div>
                         <div class="to_div">
                             <label >الى</label>
-                            <input type="text" placeholder="يوم/شهر/سنة" class="to">
+                            <input type="date"  class="to">
                         </div>
                     </div>
                     <div class="date_div">
                         <label>تاريخ العرض</label>
                         <input type="checkbox" class ="news_element checkbox">
-                        <input type="text" placeholder="يوم/شهر/سنة" class =" news_element date">
+                        <input type="date"  class =" news_element date" dir="rtl" lang="ar">
                     </div>
                 </div>
                 <button type="button" name="add_news" class ="news_element button"> نشر</button>
