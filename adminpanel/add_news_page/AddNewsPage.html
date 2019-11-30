@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="ar">
+<html dir="rtl" lang="ar" >
     <head>
-        <title>Add News</title>
+        <title>اضافة خبر</title>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="./style.css">
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <!-- Main Quill library -->
+        <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+        <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+        <!-- Theme included stylesheets -->
+        <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" >
+        <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+
+        <script src="index.js"></script>
     </head>
     <body>
         <div >
@@ -12,12 +22,13 @@
                 <div class="center_items">
                     <div class="content_label_div">
                         <label>العنوان</label>
-                        <input type="text" name="title" class="news_element">
+                        <input type="text" name="title" class="news_element ">
                     </div>
                     <div class="content_label_div">
                         <label>الخبر</label>
-                        <div class="news_element news">
-                            <div class="news_body" contenteditable="true"></div>
+                        <div class="news_element news"  >
+                            <div class="news_body" contenteditable="true" id='editor' dir="ltr" >
+                            </div>
                             <div class="icons_div flexbox_row">
                                 <a><i class="fa fa-paperclip icon"></i></a>
                                 <a><i class="fa fa-font icon"></i></a>
@@ -32,7 +43,7 @@
                     </div>
                     <div class="content_label_div">
                         <label>عنوان النافذة</label>
-                        <input type="text" name="tab_title" class="news_element">    
+                        <input type="text" name="tab_title" class="news_element ">    
                     </div>
                     <div class="content_label_div">
                         <label> الكلمات المفتاحية</label>
@@ -40,27 +51,27 @@
                     </div>
                     <div class="content_label_div">
                         <label> الوصف</label>
-                        <textarea type="text" name="desciption" class ="news_element description"> </textarea>
+                        <textarea type="text" name="desciption" class ="news_element description "> </textarea>
                     </div>
                     <div class="status_div">
                         <label>الحالة</label>
                         <div class="status_active_div">
-                            <input type="radio" name="active" class ="news_element checkbox" > 
+                            <input type="radio" name="status" class ="news_element choice" > 
                             <label class="checkbox_label">فعال</label>
                         </div>
                         <div class="status_inactive_div">
-                            <input type="radio" name="inactive" class ="news_element checkbox">
+                            <input type="radio" name="status" class ="news_element choice">
                             <label class="checkbox_label">غير فعال </label>
                         </div>
                     </div>
                     <div class="news_type_div">
                         <label>التصنيف</label>
                         <div class="main_news_div">
-                            <input type="radio" name="urgent_news" class ="news_element checkbox">
+                            <input type="radio" name="newstype" class ="news_element choice">
                             <label>خبر رئيسي</label>
                         </div>
                         <div class="urgent_news_div">
-                            <input type="radio" name="main_news" class ="news_element checkbox">
+                            <input type="radio" name="newstype" class ="news_element choice">
                             <label>خبر عاجل</label>
                         </div>
                     </div>
@@ -77,8 +88,8 @@
                     </div>
                     <div class="date_div">
                         <label>تاريخ العرض</label>
-                        <input type="checkbox" class ="news_element checkbox">
-                        <input type="date"  class =" news_element date" dir="rtl" lang="ar">
+                        <input type="checkbox" class ="news_element choice">
+                        <input type="date" class =" news_element date" >
                     </div>
                 </div>
                 <button type="button" name="add_news" class ="news_element button"> نشر</button>

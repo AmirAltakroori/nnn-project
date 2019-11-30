@@ -45,7 +45,7 @@
 }
 
 .add_news_form .news {
-  height: 100px;
+  height: 300px;
   border: 0.5px solid grey;
 }
 
@@ -54,7 +54,7 @@
   resize: none;
 }
 
-.add_news_form .checkbox {
+.add_news_form .choice {
   height: 10px;
   width: 10px;
 }
@@ -130,7 +130,7 @@
 
 .add_news_form .schedule_div input {
   width: 150px;
-  height: 30px;
+  height: 25px;
   text-align: center;
 }
 
@@ -160,7 +160,7 @@
 .add_news_form .date_div .date {
   text-align: center;
   width: 150px;
-  height: 30px;
+  height: 25px;
   padding: 0px;
   margin-right: 10px;
 }
@@ -175,7 +175,7 @@
 
 .add_news_form .button {
   width: 200px;
-  height: 100px;
+  height: 50px;
   background-color: #B5AEAE;
   border-style: none;
   font-size: 20px;
@@ -207,12 +207,13 @@
 }
 
 .add_news_form .icon {
+  margin-top: 5px;
   height: 18px;
   width: 15px;
   color: grey;
 }
 
 .add_news_form .news_body {
-  height: 80px;
+  height: 235px;
 }
 /*# sourceMappingURL=style.css.map */
