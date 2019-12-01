@@ -5,15 +5,15 @@
 
 .container .page_header, html .page_header, body .page_header {
   width: 100%;
-  height: 100px;
+  height: 70px;
   margin: 0;
   border: 1px solid #707070;
   background-color: #A5A5A5;
 }
 
 .container .page_header .logo, html .page_header .logo, body .page_header .logo {
-  width: 230px;
-  height: 90px;
+  width: 190px;
+  height: 60px;
   float: right;
 }
 
@@ -24,32 +24,35 @@
 
 .container .page_header .admin_info .admin_name, html .page_header .admin_info .admin_name, body .page_header .admin_info .admin_name {
   font-family: "Segoe UI";
-  font-size: 25px;
+  font-size: 20px;
   color: white;
   margin: 4px;
   display: inline;
+  cursor: pointer;
 }
 
 .container .page_header .admin_info .logout, html .page_header .admin_info .logout, body .page_header .admin_info .logout {
-  width: 35px;
-  height: 35px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
 }
 
 .container .page_header .admin_info .admin_profile, html .page_header .admin_info .admin_profile, body .page_header .admin_info .admin_profile {
-  width: 36px;
-  height: 36px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
 }
 
 .container .path, html .path, body .path {
   background-color: #CEC9C9;
   width: 100%;
-  height: 48px;
+  height: 30px;
   border: 1px solid #707070;
 }
 
 .container .path .path_text, html .path .path_text, body .path .path_text {
   font-family: "Segoe UI";
-  font-size: 24px;
+  font-size: 18px;
   float: right;
   margin-right: 1%;
   margin-top: 0;
@@ -58,7 +61,7 @@
 .container .content_header, html .content_header, body .content_header {
   border-bottom: 1px solid #707070;
   width: 100%;
-  height: 137px;
+  height: 100px;
   padding: 0;
   margin: 0;
 }
@@ -67,13 +70,13 @@
   float: right;
   margin: 0;
   position: absolute;
-  right: 40px;
-  top: 100px;
+  right: 43px;
+  top: 75px;
 }
 
 .container .content_header .title .title_text, html .content_header .title .title_text, body .content_header .title .title_text {
   font-family: "Segoe UI";
-  font-size: 70px;
+  font-size: 50px;
   float: right;
   color: #707070;
 }
@@ -88,8 +91,8 @@
 
 .container .content_header .search_area .search, html .content_header .search_area .search, body .content_header .search_area .search {
   border: 1px solid #707070;
-  width: 472px;
-  height: 48px;
+  width: 300px;
+  height: 30px;
   padding: 0px;
 }
 
@@ -99,7 +102,7 @@
   color: black;
   margin-right: 19px;
   float: right;
-  font-size: 30px;
+  font-size: 20px;
   border: 0px;
 }
 
@@ -125,22 +128,22 @@
 
 .container .content_header .search_area .search .search_icon, html .content_header .search_area .search .search_icon, body .content_header .search_area .search .search_icon {
   cursor: pointer;
-  width: 45px;
-  height: 45px;
+  width: 30px;
+  height: 30px;
 }
 
 .container .content_header .search_area .search_word, html .content_header .search_area .search_word, body .content_header .search_area .search_word {
   font-family: "Segoe UI";
   color: #707070;
-  font-size: 29px;
-  margin-left: 50px;
+  font-size: 20px;
+  margin-left: 40px;
 }
 
 .container .content, html .content, body .content {
   border-left: 1px solid #F9F9F9;
   float: right;
   height: 100%;
-  width: 1120px;
+  width: 1000px;
   direction: rtl;
   padding-top: 48px;
   padding-right: 120px;
@@ -153,30 +156,31 @@
 
 .container .content .first_row p, html .content .first_row p, body .content .first_row p {
   font-family: "Segoe UI";
-  font-size: 37px;
+  font-size: 28px;
+  font-weight: 420;
   display: inline;
 }
 
 .container .content .first_row .NO, html .content .first_row .NO, body .content .first_row .NO {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .container .content .first_row .name, html .content .first_row .name, body .content .first_row .name {
-  margin-left: 130px;
+  margin-left: 105px;
 }
 
 .container .content .first_row .role, html .content .first_row .role, body .content .first_row .role {
-  margin-left: 250px;
+  margin-left: 225px;
 }
 
 .container .content .first_row .status, html .content .first_row .status, body .content .first_row .status {
-  margin-left: 220px;
+  margin-left: 200px;
 }
 
 .container .content .rest_of_rows .user_info, html .content .rest_of_rows .user_info, body .content .rest_of_rows .user_info {
   border-bottom: 1px solid #707070;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 35px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -184,28 +188,23 @@
 }
 
 .container .content .rest_of_rows .user_info .user_no, html .content .rest_of_rows .user_info .user_no, body .content .rest_of_rows .user_info .user_no {
-  font-size: 55px;
+  font-size: 30px;
   margin-left: 20px;
 }
 
 .container .content .rest_of_rows .user_info .user_full, html .content .rest_of_rows .user_info .user_full, body .content .rest_of_rows .user_info .user_full {
-  margin-left: 120px;
+  margin-left: 100px;
 }
 
 .container .content .rest_of_rows .user_info .user_full .user_profile, html .content .rest_of_rows .user_info .user_full .user_profile, body .content .rest_of_rows .user_info .user_full .user_profile {
-  width: 49px;
-  height: 55px;
-  margin-left: 18px;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
 }
 
 .container .content .rest_of_rows .user_info .user_full .user_name, html .content .rest_of_rows .user_info .user_full .user_name, body .content .rest_of_rows .user_info .user_full .user_name {
-  font-size: 24px;
+  font-size: 18px;
   margin-top: 1px;
-}
-
-.container .content .rest_of_rows .user_info .arrow, html .content .rest_of_rows .user_info .arrow, body .content .rest_of_rows .user_info .arrow {
-  width: 30px;
-  height: 26px;
 }
 
 .container .content .rest_of_rows .user_info .user_role_cont, html .content .rest_of_rows .user_info .user_role_cont, body .content .rest_of_rows .user_info .user_role_cont {
@@ -213,8 +212,9 @@
 }
 
 .container .content .rest_of_rows .user_info .user_role_cont .user_role, html .content .rest_of_rows .user_info .user_role_cont .user_role, body .content .rest_of_rows .user_info .user_role_cont .user_role {
-  font-size: 38px;
-  margin-left: 25px;
+  font-size: 28px;
+  border: none;
+  font-family: "Segoe UI";
 }
 
 .container .content .rest_of_rows .user_info .user_status_cont, html .content .rest_of_rows .user_info .user_status_cont, body .content .rest_of_rows .user_info .user_status_cont {
@@ -222,12 +222,15 @@
 }
 
 .container .content .rest_of_rows .user_info .user_status_cont .user_status, html .content .rest_of_rows .user_info .user_status_cont .user_status, body .content .rest_of_rows .user_info .user_status_cont .user_status {
-  font-size: 37px;
-  margin-left: 55px;
+  font-size: 28px;
+  margin-left: 20px;
+  border: none;
+  font-family: "Segoe UI";
 }
 
 .container .content .rest_of_rows .user_info .delete_user, html .content .rest_of_rows .user_info .delete_user, body .content .rest_of_rows .user_info .delete_user {
-  width: 66px;
-  height: 66px;
+  width: 40px;
+  height: 40px;
+  color: red;
 }
 /*# sourceMappingURL=all_users.css.map */
