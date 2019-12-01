@@ -1,25 +1,33 @@
-$newsElementWidth : 400px;
+$newsElementWidth : 500px;
 $labelWidth : 200px;
 
 @mixin flexbox($direction) {
     display: flex;
     flex-direction: $direction ;
-    justify-content: flex-start;
     align-items: center; 
+}
+*{
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .add_news_form {
-    border: 0.5px solid grey;
-    padding: 130px;
-    margin: 25px;
+    .title{
+        font-size: 50px;
+        padding-bottom: 30px;
+    }
     .center_items {
         @include flexbox(column);
         vertical-align: middle;
+        justify-content: center;
+        width: 100%;
     }
     .content_label_div{
         @include flexbox(row);
+        justify-content: center;
+        width: 100%;
         vertical-align: middle;
-        margin-bottom: 20px;
+        padding-bottom: 20px;
     }
     .news_element {
         width: $newsElementWidth;
@@ -28,6 +36,9 @@ $labelWidth : 200px;
     .news {
         height: 300px;
         border: 0.5px solid grey;
+        .news_body{
+            height: 258px;
+        }
     }
     .description{
         height: 50px;
@@ -36,53 +47,23 @@ $labelWidth : 200px;
     .choice {
         height: 10px;
         width : 10px;
+        padding-right: 5px;
     }
-    .status_div{
-        @include flexbox(row);
-        width: calc(#{$labelWidth} + #{$newsElementWidth} + 4px);
-        margin-bottom: 25px;
-        .status_active_div{
-            margin-left: 87px;
-        }
-    }
-    .news_type_div  {
-        @include flexbox(row);
-        width: calc(#{$labelWidth} + #{$newsElementWidth} + 4px);
-        margin-bottom: 25px;
-        .main_news_div{
-            margin-left: 50px;
-        }
-    }
-    .schedule_div {
-        @include flexbox(row);
-        margin-bottom: 20px;
-        width: calc(#{$labelWidth} + #{$newsElementWidth} + 4px);
-        margin-bottom: 25px;
-        .from_div{
-            margin-left: 25px;
-            height:20px;
-            padding: 3px;
-        }
-        input {
-            width:150px;
-            height: 25px;
-            text-align: center;
+    .outer_choice_div  {
+        justify-content: center;
+        .inner_choice_div{
+            @include flexbox(row);
+            justify-content: space-between;
         }
     }
     .category {
         height: 30px;
         width: calc(#{$labelWidth} + #{$newsElementWidth} -96px);
     }
-    .date_div {
-        @include flexbox(row);
-        width: calc(#{$labelWidth} + #{$newsElementWidth} + 4px);
-        vertical-align: middle;
-        .date{
-            text-align: center;
-            width: 150px;
-            height: 25px;
-            padding: 0px;
-            margin-right: 10px;
+    .date{
+        min-width:90px;
+        .checkbox{
+            padding-right: 10px;
         }
     }
     label {
@@ -90,32 +71,22 @@ $labelWidth : 200px;
         height:20px;
         padding: 3px;
         text-align: center;
-        font-weight: bold;
+        font-weight: 300px;
     }
-    .button {
-        width: 200px;
-        height: 50px;
-        background-color: #B5AEAE;
-        border-style: none;
-        font-size: 20px;
-        float: left;
-    }
-    .icons_div {
+    .button_div{
         @include flexbox(row);
         justify-content: flex-end;
-        height:15px;
-    }
-    a {
-        margin-left: 5px;
-    }
-    .icon {
-        margin-top: 5px;
-        height: 18px;
-        width: 15px;
-        color: grey;
-    }
-    .news_body{
-        height: 235px;
+        .button {
+            justify-content: flex-end;
+            width: 200px;
+            height: 50px;
+            background-color: #B5AEAE;
+            border-style: none;
+            cursor: pointer;
+            &:hover{
+                background: darken(#B5AEAE, 10%)
+            }
+        }
     }
 
 }

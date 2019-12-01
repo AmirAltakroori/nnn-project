@@ -1,7 +1,11 @@
-.add_news_form {
-  border: 0.5px solid grey;
-  padding: 130px;
-  margin: 25px;
+* {
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.add_news_form .title {
+  font-size: 50px;
+  padding-bottom: 30px;
 }
 
 .add_news_form .center_items {
@@ -12,13 +16,14 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   vertical-align: middle;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
 }
 
 .add_news_form .content_label_div {
@@ -29,24 +34,29 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
   vertical-align: middle;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .add_news_form .news_element {
-  width: 400px;
+  width: 500px;
   height: 25px;
 }
 
 .add_news_form .news {
   height: 300px;
   border: 0.5px solid grey;
+}
+
+.add_news_form .news .news_body {
+  height: 258px;
 }
 
 .add_news_form .description {
@@ -57,9 +67,16 @@
 .add_news_form .choice {
   height: 10px;
   width: 10px;
+  padding-right: 5px;
 }
 
-.add_news_form .status_div {
+.add_news_form .outer_choice_div {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.add_news_form .outer_choice_div .inner_choice_div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -67,102 +84,25 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: calc(200px + 400px + 4px);
-  margin-bottom: 25px;
-}
-
-.add_news_form .status_div .status_active_div {
-  margin-left: 87px;
-}
-
-.add_news_form .news_type_div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: calc(200px + 400px + 4px);
-  margin-bottom: 25px;
-}
-
-.add_news_form .news_type_div .main_news_div {
-  margin-left: 50px;
-}
-
-.add_news_form .schedule_div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 20px;
-  width: calc(200px + 400px + 4px);
-  margin-bottom: 25px;
-}
-
-.add_news_form .schedule_div .from_div {
-  margin-left: 25px;
-  height: 20px;
-  padding: 3px;
-}
-
-.add_news_form .schedule_div input {
-  width: 150px;
-  height: 25px;
-  text-align: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .add_news_form .category {
   height: 30px;
-  width: calc(200px + 400px -96px);
+  width: calc(200px + 500px -96px);
 }
 
-.add_news_form .date_div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: calc(200px + 400px + 4px);
-  vertical-align: middle;
+.add_news_form .date {
+  min-width: 90px;
 }
 
-.add_news_form .date_div .date {
-  text-align: center;
-  width: 150px;
-  height: 25px;
-  padding: 0px;
-  margin-right: 10px;
+.add_news_form .date .checkbox {
+  padding-right: 10px;
 }
 
 .add_news_form label {
@@ -170,19 +110,10 @@
   height: 20px;
   padding: 3px;
   text-align: center;
-  font-weight: bold;
+  font-weight: 300px;
 }
 
-.add_news_form .button {
-  width: 200px;
-  height: 50px;
-  background-color: #B5AEAE;
-  border-style: none;
-  font-size: 20px;
-  float: left;
-}
-
-.add_news_form .icons_div {
+.add_news_form .button_div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -190,30 +121,26 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  height: 15px;
 }
 
-.add_news_form a {
-  margin-left: 5px;
+.add_news_form .button_div .button {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 200px;
+  height: 50px;
+  background-color: #B5AEAE;
+  border-style: none;
+  cursor: pointer;
 }
 
-.add_news_form .icon {
-  margin-top: 5px;
-  height: 18px;
-  width: 15px;
-  color: grey;
-}
-
-.add_news_form .news_body {
-  height: 235px;
+.add_news_form .button_div .button:hover {
+  background: #9d9393;
 }
 /*# sourceMappingURL=style.css.map */
