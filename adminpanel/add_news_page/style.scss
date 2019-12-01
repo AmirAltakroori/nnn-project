@@ -14,12 +14,12 @@ $labelWidth : 200px;
 .add_news_form {
     .title{
         font-size: 50px;
-        padding-bottom: 30px;
     }
     .center_items {
         @include flexbox(column);
         justify-content: center;
         width: 100%;
+        padding-top: 10px;
     }
     .content_label_div{
         @include flexbox(row);
@@ -66,7 +66,7 @@ $labelWidth : 200px;
     }
     label {
         width:200px;
-        height:30px;
+        height:28px;
         padding: 3px;
         text-align: center;
         font-weight: 300px;
