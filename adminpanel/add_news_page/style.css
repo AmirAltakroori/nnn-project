@@ -1,5 +1,4 @@
 * {
-  font-size: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -97,6 +96,7 @@
 
 .add_news_form .date {
   min-width: 90px;
+  margin-left: 10px;
 }
 
 .add_news_form .date .checkbox {
@@ -109,6 +109,7 @@
   padding: 3px;
   text-align: center;
   font-weight: 300px;
+  font-size: 20px;
 }
 
 .add_news_form .button_div {
@@ -135,6 +136,7 @@
   height: 50px;
   background-color: #B5AEAE;
   border-style: none;
+  font-size: 30px;
   cursor: pointer;
 }
 
