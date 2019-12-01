@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar" >
+    <head>
+        <title>اضافة خبر</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <script src="./js/quill.core.js"></script>
+        <script src="./js/quill.js"></script>
+        <script src="./js/quill.min.js"></script>
+        <script src="./js/quill.min.js.map"></script>
+        <script src="./js/index.js"></script>
+        <link href="./css/quill.snow.css" rel="stylesheet" >
+        <link href="./css/quill.core.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+    </head>
+    <body>
+        <div class="app_root" >
+            <form class="add_news_form">
+                <div class="title">
+                    إضافة أخبار
+                </div>
+                <hr>
+                <div class="center_items">
+                    <div class="content_label_div">
+                        <label>العنوان</label>
+                        <input type="text" name="title" class="news_element ">
+                    </div>
+                    <div class="content_label_div">
+                        <label>الخبر</label>
+                        <div class="news_element news"  >
+                            <div class="news_body" contenteditable="true" id='editor' dir="ltr" > </div>
+                        </div>
+                    </div>
+                    <div class="content_label_div">
+                        <label>الفئة</label>
+                        <select  name="category" class="news_element category"> </select>
+                    </div>
+                    <div class="content_label_div">
+                        <label>عنوان النافذة</label>
+                        <input type="text" name="tab_title" class="news_element ">    
+                    </div>
+                    <div class="content_label_div">
+                        <label> الكلمات المفتاحية</label>
+                        <input type="text" name="tag"  class="news_element">
+                    </div>
+                    <div class="content_label_div">
+                        <label> الوصف</label>
+                        <textarea type="text" name="desciption" class ="news_element description "> </textarea>
+                    </div>
+                    <div class="content_label_div outer_choice_div">
+                        <label>الحالة</label>
+                        <div class="news_element">
+                            <div class="inner_choice_div">
+                                <div class="status_active_div">
+                                    <input type="radio" name="status" class ="news_element choice" > 
+                                    <label class="checkbox_label">فعال</label>
+                                </div>
+                                <div class="status_inactive_div">
+                                    <input type="radio" name="status" class ="news_element choice">
+                                    <label class="checkbox_label">غير فعال </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content_label_div outer_choice_div">
+                            <label>التصنيف</label>
+                        <div class="news_element">
+                            <div class="inner_choice_div">
+                                <div class="main_news_div">
+                                    <input type="radio" name="newstype" class =" choice">
+                                    <label>خبر رئيسي</label>
+                                </div>
+                                <div class="urgent_news_div">
+                                    <input type="radio" name="newstype" class =" choice">
+                                    <label>خبر عاجل</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content_label_div outer_choice_div">
+                        <label>فترة العرض</label>
+                        <div class="news_element">
+                            <div class="inner_choice_div">
+                                <div class="from_div">
+                                    <label>من</label>
+                                    <input type="date" class="from">
+                                </div>
+                                <div class="to_div">
+                                    <label >الى</label>
+                                    <input type="date"  class="to">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content_label_div outer_choice_div">
+                        <label>تاريخ العرض</label>
+                        <div class="news_element">
+                            <input type="checkbox" class ="choice checkbox">
+                            <input type="date" class ="date" >
+                        </div>
+                    </div>
+                </div>
+                <div class="button_div">
+                    <button type="button" name="add_news" class ="news_element button"> اضافة</button>
+                </div>
+            </form>
+        </div> 
+    </body>
+</html>
