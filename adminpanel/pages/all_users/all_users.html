@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./fontawesome/all.min.js"></script>
-    <link rel="stylesheet" href="./fontawesome/all.min.css">
+    <link rel="stylesheet" href="../../fontawesome/all.min.css">
     <link rel="stylesheet" href="css/all_users.css">
     <title>جميع المستخدمين</title>
 </head>
@@ -40,118 +40,37 @@
                 </div>
             </div>
         </div>
-        <div class="content">
-            <div class="first_row">
-                <p class="NO">#</p>
-                <p class="name">الاسم الكامل</p>
-                <p class="role">الدور</p>
-                <p class="status">الحالة</p>
-                <p class="delete">حذف</p>
-            </div>
-            <div class="rest_of_rows">
-                <div class="user_info">
-                    <span class="user_no">1</span>
-                    <div class="user_full">
-                        <img class="user_profile" src="images/user_profile.png">
-                        <span class="user_name">أحمد الحافظ</span>
-                    </div>
-                    <div class="user_role_cont">
-                        <select class="user_role">
-                            <option value="writer">كاتب</option>
-                            <option value="admin"> مشرف</option>
-                        </select>
-                    </div>
-                    <div class="user_status_cont">
-                        <select class="user_status">
-                            <option value="active">فعال</option>
-                            <option value="not_active">غير فعال</option>
-                        </select>
-                    </div>
-                    <i class="fas fa-trash-alt delete_user"></i>
-                </div> 
-                <div class="user_info">
-                    <span class="user_no">1</span>
-                    <div class="user_full">
-                        <img class="user_profile" src="images/user_profile.png">
-                        <span class="user_name">أحمد الحافظ</span>
-                    </div>
-                    <div class="user_role_cont">
-                        <select class="user_role">
-                            <option value="writer">كاتب</option>
-                            <option value="admin"> مشرف</option>
-                            <option value="admin"> مسؤول</option>
-                        </select>
-                    </div>
-                    <div class="user_status_cont">
-                        <select class="user_status">
-                            <option value="active">فعال</option>
-                            <option value="not_active">غير فعال</option>
-                        </select>
-                    </div>
-                    <i class="fas fa-trash-alt delete_user"></i>
-                </div>
-                <div class="user_info">
-                    <span class="user_no">1</span>
-                    <div class="user_full">
-                        <img class="user_profile" src="images/user_profile.png">
-                        <span class="user_name">أحمد الحافظ</span>
-                    </div>
-                    <div class="user_role_cont">
-                        <select class="user_role">
-                            <option value="writer">كاتب</option>
-                            <option value="admin"> مشرف</option>
-                        </select>
-                    </div>
-                    <div class="user_status_cont">
-                        <select class="user_status">
-                            <option value="active">فعال</option>
-                            <option value="not_active">غير فعال</option>
-                        </select>
-                    </div>
-                    <i class="fas fa-trash-alt delete_user"></i>
-                </div>
-                <div class="user_info">
-                    <span class="user_no">1</span>
-                    <div class="user_full">
-                        <img class="user_profile" src="images/user_profile.png">
-                        <span class="user_name">أحمد الحافظ</span>
-                    </div>
-                    <div class="user_role_cont">
-                        <select class="user_role">
-                            <option value="writer">كاتب</option>
-                            <option value="admin"> مشرف</option>
-                        </select>
-                    </div>
-                    <div class="user_status_cont">
-                        <select class="user_status">
-                            <option value="active">فعال</option>
-                            <option value="not_active">غير فعال</option>
-                        </select>
-                    </div>
-                    <i class="fas fa-trash-alt delete_user"></i>
-                </div>
-                <div class="user_info">
-                    <span class="user_no">1</span>
-                    <div class="user_full">
-                        <img class="user_profile" src="images/user_profile.png">
-                        <span class="user_name">أحمد الحافظ</span>
-                    </div>
-                    <div class="user_role_cont">
-                        <select class="user_role">
-                            <option value="writer">كاتب</option>
-                            <option value="admin"> مشرف</option>
-                        </select>
-                    </div>
-                    <div class="user_status_cont">
-                        <select class="user_status">
-                            <option value="active">فعال</option>
-                            <option value="not_active">غير فعال</option>
-                        </select>
-                    </div>
-                    <i class="fas fa-trash-alt delete_user"></i>
-                </div>
-            </div>
-        </div>
+        <table class="content">
+            <tr class="first_row">
+                <td>#</td>
+                <td>الاسم الكامل</td>
+                <td>الدور</td>
+                <td>الحالة</td>
+                <td>حذف</td>
+            </tr>
+            <tr class="user_info">
+                <td class="user_no">1</td>
+                <td class="user_full">
+                    <img class="user_profile" src="images/user_profile.png">
+                    <span class="user_name">أحمد الحافظ</span>
+                </td>
+                <td>
+                    <select class="selection">
+                        <option value="writer">كاتب</option>
+                        <option value="admin"> مشرف</option>
+                        <option value="admin"> مسؤول</option>
+                    </select>
+                </td>
+                <td>
+                    <select class="selection">
+                        <option value="active">فعال</option>
+                        <option value="not_active">غير فعال</option>
+                    </select>
+                </td>
+                <td><i class="fas fa-trash-alt delete_user"></i></td>
+            </tr>
+        </table>
     </div>
 </body>
+
 </html>
