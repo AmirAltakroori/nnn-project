@@ -99,62 +99,59 @@ body {
     height: 100px;
     padding: 0;
     margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center ;
     .title {
-      float: right;
-      margin: 0;
-      position: absolute;
-      right: 43px;
-      top: 75px;
+        padding: 20px;
       .title_text {
         font-family: $font;
         font-size: 50px;
-        float: right;
         color: $gray_color;
       }
     }
-    .search_area {
-      display: flex;
-      padding-top: 30px;
-      padding-left: 45px;
-      .search {
-        border: 1px solid $gray_color;
-        width: 300px;
-        height: 30px;
-        padding: 0px;
-        .search_field {
-          direction: rtl;
-          font-family: $font;
-          color: black;
-          margin-right: 19px;
-          float: right;
-          font-size: 20px;
-          border: 0px;
-        }
-        ::placeholder {
-          color: black;
-        }
-        input:focus {
-          outline: none;
-        }
-        .search_icon {
-          cursor: pointer;
-          width: 30px;
-          height: 30px;
-        }
-      }
-      .search_word {
+  }
+  .search_area {
+    display: flex;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    .search {
+      border: 1px solid $gray_color;
+      height: 32px;
+      padding: 0px;
+      .search_field {
+        direction: rtl;
         font-family: $font;
-        color: $gray_color;
+        color: black;
+        margin-right: 19px;
+        float: right;
         font-size: 20px;
-        margin-left: 40px;
+        border: 0px;
       }
+      ::placeholder {
+        color: black;
+      }
+      input:focus {
+        outline: none;
+      }
+      .search_icon {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+      }
+    }
+    .search_word {
+      font-family: $font;
+      color: $gray_color;
+      font-size: 20px;
+      margin-left: 40px;
     }
   }
   .content {
     border-left: 1px solid $light_light_gray;
     height: 100%;
-    width: 1000px;
-    float: right;
+    min-width:80%;
     border-collapse: collapse;
     font-family: $font;
     direction: rtl;
@@ -174,7 +171,10 @@ body {
     th,
     td {
       border-bottom: 1px solid $gray_color;
-      padding: 5px;
+      text-align: center;
+    }
+    thead tr{
+      text-align: center;
     }
     tbody tr:nth-of-type(odd) {
       background: #eee;
@@ -190,10 +190,7 @@ body {
         font-size: 30px;
       }
       .user_full {
-        .user_profile {
-          width: 40px;
-          height: 40px;
-        }
+       
         .user_name {
           font-size: 18px;
         }
@@ -204,11 +201,26 @@ body {
         font-family: $font;
       }
       .delete_user {
-        font-size: 30px;
+        font-size: 20px;
         color: red;
         text-align: center;
         cursor: pointer;
       }
     }
   }
+}
+.icon{
+  font-size: 18px;
+}
+.color-blue{
+  color: #079;
+}
+.color-orange{
+  color:rgb(182, 63, 166);
+}
+.checkbox-size{
+ input{
+  width: 20px;
+  height: 20px;
+ }
 }
