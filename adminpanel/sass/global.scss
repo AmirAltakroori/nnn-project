@@ -1,97 +1,214 @@
 // add your style in this file  if it can be used in multiple pages
 // If your style is specific for a page you have to  create a sass file for the page and add them in it.
 // If your style is specific please use this way when naming : pagename-classname
-
-
-*{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-sizing: border-box;
-
-   
-}
+$header_color: #a5a5a5;
+$path_color: #cec9c9;
+$gray_color: #707070;
+$font: "Segoe UI";
+$light_light_gray: #f9f9f9;
 
 * {
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    direction: rtl;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  direction: rtl;
+  font-family: $font;
 }
-
 body {
-    margin: 0;
+  margin: 0;
 }
-html,body{
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 .main-header {
-    padding: 10px;
-    height: 33px;
-    background-color: #A5A5A5;
-    height: 80px;
+  padding: 10px;
+  height: 33px;
+  background-color: #a5a5a5;
+  height: 80px;
 }
-.header-logo{
-    img{
+.header-logo {
+  img {
     width: 100px;
     height: 60px;
-    }
+  }
 }
 .main-header .nav-left {
-    float: left;
+  float: left;
 }
 
 .main-header .nav-right {
-    float: right;
+  float: right;
 }
 
-.sub-header{
-
-    background-color: #CEC9C9;
-    width: 100%;
-    height: 30px;
+.sub-header {
+  background-color: #cec9c9;
+  width: 100%;
+  height: 30px;
 }
 
-.row{
-    width: 100%;
-    display: block;
+.row {
+  width: 100%;
+  display: block;
 }
 
-.header-subheader{
-    background: #CEC9C9;
-    font-size: 16px;
+.header-subheader {
+  background: #cec9c9;
+  font-size: 16px;
+  min-height: 25px;
+  > div {
+    padding: 5px;
+    padding-right: 10px;
+    cursor: pointer;
+  }
+  font-weight: 400;
+  color: black;
+}
+.header-flex-container {
+  display: flex;
+  height: auto;
+  &.space-between {
+    justify-content: space-between;
+  }
+  &.item-center {
+    align-items: center;
+  }
+}
+
+.header-inline-block {
+  display: inline-block;
+}
+.header-left-section {
+  > div {
+    padding-right: 5px;
+    min-width: 25px;
     min-height: 25px;
-    > div{
-        padding: 5px;
-        padding-right: 10px;
+    cursor: pointer;
+  }
+  font-size: 18px;
+  color: #2f4f4f;
+}
+.header-left-section > div:hover {
+  color: lighten(#2f4f4f, 10%);
+}
+.container {
+  padding: 0px;
+  margin: 0px;
+  .content_header {
+    border-bottom: 1px solid $gray_color;
+    width: 100%;
+    height: 100px;
+    padding: 0;
+    margin: 0;
+    .title {
+      float: right;
+      margin: 0;
+      position: absolute;
+      right: 43px;
+      top: 75px;
+      .title_text {
+        font-family: $font;
+        font-size: 50px;
+        float: right;
+        color: $gray_color;
+      }
+    }
+    .search_area {
+      display: flex;
+      padding-top: 30px;
+      padding-left: 45px;
+      .search {
+        border: 1px solid $gray_color;
+        width: 300px;
+        height: 30px;
+        padding: 0px;
+        .search_field {
+          direction: rtl;
+          font-family: $font;
+          color: black;
+          margin-right: 19px;
+          float: right;
+          font-size: 20px;
+          border: 0px;
+        }
+        ::placeholder {
+          color: black;
+        }
+        input:focus {
+          outline: none;
+        }
+        .search_icon {
+          cursor: pointer;
+          width: 30px;
+          height: 30px;
+        }
+      }
+      .search_word {
+        font-family: $font;
+        color: $gray_color;
+        font-size: 20px;
+        margin-left: 40px;
+      }
+    }
+  }
+  .content {
+    border-left: 1px solid $light_light_gray;
+    height: 100%;
+    width: 1000px;
+    float: right;
+    border-collapse: collapse;
+    font-family: $font;
+    direction: rtl;
+    text-align: right;
+    margin-top: 40px;
+    margin-right: 120px;
+    cursor: pointer;
+    .first_row {
+      border-bottom: 1px solid $gray_color;
+      font-size: 20px;
+      width: 100%;
+      font-weight: 400;
+      padding: 8px;
+      background: #27ae60;
+      color: white;
+    }
+    th,
+    td {
+      border-bottom: 1px solid $gray_color;
+      padding: 5px;
+    }
+    tbody tr:nth-of-type(odd) {
+      background: #eee;
+    }
+    tbody tr:hover {
+      background: lighten(#27ae60, 10%);
+      color: white;
+    }
+    .user_info {
+      width: 100%;
+      font-family: $font;
+      .user_no {
+        font-size: 30px;
+      }
+      .user_full {
+        .user_profile {
+          width: 40px;
+          height: 40px;
+        }
+        .user_name {
+          font-size: 18px;
+        }
+      }
+      .selection {
+        font-size: 18px;
+        border: none;
+        font-family: $font;
+      }
+      .delete_user {
+        font-size: 30px;
+        color: red;
+        text-align: center;
         cursor: pointer;
-        
+      }
     }
-    font-weight: 400;
-    color: black;
-}
-.header-flex-container{
-    display: flex;
-    height: auto;
-    &.space-between{
-        justify-content: space-between;
-    }
-    &.item-center{
-        align-items: center;
-    }
-    
-}
-
-.header-inline-block{
-    display: inline-block;
-}
-.header-left-section{
-    >div{
-        padding-right: 5px;
-        min-width: 25px;
-        min-height: 25px;
-        cursor: pointer;
-    }
-    font-size: 18px;
-    color: #2F4F4F;
-}
-.header-left-section >div:hover{
-    color: lighten( #2F4F4F, 10%);
+  }
 }
