@@ -3,6 +3,9 @@ $path_color: #CEC9C9;
 $gray_color: #707070;
 $font: "Segoe UI";
 $light_light_gray: #F9F9F9;
+*{
+    font-family: $font;
+}
 .container, html, body {
     padding: 0px;
     margin: 0px;
@@ -121,17 +124,27 @@ $light_light_gray: #F9F9F9;
         text-align: right;
         margin-top: 40px;
         margin-right: 120px;
+        cursor: pointer;
         .first_row {
             border-bottom: 1px solid $gray_color;
-            font-size: 28px;
+            font-size: 20px;
             width: 100%;
-            font-weight: 420;
+            font-weight: 400;
             padding: 8px;
+            background:#27ae60;
+            color: white;
         }
         th, td {
             border-bottom: 1px solid $gray_color;
             padding: 5px;
-            padding-top: 22px;
+        
+        }
+        tbody tr:nth-of-type(odd){
+         background: #eee
+        }
+        tbody tr:hover{
+            background:lighten(#27ae60,  10%);
+            color: white;
         }
         .user_info {
             width: 100%;
@@ -149,7 +162,7 @@ $light_light_gray: #F9F9F9;
                 }
             }
             .selection {
-                font-size: 28px;
+                font-size: 18px;
                 border: none;
                 font-family: $font;
             }
