@@ -122,7 +122,6 @@ body {
     border-left: 1px solid #f9f9f9;
     height: 100%;
     min-width: 80%;
-    float: right;
     border-collapse: collapse;
     font-family: "Segoe UI";
     direction: rtl;
@@ -174,5 +173,9 @@ body {
 
 .color-orange {
   color: #b63fa6; }
+
+.checkbox-size input {
+  width: 20px;
+  height: 20px; }
 
 /*# sourceMappingURL=global.css.map */

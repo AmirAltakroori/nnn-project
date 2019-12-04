@@ -152,7 +152,6 @@ body {
     border-left: 1px solid $light_light_gray;
     height: 100%;
     min-width:80%;
-    float: right;
     border-collapse: collapse;
     font-family: $font;
     direction: rtl;
@@ -218,4 +217,10 @@ body {
 }
 .color-orange{
   color:rgb(182, 63, 166);
+}
+.checkbox-size{
+ input{
+  width: 20px;
+  height: 20px;
+ }
 }
