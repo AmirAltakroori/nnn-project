@@ -91,7 +91,8 @@ body {
   .container .search_area {
     display: flex;
     padding-top: 10px;
-    padding-right: 10px; }
+    padding-right: 10px;
+    padding-left: 10px; }
     .container .search_area .search {
       border: 1px solid #707070;
       height: 32px;
@@ -161,9 +162,18 @@ body {
         border: none;
         font-family: "Segoe UI"; }
       .container .content .user_info .delete_user {
-        font-size: 30px;
+        font-size: 20px;
         color: red;
         text-align: center;
         cursor: pointer; }
+
+.icon {
+  font-size: 18px; }
+
+.color-blue {
+  color: #079; }
+
+.color-orange {
+  color: #b63fa6; }
 
 /*# sourceMappingURL=global.css.map */
