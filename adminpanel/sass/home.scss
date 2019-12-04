@@ -1,0 +1,29 @@
+*{
+    direction: rtl;
+}
+
+body{
+    margin:50px 200px 50px 200px;
+}
+
+div{display: flex;
+    flex-direction: raw;
+ button{
+     
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+        width: 100px;
+        height: 100px;
+        margin-left:50px;
+        padding: 0px 20px 10px 10px ;
+        border: 0; 
+        color:white;
+        #icon{
+            font-size:50px;     
+        }
+       
+    
+    }
+}
+   
