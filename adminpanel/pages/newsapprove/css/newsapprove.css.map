@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,yBAAyB;EACrB,OAAO,EAAE,YAAY;EACrB,MAAM,EAAE,OAAO",
+"sources": ["../sass/newsapprove.scss"],
+"names": [],
+"file": "newsapprove.css"
+}
