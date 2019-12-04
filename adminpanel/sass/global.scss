@@ -1,0 +1,97 @@
+// add your style in this file  if it can be used in multiple pages
+// If your style is specific for a page you have to  create a sass file for the page and add them in it.
+// If your style is specific please use this way when naming : pagename-classname
+
+
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+
+   
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    direction: rtl;
+}
+
+body {
+    margin: 0;
+}
+html,body{
+    height: 100%;
+}
+.main-header {
+    padding: 10px;
+    height: 33px;
+    background-color: #A5A5A5;
+    height: 80px;
+}
+.header-logo{
+    img{
+    width: 100px;
+    height: 60px;
+    }
+}
+.main-header .nav-left {
+    float: left;
+}
+
+.main-header .nav-right {
+    float: right;
+}
+
+.sub-header{
+
+    background-color: #CEC9C9;
+    width: 100%;
+    height: 30px;
+}
+
+.row{
+    width: 100%;
+    display: block;
+}
+
+.header-subheader{
+    background: #CEC9C9;
+    font-size: 16px;
+    min-height: 25px;
+    > div{
+        padding: 5px;
+        padding-right: 10px;
+        cursor: pointer;
+        
+    }
+    font-weight: 400;
+    color: black;
+}
+.header-flex-container{
+    display: flex;
+    height: auto;
+    &.space-between{
+        justify-content: space-between;
+    }
+    &.item-center{
+        align-items: center;
+    }
+    
+}
+
+.header-inline-block{
+    display: inline-block;
+}
+.header-left-section{
+    >div{
+        padding-right: 5px;
+        min-width: 25px;
+        min-height: 25px;
+        cursor: pointer;
+    }
+    font-size: 18px;
+    color: #2F4F4F;
+}
+.header-left-section >div:hover{
+    color: lighten( #2F4F4F, 10%);
+}
