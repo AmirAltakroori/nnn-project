@@ -207,3 +207,48 @@ function getToken(username, email, roleId, alg, validityTime, key){
 
     return finalTokenBased64;
 }
+let users = [
+    {
+        firstName: "وليد",
+        lastName: "الجعبة",
+        username: "Waleed Jubeh",
+        email: "Waleed@ppu.edu",
+        password: "11111111",
+        createDate: new Date(),
+        isActive: 1,
+        roleId: 1,// when we create a user its diffault role is writer which its id is 1
+        token: "",
+    },
+    {
+        firstName: "باسل",
+        lastName: "عطاونه",
+        username: "basil atawneh",
+        email: "basil@ppu.edu",
+        password: "23",
+        createDate: new Date(),
+        isActive: 1,
+        roleId: 2,// when we create a user its diffault role is writer which its id is 1
+        token: "",
+    },
+
+]
+
+function getUserRole(username, password){
+    /*
+        username: the username of the user
+        password: the password of the user
+    */
+    let role = 0;    // the user role (0: not valid, other wise it's valid) 
+
+    // check the password and the username if it's exist
+    for(let user of users){
+        if(user.username == username && user.password == password){
+            role= user.roleId;
+            let token = getToken(user.username, user.email, user.roleId, "sha256", 60*60*1000, "PSE");
+            user.token = token;
+            break;
+        }
+    }
+    
+    return role;
+}
