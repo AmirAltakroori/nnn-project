@@ -13,7 +13,7 @@
 
 
 
-const SearchFun = () => {
+const searchByCategory = () => {
     let filter = document.getElementById('search').value.toUpperCase();
     let content = document.getElementById('content');
     let tr = content.getElementsByTagName('tr');
