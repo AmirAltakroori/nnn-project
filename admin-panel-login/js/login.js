@@ -252,3 +252,41 @@ function getUserRole(username, password){
     
     return role;
 }
+
+function verification() {
+    let username = document.getElementById("Username"); // read the username
+    let password = document.getElementById("Password"); // read the password
+    let popup = document.getElementsByClassName("popup")[0];
+
+    //  get the user role
+    let role = getUserRole(username.value, password.value);
+    username.value = "";
+    password.value = "";
+    //  check if the user is exist (role = 0, means it's invalid user)
+    if(role == 0 ){
+        popup.innerHTML = "Wrong password or username";
+        popup.style.backgroundColor =  "#ff0000";
+        popup.style.boxshadow = "-3px 2px 6px 4px #d85656";
+    }else{
+        popup.innerHTML = "Correct";
+        popup.style.backgroundColor =  "#17bb24";
+        popup.style.boxshadow = "-3px 2px 6px 4px #58d856";
+    }
+    // display the popup
+    popup.style.display = "block";
+
+    // wait after the animation is end 
+    setTimeout(() => {
+        //  hidden th popup
+        popup.style.display ="none";
+
+        //  if the user is exist go to the home page
+        if(role == 1)
+            window.location.href = "../adminpanel/homePage.html";
+        else if(role == 2)
+            window.location.href = "../adminpanel/homePage.html";
+        else if(role == 3)
+            window.location.href = "../adminpanel/homePage.html";
+    }, 1000);
+
+}

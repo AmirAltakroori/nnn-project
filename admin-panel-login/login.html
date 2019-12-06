@@ -22,15 +22,15 @@
 
                     <div class="username">
                         <label>Username</label><br>
-                        <input type="name" placeholder="username">
+                        <input id = "Username" type="name" placeholder="username">
                     </div>
 
                     <div class="password">
                         <label>Password</label><br>
-                        <input type="password" placeholder="********">
+                        <input id = "Password" type="password" placeholder="********">
                     </div>
 
-                   <div class="btn"> <input type="button" name="login" value="Log In"></div> 
+                   <div onclick="verification ()" class="btn"> <input type="button" name="login" value="Log In"></div> 
 
                  
 
@@ -38,6 +38,10 @@
             </form>
 
         </div>
+    </div>
+    <div class = "popup">
+        
+        Wrong password or username
     </div>
     <script src="js/login.js"></script>
 </body>

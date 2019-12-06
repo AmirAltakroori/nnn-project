@@ -102,4 +102,37 @@ body,html{
 
     }
 }
+.popup {
+    
+    color: #ffffff;
+    width: 30%;
+    height: 5%;
+    position: relative;
+    left: 35%;
+    z-index: 20;
+    bottom: 18%;
 
+    font-size: 30px;
+    text-align: center;
+    border-radius: 10px;
+    display: none;
+    vertical-align: middle;
+    /* line-height: 90px; */
+    animation: popup-animation 0.5s linear;
+    .correct {
+      
+        background-color: #17bb24;
+        box-shadow: -3px 2px 6px 4px #58d856;
+    
+    }
+    .incorrect {
+        background-color: #ff0000;
+        box-shadow: -3px 2px 6px 4px #d85656;
+    }
+  }
+  
+  
+  @keyframes popup-animation{
+    from{bottom:0}
+    to{buttom:30%;}
+  }
