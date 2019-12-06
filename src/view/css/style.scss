@@ -4,6 +4,26 @@
      This file is part of the NNN website.
 
      Authors:
+     Aseel Arafeh <arafehaseel@gmail.com> 
 
      File description:
 */
+
+@import './variables';
+@import './functions';
+
+@include initialFormat();
+
+#urgent-container {
+
+     #urgent-content {
+
+          padding: 20px;
+          height: 76.81px;
+          font-weight: bold;
+          background-color: map-get($map: $colors, $key: websiteColor);
+          color: map-get($map: $colors, $key: whiteColor);
+          
+     }
+
+}
