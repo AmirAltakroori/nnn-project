@@ -1,3 +1,4 @@
+
 function searchNewsByCategory (){
     let searchInput , searchText , table , tableBody , tr , i , td , span , category ;
 
