@@ -4,6 +4,41 @@
      This file is part of the NNN website.
 
      Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
 
      File description:
 */
+
+@import './variables';
+
+@mixin initialFormat () {
+
+     * {
+
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         font-family: map-get($map: $fonts, $key: websiteFont);
+
+     }
+     
+     html, body {
+
+         height: 100%;
+         width: 100%;
+
+     }   
+     
+ }
+
+ @mixin flexFunction ($justifyContent, $alignItems, $width, $height, $direction ) {
+
+     display: flex;
+     justify-content: $justifyContent;
+     align-items: $alignItems;
+     width: $width;
+     height: $height;
+     //flex-wrap: wrap;
+     flex-direction: $direction;
+
+ }
