@@ -1,5 +1,5 @@
 function searchNewsByCategory (){
-    var searchInput , searchText , table , tableBody , tr , i , td , span , category ;
+    let searchInput , searchText , table , tableBody , tr , i , td , span , category ;
 
     // get text from search input
     searchInput = document.getElementById('search');
