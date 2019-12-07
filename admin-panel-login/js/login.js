@@ -260,9 +260,7 @@ function getUser(username, password){
 function verification() {
     let username = document.getElementById("Username"); // read the username
     let password = document.getElementById("Password"); // read the password
-    let popup = document.getElementsByClassName("popup")[0];
-
-    //  get the user role
+       //  get the user role
     let user = getUser(username.value, password.value);
     username.value = "";
     password.value = "";
@@ -306,6 +304,7 @@ function verification() {
     }, 1000);
 
 }
+
 function displayPopup(message, backgroundColor = "#000000"){
     let popup = document.getElementsByClassName("popup")[0];
     popup.innerHTML = message;
