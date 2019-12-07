@@ -237,6 +237,15 @@ let users = [
 
 ]
 
+document.addEventListener('DOMContentLoaded',function(event){
+
+    let form = document.getElementById('submitForm');
+    form.addEventListener('submit',function(e){
+        verification();
+        e.preventDefault();
+        return false;
+    });
+});
 function getUser(username, password){
     /*
         username: the username of the user
