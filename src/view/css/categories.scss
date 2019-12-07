@@ -7,8 +7,13 @@
 
      File description: this is the style scss code for thecategory page
 */
+
+
+ 
 *{
      direction: rtl;
+     box-sizing: border-box;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .container{
      display: flex;
@@ -17,4 +22,40 @@
 .top-row{
      display: flex;
      justify-content: space-between;
+}
+.title{
+     color: #0C4D6D;
+margin: 3px;}
+.card{
+     display: flex;
+    margin: 5px 0 5px 5px;
+    align-items: center;
+     
+}
+.left-col{
+width: auto;
+ul {
+     padding: 0%;
+     border-top:2px solid #cccccc;
+     padding-top: 20px;
+}
+}
+.random-new{
+     font-size: 13px;
+   img{
+        width:120px;
+        height: 70px;
+        margin-left: 10px;
+
+   }
+   p{
+        width: 170px;
+   }
+    
+}
+.category-name{
+     color: #0C4D6D;
+    padding-right: 50px;
+    padding-top: 20px;
+
 }
