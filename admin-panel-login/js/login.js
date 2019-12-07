@@ -310,6 +310,7 @@ function displayPopup(message, backgroundColor = "#000000"){
     let popup = document.getElementsByClassName("popup")[0];
     popup.innerHTML = message;
     popup.style.backgroundColor = backgroundColor;
+    popup.style.boxShadow = "-3px 2px 6px 4px "+backgroundColor;
     popup.style.display = "block";
     setTimeout(() => {
         //  hidden th popup
