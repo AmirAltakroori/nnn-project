@@ -10,3 +10,11 @@
 *{
      direction: rtl;
 }
+.container{
+     display: flex;
+     justify-content: space-between;
+}
+.top-row{
+     display: flex;
+     justify-content: space-between;
+}
