@@ -226,31 +226,31 @@ let users = [
         email: "basil@ppu.edu",
         password: "23",
         createDate: new Date(),
-        isActive: 1,
+        isActive: 0,
         roleId: 2,// when we create a user its diffault role is writer which its id is 1
         token: "",
     },
 
 ]
 
-function getUserRole(username, password){
+function getUser(username, password){
     /*
         username: the username of the user
         password: the password of the user
     */
-    let role = 0;    // the user role (0: not valid, other wise it's valid) 
+    let aimedUser = null;    // the user role (0: not valid, other wise it's valid) 
 
     // check the password and the username if it's exist
     for(let user of users){
         if(user.username == username && user.password == password){
-            role= user.roleId;
             let token = getToken(user.username, user.email, user.roleId, "sha256", 60*60*1000, "PSE");
             user.token = token;
+            aimedUser = user; 
             break;
         }
     }
     
-    return role;
+    return aimedUser;
 }
 
 function verification() {
@@ -259,34 +259,52 @@ function verification() {
     let popup = document.getElementsByClassName("popup")[0];
 
     //  get the user role
-    let role = getUserRole(username.value, password.value);
+    let user = getUser(username.value, password.value);
     username.value = "";
     password.value = "";
+    let text = "";
+    color = "#ffffff"
     //  check if the user is exist (role = 0, means it's invalid user)
-    if(role == 0 ){
-        popup.innerHTML = "Wrong password or username";
-        popup.style.backgroundColor =  "#ff0000";
-        popup.style.boxshadow = "-3px 2px 6px 4px #d85656";
+    if(user == null){
+        text = "اسم المستخدم او كلمة المرور خاطئة";
+        color =  "#ff0000";
+        //popup.style.boxshadow = "-3px 2px 6px 4px #d85656";
+    }else if(user.isActive == 0){
+        text = "حسابك معطل راجع أحد المسؤولين";
+        color =  "#e85827";
+       // popup.style.boxshadow = "-3px 2px 6px 4px #58d856";
     }else{
-        popup.innerHTML = "Correct";
-        popup.style.backgroundColor =  "#17bb24";
-        popup.style.boxshadow = "-3px 2px 6px 4px #58d856";
+        text = "جاري تسجيل الدخول";
+        color =  "#17bb24";
     }
     // display the popup
-    popup.style.display = "block";
 
+    displayPopup(text,color)
     // wait after the animation is end 
     setTimeout(() => {
         //  hidden th popup
-        popup.style.display ="none";
 
         //  if the user is exist go to the home page
-        if(role == 1)
-            window.location.href = "../adminpanel/homePage.html";
-        else if(role == 2)
-            window.location.href = "../adminpanel/homePage.html";
-        else if(role == 3)
-            window.location.href = "../adminpanel/homePage.html";
+        if(user.isActive == 1){
+            if(user.roleId == 1)
+                window.location.href = "../adminpanel/homePage.html";
+            else if(user.roleId == 2)
+                window.location.href = "../adminpanel/homePage.html";
+            else if(user.roleId == 3)
+                window.location.href = "../adminpanel/homePage.html";
+        }
     }, 1000);
 
+}
+function displayPopup(message, backgroundColor = "#000000"){
+    let popup = document.getElementsByClassName("popup")[0];
+    popup.innerHTML = message;
+    popup.style.backgroundColor = backgroundColor;
+    popup.style.display = "block";
+    setTimeout(() => {
+        //  hidden th popup
+        popup.style.display ="none";
+        return true;
+    }, 2000);
+    
 }
