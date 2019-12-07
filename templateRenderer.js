@@ -1,6 +1,6 @@
 // classes
-// holds data of special atributes
-class attrData
+// holds data required to a special atributes
+class AttrData
 {
     constructor(query,render)
     {
@@ -10,7 +10,8 @@ class attrData
     }
 }
 
-class specialAttr
+// special attribute class
+class SpecialAttr
 {
     constructor(type,element,render)
     {
@@ -21,6 +22,7 @@ class specialAttr
     }
 }
 
+// render functions foreach special attribute 
 function renderIf(exp,element)
 {
     
@@ -46,46 +48,43 @@ function renderClass(exp,element)
     
 }
 
+// list of all special tags with their render functionality
 const specails = [
-    new attrData("\\$if",renderIf),
-    new attrData("\\$for",renderFor),
-    new attrData("\\$disabled",renderDisabled),
-    new attrData("\\$style",renderStyle),
-    new attrData("\\$class",renderClass)
+    new AttrData("\\$if",renderIf),
+    new AttrData("\\$for",renderFor),
+    new AttrData("\\$disabled",renderDisabled),
+    new AttrData("\\$style",renderStyle),
+    new AttrData("\\$class",renderClass)
 ]
 
-// converts html document to array of special tags (if and for tags)
+// pulls special tags from a given html
 function specialTags(doc)
 {
     let specialTags = [];
+    // find all special tags and format them
     for(let i=0;i<specails.length;i++)
     {
         let elements = doc.querySelectorAll(`[${specails[i].query}]`);
-        elements = [...elements].map(element => element = new specialAttr(specails[i].type,element,specails[i].render));
+        elements = [...elements].map(element => element = new SpecialAttr(specails[i].type,element,specails[i].render));
         specialTags = specialTags.concat(elements);
     }
 
     return specialTags;
 }
 
-// converts all object properties to global proberites
-function globalizeModel(model)
+// executes {{exp}} using data of a model
+function replaceElement(attrString,model)
 {
-    for (var property in model) 
-        window[property] =  model[property];
-    
-}
+    // executes the exp
+    function replacer(attrString)
+    {
+        attrString = attrString.replace('{','');
+        attrString = attrString.replace('}','');
+        attrString = attrString.replace('$',"this.");
+        return eval(attrString);
+    }
 
-// removes all window properties that are in model
-function clearModelFromWindow(model)
-{
-    for (var property in model) 
-        delete  window[property];
-}
-// executes {{exp}} and retuns its value
-function replaceElement(attrString)
-{
-    attrString.replace('{','');
-    attrString.replace('}','');
-   return eval(attrString);
+    // binds the previous function to the model
+    let re = replacer.bind(model);
+    return re(attrString);
 }
