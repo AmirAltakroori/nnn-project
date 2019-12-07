@@ -160,6 +160,10 @@ function SHA256(s){
     return binb2hex(core_sha256(str2binb(s), s.length * chrsz));
 }
 
+
+function saveData(data){
+    sessionStorage.setItem('user', JSON.stringify(data));
+}
 function getToken(username, email, roleId, alg, validityTime, key){
    
     /*
@@ -213,7 +217,7 @@ let users = [
         lastName: "الجعبة",
         username: "Waleed Jubeh",
         email: "Waleed@ppu.edu",
-        password: "11111111",
+        password: "1",
         createDate: new Date(),
         isActive: 1,
         roleId: 1,// when we create a user its diffault role is writer which its id is 1
@@ -276,6 +280,12 @@ function verification() {
     }else{
         text = "جاري تسجيل الدخول";
         color =  "#17bb24";
+        let datatoSave = {
+            "token": user.token,
+            "roleID": user.roleId,
+            "FullName": user.firstName + " " +user.lastName
+        }
+        saveData(datatoSave);
     }
     // display the popup
 
