@@ -1,0 +1,28 @@
+.add-button {
+  min-width: 80px;
+  min-height: 70px;
+  font-weight: 700;
+  color: white;
+  background: #27ae60;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.add-button:hover {
+  background: #1e8449;
+}
+/*# sourceMappingURL=categories.css.map */

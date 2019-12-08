@@ -1,0 +1,127 @@
+.light-blue {
+  background: #94ADF2;
+}
+
+.light-blue:hover {
+  background: #678aec;
+}
+
+.green {
+  background: #41CF70;
+}
+
+.green:hover {
+  background: #2db058;
+}
+
+.blue {
+  background: #41BCCF;
+}
+
+.blue:hover {
+  background: #2d9fb0;
+}
+
+.pink {
+  background: #F294E2;
+}
+
+.pink:hover {
+  background: #ec67d6;
+}
+
+.light-green {
+  background: #8DCC7D;
+}
+
+.light-green:hover {
+  background: #6dbe58;
+}
+
+.light-yellow {
+  background: #C4CC7D;
+}
+
+.light-yellow:hover {
+  background: #b3be58;
+}
+
+.purple {
+  background: #886582;
+}
+
+.purple:hover {
+  background: #6b4f66;
+}
+
+.red {
+  background: #FF6161;
+}
+
+.red:hover {
+  background: #ff2e2e;
+}
+
+* {
+  direction: rtl;
+}
+
+body {
+  margin: 50px 200px 50px 200px;
+}
+
+.homepage-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: raw;
+          flex-direction: raw;
+}
+
+.homepage-container .homepage-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  min-width: 120px;
+  min-height: 120px;
+  margin-left: 50px;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  position: relative;
+}
+
+.homepage-container .homepage-btn .home-shadow-icon {
+  position: absolute;
+  font-size: 90px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  color: rgba(0, 0, 0, 0.1);
+  z-index: 0;
+}
+
+.homepage-container .homepage-btn .icon {
+  font-size: 60px;
+}
+
+.homepage-container .homepage-btn .homepage-aboveicon {
+  position: relative;
+  z-index: 1px;
+}
+/*# sourceMappingURL=home.css.map */
