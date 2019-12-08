@@ -25,19 +25,19 @@ createbtn.onclick = function() {
   let categoryName = document.getElementById("categoryname").value;
   let tr = document.createElement('tr');
   let row = `
-  <tr class="user_info" >
-    <td class="user_no">1</td>
+  <tr class="user_info" style="width:100%; font-family:"Segoe UI"">
+    <td class="user_no" style="font-size:30px">1</td>
     <td class="user_full">
-        <span class="user_name">`+categoryName+`</span>
+        <span class="user_name" style="font-size:18px">`+categoryName+`</span>
     </td>
     <td>
-        <select class="selection">
+        <select class="selection" style="font-size:18px; border:none; font-family:"Segoe UI"">
             <option value="writer">فعالة</option>
             <option value="admin"> غير فعال</option>
         </select>
     </td>
     <td>
-        <i class="fas fa-trash-alt delete_user"></i>
+        <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer"></i>
     </td>
   </tr>`
 document.getElementById("categoryname").value = '';
