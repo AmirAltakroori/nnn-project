@@ -1,4 +1,89 @@
-.allnews-inline-block{
+$success-color :#27ae60;
+$cancel-color:rgb(163, 159, 159);
+$modal-font-color:rgba(0, 0, 0, 0.7);
+
+.allnews-inline-block {
     display: inline-block;
     cursor: pointer;
+}
+
+.delete {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: $modal-font-color;
+    display: none;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 40px;
+    opacity: 0;
+
+}
+
+.active {
+    display: flex;
+    opacity: 1;
+    transition: all 1s;
+    animation: fade-in 0.2s ease-in forwards;
+}
+
+.wrapper {
+
+    min-width: 700px;
+    min-height: 350px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+
+}
+
+.button {
+    font-size: 30px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    min-width: 200px;
+    min-height: 50px;
+    color: white;
+
+}
+
+.delete_user:active.delete {
+    opacity: 1;
+    transition: .5s;
+    display: flex;
+}
+
+.button1 {
+    background-color: $success-color;
+
+}
+
+.button1:hover {
+    background-color: darken($success-color, 10%);
+
+}
+
+.button2 {
+    background-color: $cancel-color;
+}
+
+.button2:hover {
+    background-color: darken($cancel-color, 10%);
+
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 100%;
+    }
 }
