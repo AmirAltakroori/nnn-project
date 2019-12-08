@@ -3,7 +3,62 @@
 
      This file is part of the NNN website.
 
-     Authors:
+     Authors:Latifa Masri and Abed Al-Fattah Hroub
 
-     File description:
+     File description: this filew contain scss style of the detailes page 
 */
+
+// this line make import functions that exist in _function.css
+@import "_functions.scss";
+
+/*
+part1 contain the header of the new and the related news 
+*/
+
+$font-s:40px;
+.part_1 {
+    @include flex-property(row, flex-end, center, 100%);
+    .news_related {
+        @include flex-property(column, flex-start, flex-start, 28%);
+        .related_news_menu {
+            border-top: solid 1px;
+            width: 68%;
+            margin-top: 5px;
+            padding-top: 15px;
+            padding-right: 0%;
+        }
+        ul li {
+            @include flex-property(row, flex-start, flex-start, 100%);
+            list-style-type: none;
+            img {
+                width: 140px;
+                margin-left: 10px;
+                padding: 10px;
+            }
+        }
+        h5 {
+            margin-bottom: 0px;
+            color: #0C4D6D;
+        }
+    }
+    .news_header {
+        h1 {
+            margin-right: 130px;
+            font-size: $font-s;
+            margin-bottom: 0px;
+        }
+        @include flex-property(column, flex-start, flex-start, 72%);
+        .main_img {
+            img {
+                width: 1100px;
+                height: 470px;
+                padding: 0px 100px 5px 100px;
+            }
+        }
+    }
+}
+
+.part_2 {
+    font-size: $font-s - 15;
+    margin-right: 130px;
+}

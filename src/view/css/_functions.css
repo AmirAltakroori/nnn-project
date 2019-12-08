@@ -7,19 +7,9 @@
 
      File description:this file contain shared function used in different files
 */
-
-
 /*
 flex property
 @tparam $direction $justify $align : flex property , $w :width 
 $param $direction: flex direction , $justify: justify content of flex , $align: align flex items ,$width :width of the flex 
 
 */
-
-@mixin flex-property($direction, $justify, $align, $w) {
-    display: flex;
-    justify-content: $justify;
-    align-items: $align;
-    flex-direction: $direction;
-    width: $w;
-}
