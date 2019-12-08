@@ -10,12 +10,15 @@
 -->
 
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<html lang="en" dir="rtl">
+
+<head>
     <meta charset="utf-8">
     <title>Details Page</title>
-  </head>
-  <body>
+    <link rel="stylesheet" href="details.css" type="text/css">
+</head>
+
+<body>
 
     <!--
 
@@ -25,42 +28,87 @@
 
 
 
-    <div class="DetailsPageWrapper">
+    <div class="details_page_wrapper">
+        <!-- Contains news title and photo & Show other related news -->
+        <div class="part_1">
+            <section class="news_header">
+                <h1>
+                    هونغ كونغ.. انتخابات على وقع التوتر
+                </h1>
+                <figure class="main_img">
+                    <img src="img/new2.png" alt="صورة">
+                </figure>
+            </section>
+            <aside class="news_related">
+                <h5>ذات صلة </h5>
 
-      <div class="Part1">//Contains news title and photo & Show other related news
-        <section id="NewsHeader">
-          <h1></h1>
-            <figure>
+                <ul class="related_news_menu">
+                    <li>
+                        <img src="img/new.jpg" alt="صورة">
+                        <p>
+                            لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
+                        </p>
+                    </li>
+                    <li>
+                        <img src="img/new.jpg" alt="صورة">
+                        <p>
+                            لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
+                        </p>
+                    </li>
+                    <li>
+                        <img src="img/new.jpg" alt="صورة">
+                        <p>
+                            لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
+                        </p>
+                    </li>
+                    <li>
+                        <img src="img/new.jpg" alt="صورة">
+                        <p>
+                            لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
+                        </p>
+                    </li>
+                    <li>
+                        <img src="img/new.jpg" alt="صورة">
+                        <p>
+                            لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
+                        </p>
+                    </li>
+                    <li>
+                        <img src="img/new.jpg" alt="صورة">
+                        <p>
+                            لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
+                        </p>
+                    </li>
 
-            </figure>
-        </section>
-        <aside class="NewsRelated">
-          <h1></h1>
-            <ul>
-              <li> </li>
-              <li> </li>
-            </ul>
-        </aside>
-      </div>
+                </ul>
+            </aside>
+        </div>
+        <!-- Contains the full text of the news & news sharing -->
+        <div class="part_2">
+            <article class="article">
+                <p>
+                    اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها<br> من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة<br>، وهو العطاء الذي مُنح لشركة مايكروسوفت
+                </p>
+                <p>
+                    اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة<br>، وهو العطاء الذي مُنح لشركة مايكروسوفت </p>
+                <p>
+                    اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة<br>، وهو العطاء الذي مُنح لشركة مايكروسوفت </p>
+                <p>
+                    اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة<br>، وهو العطاء الذي مُنح لشركة مايكروسوفت </p>
+            </article>
 
-      <div class="Part2">//Contains the full text of the news & news sharing
-        <article class="Article">
+            <section id="news_sharing">
 
-        </article>
+            </section>
+        </div>
+        <!-- Contains comments section -->
+        <div class="part_3">
+            <section id="add_comment">
+            </section>
+            <aside class="list_comment">
 
-        <section id="NewsSharing">
-
-        </section>
-      </div>
-
-      <div class="Part3">//Contains comments section
-        <section id="AddComment">
-
-        </section>
-        <aside class="ListComment">
-
-        </aside>
-      </div>
+            </aside>
+        </div>
 
     </div>
 
@@ -72,5 +120,6 @@
 
    -->
 
-  </body>
+</body>
+
 </html>
