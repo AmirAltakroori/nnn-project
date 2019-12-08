@@ -62,7 +62,7 @@
         </tr>
       </thead>
       <tbody id="rows">
-        <tr class="user_info">
+        <tr class="user_info" id="1">
           <td class="user_no">1</td>
           <td class="user_full">
             <span class="user_name">أحمد الحافظ</span>
@@ -80,10 +80,10 @@
               <option value="not_active">غير فعال</option>
             </select>
           </td>
-          <td><i class="fas fa-trash-alt delete_user"></i></td>
+          <td ><i onclick="show(this,'delete',1)" class="fas fa-trash-alt delete_user"></i></td>
         </tr>
-        <tr class="user_info">
-          <td class="user_no">1</td>
+        <tr class="user_info" id="2">
+          <td class="user_no">2</td>
           <td class="user_full">
             <span class="user_name">test</span>
           </td>
@@ -100,10 +100,10 @@
               <option value="not_active">غير فعال</option>
             </select>
           </td>
-          <td><i class="fas fa-trash-alt delete_user"></i></td>
+          <td ><i onclick="show(this,'delete',2)" class="fas fa-trash-alt delete_user"></i></td>
         </tr>
-        <tr class="user_info">
-          <td class="user_no">1</td>
+        <tr class="user_info" id="3">
+          <td class="user_no">3</td>
           <td class="user_full">
             <span class="user_name">rest</span>
           </td>
@@ -120,7 +120,7 @@
               <option value="not_active">غير فعال</option>
             </select>
           </td>
-          <td><i class="fas fa-trash-alt delete_user"></i></td>
+          <td ><i onclick="show(this,'delete',3)" class="fas fa-trash-alt delete_user"></i></td>
         </tr>
       </tbody>
     </table>
@@ -128,10 +128,11 @@
   <div class="modal-delete" id="delete">
     <div class="modal-wrapper">
       <div class="contain">
-        <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
+        <p>هل أنت متأكد من إزالة هذا اليوزر  ؟</p>
+        <p style="font-size: small;font-weight: 700;">سيتم حذف جميع أخباره</p>
         <div class="modal-button">
-          <button class="modal-button button1" onclick="deleteRowElement(); hide();">نعم</button>
-          <button class="modal-button button2" onclick="hide()">لا</button>
+          <button class="modal-button button1" onclick="deleteRowElement(); hide('delete');">نعم</button>
+          <button class="modal-button button2" onclick="hide('delete')">لا</button>
         </div>
       </div>
 
