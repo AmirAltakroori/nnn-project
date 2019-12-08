@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./fontawesome/all.min.js"></script>
     <script src="./js/allnews.js"></script>
     <link rel="stylesheet" href="../../fontawesome/all.min.css">
     <link rel="stylesheet" href="./../../css/global.css">
@@ -71,8 +70,8 @@
 
                 </tr>
             </thead>
-            <tbody>
-                <tr class="user_info">
+            <tbody >
+                <tr id="1"  class="user_info">
                     <td class="user_no">1</td>
                     <td class="user_full">
                         <span class="user_name">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
@@ -92,13 +91,13 @@
                         </div>
                     </td>
                     <td>
-                        <i class="fas fa-trash-alt delete_user"></i>
+                        <i value="click" class="fas fa-trash-alt delete_user"  onclick="show(this,1)" ></i>
                         <i class="far fa-edit icon color-blue"></i>
                         <i class="fas fa-eye-slash icon color-orange"></i>
                     </td>
                 </tr>
 
-                <tr class="user_info">
+                <tr id="2" class="user_info">
                     <td class="user_no">1</td>
                     <td class="user_full">
                         <span class="user_name">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
@@ -118,12 +117,12 @@
                         </div>
                     </td>
                     <td>
-                        <i class="fas fa-trash-alt delete_user"></i>
+                        <i class="fas fa-trash-alt delete_user"onclick="show(this,1)"></i>
                         <i class="far fa-edit icon color-blue"></i>
                         <i class="fas fa-eye-slash icon color-orange"></i>
                     </td>
                 </tr>
-                <tr class="user_info">
+                <tr id="3" class="user_info">
                     <td class="user_no">1</td>
                     <td class="user_full">
                         <span class="user_name">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
@@ -143,13 +142,26 @@
                         </div>
                     </td>
                     <td>
-                        <i class="fas fa-trash-alt delete_user"></i>
+                        <i class="fas fa-trash-alt delete_user"onclick="show(this,1)"></i>
                         <i class="far fa-edit icon color-blue"></i>
                         <i class="fas fa-eye-slash icon color-orange"></i>
                     </td>
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div class="delete" id="delete">
+        <div class="wrapper">
+              <div class="contain">
+                  <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
+                  <div class="button">
+                      <button class="button button1"onclick="deleteRowElement(); hide();">نعم</button>
+                      <button class="button button2"onclick="hide()">لا</button>
+                  </div>
+              </div>
+
+        </div>
+
     </div>
 </body>
 
