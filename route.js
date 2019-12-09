@@ -1,4 +1,4 @@
-let path ,param=[] , curentPath;
+let path ,param=[] , curentPath ={};
 let routeList = [
     {
         url: "/admin",
@@ -25,7 +25,9 @@ let routeList = [
 ];
 
 function getURL() {
-    let path="" ,option ,find = false;
+    let option ,find = false;
+    path="";
+    curentPath ={};
     let url = window.location.href;
     url = url.substr(url.search("html")+6).split("/");
     let root = url[0];
@@ -47,6 +49,7 @@ function getURL() {
     if (find == false) {
         path = "";
         param = [];
+        curentPath ={};
     }
     console.log(curentPath);
     console.log("Path : "+path);
