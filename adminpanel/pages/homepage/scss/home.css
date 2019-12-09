@@ -1,35 +1,35 @@
 .light-blue {
-  background: #94adf2; }
+  background: #94ADF2; }
 
 .light-blue:hover {
   background: #678aec; }
 
 .green {
-  background: #41cf70; }
+  background: #41CF70; }
 
 .green:hover {
   background: #2db058; }
 
 .blue {
-  background: #41bccf; }
+  background: #41BCCF; }
 
 .blue:hover {
   background: #2d9fb0; }
 
 .pink {
-  background: #f294e2; }
+  background: #F294E2; }
 
 .pink:hover {
   background: #ec67d6; }
 
 .light-green {
-  background: #8dcc7d; }
+  background: #8DCC7D; }
 
 .light-green:hover {
   background: #6dbe58; }
 
 .light-yellow {
-  background: #c4cc7d; }
+  background: #C4CC7D; }
 
 .light-yellow:hover {
   background: #b3be58; }
@@ -41,7 +41,7 @@
   background: #6b4f66; }
 
 .red {
-  background: #ff6161; }
+  background: #FF6161; }
 
 .red:hover {
   background: #ff2e2e; }
@@ -50,7 +50,7 @@
   direction: rtl; }
 
 body {
-  margin: 0 200px 0px 200px; }
+  margin: 50px 200px 50px 200px; }
 
 .homepage-container {
   display: flex;
@@ -83,7 +83,5 @@ body {
     .homepage-container .homepage-btn .homepage-aboveicon {
       position: relative;
       z-index: 1px; }
-  .homepage-container:last-child {
-    margin-bottom: 20px; }
 
 /*# sourceMappingURL=home.css.map */
