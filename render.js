@@ -1,5 +1,5 @@
-$index = document.getElementById('index');
-$path = "view.html";
+index = document.getElementById('index');
+path = "view.html";
 loadDoc($path, $index);
 
 
@@ -23,5 +23,3 @@ function loadDoc (routeObject, viewElement) {
     xmlhttp.open('GET',routeObject, true);
     xmlhttp.send();
 }
-
-
