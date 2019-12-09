@@ -13,10 +13,15 @@ document.addEventListener('DOMContentLoaded', function (e) {
   let createBtn = document.getElementById("createcategory-btn");
   
   //When the user clicks on "انشاء", update actegories tabel with new category
+
   createBtn.onclick = function() {
     hideModal(modal.id);
     let tbody = document.getElementsByTagName('tbody')[0];
     let categoryName = document.getElementById("categoryname").value;
+    if(!ValidationEvent()){
+      showModal(modal.id);
+      return;
+    }
     let tr = document.createElement('tr');
     let row = `
     <tr class="user_info" style="width:100%; font-family:"Segoe UI"">
@@ -37,10 +42,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
     </tr>`
     tr.innerHTML = row;
     tbody.appendChild(tr);
-  
+    
   //add the entered category to db
   //addCategory();
   }
+
   //When the user clicks "إضافة فئة" , show the modal 
   addBtn.onclick = function() {
     showModal(modal.id);
@@ -67,6 +73,14 @@ function hideModal(modalId) {
   document.getElementById(modalId).style.display = "none";
 }
 
+// check if the entered name for the category is empty and alert the user
+function ValidationEvent(){
+  if(document.getElementById("categoryname").value == ""){
+    alert("You must enter a name for the category");
+    return false;
+  }
+  return true;
+}
 
 
 
