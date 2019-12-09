@@ -110,7 +110,7 @@
      margin-left: 12px;
      color:$newsText-color;
      font-family:$newsText-fontFamily;
-     font-size: $newsText-fontSize-2; //R: newsText-fontSize-2 Undefined
+     font-size: $newsText-fontSize - 2;
 
 }
 
