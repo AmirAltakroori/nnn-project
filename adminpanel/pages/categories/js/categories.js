@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
   addForm.addEventListener("submit", (e) => {
 
     createBtn.onclick = function() {
-      hideModal(modal.id);
+      
       let tbody = document.getElementsByTagName('tbody')[0];
       let categoryName = document.getElementById("categoryname").value;
       let tr = document.createElement('tr');
@@ -41,10 +41,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
       tr.innerHTML = row;
       tbody.appendChild(tr);
        
-     
-    //add the entered category to db
-    //addCategory();
     }
+      hideModal(modal.id);
       e.preventDefault();
       return false;
   });
