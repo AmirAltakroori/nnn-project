@@ -1,43 +1,37 @@
-let newUserButton = document.getElementById('new_user');
-let allUsersButton = document.getElementById('all_users');
-let allNewsButton = document.getElementById('all_news');
-let categoriesButton = document.getElementById('categories');
-let addNewButton = document.getElementById('add_new');
-let approveNewsButton = document.getElementById('approve_news');
-let myNewsButton = document.getElementById('my_news');
+document.addEventListener("DOMContentLoaded" , function(){
+    let newUserButton = document.getElementById('new_user');
+    console.log(newUserButton.className);
+    newUserButton.addEventListener('click' , function(){
+        window.location = './../newuser/newuser.html';
+    });
 
+    let allUsersButton = document.getElementById('all_users');
+    allUsersButton.addEventListener('click' , function(){
+        window.location = './../allusers/allusers.html';
+    });
 
-document.addEventListener('load' , function(){
-    newUserButton.addEventListener('click', showNewUserPage());
-    allUserButton.addEventListener('click', showAllUsersPage());
+    let allNewsButton = document.getElementById('all_news');
+    allNewsButton.addEventListener('click' , function(){
+        window.location = './../allnews/allnews.html';
+    });
 
+    let categoriesButton = document.getElementById('categories');
+    categoriesButton.addEventListener('click' , function(){
+        window.location = './../categories/categories.html';
+    });
+
+    let addNewButton = document.getElementById('add_new');
+    addNewButton.addEventListener('click' , function(){
+        window.location = './../addnewspage/addnewpage.html';
+    });
+
+    let approveNewsButton = document.getElementById('approve_news');
+    approveNewsButton.addEventListener('click' , function(){
+        window.location = './../newsapprove/newsapprove.html';
+    });
+
+    let myNewsButton = document.getElementById('my_news');
+    myNewsButton.addEventListener('click' , function(){
+        window.location = './../mynews/mynews.html';
+    });
 });
-
-
-function showNewUserPage(){
-    window.location = './../newuser/newuser.html';
-}
-
-function showAllUsersPage(){
-    window.location = './../allusers/allusers.html';
-}
-
-function showCategoriesPage(){
-
-}
-
-function showAllNewsPage(){
-
-}
-
-function showAddNewsPage(){
-
-}
-
-function showApproveNewsPage(){
-
-}
-
-function showMyNewsPage(){
-
-}
