@@ -3,24 +3,28 @@ let routeList = [
     {
         url: "/admin",
         templete: "View/admin.html",
-        contriller : ""
+        contriller : "",
+        title: "صفحة المشرف"
     },
     {
         url: "/home",
         templete: "View/h1ome.html",
-        contriller : ""
+        contriller : "",
+        title: "شبكة الوحدة الإخبارية"
     },
     {
         url: "/home/:id",
         templete: "View/h1ome.html",
         contriller : "",
-        id:""
+        id:"",
+        title: "شبكة الوحدة الإخبارية"
     },
     {
         url: "/home/:id/:titel/:ex",
         templete: "View/h1ome.html",
         contriller : "",
-        id:""
+        id:"",
+        title: "شبكة الوحدة الإخبارية"
     }
 ];
 
@@ -43,7 +47,7 @@ function getURL() {
             option.forEach((element , index)=> {
                 param[element] = url[index];
             });
-            curentPath=route;
+            currentPath=route;
         }  
     });
     if (find == false) {
@@ -51,8 +55,12 @@ function getURL() {
         param = [];
         curentPath ={};
     }
-    console.log(curentPath);
+    console.log(currentPath);
     console.log("Path : "+path);
     console.log("Param : ");
     console.log(param);
+    console.log("Title is:")
+    console.log( currentPath.title);
+    document.title = currentPath.title;
+
 }   
