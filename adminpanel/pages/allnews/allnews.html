@@ -91,7 +91,7 @@
                         </div>
                     </td>
                     <td>
-                        <i value="click" class="fas fa-trash-alt delete_user"  onclick="show(this,1)" ></i>
+                        <i value="click" class="fas fa-trash-alt delete_user"  onclick="show(this,'delete',1)"></i>
                         <i class="far fa-edit icon color-blue"></i>
                         <i class="fas fa-eye-slash icon color-orange"></i>
                     </td>
@@ -117,7 +117,7 @@
                         </div>
                     </td>
                     <td>
-                        <i class="fas fa-trash-alt delete_user"onclick="show(this,1)"></i>
+                        <i class="fas fa-trash-alt delete_user"onclick="show(this,'delete',2)"></i>
                         <i class="far fa-edit icon color-blue"></i>
                         <i class="fas fa-eye-slash icon color-orange"></i>
                     </td>
@@ -142,7 +142,7 @@
                         </div>
                     </td>
                     <td>
-                        <i class="fas fa-trash-alt delete_user"onclick="show(this,1)"></i>
+                        <i class="fas fa-trash-alt delete_user"onclick="show(this,'delete',3)"></i>
                         <i class="far fa-edit icon color-blue"></i>
                         <i class="fas fa-eye-slash icon color-orange"></i>
                     </td>
@@ -150,19 +150,19 @@
             </tbody>
         </table>
     </div>
-    <div class="delete" id="delete">
-        <div class="wrapper">
-              <div class="contain">
-                  <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
-                  <div class="button">
-                      <button class="button button1"onclick="deleteRowElement(); hide();">نعم</button>
-                      <button class="button button2"onclick="hide()">لا</button>
-                  </div>
-              </div>
-
+    <div class="modal-delete" id="delete">
+        <div class="modal-wrapper">
+          <div class="contain">
+            <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
+            <div class="modal-button">
+              <button class="modal-button button1" onclick="deleteRowElement(); hide('delete');">نعم</button>
+              <button class="modal-button button2" onclick="hide('delete')">لا</button>
+            </div>
+          </div>
+    
         </div>
-
-    </div>
+    
+      </div>
 </body>
 
 </html>

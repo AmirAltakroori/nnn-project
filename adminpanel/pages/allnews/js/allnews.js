@@ -45,16 +45,16 @@ let news = [{
 }];
 let newContain;
 let newId;
-function show(model, id) {
-    let element = document.getElementById('delete')
-    element.className += " active";
-    newContain = model;
+function show(row,modelId, id) {
+    let element = document.getElementById(modelId)
+    element.className += " modal-active";
+    newContain = row;
     newId = id;
 }
 
-function hide() {
-    let element = document.getElementById('delete')
-    element.classList.remove("active");
+function hide(modelId) {
+    let element = document.getElementById(modelId)
+    element.classList.remove("modal-active");
 
 }
 

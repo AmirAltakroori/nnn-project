@@ -152,7 +152,7 @@ body {
       width: 100%;
       font-family: "Segoe UI"; }
       .container .content .user_info .user_no {
-        font-size: 30px; }
+        font-size: 18px; }
       .container .content .user_info .user_full .user_name {
         font-size: 18px; }
       .container .content .user_info .selection {
@@ -177,5 +177,62 @@ body {
 .checkbox-size input {
   width: 20px;
   height: 20px; }
+
+.modal-delete {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-size: 40px;
+  opacity: 0; }
+
+.modal-active {
+  display: flex;
+  opacity: 1;
+  transition: all 1s;
+  animation: fade-in 0.2s ease-in forwards; }
+
+.modal-wrapper {
+  min-width: 700px;
+  min-height: 350px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center; }
+
+.modal-button {
+  font-size: 30px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  min-width: 200px;
+  min-height: 50px;
+  color: white; }
+  .modal-button.button1 {
+    background-color: #27ae60; }
+  .modal-button.button2 {
+    background-color: #a39f9f; }
+  .modal-button.button1:hover {
+    background-color: #1e8449; }
+  .modal-button.button2:hover {
+    background-color: #8a8585; }
+
+.modal-delete_user:active.delete {
+  opacity: 1;
+  transition: 0.5s;
+  display: flex; }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 100%; } }
 
 /*# sourceMappingURL=global.css.map */
