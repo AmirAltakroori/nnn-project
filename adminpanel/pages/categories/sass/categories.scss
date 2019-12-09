@@ -17,3 +17,40 @@ $add-color:#27ae60;
 .add-button:hover{
     background: darken($add-color,10%);
 }
+
+#edit-name-modal {
+    height: 20%;
+    width: 30%;
+    color: white;
+    background-color: #27ae60;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    left: 35%;
+    position: fixed;
+    top: 40%;
+    border : 2px solid black;
+    visibility: hidden;
+  }
+  
+  
+  #save-category-name{
+    margin-top: 5%;
+    background-color: rgb(199, 199, 236);
+    cursor: pointer;
+  }
+  .close {
+    position: absolute;
+    right: 2%;
+    top: 0;
+    color: #aaaaaa;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    cursor: pointer;
+  }
