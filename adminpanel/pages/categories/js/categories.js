@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
   let addForm = document.getElementById("category-form");
   addForm.addEventListener("submit", (e) => {
 
-    createBtn.onclick = function() {
       
       let tbody = document.getElementsByTagName('tbody')[0];
       let categoryName = document.getElementById("categoryname").value;
@@ -40,8 +39,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
       </tr>`
       tr.innerHTML = row;
       tbody.appendChild(tr);
-       
-    }
       hideModal(modal.id);
       e.preventDefault();
       return false;
