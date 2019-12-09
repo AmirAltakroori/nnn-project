@@ -224,3 +224,9 @@ body {
   height: 20px;
  }
 }
+.flex-container-center-all-column{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

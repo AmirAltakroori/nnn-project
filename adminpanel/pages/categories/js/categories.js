@@ -1,3 +1,25 @@
+let categories=[
+  {
+      name:"الألعاب",
+      isActive:1,
+      id:1,
+  },
+  {
+      name:"الرئيسية",
+      isActive:1,
+      id:2,
+  },
+  {
+      name:"الرياضة",
+      isActive:0,//غير مفعل
+      id:3,
+  },
+  {
+      name:"الفن",
+      isActive:0,
+      id:4,
+  }
+]
 
 
 
@@ -18,7 +40,7 @@ const searchByCategory = () => {
     let content = document.getElementById('content');
     let tr = content.getElementsByTagName('tr');
 
-    for (var i = 0; i < tr.length; i++) {
+    for (let i = 0; i < tr.length; i++) {
         let td = tr[i].getElementsByTagName('td')[1];
 
         if (td) {
@@ -34,33 +56,42 @@ const searchByCategory = () => {
 
 
     }
+}
+let activeId=0;
+let activeRow=null;
+function showModal(modalId,row,id){
+  let modal = document.getElementById(modalId);//for modal
+  modal.style.display="block";
+  activeId=id;
+  activeRow=row.parentElement.parentElement;
 
-
+}
+function hideModal(modalId){
+  let modal = document.getElementById(modalId);//for modal
+  modal.style.display="none";
 
 }
 
-let changebutton = document.getElementById("edit-category-name");// for edit button 
-let edit_modal = document.getElementById("edit-name-modal");//for modal
-let saveIcon= document.getElementById("save-category-name");//button to save the new name
-var span = document.getElementsByClassName("close")[0];
-var myObj=[];
-localStorage.setItem('storeObj', JSON.stringify(myObj));
-
-document.onload = function(){
-   
-    changebutton.onclick = function() {
-        edit_modal.style.visibility="visible";
-    }
-
-      saveIcon.onclick = function() {
-        var newName=document.getElementById("newCategoryName").Value;//get the new name  
-        myObj.push(newName);
-        //here we must take the name of the category from the data base and then change the name of it to the new name .
-
-      }
-
-      span.onclick = function() {
-        edit_modal.style.visibility = "hidden";
-      }
-      
+// TODO 
+/*
+  Write a function for update the name. updateName() down
+  You have the entire row (tr) object stored in activeRow variable
+  You have the id of the current object , see the variable categories above
+  You need to get the object that match his id with activeId , hint use categories.find()
+*/
+function updateCategoryName()
+{
+  
 }
+document.addEventListener('DOMContentLoaded', (e) => {
+
+  let form=document.getElementById('category-modal-form');
+  form.addEventListener('DOMContentLoaded', (e) => {
+    
+    // TODO
+    // Call your function above here (The function that call the data)
+    // updateCategoryName()
+    e.preventDefault();
+    return false;
+  });
+});

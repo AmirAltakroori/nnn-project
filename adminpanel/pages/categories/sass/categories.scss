@@ -1,56 +1,83 @@
-$add-color:#27ae60;
-.add-button{
-    min-width: 80px;
-    min-height: 70px;
-    font-weight: 700;
-    color: white;
-    background: $add-color;
-    text-align: center;
-    cursor: pointer;
-    margin-left:20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
+$add-color: white;
+$modal-font-color: #27ae60;
+.categories-add-button {
+  min-width: 80px;
+  min-height: 70px;
+  font-weight: 700;
+  color: white;
+  background: $modal-font-color;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.add-button:hover{
-    background: darken($add-color,10%);
+.categories-add-button:hover {
+  background: darken($modal-font-color, 10%);
+}
+.categories-modal-base {
+  outline: none;
+  left: 0;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  display: none;
+}
+.categories-modal {
+  outline: none;
+  border-radius: 27px;
+  min-width: 300px;
+  max-width: 500px;
+  min-height: 200px;
+  max-height: 300px;
+  color: $modal-font-color;
+  background-color:#e7e7e7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
 
-#edit-name-modal {
-    height: 20%;
-    width: 30%;
-    color: white;
-    background-color: #27ae60;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    left: 35%;
-    position: fixed;
-    top: 40%;
-    border : 2px solid black;
-    visibility: hidden;
-  }
-  
-  
-  #save-category-name{
-    margin-top: 5%;
-    background-color: rgb(199, 199, 236);
-    cursor: pointer;
-  }
-  .close {
-    position: absolute;
-    right: 2%;
-    top: 0;
-    color: #aaaaaa;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    cursor: pointer;
-  }
+.categories-modal-input {
+  min-height: 30px;
+  min-width: 200px;
+  max-width: 300px;
+  color: $modal-font-color;
+  font-weight: 700;
+  font-size: 20px;
+}
+.categories-save-button {
+  margin-top: 5%;
+  background-color: $modal-font-color;
+  cursor: pointer;
+  border: none;
+  min-width: 200px;
+  min-height: 50px;
+  color: $add-color;
+  font-weight: 700;
+  font-size: 20px;
+}
+.categories-button-close {
+  position: absolute;
+  right: 2%;
+  top: 0;
+  color: $modal-font-color;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.categories-button-close:hover,
+.categories-button-close:focus {
+  color: #000;
+  cursor: pointer;
+}
