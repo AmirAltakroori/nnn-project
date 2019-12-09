@@ -203,14 +203,14 @@ function displaynews(news){
         main_div.className = "allnews-inline-block";
         let main_check = document.createElement("input");
         main_check.type = "checkbox";
-        main_check.id = "main" + i;
+        main_check.id = "main" + news[i].id;
 
         if (news[i].isMainNews)
             main_check.checked = true;
 
         main_check.tabIndex = "9";
         let main_label = document.createElement("label");
-        main_label.for = "main" + i;
+        main_label.for = "main" + news[i].id;
         main_label.textContent = "خبر رئيسي";
 
         main_div.appendChild(main_check);
@@ -220,14 +220,14 @@ function displaynews(news){
         urgent_div.className = "allnews-inline-block";
         let urgent_check = document.createElement("input");
         urgent_check.type = "checkbox";
-        urgent_check.id = "urgent" + i;
+        urgent_check.id = "urgent" + news[i].id;
 
         if (news[i].isUrgentNews)
             urgent_check.checked = true;
 
         urgent_check.tabIndex = "9";
         let urgent_label = document.createElement("label");
-        urgent_label.for = "urgent" + i;
+        urgent_label.for = "urgent" + news[i].id;
         urgent_label.textContent = "خبر عاجل";
 
         urgent_div.appendChild(urgent_check);
@@ -254,7 +254,7 @@ function displaynews(news){
         let operations = document.createElement("td");
         let delete_icon = document.createElement("i");
         delete_icon.className = "fas fa-trash-alt delete_user";
-        delete_icon.setAttribute ('onclick',"show(this,'delete',"+i+")");
+        delete_icon.setAttribute ('onclick',"show(this,'delete',"+news[i].id+")");
 
         let edit_icon = document.createElement("i");
         edit_icon.className = "far fa-edit icon color-blue";
