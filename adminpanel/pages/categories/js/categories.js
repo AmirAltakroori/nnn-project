@@ -13,40 +13,42 @@ document.addEventListener('DOMContentLoaded', function (e) {
   let createBtn = document.getElementById("createcategory-btn");
   
   //When the user clicks on "انشاء", update actegories tabel with new category
+  let addForm = document.getElementById("category-form");
+  addForm.addEventListener("submit", (e) => {
 
-  createBtn.onclick = function() {
-    hideModal(modal.id);
-    let tbody = document.getElementsByTagName('tbody')[0];
-    let categoryName = document.getElementById("categoryname").value;
-    if(!ValidationEvent()){
-      showModal(modal.id);
-      return;
+    createBtn.onclick = function() {
+      hideModal(modal.id);
+      let tbody = document.getElementsByTagName('tbody')[0];
+      let categoryName = document.getElementById("categoryname").value;
+      let tr = document.createElement('tr');
+      let row = `
+      <tr class="user_info" style="width:100%; font-family:"Segoe UI"">
+        <td class="user_no" style="font-size:30px">1</td>
+        <td class="user_full">
+            <span class="user_name" style="font-size:18px">`+categoryName+`</span>
+        </td>
+        <td>
+            <select class="selection" style="font-size:18px; border:none; font-family:"Segoe UI"">
+                <option value="writer">فعالة</option>
+                <option value="admin"> غير فعال</option>
+            </select>
+        </td>
+        <td>
+            <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer"></i>
+            <i class="far fa-edit icon color-blue"></i>
+        </td>
+      </tr>`
+      tr.innerHTML = row;
+      tbody.appendChild(tr);
+       
+     
+    //add the entered category to db
+    //addCategory();
     }
-    let tr = document.createElement('tr');
-    let row = `
-    <tr class="user_info" style="width:100%; font-family:"Segoe UI"">
-      <td class="user_no" style="font-size:30px">1</td>
-      <td class="user_full">
-          <span class="user_name" style="font-size:18px">`+categoryName+`</span>
-      </td>
-      <td>
-          <select class="selection" style="font-size:18px; border:none; font-family:"Segoe UI"">
-              <option value="writer">فعالة</option>
-              <option value="admin"> غير فعال</option>
-          </select>
-      </td>
-      <td>
-          <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer"></i>
-          <i class="far fa-edit icon color-blue"></i>
-      </td>
-    </tr>`
-    tr.innerHTML = row;
-    tbody.appendChild(tr);
-    
-  //add the entered category to db
-  //addCategory();
-  }
-
+      e.preventDefault();
+      return false;
+  });
+ 
   //When the user clicks "إضافة فئة" , show the modal 
   addBtn.onclick = function() {
     showModal(modal.id);
@@ -74,13 +76,14 @@ function hideModal(modalId) {
 }
 
 // check if the entered name for the category is empty and alert the user
-function ValidationEvent(){
-  if(document.getElementById("categoryname").value == ""){
+/*function ValidationEvent(){
+  if(document.getElementById("categoryname").value = ""){
     alert("You must enter a name for the category");
     return false;
   }
   return true;
-}
+}*/
+
 
 
 
