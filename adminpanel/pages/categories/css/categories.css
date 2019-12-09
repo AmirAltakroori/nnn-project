@@ -63,6 +63,7 @@
   min-width: 50px;
   min-height: 30px;
   font-weight: 700;
+  border: none;
   color: white;
   background-color: #27ae60;
 }
@@ -73,7 +74,8 @@
 }
 
 #categoryname {
-  height: 30px;
+  min-height: 30px;
+  min-width: 10px;
 }
 
 #close {
