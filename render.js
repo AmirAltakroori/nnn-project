@@ -1,6 +1,6 @@
-index = document.getElementById('index');
-path = "view.html";
-loadDoc($path, $index);
+let index = document.getElementById('index');
+let path = "view.html";
+loadDoc(path, index);
 
 
 function loadDoc (routeObject, viewElement) {
