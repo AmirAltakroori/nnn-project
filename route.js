@@ -4,27 +4,27 @@ let routeList = [
         url: "/admin",
         templete: "View/admin.html",
         contriller : "",
-        title: "Admin page"
+        title: "صفحة المشرف"
     },
     {
         url: "/home",
         templete: "View/h1ome.html",
         contriller : "",
-        title: "Nice News Network"
+        title: "شبكة الوحدة الإخبارية"
     },
     {
         url: "/home/:id",
         templete: "View/h1ome.html",
         contriller : "",
         id:"",
-        title: "Nice News Network"
+        title: "شبكة الوحدة الإخبارية"
     },
     {
         url: "/home/:id/:titel/:ex",
         templete: "View/h1ome.html",
         contriller : "",
         id:"",
-        title: "Nice News Network"
+        title: "شبكة الوحدة الإخبارية"
     }
 ];
 
