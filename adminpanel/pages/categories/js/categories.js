@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
       </td>
       <td>
           <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer"></i>
+          <i class="far fa-edit icon color-blue"></i>
       </td>
     </tr>`
     tr.innerHTML = row;
