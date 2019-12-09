@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="script.js"></script>
+    <title>Test</title>
+</head>
+<body>
+    <div id="root">
+        <h1 $if="x == y" $for="n in news">This is {{$header}} just {{$text}}</h1>
+        <h2 $disabled = "!disabled">{{$header2}}</h2>
+        <h3>{{$header3}}</h3>
+        <h4>{{$header4}} {{$header}}</h4>
+    </div>
+    <script src="templateRenderer.js"></script>
+</body>
+</html>
