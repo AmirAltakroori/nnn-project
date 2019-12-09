@@ -1,13 +1,8 @@
-let param;
-/*let routeList = [
+let path ,param=[];
+let routeList = [
     {
-        url: "/Admin",
+        url: "/admin",
         templete: "View/admin.html",
-        contriller : ""
-    },
-    {
-        url: "/Home",
-        templete: "View/home.html",
         contriller : ""
     },
     {
@@ -16,7 +11,7 @@ let param;
         contriller : ""
     },
     {
-        url: "/home/:id/:titel",
+        url: "/home/:id",
         templete: "View/h1ome.html",
         contriller : "",
         id:""
@@ -28,23 +23,31 @@ let param;
         id:""
     }
 ];
-*/
+
 function getURL() {
-    
-    let url =   window.location.href.replace('#', '');
-    url = url.substr(url.search("html")+4);
-    let cutentUrl;
-    let root = url.split("/")[1];
-    if (url.search(":") != -1){
-        let value = url.substr(url.search(":")+1).split("/:");
-        param = value;
-        cutentUrl = routeList.filter(route =>{
-            if (route.url.search(":") != -1){
-                let option = route.url.split("/");
-                return root == option[1] && value.length == (option.length-2);
-            }
-        });
-    }else {
-        cutentUrl = routeList.filter(route => route.url.split("/")[1] == root && route.url.split("/").length == 2);
-    }    
-}
+    let path="" ,option ,find = false;
+    let url = window.location.href;
+    url = url.substr(url.search("html")+6).split("/");
+    let root = url[0];
+    param=[];
+    url.splice(0,1);
+    routeList.forEach(route =>{
+        option = route.url.substr(route.url.search("/")+1).split("/:");
+        if (root == option[0] && url.length == (option.length-1)){
+            find = true;
+            path = option[0];
+            option.splice(0,1);
+            param=[];
+            option.forEach((element , index)=> {
+                param[element] = url[index];
+            });
+        }  
+    });
+    if (find == false) {
+        path = "";
+        param = [];
+    }
+    console.log("Path : "+path);
+    console.log("Param : ");
+    console.log(param);
+}   
