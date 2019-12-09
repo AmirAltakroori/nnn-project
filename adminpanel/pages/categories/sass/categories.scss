@@ -17,7 +17,7 @@ $add-color:#27ae60;
 .add-button:hover{
     background: darken($add-color,10%);
 }
-.createcategory-modal {
+#createcategory-modal {
     display: none; 
     position: fixed; 
     z-index: 1; 
@@ -28,43 +28,44 @@ $add-color:#27ae60;
     height: 100%; 
     overflow: auto; 
     background-color: rgba(0,0,0,0.4); 
-    
-    .createcategory-modalcontent {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 20%;
-       
-        .createcategory-btn {
-              width: 50px;
-              height: 30px;
-        }
-        .createcategory-btn:hover {
-            cursor: pointer;
-        
-        }
-        .createcategory-name {
-            height: 30px;
-        } 
-        .close {
-            color: #383636;
-            margin-top: -60px;
-            margin-right: -30px;
-            font-size: 25px;
-            font-weight: bold;
-          }
-          
-          .close:hover {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-          }
-        
-    }
 
+} 
+#createcategory-modalcontent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20%;
+}
+#createcategory-btn {
+    min-width: 50px;
+    min-height: 30px;
+    font-weight: 700;
+    color: white;
+    background-color: $add-color;
+}
+#createcategory-btn:hover {
+  cursor: pointer;
+  background: darken($add-color,10%);
+
+}
+#categoryname {
+  height: 30px;
+} 
+#close {
+  color: #383636;
+  margin-top: -60px;
+  margin-right: -30px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#close:hover {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
