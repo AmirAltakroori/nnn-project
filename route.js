@@ -1,4 +1,4 @@
-let path ,param=[] , curentPath;
+let path ,param=[] , currentPath;
 let routeList = [
     {
         url: "/admin",
@@ -45,15 +45,19 @@ function getURL() {
             option.forEach((element , index)=> {
                 param[element] = url[index];
             });
-            curentPath=route;
+            currentPath=route;
         }  
     });
     if (find == false) {
         path = "";
         param = [];
     }
-    console.log(curentPath);
+    console.log(currentPath);
     console.log("Path : "+path);
     console.log("Param : ");
     console.log(param);
+    console.log("Title is:")
+    console.log( currentPath.title);
+    document.title = currentPath.title;
+
 }   
