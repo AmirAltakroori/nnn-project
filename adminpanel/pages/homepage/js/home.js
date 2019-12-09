@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded" , function(){
 
     // function to show new user page
     let newUserButton = document.getElementById('new_user');
-    console.log(newUserButton.className);
     newUserButton.addEventListener('click' , function(){
         window.location = './../newuser/newuser.html';
     });
