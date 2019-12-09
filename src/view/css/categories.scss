@@ -3,7 +3,116 @@
 
      This file is part of the NNN website.
 
-     Authors:
+     Authors: Amir Altakroori
 
-     File description:
+     File description: Scss code for main section and right sidebar
+    in category page for normal user view.
 */
+
+* {
+    padding: 0%;
+    margin: 0%;
+    direction: rtl;
+}
+
+$margin_sections: 1.66%;
+$right_sidebar_width: 25% - $margin_sections;
+$main_title_width: 55%;
+$font_size_main_title: 28px;
+$font_color_main_title:#4D4F5C;
+$font_size_main_details: 20px;
+$font_color_main_details: #707070;
+$font_size_main_wrting: 14px;
+$font_color_main_see_more: #0C4D6D;
+$font_size_main_see_more: 20px;
+$font_color_main_wrting: #919192;
+$font_color_rightbar: #ffffff;
+$font_size_rightbar: 17px;
+body {
+    .main_category_section {
+        margin: auto;
+        margin-top: 100px;
+        height: 211px;
+        width: 861px;
+        .right_sidebar {
+            float: right;
+            width: $right_sidebar_width;
+            .news_list {
+                .news {
+                    position: relative;
+                    margin-bottom: 6%;
+                    img {
+                        width: 100%;
+                    }
+                    p {
+                        color: $font_color_rightbar;
+                        font-size: $font_size_rightbar;
+                        position: absolute;
+                        bottom: 0;
+                        word-wrap: break-word;
+                        padding: 3%;
+                    }
+                }
+            }
+        }
+        .main_section {
+            float: left;
+            width: 100% - $right_sidebar_width - $margin_sections;
+            margin-right: $margin_sections;
+            position: relative;
+            .main_news {
+                width: 100%;
+                img {
+                    width: 100%;
+                }
+                .writng_details,
+                .see_more {
+                    margin-left: 3%;
+                }
+                .details {
+                    margin: 1%;
+                    overflow: hidden;
+                    h3 {
+                        float: right;
+                        font-size: $font_color_main_title;
+                        color: $font_color_main_title;
+                        width: $main_title_width;
+                        word-wrap: break-word;
+                    }
+                    .writng_details {
+                        direction: ltr;
+                        width: 95% - $main_title_width;
+                        float: left;
+                        * {
+                            display: inline;
+                            margin-right: 3%;
+                            color: $font_color_main_wrting;
+                            word-wrap: break-word;
+                        }
+                        .writer,
+                        .date {
+                            font-size: $font_size_main_wrting;
+                        }
+                    }
+                }
+                p {
+                    margin: 3% 1% 0 3%;
+                    font-size: $font_size_main_details;
+                    color: $font_color_main_details;
+                }
+                .see_more {
+                    float: left;
+                    width: 30%;
+                    direction: ltr;
+                    * {
+                        display: inline;
+                        color: $font_color_main_see_more;
+                    }
+                    p {
+                        font-size: $font_size_main_see_more;
+                    }
+                }
+            }
+        }
+    }
+}
