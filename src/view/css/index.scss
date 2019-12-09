@@ -18,14 +18,14 @@
      margin: auto;
 
      .firstNews {
-          
+
           @extend %allNews;
           .news{
 
                @extend %news;
           }
-     
-             
+
+
           .date{
 
                @extend %newsDate;
@@ -37,45 +37,45 @@
                float: right;
           }
 
-          
-        
+
+
         }
 
         .secondNews{
-     
+
           @extend %allNews;
           .news{
-              
-               @extend %news;   
+
+               @extend %news;
           }
-     
-             
+
+
           .date{
-     
+
                @extend %newsDate;
-     
+
           }
 
-         
 
-          
-   
+
+
+
    }
 
    .thirdNews{
 
      @extend %allNews;
      .news{
-          
+
           @extend %news;
      }
 
-        
+
      .date{
 
           @extend %newsDate;
      }
-     
+
    }
 
 
@@ -83,11 +83,11 @@
 
      @extend %allNews;
      .news{
-        
+
           @extend %news;
      }
 
-        
+
      .date{
 
           @extend %newsDate;
@@ -98,9 +98,9 @@
           @extend %arrow;
           float: left;
      }
-     
+
    }
-        
+
 }
 
 %newsDate {
@@ -110,7 +110,7 @@
      margin-left: 12px;
      color:$newsText-color;
      font-family:$newsText-fontFamily;
-     font-size: $newsText-fontSize-2;
+     font-size: $newsText-fontSize-2; // newsText-fontSize-2 Undefined
 
 }
 
@@ -141,12 +141,3 @@
      margin-top: $arrow-margin-top;
      margin-right: $arrow-margin;
 }
-
-
-
-   
-
-  
-   
-
-
