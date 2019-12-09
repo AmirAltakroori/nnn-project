@@ -1,16 +1,20 @@
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
-  padding: 1px; }
+  padding: 1px;
+}
 
 body, html {
-  height: 100%; }
+  height: 100%;
+}
 
 .content {
   width: 100%;
   position: relative;
   height: 100%;
-  z-index: 2; }
+  z-index: 2;
+}
 
 .content::after {
   position: absolute;
@@ -22,18 +26,23 @@ body, html {
   background-image: url("./../images/Background.png");
   opacity: 0.5;
   background-size: 100% 100%;
-  z-index: 1; }
+  z-index: 1;
+}
 
 .logo {
   z-index: 2;
   position: absolute;
   left: 50%;
   top: 18%;
-  transform: translateY(-50%) translateX(-50%); }
-  .logo img {
-    width: 180px;
-    height: 100px;
-    opacity: 1; }
+  -webkit-transform: translateY(-50%) translateX(-50%);
+          transform: translateY(-50%) translateX(-50%);
+}
+
+.logo img {
+  width: 180px;
+  height: 100px;
+  opacity: 1;
+}
 
 .form-box {
   width: 450px;
@@ -43,39 +52,51 @@ body, html {
   position: absolute;
   left: 50%;
   top: 55%;
-  transform: translateY(-50%) translateX(-50%);
-  z-index: 2; }
+  -webkit-transform: translateY(-50%) translateX(-50%);
+          transform: translateY(-50%) translateX(-50%);
+  z-index: 2;
+}
 
 .log-form {
   margin: 20px;
   padding: 5px;
   display: block;
-  align-items: center; }
-  .log-form label {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    margin: 2px;
-    margin-bottom: 5px;
-    color: #4e4e4e; }
-  .log-form input {
-    width: 400px;
-    height: 45px;
-    margin-bottom: 5px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid gray; }
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.log-form label {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  margin: 2px;
+  margin-bottom: 5px;
+  color: #4e4e4e;
+}
+
+.log-form input {
+  width: 400px;
+  height: 45px;
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
 
 .username {
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+}
 
 .password {
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+}
 
 .btn input {
   background-color: dodgerblue;
   color: floralwhite;
   font-size: 20px;
-  height: 50px; }
+  height: 50px;
+}
 
 .popup {
   color: #ffffff;
@@ -93,13 +114,27 @@ body, html {
   display: none;
   line-height: 50px;
   background-color: #ff0000;
-  box-shadow: -3px 2px 6px 4px #d85656;
-  animation: popup-animation 0.5s linear; }
+  -webkit-box-shadow: -3px 2px 6px 4px #d85656;
+          box-shadow: -3px 2px 6px 4px #d85656;
+  -webkit-animation: popup-animation 0.5s linear;
+          animation: popup-animation 0.5s linear;
+}
+
+@-webkit-keyframes popup-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
 
 @keyframes popup-animation {
   from {
-    opacity: 0; }
+    opacity: 0;
+  }
   to {
-    opacity: 100%; } }
-
+    opacity: 100%;
+  }
+}
 /*# sourceMappingURL=login.css.map */

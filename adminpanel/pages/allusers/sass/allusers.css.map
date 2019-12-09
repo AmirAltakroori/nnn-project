@@ -2,8 +2,8 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "mynews.scss"
+        "allusers.scss"
     ],
     "names": [],
-    "file": "mynews.css"
+    "file": "allusers.css"
 }

@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,qBAAqB,CAAA;EACjB,OAAO,EAAE,YAAY;EACrB,MAAM,EAAE,OAAO;CAClB",
-    "sources": [
-        "allnews.scss"
-    ],
-    "names": [],
-    "file": "allnews.css"
-}

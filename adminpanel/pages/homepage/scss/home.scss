@@ -60,9 +60,11 @@ $light_blue_color: #94adf2;
 }
 
 body {
+  margin: 0;
+}
+.body-wrapper {
   margin: 0 200px 0px 200px;
 }
-
 .homepage-container {
   display: flex;
   flex-direction: raw;
