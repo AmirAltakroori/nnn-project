@@ -3,7 +3,7 @@ let path = "view.html";
 loadDoc(path, index);
 
 
-function loadDoc (routeObject, viewElement) {
+function loadDoc (path, viewElement) {
     var xmlhttp;
 
     //To be compatible with different browsers
@@ -20,6 +20,6 @@ function loadDoc (routeObject, viewElement) {
         }
       };
 
-    xmlhttp.open('GET',routeObject, true);
+    xmlhttp.open('GET',path, true);
     xmlhttp.send();
 }
