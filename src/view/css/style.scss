@@ -16,14 +16,30 @@
 
 #urgent-container {
 
-     #urgent-content {
+     @include flexFunction (center, center, 100%, 76.81, row);
+     background-color: map-get($map: $colors, $key: websiteColor);
+     color: map-get($map: $colors, $key: whiteColor);
+     font-weight: bold;
 
-          padding: 20px;
-          height: 76.81px;
-          font-weight: bold;
-          background-color: map-get($map: $colors, $key: websiteColor);
-          color: map-get($map: $colors, $key: whiteColor);
+     div {
+
+          @include flexFunction (center, center, 5%, auto, row);
+
+     }
+
+     #urgent-content {
           
+          direction: ltr;
+          padding: 20px;  
+          
+          a {
+
+               text-decoration: none;
+               padding-left: 100px;
+               color: map-get($map: $colors, $key: whiteColor);
+
+          }
+     
      }
 
 }
