@@ -53,7 +53,8 @@
                 </div>
                 <div class="search">
                     <img class="search_icon" src="./../../img/search.png">
-                    <input type="text" class="search_field" placeholder="ابحث هنا" id="search" onkeyup="searchNewsByCategory()">
+                    <input type="text" class="search_field" placeholder="ابحث هنا" id="search"
+                        onkeyup="searchNewsByCategory()">
                 </div>
             </div>
 
@@ -65,16 +66,17 @@
                     <th>#</th>
                     <th>عنوان الخبر</th>
                     <th>الفئة</th>
+                    <th>نوع الخبر</th>
                     <th>الحالة</th>
                     <th>العمليات</th>
 
                 </tr>
             </thead>
-            <tbody >
-                <tr id="1"  class="user_info">
+            <tbody>
+                <tr id="1" class="user_info">
                     <td class="user_no">1</td>
                     <td class="user_full">
-                        <span class="user_name">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
+                        <span class="user_name allnews-title-limit">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
                     </td>
                     <td class="user_full">
                         <span class="user_name">عالمي</span>
@@ -91,78 +93,92 @@
                         </div>
                     </td>
                     <td>
-                        <i value="click" class="fas fa-trash-alt delete_user"  onclick="show(this,'delete',1)"></i>
+                            <select class="selection">
+                                    <option value="1">إظهار في الموقع</option>
+                                    <option value="0"> إخفاء من الموقع</option>
+                                  </select>
+                    </td>
+                    <td>
+                        <i value="click" class="fas fa-trash-alt delete_user" onclick="show(this,'delete',1)"></i>
                         <i class="far fa-edit icon color-blue"></i>
-                        <i class="fas fa-eye-slash icon color-orange"></i>
                     </td>
                 </tr>
-
                 <tr id="2" class="user_info">
-                    <td class="user_no">1</td>
-                    <td class="user_full">
-                        <span class="user_name">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
-                    </td>
-                    <td class="user_full">
-                        <span class="user_name">عالمي</span>
-                    </td>
-                    <td>
-                        <div class="allnews-inline-block">
-                            <input type="checkbox" id="main" tabindex="9" />
-                            <label for="main">خبر رئيسي</label>
-                        </div>
-                        <div class="allnews-inline-block">
-                            <input type="checkbox" id="urgent" tabindex="9" />
-                            <label for="urgent">خبر عاجل</label>
-
-                        </div>
-                    </td>
-                    <td>
-                        <i class="fas fa-trash-alt delete_user"onclick="show(this,'delete',2)"></i>
-                        <i class="far fa-edit icon color-blue"></i>
-                        <i class="fas fa-eye-slash icon color-orange"></i>
-                    </td>
-                </tr>
-                <tr id="3" class="user_info">
-                    <td class="user_no">1</td>
-                    <td class="user_full">
-                        <span class="user_name">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
-                    </td>
-                    <td class="user_full">
-                        <span class="user_name">رياضة</span>
-                    </td>
-                    <td>
-                        <div class="allnews-inline-block">
-                            <input type="checkbox" id="main" tabindex="9" />
-                            <label for="main">خبر رئيسي</label>
-                        </div>
-                        <div class="allnews-inline-block">
-                            <input type="checkbox" id="urgent" tabindex="9" />
-                            <label for="urgent">خبر عاجل</label>
-
-                        </div>
-                    </td>
-                    <td>
-                        <i class="fas fa-trash-alt delete_user"onclick="show(this,'delete',3)"></i>
-                        <i class="far fa-edit icon color-blue"></i>
-                        <i class="fas fa-eye-slash icon color-orange"></i>
-                    </td>
-                </tr>
+                        <td class="user_no">2</td>
+                        <td class="user_full">
+                            <span class="user_name allnews-title-limit">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
+                        </td>
+                        <td class="user_full">
+                            <span class="user_name">عالمي</span>
+                        </td>
+                        <td>
+                            <div class="allnews-inline-block">
+                                <input type="checkbox" id="main" tabindex="9" />
+                                <label for="main">خبر رئيسي</label>
+                            </div>
+                            <div class="allnews-inline-block">
+                                <input type="checkbox" id="urgent" tabindex="9" />
+                                <label for="urgent">خبر عاجل</label>
+    
+                            </div>
+                        </td>
+                        <td>
+                                <select class="selection">
+                                        <option value="1">إظهار في الموقع</option>
+                                        <option value="0"> إخفاء من الموقع</option>
+                                      </select>
+                        </td>
+                        <td>
+                            <i value="click" class="fas fa-trash-alt delete_user" onclick="show(this,'delete',2)"></i>
+                            <i class="far fa-edit icon color-blue"></i>
+                        </td>
+                    </tr>
+                    <tr id="3" class="user_info">
+                            <td class="user_no">3</td>
+                            <td class="user_full">
+                                <span class="user_name allnews-title-limit">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
+                            </td>
+                            <td class="user_full">
+                                <span class="user_name">عالمي</span>
+                            </td>
+                            <td>
+                                <div class="allnews-inline-block">
+                                    <input type="checkbox" id="main" tabindex="9" />
+                                    <label for="main">خبر رئيسي</label>
+                                </div>
+                                <div class="allnews-inline-block">
+                                    <input type="checkbox" id="urgent" tabindex="9" />
+                                    <label for="urgent">خبر عاجل</label>
+        
+                                </div>
+                            </td>
+                            <td>
+                                    <select class="selection">
+                                            <option value="1">إظهار في الموقع</option>
+                                            <option value="0"> إخفاء من الموقع</option>
+                                          </select>
+                            </td>
+                            <td>
+                                <i value="click" class="fas fa-trash-alt delete_user" onclick="show(this,'delete',3)"></i>
+                                <i class="far fa-edit icon color-blue"></i>
+                            </td>
+                        </tr>
             </tbody>
         </table>
     </div>
     <div class="modal-delete" id="delete">
         <div class="modal-wrapper">
-          <div class="contain">
-            <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
-            <div class="modal-button">
-              <button class="modal-button button1" onclick="deleteRowElement(); hide('delete');">نعم</button>
-              <button class="modal-button button2" onclick="hide('delete')">لا</button>
+            <div class="contain">
+                <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
+                <div class="modal-button">
+                    <button class="modal-button button1" onclick="deleteRowElement(); hide('delete');">نعم</button>
+                    <button class="modal-button button2" onclick="hide('delete')">لا</button>
+                </div>
             </div>
-          </div>
-    
+
         </div>
-    
-      </div>
+
+    </div>
 </body>
 
 </html>
