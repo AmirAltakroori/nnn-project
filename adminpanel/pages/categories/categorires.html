@@ -61,9 +61,10 @@
         <div id="createcategory-modal">
             <div id="createcategory-modalcontent"> 
                 <i class="fas fa-times-circle" id="close"></i>
-                <form onsubmit="return ValidationEvent()">
-                     <input type="text" id="categoryname" placeholder="أدخل اسم الفئة"></form>
-                <button id="createcategory-btn"> إنشاء</button>
+                <form id="category-form">
+                    <input type="text" id="categoryname" placeholder="أدخل اسم الفئة" maxlength="20" minlength="3" required>
+                    <button type="submit" id="createcategory-btn">إنشاء</button>
+                </form>
             </div>
         </div>
         <div class="search_area">
