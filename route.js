@@ -3,24 +3,28 @@ let routeList = [
     {
         url: "/admin",
         templete: "View/admin.html",
-        contriller : ""
+        contriller : "",
+        title: "Admin page"
     },
     {
         url: "/home",
         templete: "View/h1ome.html",
-        contriller : ""
+        contriller : "",
+        title: "Nice News Network"
     },
     {
         url: "/home/:id",
         templete: "View/h1ome.html",
         contriller : "",
-        id:""
+        id:"",
+        title: "Nice News Network"
     },
     {
         url: "/home/:id/:titel/:ex",
         templete: "View/h1ome.html",
         contriller : "",
-        id:""
+        id:"",
+        title: "Nice News Network"
     }
 ];
 
