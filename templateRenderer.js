@@ -49,7 +49,10 @@ function renderStyle(exp,element)
 
 function renderClass(exp,element)
 {
-    
+    let splitStr = exp.split(":")
+    let className = splitStr[0];
+    if(eval(splitStr[1]))
+        element.classList.add(className);
 }
 
 // list of all special tags with their render functionality
