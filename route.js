@@ -1,4 +1,4 @@
-let path ,param=[] , currentPath ={};
+let path ,param=[] , curentPath ={};
 let routeList = [
     {
         url: "/admin",
@@ -31,7 +31,7 @@ let routeList = [
 function getURL() {
     let option ,find = false;
     path="";
-    currentPath ={};
+    curentPath ={};
     let url = window.location.href;
     url = url.substr(url.search("html")+6).split("/");
     let root = url[0];
@@ -47,20 +47,20 @@ function getURL() {
             option.forEach((element , index)=> {
                 param[element] = url[index];
             });
-            currentPath=route;
+            curentPath=route;
         }  
     });
     if (find == false) {
         path = "";
         param = [];
-        currentPath ={};
+        curentPath ={};
     }
-    console.log(currentPath);
+    console.log(curentPath);
     console.log("Path : "+path);
     console.log("Param : ");
     console.log(param);
     console.log("Title is:")
-    console.log( currentPath.title);
-    document.title = currentPath.title;
+    console.log( curentPath.title);
+    document.title = curentPath.title;
 
 }   
