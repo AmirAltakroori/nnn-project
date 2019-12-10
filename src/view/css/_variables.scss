@@ -4,6 +4,38 @@
      This file is part of the NNN website.
 
      Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
+     Suhair Shareef <suhairshareef1999@gmail.com>
 
      File description:
 */
+$colors: (
+
+     websiteColor:  #D63031,
+     borderColor: #e7e7e7,
+     textColor: #000000,
+     whiteColor: #FFFFFF,
+     blueColor:#0C4D6D
+
+);
+
+$fonts: (
+
+     websiteFont: Segoe UI
+
+);
+
+$buttons: (
+
+     login: #0C4D6D,
+     addComment: #EBEDED
+
+);
+
+$heights: (
+
+     headerHeight: 173px,
+     navbarHeight: 96px,
+     urgentHeight: 77px
+
+);

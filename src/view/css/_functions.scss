@@ -4,6 +4,74 @@
      This file is part of the NNN website.
 
      Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
+     Suhair Shareef <suhairshareef1999@gmail.com>
 
      File description:
 */
+
+/*
+     This function takes a parameter $property 
+     return: the transformation made by this property
+*/
+@import './variables';
+
+@mixin initialFormat () {
+
+     * {
+
+         margin: 0;
+         padding: 0;
+         font-family: map-get($map: $fonts, $key: websiteFont);
+
+     }
+     
+     html, body {
+
+         height: 100%;
+         width: 100%;
+         direction: rtl;
+
+     }   
+     
+ }
+
+ @mixin flexFunction ($justifyContent, $alignItems, $width, $height, $direction ) {
+
+     display: flex;
+     justify-content: $justifyContent;
+     align-items: $alignItems;
+     width: $width;
+     height: $height;
+     //flex-wrap: wrap;
+     flex-direction: $direction;
+
+ }
+ 
+@mixin positioning ($position, $top, $bottom, $left, $right) {
+
+     position: $position;
+     top: $top;
+     bottom: $bottom;
+     left: $left;
+     right: $right;
+}
+
+@mixin transform ($property) {
+
+     -webkit-transform: $property;
+     -ms-transform: $property;
+     transform: $property;
+   }
+
+@mixin createButton($background-color, $border, $font-color, $padding, $text-align, $font-size) {
+
+     background-color:$background-color; 
+     border: $border;
+     color:$font-color;
+     padding: $padding;
+     text-align: $text-align;
+     text-decoration: none;
+     display: inline-block;
+     font-size: $font-size;
+}
