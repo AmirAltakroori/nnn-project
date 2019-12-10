@@ -1,5 +1,4 @@
-let categories = [
-    {
+let categories = [{
         id: 1,
         name: "الألعاب",
         isActive: 1,
@@ -12,93 +11,96 @@ let categories = [
     {
         id: 2,
         name: "الرياضة",
-        isActive: 0,//غير مفعل
+        isActive: 0, //غير مفعل
     },
     {
         id: 4,
         name: "الفن",
         isActive: 0,
-    }]
+    }
+]
 
-let news = [{
-    title: "النصيرات أكثر المناطق هطولاً",
-    content: "<h1>This is my first news</h1>",
-    categoryId: 3,
-    seoTitle: "First news",
-    seoTags: "{ 'tags':{['test','sport']} }",
-    seoDescription: "This is my first news",
-    isActive: 1,
-    isMainNews: 0,
-    isUrgentNews: 1,
-    createDate: new Date(),
-    writerId: 1,
-    _attachments: "",
-    id: 1,
-},
-{
-    title: "الالعاب الاولمبية قريبا",
-    content: "<h1>This is my first news</h1>",
-    categoryId: 2,
-    seoTitle: "First news",
-    seoTags: "{ 'tags':{['test','sport']} }",
-    seoDescription: "This is my first news",
-    isActive: 1,
-    isMainNews: 1,
-    isUrgentNews: 2,
-    createDate: new Date(),
-    writerId: 1,
-    _attachments: "",
-    id: 2,
-},
-{
-    title: "أخبار الفن والفنانين والنجوم والمشاهير",
-    content: "<h1>This is my first news</h1>",
-    categoryId: 4,
-    seoTitle: "First news",
-    seoTags: "{ 'tags':{['test','sport']} }",
-    seoDescription: "This is my first news",
-    isActive: 1,
-    isMainNews: 0,
-    isUrgentNews: 0,
-    createDate: new Date(),
-    writerId: 1,
-    _attachments: "",
-    id: 3,
-},
-{
-    title: "الاحلال يعتقل مقدسيا مسنا",
-    content: "<h1>This is my first news</h1>",
-    categoryId: 3,
-    seoTitle: "First news",
-    seoTags: "{ 'tags':{['test','sport']} }",
-    seoDescription: "This is my first news",
-    isActive: 1,
-    isMainNews: 1,
-    isUrgentNews: 1,
-    createDate: new Date(),
-    writerId: 1,
-    _attachments: "",
-    id: 3,
-},
-{
-    title: "سلسلة العاب LEft 4 Dead تعود من جديد",
-    content: "<h1>This is my first news</h1>",
-    categoryId: 1,
-    seoTitle: "First news",
-    seoTags: "{ 'tags':{['test','sport']} }",
-    seoDescription: "This is my first news",
-    isActive: 1,
-    isMainNews: 1,
-    isUrgentNews: 1,
-    createDate: new Date(),
-    writerId: 1,
-    _attachments: "",
-    id: 3,
-}];
+let newsPage = [{
+        title: "النصيرات أكثر المناطق هطولاً",
+        content: "<h1>This is my first news</h1>",
+        categoryId: 3,
+        seoTitle: "First news",
+        seoTags: "{ 'tags':{['test','sport']} }",
+        seoDescription: "This is my first news",
+        isActive: 0,
+        isMainNews: 0,
+        isUrgentNews: 1,
+        createDate: new Date(),
+        writerId: 1,
+        _attachments: "",
+        id: 1,
+    },
+    {
+        title: "الالعاب الاولمبية قريبا",
+        content: "<h1>This is my first news</h1>",
+        categoryId: 2,
+        seoTitle: "First news",
+        seoTags: "{ 'tags':{['test','sport']} }",
+        seoDescription: "This is my first news",
+        isActive: 1,
+        isMainNews: 1,
+        isUrgentNews: 2,
+        createDate: new Date(),
+        writerId: 1,
+        _attachments: "",
+        id: 2,
+    },
+    {
+        title: "أخبار الفن والفنانين والنجوم والمشاهير",
+        content: "<h1>This is my first news</h1>",
+        categoryId: 4,
+        seoTitle: "First news",
+        seoTags: "{ 'tags':{['test','sport']} }",
+        seoDescription: "This is my first news",
+        isActive: 1,
+        isMainNews: 0,
+        isUrgentNews: 0,
+        createDate: new Date(),
+        writerId: 1,
+        _attachments: "",
+        id: 3,
+    },
+    {
+        title: "الاحلال يعتقل مقدسيا مسنا",
+        content: "<h1>This is my first news</h1>",
+        categoryId: 3,
+        seoTitle: "First news",
+        seoTags: "{ 'tags':{['test','sport']} }",
+        seoDescription: "This is my first news",
+        isActive: 1,
+        isMainNews: 1,
+        isUrgentNews: 1,
+        createDate: new Date(),
+        writerId: 1,
+        _attachments: "",
+        id: 3,
+    },
+    {
+        title: "سلسلة العاب LEft 4 Dead تعود من جديد",
+        content: "<h1>This is my first news</h1>",
+        categoryId: 1,
+        seoTitle: "First news",
+        seoTags: "{ 'tags':{['test','sport']} }",
+        seoDescription: "This is my first news",
+        isActive: 0,
+        isMainNews: 1,
+        isUrgentNews: 1,
+        createDate: new Date(),
+        writerId: 1,
+        _attachments: "",
+        id: 3,
+    }
+];
 
 let newContain;
 let newId;
-function show(row,modelId, id) {
+
+function show(row, modelId, id) {
     let element = document.getElementById(modelId)
     element.className += " modal-active";
     newContain = row;
@@ -113,13 +115,14 @@ function hide(modelId) {
 
 function deleteRowElement() {
 
-    let row = news.findIndex((row) => row.id == newId);
-    news.splice(row, 1);
+    let row = newsPage.findIndex((row) => row.id == newId);
+    newsPage.splice(row, 1);
     var i = newContain.parentNode.parentNode;
     i.parentElement.removeChild(i);
 
 
 }
+
 function deleteNews(callback, key, rev, row) {
 
     let fullUrl = URL + "news/" + key + "?rev=" + rev;
@@ -172,16 +175,15 @@ function findcat(id) {
     }
 }
 
-function displaynews(news){
+function displaynews(news) {
+    newsPage = news;
     let table = document.getElementById("tablebody");
     for (let i = 0; i < news.length; i++) {
         let row = document.createElement("tr");
         row.className = "user_info";
-        row.id = i;
-
         let number = document.createElement("td");
         number.className = "user_no";
-        number.textContent = i;
+        number.textContent = i + 1;
 
         let info = document.createElement("td");
         info.className = "user_full";
@@ -203,14 +205,14 @@ function displaynews(news){
         main_div.className = "allnews-inline-block";
         let main_check = document.createElement("input");
         main_check.type = "checkbox";
-        main_check.id = "main" + news[i].id;
+        main_check.id = "main" + i;
 
         if (news[i].isMainNews)
             main_check.checked = true;
 
         main_check.tabIndex = "9";
         let main_label = document.createElement("label");
-        main_label.for = "main" + news[i].id;
+        main_label.htmlFor = "main" + i;
         main_label.textContent = "خبر رئيسي";
 
         main_div.appendChild(main_check);
@@ -220,14 +222,14 @@ function displaynews(news){
         urgent_div.className = "allnews-inline-block";
         let urgent_check = document.createElement("input");
         urgent_check.type = "checkbox";
-        urgent_check.id = "urgent" + news[i].id;
+        urgent_check.id = "urgent" + i;
 
         if (news[i].isUrgentNews)
             urgent_check.checked = true;
 
         urgent_check.tabIndex = "9";
         let urgent_label = document.createElement("label");
-        urgent_label.for = "urgent" + news[i].id;
+        urgent_label.htmlFor = "urgent" + i;
         urgent_label.textContent = "خبر عاجل";
 
         urgent_div.appendChild(urgent_check);
@@ -249,12 +251,13 @@ function displaynews(news){
 
         select.appendChild(option1);
         select.appendChild(option2);
+        select.selectedIndex = !news[i].isActive;
         show_selection.appendChild(select);
 
         let operations = document.createElement("td");
         let delete_icon = document.createElement("i");
         delete_icon.className = "fas fa-trash-alt delete_user";
-        delete_icon.setAttribute ('onclick',"show(this,'delete',"+news[i].id+")");
+        delete_icon.setAttribute('onclick', "show(this,'delete'," + news[i].id + ")");
 
         let edit_icon = document.createElement("i");
         edit_icon.className = "far fa-edit icon color-blue";
@@ -273,4 +276,7 @@ function displaynews(news){
     }
 }
 
-document.onload = displaynews(news);
+document.addEventListener("DOMContentLoaded", (event) => {
+
+    displaynews(newsPage);
+});
