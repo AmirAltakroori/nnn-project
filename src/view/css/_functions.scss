@@ -10,30 +10,31 @@
      File description:
 */
 
-/*
-     This function takes a parameter $property 
-     return: the transformation made by this property
-*/
 @import './variables';
 
+/*
+     This function takes a parameter $property
+     return: the transformation made by this property
+*/
 @mixin initialFormat () {
 
      * {
 
          margin: 0;
          padding: 0;
+         box-sizing: border-box;
          font-family: map-get($map: $fonts, $key: websiteFont);
 
      }
-     
+
      html, body {
 
          height: 100%;
          width: 100%;
          direction: rtl;
 
-     }   
-     
+     }
+
  }
 
  @mixin flexFunction ($justifyContent, $alignItems, $width, $height, $direction ) {
@@ -47,7 +48,7 @@
      flex-direction: $direction;
 
  }
- 
+
 @mixin positioning ($position, $top, $bottom, $left, $right) {
 
      position: $position;
@@ -66,7 +67,7 @@
 
 @mixin createButton($background-color, $border, $font-color, $padding, $text-align, $font-size) {
 
-     background-color:$background-color; 
+     background-color:$background-color;
      border: $border;
      color:$font-color;
      padding: $padding;

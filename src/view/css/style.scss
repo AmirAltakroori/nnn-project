@@ -4,6 +4,42 @@
      This file is part of the NNN website.
 
      Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
 
      File description:
 */
+
+@import './variables';
+@import './functions';
+
+@include initialFormat();
+
+#urgent-container {
+
+     @include flexFunction (center, center, 100%, 76.81, row);
+     @include positioning (absolute, 50%, auto, 0, 0);
+     background-color: map-get($map: $colors, $key: websiteColor);
+     color: map-get($map: $colors, $key: whiteColor);
+     font-weight: bold;
+     div {
+
+          @include flexFunction (center, center, 5%, auto, row);
+
+     }
+
+     #urgent-content {
+
+          direction: ltr;
+          padding: 20px;
+
+          a {
+
+               text-decoration: none;
+               padding-left: 100px;
+               color: map-get($map: $colors, $key: whiteColor);
+
+          }
+
+     }
+
+}
