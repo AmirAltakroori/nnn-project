@@ -57,6 +57,7 @@ const searchByCategory = () => {
 
     }
 }
+
 let activeId=0;
 let activeRow=null;
 function showModal(modalId,row,id){
@@ -81,12 +82,24 @@ function hideModal(modalId){
 */
 function updateCategoryName()
 {
-  
+  let newName = document.getElementById("newCategoryName").value;
+  categories.find( ({ id }) => id === activeId ).name=newName;
+  var changeName = document.getElementsByClassName("user_name")[activeId-1];
+  changeName.innerHTML=newName;
 }
+
+
+
 document.addEventListener('DOMContentLoaded', (e) => {
+
+  let saveButton = document.getElementsByClassName("categories-save-button")[0];
+  saveButton.onclick = function(){
+    updateCategoryName();
+  }
 
   let form=document.getElementById('category-modal-form');
   form.addEventListener('DOMContentLoaded', (e) => {
+
     
     // TODO
     // Call your function above here (The function that call the data)
