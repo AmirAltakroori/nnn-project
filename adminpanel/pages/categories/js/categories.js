@@ -99,3 +99,86 @@ const searchByCategory = () => {
 
 
 }
+/**************************************************************************************************
+ * Read categories
+ */
+
+let categoriesPage = [{
+    id: 1,
+    name: "الألعاب",
+    isActive: 1,
+},
+{
+    id: 3,
+    name: "الرئيسية",
+    isActive: 1,
+},
+{
+    id: 2,
+    name: "الرياضة",
+    isActive: 0, //غير مفعل
+},
+{
+    id: 4,
+    name: "الفن",
+    isActive: 0,
+}
+]
+
+function displayCategories(categories) {
+    categoriesPage = categories;
+    let table = document.getElementById("tablebody");
+    for (let i = 0; i < categories.length; i++) {
+        let row = document.createElement("tr");
+        row.className = "user_info";
+        let number = document.createElement("td");
+        number.className = "user_no";
+        number.textContent = i + 1;
+
+        let info = document.createElement("td");
+        info.className = "user_full";
+        let info_text = document.createElement("span");
+        info_text.className = "user_name ";
+        info_text.textContent = categories[i].name;
+        info.appendChild(info_text);
+
+        let show_selection = document.createElement("td");
+        let select = document.createElement("select");
+        select.className = "selection";
+
+        let option1 = document.createElement("option");
+        option1.value = 1;
+        option1.textContent = "فعال";
+        let option2 = document.createElement("option");
+        option2.value = 0;
+        option2.textContent = "غير فعال";
+
+        select.appendChild(option1);
+        select.appendChild(option2);
+        select.selectedIndex = !categories[i].isActive;
+        show_selection.appendChild(select);
+
+        let operations = document.createElement("td");
+        let delete_icon = document.createElement("i");
+        delete_icon.className = "fas fa-trash-alt delete_user";
+        
+        let edit_icon = document.createElement("i");
+        edit_icon.className = "far fa-edit icon color-blue";
+
+        operations.appendChild(delete_icon);
+        operations.appendChild(edit_icon);
+
+        row.appendChild(number);
+        row.appendChild(info);
+        row.appendChild(show_selection);
+        row.appendChild(operations);
+
+        table.appendChild(row);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", (event) => {
+
+    displayCategories(categoriesPage);
+});
+
