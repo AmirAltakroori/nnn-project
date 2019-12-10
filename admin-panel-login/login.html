@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="scss/login.css" type="text/css">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/login.css" type="text/css">
+    <script src="js/login.js"></script>
+    <title>Admin Panel</title>
 </head>
 <body>
 
@@ -17,20 +18,20 @@
         </div>
 
         <div class="form-box">
-            <form>
+            <form  id="submitForm" >
                 <div class="log-form">
 
                     <div class="username">
                         <label>Username</label><br>
-                        <input type="name" placeholder="username">
+                        <input id = "Username" type="name" placeholder="username" required >
                     </div>
 
                     <div class="password">
                         <label>Password</label><br>
-                        <input type="password" placeholder="********">
+                        <input id = "Password" type="password" placeholder="********" required >
                     </div>
 
-                   <div class="btn"> <input type="button" name="login" value="Log In"></div> 
+                   <div class="btn"> <input type="submit" name="login" value="Log In"></div> 
 
                  
 
@@ -38,6 +39,10 @@
             </form>
 
         </div>
+    </div>
+    <div class = "popup">
+        
+        Wrong password or username
     </div>
     
 </body>

@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
         let categoryName = document.getElementById("categoryname").value;
         let tr = document.createElement('tr');
         let row = `
-      <tr class="user_info" style="width:100%; font-family:"Segoe UI"">
-        <td class="user_no" style="font-size:30px">${tbody.childElementCount+1}</td>
+      <tr class="user_info">
+        <td class="user_no" >${tbody.childElementCount+1}</td>
         <td class="user_full">
             <span class="user_name" style="font-size:18px">` + categoryName + `</span>
         </td>
