@@ -22,7 +22,6 @@ $add-color:#27ae60;
     display: none;
     position: fixed;
     z-index: 1;
-    padding-top: 130px;
     left: 0;
     top: 0;
     width: 100%;
@@ -49,7 +48,7 @@ $add-color:#27ae60;
     background-color: #fefefe;
     margin: auto;
     border: 1px solid #888;
-    width: 40%;
+    width: 25%;
     min-height: 25%;
 }
 
@@ -72,7 +71,8 @@ $add-color:#27ae60;
     min-width: 100px;
     min-height: 30px;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 400;
+    color: #27ae60;
 }
 
 #close {

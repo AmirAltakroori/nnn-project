@@ -19,7 +19,6 @@
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 130px;
   left: 0;
   top: 0;
   width: 100%;
@@ -43,7 +42,7 @@
   background-color: #fefefe;
   margin: auto;
   border: 1px solid #888;
-  width: 40%;
+  width: 25%;
   min-height: 25%; }
 
 #createcategory-btn {
@@ -63,7 +62,8 @@
   min-width: 100px;
   min-height: 30px;
   font-size: 18px;
-  font-weight: 700; }
+  font-weight: 400;
+  color: #27ae60; }
 
 #close {
   color: #383636;
