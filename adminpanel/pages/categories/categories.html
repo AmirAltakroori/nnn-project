@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <script src="js/categories.js"></script>
     <link rel="stylesheet" href="../../fontawesome/all.min.css">
     <link rel="stylesheet" href="./../../css/global.css">
@@ -56,15 +55,6 @@
             <div class="add-button">
                 <div class="fas fa-plus"></div>
                 <div> اضافة فئة</div>
-            </div>
-        </div>
-        <div id="createcategory-modal">
-            <div id="createcategory-modalcontent"> 
-                <i class="fas fa-times-circle" id="close"></i>
-                <form id="category-form">
-                    <input type="text" id="categoryname" placeholder="أدخل اسم الفئة" maxlength="20" minlength="3" required>
-                    <button type="submit" id="createcategory-btn">إنشاء</button>
-                </form>
             </div>
         </div>
         <div class="search_area">
@@ -120,7 +110,7 @@
                     </td>
                 </tr>
                 <tr class="user_info">
-                    <td class="user_no">2</td>
+                    <td class="user_no">3</td>
                     <td class="user_full">
                         <span class="user_name">الرياضة</span>
                     </td>
@@ -137,7 +127,32 @@
                 </tr>
             </tbody>
         </table>
-    </div>>
+    </div>
+    <div id="createcategory-modal">
+
+        <div id="createcategory-modalcontent">
+            <div style="width:100%;text-align: center;">
+                <h2>
+                    إضافة فئة جديدة
+                </h2>
+            </div>
+            <hr>
+            <form id="category-form">
+                <div class="createcategory-flex-container-center-all">
+                    <i class="fas fa-times-circle" id="close"></i>
+                    <div>
+                        <input type="text" id="categoryname" placeholder="أدخل اسم الفئة" maxlength="20" minlength="3" required>
+                    </div>
+                    <div>
+                        <button type="submit" id="createcategory-btn">إنشاء</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+</div>
 </body>
 
 </html>
