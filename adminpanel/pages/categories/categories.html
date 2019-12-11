@@ -62,7 +62,7 @@
                 <span>البحث</span>
             </div>
             <div class="search">
-                <img class="search_icon" src="/adminpanel/img/search.png">
+                <img class="search_icon" src="./../../img/search.png">
                 <input type="text" id="search" class="search_field" placeholder="ابحث هنا" onkeyup="searchByCategory()">
             </div>
         </div>
@@ -76,55 +76,7 @@
                     <th>العمليات</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr class="user_info">
-                    <td class="user_no">1</td>
-                    <td class="user_full">
-                        <span class="user_name">العالمية</span>
-                    </td>
-                    <td>
-                        <select class="selection">
-                            <option value="writer">فعالة</option>
-                            <option value="admin"> غير فعال</option>
-                        </select>
-                    </td>
-                    <td>
-                        <i class="fas fa-trash-alt delete_user"></i>
-                        <i class="far fa-edit icon color-blue"></i>
-                    </td>
-                </tr>
-                <tr class="user_info">
-                    <td class="user_no">2</td>
-                    <td class="user_full">
-                        <span class="user_name">الرياضة</span>
-                    </td>
-                    <td>
-                        <select class="selection">
-                            <option value="writer">فعالة</option>
-                            <option value="admin"> غير فعال</option>
-                        </select>
-                    </td>
-                    <td>
-                        <i class="fas fa-trash-alt delete_user"></i>
-                        <i class="far fa-edit icon color-blue"></i>
-                    </td>
-                </tr>
-                <tr class="user_info">
-                    <td class="user_no">3</td>
-                    <td class="user_full">
-                        <span class="user_name">الرياضة</span>
-                    </td>
-                    <td>
-                        <select class="selection">
-                            <option value="writer">فعالة</option>
-                            <option value="admin"> غير فعال</option>
-                        </select>
-                    </td>
-                    <td>
-                        <i class="fas fa-trash-alt delete_user"></i>
-                        <i class="far fa-edit icon color-blue"></i>
-                    </td>
-                </tr>
+            <tbody id="tablebody">
             </tbody>
         </table>
     </div>
