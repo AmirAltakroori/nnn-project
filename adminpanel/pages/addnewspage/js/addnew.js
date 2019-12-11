@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let editElement = idSelector("edit_element");
     let cancel = idSelector("cancel");
     if(userData!= null){
+
         let cuurentdata={
             "title": idSelector("title"),
             "editor": idSelector("editor"),
@@ -49,8 +50,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
         newElement.style.display = "none";
         cancel.addEventListener("click",(e)=>{
-
-
+            window.location.href = "../mynews/mynews.html";
+            e.preventDefault();;
+            return false;
         });
         editElement.addEventListener("click",(e)=>{
             createNew(userData.title, userData.content,userData.categoryId, userData.seoTitle ,
