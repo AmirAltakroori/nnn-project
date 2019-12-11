@@ -14,7 +14,6 @@
 }
 
 .rendom-news-container .firstNews {
-  background-image: url("../images/firstNews.jpg");
   background-repeat: no-repeat;
   float: right;
   width: 265px;
@@ -48,7 +47,6 @@
 }
 
 .rendom-news-container .secondNews {
-  background-image: url("../images/firstNews.jpg");
   background-repeat: no-repeat;
   float: right;
   width: 265px;
@@ -74,7 +72,6 @@
 }
 
 .rendom-news-container .thirdNews {
-  background-image: url("../images/firstNews.jpg");
   background-repeat: no-repeat;
   float: right;
   width: 265px;
@@ -100,7 +97,6 @@
 }
 
 .rendom-news-container .fourthNews {
-  background-image: url("../images/firstNews.jpg");
   background-repeat: no-repeat;
   float: left;
   width: 265px;
@@ -124,10 +120,18 @@
   font-size: 12px;
 }
 
-.rendom-news-container .fourthNews .images img {
+.rendom-news-container .imagesNext img {
   width: 12px;
   height: 18px;
   float: left;
-  margin-top: -40px;
+  margin-top: -130px;
   margin-left: 10px;
+}
+
+.rendom-news-container .imagesPrev img {
+  width: 12px;
+  height: 18px;
+  float: right;
+  margin-top: -130px;
+  margin-right: 10px;
 }
