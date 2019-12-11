@@ -2,6 +2,20 @@
 let newsList=[];
 const idSelector = (id) => { return document.getElementById(id) };
 
+let newNews={
+    title:"test is test ",
+    content:"<h1>This is my first news</h1>",
+    categoryId:1,
+    seoTitle:"First news",
+    seoTags:"{ 'tags':{['test','sport']} }",
+    seoDescription:"This is my first news",
+    isActive:1,
+    isMainNews:0,
+    isUrgentNews:1,
+    createDate:"2019-12-11",
+    writerId:1,
+    _attachments:"",
+    }
 document.addEventListener("DOMContentLoaded", (event) => {
 
     let userData = sessionStorage.getItem("userData");
@@ -13,18 +27,26 @@ document.addEventListener("DOMContentLoaded", (event) => {
         let cuurentdata={
             "title": idSelector("title"),
             "editor": idSelector("editor"),
-            "cateqory": idSelector("cateqory"),
+            "categoryId": idSelector("category"),
             "seoTitle": idSelector("seoTitle"),
             "seoTags": idSelector("seoTags"),
             "seoDescription": idSelector("seoDescription"),
             "isActive": idSelector("isActive"),
             "isMainNews": idSelector("isMainNews"),
             "isUrgentNews": idSelector("isUrgentNews"),
-        "createDate": idSelector("createDate"),
+            "createDate": idSelector("createDate"),
         }
-        for (ind in cuurentdata){
-            console.log(ind);
-        }
+        cuurentdata.title.value = userData.title;
+        cuurentdata.editor.innerHTML = userData.content;
+        cuurentdata.categoryId.value = userData.categoryId;
+        cuurentdata.seoTitle.value = userData.seoTitle;
+        cuurentdata.seoTags.value = userData.seoTags;
+        cuurentdata.seoDescription.value = userData.seoDescription;
+        cuurentdata.isActive.checked = userData.isActive;
+        cuurentdata.isMainNews.checked = userData.isMainNews;
+        cuurentdata.isUrgentNews.checked = userData.isUrgentNews;
+        cuurentdata.createDate.value = userData.createDate;
+
         newElement.style.display = "none";
         cancel.addEventListener("click",(e)=>{
 
