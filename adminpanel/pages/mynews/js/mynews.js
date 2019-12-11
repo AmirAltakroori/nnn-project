@@ -1,6 +1,20 @@
 
 
 
+let newNews={
+    title:"test is test ",
+    content:"<h1>This is my first news</h1>",
+    categoryId:1,
+    seoTitle:"First news",
+    seoTags:"{ 'tags':{['test','sport']} }",
+    seoDescription:"This is my first news",
+    isActive:1,
+    isMainNews:0,
+    isUrgentNews:1,
+    createDate:new Date(),
+    writerId:1,
+    _attachments:"",
+    }
 
 
 
