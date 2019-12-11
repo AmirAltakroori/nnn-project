@@ -1,6 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function(e) {
     richTextEditor();
+
 });
 function richTextEditor(){
     let newsBody =  document.getElementById('editor');

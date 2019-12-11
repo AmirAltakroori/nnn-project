@@ -18,7 +18,11 @@ let newNews={
 
 
 
+function updateNews(data){
+console.log(data);
 
+
+}
 
 
 function searchByNews() {

@@ -74,7 +74,7 @@ $labelWidth : 200px;
     }
     .button_div{
         @include flexbox(row);
-        justify-content: flex-end;
+        justify-content: space-evenly;
         .button {
             justify-content: flex-end;
             width: 200px;
