@@ -5,11 +5,13 @@
 
     Authors:
     Qusai Hroub <qusaihroub.r@gmail.com>
+    Aseel Arafeh <arafehaseel@gmail.com>
 
     File description:
 -->
 
 <!DOCTYPE html>
+
 <html>
 
     <head>
@@ -17,8 +19,6 @@
         <link rel="stylesheet" type="text/css" href="view/css/categories.css" />
         <link rel="stylesheet" type="text/css" href="view/css/details.css" />
         <link rel="stylesheet" type="text/css" href="view/css/index.css" />
-
-         <script src="js/index.js"></script>
     </head>
 
     <body>
@@ -44,12 +44,14 @@
                 </div>
 
                 <!-- URGENT -->
-                <div class="urgent-container">
-
+                <div id="urgent-container">
+                    <div>عاجل</div>
+                    <marquee id="urgent-content" direction="right" onmouseover="stop()" onmouseout="start()">
+                    <marquee>
                 </div>
             </div>
 
-            <!-- WIEW CONTAINER -->
+            <!-- VIEW CONTAINER -->
             <div VIEW>
 
             </div>
@@ -61,6 +63,9 @@
                 </div>
             </div>
         </div>
+
+        <script src="js/index.js"></script>
+        
     </body>
 
 </html>
