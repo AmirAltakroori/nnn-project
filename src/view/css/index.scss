@@ -93,12 +93,20 @@
           @extend %newsDate;
      }
 
-     .images img {
+   }
 
-          @extend %arrow;
-          float: left;
-     }
+   .imagesNext img {
 
+     @extend %arrow;
+     float: left;
+     margin-left: $arrow-margin;
+   }
+
+   .imagesPrev img {
+
+     @extend %arrow;
+     float: right;
+     margin-right: $arrow-margin;
    }
 
 }
@@ -116,7 +124,6 @@
 
 %allNews{
 
-     background-image: url("../images/firstNews.jpg");
      background-repeat: no-repeat;
      float: $newsImage-float;
      width: $newsImage-width;
@@ -136,8 +143,8 @@
 
 %arrow {
 
-     width: $arrow-width+1;
+     width: $arrow-width;
      height: $arrow-height;
      margin-top: $arrow-margin-top;
-     margin-right: $arrow-margin;
+     
 }
