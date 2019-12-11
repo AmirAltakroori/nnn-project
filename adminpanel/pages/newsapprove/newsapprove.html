@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../fontawesome/all.min.css">
     <link rel="stylesheet" href="./../../css/global.css">
     <link rel="stylesheet" href="./css/newsapprove.css">
-
+    <script src="js/newsapprove.js"></script>
     <title>تأكيد الأخبار</title>
 </head>
 
@@ -36,7 +36,7 @@
         </div>
         <div class="row header-subheader ">
             <div>
-                الرئيسية > الأخبار > تأكيد الأخبار
+                الرئيسية > لوحة التحكم >الأخبار > تأكيد الأخبار
             </div>
         </div>
     </header>
@@ -70,89 +70,7 @@
 
                 </tr>
             </thead>
-            <tbody>
-                <tr class="user_info">
-                    <td class="checkbox-size">
-                        <input type="checkbox" >
-                    </td>
-                    <td class="user_full">
-                        <span class="user_name">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
-                    </td>
-                    <td class="user_full">
-                        <span class="user_name">عالمي</span>
-                    </td>
-                    <td>
-                        <div class="checkbox-size newsapprove-inline-block">
-                            <input type="checkbox" id="main" tabindex="9" />
-                            <label for="main">خبر رئيسي</label>
-                        </div>
-                        <div class="checkbox-size newsapprove-inline-block">
-                            <input type="checkbox" id="urgent" tabindex="9" />
-                            <label for="urgent">خبر عاجل</label>
-
-                        </div>
-                    </td>
-                    <td>
-                        <i class="fas fa-trash-alt delete_user" "></i>
-                        <i class=" far fa-edit icon color-blue"></i>
-
-                    </td>
-                </tr>
-
-                <tr class="user_info">
-                    <td class="checkbox-size">
-                        <input type="checkbox" >
-                    </td>
-                    <td class="user_full">
-                        <span class="user_name">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
-                    </td>
-                    <td class="user_full">
-                        <span class="user_name">عالمي</span>
-                    </td>
-                    <td>
-                        <div class="checkbox-size newsapprove-inline-block">
-                            <input type="checkbox" id="main" tabindex="9" />
-                            <label for="main">خبر رئيسي</label>
-                        </div>
-                        <div class="checkbox-size newsapprove-inline-block">
-                            <input type="checkbox" id="urgent" tabindex="9" />
-                            <label for="urgent">خبر عاجل</label>
-
-                        </div>
-                    </td>
-                    <td>
-                        <i class="fas fa-trash-alt delete_user"></i>
-                        <i class="far fa-edit icon color-blue"></i>
-
-                    </td>
-                </tr>
-                <tr class="user_info">
-                    <td class="checkbox-size">
-                        <input type="checkbox" >
-                    </td>
-                    <td class="user_full">
-                        <span class="user_name">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
-                    </td>
-                    <td class="user_full">
-                        <span class="user_name">عالمي</span>
-                    </td>
-                    <td>
-                        <div class="checkbox-size newsapprove-inline-block">
-                            <input type="checkbox" id="main" tabindex="9" />
-                            <label for="main">خبر رئيسي</label>
-                        </div>
-                        <div class="checkbox-size newsapprove-inline-block">
-                            <input type="checkbox" id="urgent" tabindex="9" />
-                            <label for="urgent">خبر عاجل</label>
-
-                        </div>
-                    </td>
-                    <td>
-                        <i class="fas fa-trash-alt delete_user"></i>
-                        <i class="far fa-edit icon color-blue"></i>
-
-                    </td>
-                </tr>
+            <tbody id="tablebody">
             </tbody>
         </table>
     </div>
@@ -160,6 +78,19 @@
         <div  class="newsapprove-approve-button">
             نشر الخبر
         </div>
+    </div>
+    <div class="modal-delete" id="delete">
+        <div class="modal-wrapper">
+            <div class="contain">
+                <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
+                <div class="modal-button">
+                    <button class="modal-button button1" onclick="deleteRowElement(); hide('delete');">نعم</button>
+                    <button class="modal-button button2" onclick="hide('delete')">لا</button>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </body>
 

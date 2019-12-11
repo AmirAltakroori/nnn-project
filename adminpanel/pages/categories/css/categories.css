@@ -15,4 +15,68 @@
 .add-button:hover {
   background: #1e8449; }
 
+#createcategory-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); }
+
+.createcategory-flex-container-center-all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  .createcategory-flex-container-center-all div {
+    margin-top: 10px; }
+
+#createcategory-modalcontent {
+  position: relative;
+  display: block;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fefefe;
+  margin: auto;
+  border: 1px solid #888;
+  width: 25%;
+  min-height: 25%;
+  border-radius: 20px; }
+
+#createcategory-btn {
+  min-width: 100px;
+  min-height: 50px;
+  font-weight: 700;
+  border: none;
+  color: white;
+  font-size: 18px;
+  background-color: #27ae60; }
+
+#createcategory-btn:hover {
+  cursor: pointer;
+  background: #1e8449; }
+
+#categoryname {
+  min-width: 100px;
+  min-height: 30px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #27ae60; }
+
+#close {
+  color: #383636;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 25px;
+  font-weight: bold; }
+
+#close:hover {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer; }
+
 /*# sourceMappingURL=categories.css.map */

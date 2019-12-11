@@ -36,7 +36,7 @@
         </div>
         <div class="row header-subheader ">
             <div>
-                الرئيسية > الأخبار > الفئات
+                الرئيسية > لوحة التحكم > الأخبار > الفئات
             </div>
         </div>
     </header>
@@ -62,7 +62,7 @@
                 <span>البحث</span>
             </div>
             <div class="search">
-                <img class="search_icon" src="/adminpanel/img/search.png">
+                <img class="search_icon" src="./../../img/search.png">
                 <input type="text" id="search" class="search_field" placeholder="ابحث هنا" onkeyup="searchByCategory()">
             </div>
         </div>
@@ -76,56 +76,35 @@
                     <th>العمليات</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr class="user_info">
-                    <td class="user_no">1</td>
-                    <td class="user_full">
-                        <span class="user_name">العالمية</span>
-                    </td>
-                    <td>
-                        <select class="selection">
-                            <option value="writer">فعالة</option>
-                            <option value="admin"> غير فعال</option>
-                        </select>
-                    </td>
-                    <td>
-                        <i class="fas fa-trash-alt delete_user"></i>
-                    </td>
-                </tr>
-                <tr class="user_info">
-                    <td class="user_no">2</td>
-                    <td class="user_full">
-                        <span class="user_name">الرياضة</span>
-                    </td>
-                    <td>
-                        <select class="selection">
-                            <option value="writer">فعالة</option>
-                            <option value="admin"> غير فعال</option>
-                        </select>
-                    </td>
-                    <td>
-                        <i class="fas fa-trash-alt delete_user"></i>
-                    </td>
-                </tr>
-                <tr class="user_info">
-                    <td class="user_no">2</td>
-                    <td class="user_full">
-                        <span class="user_name">الرياضة</span>
-                    </td>
-                    <td>
-                        <select class="selection">
-                            <option value="writer">فعالة</option>
-                            <option value="admin"> غير فعال</option>
-                        </select>
-                    </td>
-                    <td>
-                        <i class="fas fa-trash-alt delete_user"></i>
-                    </td>
-                </tr>
+            <tbody id="tablebody">
             </tbody>
         </table>
     </div>
-</body>
+    <div id="createcategory-modal">
 
+        <div id="createcategory-modalcontent">
+            <div style="width:100%;text-align: center;">
+                <h2>
+                    إضافة فئة جديدة
+                </h2>
+            </div>
+            <hr>
+            <form id="category-form">
+                <div class="createcategory-flex-container-center-all">
+                    <i class="fas fa-times-circle" id="close"></i>
+                    <div>
+                        <input type="text" id="categoryname" placeholder="أدخل اسم الفئة" maxlength="20" minlength="3" required>
+                    </div>
+                    <div>
+                        <button type="submit" id="createcategory-btn">إنشاء</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+</div>
+</body>
 
 </html>
