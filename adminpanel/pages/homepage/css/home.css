@@ -2,49 +2,49 @@
   background: #94adf2; }
 
 .light-blue:hover {
-  background: #678aec; }
+  background: #3967e7; }
 
 .green {
   background: #41cf70; }
 
 .green:hover {
-  background: #2db058; }
+  background: #228844; }
 
 .blue {
   background: #41bccf; }
 
 .blue:hover {
-  background: #2d9fb0; }
+  background: #227a88; }
 
 .pink {
   background: #f294e2; }
 
 .pink:hover {
-  background: #ec67d6; }
+  background: #e739c9; }
 
 .light-green {
   background: #8dcc7d; }
 
 .light-green:hover {
-  background: #6dbe58; }
+  background: #54a340; }
 
 .light-yellow {
   background: #c4cc7d; }
 
 .light-yellow:hover {
-  background: #b3be58; }
+  background: #99a340; }
 
 .purple {
   background: #886582; }
 
 .purple:hover {
-  background: #6b4f66; }
+  background: #4d3a4a; }
 
 .red {
   background: #ff6161; }
 
 .red:hover {
-  background: #ff2e2e; }
+  background: #fa0000; }
 
 * {
   direction: rtl; }
@@ -58,6 +58,8 @@ body {
 .homepage-container {
   display: flex;
   flex-direction: raw; }
+  .homepage-container > div {
+    cursor: pointer; }
   .homepage-container .homepage-btn {
     display: flex;
     flex-direction: column;
@@ -71,6 +73,10 @@ body {
     color: white;
     cursor: pointer;
     position: relative; }
+    .homepage-container .homepage-btn:hover {
+      border-radius: 27px;
+      transition: all 0.2s;
+      outline: none; }
     .homepage-container .homepage-btn .home-shadow-icon {
       position: absolute;
       font-size: 90px;

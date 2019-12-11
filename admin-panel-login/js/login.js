@@ -162,7 +162,7 @@ function SHA256(s){
 
 
 function saveData(data){
-    sessionStorage.setItem('user', JSON.stringify(data));
+    sessionStorage.setItem('userInfo', JSON.stringify(data));
 }
 function getToken(username, email, roleId, alg, validityTime, key){
    
@@ -303,13 +303,9 @@ function verification() {
 
         //  if the user is exist go to the home page
         if(user.isActive == 1){
-            if(user.roleId == 1)
-                window.location.href = "../adminpanel/homePage.html";
-            else if(user.roleId == 2)
-                window.location.href = "../adminpanel/homePage.html";
-            else if(user.roleId == 3)
-                window.location.href = "../adminpanel/homePage.html";
-        }
+
+                window.location.href = "../adminpanel/index.html";
+                    }
     }, 1000);
 
 }
