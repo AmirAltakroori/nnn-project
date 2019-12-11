@@ -77,8 +77,8 @@ function deleteRowElement() {
 
     let row = newsPage.findIndex((row) => row.id == newId);
     newsPage.splice(row, 1);
-    var i = newContain.parentNode.parentNode;
-    i.parentElement.removeChild(i);
+    let rowDOM = newContain.parentNode.parentNode;
+    rowDOM.parentElement.removeChild(rowDOM);
 
 
 }

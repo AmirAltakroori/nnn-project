@@ -161,8 +161,8 @@ body {
         font-family: "Segoe UI"; }
       .container .content .user_info .delete_user {
         font-size: 20px;
-        margin-left: 5px;
         color: red;
+        margin-left: 5px;
         text-align: center;
         cursor: pointer; }
 
