@@ -18,7 +18,8 @@ body {
   height: 80px; }
 
 .header-logo img {
-  height: 60px; }
+  height: 60px;
+  cursor: pointer; }
 
 .main-header .nav-left {
   float: left; }
@@ -149,7 +150,8 @@ body {
       color: white; }
     .container .content .user_info {
       width: 100%;
-      font-family: "Segoe UI"; }
+      font-family: "Segoe UI";
+      height: 50px; }
       .container .content .user_info .user_no {
         font-size: 18px; }
       .container .content .user_info .user_full .user_name {

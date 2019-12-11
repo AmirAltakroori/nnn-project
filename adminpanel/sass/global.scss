@@ -33,6 +33,7 @@ body {
 .header-logo {
   img {
     height: 60px;
+    cursor: pointer;
   }
 }
 .main-header .nav-left {
@@ -189,6 +190,7 @@ body {
     .user_info {
       width: 100%;
       font-family: $font;
+      height: 50px;
       .user_no {
         font-size: 18px;
       }

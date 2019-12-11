@@ -11,6 +11,16 @@
     <link rel="stylesheet" type="text/css" href="css/global.css" />
     <link rel="stylesheet" type="text/css" href="./css/newuser.css">
     <title>Home</title>
+    <script>
+    let data=JSON.parse(sessionStorage.getItem("userInfo"));
+    if(!data || !data.token)
+        window.location.href="./../admin-panel-login/login.html";
+        else
+        window.location.href="./pages/homepage/home.html";
+
+
+    
+    </script>
 </head>
 
 <body>
