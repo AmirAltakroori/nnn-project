@@ -27,15 +27,16 @@ let routeList = [
         title: "شبكة الوحدة الإخبارية"
     }
 ];
-
-function getURL() {
+ 
+function analyzeUrl() {
     let option ,find = false;
     path="";
     curentPath ={};
+    param={};
     let url = window.location.href;
-    url = url.substr(url.search("html")+6).split("/");
+    url = url.substr(url.search("#")+2).split("/");
+    console.log(url);
     let root = url[0];
-    param=[];
     url.splice(0,1);
     routeList.forEach(route =>{
         option = route.url.substr(route.url.search("/")+1).split("/:");
@@ -43,24 +44,27 @@ function getURL() {
             find = true;
             path = option[0];
             option.splice(0,1);
-            param=[];
+            param={};
             option.forEach((element , index)=> {
                 param[element] = url[index];
             });
             curentPath=route;
         }  
     });
+ 
     if (find == false) {
         path = "";
-        param = [];
+        param = {};
         curentPath ={};
     }
+ 
     console.log(curentPath);
     console.log("Path : "+path);
     console.log("Param : ");
     console.log(param);
     console.log("Title is:")
     console.log( curentPath.title);
+ 
     document.title = curentPath.title;
-
-}   
+ 
+}
