@@ -70,7 +70,7 @@ function searchByUserName() {
         }
     }
 }
- ///////////.. function to read user from fake DB ..///////////////
+ ///////////.. function to read user from fake DB ../////////////////
 
 
 function displayusers(users) {
