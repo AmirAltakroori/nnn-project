@@ -1,5 +1,6 @@
 $newsElementWidth : 500px;
 $labelWidth : 200px;
+$btn-success-color: #27ae60;
 
 @mixin flexbox($direction) {
     display: flex;
@@ -31,7 +32,7 @@ $labelWidth : 200px;
         height:25px;
     }
     .news {
-        height: 300px;
+        height: auto;
         border: 0.5px solid grey;
         .news_body{
             height: 258px;
@@ -42,8 +43,8 @@ $labelWidth : 200px;
         resize: none;
     }
     .choice {
-        height: 10px;
-        width : 10px;
+        width: 15px;
+        height: 15px;
         padding-right: 5px;
     }
     .outer_choice_div  {
@@ -62,6 +63,7 @@ $labelWidth : 200px;
         margin-left: 10px;
         .checkbox{
             padding-right: 10px;
+          
         }
     }
     label {
@@ -74,20 +76,40 @@ $labelWidth : 200px;
     }
     .button_div{
         @include flexbox(row);
-        justify-content: flex-end;
+        justify-content: center;
+        margin-bottom: 30px;
         .button {
-            justify-content: flex-end;
+            justify-content: center;
             width: 200px;
             height: 50px;
-            background-color: #B5AEAE;
+            background-color: $btn-success-color;
             border-style: none;
             font-size: 30px;
+            color: white;
             cursor: pointer;
             &:hover{
-                background: darken(#B5AEAE, 10%)
+                background: darken($btn-success-color, 10%)
             }
         }
     }
 
 }
-
+.ql-picker-label{
+    direction: ltr;
+}
+.addnews-img-container{
+    height: 300px;
+    width: 300px;
+    display: none;
+    img{
+        height: 300px;
+        width: 300px;
+        max-width: 100%;
+    }
+  
+}
+.ql-editor {
+   &.ql-direction-rtl{
+    direction: rtl;
+}
+}

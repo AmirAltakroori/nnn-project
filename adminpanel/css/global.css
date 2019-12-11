@@ -234,5 +234,9 @@ body {
     opacity: 0; }
   100% {
     opacity: 100%; } }
+.required {
+  color: red;
+  margin: 0px 2px;
+  display: inline-block; }
 
 /*# sourceMappingURL=global.css.map */
