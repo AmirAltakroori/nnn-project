@@ -1,4 +1,4 @@
-let u = [{
+let usersPage = [{
     firstName: "وليد",
     lastName: "الجعبة",
     email: "Waleed@ppu.edu",//We want also to show the email
@@ -45,8 +45,8 @@ function hide(modelId) {
 
 function deleteRowElement() {
 
-    let row = users.findIndex((row) => row.id == newId);
-    users.splice(row, 1);
+    let row = usersPage.findIndex((row) => row.id == newId);
+    usersPage.splice(row, 1);
     let rowDOM = newContain.parentNode.parentNode;
     rowDOM.parentElement.removeChild(rowDOM);
 
@@ -74,7 +74,7 @@ function searchByUserName() {
 
 
 function displayusers(users) {
-    u = users;
+    usersPage = users;
     let table = document.getElementById("rows"); 
     for (let i = 0; i < users.length; i++) {
         let row = document.createElement("tr"); //create number of rows by using DOM
@@ -155,7 +155,7 @@ function displayusers(users) {
 
 document.addEventListener("DOMContentLoaded", (event) => {
 
-    displayusers(u);
+    displayusers(usersPage);
 });
 
 
