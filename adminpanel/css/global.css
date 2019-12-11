@@ -161,8 +161,8 @@ body {
         font-family: "Segoe UI"; }
       .container .content .user_info .delete_user {
         font-size: 20px;
-        margin-left: 5px;
         color: red;
+        margin-left: 5px;
         text-align: center;
         cursor: pointer; }
 
@@ -235,5 +235,9 @@ body {
     opacity: 0; }
   100% {
     opacity: 100%; } }
+.required {
+  color: red;
+  margin: 0px 2px;
+  display: inline-block; }
 
 /*# sourceMappingURL=global.css.map */
