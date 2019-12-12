@@ -11,49 +11,49 @@ $light_blue_color: #94adf2;
   background: $light_blue_color;
 }
 .light-blue:hover {
-  background: darken($light_blue_color, 10%);
+  background: darken($light_blue_color, 20%);
 }
 .green {
   background: $green_color;
 }
 .green:hover {
-  background: darken($green_color, 10%);
+  background: darken($green_color, 20%);
 }
 .blue {
   background: $blue_color;
 }
 .blue:hover {
-  background: darken($blue_color, 10%);
+  background: darken($blue_color, 20%);
 }
 .pink {
   background: $pink_color;
 }
 .pink:hover {
-  background: darken($pink_color, 10%);
+  background: darken($pink_color, 20%);
 }
 .light-green {
   background: $light_green_color;
 }
 .light-green:hover {
-  background: darken($light_green_color, 10%);
+  background: darken($light_green_color, 20%);
 }
 .light-yellow {
   background: $light_yellow_color;
 }
 .light-yellow:hover {
-  background: darken($light_yellow_color, 10%);
+  background: darken($light_yellow_color, 20%);
 }
 .purple {
   background: $purple_color;
 }
 .purple:hover {
-  background: darken($purple_color, 10%);
+  background: darken($purple_color, 20%);
 }
 .red {
   background: $red_color;
 }
 .red:hover {
-  background: darken($red_color, 10%);
+  background: darken($red_color, 20%);
 }
 * {
   direction: rtl;
@@ -68,6 +68,9 @@ body {
 .homepage-container {
   display: flex;
   flex-direction: raw;
+  >div{
+    cursor: pointer;
+  }
   .homepage-btn {
     display: flex;
     flex-direction: column;
@@ -81,6 +84,11 @@ body {
     color: white;
     cursor: pointer;
     position: relative;
+    &:hover{
+      border-radius: 27px;
+      transition: all 0.2s;
+      outline: none;
+    }
     .home-shadow-icon {
       position: absolute;
       font-size: 90px;
