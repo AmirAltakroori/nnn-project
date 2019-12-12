@@ -9,31 +9,63 @@
  *     in category page for normal user view.
  */
 
+// just a test news data
+function getDataNewsList() {
+    return [{
+            id: 1,
+            title: "هلال القدس يلاقي فريق صور العماني بملحق كأس الاتحاد الاسيوي",
+            content: "ككوالالمبور - معا- الناطق الاعلامي تامر عبيدات- يلاقي ناديامثلوالالمبور - معا- الناطق الاعلامي تامر عبيدات- يلاقي ناديامثلين",
+            writer: "amir altakroori",
+            date: "14/12/2010",
+            attachments: "images/1.jpeg"
+        },
+        {
+            id: 2,
+            title: "الاسبوع الثامن: انتصارات للامعري وبلاطة والسموع",
+            content: "القدس- معا- دائرة الاعلام بالاتحاد- وصلت مباريات الأسبوع الثامن من دوري المحترفين الى نهايتها ، بعد ان جرت مساء السبت 7/12/2019 ثلاث مباريات كانت كالتالي :الامعري واد النيص",
+            writer: "not amir altakroori",
+            date: "14/12/2019",
+            attachments: "images/2.jpeg"
+        },
+        {
+            id: 3,
+            title: "الاعلامية الرياضية نعمه خضر: لا اتصور الدوري بدون شباب الخليل",
+            content: "وتابعت الاعلامية المتميزة نعمه خضر، التي تفضل العمل بعيدا عن الشهرة والصخب الاعلامي، انها تعشق نادي شباب الخليل لدرجة لا توصف، واكدت انها لا تتصور الدوري الفلسطيني بدون نادي شباب الخليل، ووصفته بفاكهة الرياضة الفلسطينية، واعتبرت (نعمه خضر) جماهير شباب الخليل الأوسع والأمتع على مستوى الوطن،",
+            writer: "ali tamimi",
+            date: "14/1/2015",
+            attachments: "images/3.jpeg"
+        },
+        {
+            id: 4,
+            title: "شباب يطا يتعادل سلبيا مع الخضر",
+            content: "تالق فرسان يطا وضغط بشكل كبير خاصة في الشوط الاول واضاع العديد من الفرص لينتهي الشوط الاول بدون اهداف.",
+            writer: "mohammad tamimi",
+            date: "14/1/2017",
+            attachments: "images/4.jpeg"
+        }
+    ];
+}
+
 /*
-    create news div in right sidbar in category page with it's childreens
+    search in database to find the news which has the same recived id 
+    and returned it
+    just work on tested data  
 
     @tparam id: integer
 
-    @param id: the identifier of the news's div which is needed to be in html file
+    @param: identifier for needed news
 
-    @returns news div
+    @returns: news
 */
-function createNewsDivRightSidebar(id) {
-    //create news's div
-    let news = document.createElement("div");
-    news.classList.add("news");
-    news.setAttribute("id", ("right_news_id_" + id));
-
-    //create img component
-    let newsImage = document.createElement("img");
-
-    //create the news deltails component
-    let newsDeltails = document.createElement("p");
-
-    news.appendChild(newsImage);
-    news.appendChild(newsDeltails);
-
-    return news;
+function getNewsById(newsId) {
+    let newsList = getDataNewsList();
+    let targetNews = "";
+    newsList.forEach(news => {
+        if (Number(newsId) == news.id) {
+            targetNews = news;
+        }
+    });
+    return targetNews;
 }
 
 /*
@@ -48,19 +80,19 @@ function createNewsDivRightSidebar(id) {
 */
 function fillNewsDivRightSidebar(divId, newsId) {
     //get the selected div by id
-    let selectedDiv = document.getElementById(divId);
+    let selectedDiv = document.getElementById(divId + "");
 
     //get the selected news by identifier from the data base
     let selectedNews = getNewsById(newsId);
 
     //assume that we get news's image path by function 
-    selectedDiv.getElementsByTagName[0]("img").setAttribute("src", selectedNews.imagePath);
-    selectedDiv.getElementsByTagName[0]("img").setAttribute("alt", "news image");
+    selectedDiv.getElementsByTagName("img")[0].setAttribute("src", selectedNews.attachments);
+    selectedDiv.getElementsByTagName("img")[0].setAttribute("alt", "news image");
 
     // fill news description
     // to be sure that the news's tilte doesn't exceed 15 characters
-    let newsTitle = document.createTextNode(reduceTextChar(selectedNews.title, 15));
-    selectedDiv.getElementsByTagName[0]("p").appendChild(newsTitle);
+    let newsTitle = document.createTextNode(reduceTextChar(selectedNews.title, 50));
+    selectedDiv.getElementsByTagName("p")[0].appendChild(newsTitle);
 }
 
 /*
@@ -84,93 +116,6 @@ function reduceTextChar(text, numberOfMaxChar) {
 }
 
 /*
-    Create news div in main section in category page with it's childreens
-
-    @tparam
-
-    @param
-
-    @returns main news div
-*/
-function createNewsDivMainSection() {
-    //create main news div
-    let mainNews = document.createElement("div");
-    mainNews.classList.add("main_category_section");
-    mainNews.setAttribute("id", "main_news_category");
-
-    //create main news children
-
-    //create img component
-    let newsImage = document.createElement("img");
-
-    // create details div 
-    let details = document.createElement("div");
-    details.classList.add("details");
-
-    // create deltails children
-
-    // create title div
-    let title = document.createElement("h3");
-
-    // create writingDetails div
-    let writingDetails = document.createElement("div");
-    writingDetails.classList.add("writing_details");
-
-    //create writing details children
-
-    // create writer div
-    let writer = document.createElement("div");
-    writer.classList.add("writer");
-
-    // create calenderIcon div
-    let calenderIcon = document.createElement("div");
-    calenderIcon.classList.add("icon");
-    calenderIcon.setAttribute("src", "#");
-    calenderIcon.setAttribute("alt", "Calender Icon");
-
-    // create newsDate div
-    let newsDate = document.createElement("div");
-    newsDate.classList.add("date");
-
-    //compine writing details children in writingDetails div
-    writingDetails.appendChild(writer);
-    writingDetails.appendChild(calenderIcon);
-    writingDetails.appendChild(newsDate);
-
-    //compine deltails children in details div
-    details.appendChild(title);
-    details.appendChild(writingDetails);
-
-    // create see more div
-    let seeMore = document.createElement("div");
-    seeMore.classList.add("see_more");
-
-    //create seeMore children
-
-    //create arrow icon div
-    let arrowIcon = document.createElement("div");
-    arrowIcon.classList.add("icon");
-    arrowIcon.setAttribute("src", "#");
-    arrowIcon.setAttribute("alt", "Arrow Icon");
-
-    //create see more paragraph
-    let see = document.createElement("p");
-    let seeText = document.createTextNode("اقرأ المزيد");
-    see.appendChild(seeText);
-
-    //compine main news children in mainNews div
-    seeMore.appendChild(arrowIcon);
-    seeMore.appendChild(see);
-
-    //compine main news children in mainNews div
-    mainNews.appendChild(newsImage);
-    mainNews.appendChild(details);
-    mainNews.appendChild(seeMore);
-    return mainNews;
-}
-
-
-/*
     Fill main section div in category page from the news which bring from data base by id
     
     @tparam newsId: integer
@@ -186,11 +131,69 @@ function fillNewsDivMainSection(newsId) {
     let selectedNews = getNewsById(newsId);
 
     //assume that we get news's image path by function 
-    mainDiv.getElementsByTagName[0]("img").setAttribute("src", selectedNews.imagePath);
-    selectedDiv.getElementsByTagName[0]("img").setAttribute("alt", "main news image");
+    document.getElementById("main_news_image").setAttribute("src", selectedNews.attachments);
 
-    // fill news description
-    // to be sure that the news's tilte doesn't exceed 15 characters
-    let newsTitle = document.createTextNode(reduceTextChar(selectedNews.title, 15));
-    selectedDiv.get.appendChild(newsTitle);
+    // fill news title
+    document.getElementById("main_news_title").innerHTML = reduceTextChar(selectedNews.title, 70);
+
+    // fill writing details which has writer name and news typing date
+    let writingDetials = document.getElementById("writng_details");
+    let writerName = document.createTextNode(selectedNews.writer);
+    document.getElementById("writer").innerHTML = selectedNews.writer;
+    document.getElementById("date").innerHTML = selectedNews.date;
+}
+
+/*
+    search in database to find the most three recent news 
+    and it returned the indexes of them from the most resent  
+
+    @tparam:
+
+    @param:
+
+    @returns: array of the three integer
+*/
+function getIdsOFMostThreeRecentNews() {
+    // after some operations
+    return [2, 4, 3];
+}
+
+/*
+    action listner function that present the news details on main section news
+    when the user click on a spacific news in right sidebar news
+
+    @tparam: integer
+
+    @param: the position of news in the div
+
+    @returns:
+*/
+function showNewsInMainSectionFromDiv(position) {
+    let mostRecentNewsList = getIdsOFMostThreeRecentNews();
+    let newsId = mostRecentNewsList[position - 1];
+    fillNewsDivMainSection(newsId);
+}
+
+/*
+    give an initial values for each div's in main sectoin and right sidebar
+    it just should be called when open the page in the first time
+    @tparam:
+
+    @param:
+
+    @returns:
+*/
+function initialFillPage() {
+    //get ids of most recent news to fill them in right sidebar
+    let mostRecentNewsList = getIdsOFMostThreeRecentNews();
+
+    //fill the news in the right sidebar from the recent news
+    for (let position = 0; position < mostRecentNewsList.length; position += 1) {
+        let divId = "right_news_id_" + (position + 1);
+        let newsId = mostRecentNewsList[position];
+        fillNewsDivRightSidebar(divId, newsId);
+    }
+
+    //fill main news from the most recent news is first news in mostRecentNewsList
+    showNewsInMainSectionFromDiv(mostRecentNewsList[0]);
 }

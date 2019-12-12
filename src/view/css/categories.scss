@@ -49,8 +49,8 @@ body {
                         font-size: $font_size_rightbar;
                         position: absolute;
                         bottom: 0;
-                        word-wrap: break-word;
                         padding: 3%;
+                        word-wrap: break-word;
                     }
                 }
             }
@@ -64,8 +64,9 @@ body {
                 width: 100%;
                 img {
                     width: 100%;
+                    height: 100%;
                 }
-                .writng_details,
+                #writng_details,
                 .see_more {
                     margin-left: 3%;
                 }
@@ -79,7 +80,7 @@ body {
                         width: $main_title_width;
                         word-wrap: break-word;
                     }
-                    .writng_details {
+                    #writng_details {
                         direction: ltr;
                         width: 95% - $main_title_width;
                         float: left;
@@ -89,8 +90,8 @@ body {
                             color: $font_color_main_wrting;
                             word-wrap: break-word;
                         }
-                        .writer,
-                        .date {
+                        #writer,
+                        #date {
                             font-size: $font_size_main_wrting;
                         }
                         img {
@@ -103,7 +104,7 @@ body {
                     font-size: $font_size_main_details;
                     color: $font_color_main_details;
                 }
-                .see_more {
+                #see_more {
                     float: left;
                     width: 30%;
                     direction: ltr;
