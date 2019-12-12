@@ -10,14 +10,7 @@
      This file contains the syles for the parts that are in common in all pages of the website including navbar and the catergories items in the navbar
 */
 @import './functions';
-
-$font-color:black;
-$main-color:#0C4D6D;
-$font-size:20px;
-$button-font-color:white;
-$button-font-size:18px;
-$website-background:white;
-$tab-padding:10px;
+@import './variables';
 
 @include initialFormat();
 
