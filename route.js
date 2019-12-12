@@ -80,6 +80,12 @@ function loadDoc(path, viewElement) {
     xmlhttp.send();
 }
 
+// Routing function
+function sendTo(path) {
+    if(path[0] != "/") path = '/' + path;
+    window.location.href = window.location.origin + "/index.html#" + path;
+}
+
 // TODO: Make this function to be async
 function execOnChange() {
     analyzeUrl();
