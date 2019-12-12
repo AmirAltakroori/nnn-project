@@ -1,9 +1,10 @@
 // add your style in this file  if it can be used in multiple pages
 // If your style is specific for a page you have to  create a sass file for the page and add them in it.
 // If your style is specific please use this way when naming : pagename-classname
-$header_color: #a5a5a5;
+$header_color: #36344D;
+$sub-header:#eee;
 $path_color: #cec9c9;
-$gray_color: #707070;
+$title-color:#6e6a9a;
 $font: "Segoe UI";
 $light_light_gray: #f9f9f9;
 $success-color: #27ae60;
@@ -26,13 +27,14 @@ body {
 .main-header {
   padding: 10px;
   height: 33px;
-  background-color: #a5a5a5;
-  height: 80px;
+  background-color: $header_color;
+  box-shadow: 0px 1px 10px 1px rgba(69, 65, 78, 0.5);
+  position: relative;
 }
 .header-logo {
   img {
-    width: 100px;
     height: 60px;
+    cursor: pointer;
   }
 }
 .main-header .nav-left {
@@ -44,7 +46,7 @@ body {
 }
 
 .sub-header {
-  background-color: #cec9c9;
+  background-color: $sub-header;
   width: 100%;
   height: 30px;
 }
@@ -55,7 +57,7 @@ body {
 }
 
 .header-subheader {
-  background: #cec9c9;
+  background: $sub-header;
   font-size: 16px;
   min-height: 25px;
   > div {
@@ -68,7 +70,7 @@ body {
 }
 .header-flex-container {
   display: flex;
-  height: auto;
+  height: 70px;
   &.space-between {
     justify-content: space-between;
   }
@@ -88,16 +90,16 @@ body {
     cursor: pointer;
   }
   font-size: 18px;
-  color: #2f4f4f;
+  color: #b5b1dd;
 }
 .header-left-section > div:hover {
-  color: lighten(#2f4f4f, 10%);
+  color:white;
 }
 .container {
   padding: 0px;
   margin: 0px;
   .content_header {
-    border-bottom: 1px solid $gray_color;
+    border-bottom: 1px solid $title-color;
     width: 100%;
     height: 100px;
     padding: 0;
@@ -110,7 +112,7 @@ body {
       .title_text {
         font-family: $font;
         font-size: 50px;
-        color: $gray_color;
+        color: $title-color;
       }
     }
   }
@@ -120,7 +122,7 @@ body {
     padding-right: 10px;
     padding-left: 10px;
     .search {
-      border: 1px solid $gray_color;
+      border: 1px solid $title-color;
       height: 32px;
       padding: 0px;
       .search_field {
@@ -146,7 +148,7 @@ body {
     }
     .search_word {
       font-family: $font;
-      color: $gray_color;
+      color: $title-color;
       font-size: 20px;
       margin-left: 40px;
     }
@@ -163,7 +165,7 @@ body {
     margin-right: 120px;
     cursor: pointer;
     .first_row {
-      border-bottom: 1px solid $gray_color;
+      border-bottom: 1px solid $title-color;
       font-size: 20px;
       width: 100%;
       font-weight: 400;
@@ -173,7 +175,7 @@ body {
     }
     th,
     td {
-      border-bottom: 1px solid $gray_color;
+      border-bottom: 1px solid $title-color;
       text-align: center;
     }
     thead tr{
@@ -189,6 +191,7 @@ body {
     .user_info {
       width: 100%;
       font-family: $font;
+      height: 50px;
       .user_no {
         font-size: 18px;
       }
@@ -300,4 +303,9 @@ body {
   100% {
     opacity: 100%;
   }
+}
+.required{
+  color: red;
+  margin:0px 2px;
+  display: inline-block;
 }

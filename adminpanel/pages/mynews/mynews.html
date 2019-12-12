@@ -71,45 +71,22 @@
 
                 </tr>
             </thead>
-            <tbody>
-                <tr class="user_info">
-                    <td class="user_no">1</td>
-                    <td class="user_full">
-                        <span class="user_name">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
-                    </td>
-                    
-                    <td class="user_full">
-                        <span class="user_name">عالمي</span>
-                    </td>
-                    <td class="user_full">
-                            <span class="user_name">مفعل</span>
-                        </td>
-                    
-                    <td>
-                        <i class="fas fa-trash-alt delete_user"></i>
-                        <i onclick="updateNews(0)" class="far fa-edit icon color-blue"></i>
-                    </td>
-                </tr>
-                <tr class="user_info">
-                        <td class="user_no">2</td>
-                        <td class="user_full">
-                            <span class="user_name">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
-                        </td>
-                        
-                        <td class="user_full">
-                            <span class="user_name">رياضة</span>
-                        </td>
-                        <td class="user_full">
-                                <span class="user_name">غير مفعل</span>
-                            </td>
-                        
-                        <td>
-                            <i class="fas fa-trash-alt delete_user"></i>
-                            <i class="far fa-edit icon color-blue"></i>
-                        </td>
-                    </tr>
+            <tbody id="tablebody">
             </tbody>
         </table>
+    </div>
+    <div class="modal-delete" id="delete">
+        <div class="modal-wrapper">
+            <div class="contain">
+                <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
+                <div class="modal-button">
+                    <button class="modal-button button1" onclick="deleteRowElement(); hide('delete');">نعم</button>
+                    <button class="modal-button button2" onclick="hide('delete')">لا</button>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </body>
 
