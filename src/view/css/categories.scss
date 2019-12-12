@@ -3,18 +3,66 @@
 
      This file is part of the NNN website.
 
-     Authors:diana mujahed
+     Authors:ibrahimabusamrah
 
-     File description: this is the style scss code for thecategory page
+     File description: this is the style css code for the category page 
 */
-*{
-     direction: rtl;
+
+* {
+    box-sizing: border-box;
 }
-.container{
-     display: flex;
-     justify-content: space-between;
+
+
+/* Create two equal columns that floats next to each other */
+
+.column {
+    float: left;
+    padding: 10px;
+    height: 300px;
+    /* Should be removed. Only for demonstration */
 }
-.top-row{
-     display: flex;
-     justify-content: space-between;
+
+
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+.allnewsFcatogory {
+    display: block;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    width: 25%;
+}
+
+.allnewsFcatogory {
+    overflow-y: scroll;
+}
+
+.allnewsFcatogory ul li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    width: 100%;
+    list-style-type: none;
+}
+
+.allnewsFcatogory ul li img {
+    width: 140px;
+    margin-left: 10px;
+    padding: 10px;
 }
