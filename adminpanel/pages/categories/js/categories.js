@@ -1,9 +1,38 @@
+let categoriesPage = [{
+        name: "الألعاب",
+        isActive: 1,
+        id: 1,
+    },
+    {
+        name: "الرئيسية",
+        isActive: 1,
+        id: 2,
+    },
+    {
+        name: "الرياضة",
+        isActive: 0, //غير مفعل
+        id: 3,
+    },
+    {
+        name: "الفن",
+        isActive: 0,
+        id: 4,
+    }
+]
 document.addEventListener('DOMContentLoaded', function(e) {
+    displayCategories(categoriesPage);
 
+    let form = document.getElementById('category-modal-form');
+    form.addEventListener('submit', (e) => {
+
+        updateCategoryName();
+        e.preventDefault();
+        return false;
+    });
     //Get the modal that opens when click on "إضافة فئة"
     let modal = document.getElementById("createcategory-modal");
     //Get the button that opens the modal
-    let addBtn = document.getElementsByClassName("add-button")[0];
+    let addBtn = document.getElementsByClassName("categories-add-button")[0];
 
     //Get close icon that close the modal
     let span = document.getElementById("close");
@@ -13,6 +42,13 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
     //When the user clicks on "انشاء", update actegories tabel with new category
     let addForm = document.getElementById("category-form");
+    let editForm = document.getElementById("category-edit-form");
+    editForm.addEventListener("submit", (e) => {
+        updateCategoryName();
+        hideModal("createcategory-edit-modal");
+        e.preventDefault();
+        return false;
+    });
     addForm.addEventListener("submit", (e) => {
 
 
@@ -27,30 +63,35 @@ document.addEventListener('DOMContentLoaded', function(e) {
         </td>
         <td>
             <select class="selection" style="font-size:18px; border:none; font-family:"Segoe UI"">
-                <option value="writer">فعالة</option>
+                <option value="writer">فعال</option>
                 <option value="admin"> غير فعال</option>
             </select>
         </td>
         <td>
             <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer"></i>
-            <i class="far fa-edit icon color-blue"></i>
+            <i class="far fa-edit icon color-blue" onclick="showEditModal('createcategory-edit-modal',this,${categoriesPage.length+1})"></i>
         </td>
       </tr>`;
         tr.innerHTML = row;
         tbody.appendChild(tr);
         hideModal(modal.id);
         // to database
+        categoriesPage.push({
+            isActive: 1,
+            id: categoriesPage.length + 1,
+            name: "categoryName"
+        })
         e.preventDefault();
         return false;
     });
 
     //When the user clicks "إضافة فئة" , show the modal 
     addBtn.onclick = function() {
-            showModal(modal.id);
+            showModal("createcategory-modal");
         }
         //When the user clicks close icon , close the modal
     span.onclick = function() {
-            hideModal(modal.id);
+            hideModal("createcategory-modal");
         }
         //When the user clicks anywhere outside of the modal, close it 
     window.onclick = function(event) {
@@ -80,7 +121,7 @@ const searchByCategory = () => {
     let content = document.getElementById('content');
     let tr = content.getElementsByTagName('tr');
 
-    for (var i = 0; i < tr.length; i++) {
+    for (let i = 0; i < tr.length; i++) {
         let td = tr[i].getElementsByTagName('td')[1];
 
         if (td) {
@@ -95,36 +136,45 @@ const searchByCategory = () => {
 
 
     }
+}
 
+let activeId = 0;
+let activeRow = null;
+
+function showEditModal(modalId, row, id) {
+    let modal = document.getElementById(modalId); //for modal
+    modal.style.display = "flex";
+
+    activeId = id;
+    activeRow = row.parentElement.parentElement;
+
+}
+
+function hideModal(modalId) {
+    let modal = document.getElementById(modalId); //for modal
+    modal.style.display = "none";
+
+}
+
+// TODO 
+/*
+  Write a function for update the name. updateName() down
+  You have the entire row (tr) object stored in activeRow variable
+  You have the id of the current object , see the variable categories above
+  You need to get the object that match his id with activeId , hint use categories.find()
+*/
+function updateCategoryName() {
+    let newName = document.getElementById("editcategoryname").value;
+    categoriesPage.find(({ id }) => id === activeId).name = newName;
+    var changeName = document.getElementsByClassName("user_name")[activeId - 1];
+    changeName.innerHTML = newName;
+    document.getElementById("editcategoryname").value = "";
 
 
 }
 /**************************************************************************************************
  * Read categories
  */
-
-let categoriesPage = [{
-    id: 1,
-    name: "الألعاب",
-    isActive: 1,
-},
-{
-    id: 3,
-    name: "الرئيسية",
-    isActive: 1,
-},
-{
-    id: 2,
-    name: "الرياضة",
-    isActive: 0, //غير مفعل
-},
-{
-    id: 4,
-    name: "الفن",
-    isActive: 0,
-}
-]
-
 function displayCategories(categories) {
     categoriesPage = categories;
     let table = document.getElementById("tablebody");
@@ -161,10 +211,13 @@ function displayCategories(categories) {
         let operations = document.createElement("td");
         let delete_icon = document.createElement("i");
         delete_icon.className = "fas fa-trash-alt delete_user";
-        
+
         let edit_icon = document.createElement("i");
         edit_icon.className = "far fa-edit icon color-blue";
+        edit_icon.onclick = (e) => {
+            showEditModal("createcategory-edit-modal", edit_icon, categories[i].id);
 
+        }
         operations.appendChild(delete_icon);
         operations.appendChild(edit_icon);
 
@@ -176,9 +229,3 @@ function displayCategories(categories) {
         table.appendChild(row);
     }
 }
-
-document.addEventListener("DOMContentLoaded", (event) => {
-
-    displayCategories(categoriesPage);
-});
-

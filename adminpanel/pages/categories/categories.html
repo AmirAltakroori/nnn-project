@@ -36,6 +36,7 @@
         </div>
         <div class="row header-subheader ">
             <div>
+
                 الرئيسية > لوحة التحكم > الأخبار > الفئات
             </div>
         </div>
@@ -52,7 +53,7 @@
                 <span class="title_text">الفئات</span>
             </div>
 
-            <div class="add-button">
+            <div class="categories-add-button ">
                 <div class="fas fa-plus"></div>
                 <div> اضافة فئة</div>
             </div>
@@ -80,29 +81,65 @@
             </tbody>
         </table>
     </div>
-    <div id="createcategory-modal">
-
-        <div id="createcategory-modalcontent">
-            <div style="width:100%;text-align: center;">
-                <h2>
-                    إضافة فئة جديدة
-                </h2>
-            </div>
-            <hr>
-            <form id="category-form">
-                <div class="createcategory-flex-container-center-all">
-                    <i class="fas fa-times-circle" id="close"></i>
-                    <div>
-                        <input type="text" id="categoryname" placeholder="أدخل اسم الفئة" maxlength="20" minlength="3" required>
-                    </div>
-                    <div>
-                        <button type="submit" id="createcategory-btn">إنشاء</button>
-                    </div>
-                </div>
+    <div class="categories-modal-base" id="edit-name-modal" tabindex="-1" onfocus=" hideModal('edit-name-modal')">
+        <div class="categories-modal" tabindex="0">
+            <span class="categories-button-close" onclick="hideModal('edit-name-modal')">&times;</span>
+            <h3> ادخل الإسم الجديد للفئة :</h3>
+            <form id="category-modal-form" class="flex-container-center-all-column">
+                <div><input class="categories-modal-input" id="newCategoryName" type="text" name="name " required minlength="3" maxlength="20"></div>
+                <div><button type="submit" class="categories-save-button" onclick="hideModal('edit-name-modal')">حفظ</button></div>
             </form>
         </div>
     </div>
+</body>
+</table>
+</div>
+<div class="createcategory-modal" id="createcategory-modal">
+
+    <div id="createcategory-modalcontent">
+        <div style="width:100%;text-align: center;">
+            <h2>
+                إضافة فئة جديدة
+            </h2>
+        </div>
+        <hr>
+        <form id="category-form">
+            <div class="createcategory-flex-container-center-all">
+                <i class="fas fa-times-circle" id="close"></i>
+                <div>
+                    <input type="text" id="categoryname" placeholder="أدخل اسم الفئة" maxlength="20" minlength="3" required>
+                </div>
+                <div>
+                    <button type="submit" id="createcategory-btn">إنشاء</button>
+                </div>
+            </div>
+        </form>
     </div>
+</div>
+
+<div class="createcategory-modal" id="createcategory-edit-modal">
+
+    <div id="createcategory-modalcontent">
+        <div style="width:100%;text-align: center;">
+            <h2>
+                تعديل اسم الفئة
+            </h2>
+        </div>
+        <hr>
+        <form id="category-edit-form">
+            <div class="createcategory-flex-container-center-all">
+                <i class="fas fa-times-circle" id="close"></i>
+                <div>
+                    <input type="text" id="editcategoryname" placeholder="أدخل اسم الفئة" maxlength="20" minlength="3" required>
+                </div>
+                <div>
+                    <button type="submit" id="createcategory-btn">تعديل</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
 </body>
 </div>
 </body>
