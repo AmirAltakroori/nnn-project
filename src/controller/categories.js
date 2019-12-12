@@ -21,21 +21,21 @@
 */
 import { getRelatedCategoryNews } from '../model/categories'
 
-function RelatedCategoryNews() {
+function relatedCategoryNews() {
     getRelatedCategoryNews();
-    let NewsLi = document.createElement("li");
-    NewsLi.setAttribute.Id = NewsInCategory.Id;
-    for (let whereAddNew = 0; whereAddNew < Object.keys(NewsInCategory).length; whereAddNew++) {
+    let newsLi = document.createElement("li");
+    newsLi.setAttribute.Id = newsInCategory.Id;
+    for (let whereAddNew = 0; whereAddNew < Object.keys(newsInCategory).length; whereAddNew++) {
         if (whereAddNew % 2 == 0) {
-            news_li.innerHTML = `
-             <p>${NewsInCategory.title}</p>
-             <img src="${NewsInCategory.img}" alt="photo">`
-            document.getElementById("related_news_menu_left").appendChild(NewsLi);
+            newsLi.innerHTML = `
+             <p>${newsInCategory.title}</p>
+             <img src="${newsInCategory.img}" alt="photo">`
+            document.getElementById("related_news_menu_left").appendChild(newsLi);
         } else {
-            NewsLi.innerHTML = `
-             <p>${NewsInCategory.title}</p>
-             <img src="${NewsInCategory.img}" alt="photo">`
-            document.getElementById("related_news_menu_right").appendChild(NewsLi);
+            newsLi.innerHTML = `
+             <p>${newsInCategory.title}</p>
+             <img src="${newsInCategory.img}" alt="photo">`
+            document.getElementById("related_news_menu_right").appendChild(newsLi);
         }
     }
 }
