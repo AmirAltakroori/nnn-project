@@ -57,7 +57,7 @@ body {
 
 .homepage-container {
   display: flex;
-  flex-direction: raw; }
+  flex-direction: row; }
   .homepage-container > div {
     cursor: pointer; }
   .homepage-container .homepage-btn {

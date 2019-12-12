@@ -1,9 +1,10 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 1px; }
+  padding: 0; }
 
-body, html {
+body,
+html {
   height: 100%; }
 
 .content {
@@ -14,13 +15,12 @@ body, html {
 
 .content::after {
   position: absolute;
-  content: ' ';
+  content: " ";
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  background-image: url("./../images/Background.png");
-  opacity: 0.5;
+  background: #3a2275;
   background-size: 100% 100%;
   z-index: 1; }
 
@@ -56,7 +56,7 @@ body, html {
     font-size: 18px;
     margin: 2px;
     margin-bottom: 5px;
-    color: #4e4e4e; }
+    color: black; }
   .log-form input {
     width: 400px;
     height: 45px;
@@ -72,10 +72,16 @@ body, html {
   margin-bottom: 15px; }
 
 .btn input {
-  background-color: dodgerblue;
-  color: floralwhite;
+  background-color: #ff4546;
+  border: 1px solid #ff4546;
+  color: white;
   font-size: 20px;
-  height: 50px; }
+  height: 50px;
+  cursor: pointer; }
+.btn:hover input {
+  background-color: #ff1213;
+  border: 1px solid #ff1213;
+  transition: all 0.2s; }
 
 .popup {
   color: #ffffff;
