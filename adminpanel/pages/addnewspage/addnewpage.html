@@ -66,7 +66,7 @@
                         <span class="required">*</span>
                     </label>
                     <div class="news_element news">
-                        <div class="news_body"  contenteditable="true" id='editor' dir="ltr"> </div>
+                        <div class="news_body" contenteditable="true" id='editor' dir="ltr"> </div>
                     </div>
                 </div>
                 <div class="content_label_div">
@@ -105,11 +105,11 @@
                     <div class="news_element">
                         <div class="inner_choice_div">
                             <div class="status_active_div">
-                                <input type="radio" id="isActive" class="news_element choice">
+                                <input type="radio" name="active" id="isActive" class="news_element choice">
                                 <label class="checkbox_label">فعال</label>
                             </div>
                             <div class="status_inactive_div">
-                                <input type="radio" id="isNotActive" class="news_element choice">
+                                <input type="radio" name="active" id="isNotActive" class="news_element choice">
                                 <label class="checkbox_label">غير فعال </label>
                             </div>
                         </div>
@@ -136,11 +136,11 @@
                 <div class="news_element">
                     <div class="inner_choice_div">
                         <div class="main_news_div">
-                            <input type="radio" id="isMainNews" class=" choice">
+                            <input type="checkbox" id="isMainNews" class=" choice">
                             <label>خبر رئيسي</label>
                         </div>
                         <div class="urgent_news_div">
-                            <input type="radio" id="isUrgentNews" class=" choice">
+                            <input type="checkbox" id="isUrgentNews" class=" choice">
                             <label>خبر عاجل</label>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                 </div>
             </div>
             <div class="button_div">
-                <button type="submit" name="add_news" class="news_element button"> اضافة</button>
+                <button name="add_news" id="edit_element" class="button "> إنشاء خبر</button>
             </div>
         </form>
     </div>

@@ -1,18 +1,18 @@
-$newsElementWidth : 500px;
-$labelWidth : 200px;
+$newsElementWidth: 500px;
+$labelWidth: 200px;
 $btn-success-color: #27ae60;
-
 @mixin flexbox($direction) {
     display: flex;
-    flex-direction: $direction ;
-    align-items: center; 
+    flex-direction: $direction;
+    align-items: center;
 }
-*{
+
+* {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .add_news_form {
-    .title{
+    .title {
         font-size: 50px;
     }
     .center_items {
@@ -21,7 +21,7 @@ $btn-success-color: #27ae60;
         width: 100%;
         padding-top: 10px;
     }
-    .content_label_div{
+    .content_label_div {
         @include flexbox(row);
         justify-content: center;
         width: 100%;
@@ -29,16 +29,16 @@ $btn-success-color: #27ae60;
     }
     .news_element {
         width: $newsElementWidth;
-        height:25px;
+        height: 25px;
     }
     .news {
         height: auto;
         border: 0.5px solid grey;
-        .news_body{
+        .news_body {
             height: 258px;
         }
     }
-    .description{
+    .description {
         height: 50px;
         resize: none;
     }
@@ -47,9 +47,9 @@ $btn-success-color: #27ae60;
         height: 15px;
         padding-right: 5px;
     }
-    .outer_choice_div  {
+    .outer_choice_div {
         justify-content: center;
-        .inner_choice_div{
+        .inner_choice_div {
             @include flexbox(row);
             justify-content: space-between;
         }
@@ -58,23 +58,22 @@ $btn-success-color: #27ae60;
         height: 30px;
         width: calc(#{$labelWidth} + #{$newsElementWidth} -96px);
     }
-    .date{
-        min-width:90px;
+    .date {
+        min-width: 90px;
         margin-left: 10px;
-        .checkbox{
+        .checkbox {
             padding-right: 10px;
-          
         }
     }
     label {
-        width:200px;
-        height:28px;
+        width: 200px;
+        height: 28px;
         padding: 3px;
         text-align: center;
         font-weight: 300px;
         font-size: 20px;
     }
-    .button_div{
+    .button_div {
         @include flexbox(row);
         justify-content: center;
         margin-bottom: 30px;
@@ -87,29 +86,30 @@ $btn-success-color: #27ae60;
             font-size: 30px;
             color: white;
             cursor: pointer;
-            &:hover{
+            &:hover {
                 background: darken($btn-success-color, 10%)
             }
         }
     }
-
 }
-.ql-picker-label{
+
+.ql-picker-label {
     direction: ltr;
 }
-.addnews-img-container{
+
+.addnews-img-container {
     height: 300px;
     width: 300px;
     display: none;
-    img{
+    img {
         height: 300px;
         width: 300px;
         max-width: 100%;
     }
-  
 }
+
 .ql-editor {
-   &.ql-direction-rtl{
-    direction: rtl;
-}
+    &.ql-direction-rtl {
+        direction: rtl;
+    }
 }
