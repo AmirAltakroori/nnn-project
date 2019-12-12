@@ -27,7 +27,9 @@ function renderIf(exp, element) {
 }
 
 function renderFor(exp, element) {
-
+    let arr = exp.split('of')[1].trim();
+    let array = eval(arr);
+    element.parentElement.innerHTML += element.outerHTML.repeat(array.length);
 }
 
 function renderDisabled(exp, element) {
