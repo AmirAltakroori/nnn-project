@@ -4,6 +4,147 @@
      This file is part of the NNN website.
 
      Authors:
+     Rahmeh Tartouri <rahmeh.tartouri@gmail.com>
 
      File description:
+     this file for slider design
 */
+
+@import './variables';
+
+
+.rendom-news-container{
+     width: 1084px;
+     margin: auto;
+
+     .firstNews {
+
+          @extend %allNews;
+          .news{
+
+               @extend %news;
+          }
+
+
+          .date{
+
+               @extend %newsDate;
+          }
+
+          .images img {
+
+               @extend %arrow;
+               float: right;
+          }
+
+
+
+        }
+
+        .secondNews{
+
+          @extend %allNews;
+          .news{
+
+               @extend %news;
+          }
+
+
+          .date{
+
+               @extend %newsDate;
+
+          }
+
+
+
+
+
+   }
+
+   .thirdNews{
+
+     @extend %allNews;
+     .news{
+
+          @extend %news;
+     }
+
+
+     .date{
+
+          @extend %newsDate;
+     }
+
+   }
+
+
+   .fourthNews{
+
+     @extend %allNews;
+     .news{
+
+          @extend %news;
+     }
+
+
+     .date{
+
+          @extend %newsDate;
+     }
+
+   }
+
+   .imagesNext img {
+
+     @extend %arrow;
+     float: left;
+     margin-left: $arrow-margin;
+   }
+
+   .imagesPrev img {
+
+     @extend %arrow;
+     float: right;
+     margin-right: $arrow-margin;
+   }
+
+}
+
+%newsDate {
+
+     margin-bottom: 95px;
+     margin-top: 6px;
+     margin-left: 12px;
+     color:$newsText-color;
+     font-family:$newsText-fontFamily;
+     font-size: $newsText-fontSize - 2;
+
+}
+
+%allNews{
+
+     background-repeat: no-repeat;
+     float: $newsImage-float;
+     width: $newsImage-width;
+     height: $newsImages-height;
+     background-size: 265px 160px;
+     margin-left: $newsImage-margin;
+
+}
+
+%news {
+
+     color: $newsText-color;
+     text-align: $newsText-align;
+     font-family:$newsText-fontFamily;
+     font-size: $newsText-fontSize;
+}
+
+%arrow {
+
+     width: $arrow-width;
+     height: $arrow-height;
+     margin-top: $arrow-margin-top;
+     
+}
