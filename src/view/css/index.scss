@@ -111,6 +111,7 @@
 
 }
 
+
 %newsDate {
 
      margin-bottom: 95px;
@@ -146,5 +147,22 @@
      width: $arrow-width;
      height: $arrow-height;
      margin-top: $arrow-margin-top;
-     
+
+}
+
+
+.footer {
+  position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
+  .footer-right {
+    img {
+      @extend %arrow;
+      float: right;
+    }
+
+  }
+
 }
