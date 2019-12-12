@@ -93,6 +93,9 @@ body {
                         .date {
                             font-size: $font_size_main_wrting;
                         }
+                        img {
+                            width: 7%;
+                        }
                     }
                 }
                 p {
@@ -107,6 +110,9 @@ body {
                     * {
                         display: inline;
                         color: $font_color_main_see_more;
+                    }
+                    img {
+                        width: 7%;
                     }
                     p {
                         font-size: $font_size_main_see_more;

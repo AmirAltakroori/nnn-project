@@ -95,6 +95,10 @@ body .main_category_section .main_section .main_news .details .writng_details .d
   font-size: 14px;
 }
 
+body .main_category_section .main_section .main_news .details .writng_details img {
+  width: 7%;
+}
+
 body .main_category_section .main_section .main_news p {
   margin: 3% 1% 0 3%;
   font-size: 20px;
@@ -110,6 +114,10 @@ body .main_category_section .main_section .main_news .see_more {
 body .main_category_section .main_section .main_news .see_more * {
   display: inline;
   color: #0C4D6D;
+}
+
+body .main_category_section .main_section .main_news .see_more img {
+  width: 7%;
 }
 
 body .main_category_section .main_section .main_news .see_more p {
