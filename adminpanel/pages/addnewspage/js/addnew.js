@@ -15,13 +15,20 @@ let newNews={
     writerId:1,
     _attachments:"",
     }
+    function getData(storeName){
+        return JSON.parse(sessionStorage.getItem("userData"));
+    }
+    function saveData(storeName, data){
+        sessionStorage.setItem(storeName, JSON.stringify(data));
+    }
 document.addEventListener("DOMContentLoaded", (event) => {
 
-    let userData = sessionStorage.getItem("userData");
-    userData = JSON.parse(userData);
+    let userData = getData("userData");
+
     let newElement = idSelector("news_element");
     let editElement = idSelector("edit_element");
     let cancel = idSelector("cancel");
+
     if(userData!= null){
 
         let form={
@@ -68,7 +75,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             userData.isUrgentNews = form.isUrgentNews.checked ;
             userData.createDate  = form.createDate.value ;
             
-            sessionStorage.setItem('userData', JSON.stringify(userData));
+            saveData('userData', userData);
+
             window.location.href = "../mynews/mynews.html";
             e.preventDefault();;
             return false;
