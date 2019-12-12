@@ -1,7 +1,8 @@
 
 
 
-let newNews={
+let newNews=[{
+    id:0,
     title:"test is test ",
     content:"<h1>This is my first news</h1>",
     categoryId:1,
@@ -14,14 +15,49 @@ let newNews={
     createDate:new Date(),
     writerId:1,
     _attachments:"",
+    },
+    {
+        id:1,
+        title:"test is test ",
+        content:"<h1>This is my first news</h1>",
+        categoryId:1,
+        seoTitle:"First news",
+        seoTags:"{ 'tags':{['test','sport']} }",
+        seoDescription:"This is my first news",
+        isActive:1,
+        isMainNews:0,
+        isUrgentNews:1,
+        createDate:new Date(),
+        writerId:1,
+        _attachments:"",
+        },
+        {
+            id:2,
+            title:"test is test ",
+            content:"<h1>This is my first news</h1>",
+            categoryId:1,
+            seoTitle:"First news",
+            seoTags:"{ 'tags':{['test','sport']} }",
+            seoDescription:"This is my first news",
+            isActive:1,
+            isMainNews:0,
+            isUrgentNews:1,
+            createDate:new Date(),
+            writerId:1,
+            _attachments:"",
+            },
+
+]
+
+function updateNews(id){
+    let aim = null;
+for (ind of newNews)
+    if (ind.id == id){
+        aim = ind;
+        break;
     }
-
-
-
-function updateNews(data){
-console.log(data);
-
-
+    sessionStorage.setItem("userData",JSON.stringify(aim));
+    window.location.href = "../addnewspage/addnewpage.html";
 }
 
 
