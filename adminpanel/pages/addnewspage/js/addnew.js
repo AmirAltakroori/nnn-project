@@ -1,10 +1,9 @@
 
 let newsList=[];
 const idSelector = (id) => { return document.getElementById(id) };
-
 let newNews={
     title:"test is test ",
-    content:"<h1>This is my first news</h1>",
+    content:"ttt",
     categoryId:1,
     seoTitle:"First news",
     seoTags:"{ 'tags':{['test','sport']} }",
@@ -25,7 +24,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let cancel = idSelector("cancel");
     if(userData!= null){
 
-        let cuurentdata={
+        let form={
             "title": idSelector("title"),
             "editor": idSelector("editor"),
             "categoryId": idSelector("category"),
@@ -37,29 +36,42 @@ document.addEventListener("DOMContentLoaded", (event) => {
             "isUrgentNews": idSelector("isUrgentNews"),
             "createDate": idSelector("createDate"),
         }
-        cuurentdata.title.value = userData.title;
-        cuurentdata.editor.innerHTML = userData.content;
-        cuurentdata.categoryId.value = userData.categoryId;
-        cuurentdata.seoTitle.value = userData.seoTitle;
-        cuurentdata.seoTags.value = userData.seoTags;
-        cuurentdata.seoDescription.value = userData.seoDescription;
-        cuurentdata.isActive.checked = userData.isActive;
-        cuurentdata.isMainNews.checked = userData.isMainNews;
-        cuurentdata.isUrgentNews.checked = userData.isUrgentNews;
-        cuurentdata.createDate.value = userData.createDate;
+        form.title.value = userData.title;
+        form.editor.innerHTML = userData.content;
+        form.categoryId.value = userData.categoryId;
+        form.seoTitle.value = userData.seoTitle;
+        form.seoTags.value = userData.seoTags;
+        form.seoDescription.value = userData.seoDescription;
+        form.isActive.checked = userData.isActive;
+        form.isMainNews.checked = userData.isMainNews;
+        form.isUrgentNews.checked = userData.isUrgentNews;
+        form.createDate.value = userData.createDate;
 
         newElement.style.display = "none";
+
         cancel.addEventListener("click",(e)=>{
             window.location.href = "../mynews/mynews.html";
             e.preventDefault();;
             return false;
         });
+
         editElement.addEventListener("click",(e)=>{
-            createNew(userData.title, userData.content,userData.categoryId, userData.seoTitle ,
-            userData.seoTags ,userData.seoDescription,userData.isActive,userData.isMainNews,
-            userData.isUrgentNews,userData.createDate 
-             );
-    
+            // extract the cuurent data from the form
+            userData.title = form.title.value ;
+            userData.content = form.editor.innerHTML;
+            userData.categoryId = form.categoryId.value;
+            userData.seoTitle = form.seoTitle.value ;
+            userData.seoTags = form.seoTags.value ;
+            userData.seoDescription = form.seoDescription.value ;
+            userData.isActive = form.isActive.checked ;
+            userData.isMainNews = form.isMainNews.checked;
+            userData.isUrgentNews = form.isUrgentNews.checked ;
+            userData.createDate  = form.createDate.value ;
+            
+            sessionStorage.setItem('userData', JSON.stringify(userData));
+            window.location.href = "../mynews/mynews.html";
+            e.preventDefault();;
+            return false;
         });
         
     }else{
