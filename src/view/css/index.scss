@@ -114,6 +114,7 @@
 
 }
 
+
 %newsDate {
 
      margin-bottom: 95px;
@@ -298,4 +299,20 @@ body{
                }
           }
      }
+}
+
+.footer {
+    position: fixed;
+    right: 20px;
+    bottom: 0;
+    width: 100%;
+    height: 110px;
+    text-align: center;
+    .footer-right {
+        img {
+            float: right;
+            height: 110px;
+        }
+    }
+
 }
