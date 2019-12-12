@@ -1,6 +1,12 @@
 
 
-
+document.addEventListener("DOMContentLoaded", (event) => {
+    let userdata = JSON.parse(sessionStorage.getItem("userData"));
+    if(userdata != null){
+        newNews[userdata.ind] = userdata;
+        sessionStorage.removeItem("userData");
+    }
+});
 let newNews=[{
     id:0,
     title:"test is test ",
@@ -51,11 +57,13 @@ let newNews=[{
 
 function updateNews(id){
     let aim = null;
-for (ind of newNews)
-    if (ind.id == id){
-        aim = ind;
+for (ind in newNews)
+    if (newNews[ind].id == id){
+        aim = newNews[ind];
+        aim["ind"] = ind;
         break;
     }
+
     sessionStorage.setItem("userData",JSON.stringify(aim));
     window.location.href = "../addnewspage/addnewpage.html";
 }
