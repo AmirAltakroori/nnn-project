@@ -7,7 +7,7 @@ function searchByNewsApprove() {
     tr = rows.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++)
      {
-        name = tr[i].getElementsByTagName("td")[1];
+        name = tr[i].getElementsByTagName("td")[2];
         txtValue = name.textContent || name.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
             tr[i].style.display = "";
