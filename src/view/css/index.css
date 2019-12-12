@@ -1,0 +1,153 @@
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:
+     Rahmeh Tartouri <rahmeh.tartouri@gmail.com>
+
+     File description:
+*/
+.latest-news-container {
+  width: 1080px;
+  margin: auto;
+}
+
+.latest-news-container .latest-news-list-header {
+  
+  float:right;
+  border-bottom: 1px solid #707070;
+  width: 400px;
+  
+
+
+}
+
+.latest-news-container .latest-news-list-header p{
+
+  float:right;
+  color:#0C4D6D;
+  font-size: larger;
+  margin-bottom: -0.1px;
+}
+
+.latest-news-container .latest-news-list{
+  float: right;
+  margin-top:60px;
+  margin-right: -400px;
+  
+
+}
+
+.latest-news-container .latest-news-list .news1 p {
+
+  float: left;
+  margin-right: 7px;
+  color: #707070;
+  font-size:17px;
+}
+
+.latest-news-container .latest-news-list .news1{
+
+  margin-bottom: 12px;
+
+}
+
+.latest-news-container .latest-news-list .news2 p {
+
+  float: left;
+  margin-right: 7px;
+  color: #707070;
+  font-size:17px;
+
+}
+
+.latest-news-container .latest-news-list .news3 p {
+
+  float: left;
+  margin-right: 7px;
+  color: #707070;
+  font-size:17px;
+
+
+}
+
+.latest-news-container .latest-news-list .news2{
+
+  margin-bottom: 12px;
+
+}
+
+.latest-news-container .latest-news-list .news3{
+
+  margin-bottom: 12px;
+
+}
+
+.latest-news-more-detailed-container {
+
+  width: 1080px;
+  margin: auto;
+}
+
+.latest-news-more-detailed-container .latest-news-more-detailed-image-div img {
+
+  margin-top:15px;
+  margin-left: 10px;
+  
+}
+
+.latest-news-more-detailed-title{
+
+  float: right;
+  margin-right: 460px;
+  color:#4D4F5C ;
+  margin-top:-5px;
+}
+
+.latest-news-more-detailed-paragraph {
+  float: right;
+  margin-right: 450px;
+  color: #707070;
+  margin-top: -24px;
+  font-size: 18px;
+}
+
+.latest-news-more-detailed-date{
+  margin-left: 8px;
+}
+.latest-news-more-detailed-date p{
+  float: left;
+  font-size: 14px;
+  color: #919192;
+
+}
+.latest-news-more-detailed-date img{
+  float: left;
+  margin-top: 16px;
+  margin-left: 8px;
+  margin-right: 8px;
+  
+}
+
+.latest-news-more-detailed-readmore-button {
+margin-top: 50px;
+}
+.latest-news-more-detailed-readmore-button p{
+  float: left;
+  margin-top: -2px;
+  margin-left: 2px;
+  color: #0C4D6D;
+  font-size: 17px;
+}
+
+.latest-news-more-detailed-readmore-button img{
+  float: left;
+}
+
+
+
+
+
+
+
