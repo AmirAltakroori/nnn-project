@@ -12,10 +12,6 @@
 
 @import './variables';
 
-/*
-     This function takes a parameter $property
-     return: the transformation made by this property
-*/
 @mixin initialFormat () {
 
      * {
