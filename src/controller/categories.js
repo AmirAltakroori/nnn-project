@@ -19,24 +19,23 @@
     
     This function used to show  the Related category News retrieved from database 
 */
+import { getRelatedCategoryNews } from '../model/categories'
 
-function related_category_news() {
-    getRelated_category_news();
-    for (let i = 0; i < Object.keys(NewsInCategory).length; i++) {
+function RelatedCategoryNews() {
+    getRelatedCategoryNews();
+    let NewsLi = document.createElement("li");
+    NewsLi.setAttribute.Id = NewsInCategory.Id;
+    for (let whereAddNew = 0; whereAddNew < Object.keys(NewsInCategory).length; whereAddNew++) {
         if (whereAddNew % 2 == 0) {
-            var news_li = document.createElement("li");
-            news_li.setAttribute.Id = NewsInCategory.Id;
             news_li.innerHTML = `
              <p>${NewsInCategory.title}</p>
              <img src="${NewsInCategory.img}" alt="photo">`
-            document.getElementById("related_news_menu_left").appendChild(news_li);
+            document.getElementById("related_news_menu_left").appendChild(NewsLi);
         } else {
-            var news_li = document.createElement("li");
-            news_li.setAttribute.Id = NewsInCategory.Id;
-            news_li.innerHTML = `
+            NewsLi.innerHTML = `
              <p>${NewsInCategory.title}</p>
              <img src="${NewsInCategory.img}" alt="photo">`
-            document.getElementById("related_news_menu_right").appendChild(news_li);
+            document.getElementById("related_news_menu_right").appendChild(NewsLi);
         }
     }
 }
