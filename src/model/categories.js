@@ -3,9 +3,12 @@
  *
  *     This file is part of the NNN website.
  *
- *     Authors: Amir Altakroori
+ *     Authors:
+ *     Amir Altakroori
+ *     ibrahim abusamarah
  *
- *     File description: File description: java script code for main section and right sidebar 
+ *     File description:
+ *     java script code for main section and right sidebar
  *     in category page for normal user view.
  */
 
@@ -47,9 +50,9 @@ function getDataNewsList() {
 }
 
 /*
-    search in database to find the news which has the same recived id 
+    search in database to find the news which has the same recived id
     and returned it
-    just work on tested data  
+    just work on tested data
 
     @tparam id: integer
 
@@ -70,10 +73,10 @@ function getNewsById(newsId) {
 
 /*
     Fill right sidebar div in category page from the news which bring from data base by id
-    
+
     @tparam divId: string, newsId: integer
 
-    @param divId: the identifier of the div which should be filled, 
+    @param divId: the identifier of the div which should be filled,
     newsId: the identifier of the news which is needed to be filled in div which it's id is recived
 
     @returns
@@ -85,7 +88,7 @@ function fillNewsDivRightSidebar(divId, newsId) {
     //get the selected news by identifier from the data base
     let selectedNews = getNewsById(newsId);
 
-    //assume that we get news's image path by function 
+    //assume that we get news's image path by function
     selectedDiv.getElementsByTagName("img")[0].setAttribute("src", selectedNews.attachments);
     selectedDiv.getElementsByTagName("img")[0].setAttribute("alt", "news image");
 
@@ -96,13 +99,13 @@ function fillNewsDivRightSidebar(divId, newsId) {
 }
 
 /*
-    To make the recived text does not exceed the recived number of characters and replace 
+    To make the recived text does not exceed the recived number of characters and replace
     the overflowed characters with "..."
 
     @tparam text: string, numberOfMaxChar: integer
 
     @param text: recived text which is needed to be reduced,
-    numberOfMaxChar: number of maximum characters in the text 
+    numberOfMaxChar: number of maximum characters in the text
 
     @returns: reduced text
 
@@ -117,7 +120,7 @@ function reduceTextChar(text, numberOfMaxChar) {
 
 /*
     Fill main section div in category page from the news which bring from data base by id
-    
+
     @tparam newsId: integer
 
     @param newsId: the identifier of the news which is needed to be filled in div which it's id is recived
@@ -130,7 +133,7 @@ function fillNewsDivMainSection(newsId) {
     //get the selected news by identifier from the data base
     let selectedNews = getNewsById(newsId);
 
-    //assume that we get news's image path by function 
+    //assume that we get news's image path by function
     document.getElementById("main_news_image").setAttribute("src", selectedNews.attachments);
 
     // fill news title
@@ -144,8 +147,8 @@ function fillNewsDivMainSection(newsId) {
 }
 
 /*
-    search in database to find the most three recent news 
-    and it returned the indexes of them from the most resent  
+    search in database to find the most three recent news
+    and it returned the indexes of them from the most resent
 
     @tparam:
 
@@ -196,4 +199,28 @@ function initialFillPage() {
 
     //fill main news from the most recent news is first news in mostRecentNewsList
     showNewsInMainSectionFromDiv(mostRecentNewsList[0]);
+}
+
+/*
+    get data from database
+    @tparam
+
+    @param
+
+    @returns
+
+    This function used to get the Related news category  retrieved from database
+*/
+function getRelatedCategoryNews() {
+    newsInCategory = [{
+            "Id": "1",
+            "title": "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق5555555",
+            "img": "img/new.jpg"
+        },
+        {
+            "Id": "2",
+            "title": "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق5555555",
+            "img": "img/new.jpg"
+        }
+    ];
 }
