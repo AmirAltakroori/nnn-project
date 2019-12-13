@@ -176,7 +176,7 @@ function searchByNews() {
 //read news functions 
 
 
-function findcat(id) {
+function findCat(id) {
     for (let j = 0; j < categories.length; j++) {
         if (categories[j].id == id)
             return categories[j].name;
@@ -204,7 +204,7 @@ function displaynews(news) {
         categoery.className = "user_full";
         let cat_text = document.createElement("span");
         cat_text.className = "user_name";
-        cat_text.textContent = findcat(news[i].categoryId);
+        cat_text.textContent = findCat(news[i].categoryId);
         categoery.appendChild(cat_text);
 
         let stat = document.createElement("td");
@@ -224,7 +224,7 @@ function displaynews(news) {
 
         let edit_icon = document.createElement("i");
         edit_icon.className = "far fa-edit icon color-blue";
-        edit_icon.addEventListener("click", (e) => { updateNews(news[i].id) });
+        edit_icon.setAttribute("onclick", `updateNews(${news[i].id}) `);
         operations.appendChild(delete_icon);
         operations.appendChild(edit_icon);
 
