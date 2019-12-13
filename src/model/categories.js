@@ -24,7 +24,7 @@ function getDataNewsList() {
         },
         {
             id: 2,
-            title: "الاسبوع الثامن: انتصارات للامعري وبلاطة والسموع",
+            title: "الاسبوع الثامن: انتصارات للامع65465655446465464646565465464ري وبلاطة والسموع",
             content: "القدس- معا- دائرة الاعلام بالاتحاد- وصلت مباريات الأسبوع الثامن من دوري المحترفين الى نهايتها ، بعد ان جرت مساء السبت 7/12/2019 ثلاث مباريات كانت كالتالي :الامعري واد النيص",
             writer: "not amir altakroori",
             date: "14/12/2019",
@@ -187,6 +187,7 @@ function showNewsInMainSectionFromDiv(position) {
     @returns:
 */
 function initialFillPage() {
+    relatedCategoryNews();
     //get ids of most recent news to fill them in right sidebar
     let mostRecentNewsList = getIdsOFMostThreeRecentNews();
 
@@ -211,16 +212,53 @@ function initialFillPage() {
 
     This function used to get the Related news category  retrieved from database
 */
-function getRelatedCategoryNews() {
-    newsInCategory = [{
+function getDataNewsListrelated() {
+    return newsInCategory = [{
             "Id": "1",
-            "title": "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق5555555",
-            "img": "img/new.jpg"
+            "title": "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+            "img": "images/new.jpg"
         },
         {
             "Id": "2",
-            "title": "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق5555555",
-            "img": "img/new.jpg"
+            "title": "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+            "img": "images/new.jpg"
+        },
+        {
+            "Id": "3",
+            "title": "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+            "img": "images/new.jpg"
+        },
+        {
+            "Id": "4",
+            "title": "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+            "img": "images/new.jpg"
+        },
+        {
+            "Id": "5",
+            "title": "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+            "img": "images/new.jpg"
         }
     ];
+}
+
+function relatedCategoryNews() {
+
+    let newsInCategory = getDataNewsListrelated();
+    for (let whereAddNew = 0; whereAddNew < Object.keys(newsInCategory).length; whereAddNew++) {
+        let newsLi = document.createElement("li");
+        newsLi.setAttribute.Id = newsInCategory[whereAddNew].Id;
+        if (whereAddNew % 2 == 0) {
+            newsLi.innerHTML = `
+            <img src="${newsInCategory[whereAddNew].img}" alt="photo">
+             <p>${newsInCategory[whereAddNew].title}</p>
+             `
+            document.getElementById("related_news_menu_left").appendChild(newsLi);
+        } else {
+            newsLi.innerHTML = `
+            <img src="${newsInCategory[whereAddNew].img}" alt="photo">
+             <p>${newsInCategory[whereAddNew].title}</p>
+            `
+            document.getElementById("related_news_menu_right").appendChild(newsLi);
+        }
+    }
 }

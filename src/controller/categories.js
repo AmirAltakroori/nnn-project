@@ -20,24 +20,25 @@
 
     This function used to show  the Related category News retrieved from database
 */
-
+import { getDataNewsListrelated } from '../model/categories';
 
 function relatedCategoryNews() {
 
-    //TODO load realted categories from DataBase.
-
+    let newsInCategory = getDataNewsListrelated();
     for (let whereAddNew = 0; whereAddNew < Object.keys(newsInCategory).length; whereAddNew++) {
         let newsLi = document.createElement("li");
         newsLi.setAttribute.Id = newsInCategory[whereAddNew].Id;
         if (whereAddNew % 2 == 0) {
             newsLi.innerHTML = `
+            <img src="${newsInCategory[whereAddNew].img}" alt="photo">
              <p>${newsInCategory[whereAddNew].title}</p>
-             <img src="${newsInCategory[whereAddNew].img}" alt="photo">`
+             `
             document.getElementById("related_news_menu_left").appendChild(newsLi);
         } else {
             newsLi.innerHTML = `
+            <img src="${newsInCategory[whereAddNew].img}" alt="photo">
              <p>${newsInCategory[whereAddNew].title}</p>
-             <img src="${newsInCategory[whereAddNew].img}" alt="photo">`
+            `
             document.getElementById("related_news_menu_right").appendChild(newsLi);
         }
     }
