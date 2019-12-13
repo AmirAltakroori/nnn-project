@@ -9,12 +9,6 @@
     in category page for normal user view.
 */
 
-* {
-    padding: 0%;
-    margin: 0%;
-    direction: rtl;
-}
-
 $margin_sections: 1.66%;
 $right_sidebar_width: 25% - $margin_sections;
 $main_title_width: 55%;
@@ -30,6 +24,11 @@ $font_color_rightbar: #ffffff;
 $font_size_rightbar: 17px;
 body {
     .main_category_section {
+        * {
+            padding: 0%;
+            margin: 0%;
+            direction: rtl;
+        }
         margin: auto;
         margin-top: 100px;
         height: 211px;
