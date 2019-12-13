@@ -211,6 +211,7 @@ function displayCategories(categories) {
         let operations = document.createElement("td");
         let delete_icon = document.createElement("i");
         delete_icon.className = "fas fa-trash-alt delete_user";
+        delete_icon.setAttribute('onclick', "show(this,'delete'," + categories[i].id + ")");
 
         let edit_icon = document.createElement("i");
         edit_icon.className = "far fa-edit icon color-blue";
@@ -228,4 +229,32 @@ function displayCategories(categories) {
 
         table.appendChild(row);
     }
+}
+/**************************************************** */
+//delete categories
+
+let newContain;
+let newId;
+
+function show(row, modelId, id) {
+    let element = document.getElementById(modelId)
+    element.className += " modal-active";
+    newContain = row;
+    newId = id;
+}
+
+function hide(modelId) {
+    let element = document.getElementById(modelId)
+    element.classList.remove("modal-active");
+
+}
+
+function deleteRowElement() {
+
+    let row = categoriesPage.findIndex((row) => row.id == newId);
+    categoriesPage.splice(row, 1);
+    let rowDOM = newContain.parentNode.parentNode;
+    rowDOM.parentElement.removeChild(rowDOM);
+
+
 }
