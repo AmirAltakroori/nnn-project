@@ -16,104 +16,70 @@
 
 @include initialFormat();
 
-.rendom-news-container{
-     width: 1084px;
-     margin: auto;
+.random-news {
+    width: 1448px;
+    height: 280px;
+    margin: auto;
+    .rendom-news-container{
+         .slider-news-tile {
 
-     .firstNews {
+              @extend %allNews;
+              .news{
 
-          @extend %allNews;
-          .news{
-
-               @extend %news;
-          }
-
-
-          .date{
-
-               @extend %newsDate;
-          }
-
-          .images img {
-
-               @extend %arrow;
-               float: right;
-          }
+                  position: relative;
+                  bottom: -100px;
+                   @extend %news;
+              }
 
 
+              .date{
 
+                   @extend %newsDate;
+              }
+
+            }
+
+    }
+    .imagesNext {
+        float: left;
+        position: relative;
+        left: 58px;
+        top: 110px;
+        border: 2px solid #00000000;
+        img {
+
+          @extend %sliderArrow;
+          float: left;
+          margin-left: $arrow-margin;
+      }
+    }
+
+    .imagesPrev {
+        float: right;
+        position: relative;
+        right: 30px;
+        top: 110px;
+        border: 2px solid #00000000;
+        img {
+
+          @extend %sliderArrow;
+          float: right;
+          margin-right: $arrow-margin;
         }
-
-        .secondNews{
-
-          @extend %allNews;
-          .news{
-
-               @extend %news;
-          }
-
-
-          .date{
-
-               @extend %newsDate;
-
-          }
-
-
-
-
-
-   }
-
-   .thirdNews{
-
-     @extend %allNews;
-     .news{
-
-          @extend %news;
      }
 
-
-     .date{
-
-          @extend %newsDate;
+     .imagesNext:hover, .imagesPrev:hover {
+         border: 2px solid #184392;
      }
-
-   }
-
-
-   .fourthNews{
-
-     @extend %allNews;
-     .news{
-
-          @extend %news;
-     }
-
-
-     .date{
-
-          @extend %newsDate;
-     }
-
-   }
-
-   .imagesNext img {
-
-     @extend %arrow;
-     float: left;
-     margin-left: $arrow-margin;
-   }
-
-   .imagesPrev img {
-
-     @extend %arrow;
-     float: right;
-     margin-right: $arrow-margin;
-   }
 
 }
 
+
+%sliderArrow {
+    width: $arrow-width;
+    height: $arrow-height;
+    margin: 2px;
+}
 
 %newsDate {
 
@@ -132,7 +98,7 @@
      float: $newsImage-float;
      width: $newsImage-width;
      height: $newsImages-height;
-     background-size: 265px 160px;
+     background-size: 446px 250px;
      margin-left: $newsImage-margin;
 
 }
