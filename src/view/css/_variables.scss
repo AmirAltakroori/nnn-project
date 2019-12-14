@@ -4,6 +4,60 @@
      This file is part of the NNN website.
 
      Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
+     Suhair Shareef <suhairshareef1999@gmail.com>
 
      File description:
+     this variable special for slider design
 */
+$arrow-width:18px;
+$arrow-height:28px;
+$newsImage-width:446px;
+$newsImages-height:250px;
+$newsImage-margin:15PX;
+$newsImage-float:right;
+$newsText-align:center;
+$newsText-fontFamily:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$newsText-fontSize:18px;
+$newsText-color:white;
+$arrow-margin-top:-130px;
+$arrow-margin :10px;
+$tab-padding:10px;
+
+$font-color:black;
+$main-color:#0C4D6D;
+$font-size:20px;
+$button-font-color:white;
+$button-font-size:18px;
+$website-background:white;
+
+$colors: (
+
+     websiteColor:  #D63031,
+     borderColor: #e7e7e7,
+     textColor: #000000,
+     whiteColor: #FFFFFF,
+     blueColor:#0C4D6D
+
+);
+
+$fonts: (
+
+     websiteFont: Segoe UI
+
+);
+
+$buttons: (
+
+     login: #0C4D6D,
+     addComment: #EBEDED
+
+);
+
+$heights: (
+
+     headerHeight: 173px,
+     navbarHeight: 96px,
+     urgentHeight: 77px
+
+);
