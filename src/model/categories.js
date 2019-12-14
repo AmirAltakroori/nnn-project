@@ -20,7 +20,7 @@ function getDataNewsList() {
             content: "ككوالالمبور - معا- الناطق الاعلامي تامر عبيدات- يلاقي ناديامثلوالالمبور - معا- الناطق الاعلامي تامر عبيدات- يلاقي ناديامثلين",
             writer: "amir altakroori",
             date: "14/12/2010",
-            attachments: "images/1.jpeg"
+            attachments: "img/1.jpeg"
         },
         {
             id: 2,
@@ -28,7 +28,7 @@ function getDataNewsList() {
             content: "القدس- معا- دائرة الاعلام بالاتحاد- وصلت مباريات الأسبوع الثامن من دوري المحترفين الى نهايتها ، بعد ان جرت مساء السبت 7/12/2019 ثلاث مباريات كانت كالتالي :الامعري واد النيص",
             writer: "not amir altakroori",
             date: "14/12/2019",
-            attachments: "images/2.jpeg"
+            attachments: "img/2.jpeg"
         },
         {
             id: 3,
@@ -36,7 +36,7 @@ function getDataNewsList() {
             content: "وتابعت الاعلامية المتميزة نعمه خضر، التي تفضل العمل بعيدا عن الشهرة والصخب الاعلامي، انها تعشق نادي شباب الخليل لدرجة لا توصف، واكدت انها لا تتصور الدوري الفلسطيني بدون نادي شباب الخليل، ووصفته بفاكهة الرياضة الفلسطينية، واعتبرت (نعمه خضر) جماهير شباب الخليل الأوسع والأمتع على مستوى الوطن،",
             writer: "ali tamimi",
             date: "14/1/2015",
-            attachments: "images/3.jpeg"
+            attachments: "img/3.jpeg"
         },
         {
             id: 4,
@@ -44,7 +44,7 @@ function getDataNewsList() {
             content: "تالق فرسان يطا وضغط بشكل كبير خاصة في الشوط الاول واضاع العديد من الفرص لينتهي الشوط الاول بدون اهداف.",
             writer: "mohammad tamimi",
             date: "14/1/2017",
-            attachments: "images/4.jpeg"
+            attachments: "img/4.jpeg"
         }
     ];
 }
@@ -216,27 +216,27 @@ function getDataNewsListrelated() {
     return newsInCategory = [{
             "Id": "1",
             "title": "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
-            "img": "images/new.jpg"
+            "img": "img/new.jpg"
         },
         {
             "Id": "2",
             "title": "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
-            "img": "images/new.jpg"
+            "img": "img/new.jpg"
         },
         {
             "Id": "3",
             "title": "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
-            "img": "images/new.jpg"
+            "img": "img/new.jpg"
         },
         {
             "Id": "4",
             "title": "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
-            "img": "images/new.jpg"
+            "img": "img/new.jpg"
         },
         {
             "Id": "5",
             "title": "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
-            "img": "images/new.jpg"
+            "img": "img/new.jpg"
         }
     ];
 }
