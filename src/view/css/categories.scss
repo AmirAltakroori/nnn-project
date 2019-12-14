@@ -4,6 +4,232 @@
      This file is part of the NNN website.
 
      Authors:
+     diana mujahed
+     Amir Altakroori
+     ibrahimabusamrah
 
      File description:
+     this is the style css code for the category page
 */
+
+
+$margin_sections: 1.66%;
+$right_sidebar_width: 25% - $margin_sections;
+$main_title_width: 55%;
+$font_size_main_title: 28px;
+$font_color_main_title:#4D4F5C;
+$font_size_main_details: 20px;
+$font_color_main_details: #707070;
+$font_size_main_wrting: 14px;
+$font_color_main_see_more: #0C4D6D;
+$font_size_main_see_more: 20px;
+$font_color_main_wrting: #919192;
+$font_color_rightbar: #ffffff;
+$font_size_rightbar: 17px;
+
+
+//TODO use real size of component.
+//TODO refactoring code.
+
+*{
+    direction: rtl;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+   box-sizing: border-box;
+}
+
+body {
+    .main_category_section {
+        * {
+            padding: 0%;
+            margin: 0%;
+        }
+        margin: auto;
+        height: 550px;
+        width: 861px;
+        .right_sidebar {
+            float: right;
+            width: $right_sidebar_width;
+            .news_list {
+                .news {
+                    position: relative;
+                    margin-bottom: 6%;
+                    img {
+                        width: 100%;
+                    }
+                    p {
+                        color: $font_color_rightbar;
+                        font-size: $font_size_rightbar;
+                        position: absolute;
+                        bottom: 0;
+                        padding: 3%;
+                        word-wrap: break-word;
+                    }
+                }
+            }
+        }
+        .main_section {
+            float: left;
+            width: 100% - $right_sidebar_width - $margin_sections;
+            margin-right: $margin_sections;
+            position: relative;
+            .main_news {
+                width: 100%;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+                #writng_details,
+                .see_more {
+                    margin-left: 3%;
+                }
+                .details {
+                    margin: 1%;
+                    overflow: hidden;
+                    h3 {
+                        float: right;
+                        font-size: $font_color_main_title;
+                        color: $font_color_main_title;
+                        width: $main_title_width;
+                        word-wrap: break-word;
+                    }
+                    #writng_details {
+                        direction: ltr;
+                        width: 95% - $main_title_width;
+                        float: left;
+                        * {
+                            display: inline;
+                            margin-right: 3%;
+                            color: $font_color_main_wrting;
+                            word-wrap: break-word;
+                        }
+                        #writer,
+                        #date {
+                            font-size: $font_size_main_wrting;
+                        }
+                        img {
+                            width: 7%;
+                        }
+                    }
+                }
+                p {
+                    margin: 3% 1% 0 3%;
+                    font-size: $font_size_main_details;
+                    color: $font_color_main_details;
+                }
+                #see_more {
+                    float: left;
+                    width: 30%;
+                    direction: ltr;
+                    * {
+                        display: inline;
+                        color: $font_color_main_see_more;
+                    }
+                    img {
+                        width: 7%;
+                    }
+                    p {
+                        font-size: $font_size_main_see_more;
+                    }
+                }
+            }
+        }
+    }
+}
+
+body .relates_news {
+    margin: auto;
+    height: 300px;
+    width: 861px;
+
+    .related_news_left {
+        float: right;
+        width: 50%;
+        overflow-y: scroll;
+        height: 125%;
+
+        #related_news_menu_left {
+            padding: 0px;
+        }
+
+        ul li {
+           display: flex;
+           justify-content: flex-start;
+           align-items: flex-start;
+           flex-direction: row;
+           width: 100%;
+           list-style-type: none;
+
+           img {
+               width: 140px;
+               margin-left: 10px;
+               padding: 10px;
+           }
+       }
+    }
+
+    .related_new_right ul li img {
+        width: 140px;
+        margin-left: 10px;
+        padding-top: 5%;
+    }
+
+}
+
+.category-view-container{
+     display: flex;
+     justify-content: space-between;
+}
+
+.title{
+     color: #0C4D6D;
+     margin: 3px;
+ }
+.card{
+     display: flex;
+    margin: 5px 0 5px 5px;
+    align-items: center;
+
+}
+.right-col {
+    width: auto;
+    position: relative;
+    right: 50px;
+    top: 30px;
+}
+.left-col{
+    width: auto;
+    position: relative;
+    left: 50px;
+    ul {
+         padding: 0%;
+         border-top:2px solid #cccccc;
+         padding-top: 20px;
+    }
+}
+.random-new{
+    font-size: 13px;
+    a{
+        text-decoration: none;
+        width: 170px;
+    }
+    img{
+        width:120px;
+        height: 70px;
+        margin-left: 10px;
+
+    }
+    p{
+
+    }
+
+}
+.category-view-name{
+    color: #0C4D6D;
+    padding-right: 50px;
+    padding-top: 20px;
+
+}
