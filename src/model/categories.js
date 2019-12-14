@@ -4,6 +4,7 @@
  *     This file is part of the NNN website.
  *
  *     Authors:
+ *     Qusai Hroub <qusaihroub.r@gmail.com>
  *     Amir Altakroori
  *     ibrahim abusamarah
  *
@@ -11,6 +12,16 @@
  *     java script code for main section and right sidebar
  *     in category page for normal user view.
  */
+
+ class Categories {
+     constructor() {
+         this.id;
+         this.name;
+         this.isActive;
+         this.createDate;
+         this.userId;
+     }
+ }
 
 // just a test news data
 function getDataNewsList() {
