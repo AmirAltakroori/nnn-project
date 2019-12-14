@@ -33,28 +33,28 @@ function getmainNews () {
                     path: "#",
                     authorName: "أسيل عرفه",
                     publishedDate: "12/12/2019",
-                    img:"images/firstNews.jpg",
+                    img:"imge/firstNews.jpg",
                     description:"بسم الله الرحمن الرحيم ... هذا وصف الخبر "
                   }, {
                     title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
                     path: "#",
                     authorName: "أسيل عرفه",
                     publishedDate: "12/12/2019",
-                    img:"images/firstNews.jpg",
+                    img:"img/firstNews.jpg",
                     description:""
                   }, {
                     title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
                     path: "#",
                     authorName: "أسيل عرفه",
                     publishedDate: "12/12/2019",
-                    img:"images/firstNews.jpg",
+                    img:"img/firstNews.jpg",
                     description:""
                   }, {
                     title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
                     path: "#",
                     authorName: "أسيل عرفه",
                     publishedDate: "12/12/2019",
-                    img:"images/firstNews.jpg",
+                    img:"img/firstNews.jpg",
                     description:""
                   }];
 
@@ -86,7 +86,7 @@ function showmainNews () {
                                 </div>
                                 <div class="latest-news-more-detailed-date">
                                     <p>${mainNews[0].authorName}</p>
-                                    <img src="images/calenderIcon.png" width="15px" height="15px">
+                                    <img src="img/calenderIcon.png" width="15px" height="15px">
                                     <p>${mainNews[0].publishedDate}</p>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@ function showmainNews () {
                                 <p>${mainNews[0].description}</p>
                             </div>
                             <div class="latest-news-more-detailed-readmore-button">
-                                <img src="images/arrowIcon.png" width="17px" height="17px">
+                                <img src="img/arrowIcon.png" width="17px" height="17px">
                                 <p>اقرأ المزيد</p>
                             </div>`;
         mainNewDiv.innerHTML += currentMainNew;
@@ -104,7 +104,7 @@ function showmainNews () {
     mainNewsDiv.innerHTML="";
     for (let i = 1; i < mainNews.length; i++) {
 
-        let currentMainNew = `<div id="news${i}">
+        let currentMainNew = `<div class="news" id="news${i}">
                                 <img src="${mainNews[i].img}" width="170px" height="90px">
                                 <p>${mainNews[0].title}</p>
                               </div>`;

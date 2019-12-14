@@ -7,8 +7,10 @@
      Rahmeh Tartouri <rahmeh.tartouri@gmail.com>
      Suhair Shareef <suhairshareef1999@gmail.com>
 
+     Rahmeh Tartouri <rahmeh.tartouri@gmail.com>
+
      File description:
-     This file contains the syles for the parts that are in common in all pages of the website including navbar and the catergories items in the navbar
+     this file for slider design
 */
 
 @import './variables';
@@ -16,10 +18,126 @@
 
 @include initialFormat();
 
+
+.latest-news {
+    display: flex;
+    width: 1448px;
+    margin: auto;
+    padding-top: 20px;
+    .latest-news-container {
+         width: 1080px;
+         margin: auto;
+         height: 500px;
+
+         .latest-news-list-header {
+
+             float:right;
+             border-bottom: 1px solid #707070;
+             width: 400px;
+
+             p{
+                 float:right;
+                 color:#0C4D6D;
+                 font-size: larger;
+                 margin-bottom: -0.1px;
+             }
+         }
+
+         #latest-news-list{
+             float: right;
+             margin-top:60px;
+             margin-right: -400px;
+
+             .news{
+
+                 margin-bottom: 12px;
+
+                 p {
+
+                     float: left;
+                     margin-right: 7px;
+                     color: #707070;
+                     font-size:17px;
+                 }
+             }
+         }
+    }
+    .latest-news-more-detailed-container {
+
+        .latest-news-more-detailed-image-div  {
+            img{
+                margin-top:15px;
+                margin-left: 10px;
+            }
+         }
+
+         .latest-news-more-detailed-title-and-date {
+             display: flex;
+
+             .latest-news-more-detailed-title{
+
+                 float: right;
+                 margin-right: 460px;
+                 color:#4D4F5C ;
+                 margin-top:-5px;
+             }
+
+             .latest-news-more-detailed-paragraph {
+
+                 float: right;
+                 margin-right: 450px;
+                 color: #707070;
+                 margin-top: -24px;
+                 font-size: 18px;
+             }
+
+             .latest-news-more-detailed-date{
+                 margin-left: 8px;
+             }
+
+             .latest-news-more-detailed-date{
+
+                 p{
+                     float: left;
+                     font-size: 14px;
+                     color: #919192;
+
+                 }
+                 img {
+
+                     float: left;
+                     margin-top: 16px;
+                     margin-left: 8px;
+                     margin-right: 8px;
+
+                 }
+             }
+         }
+     }
+}
+
+
+
+.latest-news-more-detailed-readmore-button {
+     margin-top: 50px;
+     p{
+          float: left;
+          margin-top: -2px;
+          margin-left: 2px;
+          color: #0C4D6D;
+          font-size: 17px;
+     }
+     img{
+          float: left;
+     }
+}
+
 .random-news {
     width: 1448px;
     height: 280px;
     margin: auto;
+    padding-top: 80px;
+
     .rendom-news-container{
          .slider-news-tile {
 
@@ -280,5 +398,4 @@ body{
             height: 110px;
         }
     }
-
 }
