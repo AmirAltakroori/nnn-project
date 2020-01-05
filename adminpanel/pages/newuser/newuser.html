@@ -8,90 +8,85 @@
 
     <script src="./../../fontawesome/all.min.js"></script>
     <link rel="stylesheet" href="./../../fontawesome/all.min.css">
-    <link rel="stylesheet" type="text/css" href="./../../css/global.css" />
+    <link rel="stylesheet" href="./../../css/global.css">
     <link rel="stylesheet" type="text/css" href="./css/newuser.css">
     <title>Home</title>
 </head>
 
 <body>
 
-    
-        <div class=" main-header header-flex-container space-between item-center">
-                <div class="header-logo">
-                    <img src="./../../img/logo.png" alt="logo" href="index.html">
-                </div>
-                <div class="header-left-section">
-    
-    
-                    <div class="header-inline-block">
-                        <li class="fas fa-user"></li>
-                        وليد الجعبة
-    
-                    </div>
-                    <div class="header-inline-block">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </div>
-    
-            </div>
-            <div class="row header-subheader ">
-                <div>
-                    الرئيسية > لوحة التحكم >المستخدمين > إنشاء مستخدم
-                </div>
-            </div>
-        </header>
+
     <div class="head">
         <div class=" head-title">إنشاء مستخدم </div>
         <hr>
     </div>
+    
     <div class="user-info">
+      <form name="Form" id="adduserid" method="post">  
         <div class="contain">
           
                 <div class="field">
-                    <div class="first-name">الاسم الأول</div>
+                    <div class="first-name" >الاسم الأول</div>
                     <div class="input-field">
-                        <input class="fname" type="name" required>
+                        <input class="fname" type="text" name="fname" id="Fname" required>
                     </div>
                 </div>
                 <div class="field">
                     <div class="last-name">الاسم الثاني</div>
                     <div class="input-field">
-                        <input class="lname" type="name" required>
+                        <input class="lname" type="text" name="lname" id="Lname"  required>
                     </div>
                 </div>
 
                 <div class="field">
                     <div class="name-of-user">اسم المستخدم</div>
                     <div class="input-field">
-                        <input class="name-user" type="name" required>
+                        <input class="name-user" type="text" name="username" id="Uname"  required>
                     </div>
                 </div>
                 <div class="field">
                     <div class="email-name">الإيميل</div>
                     <div class="input-field">
-                        <input class="email" type="email" required unique>
+                        <input class="email" type="email" name="email" id="Email"  required unique>
                     </div>
                 </div>
                 <div class="field">
                     <div class="pass-name">كلمة المرور</div>
                     <div class="input-field">
-                        <input class="password" type="password" required>
+                        <input class="password" minlength="8" type="password" name="psw" id="pass" required>
                     </div>
                 </div>
                 <div class="field">
                     <div class="conpass-name">تأكيد كلمة المرور</div>
                     <div class="input-field">
-                        <input class="conpassword" type="password" required>
+                        <input class="conpassword" type="password" name="conpsw" id="ConfirmPass" required>
                     </div>
                 </div>
+            
                 <div>
-                        <button class="create-new-user">إنشاء مستخدم</button>
-
+                    <button class="create-new-user"  type="submit" onclick="show('delete')">إنشاء مستخدم</button>
                 </div>
+        </div>
+     </form>   
+    </div>
+     
+    <div class="modal-delete" id="delete">
+            <div class="modal-wrapper">
+                <div class="contain">
+                    <p>تم انشاء المستخدم بنجاح</p>   
+                </div>
+            </div>
+    </div>
+
+    <div class="modal-delete" id="warn">
+        <div class="modal-wrapper">
+            <div class="contain">
+                <p>يجب التأكيد على كلمة المرور بالشكل الصحيح</p>
+            </div>
         </div>
     </div>
 
-    </div>
+    <script src="js/createuser.js"></script>
 </body>
 
 </html>
