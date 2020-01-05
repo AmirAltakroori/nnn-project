@@ -29,6 +29,29 @@ let usersPage = [{
     id:4,
 }];
 
+document.addEventListener("DOMContentLoaded", (event) => {
+    let userdata = JSON.parse(sessionStorage.getItem("userData"));
+    if (userdata != null) {
+        usersPage[userdata.ind] = userdata;
+        sessionStorage.removeItem("userData");
+    }
+});
+
+function updateUsers(id) {
+    let aim = null;
+    for (ind in usersPage)
+        if (usersPage[ind].id == id) {
+            aim = usersPage[ind];
+            aim["ind"] = ind;
+            break;
+        }
+        
+    sessionStorage.setItem("userData", JSON.stringify(aim));
+    window.location.href = "../newuser/updateuser.html";
+
+}
+
+
 let newContain,newId=0;
 function show(row,modelId, id) {
     let element = document.getElementById(modelId)
@@ -75,6 +98,7 @@ function searchByUserName() {
 
 function displayusers(users) {
     usersPage = users;
+
     let table = document.getElementById("rows"); 
     for (let i = 0; i < users.length; i++) {
         let row = document.createElement("tr"); //create number of rows by using DOM
@@ -138,7 +162,7 @@ function displayusers(users) {
 
         let edit_icon = document.createElement("i");
         edit_icon.className = "far fa-edit icon color-blue";
-
+        edit_icon.setAttribute("onclick", `updateUsers(${users[i].id}) `);
 
         operations.appendChild(delete_icon);
         operations.appendChild(edit_icon);

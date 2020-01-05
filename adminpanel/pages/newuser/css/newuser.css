@@ -77,4 +77,8 @@ html, body {
 .create-new-user:hover {
   background-color: #9eeabc;
 }
+
+#submit-form {
+  margin-top: -150px;
+}
 /*# sourceMappingURL=newuser.css.map */
