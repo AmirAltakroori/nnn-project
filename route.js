@@ -1,4 +1,4 @@
-let root = document.getElementById('root');
+﻿let root = document.getElementById('root');
 let $path, $routeParams = {}, $currentRoute = {};
 let routeList = [
     {
@@ -59,26 +59,6 @@ function analyzeUrl() {
     }
 }
 
-function loadDoc(path, viewElement) {
-    var xmlhttp;
-
-    //To be compatible with different browsers
-    if (window.XMLHttpRequest) {
-        xmlhttp = new XMLHttpRequest();
-    }
-    else {
-        xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
-    }
-
-    xmlhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            viewElement.innerHTML = this.responseText;
-        }
-    };
-
-    xmlhttp.open('GET', path, true);
-    xmlhttp.send();
-}
 
 // Routing function
 function sendTo(path) {
@@ -98,6 +78,50 @@ function execOnChange() {
 
 window.onhashchange = function () {
     execOnChange();
+}
+
+    
+async function dynamicImport(path)
+{
+    const moduleSpecifier = path;
+    const module = await import(moduleSpecifier);
+    return module;
+}
+
+async function loadDoc(path)
+{
+    let promise = new Promise((resolve,reject) =>
+    {
+        let xmlhttp;
+        //To be compatible with different browsers
+        if (window.XMLHttpRequest) 
+            xmlhttp = new XMLHttpRequest();
+        else 
+            xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+        
+
+        xmlhttp.onreadystatechange = function()
+        {
+            if (this.readyState == 4 && this.status == 200) 
+                resolve(this.responseText);
+            
+        };
+        xmlhttp.open('GET',path, true);
+        xmlhttp.send();
+    });
+
+    return await promise;
+}
+
+async function loadMvc(templatePath,controllerPath)
+{
+    let template;
+    let controller;
+
+    template = await loadDoc(templatePath);
+    controller = await dynamicImport(controllerPath);
+
+    return Promise.resolve({template,controller});
 }
 
 execOnChange();
