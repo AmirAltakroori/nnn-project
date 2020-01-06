@@ -109,10 +109,13 @@ body {
             transition: all 0.2s;
             outline: none;
             cursor: pointer;
+            .icon {
+                font-size: 80px;
+            }
         }
         .home-shadow-icon {
             position: absolute;
-            font-size: 90px;
+            font-size: 80px;
             top: 0;
             left: 0;
             bottom: 0;
