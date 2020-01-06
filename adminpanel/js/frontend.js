@@ -7,3 +7,31 @@
 // Function's names must be lowCamelCase 
 // Don't delete this comments
 // By Waleed Jubeh
+
+
+//delete a row in a table
+function deleteRowElement(Page) {
+
+    let row = Page.findIndex((row) => row.id == newId);
+    Page.splice(row, 1);
+    let rowDOM = newContain.parentNode.parentNode;
+    rowDOM.parentElement.removeChild(rowDOM);
+
+
+}
+
+
+let newContain;
+let newId;
+function show(row, modelId, id) {
+    let element = document.getElementById(modelId)
+    element.className += " modal-active";
+    newContain = row;
+    newId = id;
+}
+
+function hide(modelId) {
+    let element = document.getElementById(modelId)
+    element.classList.remove("modal-active");
+
+}

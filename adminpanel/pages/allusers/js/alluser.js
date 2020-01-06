@@ -29,30 +29,6 @@ let usersPage = [{
     id:4,
 }];
 
-let newContain,newId=0;
-function show(row,modelId, id) {
-    let element = document.getElementById(modelId)
-    element.className += " modal-active";
-    newContain = row;
-    newId = id;
-}
-
-function hide(modelId) {
-    let element = document.getElementById(modelId)
-    element.classList.remove("modal-active");
-
-}
-
-function deleteRowElement() {
-
-    let row = usersPage.findIndex((row) => row.id == newId);
-    usersPage.splice(row, 1);
-    let rowDOM = newContain.parentNode.parentNode;
-    rowDOM.parentElement.removeChild(rowDOM);
-
-
-}
-
 function searchByUserName() {
     let input, filter, rows, tr, name, i, txtValue;
     input = document.getElementById("userinput");

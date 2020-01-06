@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             </select>
         </td>
         <td>
-            <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer"></i>
+            <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer" onclick="show(this,'delete',${categoriesPage.id})"></i>
             <i class="far fa-edit icon color-blue" onclick="showEditModal('createcategory-edit-modal',this,${categoriesPage.length+1})"></i>
         </td>
       </tr>`;
@@ -114,8 +114,6 @@ function hideModal(modalId) {
  * This function create to filter a categories when the user search
  */
 
-
-
 const searchByCategory = () => {
     let filter = document.getElementById('search').value.toUpperCase();
     let content = document.getElementById('content');
@@ -156,13 +154,6 @@ function hideModal(modalId) {
 
 }
 
-// TODO 
-/*
-  Write a function for update the name. updateName() down
-  You have the entire row (tr) object stored in activeRow variable
-  You have the id of the current object , see the variable categories above
-  You need to get the object that match his id with activeId , hint use categories.find()
-*/
 function updateCategoryName() {
     let newName = document.getElementById("editcategoryname").value;
     categoriesPage.find(({ id }) => id === activeId).name = newName;
@@ -229,32 +220,4 @@ function displayCategories(categories) {
 
         table.appendChild(row);
     }
-}
-/**************************************************** */
-//delete categories
-
-let newContain;
-let newId;
-
-function show(row, modelId, id) {
-    let element = document.getElementById(modelId)
-    element.className += " modal-active";
-    newContain = row;
-    newId = id;
-}
-
-function hide(modelId) {
-    let element = document.getElementById(modelId)
-    element.classList.remove("modal-active");
-
-}
-
-function deleteRowElement() {
-
-    let row = categoriesPage.findIndex((row) => row.id == newId);
-    categoriesPage.splice(row, 1);
-    let rowDOM = newContain.parentNode.parentNode;
-    rowDOM.parentElement.removeChild(rowDOM);
-
-
 }

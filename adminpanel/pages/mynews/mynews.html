@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/mynews.css">
     <script src="./../../fontawesome/all.min.js"></script>
     <script src="./js/mynews.js"></script>
+    <script  src="./../../js/frontend.js"></script>
 
     <title>أخباري</title>
 </head>
@@ -80,7 +81,7 @@
             <div class="contain">
                 <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
                 <div class="modal-button">
-                    <button class="modal-button button1" onclick="deleteRowElement(); hide('delete');">نعم</button>
+                    <button class="modal-button button1" onclick="deleteRowElement(newsPage); hide('delete');">نعم</button>
                     <button class="modal-button button2" onclick="hide('delete')">لا</button>
                 </div>
             </div>

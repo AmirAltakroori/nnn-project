@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="./../../fontawesome/all.min.js"></script>
-  <script src="./js/alluser.js"></script>
+  <script  src="./js/alluser.js"></script>
+  <script  src="./../../js/frontend.js"></script>
   <link rel="stylesheet" href="../../fontawesome/all.min.css" />
   <link rel="stylesheet" href="./../../css/global.css" />
 
@@ -132,7 +133,7 @@
         <p>هل أنت متأكد من إزالة هذا اليوزر  ؟</p>
         <p style="font-size: small;font-weight: 700;">سيتم حذف جميع أخباره</p>
         <div class="modal-button">
-          <button class="modal-button button1" onclick="deleteRowElement(); hide('delete');">نعم</button>
+          <button class="modal-button button1" onclick="deleteRowElement(usersPage); hide('delete');">نعم</button>
           <button class="modal-button button2" onclick="hide('delete')">لا</button>
         </div>
       </div>
