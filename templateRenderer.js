@@ -1,6 +1,34 @@
 let $scope = {};
 let $bindedVars = new Map();
 
+$scope.news = [
+    {
+        id: 1,
+        name: 'Joe',
+        major: 'Computer Science'
+    },
+    {
+        id: 2,
+        name: 'Yousef',
+        major: 'Graphic Designer'
+    },
+    {
+        id: 1,
+        name: 'Meo',
+        major: 'Computer Science'
+    },
+    {
+        id: 2,
+        name: 'Natsh',
+        major: 'Graphic Designer'
+    },
+    {
+        id: 1,
+        name: 'Meo',
+        major: 'Computer Science'
+    }
+]
+
 // classes
 // holds data required to a special atributes
 class AttrData {
@@ -26,10 +54,16 @@ function renderIf(exp, element) {
 
 }
 
-function renderFor(exp, element) {
-    let arr = exp.split('of')[1].trim();
-    let array = eval(arr);
-    element.parentElement.innerHTML += element.outerHTML.repeat(array.length);
+async function renderFor(exp, element) {
+    let subArr = exp.split('of')[0].trim();
+    let arrName = exp.split('of')[1].trim();
+    let array = eval('$scope.'+arrName);
+    let clonnedElement = element.cloneNode(true).innerHTML;
+    for (let i = 0; i < array.length; i++) {
+        if(i) element.innerHTML += clonnedElement;
+        let bVars = await collectBindedVariables(element, ['$' + subArr + '.', '$' + arrName + '[' + i + ']' + '.']);
+        await $apply(bVars);
+    }
 }
 
 function renderDisabled(exp, element) {
@@ -75,32 +109,53 @@ function collectCustomAttributes(doc) {
 }
 
 // executes {{exp}} using data of a model
-function replaceElement(attrString, model) {
-    let value = attrString.replace('$', "$scope.");
+function replaceElement(variable, text) {
+    let value = variable.replace('$', "$scope.");
     value = eval(value);
-    if (!value) return model.replace("{{" + attrString + "}}", "");
-    let res = model.replace("{{" + attrString + "}}", value);
+    if (!value) return text.replace("{{" + variable + "}}", "");
+    let res = text.replace("{{" + variable + "}}", value);
     return res;
 }
 
 // Collects all the binded variables {{var}} in an array with their elements
-function collectBindedVariables(doc) {
-    let regExp = /\{\{([^}^}]+)\}\}/g;
-    doc.childNodes.forEach(element => {
-        if (text = element.innerText) {
-            let matches = text.match(regExp);
-            matches.forEach(str => {
-                let variable = str.substring(2, str.length - 2).trim();
-                if (!$bindedVars.get(variable)) $bindedVars.set(variable, [{ element: element, text: element.innerText }]);
-                else $bindedVars.set(variable, [...$bindedVars.get(variable), { element: element, text: element.innerText }]);
-            });
-        }
-    });
+function collectBindedVariables(doc, replace = []) {
+    let bindedVars = new Map();
+    bindedVars = getBindedVariables(bindedVars, doc, replace);
+    doc.querySelectorAll('*').forEach(element => {
+        bindedVars = getBindedVariables(bindedVars, element, replace);
+    })
+    return bindedVars;
 }
 
+function getBindedVariables(bindedVars, element, replace = []) {
+    let regExp = /\{\{([^}^}]+)\}\}/g;
+    let text = [].reduce.call(element.childNodes, function(a, b) {
+        return a + (b.nodeType === 3 ? b.textContent : '');
+    }, '').trim();
+    if(text){
+        let matches = text.match(regExp);
+        if(matches) {
+            matches.forEach(str => {
+                let variable = str.substring(2, str.length - 2).trim();
+                let newVariable = variable;
+                if(replace.length != 0) {
+                    newVariable = variable.replace(replace[0], replace[1]);
+                }
+                if (!bindedVars.get(newVariable)) bindedVars.set(newVariable, [{ element: element, text: element.innerText.replace(variable, newVariable) }]);
+                else bindedVars.set(newVariable, [...bindedVars.get(newVariable), { element: element, text: element.innerText.replace(variable, newVariable) }]);
+            });
+        }
+    }
+    return bindedVars;
+}
+
+let title = "New 1";
+$scope.name = "Yousef";
+$scope.age = 15;
+
 // Replace the binded variable with its real value in html
-function $apply(vars = []) {
-    $bindedVars.forEach(async (elements, variable) => {
+function $apply(arr) {
+    arr.forEach(async (elements, variable) => {
         await elements.forEach(elem => {
             elem.element.innerText = elem.text;
         });

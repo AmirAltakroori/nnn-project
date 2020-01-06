@@ -9,16 +9,34 @@
 <body>
     
     <header>Static header</header>
+    <div id="root">
+        <div class="container">
+            <h1 $if="!disabled">Home 1</h1>
+            Container
+            <h2>{{$title}}</h2>
+            <table>
+                <ul>
+                    <p>hi</p>
+                    <span $for="n of news">
+                        <ul>
+                            <li>Hello {{$n.name}}</li>
+                            <li>{{$n.major}}</li>
+                        </ul>
+                        <hr>
+                    </span>
+                    <p>{{$title}}</p>
+                    <h1>Hello {{$name}}, you are {{$age}} old</h1>
+                </ul>
+            </table>
+        </div>
+    </div>
     
-    <div id="root"></div>
     
+
     <footer>Static footer</footer>
 
     <script src="templateRenderer.js"></script>
     <script src="route.js"></script>
-    <script src="controllers/admin.js"></script>
-    <script src="controllers/home.js"></script>
-    <script src="controllers/home1.js"></script>
-    <script src="controllers/home2.js"></script>
+    <script id="controller" src=""></script>
 </body>
 </html>
