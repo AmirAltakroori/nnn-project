@@ -20,7 +20,7 @@ function deleteRowElement(Page) {
 
 }
 
-
+//show and hide functions for delete modal
 let newContain;
 let newId;
 function show(row, modelId, id) {
