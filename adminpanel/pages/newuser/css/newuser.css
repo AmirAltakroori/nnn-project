@@ -2,8 +2,7 @@ html,
 body {
   height: 100%;
   margin: 0;
-  padding: 0;
-  background: url("../background.jpg"); }
+  padding: 0; }
 
 .all {
   display: flex;
@@ -21,6 +20,8 @@ body {
   flex-direction: column;
   text-align: -webkit-center;
   justify-content: space-between;
+  box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.5);
+  background-color: white;
   position: relative;
   min-width: 600px;
   background-color: #ffffff;
@@ -30,6 +31,7 @@ body {
     padding: 10px; }
 
 input {
+  color: #333;
   width: 50%;
   height: 40px;
   padding: 2px;
@@ -49,7 +51,8 @@ input {
   min-height: 60px;
   text-align: center;
   margin-bottom: -1px;
-  font-family: Calibri Light; }
+  font-family: Calibri Light;
+  color: white; }
 
 .create-new-user:hover {
   background-color: #04642a; }
