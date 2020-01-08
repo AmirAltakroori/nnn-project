@@ -2,9 +2,9 @@
 // If your style is specific for a page you have to  create a sass file for the page and add them in it.
 // If your style is specific please use this way when naming : pagename-classname
 $header_color: #36344D;
-$sub-header:#eee;
+$sub-header:white;
 $path_color: #cec9c9;
-$title-color:#6e6a9a;
+$title-color:#333333;
 $font: "Segoe UI";
 $light_light_gray: #f9f9f9;
 $success-color: #27ae60;
@@ -17,13 +17,11 @@ $modal-font-color: rgba(0, 0, 0, 0.7);
     font-family: $font;
 }
 
-body {
-    margin: 0;
-}
-
 html,
 body {
     height: 100%;
+    margin: 0;
+    background: #eee;
 }
 
 .main-header {
