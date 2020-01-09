@@ -67,7 +67,13 @@ async function renderFor(exp, element) {
 }
 
 function renderDisabled(exp, element) {
-
+    exp = exp.replace(/\$/g, "$scope.");
+    let result = eval(exp);
+    if(result) {
+        element.disabled = true;
+    } else {
+        element.disabled = false;
+    }
 }
 
 function renderStyle(exp, element) {
@@ -152,6 +158,7 @@ function getBindedVariables(bindedVars, element, replace = []) {
 let title = "New 1";
 $scope.name = "Yousef";
 $scope.age = 15;
+$scope.disabled = true;
 
 // Replace the binded variable with its real value in html
 function $apply(arr) {
