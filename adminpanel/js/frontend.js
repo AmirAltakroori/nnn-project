@@ -8,7 +8,12 @@
 // Don't delete this comments
 // By Waleed Jubeh
 
-
+/*
+    This is a function for general searching used in multiple pages 
+    It used in category page tot search based on it's name, used in
+    all users page to search based on user name and used in all news
+    page to search based on news category name 
+*/
 function searchElement(columnIndex) {
     let searchInput, searchText, table, tableBody, tr, i, td, span, category;
 
@@ -26,7 +31,7 @@ function searchElement(columnIndex) {
         // get element searched for from each element in table
         td = tr[i].getElementsByTagName('td')[columnIndex];
         span = td.getElementsByTagName('span')[0];
-        serachedElement = span.childNodes[0].nodeValue;
+        searchedElement = span.childNodes[0].nodeValue;
 
         //check if the element contain search text and filter the result
         if (searchedElement.indexOf(searchText) > -1)
