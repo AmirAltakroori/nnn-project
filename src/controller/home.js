@@ -5,6 +5,7 @@
 
      Authors:
      Aseel Arafeh <arafehaseel@gmail.com>
+     Qusai Hroub <qusaihroub.r@gmail.com>
 
      File description:
 */
@@ -33,7 +34,7 @@ function getmainNews () {
                     path: "#",
                     authorName: "أسيل عرفه",
                     publishedDate: "12/12/2019",
-                    img:"imge/firstNews.jpg",
+                    img:"img/firstNews.jpg",
                     description:"بسم الله الرحمن الرحيم ... هذا وصف الخبر "
                   }, {
                     title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
