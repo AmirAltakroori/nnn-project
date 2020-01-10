@@ -45,22 +45,13 @@ input {
   background-color: #06953f;
   cursor: pointer;
   border: 1px #06953f;
+  min-width: 200px;
   min-height: 60px;
   text-align: center;
   margin-bottom: -1px;
   font-family: Calibri Light;
-  color: white;
-  width: 100%; }
+  color: white; }
 
-.flex-box-35 {
-  flex-basis: 45%; }
-
-@media only screen and (max-width: 768px) {
-  .flex-box-35 {
-    flex-basis: 70%; }
-
-  .contain div {
-    padding: 10px; } }
 .create-new-user:hover {
   background-color: #04642a; }
 
