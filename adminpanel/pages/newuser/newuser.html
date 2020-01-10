@@ -7,14 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <script src="./../../fontawesome/all.min.js"></script>
+    <script src="js/createuser.js"></script>
+
     <link rel="stylesheet" href="./../../fontawesome/all.min.css">
-    <link rel="stylesheet" type="text/css" href="./../../css/global.css" />
+    <link rel="stylesheet" href="./../../css/global.css">
     <link rel="stylesheet" type="text/css" href="./css/newuser.css">
     <title>Home</title>
 
 </head>
 
 <body>
+
     <div class=" main-header header-flex-container space-between item-center">
         <div class="header-logo">
             <img src="./../../img/logo.png" alt="logo" href="index.html">
@@ -35,22 +38,38 @@
         </div>
     </div>
     </header>
+    <div class="head">
+        <div class=" head-title">إنشاء مستخدم </div>
+        <hr>
+    </div>
+    <div class="popup success" id='success'>
+        تم انشاء كلمة الحساب
+    </div>
+    <div class="popup warning" id='warning'>
+        كلمتا المرور غير متطابقة
+    </div>
+
     <div class="all">
-        <form class='flex-box-35'>
+        <form name="Form" id="adduserid" method="post" class='flex-box-35'>
             <div class="contain">
                 <div>
                     <h1>إنشاء مستخدم</h1>
                 </div>
-                <div><input class="fname" placeholder="الاسم الأول" type="name" required></div>
-                <div><input class="lname" placeholder="الاسم الثاني" type="name" required></div>
-                <div><input class="name-user" placeholder="اسم المستخدم" type="name" required></div>
-                <div><input class="email" placeholder="الإيميل" type="email" required unique></div>
-                <div><input class="password" placeholder="كلمة المرور" type="password" required></div>
-                <div><input class="conpassword" placeholder="تأكيد كلمة المرور" type="password" required></div>
-                <div class='newuser-row' style="padding:0"><button class="create-new-user"> إنشاء مستخدم جديد</button></div>
+                <div><input class="fname" type="text" name="fname" id="Fname" placeholder="الأسم الأول" required></div>
+                <div><input class="lname" type="text" name="lname" id="Lname" placeholder="الاسم الثاني" required></div>
+                <div><input class="name-user" type="text" name="username" id="Uname" placeholder="اسم المستخدم" required></div>
+                <div><input class="email" type="email" name="email" id="Email" placeholder="البريد الالكتروني" required unique></div>
+                <div><input class="password" minlength="8" type="password" name="psw" id="pass" placeholder='كلمة المرور' required></div>
+                <div><input class="conpassword" type="password" name="conpsw" id="ConfirmPass" placeholder="اعادة كلمة المرور" required></div>
+                <div class='newuser-row' style="padding:0">
+                    <button class="create-new-user" type="submit" onclick="show('delete')"> إنشاء مستخدم جديد</button>
+
+                </div>
+            </div>
         </form>
-        </div>
     </div>
+
+
 </body>
 
 </html>
