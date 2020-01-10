@@ -27,8 +27,6 @@ body {
   border-radius: 3%; }
   .contain div {
     padding: 10px; }
-  .contain > * {
-    flex-basis: calc(100% / 8); }
 
 input {
   color: #333;
@@ -59,5 +57,8 @@ input {
 
 ::placeholder {
   font-size: 20px; }
+
+.newuser-row {
+  width: 100%; }
 
 /*# sourceMappingURL=newuser.css.map */

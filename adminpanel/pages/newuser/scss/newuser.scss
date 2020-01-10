@@ -34,9 +34,7 @@ body {
         padding: 10px;
     }
     position: relative;
-    min-width: 600px;
     background-color: $background-color;
-    height: 600PX;
     border-radius: 3%;
 }
 
@@ -58,12 +56,25 @@ input {
     background-color: $create-button-color;
     cursor: pointer;
     border: 1px $create-button-color;
-    min-width: 200px;
     min-height: 60px;
     text-align: center;
     margin-bottom: -1px;
     font-family: Calibri Light;
-    color: $button-color
+    color: $button-color;
+    width: 100%;
+}
+
+.flex-box-35 {
+    flex-basis: 45%;
+}
+
+@media only screen and (max-width:768px) {
+    .flex-box-35 {
+        flex-basis: 70%;
+    }
+    .contain div {
+        padding: 10px;
+    }
 }
 
 .create-new-user:hover {
@@ -72,4 +83,8 @@ input {
 
 ::placeholder {
     font-size: 20px;
+}
+
+.newuser-row {
+    width: 100%;
 }
