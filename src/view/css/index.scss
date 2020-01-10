@@ -15,9 +15,62 @@
 
 @include initialFormat();
 
+@media screen and (max-height: 1080px) {
+    .logo-img{
+
+        height: 110px;
+    }
+
+    .footer {
+
+        .footer-right {
+
+            img {
+                height: 110px;
+            }
+        }
+    }
+}
+
+@media screen and (max-height: 810px) {
+    .logo-img{
+
+        height: 82.5px;
+    }
+
+    .footer {
+
+        .footer-right {
+
+            img {
+                height: 82.5px;
+            }
+        }
+    }
+}
+
+@media screen and (max-height: 768px) {
+    .logo-img{
+
+        height: 78.2222px;
+    }
+
+    .footer {
+
+        .footer-right {
+
+            img {
+                height: 78.2222px;
+            }
+        }
+    }
+}
+
 body{
 
     width: 100%;
+    min-width: 1368px;
+    min-height: 768px;
 
     .root{
 
@@ -25,11 +78,15 @@ body{
         @include positioning (absolute, 0, auto, auto, auto);
         background-color: $website-background;
 
+        min-width: 1368px;
+        min-height: 768px;
+
         .header{
 
             z-index: 1;
             background-color: white;
             min-height: 87.65px;
+            min-width: 1368px;
 
             @include flexFunction(center, center, 100%, 13.658%, row);
             @include positioning (fixed, 0, auto, auto, auto);
@@ -50,7 +107,6 @@ body{
 
                         @include positioning (relative, 5px, auto, auto, 1.042%);
                         resize: both;
-                        height: 110px;
                         overflow: hidden;
                     }
 
@@ -81,7 +137,7 @@ body{
                         .active {
 
                             border-block-start: solid 5px $main-color;
-                            font-weight: 450;
+                            //font-weight: bold;
                         }
 
                         ul{
@@ -187,7 +243,6 @@ body{
         position: fixed;
         img {
             float: right;
-            height: 110px;
         }
     }
 }
