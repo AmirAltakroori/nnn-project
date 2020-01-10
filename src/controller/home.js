@@ -154,3 +154,31 @@ function showDivs(index) {
         newsTileList[i].style.display = "block";
     }
 }
+
+/*
+ *    show random news on random news container.
+ *
+ *    @tparam index: array of News.
+ *
+ *    @param randomNews is list of news selected randomly.
+ *
+ *    @returns
+ */
+function showRandomNews(randomNews) {
+
+    const rendomNewsContainer = document.getElementById('rendom-news-container');
+
+    rendomNewsContainer.innerHTML="";
+
+    for (let i = 0; i < randomNews.length; i++) {
+
+        let randomNewsTile = `<div class="slider-news-tile" style="background-image: url(${randomNews[i].img});">
+                                <div class="date">${randomNews[i].publishedDate}</div>
+                                <div class="news">
+                                    ${randomNews[i].title}
+                                </div>
+                            </div>`;
+        rendomNewsContainer.innerHTML += randomNewsTile;
+
+    }
+}
