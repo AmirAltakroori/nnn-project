@@ -16,6 +16,19 @@
 
 @include initialFormat();
 
+@media screen and (max-height: 1080px) {
+
+}
+
+@media screen and (max-height: 810px) {
+
+}
+
+@media screen and (max-height: 768px) {
+
+}
+
+
 .latest-news {
     display: flex;
     width: 1448px;

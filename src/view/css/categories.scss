@@ -31,6 +31,18 @@ $font_size_rightbar: 17px;
 //TODO use real size of component.
 //TODO refactoring code.
 
+@media screen and (max-height: 1080px) {
+
+}
+
+@media screen and (max-height: 810px) {
+
+}
+
+@media screen and (max-height: 768px) {
+
+}
+
 *{
     direction: rtl;
     box-sizing: border-box;
