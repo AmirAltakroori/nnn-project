@@ -14,6 +14,30 @@
 
 @include initialFormat();
 
+@media screen and (max-height: 1080px) {
+
+    #urgent-container {
+        font-size: 28px;
+    }    
+    
+}
+
+@media screen and (max-height: 810px) {
+    
+    #urgent-container {
+        font-size: 21px;
+    } 
+
+}
+
+@media screen and (max-height: 768px) {
+    
+    #urgent-container {
+        font-size: 20px;
+    } 
+
+}
+
 #urgent-container {
 
     @include flexFunction (center, center, 100%, 41.356%, row);
@@ -21,13 +45,14 @@
     background-color: map-get($map: $colors, $key: websiteColor);
     color: map-get($map: $colors, $key: whiteColor);
     font-weight: bold;
-    font-size: 180%;
     min-height: 36.65px;
 
     div {
 
         @include flexFunction (center, center, 5%, auto, row);
-        padding-right: 5.21%;
+        padding-right: 4%;
+        padding-left: 4%;
+
     }
 
     #urgent-content {
