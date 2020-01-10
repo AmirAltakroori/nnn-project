@@ -102,33 +102,6 @@ function updateNews(id) {
     window.location.href = "../addnewspage/addnewpage.html";
 }
 
-
-let newContain;
-let newId;
-
-function show(row, modelId, id) {
-    let element = document.getElementById(modelId)
-    element.className += " modal-active";
-    newContain = row;
-    newId = id;
-}
-
-function hide(modelId) {
-    let element = document.getElementById(modelId)
-    element.classList.remove("modal-active");
-
-}
-
-function deleteRowElement() {
-
-    let row = newsPage.findIndex((row) => row.id == newId);
-    newsPage.splice(row, 1);
-    let rowDOM = newContain.parentNode.parentNode;
-    rowDOM.parentElement.removeChild(rowDOM);
-
-
-}
-
 function deleteNews(callback, key, rev, row) {
 
     let fullUrl = URL + "news/" + key + "?rev=" + rev;

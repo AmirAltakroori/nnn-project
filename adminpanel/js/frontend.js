@@ -8,6 +8,31 @@
 // Don't delete this comments
 // By Waleed Jubeh
 
+let newContain;
+let newId;
+//delete a row in a table
+function deleteRowElement(Page) {
+
+    let row = Page.findIndex((row) => row.id == newId);
+    Page.splice(row, 1);
+    let rowDOM = newContain.parentNode.parentNode;
+    rowDOM.parentElement.removeChild(rowDOM);
+
+
+}
+
+//show and hide functions for delete modal
+function show(row, modelId, id) {
+    let element = document.getElementById(modelId)
+    element.className += " modal-active";
+    newContain = row;
+    newId = id;
+}
+
+function hide(modelId) {
+    let element = document.getElementById(modelId)
+    element.classList.remove("modal-active");
+}
 /*
     This is a function for general searching used in multiple pages 
     It used in category page tot search based on it's name, used in
@@ -40,4 +65,4 @@ function searchElement(columnIndex) {
             tr[i].style.display = "none";
 
     }
-}
+};

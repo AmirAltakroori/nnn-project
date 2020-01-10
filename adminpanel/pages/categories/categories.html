@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../../fontawesome/all.min.css">
     <link rel="stylesheet" href="./../../css/global.css">
     <link rel="stylesheet" href="./css/categories.css">
-    <link rel="stylesheet" href="./sass/categories.css">
 
     <title>الفئات</title>
 </head>
@@ -131,12 +130,13 @@
             </form>
         </div>
     </div>
+    </div>
     <div class="modal-delete" id="delete">
         <div class="modal-wrapper">
             <div class="contain">
                 <p>هل أنت متأكد من إزالة هذه الفئة ؟</p>
                 <div class="modal-button">
-                    <button class="modal-button button1" onclick="deleteRowElement(); hide('delete');">نعم</button>
+                    <button class="modal-button button1" onclick="deleteRowElement(categoriesPage); hide('delete');">نعم</button>
                     <button class="modal-button button2" onclick="hide('delete')">لا</button>
                 </div>
             </div>
@@ -144,9 +144,6 @@
         </div>
 
     </div>
-    </div>
-</body>
-</div>
 </body>
 
 </html>
