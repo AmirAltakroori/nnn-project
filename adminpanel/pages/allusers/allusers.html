@@ -2,68 +2,76 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="./../../fontawesome/all.min.js"></script>
-  <script src="./js/alluser.js"></script>
-  <link rel="stylesheet" href="../../fontawesome/all.min.css" />
-  <link rel="stylesheet" href="./../../css/global.css" />
+    <<<<<<< HEAD <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./../../fontawesome/all.min.js"></script>
+    <script src="./js/alluser.js"></script>
+    <script src="./../../js/frontend.js"></script>
+    <link rel="stylesheet" href="../../fontawesome/all.min.css" />
+    <link rel="stylesheet" href="./../../css/global.css" /> =======
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./../../fontawesome/all.min.js"></script>
+    <script src="./js/alluser.js"></script>
+    <script src="./../../js/frontend.js"></script>
+    <link rel="stylesheet" href="../../fontawesome/all.min.css" />
+    <link rel="stylesheet" href="./../../css/global.css" /> >>>>>>> 2fc527c37a3c8b5a7c49b0cd5e2f84135caae6d5
 
-  <link rel="stylesheet" href="css/allusers.css" />
-  <title>جميع المستخدمين</title>
+    <link rel="stylesheet" href="css/allusers.css" />
+    <title>جميع المستخدمين</title>
 </head>
 
 <body>
-  <header>
-    <div class=" main-header header-flex-container space-between item-center">
-      <div class="header-logo">
-        <img src="./../../img/logo.png" alt="logo" href="index.html" />
-      </div>
-      <div class="header-left-section">
-        <div class="header-inline-block">
-          <li class="fas fa-user"></li>
-          وليد الجعبة
+    <header>
+        <div class=" main-header header-flex-container space-between item-center">
+            <div class="header-logo">
+                <img src="./../../img/logo.png" alt="logo" href="index.html" />
+            </div>
+            <div class="header-left-section">
+                <div class="header-inline-block">
+                    <li class="fas fa-user"></li>
+                    وليد الجعبة
+                </div>
+                <div class="header-inline-block">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
         </div>
-        <div class="header-inline-block">
-          <i class="fas fa-chevron-down"></i>
+        <div class="row header-subheader ">
+            <div>
+                الرئيسية > لوحة التحكم > المستخدمين > المستخدمين
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="row header-subheader ">
-      <div>
-      الرئيسية > لوحة التحكم > المستخدمين > المستخدمين
-      </div>
-    </div>
-  </header>
-  <div class="container">
-    <div class="content_header">
-      <div class="title">
-        <span class="title_text">جميع المستخدمين</span>
-      </div>
-      <div class="search_area">
-        <div class="search_word">
-          <span>البحث</span>
-        </div>
-        <div class="search">
-          <img class="search_icon" src="./../../img/search.png">
-          <input onkeyup="searchByUserName()" id="userinput" type="text" class="search_field" placeholder="ابحث هنا">
-        </div>
-      </div>
+    </header>
+    <div class="container">
+        <div class="content_header">
+            <div class="title">
+                <span class="title_text">جميع المستخدمين</span>
+            </div>
+            <div class="search_area">
+                <div class="search_word">
+                    <span>البحث</span>
+                </div>
+                <div class="search">
+                    <img class="search_icon" src="./../../img/search.png">
+                    <input onkeyup="searchElement(1)" id="search" type="text" class="search_field" placeholder="ابحث هنا">
+                </div>
+            </div>
 
-    </div>
-    <table class="content">
-      <thead>
-        <tr class="first_row">
-          <th>#</th>
-          <th>الاسم الكامل</th>
-          <th>الدور</th>
-          <th>الحالة</th>
-          <th>العمليات</th>
-        </tr>
-      </thead>
-      
-      <tbody id="rows">
-        <!--<tr class="user_info" id="1">
+        </div>
+        <table class="content">
+            <thead>
+                <tr class="first_row">
+                    <th>#</th>
+                    <th>الاسم الكامل</th>
+                    <th>الدور</th>
+                    <th>الحالة</th>
+                    <th>العمليات</th>
+                </tr>
+            </thead>
+
+            <tbody id="rows">
+                <!--<tr class="user_info" id="1">
           <td class="user_no">1</td>
           <td class="user_full">
             <span class="user_name">أحمد الحافظ</span>
@@ -123,23 +131,23 @@
           </td>
           <td ><i onclick="show(this,'delete',3)" class="fas fa-trash-alt delete_user"></i></td>
         </tr>-->
-      </tbody>
-    </table>
-  </div>
-  <div class="modal-delete" id="delete">
-    <div class="modal-wrapper">
-      <div class="contain">
-        <p>هل أنت متأكد من إزالة هذا اليوزر  ؟</p>
-        <p style="font-size: small;font-weight: 700;">سيتم حذف جميع أخباره</p>
-        <div class="modal-button">
-          <button class="modal-button button1" onclick="deleteRowElement(); hide('delete');">نعم</button>
-          <button class="modal-button button2" onclick="hide('delete')">لا</button>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-delete" id="delete">
+        <div class="modal-wrapper">
+            <div class="contain">
+                <p>هل أنت متأكد من إزالة هذا المستخدم ؟</p>
+                <p style="font-size: small;font-weight: 700;">سيتم حذف جميع أخباره</p>
+                <div class="modal-button">
+                    <button class="modal-button button1" onclick="deleteRowElement(); hide('delete');">نعم</button>
+                    <button class="modal-button button2" onclick="hide('delete')">لا</button>
+                </div>
+            </div>
         </div>
-      </div>
 
     </div>
-
-  </div>
 
 </body>
 
