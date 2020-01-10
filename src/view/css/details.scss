@@ -5,15 +5,27 @@
 
      Authors:Latifa Masri and Abed Al-Fattah Hroub
 
-     File description: this filew contain scss style of the detailes page 
+     File description: this filew contain scss style of the detailes page
 */
 
 // this line make import functions that exist in _function.css
 @import "_functions.scss";
 
 /*
-part1 contain the header of the new and the related news 
+part1 contain the header of the new and the related news
 */
+
+@media screen and (max-height: 1080px) {
+
+}
+
+@media screen and (max-height: 810px) {
+
+}
+
+@media screen and (max-height: 768px) {
+
+}
 
 $font-s:40px;
 .part_1 {
