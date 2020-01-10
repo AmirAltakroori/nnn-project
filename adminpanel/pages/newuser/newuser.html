@@ -11,86 +11,45 @@
     <link rel="stylesheet" type="text/css" href="./../../css/global.css" />
     <link rel="stylesheet" type="text/css" href="./css/newuser.css">
     <title>Home</title>
+
 </head>
 
 <body>
-
-    
-        <div class=" main-header header-flex-container space-between item-center">
-                <div class="header-logo">
-                    <img src="./../../img/logo.png" alt="logo" href="index.html">
-                </div>
-                <div class="header-left-section">
-    
-    
-                    <div class="header-inline-block">
-                        <li class="fas fa-user"></li>
-                        وليد الجعبة
-    
-                    </div>
-                    <div class="header-inline-block">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </div>
-    
+    <div class=" main-header header-flex-container space-between item-center">
+        <div class="header-logo">
+            <img src="./../../img/logo.png" alt="logo" href="index.html">
+        </div>
+        <div class="header-left-section">
+            <div class="header-inline-block">
+                <li class="fas fa-user"></li>
+                وليد الجعبة
             </div>
-            <div class="row header-subheader ">
-                <div>
-                    الرئيسية > لوحة التحكم >المستخدمين > إنشاء مستخدم
-                </div>
+            <div class="header-inline-block">
+                <i class="fas fa-chevron-down"></i>
             </div>
-        </header>
-    <div class="head">
-        <div class=" head-title">إنشاء مستخدم </div>
-        <hr>
-    </div>
-    <div class="user-info">
-        <div class="contain">
-          
-                <div class="field">
-                    <div class="first-name">الاسم الأول</div>
-                    <div class="input-field">
-                        <input class="fname" type="name" required>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="last-name">الاسم الثاني</div>
-                    <div class="input-field">
-                        <input class="lname" type="name" required>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <div class="name-of-user">اسم المستخدم</div>
-                    <div class="input-field">
-                        <input class="name-user" type="name" required>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="email-name">الإيميل</div>
-                    <div class="input-field">
-                        <input class="email" type="email" required unique>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="pass-name">كلمة المرور</div>
-                    <div class="input-field">
-                        <input class="password" type="password" required>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="conpass-name">تأكيد كلمة المرور</div>
-                    <div class="input-field">
-                        <input class="conpassword" type="password" required>
-                    </div>
-                </div>
-                <div>
-                        <button class="create-new-user">إنشاء مستخدم</button>
-
-                </div>
         </div>
     </div>
-
+    <div class="row header-subheader ">
+        <div>
+            الرئيسية > لوحة التحكم >المستخدمين > إنشاء مستخدم
+        </div>
+    </div>
+    </header>
+    <div class="all">
+        <form class='flex-box-35'>
+            <div class="contain">
+                <div>
+                    <h1>إنشاء مستخدم</h1>
+                </div>
+                <div><input class="fname" placeholder="الاسم الأول" type="name" required></div>
+                <div><input class="lname" placeholder="الاسم الثاني" type="name" required></div>
+                <div><input class="name-user" placeholder="اسم المستخدم" type="name" required></div>
+                <div><input class="email" placeholder="الإيميل" type="email" required unique></div>
+                <div><input class="password" placeholder="كلمة المرور" type="password" required></div>
+                <div><input class="conpassword" placeholder="تأكيد كلمة المرور" type="password" required></div>
+                <div class='newuser-row' style="padding:0"><button class="create-new-user"> إنشاء مستخدم جديد</button></div>
+        </form>
+        </div>
     </div>
 </body>
 

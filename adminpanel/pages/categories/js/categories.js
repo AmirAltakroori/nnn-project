@@ -21,14 +21,6 @@ let categoriesPage = [{
 ]
 document.addEventListener('DOMContentLoaded', function(e) {
     displayCategories(categoriesPage);
-
-    let form = document.getElementById('category-modal-form');
-    form.addEventListener('submit', (e) => {
-
-        updateCategoryName();
-        e.preventDefault();
-        return false;
-    });
     //Get the modal that opens when click on "إضافة فئة"
     let modal = document.getElementById("createcategory-modal");
     //Get the button that opens the modal
@@ -56,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
         let categoryName = document.getElementById("categoryname").value;
         let tr = document.createElement('tr');
         let row = `
-      <tr class="user_info">
         <td class="user_no" >${tbody.childElementCount+1}</td>
         <td class="user_full">
             <span class="user_name" style="font-size:18px">` + categoryName + `</span>
@@ -70,9 +61,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
         <td>
             <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer" onclick="show(this,'delete',${categoriesPage.id})"></i>
             <i class="far fa-edit icon color-blue" onclick="showEditModal('createcategory-edit-modal',this,${categoriesPage.length+1})"></i>
-        </td>
-      </tr>`;
+        </td>`;
         tr.innerHTML = row;
+        tr.className = 'user_info';
         tbody.appendChild(tr);
         hideModal(modal.id);
         // to database
@@ -110,32 +101,6 @@ function showModal(modalId) {
 function hideModal(modalId) {
     document.getElementById(modalId).style.display = "none";
 }
-/**
- * This function create to filter a categories when the user search
- */
-
-const searchByCategory = () => {
-    let filter = document.getElementById('search').value.toUpperCase();
-    let content = document.getElementById('content');
-    let tr = content.getElementsByTagName('tr');
-
-    for (let i = 0; i < tr.length; i++) {
-        let td = tr[i].getElementsByTagName('td')[1];
-
-        if (td) {
-            let textValue = td.textContent || td.innerHTML;
-
-            if (textValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
-
-
-    }
-}
-
 let activeId = 0;
 let activeRow = null;
 
