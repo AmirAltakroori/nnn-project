@@ -1,4 +1,4 @@
-class Model2
+export class Model
 {
     constructor()
     {

@@ -73,7 +73,6 @@ export async function loadMvc(templatePath,controllerPath)
     
     template = await loadDoc(templatePath);
     controller = await dynamicImport(controllerPath);
- 
-    return Promise.resolve(template,controller);
+    return Promise.resolve({template,controller});
 }
 

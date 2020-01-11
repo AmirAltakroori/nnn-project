@@ -226,14 +226,9 @@ export function render(view,model)
 {
     let specials = specialTags(view);
     
-     // testing
-     model = {};
-     model.x  = true ;
-     model.items = [5,10];
-     model.arr2d = [[10],[21,10]];
-
-     // testing end
-     $scope = model;
+    
+    $scope = model;
+    console.log(model);
     specials.forEach(element => element.render(element.exp,element.element));
     
     findReplace(view);
