@@ -5,3 +5,10 @@
 // Function's names must be lowCamelCase 
 // Don't delete this comments
 // By Waleed Jubeh
+function getData(storeName) {
+    return JSON.parse(sessionStorage.getItem("userData"));
+}
+
+function saveData(storeName, data) {
+    sessionStorage.setItem(storeName, JSON.stringify(data));
+}

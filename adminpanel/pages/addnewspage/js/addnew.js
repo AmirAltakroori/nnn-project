@@ -2,13 +2,6 @@ let newsList = [];
 let newsImage = "";
 const idSelector = (id) => { return document.getElementById(id) };
 
-function getData(storeName) {
-    return JSON.parse(sessionStorage.getItem("userData"));
-}
-
-function saveData(storeName, data) {
-    sessionStorage.setItem(storeName, JSON.stringify(data));
-}
 
 function setScheduleTime() {
     let createField = idSelector('createDate');
