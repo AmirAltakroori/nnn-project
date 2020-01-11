@@ -27,6 +27,7 @@
 
      .news {
 
+
         p{
             margin-top: 30px;
         }
@@ -47,6 +48,18 @@
     
     
     
+        img {
+
+            width: 220px;
+            height: 140px;
+        }
+     
+
+     .latest-news-more-detailed-paragraph {
+        margin-top: 45px;
+        
+    }
+    
 }
 
 @media screen and (max-height: 810px) {
@@ -60,6 +73,7 @@
 
      .news {
 
+
         p{
             margin-top: 25px;
         }
@@ -68,11 +82,22 @@
 
             width: 130.5px;
             height: 72.75px;
+        img {
+
+            width: 200px;
+            height: 120px;
+
         }
      }
 
      .latest-news-more-detailed-paragraph {
+
         margin-top: 14px;
+        
+    }
+
+
+        margin-top: 43px;
         
     }
 
@@ -89,6 +114,7 @@
 
      .news {
 
+
         p{
             margin-top: 20px;
         }
@@ -97,14 +123,27 @@
 
             width: 123.975px;
             height: 68.977777778px;
+
+        img {
+
+            width: 170px;
+            height: 90px;
+
         }
      }
 
      
      .latest-news-more-detailed-paragraph {
+
         margin-top: 10px;
         
     }
+
+        margin-top: 14px;
+        
+    }
+
+
 }
 
 .latest-news {
