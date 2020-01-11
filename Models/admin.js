@@ -2,7 +2,7 @@ export class Model
 {
     constructor()
     {
-        this.Message = "hello";
+        this.UserName = "hello";
     }
 }
 

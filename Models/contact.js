@@ -1,13 +1,15 @@
-import { $apply } from '../templateRenderer.js';
-export class Model
-{
-    constructor()
-    {
+export class Model {
+    constructor() {
+        // Import the $apply function
+        let $apply = import("../templateRenderer.js")
+            .then(res => {
+                $apply = res.$apply;
+            });
+            
         this.FirstName = "hello";
         setTimeout(() => {
-            this.FirstName = "hi";
+            this.FirstName = "JAJAJJAJ";
             $apply();
-        }, 1000)
+        }, 1000);
     }
 }
-

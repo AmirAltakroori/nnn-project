@@ -78,10 +78,10 @@ class Mvc
 
 let routeList = [
     {
-        url: "/contact",
-        template: "/Views/contact.html",
-        controller: "/Models/contact.js",
-        title: "صفحة المشرف"
+        url: "/home",
+        template: "/Views/home.html",
+        controller: "/Models/home.js",
+        title: "شبكة الوحدة الإخبارية"
     },
     {
         url: "/admin",
@@ -90,10 +90,10 @@ let routeList = [
         title: "صفحة المشرف"
     },
     {
-        url: "/home",
-        template: "/Views/home.html",
-        controller: "/Models/home.js",
-        title: "شبكة الوحدة الإخبارية"
+        url: "/contact",
+        template: "/Views/contact.html",
+        controller: "/Models/contact.js",
+        title: "صفحة المشرف"
     },
     {
         url: "/home/:id",
