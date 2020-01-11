@@ -1,24 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+<html>
+    <head>
+        <title>MVC Project</title>
+        <script type="module" src="jsMvc.js"></script>
+    </head>
+    <body>
+        <div class="NavLinkContainer">
+            <a class="NavLink" href="index.html#/home">Home</a>&nbsp;
     
-    <header>Static header</header>
-    
-    <div id="root"></div>
-    
-    <footer>Static footer</footer>
+            <a class="NavLink" href="index.html#/contact">Contact</a>&nbsp;
 
-    <script src="templateRenderer.js"></script>
-    <script src="route.js"></script>
-    <script src="controllers/admin.js"></script>
-    <script src="controllers/home.js"></script>
-    <script src="controllers/home1.js"></script>
-    <script src="controllers/home2.js"></script>
-</body>
+            <a class="NavLink" href="index.html#/admin">Admin</a>&nbsp;
+        </div>
+
+        <h3>View</h3>
+        <div view></div>
+    </body>
 </html>
