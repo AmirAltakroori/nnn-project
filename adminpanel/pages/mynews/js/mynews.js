@@ -91,5 +91,5 @@ function displaynews(news) {
 
 document.addEventListener("DOMContentLoaded", (event) => {
 
-    displaynews(newsPage);
+    displaynews(myNewsPage);
 });
