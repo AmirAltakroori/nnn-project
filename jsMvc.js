@@ -58,10 +58,10 @@ class Mvc
         document.title = routeObj.title;
         
         loadMvc(routeObj.$currentRoute.template,routeObj.$currentRoute.controller).then(
-            (obb) =>
+            (obj) =>
             {
-                viewElement.innerHTML = obb.template;
-                let temp = render(viewElement,new obb.controller[Object.keys(obb.controller)[0]]);
+                viewElement.innerHTML = obj.template;
+                let temp = render(viewElement,new obj.controller[Object.keys(obj.controller)[0]]);
                 viewElement.innerHTML = temp.innerHTML;
             }
         );
@@ -79,6 +79,12 @@ class Mvc
 let routeList = [
     {
         url: "/contact",
+        template: "/Views/contact.html",
+        controller: "/Models/contact.js",
+        title: "صفحة المشرف"
+    },
+    {
+        url: "/admin",
         template: "/Views/admin.html",
         controller: "/Models/admin.js",
         title: "صفحة المشرف"

@@ -1,4 +1,6 @@
 let $scope = {};
+let $bindedVars = new Map();
+let viewElement = document.querySelector('[view]');
 
 // classes
 // holds data required to a special atributes
@@ -172,32 +174,48 @@ function replaceElement(attrString)
     return value;
 }
 
-// Collects all the binded variables {{var}} in an array with their elements
-function collectBindedVariables(doc) {
-    let regExp = /\{\{([^}^}]+)\}\}/g;
-    doc.childNodes.forEach(element => {
-        if(text = element.innerText) {
-            let matches = text.match(regExp);
-            matches.forEach(str => {
-                let variable = str.substring(2, str.length - 2).trim();
-                if(!$bindedVars.get(variable)) $bindedVars.set(variable, [{element: element, text: element.innerText}]);
-                else $bindedVars.set(variable, [...$bindedVars.get(variable), {element: element, text: element.innerText}]);
-            });
-        }
-    });
+// executes {{exp}} using data of a model
+function replaceValue(variable, text) {
+    let value = variable.replace('$', "$scope.");
+    value = eval(value);
+    if (!value) return text.replace("{{" + variable + "}}", "");
+    let res = text.replace("{{" + variable + "}}", value);
+    return res;
 }
 
+// Collects all the binded variables {{var}} in an array with their elements
+function getBindedVariables(bindedVars, element, replace = []) {
+    let regExp = /\{\{([^}^}]+)\}\}/g;
+    let text = [].reduce.call(element.childNodes, function(a, b) {
+        return a + (b.nodeType === 3 ? b.textContent : '');
+    }, '').trim();
+    if(text){
+            let matches = text.match(regExp);
+            if(matches) {
+                matches.forEach(str => {
+                    let variable = str.substring(2, str.length - 2).trim();
+                    let newVariable = variable;
+                    if(replace.length != 0) {
+                        newVariable = variable.replace(replace[0], replace[1]);
+                    }
+                    if (!bindedVars.get(newVariable)) bindedVars.set(newVariable, [{ element: element, text: element.innerText.replace(variable, newVariable) }]);
+                    else bindedVars.set(newVariable, [...bindedVars.get(newVariable), { element: element, text: element.innerText.replace(variable, newVariable) }]);
+                });
+            }
+        }
+        return bindedVars;
+    }
+
 // Replace the binded variable with its real value in html
-function $apply(vars = []) {
-    $bindedVars.forEach(async (elements, variable) => {
+export function $apply(arr = $bindedVars) {
+    arr.forEach(async (elements, variable) => {
         await elements.forEach(elem => {
             elem.element.innerText = elem.text;
         });
         await elements.forEach(elem => {
-            elem.element.innerText = replaceElement(variable, elem.element.innerText);
+            elem.element.innerText = replaceValue(variable, elem.element.innerText);
         });
     });
-    
 }
 
 
@@ -226,12 +244,12 @@ export function render(view,model)
 {
     let specials = specialTags(view);
     
-    
-    $scope = model;
-    console.log(model);
+     // testing end
+     $scope = model;
     specials.forEach(element => element.render(element.exp,element.element));
     
-    findReplace(view);
+    // findReplace(view);
+    $bindedVars = getBindedVariables($bindedVars, viewElement);
+    $apply();
     return view;
 }
-
