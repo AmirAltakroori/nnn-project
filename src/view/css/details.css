@@ -1,0 +1,243 @@
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:Latifa Masri and Abed Al-Fattah Hroub
+
+     File description: this filew contain scss style of the detailes page
+*/
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
+     Suhair Shareef <suhairshareef1999@gmail.com>
+     Authors:Latifa Masri
+
+     File description:this file contain shared function used in different files
+*/
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
+     Suhair Shareef <suhairshareef1999@gmail.com>
+
+     File description:
+     this variable special for slider design
+*/
+/*
+flex property
+@tparam $direction $justify $align : flex property , $w :width
+$param $direction: flex direction , $justify: justify content of flex , $align: align flex items ,$width :width of the flex
+
+*/
+/*
+part1 contain the header of the new and the related news
+*/
+* {
+  direction: rtl; }
+
+.part_1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%; }
+  .part_1 .news_related {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 28%; }
+    .part_1 .news_related .related_news_menu {
+      border-top: solid 1px;
+      width: 68%;
+      margin-top: 5px;
+      padding-top: 15px;
+      padding-right: 0%; }
+    .part_1 .news_related ul li {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: flex-start;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      width: 100%;
+      list-style-type: none; }
+      .part_1 .news_related ul li img {
+        width: 140px;
+        margin-left: 10px;
+        padding: 10px; }
+    .part_1 .news_related h5 {
+      margin-bottom: 0px;
+      color: #0C4D6D; }
+  .part_1 .news_header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 72%; }
+    .part_1 .news_header h1 {
+      margin-right: 130px;
+      font-size: 40px;
+      margin-bottom: 0px; }
+    .part_1 .news_header .main_img img {
+      width: 1100px;
+      height: 470px;
+      padding: 0px 100px 5px 100px; }
+
+.part_2 {
+  font-size: 25px;
+  margin-right: 130px; }
+  .part_2 .news_sharing {
+    direction: ltr;
+    margin-left: 20%; }
+    .part_2 .news_sharing .share-buttons {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: flex-start;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      width: 72%;
+      display: inline-block; }
+      .part_2 .news_sharing .share-buttons a img {
+        width: 30px;
+        height: 30px;
+        padding: 5px;
+        border: 0;
+        -webkit-box-shadow: 0;
+        box-shadow: 0; }
+    .part_2 .news_sharing .about {
+      display: inline-block; }
+      .part_2 .news_sharing .about a img {
+        float: left;
+        width: 20px;
+        height: 20px;
+        padding: 5px;
+        border: 0;
+        -webkit-box-shadow: 0;
+        box-shadow: 0; }
+      .part_2 .news_sharing .about p {
+        font-size: 15px;
+        padding-bottom: 10px; }
+
+.part_3 .add_comment {
+  float: right;
+  height: 400px;
+  width: 49%;
+  border-left: solid 2px #707070; }
+  .part_3 .add_comment .comment {
+    padding-right: 100px;
+    padding-top: 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    width: 100%; }
+    .part_3 .add_comment .comment img {
+      width: 40px;
+      height: 40px;
+      padding: 5px; }
+  .part_3 .add_comment .add {
+    padding-right: 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    width: 100%; }
+    .part_3 .add_comment .add input {
+      width: 300px;
+      height: 24px;
+      border-radius: 0 10px 10px 0;
+      border: solid 3px #EBEDED; }
+    .part_3 .add_comment .add button {
+      width: 90px;
+      height: 31px;
+      background-color: #EBEDED;
+      border: none;
+      border-radius: 10px 0 0 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 15px;
+      cursor: pointer; }
+
+.part_3 .list_comment {
+  float: left;
+  margin-left: 20px;
+  height: 400px;
+  width: 48%; }
+  .part_3 .list_comment li {
+    list-style-type: none; }
+  .part_3 .list_comment img {
+    width: 40px;
+    height: 40px;
+    padding: 0px; }
+  .part_3 .list_comment p {
+    padding-bottom: 15px; }

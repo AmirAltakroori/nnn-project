@@ -28,6 +28,7 @@ part1 contain the header of the new and the related news
 }
 
 $font-s:40px;
+* {direction: rtl;}
 .part_1 {
     @include flex-property(row, flex-end, center, 100%);
     .news_related {
