@@ -159,7 +159,7 @@ function showDivs(index) {
 /*
  *    show random news on random news container.
  *
- *    @tparam index: array of News.
+ *    @tparam randomNews: array of News.
  *
  *    @param randomNews is list of news selected randomly.
  *
