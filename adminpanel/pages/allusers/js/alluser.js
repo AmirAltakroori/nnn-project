@@ -30,6 +30,54 @@ let usersPage = [{
     }
 ];
 
+document.addEventListener("DOMContentLoaded", (event) => {
+    let userdata = JSON.parse(sessionStorage.getItem("userData"));
+    if (userdata != null) {
+        usersPage[userdata.ind] = userdata;
+        sessionStorage.removeItem("userData");
+    }
+});
+
+function updateUsers(id) {
+    let aim = null;
+    for (ind in usersPage)
+        if (usersPage[ind].id == id) {
+            aim = usersPage[ind];
+            aim["ind"] = ind;
+            break;
+        }
+
+    sessionStorage.setItem("userData", JSON.stringify(aim));
+    window.location.href = "../newuser/updateuser.html";
+
+}
+
+
+let newContain, newId = 0;
+
+function show(row, modelId, id) {
+    let element = document.getElementById(modelId)
+    element.className += " modal-active";
+    newContain = row;
+    newId = id;
+}
+
+function hide(modelId) {
+    let element = document.getElementById(modelId)
+    element.classList.remove("modal-active");
+
+}
+
+function deleteRowElement() {
+
+    let row = usersPage.findIndex((row) => row.id == newId);
+    usersPage.splice(row, 1);
+    let rowDOM = newContain.parentNode.parentNode;
+    rowDOM.parentElement.removeChild(rowDOM);
+
+
+}
+
 ///////////.. function to read user from fake DB ../////////////////
 
 
@@ -98,7 +146,7 @@ function displayusers(users) {
 
         let edit_icon = document.createElement("i");
         edit_icon.className = "far fa-edit icon color-blue";
-
+        edit_icon.setAttribute("onclick", `updateUsers(${users[i].id}) `);
 
         operations.appendChild(delete_icon);
         operations.appendChild(edit_icon);
