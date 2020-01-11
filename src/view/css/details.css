@@ -40,6 +40,20 @@ $param $direction: flex direction , $justify: justify content of flex , $align: 
 /*
 part1 contain the header of the new and the related news
 */
+@media screen and (max-height: 1080px) {
+  body {
+    background-color: lightblue; }
+  .part_3 .add_comment .comment p {
+    left: 61%; } }
+
+@media screen and (min-height: 810px) {
+  body {
+    background-color: lightgreen; } }
+
+@media screen and (min-height: 768px) {
+  body {
+    vbackground-color: #AA3939; } }
+
 * {
   direction: rtl; }
 
@@ -129,26 +143,20 @@ part1 contain the header of the new and the related news
 .part_2 {
   font-size: 25px;
   margin-right: 130px; }
+  .part_2 p {
+    padding-left: 50px; }
   .part_2 .news_sharing {
     direction: ltr;
-    margin-left: 20%; }
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto auto;
+    grid-template-columns: auto auto;
+    grid-gap: 10px; }
     .part_2 .news_sharing .share-buttons {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: start;
-      -ms-flex-pack: start;
-      justify-content: flex-start;
-      -webkit-box-align: start;
-      -ms-flex-align: start;
-      align-items: flex-start;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      width: 72%;
-      display: inline-block; }
+      text-align: center;
+      margin: 0 auto; }
       .part_2 .news_sharing .share-buttons a img {
+        float: left;
         width: 30px;
         height: 30px;
         padding: 5px;
@@ -156,7 +164,8 @@ part1 contain the header of the new and the related news
         -webkit-box-shadow: 0;
         box-shadow: 0; }
     .part_2 .news_sharing .about {
-      display: inline-block; }
+      text-align: center;
+      margin: 0 auto; }
       .part_2 .news_sharing .about a img {
         float: left;
         width: 20px;
@@ -169,75 +178,68 @@ part1 contain the header of the new and the related news
         font-size: 15px;
         padding-bottom: 10px; }
 
-.part_3 .add_comment {
-  float: right;
+.part_3 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 50%;
+  grid-template-columns: 50% 50%;
   height: 400px;
-  width: 49%;
-  border-left: solid 2px #707070; }
-  .part_3 .add_comment .comment {
-    padding-right: 100px;
-    padding-top: 100px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    width: 100%; }
-    .part_3 .add_comment .comment img {
+  padding-top: 20px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  .part_3 .add_comment {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 50% 50%;
+    grid-template-rows: 50% 50%;
+    border-left: solid 2px #707070; }
+    .part_3 .add_comment .comment {
+      vertical-align: bottom;
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 30% 70%;
+      grid-template-columns: 30% 70%;
+      position: relative; }
+      .part_3 .add_comment .comment img {
+        position: absolute;
+        bottom: 0;
+        right: 20%;
+        width: 45px;
+        height: 45px;
+        padding: 5px; }
+      .part_3 .add_comment .comment p {
+        position: absolute;
+        bottom: 0;
+        left: 52%; }
+    .part_3 .add_comment .add {
+      width: 70%;
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 70% 30%;
+      grid-template-columns: 70% 30%;
+      margin: 0 auto; }
+      .part_3 .add_comment .add input {
+        height: 20%;
+        border-radius: 0 10px 10px 0;
+        border: solid 3px #EBEDED; }
+      .part_3 .add_comment .add button {
+        height: 20%;
+        background-color: #EBEDED;
+        border: none;
+        border-radius: 10px 0 0 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        cursor: pointer; }
+  .part_3 .list_comment {
+    margin-left: 20px; }
+    .part_3 .list_comment li {
+      list-style-type: none; }
+    .part_3 .list_comment img {
       width: 40px;
       height: 40px;
-      padding: 5px; }
-  .part_3 .add_comment .add {
-    padding-right: 100px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    width: 100%; }
-    .part_3 .add_comment .add input {
-      width: 300px;
-      height: 24px;
-      border-radius: 0 10px 10px 0;
-      border: solid 3px #EBEDED; }
-    .part_3 .add_comment .add button {
-      width: 90px;
-      height: 31px;
-      background-color: #EBEDED;
-      border: none;
-      border-radius: 10px 0 0 10px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 15px;
-      cursor: pointer; }
-
-.part_3 .list_comment {
-  float: left;
-  margin-left: 20px;
-  height: 400px;
-  width: 48%; }
-  .part_3 .list_comment li {
-    list-style-type: none; }
-  .part_3 .list_comment img {
-    width: 40px;
-    height: 40px;
-    padding: 0px; }
-  .part_3 .list_comment p {
-    padding-bottom: 15px; }
+      padding: 0px; }
+    .part_3 .list_comment p {
+      padding-bottom: 15px; }
