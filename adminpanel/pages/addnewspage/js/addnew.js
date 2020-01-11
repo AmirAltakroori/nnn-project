@@ -2,13 +2,6 @@ let newsList = [];
 let newsImage = "";
 const idSelector = (id) => { return document.getElementById(id) };
 
-function getData(storeName) {
-    return JSON.parse(sessionStorage.getItem("userData"));
-}
-
-function saveData(storeName, data) {
-    sessionStorage.setItem(storeName, JSON.stringify(data));
-}
 
 function setScheduleTime() {
     let createField = idSelector('createDate');
@@ -67,8 +60,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
             userData.createDate = form.createDate.value;
 
             saveData('userData', userData);
-
+            if(userData.pageNo == 0)
             window.location.href = "../mynews/mynews.html";
+            else if(userData.pageNo == 1)
+            window.location.href = "../allnews/allnews.html";
             e.preventDefault();;
             return false;
         });
