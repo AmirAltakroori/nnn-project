@@ -1,33 +1,34 @@
 let usersPage = [{
-    firstName: "وليد",
-    lastName: "الجعبة",
-    email: "Waleed@ppu.edu",//We want also to show the email
-    isActive: 1,
-    roleId: 1,// when we create a user its diffault role is writer which its id is 1
-    id:1,
-}, {
-    firstName: "باسل",
-    lastName: "العطاونة",
-    email: "Basil@ppu.edu",//We want also to show the email
-    isActive: 1,
-    roleId: 2,// 2 its admin 
-    id:2,
-},
-{
-    firstName: "ديما",
-    lastName: "الحافظ",
-    email: "deema@ppu.edu",//We want also to show the email
-    isActive: 1,
-    roleId: 3,// 2 its admin 
-    id:3,
-},{
-    firstName: "شيماء",
-    lastName: "وزوز",
-    email: "shaima@ppu.edu",//We want also to show the email
-    isActive: 0,// its not active account.
-    roleId: 1,// 2 its writer. 
-    id:4,
-}];
+        firstName: "وليد",
+        lastName: "الجعبة",
+        email: "Waleed@ppu.edu", //We want also to show the email
+        isActive: 1,
+        roleId: 1, // when we create a user its diffault role is writer which its id is 1
+        id: 1,
+    }, {
+        firstName: "باسل",
+        lastName: "العطاونة",
+        email: "Basil@ppu.edu", //We want also to show the email
+        isActive: 1,
+        roleId: 2, // 2 its admin 
+        id: 2,
+    },
+    {
+        firstName: "ديما",
+        lastName: "الحافظ",
+        email: "deema@ppu.edu", //We want also to show the email
+        isActive: 1,
+        roleId: 3, // 2 its admin 
+        id: 3,
+    }, {
+        firstName: "شيماء",
+        lastName: "وزوز",
+        email: "shaima@ppu.edu", //We want also to show the email
+        isActive: 0, // its not active account.
+        roleId: 1, // 2 its writer. 
+        id: 4,
+    }
+];
 
 document.addEventListener("DOMContentLoaded", (event) => {
     let userdata = JSON.parse(sessionStorage.getItem("userData"));
@@ -45,15 +46,16 @@ function updateUsers(id) {
             aim["ind"] = ind;
             break;
         }
-        
+
     sessionStorage.setItem("userData", JSON.stringify(aim));
     window.location.href = "../newuser/updateuser.html";
 
 }
 
 
-let newContain,newId=0;
-function show(row,modelId, id) {
+let newContain, newId = 0;
+
+function show(row, modelId, id) {
     let element = document.getElementById(modelId)
     element.className += " modal-active";
     newContain = row;
@@ -76,30 +78,12 @@ function deleteRowElement() {
 
 }
 
-function searchByUserName() {
-    let input, filter, rows, tr, name, i, txtValue;
-    input = document.getElementById("userinput");
-    filter = input.value.toUpperCase();
-    rows = document.getElementById("rows");
-    tr = rows.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++)
-     {
-        name = tr[i].getElementsByTagName("td")[1];
-        txtValue = name.textContent || name.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-        } else {
-            tr[i].style.display = "none";// to hide the 
-        }
-    }
-}
- ///////////.. function to read user from fake DB ../////////////////
+///////////.. function to read user from fake DB ../////////////////
 
 
 function displayusers(users) {
     usersPage = users;
-
-    let table = document.getElementById("rows"); 
+    let table = document.getElementById("rows");
     for (let i = 0; i < users.length; i++) {
         let row = document.createElement("tr"); //create number of rows by using DOM
         row.className = "user_info";
@@ -114,7 +98,7 @@ function displayusers(users) {
         name_text.textContent = users[i].firstName + " " + users[i].lastName;
         name.appendChild(name_text);
 
-       
+
         let role_selection = document.createElement("td"); // create role selection for users
         let select = document.createElement("select");
         select.className = "selection";
@@ -146,18 +130,18 @@ function displayusers(users) {
         let optionA2 = document.createElement("option");
         optionA2.value = 1;
         optionA2.textContent = "غير فعال";
-    
+
 
         selectA.appendChild(optionA1);
         selectA.appendChild(optionA2);
-       
+
         selectA.selectedIndex = !users[i].isActive;
         active_selection.appendChild(selectA);
 
         let operations = document.createElement("td"); // create operation select
         let delete_icon = document.createElement("i");
         delete_icon.className = "fas fa-trash-alt delete_user";
-        delete_icon.style.marginLeft= "10px";
+        delete_icon.style.marginLeft = "10px";
         delete_icon.setAttribute('onclick', "show(this,'delete'," + users[i].id + ")");
 
         let edit_icon = document.createElement("i");
@@ -181,5 +165,3 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     displayusers(usersPage);
 });
-
-

@@ -1,133 +1,13 @@
-let newsPage = [{
-        id: 1,
-        title: "test is test ",
-        content: "<h1>This is my first news</h1>",
-        categoryId: 1,
-        seoTitle: "First news",
-        seoTags: "{ 'tags':{['test','sport']} }",
-        seoDescription: "This is my first news",
-        isActive: 1,
-        isMainNews: 0,
-        isUrgentNews: 1,
-        createDate: new Date(),
-        writerId: 1,
-        _attachments: "",
-    },
-    {
-        id: 2,
-        title: "test is test ",
-        content: "<h1>This is my first news</h1>",
-        categoryId: 1,
-        seoTitle: "First news",
-        seoTags: "{ 'tags':{['test','sport']} }",
-        seoDescription: "This is my first news",
-        isActive: 1,
-        isMainNews: 0,
-        isUrgentNews: 1,
-        createDate: new Date(),
-        writerId: 1,
-        _attachments: "",
-    },
-    {
-        id: 3,
-        title: "test is test ",
-        content: "<h1>This is my first news</h1><br><ul><li>ههههه</li></ul>",
-        categoryId: 1,
-        seoTitle: "First news",
-        seoTags: "شسيشس شسيشس شسي شسي",
-        seoDescription: "This is my first news",
-        isActive: 1,
-        isMainNews: 0,
-        isUrgentNews: 1,
-        createDate: "2019-05-12",
-        writerId: 1,
-        _attachments: "",
-    },
-    {
-        title: "الاحلال يعتقل مقدسيا مسنا",
-        content: "<h1>This is my first news</h1>",
-        categoryId: 3,
-        seoTitle: "First news",
-        seoTags: "{ 'tags':{['test','sport']} }",
-        seoDescription: "This is my first news",
-        isActive: 0,
-        isMainNews: 1,
-        isUrgentNews: 1,
-        createDate: "2019-05-12",
-        writerId: 1,
-        _attachments: "",
-        id: 4,
-    },
 
-];
-let categories = [{
-        id: 1,
-        name: "الألعاب",
-        isActive: 1,
-    },
-    {
-        id: 3,
-        name: "الرئيسية",
-        isActive: 1,
-    },
-    {
-        id: 2,
-        name: "الرياضة",
-        isActive: 0, //غير مفعل
-    },
-    {
-        id: 4,
-        name: "الفن",
-        isActive: 0,
-    }
-]
 document.addEventListener("DOMContentLoaded", (event) => {
     let userdata = JSON.parse(sessionStorage.getItem("userData"));
     if (userdata != null) {
-        newsPage[userdata.ind] = userdata;
+        myNewsPage[userdata.ind] = userdata;
         sessionStorage.removeItem("userData");
     }
 });
 
 
-function updateNews(id) {
-    let aim = null;
-    for (ind in newsPage)
-        if (newsPage[ind].id == id) {
-            aim = newsPage[ind];
-            aim["ind"] = ind;
-            break;
-        }
-    sessionStorage.setItem("userData", JSON.stringify(aim));
-    window.location.href = "../addnewspage/addnewpage.html";
-}
-
-
-let newContain;
-let newId;
-
-function show(row, modelId, id) {
-    let element = document.getElementById(modelId)
-    element.className += " modal-active";
-    newContain = row;
-    newId = id;
-}
-
-function hide(modelId) {
-    let element = document.getElementById(modelId)
-    element.classList.remove("modal-active");
-
-}
-
-function deleteRowElement() {
-
-    let row = newsPage.findIndex((row) => row.id == newId);
-    newsPage.splice(row, 1);
-    let rowDOM = newContain.parentNode.parentNode;
-    rowDOM.parentElement.removeChild(rowDOM);
-
-
-}
 
 function deleteNews(callback, key, rev, row) {
 
@@ -140,35 +20,6 @@ function deleteNews(callback, key, rev, row) {
             callback(JSON.parse(http.response));
             row.parentElement.removeChild(row);
         }
-    }
-}
-
-
-function searchByNews() {
-    let searchInput, searchText, table, tableBody, tr, i, td, span, category;
-
-    // get text from search input
-    searchInput = document.getElementById('search');
-    searchText = searchInput.value;
-
-    // get all news  in the table body 
-    table = document.getElementById('table');
-    tableBody = document.getElementsByTagName("tbody")[0];
-    tr = tableBody.getElementsByTagName('tr');
-
-    // traverse through each new in the table
-    for (i = 0; i < tr.length; i++) {
-        // get category from each news element
-        td = tr[i].getElementsByTagName('td')[2];
-        span = td.getElementsByTagName('span')[0];
-        category = span.childNodes[0].nodeValue;
-
-        //check if the new category contain search text and filter the result
-        if (category.indexOf(searchText) > -1)
-            tr[i].style.display = "";
-        else
-            tr[i].style.display = "none";
-
     }
 }
 
@@ -224,7 +75,7 @@ function displaynews(news) {
 
         let edit_icon = document.createElement("i");
         edit_icon.className = "far fa-edit icon color-blue";
-        edit_icon.setAttribute("onclick", `updateNews(${news[i].id}) `);
+        edit_icon.setAttribute("onclick", `updateNews(${news[i].id},0) `);
         operations.appendChild(delete_icon);
         operations.appendChild(edit_icon);
 
@@ -240,5 +91,5 @@ function displaynews(news) {
 
 document.addEventListener("DOMContentLoaded", (event) => {
 
-    displaynews(newsPage);
+    displaynews(myNewsPage);
 });

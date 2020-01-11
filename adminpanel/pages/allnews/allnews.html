@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./js/allnews.js" defer></script>
+    <script src="./../../js/frontend.js"></script>
+    <script src="./../../js/backend.js"></script>
     <link rel="stylesheet" href="../../fontawesome/all.min.css">
     <link rel="stylesheet" href="./../../css/global.css">
     <link rel="stylesheet" href="./css/allnews.css">
@@ -36,7 +38,7 @@
         </div>
         <div class="row header-subheader ">
             <div>
-                الرئيسية >  لوحة التحكم > الأخبار > جميع الأخبار
+                الرئيسية > لوحة التحكم > الأخبار > جميع الأخبار
             </div>
         </div>
     </header>
@@ -53,8 +55,7 @@
                 </div>
                 <div class="search">
                     <img class="search_icon" src="./../../img/search.png">
-                    <input type="text" class="search_field" placeholder="ابحث هنا" id="search"
-                        onkeyup="searchNewsByCategory()">
+                    <input type="text" class="search_field" placeholder="ابحث هنا" id="search" onkeyup="searchElement(2)">
                 </div>
             </div>
 
@@ -171,7 +172,7 @@
             <div class="contain">
                 <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
                 <div class="modal-button">
-                    <button class="modal-button button1" onclick="deleteRowElement(); hide('delete');">نعم</button>
+                    <button class="modal-button button1" onclick="deleteRowElement(newsPage); hide('delete');">نعم</button>
                     <button class="modal-button button2" onclick="hide('delete')">لا</button>
                 </div>
             </div>
