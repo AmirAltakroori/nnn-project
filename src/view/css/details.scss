@@ -15,30 +15,21 @@
 part1 contain the header of the new and the related news
 */
 
-@media screen and (max-height: 1080px) {
+@media screen and (min-width: 1080px) {
   body{
   background-color: lightblue;}
-  .part_3 {
-    .add_comment {
-      .comment {
-        p {
-          left: 61%;
-        }
-      }
-    }
-  }
-
+  font-size: 3em;
 }
 
-@media screen and (min-height: 810px) {
+@media screen and (min-width: 810px) and (max-width: 1080px){
   body{
   background-color: lightgreen;}
 
 }
 
-@media screen and (min-height: 768px) {
+@media screen and (min-width: 768px) and (max-width: 810px) {
   body{
-  vbackground-color: #AA3939;}
+  background-color: red;}
 
 }
 
