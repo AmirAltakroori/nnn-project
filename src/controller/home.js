@@ -5,6 +5,7 @@
 
      Authors:
      Aseel Arafeh <arafehaseel@gmail.com>
+     Qusai Hroub <qusaihroub.r@gmail.com>
 
      File description:
 */
@@ -33,7 +34,7 @@ function getmainNews () {
                     path: "#",
                     authorName: "أسيل عرفه",
                     publishedDate: "12/12/2019",
-                    img:"imge/firstNews.jpg",
+                    img:"img/firstNews.jpg",
                     description:"بسم الله الرحمن الرحيم ... هذا وصف الخبر "
                   }, {
                     title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
@@ -152,5 +153,33 @@ function showDivs(index) {
 
     for (i = slideIndex; i < slideIndex + 3; i++) {
         newsTileList[i].style.display = "block";
+    }
+}
+
+/*
+ *    show random news on random news container.
+ *
+ *    @tparam randomNews: array of News.
+ *
+ *    @param randomNews is list of news selected randomly.
+ *
+ *    @returns
+ */
+function showRandomNews(randomNews) {
+
+    const rendomNewsContainer = document.getElementById('rendom-news-container');
+
+    rendomNewsContainer.innerHTML="";
+
+    for (let i = 0; i < randomNews.length; i++) {
+
+        let randomNewsTile = `<div class="slider-news-tile" style="background-image: url(${randomNews[i].img});">
+                                <div class="date">${randomNews[i].publishedDate}</div>
+                                <div class="news">
+                                    ${randomNews[i].title}
+                                </div>
+                            </div>`;
+        rendomNewsContainer.innerHTML += randomNewsTile;
+
     }
 }
