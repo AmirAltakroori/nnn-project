@@ -54,42 +54,50 @@ $param $direction: flex direction , $justify: justify content of flex , $align: 
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  font-family: Segoe UI; }
+          box-sizing: border-box;
+  font-family: Segoe UI;
+}
 
 html, body {
   height: 100%;
   width: 100%;
-  direction: rtl; }
+  direction: rtl;
+}
 
 @media screen and (max-height: 1080px) {
   #urgent-container {
-    font-size: 28px; } }
+    font-size: 28px;
+  }
+}
 
 @media screen and (max-height: 810px) {
   #urgent-container {
-    font-size: 21px; } }
+    font-size: 21px;
+  }
+}
 
 @media screen and (max-height: 768px) {
   #urgent-container {
-    font-size: 20px; } }
+    font-size: 20px;
+  }
+}
 
 #urgent-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
   height: 41.356%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
   position: absolute;
   top: 58.644%;
   bottom: auto;
@@ -98,31 +106,39 @@ html, body {
   background-color: #D63031;
   color: #FFFFFF;
   font-weight: bold;
-  min-height: 36.65px; }
-  #urgent-container div {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    width: 5%;
-    height: auto;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    padding-right: 4%;
-    padding-left: 4%; }
-  #urgent-container #urgent-content {
-    direction: ltr;
-    padding: 1.042%;
-    padding-right: 5.21%;
-    font-size: 70%; }
-    #urgent-container #urgent-content a {
-      text-decoration: none;
-      padding-left: 100px;
-      color: #FFFFFF; }
+  min-height: 36.65px;
+}
+
+#urgent-container div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 5%;
+  height: auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-right: 4%;
+  padding-left: 4%;
+}
+
+#urgent-container #urgent-content {
+  direction: ltr;
+  padding: 1.042%;
+  padding-right: 5.21%;
+  font-size: 70%;
+}
+
+#urgent-container #urgent-content a {
+  text-decoration: none;
+  padding-left: 100px;
+  color: #FFFFFF;
+}
+/*# sourceMappingURL=style.css.map */
