@@ -106,7 +106,8 @@ body {
         font-size: 20px;
         border: 0px; }
       .container .search_area .search ::placeholder {
-        color: black; }
+        color: black; 
+        font-size: 15px;}
       .container .search_area .search input:focus {
         outline: none; }
       .container .search_area .search .search_icon {
