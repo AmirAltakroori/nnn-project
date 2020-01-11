@@ -1,43 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+<html>
+    <head>
+        <title>MVC Project</title>
+        <script type="module" src="jsMvc.js"></script>
+    </head>
+    <body>
+        <div class="NavLinkContainer">
+            <a class="NavLink" href="index.html#/home">Home</a>&nbsp;
     
-    <header>Static header</header>
-    <div id="root">
-        <div class="container">
-            <h1 $if="!disabled">Home 1</h1>
-            Container
-            <h2>{{$title}}</h2>
-            <table>
-                <ul>
-                    <p>hi</p>
-                    <span $for="n of news">
-                        <ul>
-                            <li>Hello {{$n.name}}</li>
-                            <li>{{$n.major}}</li>
-                        </ul>
-                        <hr>
-                    </span>
-                    <p>{{$title}}</p>
-                    <h1>Hello {{$name}}, you are {{$age}} old</h1>
-                </ul>
-            </table>
-            <button $disabled="$disabled">Submit</button>
+            <a class="NavLink" href="index.html#/contact">Contact</a>&nbsp;
+
+            <a class="NavLink" href="index.html#/admin">Admin</a>&nbsp;
         </div>
-    </div>
-    
-    
 
-    <footer>Static footer</footer>
-
-    <script src="templateRenderer.js"></script>
-    <script src="route.js"></script>
-    <script id="controller" src=""></script>
-</body>
+        <h3>View</h3>
+        <div view></div>
+    </body>
 </html>
