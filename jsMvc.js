@@ -79,33 +79,33 @@ class Mvc
 let routeList = [
     {
         url: "/home",
-        template: "/Views/home.html",
-        controller: "/Models/home.js",
+        template: "/templates/home.html",
+        controller: "/controllers/home.js",
         title: "شبكة الوحدة الإخبارية"
     },
     {
         url: "/admin",
-        template: "/Views/admin.html",
-        controller: "/Models/admin.js",
+        template: "/templates/admin.html",
+        controller: "/controllers/admin.js",
         title: "صفحة المشرف"
     },
     {
         url: "/contact",
-        template: "/Views/contact.html",
-        controller: "/Models/contact.js",
+        template: "/templates/contact.html",
+        controller: "/controllers/contact.js",
         title: "صفحة المشرف"
     },
     {
         url: "/home/:id",
-        template: "/Views/home1.html",
-        controller: "/Models/home1.js",
+        template: "/templates/home1.html",
+        controller: "/controllers/home1.js",
         id: "",
         title: "شبكة الوحدة الإخبارية"
     },
     {
         url: "/home/:id/:titel/:ex",
-        template: "/Views/home2.html",
-        controller: "/Models/home2.js",
+        template: "/templates/home2.html",
+        controller: "/controllers/home2.js",
         id: "",
         title: "شبكة الوحدة الإخبارية"
     }

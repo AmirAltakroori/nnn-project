@@ -1,5 +1,7 @@
-export class Model {
-    constructor() {
+export class ContactController
+{
+    constructor()
+    {
         // Import the $apply function
         let $apply = import("../templateRenderer.js")
             .then(res => {

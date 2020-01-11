@@ -1,4 +1,4 @@
-class Model2
+export class Home1Controller
 {
     constructor()
     {
