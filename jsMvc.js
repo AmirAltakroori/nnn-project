@@ -60,11 +60,11 @@ class Mvc
         loadMvc(routeObj.$currentRoute.template,routeObj.$currentRoute.controller).then(
             (temp,cont) =>
             {
-                temp = render(temp);
                 viewElement.innerHTML = temp;
+                temp = render(viewElement,cont);
+                viewElement.innerHTML = temp.innerHTML;
             }
         );
-
     }
 
    // clears the MVC
@@ -86,7 +86,7 @@ let routeList = [
     {
         url: "/home",
         template: "/Views/home.html",
-        controller: "/Models/home222.js",
+        controller: "/Models/home2.js",
         title: "شبكة الوحدة الإخبارية"
     },
     {

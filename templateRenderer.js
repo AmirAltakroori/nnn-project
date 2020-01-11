@@ -1,4 +1,4 @@
-var $scope = {};
+let $scope = {};
 
 // classes
 // holds data required to a special atributes
@@ -48,33 +48,33 @@ function renderIf(expression,element)
     }
 }
 
-async function renderFor(exp, element) 
+function renderFor(exp, element) 
 {
-    let def = exp.split(':');
-    let iterSymbol = 'i';
-    if(def.length > 1)
-        iterSymbol = def[1].trim();
+    // let def = exp.split(':');
+    // let iterSymbol = 'i';
+    // if(def.length > 1)
+    //     iterSymbol = def[1].trim();
     
-    let osubArr =  def[0].split('of')[0].trim();
-    let subArr = "\[$]" + def[0].split('of')[0].trim();
-    let arrName = def[0].split('of')[1].trim();
+    // let osubArr =  def[0].split('of')[0].trim();
+    // let subArr = "\[$]" + def[0].split('of')[0].trim();
+    // let arrName = def[0].split('of')[1].trim();
 
-    let array = eval('$scope.'+arrName);
+    // let array = eval('$scope.'+arrName);
 
-    let iterregx = new RegExp(`\\$` + iterSymbol + '(?![a-z])','g');
+    // let iterregx = new RegExp(`\\$` + iterSymbol + '(?![a-z])','g');
 
-    let newElement = "";
-    for (let i = 0; i < array.length; i++)
-    {
-        newElement += element.innerHTML.replace(new RegExp(subArr, 'g'),"$" + arrName + `[${i}]`).replace(iterregx,i);
-        element.querySelectorAll("[\\$for]").forEach(ele =>
-        {
-           ele.getAttribute("\$for").replace(new RegExp(osubArr, 'g'),arrName + `[${i}]`);
-        });
-    }
+    // let newElement = "";
+    // for (let i = 0; i < array.length; i++)
+    // {
+    //     newElement += element.innerHTML.replace(new RegExp(subArr, 'g'),"$" + arrName + `[${i}]`).replace(iterregx,i);
+    //     element.querySelectorAll("[\\$for]").forEach(ele =>
+    //     {
+    //         ele.getAttribute("\$for").replace(new RegExp(osubArr, 'g'),arrName + `[${i}]`);
+    //     });
+    // }
     
-    element.innerHTML = newElement;
-    element = render(element);
+    // element.innerHTML = newElement;
+    // element = render(element);
 }
 
 function renderDisabled(exp,element)
@@ -152,6 +152,7 @@ const specails = [
 function specialTags(doc)
 {
     let specialTags = [];
+    
     // find all special tags and format them
     for(let i=0;i<specails.length;i++)
     {
@@ -221,13 +222,18 @@ function findReplace(doc)
     doc.innerHTML = str;
 }
 
-function render(view,model)
+export function render(view,model)
 {
     let specials = specialTags(view);
+    
+     // testing
+     model = {};
+     model.x  = true ;
+     model.items = [5,10];
+     model.arr2d = [[10],[21,10]];
 
-    
-    $scope = model;
-    
+     // testing end
+     $scope = model;
     specials.forEach(element => element.render(element.exp,element.element));
     
     findReplace(view);
