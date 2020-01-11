@@ -20,17 +20,17 @@
 
     .slider-news-tile {
 
-        width: 490px;
-        height: 295px;
-        background-size: 490px 295px;
+        width: 446px;
+        height: 251px;
+        background-size: 446px 251px;
     }
 
     .slider-news-tile {
 
         .news{
 
-            bottom: -120px;
-            font-size: 20px;
+            bottom: -70px;
+            font-size: 19px;
         }
 
         .date{
@@ -45,7 +45,8 @@
 
       .imagesNext {
 
-        top:130px;
+        top:110px;
+        left: 50px;
 
         img{
 
@@ -56,7 +57,8 @@
 
       .imagesPrev {
 
-        top:130px;
+        top:110px;
+        right: 30px;
 
         img{
 
@@ -64,8 +66,6 @@
            height:$arrow-height +5;
         }
       }
-
-
 
 }
 
@@ -292,7 +292,6 @@
     width: 1448px;
     height: 280px;
     margin: auto;
-    padding-top: 80px;
 
     .rendom-news-container{
          .slider-news-tile {
@@ -316,7 +315,6 @@
     .imagesNext {
         float: left;
         position: relative;
-        left: 58px;
         border: 2px solid #00000000;
         img {
 
@@ -329,7 +327,6 @@
     .imagesPrev {
         float: right;
         position: relative;
-        right: 30px;
         border: 2px solid #00000000;
         img {
 
