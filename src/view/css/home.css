@@ -1,0 +1,190 @@
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:
+     Rahmeh Tartouri <rahmeh.tartouri@gmail.com>
+     Aseel Arafeh <arafehaseel@gmail.com>
+
+     File description:
+     this file for slider design
+*/
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
+     Suhair Shareef <suhairshareef1999@gmail.com>
+
+     File description:
+     this variable special for slider design
+*/
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
+     Suhair Shareef <suhairshareef1999@gmail.com>
+     Authors:Latifa Masri
+
+     File description:this file contain shared function used in different files
+*/
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
+     Suhair Shareef <suhairshareef1999@gmail.com>
+
+     File description:
+     this variable special for slider design
+*/
+/*
+flex property
+@tparam $direction $justify $align : flex property , $w :width
+$param $direction: flex direction , $justify: justify content of flex , $align: align flex items ,$width :width of the flex
+
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Segoe UI; }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  direction: rtl; }
+
+.latest-news {
+  display: flex;
+  width: 1448px;
+  margin: auto;
+  padding-top: 20px; }
+  .latest-news .latest-news-container {
+    width: 1080px;
+    margin: auto;
+    height: 500px; }
+    .latest-news .latest-news-container .latest-news-list-header {
+      float: right;
+      border-bottom: 1px solid #707070;
+      width: 400px; }
+      .latest-news .latest-news-container .latest-news-list-header p {
+        float: right;
+        color: #0C4D6D;
+        font-size: larger;
+        margin-bottom: -0.1px; }
+    .latest-news .latest-news-container #latest-news-list {
+      float: right;
+      margin-top: 60px;
+      margin-right: -400px; }
+      .latest-news .latest-news-container #latest-news-list .news {
+        margin-bottom: 12px; }
+        .latest-news .latest-news-container #latest-news-list .news p {
+          float: left;
+          margin-right: 7px;
+          color: #707070;
+          font-size: 17px; }
+  .latest-news .latest-news-more-detailed-container .latest-news-more-detailed-image-div img {
+    margin-top: 15px;
+    margin-left: 10px; }
+  .latest-news .latest-news-more-detailed-container .latest-news-more-detailed-title-and-date {
+    display: flex; }
+    .latest-news .latest-news-more-detailed-container .latest-news-more-detailed-title-and-date .latest-news-more-detailed-title {
+      float: right;
+      margin-right: 460px;
+      color: #4D4F5C;
+      margin-top: -5px; }
+    .latest-news .latest-news-more-detailed-container .latest-news-more-detailed-title-and-date .latest-news-more-detailed-paragraph {
+      float: right;
+      margin-right: 450px;
+      color: #707070;
+      margin-top: -24px;
+      font-size: 18px; }
+    .latest-news .latest-news-more-detailed-container .latest-news-more-detailed-title-and-date .latest-news-more-detailed-date {
+      margin-left: 8px; }
+    .latest-news .latest-news-more-detailed-container .latest-news-more-detailed-title-and-date .latest-news-more-detailed-date p {
+      float: left;
+      font-size: 14px;
+      color: #919192; }
+    .latest-news .latest-news-more-detailed-container .latest-news-more-detailed-title-and-date .latest-news-more-detailed-date img {
+      float: left;
+      margin-top: 16px;
+      margin-left: 8px;
+      margin-right: 8px; }
+
+.latest-news-more-detailed-readmore-button {
+  margin-top: 50px; }
+  .latest-news-more-detailed-readmore-button p {
+    float: left;
+    margin-top: -2px;
+    margin-left: 2px;
+    color: #0C4D6D;
+    font-size: 17px; }
+  .latest-news-more-detailed-readmore-button img {
+    float: left; }
+
+.random-news {
+  width: 1448px;
+  height: 280px;
+  margin: auto;
+  padding-top: 80px; }
+  .random-news .rendom-news-container .slider-news-tile .news {
+    position: relative;
+    bottom: -100px; }
+  .random-news .imagesNext {
+    float: left;
+    position: relative;
+    left: 58px;
+    top: 110px;
+    border: 2px solid #00000000; }
+    .random-news .imagesNext img {
+      float: left;
+      margin-left: 10px; }
+  .random-news .imagesPrev {
+    float: right;
+    position: relative;
+    right: 30px;
+    top: 110px;
+    border: 2px solid #00000000; }
+    .random-news .imagesPrev img {
+      float: right;
+      margin-right: 10px; }
+  .random-news .imagesNext:hover, .random-news .imagesPrev:hover {
+    border: 2px solid #184392; }
+
+.random-news .imagesNext img, .random-news .imagesPrev img {
+  width: 18px;
+  height: 28px;
+  margin: 2px; }
+
+.random-news .rendom-news-container .slider-news-tile .date {
+  margin-bottom: 95px;
+  margin-top: 6px;
+  margin-left: 12px;
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px; }
+
+.random-news .rendom-news-container .slider-news-tile {
+  background-repeat: no-repeat;
+  float: right;
+  width: 446px;
+  height: 250px;
+  background-size: 446px 250px;
+  margin-left: 15PX; }
+
+.random-news .rendom-news-container .slider-news-tile .news {
+  color: white;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px; }
+
+/*# sourceMappingURL=home.css.map */

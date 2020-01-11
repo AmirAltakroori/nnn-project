@@ -11,42 +11,46 @@
     File description: html code for main section and right sidebar
     in category page for normal user view.
 -->
-
+<link rel="stylesheet" href="./css/categories.css">
+<link rel="stylesheet" type="text/css" href="./css/index.css" />
 <div class="category-view">
     <p class="category-view-name">الاخبار العالمية</p>
     <hr>
     <div class="category-view-container">
         <div class="right-col">
+
+            <!-- Main section of category-->
             <div class="main_category_section">
+
+                <!-- Right sidebar -->
                 <div class="right_sidebar">
                     <div class="news_list">
-                        <div class="news" id="right_news_id_1" onclick="showNewsInMainSectionFromDiv(1)">
-                            <img src="img/deleteit.jpeg" alt="news image">
-                            <p></p>
+                        <div class="news" id="category_rightside_news_id_1" onclick="showNewsInMainSectionFromDiv(1)">
+                            <div class="centered-img-background right-side-image"></div>
                         </div>
-                        <div class="news" id="right_news_id_2" onclick="showNewsInMainSectionFromDiv(2)">
-                            <img src="" alt="news image">
-                            <p></p>
+                        <div class="news" id="category_rightside_news_id_2" onclick="showNewsInMainSectionFromDiv(2)">
+                            <div class="centered-img-background right-side-image"></div>
                         </div>
-                        <div class="news" id="right_news_id_3" onclick="showNewsInMainSectionFromDiv(3)">
-                            <img src="" alt="news image">
-                            <p></p>
+                        <div class="news" id="category_rightside_news_id_3" onclick="showNewsInMainSectionFromDiv(3)">
+                            <div class="centered-img-background right-side-image"></div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Main news section -->
                 <div class="main_section">
                     <div class="main_news">
-                        <img id="main_news_image" src="" alt="main news image">
+                        <div id="category_main_news_image" class="centered-img-background"></div>
                         <div class="details">
-                            <h3 id="main_news_title"></h3>
-                            <div id="writng_details">
-                                <div id="writer"></div>
+                            <h3 id="category_main_news_title"></h3>
+                            <div id="category_main_news_writng_details">
+                                <div id="category_main_news_writer"></div>
                                 <img src="img/calenderIcon.png" alt="calender icon">
-                                <div id="date"></div>
+                                <span id="category_main_news_date"></span>
                             </div>
+                            <div id="category_main_news_content_news"></div>
                         </div>
-                        <p></p>
-                        <div id="see_more">
+                        <div id="category_see_more">
                             <img src="img/arrowIcon.png" alt="arrow icon">
                             <p>اقرأ المزيد</p>
                         </div>
@@ -54,6 +58,7 @@
                 </div>
 
             </div>
+
             <div class="relates_news">
                 <div class="related_news_left">
 
