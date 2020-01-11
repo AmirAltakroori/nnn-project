@@ -86,9 +86,9 @@ function showmainNews () {
                                     <h4>${mainNews[0].title}</h4>
                                 </div>
                                 <div class="latest-news-more-detailed-date">
-                                    <p>${mainNews[0].authorName}</p>
+                                    <p class="authorName">${mainNews[0].authorName}</p>
                                     <img src="img/calenderIcon.png" width="15px" height="15px">
-                                    <p>${mainNews[0].publishedDate}</p>
+                                    <p class="published">${mainNews[0].publishedDate}</p>
                                 </div>
                             </div>
                             <div class="latest-news-more-detailed-paragraph">
