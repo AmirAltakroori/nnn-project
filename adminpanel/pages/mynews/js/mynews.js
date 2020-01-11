@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", (event) => {
     let userdata = JSON.parse(sessionStorage.getItem("userData"));
     if (userdata != null) {
-        newsPage[userdata.ind] = userdata;
+        myNewsPage[userdata.ind] = userdata;
         sessionStorage.removeItem("userData");
     }
 });
@@ -75,7 +75,7 @@ function displaynews(news) {
 
         let edit_icon = document.createElement("i");
         edit_icon.className = "far fa-edit icon color-blue";
-        edit_icon.setAttribute("onclick", `updateNews(${news[i].id}) `);
+        edit_icon.setAttribute("onclick", `updateNews(${news[i].id},0) `);
         operations.appendChild(delete_icon);
         operations.appendChild(edit_icon);
 

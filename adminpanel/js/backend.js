@@ -153,7 +153,7 @@ let allNewsPage = [{
     createDate: new Date(),
     writerId: 1,
     _attachments: "",
-    id: 3,
+    id: 4,
 },
 {
     title: "سلسلة العاب LEft 4 Dead تعود من جديد",
@@ -168,15 +168,22 @@ let allNewsPage = [{
     createDate: new Date(),
     writerId: 1,
     _attachments: "",
-    id: 3,
+    id: 5,
 }
 ];
-function updateNews(id) {
+function updateNews(id,page) {
     let aim = null;
-    for (ind in newsPage)
-        if (newsPage[ind].id == id) {
-            aim = newsPage[ind];
+    let aimData = null;
+    
+    if(page == 0)
+        aimData = myNewsPage;
+    else if (page == 1)
+        aimData = allNewsPage;
+    for (ind in aimData)
+        if (aimData[ind].id == id) {
+            aim = aimData[ind];
             aim["ind"] = ind;
+            aim['pageNo'] = page;
             break;
         }
     sessionStorage.setItem("userData", JSON.stringify(aim));

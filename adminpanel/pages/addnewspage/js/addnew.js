@@ -60,8 +60,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
             userData.createDate = form.createDate.value;
 
             saveData('userData', userData);
-
+            if(userData.pageNo == 0)
             window.location.href = "../mynews/mynews.html";
+            else if(userData.pageNo == 1)
+            window.location.href = "../allnews/allnews.html";
             e.preventDefault();;
             return false;
         });

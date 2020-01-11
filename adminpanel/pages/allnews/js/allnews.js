@@ -1,5 +1,11 @@
 
-
+document.addEventListener("DOMContentLoaded", (event) => {
+    let userdata = getData("userData");
+    if (userdata != null) {
+        allNewsPage[userdata.ind] = userdata;
+        sessionStorage.removeItem("userData");
+    }
+});
 function deleteNews(callback, key, rev, row) {
 
     let fullUrl = URL + "news/" + key + "?rev=" + rev;
@@ -8,7 +14,7 @@ function deleteNews(callback, key, rev, row) {
     http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     http.onreadystatechange = () => {
         if (http.readyState == 4) {
-            callback(JSON.parse(http.response));
+            callback(getData(http.response));
             row.parentElement.removeChild(row);
         }
     }
@@ -110,7 +116,7 @@ function displaynews(news) {
 
         let edit_icon = document.createElement("i");
         edit_icon.className = "far fa-edit icon color-blue";
-
+        edit_icon.onclick =  function() {updateNews(news[i].id,1)};
         operations.appendChild(delete_icon);
         operations.appendChild(edit_icon);
 
