@@ -60,12 +60,14 @@ class Mvc
         document.title = routeObj.title;
         
         loadMvc(routeObj.$currentRoute.template,routeObj.$currentRoute.controller).then(
-            (obb) =>
+            (obj) =>
             {
+
                 viewElement.innerHTML = obb.template;
                 let controllerObj = new obb.controller[Object.keys(obb.controller)[0]];
                 controllerObj.routeParams = this.routeParams;
                 render(viewElement,controllerObj);
+
             }
         );
     }
@@ -81,16 +83,22 @@ class Mvc
 
 let routeList = [
     {
-        url: "/contact",
+        url: "/home",
+        template: "/Views/home.html",
+        controller: "/Models/home.js",
+        title: "شبكة الوحدة الإخبارية"
+    },
+    {
+        url: "/admin",
         template: "/Views/admin.html",
         controller: "/Models/admin.js",
         title: "صفحة المشرف"
     },
     {
-        url: "/home",
-        template: "/Views/home.html",
-        controller: "/Models/home.js",
-        title: "شبكة الوحدة الإخبارية"
+        url: "/contact",
+        template: "/Views/contact.html",
+        controller: "/Models/contact.js",
+        title: "صفحة المشرف"
     },
     {
         url: "/home/:id",

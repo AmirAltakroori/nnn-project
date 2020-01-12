@@ -1,4 +1,6 @@
 let $scope = {};
+let $bindedVars;
+let viewElement = document.querySelector('[view]');
 
 // classes
 // holds data required to a special atributes
@@ -50,6 +52,7 @@ function renderIf(expression,element)
 
 function renderFor(exp, element) 
 {
+
     // define the iteration symbol of this for loop
     let def = exp.split(':');
     let iterSymbol = 'i';
@@ -83,6 +86,7 @@ function renderFor(exp, element)
     }
 
     element.innerHTML = newElement;
+
 }
 
 function renderDisabled(exp,element)
@@ -177,37 +181,39 @@ function replaceElement(attrString)
 {
     let value = attrString.replace('$',"$scope.");
     value = eval(value);
-    return value;
+    return value || '';
 }
 
-// Collects all the binded variables {{var}} in an array with their elements
-function collectBindedVariables(doc) {
-    let regExp = /\{\{([^}^}]+)\}\}/g;
-    doc.childNodes.forEach(element => {
-        if(text = element.innerText) {
-            let matches = text.match(regExp);
-            matches.forEach(str => {
-                let variable = str.substring(2, str.length - 2).trim();
-                if(!$bindedVars.get(variable)) $bindedVars.set(variable, [{element: element, text: element.innerText}]);
-                else $bindedVars.set(variable, [...$bindedVars.get(variable), {element: element, text: element.innerText}]);
-            });
-        }
-    });
+// executes {{exp}} using data of a model
+function replaceValue(variable, text) {
+    let value = variable.replace('$', "$scope.");
+    value = eval(value);
+    if (!value) return text.replace("{{" + variable + "}}", "");
+    let res = text.replace("{{" + variable + "}}", value);
+    return res;
 }
 
 // Replace the binded variable with its real value in html
-function $apply(vars = []) {
-    $bindedVars.forEach(async (elements, variable) => {
-        await elements.forEach(elem => {
-            elem.element.innerText = elem.text;
-        });
-        await elements.forEach(elem => {
-            elem.element.innerText = replaceElement(variable, elem.element.innerText);
-        });
-    });
-    
+export function $apply(doc, replace = [])
+{
+    let str;
+    if(!doc) {
+        str = $bindedVars;
+        doc = viewElement;
+    }
+    else str = doc.innerHTML;
+    if(replace.length) {
+        str = str.replace(replace[0] + '.', replace[1] + '.');
+        str = str.replace(`{{${replace[0]}}}`, `{{${replace[1]}}}`);
+        str = str.replace(`${replace[0]}}}`, `${replace[1]}}}`);
+        str = str.replace(`{{${replace[0]}`, `{{${replace[1]}`);
+        str = str.replace(` ${replace[0]}`, ` ${replace[1]}`);
+        str = str.replace(`${replace[0]} `, `${replace[1]} `);
+        str = str.replace(` ${replace[0]} `, ` ${replace[1]} `);
+    }
+    str = str.replace(/(\{\{.*?\}\})/g,replaceElement);
+    doc.innerHTML = str;
 }
-
 
 let cm = new Map();
 function createClass(name,attr)
@@ -223,24 +229,20 @@ function createClass(name,attr)
     cm.set(name,true);
 }
 
-function findReplace(doc)
-{
-    let str = doc.innerHTML;
-    str = doc.innerHTML.replace(/(\{\{.*?\}\})/g,replaceElement);
-    doc.innerHTML = str;
-}
-
 export function render(view,model)
 {
     let specials = specialTags(view);
     
+
     $scope = model;
-   
+
     specials.forEach(element => element.render(element.exp,element.element));
     
-    findReplace(view);
+    $bindedVars = view.innerHTML;
+    $apply(view);
     return view;
 }
+
 
 function renderTemplate(view)
 {
