@@ -50,31 +50,39 @@ function renderIf(expression,element)
 
 function renderFor(exp, element) 
 {
-    // let def = exp.split(':');
-    // let iterSymbol = 'i';
-    // if(def.length > 1)
-    //     iterSymbol = def[1].trim();
+    // define the iteration symbol of this for loop
+    let def = exp.split(':');
+    let iterSymbol = 'i';
+    if(def.length > 1)
+        iterSymbol = def[1].trim();
     
-    // let osubArr =  def[0].split('of')[0].trim();
-    // let subArr = "\[$]" + def[0].split('of')[0].trim();
-    // let arrName = def[0].split('of')[1].trim();
-
-    // let array = eval('$scope.'+arrName);
-
-    // let iterregx = new RegExp(`\\$` + iterSymbol + '(?![a-z])','g');
-
-    // let newElement = "";
-    // for (let i = 0; i < array.length; i++)
-    // {
-    //     newElement += element.innerHTML.replace(new RegExp(subArr, 'g'),"$" + arrName + `[${i}]`).replace(iterregx,i);
-    //     element.querySelectorAll("[\\$for]").forEach(ele =>
-    //     {
-    //         ele.getAttribute("\$for").replace(new RegExp(osubArr, 'g'),arrName + `[${i}]`);
-    //     });
-    // }
+    // define array and the element
+    let subArr =  def[0].split('of')[0].trim();
+    let arrName = def[0].split('of')[1].trim();
     
-    // element.innerHTML = newElement;
-    // element = render(element);
+    let array = eval('$scope.'+arrName);
+    if(!array) return;
+    let iterregx = new RegExp(`\\$` + iterSymbol + '(?![a-z])','g');
+    
+    let newElement = "";
+    
+    for (let i = 0; i < array.length; i++)
+    {
+        let tempele = element.innerHTML.replace(new RegExp("\[$]" + subArr, 'g'),"$" + arrName + `[${i}]`).replace(iterregx,i);
+        let oldval = $scope[subArr];
+        $scope[subArr] = array[i];
+        
+        var node = document.createElement("LI");
+        node.innerHTML = tempele;
+        renderTemplate(node);
+        findReplace(node);
+        tempele = node.innerHTML;
+        
+        $scope[subArr] = oldval;
+        newElement += tempele;
+    }
+
+    element.innerHTML = newElement;
 }
 
 function renderDisabled(exp,element)
@@ -160,7 +168,7 @@ function specialTags(doc)
         elements = [...elements].map(element => element = new SpecialAttr(specails[i].type,element,specails[i].render));
         specialTags = specialTags.concat(elements);
     }
-
+    
     return specialTags;
 }
 
@@ -226,12 +234,19 @@ export function render(view,model)
 {
     let specials = specialTags(view);
     
-    
     $scope = model;
-    console.log(model);
+   
     specials.forEach(element => element.render(element.exp,element.element));
     
     findReplace(view);
+    return view;
+}
+
+function renderTemplate(view)
+{
+    let specials = specialTags(view);
+    
+    specials.forEach(element => element.render(element.exp,element.element));
     return view;
 }
 

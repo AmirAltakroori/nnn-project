@@ -12,6 +12,7 @@ class routeObj
         this.controller = c;
         this.route = r;
         this.template = t;
+        this.routeParams = {};
     } 
 }
 
@@ -54,15 +55,17 @@ class Mvc
         //Set to default route object if no route found
         if (!routeObj)
             routeObj = this.defaultRoute;  
-
+        
+        this.routeParams = routeObj.$routeParams;
         document.title = routeObj.title;
         
         loadMvc(routeObj.$currentRoute.template,routeObj.$currentRoute.controller).then(
             (obb) =>
             {
                 viewElement.innerHTML = obb.template;
-                let temp = render(viewElement,new obb.controller[Object.keys(obb.controller)[0]]);
-                viewElement.innerHTML = temp.innerHTML;
+                let controllerObj = new obb.controller[Object.keys(obb.controller)[0]];
+                controllerObj.routeParams = this.routeParams;
+                render(viewElement,controllerObj);
             }
         );
     }

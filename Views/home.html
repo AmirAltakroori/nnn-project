@@ -9,14 +9,14 @@
 </h1>
 
 <div $for = "n of items">
-    {{$i}}
-    <div $for = "n of items:k">
-        {{$i}} hello {{$k}}<br>
+   
+    <div $for = "f of items:k">
+        {{$i}} hello {{$k}} {{$n}}<br>
     </div>
 </div>
 
 <div $for = "n of arr2d">
     <div $for = "h of n:k" >
-        {{$n}}
+        {{$h}}
     </div>
 </div>
