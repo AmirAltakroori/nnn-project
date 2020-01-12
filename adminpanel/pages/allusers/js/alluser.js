@@ -53,7 +53,6 @@ function updateUsers(id) {
 }
 
 
-let newContain, newId = 0;
 
 function show(row, modelId, id) {
     let element = document.getElementById(modelId)

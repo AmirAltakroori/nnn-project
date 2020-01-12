@@ -8,7 +8,7 @@
 // Don't delete this comments
 // By Waleed Jubeh
 
-let newContain;
+// let newContain;
 let newId;
 //delete a row in a table
 function deleteRowElement(Page) {
