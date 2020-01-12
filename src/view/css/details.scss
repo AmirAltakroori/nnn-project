@@ -34,18 +34,10 @@ part1 contain the header of the new and the related news
             }
         }
     }
-    .part_3 {
-        .add_comment {
-            .comment {
-                p {
-                    left: 61%;
-                }
-            }
-        }
-    }
+    
 }
 
-@media screen and (min-height: 810px) {
+@media screen and (max-height: 810px) {
     .news-content {
         .news_related {
             ul li {
@@ -65,7 +57,7 @@ part1 contain the header of the new and the related news
     }
 }
 
-@media screen and (min-height: 768px) {
+@media screen and (max-height: 768px) {
     .news-content {
         .news_related {
             ul li {
