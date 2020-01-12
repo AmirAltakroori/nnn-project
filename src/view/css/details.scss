@@ -90,7 +90,7 @@ part1 contain the header of the new and the related news
     .news_related {
         @include flex-property(column, flex-start, flex-start, 28%);
         .related_news_menu {
-            width: 90%;
+            width: 80%;
         }
         ul li {
             @include flex-property(row, flex-start, flex-start, 100%);
@@ -113,12 +113,15 @@ part1 contain the header of the new and the related news
             margin-bottom: 2%;
         }
         @include flex-property(column, flex-start, flex-start, 72%);
-        .news_header {
-            .main_img {
-                // background-image: url("img/new2.png");
-                background-color: red;
-                
-            }
+        .main_img {
+            background-image: url('img/new.jpg');
+            width: 90%;
+            height: 570px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            margin-right: 10%;
         }
     }
 }
@@ -135,7 +138,6 @@ part1 contain the header of the new and the related news
         grid-template-columns: auto auto;
         grid-gap: 10px;
         .share-buttons {
-            ;
             text-align: center;
             margin: 0 auto;
             a img {
@@ -167,7 +169,7 @@ part1 contain the header of the new and the related news
     }
 }
 
-.part_3 {
+.comments {
     font-size: 20px;
     display: grid;
     grid-template-columns: 50% 50%;
