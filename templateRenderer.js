@@ -52,14 +52,41 @@ function renderIf(expression,element)
 
 function renderFor(exp, element) 
 {
-    let subArr = exp.split('of')[0].trim();
-    let arrName = exp.split('of')[1].trim();
+
+    // define the iteration symbol of this for loop
+    let def = exp.split(':');
+    let iterSymbol = 'i';
+    if(def.length > 1)
+        iterSymbol = def[1].trim();
+    
+    // define array and the element
+    let subArr =  def[0].split('of')[0].trim();
+    let arrName = def[0].split('of')[1].trim();
+    
     let array = eval('$scope.'+arrName);
-    let clonnedElement = element.cloneNode(true).innerHTML;
-    for (let i = 0; i < array.length; i++) {
-        if(i) element.innerHTML += clonnedElement;
-        $apply(element, ['$' + subArr, '$' + arrName + '[' + i + ']']);
+    if(!array) return;
+    let iterregx = new RegExp(`\\$` + iterSymbol + '(?![a-z])','g');
+    
+    let newElement = "";
+    
+    for (let i = 0; i < array.length; i++)
+    {
+        let tempele = element.innerHTML.replace(new RegExp("\[$]" + subArr, 'g'),"$" + arrName + `[${i}]`).replace(iterregx,i);
+        let oldval = $scope[subArr];
+        $scope[subArr] = array[i];
+        
+        var node = document.createElement("LI");
+        node.innerHTML = tempele;
+        renderTemplate(node);
+        findReplace(node);
+        tempele = node.innerHTML;
+        
+        $scope[subArr] = oldval;
+        newElement += tempele;
     }
+
+    element.innerHTML = newElement;
+
 }
 
 function renderDisabled(exp,element)
@@ -145,7 +172,7 @@ function specialTags(doc)
         elements = [...elements].map(element => element = new SpecialAttr(specails[i].type,element,specails[i].render));
         specialTags = specialTags.concat(elements);
     }
-
+    
     return specialTags;
 }
 
@@ -202,15 +229,32 @@ function createClass(name,attr)
     cm.set(name,true);
 }
 
+function findReplace(doc)
+{
+    let str = doc.innerHTML;
+    str = doc.innerHTML.replace(/(\{\{.*?\}\})/g,replaceElement);
+    doc.innerHTML = str;
+}
 export function render(view,model)
 {
     let specials = specialTags(view);
     
-    // testing end
+
     $scope = model;
+
     specials.forEach(element => element.render(element.exp,element.element));
     
     $bindedVars = view.innerHTML;
     $apply(view);
     return view;
 }
+
+
+function renderTemplate(view)
+{
+    let specials = specialTags(view);
+    
+    specials.forEach(element => element.render(element.exp,element.element));
+    return view;
+}
+
