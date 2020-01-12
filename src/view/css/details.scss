@@ -114,7 +114,7 @@ part1 contain the header of the new and the related news
         }
         @include flex-property(column, flex-start, flex-start, 72%);
         .main_img {
-            background-image: url('img/new.jpg');
+            background-image: url('../img/new.jpg');
             width: 90%;
             height: 570px;
             background-position: center;
