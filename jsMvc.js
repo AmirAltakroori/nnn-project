@@ -3,6 +3,41 @@ import { render } from './templateRenderer.js';
 
 let viewElement = document.querySelector('[view]');
 
+let routeList = [
+    {
+        url: "/home",
+        template: "/templates/home.html",
+        controller: "/controllers/home.js",
+        title: "شبكة الوحدة الإخبارية"
+    },
+    {
+        url: "/admin",
+        template: "/templates/admin.html",
+        controller: "/controllers/admin.js",
+        title: "صفحة المشرف"
+    },
+    {
+        url: "/contact",
+        template: "/templates/contact.html",
+        controller: "/controllers/contact.js",
+        title: "صفحة المشرف"
+    },
+    {
+        url: "/home/:id",
+        template: "/templates/home1.html",
+        controller: "/controllers/home1.js",
+        id: "",
+        title: "شبكة الوحدة الإخبارية"
+    },
+    {
+        url: "/home/:id/:titel/:ex",
+        template: "/templates/home2.html",
+        controller: "/controllers/home2.js",
+        id: "",
+        title: "شبكة الوحدة الإخبارية"
+    }
+];
+
 class routeObj 
 {
     constructor(title,route,template,controller)
@@ -57,7 +92,7 @@ class Mvc
             routeObj = this.defaultRoute;  
         
         this.routeParams = routeObj.$routeParams;
-        document.title = routeObj.title;
+        document.title = routeObj.$currentRoute.title;
         
         loadMvc(routeObj.$currentRoute.template,routeObj.$currentRoute.controller).then(
             (obb) =>
@@ -80,41 +115,6 @@ class Mvc
     }
 }
 
-
-let routeList = [
-    {
-        url: "/home",
-        template: "/templates/home.html",
-        controller: "/controllers/home.js",
-        title: "شبكة الوحدة الإخبارية"
-    },
-    {
-        url: "/admin",
-        template: "/templates/admin.html",
-        controller: "/controllers/admin.js",
-        title: "صفحة المشرف"
-    },
-    {
-        url: "/contact",
-        template: "/templates/contact.html",
-        controller: "/controllers/contact.js",
-        title: "صفحة المشرف"
-    },
-    {
-        url: "/home/:id",
-        template: "/templates/home1.html",
-        controller: "/controllers/home1.js",
-        id: "",
-        title: "شبكة الوحدة الإخبارية"
-    },
-    {
-        url: "/home/:id/:titel/:ex",
-        template: "/templates/home2.html",
-        controller: "/controllers/home2.js",
-        id: "",
-        title: "شبكة الوحدة الإخبارية"
-    }
-];
 
 let mvc = new Mvc();
 mvc.addRouteList(routeList);

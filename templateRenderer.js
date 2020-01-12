@@ -78,7 +78,7 @@ function renderFor(exp, element)
         var node = document.createElement("LI");
         node.innerHTML = tempele;
         renderTemplate(node);
-        findReplace(node);
+        $apply(node);
         tempele = node.innerHTML;
         
         $scope[subArr] = oldval;
@@ -131,7 +131,6 @@ function renderStyle(exp,element)
 
 function renderClass(exp,element)
 {
-    
     exp = exp.replace(/\$/g, "$scope.");  
     let expGroup = exp.split(',');
    
@@ -184,32 +183,16 @@ function replaceElement(attrString)
     return value || '';
 }
 
-// executes {{exp}} using data of a model
-function replaceValue(variable, text) {
-    let value = variable.replace('$', "$scope.");
-    value = eval(value);
-    if (!value) return text.replace("{{" + variable + "}}", "");
-    let res = text.replace("{{" + variable + "}}", value);
-    return res;
-}
-
 // Replace the binded variable with its real value in html
-export function $apply(doc, replace = [])
+export function $apply(doc)
 {
     let str;
     if(!doc) {
         str = $bindedVars;
         doc = viewElement;
     }
-    else str = doc.innerHTML;
-    if(replace.length) {
-        str = str.replace(replace[0] + '.', replace[1] + '.');
-        str = str.replace(`{{${replace[0]}}}`, `{{${replace[1]}}}`);
-        str = str.replace(`${replace[0]}}}`, `${replace[1]}}}`);
-        str = str.replace(`{{${replace[0]}`, `{{${replace[1]}`);
-        str = str.replace(` ${replace[0]}`, ` ${replace[1]}`);
-        str = str.replace(`${replace[0]} `, `${replace[1]} `);
-        str = str.replace(` ${replace[0]} `, ` ${replace[1]} `);
+    else {
+        str = doc.innerHTML;
     }
     str = str.replace(/(\{\{.*?\}\})/g,replaceElement);
     doc.innerHTML = str;
@@ -229,12 +212,6 @@ function createClass(name,attr)
     cm.set(name,true);
 }
 
-function findReplace(doc)
-{
-    let str = doc.innerHTML;
-    str = doc.innerHTML.replace(/(\{\{.*?\}\})/g,replaceElement);
-    doc.innerHTML = str;
-}
 export function render(view,model)
 {
     let specials = specialTags(view);
