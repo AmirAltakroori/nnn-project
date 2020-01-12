@@ -9,11 +9,10 @@
  *
  *     File description: this file contains the functions that fetch Related news category from the database
  */
+const randomNewsDiv = document.getElementById('random-content');
+let randomNews = [];
 
- const randomNewsDiv = document.getElementById('random-content');
- let randomNews = [];
-
- showRandomNews ()
+showRandomNews();
 
 /*
     Show Related category News.
@@ -59,35 +58,35 @@ function relatedCategoryNews() {
 
     This function used to retrieve random news from database
 */
-function getRandomNews () {
+function getRandomNews() {
 
     // I'll rewrite this function when DB was ready.
     randomNews = [{
-                    id:1,
-                    title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-                    img:"img/new.jpg",
+        id: 1,
+        title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
+        img: "img/new.jpg",
 
-                  }, {
-                    id:2,
-                    title: "إلغاء امتحانات الفاينل لهذا العام",
-                    img:"img/new2.png ",
+    }, {
+        id: 2,
+        title: "إلغاء امتحانات الفاينل لهذا العام",
+        img: "img/new2.png ",
 
-                  }, {
-                    id:3,
-                    title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
-                    img:"img/new.jpg ",
+    }, {
+        id: 3,
+        title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
+        img: "img/new.jpg ",
 
-                 }, {
-                    id:4,
-                    title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
-                    img:"img/new2.png",
+    }, {
+        id: 4,
+        title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
+        img: "img/new2.png",
 
-                 }, {
-                    id:5,
-                    title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
-                    img:"img/new.jpg ",
+    }, {
+        id: 5,
+        title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
+        img: "img/new.jpg ",
 
-                 }];
+    }];
 
 }
 
@@ -102,11 +101,11 @@ function getRandomNews () {
 
     This function used to show the random news retrieved from database
 */
-function showRandomNews () {
+function showRandomNews() {
 
     getRandomNews();
 
-    randomNewsDiv.innerHTML="";
+    randomNewsDiv.innerHTML = "";
     for (let i = 0; i < randomNews.length; i++) {
 
         let currentRandomNew = `

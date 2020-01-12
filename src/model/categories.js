@@ -13,15 +13,17 @@
  *     in category page for normal user view.
  */
 
- class Categories {
-     constructor() {
-         this.id;
-         this.name;
-         this.isActive;
-         this.createDate;
-         this.userId;
-     }
- }
+class Categories {
+    constructor() {
+        this.id;
+        this.name;
+        this.isActive;
+        this.createDate;
+        this.userId;
+    }
+}
+
+initialFillPage();
 
 // just a test news data
 function getDataNewsList() {
@@ -61,9 +63,9 @@ function getDataNewsList() {
 }
 
 /*
-    search in database to find the news which has the same recived id
+    search in database to find the news which has the same recived id 
     and returned it
-    just work on tested data
+    just work on tested data  
 
     @tparam id: integer
 
@@ -84,10 +86,10 @@ function getNewsById(newsId) {
 
 /*
     Fill right sidebar div in category page from the news which bring from data base by id
-
+    
     @tparam divId: string, newsId: integer
 
-    @param divId: the identifier of the div which should be filled,
+    @param divId: the identifier of the div which should be filled, 
     newsId: the identifier of the news which is needed to be filled in div which it's id is recived
 
     @returns
@@ -99,24 +101,53 @@ function fillNewsDivRightSidebar(divId, newsId) {
     //get the selected news by identifier from the data base
     let selectedNews = getNewsById(newsId);
 
-    //assume that we get news's image path by function
-    selectedDiv.getElementsByTagName("img")[0].setAttribute("src", selectedNews.attachments);
-    selectedDiv.getElementsByTagName("img")[0].setAttribute("alt", "news image");
+    //assume that we get news's image path by function 
+    selectedDiv.getElementsByTagName("div")[0].style.backgroundImage = 'url(' + selectedNews.attachments + ')';
 
     // fill news description
-    // to be sure that the news's tilte doesn't exceed 15 characters
-    let newsTitle = document.createTextNode(reduceTextChar(selectedNews.title, 50));
-    selectedDiv.getElementsByTagName("p")[0].appendChild(newsTitle);
+    // to be sure that the news's tilte doesn't exceed 100 characters
+    let newsTitleContainer = document.createElement("span");
+    let newsTitle = document.createTextNode(reduceTextChar(selectedNews.title, 100));
+    newsTitleContainer.appendChild(newsTitle);
+    selectedDiv.getElementsByTagName("div")[0].appendChild(newsTitleContainer);
 }
 
 /*
-    To make the recived text does not exceed the recived number of characters and replace
+    Fill right sidebar div in category page from the news which bring from data base by id
+    
+    @tparam divId: string, newsId: integer
+
+    @param divId: the identifier of the div which should be filled, 
+    newsId: the identifier of the news which is needed to be filled in div which it's id is recived
+
+    @returns
+*/
+function fillNewsDivRightSidebar(divId, newsId) {
+    //get the selected div by id
+    let selectedDiv = document.getElementById(divId + "");
+
+    //get the selected news by identifier from the data base
+    let selectedNews = getNewsById(newsId);
+
+    //assume that we get news's image path by function 
+    selectedDiv.getElementsByTagName("div")[0].style.backgroundImage = 'url(' + selectedNews.attachments + ')';
+
+    // fill news description
+    // to be sure that the news's tilte doesn't exceed 100 characters
+    let newsTitleContainer = document.createElement("span");
+    let newsTitle = document.createTextNode(reduceTextChar(selectedNews.title, 100));
+    newsTitleContainer.appendChild(newsTitle);
+    selectedDiv.getElementsByTagName("div")[0].appendChild(newsTitleContainer);
+}
+
+/*
+    To make the recived text does not exceed the recived number of characters and replace 
     the overflowed characters with "..."
 
     @tparam text: string, numberOfMaxChar: integer
 
     @param text: recived text which is needed to be reduced,
-    numberOfMaxChar: number of maximum characters in the text
+    numberOfMaxChar: number of maximum characters in the text 
 
     @returns: reduced text
 
@@ -131,7 +162,7 @@ function reduceTextChar(text, numberOfMaxChar) {
 
 /*
     Fill main section div in category page from the news which bring from data base by id
-
+    
     @tparam newsId: integer
 
     @param newsId: the identifier of the news which is needed to be filled in div which it's id is recived
@@ -139,27 +170,29 @@ function reduceTextChar(text, numberOfMaxChar) {
     @returns
 */
 function fillNewsDivMainSection(newsId) {
-    let mainDiv = document.getElementById("main_news_category");
-
     //get the selected news by identifier from the data base
     let selectedNews = getNewsById(newsId);
 
-    //assume that we get news's image path by function
-    document.getElementById("main_news_image").setAttribute("src", selectedNews.attachments);
+    //assume that we get news's image path by function 
+    document.getElementById("category_main_news_image").style.backgroundImage = 'url(' + selectedNews.attachments + ')';
 
     // fill news title
-    document.getElementById("main_news_title").innerHTML = reduceTextChar(selectedNews.title, 70);
+    document.getElementById("category_main_news_title").innerHTML = reduceTextChar(selectedNews.title, 70);
 
     // fill writing details which has writer name and news typing date
-    let writingDetials = document.getElementById("writng_details");
+    let writingDetials = document.getElementById("category_main_news_writng_details");
     let writerName = document.createTextNode(selectedNews.writer);
-    document.getElementById("writer").innerHTML = selectedNews.writer;
-    document.getElementById("date").innerHTML = selectedNews.date;
+    document.getElementById("category_main_news_writer").innerHTML = selectedNews.writer;
+    document.getElementById("category_main_news_date").innerHTML = selectedNews.date;
+
+    // fill news description
+    // to be sure that the news's tilte doesn't exceed 100 characters
+    document.getElementById("category_main_news_content_news").innerHTML = reduceTextChar(selectedNews.content, 100);
 }
 
 /*
-    search in database to find the most three recent news
-    and it returned the indexes of them from the most resent
+    search in database to find the most three recent news 
+    and it returned the indexes of them from the most resent  
 
     @tparam:
 
@@ -197,14 +230,17 @@ function showNewsInMainSectionFromDiv(position) {
 
     @returns:
 */
+initialFillPage();
+
 function initialFillPage() {
     relatedCategoryNews();
+
     //get ids of most recent news to fill them in right sidebar
     let mostRecentNewsList = getIdsOFMostThreeRecentNews();
 
     //fill the news in the right sidebar from the recent news
     for (let position = 0; position < mostRecentNewsList.length; position += 1) {
-        let divId = "right_news_id_" + (position + 1);
+        let divId = "category_rightside_news_id_" + (position + 1);
         let newsId = mostRecentNewsList[position];
         fillNewsDivRightSidebar(divId, newsId);
     }
@@ -212,7 +248,6 @@ function initialFillPage() {
     //fill main news from the most recent news is first news in mostRecentNewsList
     showNewsInMainSectionFromDiv(mostRecentNewsList[0]);
 }
-
 /*
     get data from database
     @tparam
@@ -262,6 +297,7 @@ function relatedCategoryNews() {
             newsLi.innerHTML = `
             <img src="${newsInCategory[whereAddNew].img}" alt="photo">
              <p>${newsInCategory[whereAddNew].title}</p>
+             
              `
             document.getElementById("related_news_menu_left").appendChild(newsLi);
         } else {
