@@ -90,7 +90,7 @@ part1 contain the header of the new and the related news
     .news_related {
         @include flex-property(column, flex-start, flex-start, 28%);
         .related_news_menu {
-            width: 90%;
+            width: 80%;
         }
         ul li {
             @include flex-property(row, flex-start, flex-start, 100%);
