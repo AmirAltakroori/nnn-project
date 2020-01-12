@@ -12,19 +12,19 @@
 const randomNewsDiv = document.getElementById('random-content');
 let randomNews = [];
 
-showRandomNews()
-initialFillPage()
-    /*
-        Show Related category News.
+showRandomNews();
 
-        @tparam
+/*
+    Show Related category News.
 
-        @param
+    @tparam
 
-        @returns
+    @param
 
-        This function used to show  the Related category News retrieved from database
-    */
+    @returns
+
+    This function used to show  the Related category News retrieved from database
+*/
 function relatedCategoryNews() {
 
     let newsInCategory = getDataNewsListrelated();
