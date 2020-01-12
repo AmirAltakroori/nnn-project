@@ -3,7 +3,7 @@ export class ContactController
     constructor()
     {
         // Import the $apply function
-        let $apply = import("../templateRenderer.js")
+        let $apply = import("../potato/dist/templateRenderer.min.js")
             .then(res => {
                 $apply = res.$apply;
             });
