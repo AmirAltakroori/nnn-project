@@ -19,27 +19,17 @@ part1 contain the header of the new and the related news
 @media screen and (max-height: 1080px) {
     .news-content {
         .news_related {
-            .related_news_menu {
-                width: 100%;
-            }
             ul li {
                 img {
-                    width: 35%;
-                    margin-left: 3%;
-                    margin-right: 0%;
-                    padding: 3%;
+                    width: 200px;
                 }
             }
         }
         .news_header {
-            h1 {
-                margin-right: 10%;
-                margin-bottom: 2%;
-            }
             .main_img {
                 img {
-                    width: 100%;
-                    height: 500px;
+                    // width: 1210px;
+                    height: 570px;
                 }
             }
         }
@@ -58,28 +48,17 @@ part1 contain the header of the new and the related news
 @media screen and (min-height: 810px) {
     .news-content {
         .news_related {
-            .related_news_menu {
-                width: 100%;
-            }
             ul li {
                 img {
-                    width: 35%;
-                    margin-left: 3%;
-                    margin-right: 0%;
-                    padding: 3%;
+                    width: 190px;
                 }
             }
         }
         .news_header {
-            h1 {
-                margin-right: 10%;
-                margin-bottom: 2%;
-            }
             .main_img {
                 img {
-                    margin-top: 0%;
-                    width: 100%;
-                    height: 450px;
+                    // width: 1200px;
+                    height: 570px;
                 }
             }
         }
@@ -89,27 +68,9 @@ part1 contain the header of the new and the related news
 @media screen and (min-height: 768px) {
     .news-content {
         .news_related {
-            .related_news_menu {
-                width: 100%;
-            }
             ul li {
                 img {
-                    width: 35%;
-                    margin-left: 3%;
-                    margin-right: 0%;
-                    padding: 3%;
-                }
-            }
-        }
-        .news_header {
-            h1 {
-                margin-right: 10%;
-                margin-bottom: 2%;
-            }
-            .main_img {
-                img {
-                    width: 100%;
-                    height: 430px;
+                    width: 180px;
                 }
             }
         }
@@ -128,9 +89,17 @@ part1 contain the header of the new and the related news
     @include flex-property(row, flex-end, center, 100%);
     .news_related {
         @include flex-property(column, flex-start, flex-start, 28%);
+        .related_news_menu {
+            width: 90%;
+        }
         ul li {
             @include flex-property(row, flex-start, flex-start, 100%);
             list-style-type: none;
+            img {
+                margin-left: 3%;
+                margin-right: 0%;
+                padding: 3%;
+            }
         }
         h4 {
             margin-bottom: 20px;
@@ -140,8 +109,17 @@ part1 contain the header of the new and the related news
     .news_header {
         h1 {
             font-size: $font-size + 15;
+            margin-right: 10%;
+            margin-bottom: 2%;
         }
         @include flex-property(column, flex-start, flex-start, 72%);
+        .news_header {
+            .main_img {
+                // background-image: url("img/new2.png");
+                background-color: red;
+                
+            }
+        }
     }
 }
 
@@ -190,7 +168,7 @@ part1 contain the header of the new and the related news
 }
 
 .part_3 {
-  font-size: 20px;
+    font-size: 20px;
     display: grid;
     grid-template-columns: 50% 50%;
     height: 400px;
@@ -204,7 +182,6 @@ part1 contain the header of the new and the related news
             vertical-align: bottom;
             display: grid;
             grid-template-columns: 30% 70%;
-
             img {
               width: 45px;
               height: 45px;

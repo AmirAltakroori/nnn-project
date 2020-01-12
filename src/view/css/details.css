@@ -53,52 +53,22 @@ $param $direction: flex direction , $justify: justify content of flex , $align: 
 part1 contain the header of the new and the related news
 */
 @media screen and (max-height: 1080px) {
-  .news-content .news_related .related_news_menu {
-    width: 100%; }
   .news-content .news_related ul li img {
-    width: 35%;
-    margin-left: 3%;
-    margin-right: 0%;
-    padding: 3%; }
-  .news-content .news_header h1 {
-    margin-right: 10%;
-    margin-bottom: 2%; }
+    width: 200px; }
   .news-content .news_header .main_img img {
-    width: 100%;
-    height: 500px; }
+    height: 570px; }
   .part_3 .add_comment .comment p {
     left: 61%; } }
 
 @media screen and (min-height: 810px) {
-  .news-content .news_related .related_news_menu {
-    width: 100%; }
   .news-content .news_related ul li img {
-    width: 35%;
-    margin-left: 3%;
-    margin-right: 0%;
-    padding: 3%; }
-  .news-content .news_header h1 {
-    margin-right: 10%;
-    margin-bottom: 2%; }
+    width: 190px; }
   .news-content .news_header .main_img img {
-    margin-top: 0%;
-    width: 100%;
-    height: 450px; } }
+    height: 570px; } }
 
 @media screen and (min-height: 768px) {
-  .news-content .news_related .related_news_menu {
-    width: 100%; }
   .news-content .news_related ul li img {
-    width: 35%;
-    margin-left: 3%;
-    margin-right: 0%;
-    padding: 3%; }
-  .news-content .news_header h1 {
-    margin-right: 10%;
-    margin-bottom: 2%; }
-  .news-content .news_header .main_img img {
-    width: 100%;
-    height: 430px; } }
+    width: 180px; } }
 
 * {
   direction: rtl; }
@@ -137,6 +107,8 @@ part1 contain the header of the new and the related news
     -ms-flex-direction: column;
     flex-direction: column;
     width: 28%; }
+    .news-content .news_related .related_news_menu {
+      width: 90%; }
     .news-content .news_related ul li {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -153,6 +125,10 @@ part1 contain the header of the new and the related news
       flex-direction: row;
       width: 100%;
       list-style-type: none; }
+      .news-content .news_related ul li img {
+        margin-left: 3%;
+        margin-right: 0%;
+        padding: 3%; }
     .news-content .news_related h4 {
       margin-bottom: 20px;
       color: #0C4D6D; }
@@ -172,7 +148,11 @@ part1 contain the header of the new and the related news
     flex-direction: column;
     width: 72%; }
     .news-content .news_header h1 {
-      font-size: 35px; }
+      font-size: 35px;
+      margin-right: 10%;
+      margin-bottom: 2%; }
+    .news-content .news_header .news_header .main_img {
+      background-color: red; }
 
 .news-body {
   font-size: 25px;
