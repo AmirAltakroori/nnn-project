@@ -229,6 +229,12 @@ function createClass(name,attr)
     cm.set(name,true);
 }
 
+function findReplace(doc)
+{
+    let str = doc.innerHTML;
+    str = doc.innerHTML.replace(/(\{\{.*?\}\})/g,replaceElement);
+    doc.innerHTML = str;
+}
 export function render(view,model)
 {
     let specials = specialTags(view);

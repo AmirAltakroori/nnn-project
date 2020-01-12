@@ -60,7 +60,7 @@ class Mvc
         document.title = routeObj.title;
         
         loadMvc(routeObj.$currentRoute.template,routeObj.$currentRoute.controller).then(
-            (obj) =>
+            (obb) =>
             {
 
                 viewElement.innerHTML = obb.template;
