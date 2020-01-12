@@ -1,7 +1,7 @@
 
-# NGS Framework
+# Potato Framework
 
-NGS Framework is a development platform for building web applications using JavaScript.
+Potato Framework is a development platform for building web applications using JavaScript.
 
 
 
