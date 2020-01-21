@@ -200,7 +200,7 @@ let AUTHENTICATION = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJs
 function cleanData(data) {
     cleanedData = [];
     for (let i = 0; i < data.rows.length; i++)
-        cleanData.push(data.rows[i]);
+        cleanedData.push(data.rows[i]);
     return cleanedData;
 }
 
