@@ -2,13 +2,15 @@ export class ContactController
 {
     constructor()
     {
+        let $apply;
         // Import the $apply function
-        let $apply = import("../potato/src/templateRenderer.js")
+        import("../potato/src/templateRenderer.js")
             .then(res => {
-                $apply = res.$apply;
+                let $apply = res.$apply;
             });
             
         this.FirstName = "hello";
+
         setTimeout(() => {
             this.FirstName = "JAJAJJAJ";
             $apply();

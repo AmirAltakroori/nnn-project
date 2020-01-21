@@ -1,5 +1,6 @@
 // Define global variables
 let $scope = {};
+let $functions;
 let $bindedVars;
 let viewElement = document.querySelector('[view]');
 let cm = new Map();
@@ -136,6 +137,18 @@ function renderClass(exp, element) {
 	);
 }
 
+function renderModel(exp, element) {
+
+}
+
+function renderClick(exp, element) {
+	
+}
+
+function renderChange(exp, element) {
+	
+}
+
 //*********************************************************************//
 //*********************************************************************//
 //*********************************************************************//
@@ -146,7 +159,10 @@ const specails = [
 	new AttrData("\\$if", renderIf),
 	new AttrData("\\$disabled", renderDisabled),
 	new AttrData("\\$style", renderStyle),
-	new AttrData("\\$class", renderClass)
+	new AttrData("\\$class", renderClass),
+	new AttrData("\\$click", renderClick),
+	new AttrData("\\$model", renderModel),
+	new AttrData("\\$change", renderChange)
 ];
 
 // Pulls special tags from a given html
@@ -203,9 +219,9 @@ function renderTemplate(view) {
 	specials.forEach(element => element.render(element.exp, element.element));
 }
 
-
-export function render(view, model) {
+export function render(view, model, functions) {
 	$scope = model;
+	$functions = functions;
 	$bindedVars = view.innerHTML;
 	renderTemplate(view);
 	$apply(view);
