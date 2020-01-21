@@ -3,7 +3,7 @@ export class ContactController
     constructor()
     {
         // Import the $apply function
-        let $apply = import("../potato/dist/templateRenderer.min.js")
+        let $apply = import("../potato/src/templateRenderer.js")
             .then(res => {
                 $apply = res.$apply;
             });
@@ -13,5 +13,9 @@ export class ContactController
             this.FirstName = "JAJAJJAJ";
             $apply();
         }, 1000);
+    }
+
+    testFunction() {
+        console.log('hi');
     }
 }

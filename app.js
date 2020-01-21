@@ -1,4 +1,4 @@
-import { Mvc } from './potato/dist/jsMvc.min.js';
+import { Mvc } from './potato/src/jsMvc.js';
 
 let mvc = new Mvc();
 
@@ -25,14 +25,12 @@ let routeList = [
         url: "/home/:id",
         template: "/templates/home1.html",
         controller: "/controllers/home1.js",
-        id: "",
         title: "شبكة الوحدة الإخبارية"
     },
     {
         url: "/home/:id/:titel/:ex",
         template: "/templates/home2.html",
         controller: "/controllers/home2.js",
-        id: "",
         title: "شبكة الوحدة الإخبارية"
     }
 ];
