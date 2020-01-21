@@ -200,7 +200,7 @@ let AUTHENTICATION = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJs
 function cleanData(data) {
     cleanedData = [];
     for (let i = 0; i < data.rows.length; i++)
-        cleanData.push(data.rows[i]);
+        cleanedData.push(data.rows[i]);
     return cleanedData;
 }
 
@@ -217,7 +217,9 @@ function dbGet(endpoint, isView, id) {
         http.setRequestHeader("Authorization", AUTHENTICATION);
         http.onreadystatechange = function() { //Call a function when the state changes.
             if (http.readyState == 4) {
-                data = cleanData(JSON.parse(http.responseText));
+                data = JSON.parse(http.responseText);
+                if (!id || id == '')
+                    data = cleanData(data);
                 resolve(data);
             }
         }
@@ -273,4 +275,4 @@ function dbCreateOrUpdate(endpoint, data, id) {
 //     password:"32423",
 //     id:"1234",
 // }
-// dbCreateOrUpdate('/users',userData,1234);create user his id equals 1234 and his data is userData object
+// dbCreateOrUpdate('/users',userData,1234);create user his id equals 1234 and his data is userData objectgi
