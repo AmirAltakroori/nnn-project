@@ -36,18 +36,17 @@ body {
     position: relative;
     background-color: $background-color;
     border-radius: 3%;
-}
-
-input {
-    color: #333;
-    width: 50%;
-    height: 40px;
-    padding: 2px;
-    direction: rtl;
-    position: relative;
-    display: block;
-    font-size: 25px;
-    font-family: $font-family-name;
+    input {
+        color: #333;
+        width: 50%;
+        height: 40px;
+        padding: 2px;
+        direction: rtl;
+        position: relative;
+        display: block;
+        font-size: 25px;
+        font-family: $font-family-name;
+    }
 }
 
 .create-new-user {

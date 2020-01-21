@@ -27,20 +27,19 @@ body {
   border-radius: 3%; }
   .contain div {
     padding: 10px; }
-
-input {
-  color: #333;
-  width: 50%;
-  height: 40px;
-  padding: 2px;
-  direction: rtl;
-  position: relative;
-  display: block;
-  font-size: 25px;
-  font-family: Dubai Medium; }
+  .contain input {
+    color: #333;
+    width: 50%;
+    height: 40px;
+    padding: 2px;
+    direction: rtl;
+    position: relative;
+    display: block;
+    font-size: 25px;
+    font-family: Dubai Medium; }
 
 .create-new-user {
-  font-size: 35px;
+  font-size: 20px;
   outline: none;
   background-color: #06953f;
   cursor: pointer;

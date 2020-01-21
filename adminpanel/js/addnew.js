@@ -1,9 +1,9 @@
 let newsList = [];
 let newsImage = "";
-const idSelector = (id) => { return document.getElementById(id) };
+export const idSelector = (id) => { return document.getElementById(id) };
 
 
-function setScheduleTime() {
+export function setScheduleTime() {
     let createField = idSelector('createDate');
     let checkbox = idSelector('enable-checkbox');
     createField.disabled = !checkbox.checked;
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 });
 
-function createNew(title, content, cateqory, seoTitle, seoTags, seoDescription, isActive, isMainNews, isUrgentNews, createDate) {
+export function createNew(title, content, cateqory, seoTitle, seoTags, seoDescription, isActive, isMainNews, isUrgentNews, createDate) {
     let newNews = {
         title: title,
         content: content,
@@ -98,4 +98,38 @@ function createNew(title, content, cateqory, seoTitle, seoTags, seoDescription, 
     console.log(newNews.title);
     newsList.push(newNews);
     return true;
+}
+
+export function changeDateFormat(date) {
+    if (typeof(date) == 'string')
+        return date;
+    return date.getFullYear() + "-" + date.getMonth() + "-" + (date.getDate() + 1);
+}
+
+
+export function previewImg() {
+    let preview = document.querySelector('.addnews-img-container img');
+    let file = document.querySelector('input[type="file"]').files[0];
+    let reader = new FileReader();
+
+    let fr = new FileReader();
+    if (file)
+        preview.parentElement.style.display = "flex";
+    else {
+        preview.parentElement.style.display = "none";
+        newsImage = "";
+        return false;
+    }
+    reader.readAsDataURL(file);
+
+    fr.onload = function() {
+        let image = fr.result;
+        newsImage = image;
+    };
+    reader.onload = function() {
+        preview.src = reader.result;
+
+
+    };
+    fr.readAsText(file, 'UTF-8');
 }
