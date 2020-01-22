@@ -5,6 +5,7 @@ let $testedSpecials = [];
 let $bindedVars;
 let viewElement = document.querySelector('[view]');
 let cm = new Map();
+let id = 0;
 
 // Classes
 // Holds data required to a special atributes
@@ -155,13 +156,22 @@ function renderModel(exp, element) {
 
 //Render function for "$change" special attribute.
 function renderChange(exp, element) { 
+	let id = uniqueId();
+	element.setAttribute('id', id);
 	exp = exp.replace(/\$/g, "$scope.");
     document.addEventListener('change', event => {
-	if(event.target.getAttribute("$change") != exp) return;
+	if(event.target.getAttribute("id") != id) return;
 		event.preventDefault();
      	eval('$functions.'+ exp);
     });
 }
+
+ function  uniqueId() {
+	// Math.random should be unique because of its seeding algorithm.
+	// Convert it to base 36 (numbers + letters), and grab the first 9 characters
+	// after the decimal.
+	return '_' + Math.random().toString(36).substr(2, 9);
+  };
 
 //*********************************************************************//
 //*********************************************************************//
