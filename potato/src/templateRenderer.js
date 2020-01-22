@@ -138,6 +138,7 @@ function renderClass(exp, element) {
 	);
 }
 
+//Render function for "$click" special attribute.
 function renderClick(exp, element) {
 	exp = exp.replace(/\$/g, "$scope.");
 	document.addEventListener('click', event => {
@@ -152,8 +153,14 @@ function renderModel(exp, element) {
 
 }
 
-function renderChange(exp, element) {
-	
+//Render function for "$change" special attribute.
+function renderChange(exp, element) { 
+	exp = exp.replace(/\$/g, "$scope.");
+    document.addEventListener('change', event => {
+	if(event.target.getAttribute("$change") != exp) return;
+		event.preventDefault();
+     	eval('$functions.'+ exp);
+    });
 }
 
 //*********************************************************************//

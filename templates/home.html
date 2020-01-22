@@ -14,6 +14,7 @@
 </span>
 
 <div $for = "n of items">
+    <input type="text" $change="testChange()" placeholder="{{$Message}}">
     <p $click="tryClick($i)">OUTER: {{$i}}</p>
     <div $for = "k of items">
         <p $click="tryClick($k)">INNER: {{$i}} hello {{$k}}</p>
@@ -25,3 +26,8 @@
         {{$h}}
     </div>
 </div> 
+<div>
+    <input type="text" $change="testChange()" placeholder="{{$Message}}">
+    <input type="text" $change="testChange2()" placeholder="firstname">
+
+</div>
