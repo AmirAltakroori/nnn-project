@@ -6,6 +6,7 @@
      Authors:
      Rahmeh Tartouri <rahmeh.tartouri@gmail.com>
      Aseel Arafeh <arafehaseel@gmail.com>
+     Suhair Shareef <suhairshareef1999@gmail.com>
 
      File description:
      this file for slider design
@@ -111,6 +112,111 @@
             }
         }
     }
+
+    .category-section{
+        height: 653px;
+        top: 1325px;
+
+        .category-container{
+
+            right: 253px;
+            width: 1419px;
+
+            .category-header{
+
+                height: 92px;
+                padding: 20px;
+
+                .category-header-name{
+
+                    font-size: 28px;
+                }
+
+                .category-read-more{
+
+                    font-size: 24px;
+                }
+            }
+
+            hr{
+
+                margin-bottom: 34px;
+            }
+
+            .category-content{
+
+                .category-content-main{
+
+                    width: 690px;
+                    height: 540px;
+                    margin-left: 27px;
+
+                    img{
+
+                        width: 676px;
+                        height: 380px;
+                        margin-bottom: 15px;
+                    }
+
+                    .category-main-title-and-date{
+                        margin-bottom: 17px;
+                        margin-right: 10px;
+
+                        .category-main-title{
+
+                            font-size: 19px;
+                            max-width: 500px;
+
+                        }
+                        .category-main-date{
+
+                            font-size: 11px;
+                        }
+                    } 
+                    
+                    .category-main-details{
+
+                        font-size: 16px;
+                        max-width: 630px;
+                        max-height: 45px;
+                        margin-right: 10px;
+                        margin-bottom: 8px;
+
+                    }
+
+                }
+
+                .category-content-random{
+
+                    grid-column-gap: 33px;
+                    grid-row-gap: 0px;
+                    width: 696px;
+                    height: 505px;                
+
+                    .category-content-random-item{
+
+                        max-height: 233px;
+
+                        .category-img-rnd{
+
+                            max-width: 323px;
+                            max-height: 187px;
+                            margin-bottom: 10px;
+
+                        }
+
+                        .category-randome-title{
+
+                            font-size: 17px;
+                            max-width: 278px;
+                            max-height: 50px;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 
@@ -205,6 +311,112 @@
 
                 width:$arrow-width;
                 height:$arrow-height;
+            }
+        }
+    }
+    .category-section{
+
+        height: 489.75px;
+        top: 993.75px;
+
+        .category-container{
+
+            right: 189.75px;
+            width: 1064.25px;
+
+            .category-header{
+
+                height: 69px;
+                padding: 15px;
+
+                .category-header-name{
+
+                    font-size: 21px;
+                }
+
+                .category-read-more{
+
+                    font-size: 18px;
+                }
+            }
+
+            hr{
+
+                margin-bottom: 25.5px;
+            }
+
+            .category-content{
+
+                .category-content-main{
+
+                    width: 517.5px;
+                    height: 405px;
+                    margin-left: 20.25px;
+
+                    img{
+
+                        width: 507px;
+                        height: 285px;
+                        margin-bottom: 11.25px;
+                    }
+
+                    .category-main-title-and-date{
+
+                        margin-bottom: 12.75px;
+                        margin-right: 7.5px;
+
+                        .category-main-title{
+
+                            font-size: 14.25px;
+                            max-width: 375px;
+
+                        }
+
+                        .category-main-date{
+
+                            font-size: 8.25px;
+                        }
+                    } 
+                    
+                    .category-main-details{
+
+                        font-size: 12px;
+                        max-width: 472.5px;
+                        max-height: 33.75px;
+                        margin-right: 7.5px;
+                        margin-bottom: 6px;
+
+                    }
+                }
+
+                .category-content-random{
+
+                    grid-column-gap: 24.75px;
+                    grid-row-gap: 0px;
+                    width: 522px;
+                    height: 378.75px;                
+
+                    .category-content-random-item{
+
+                        max-height: 174.75px;
+
+                        .category-img-rnd{
+
+                            max-width: 242.25px;
+                            max-height: 140.25px;
+                            margin-bottom: 7.5px;
+
+                        }
+
+                        .category-randome-title{
+
+                            font-size: 12.75px;
+                            max-width: 208.5px;
+                            max-height: 37.5px;
+
+                        }
+                    }
+                }
             }
         }
     }
@@ -303,6 +515,110 @@
                height:$arrow-height - 5;
            }
        }
+    }
+    .category-section{
+
+        height: 463.63px;
+        top: 940.75px;
+
+        .category-container{
+
+            right: 179.63px;
+            width: 1007.49px;
+
+            .category-header{
+                height: 65.32px;
+                padding: 14.2px;
+
+                .category-header-name{
+
+                    font-size: 19.88px;
+                }
+
+                .category-read-more{
+
+                    font-size: 17.04px;
+                }
+            }
+
+            hr{
+
+                margin-bottom: 24.14px;
+            }
+
+            .category-content{
+
+                .category-content-main{
+
+                    width: 489.9px;
+                    height: 383.4px;
+                    margin-left: 19.17px;
+
+                    img{
+
+                        width: 479.96px;
+                        height: 269.8px;
+                        margin-bottom: 10.65px;
+                    }
+
+                    .category-main-title-and-date{
+                        margin-bottom: 12.07px;
+                        margin-right: 7.1px;
+
+                        .category-main-title{
+
+                            font-size: 13.49px;
+                            max-width: 355px;
+
+                        }
+                        .category-main-date{
+
+                            font-size: 7.81px;
+                        }
+                    } 
+                    
+                    .category-main-details{
+
+                        font-size: 11.36px;
+                        max-width: 447.3px;
+                        max-height: 31.95px;
+                        margin-right: 7.1px;
+                        margin-bottom: 5.68px;
+
+                    }
+
+                }
+
+                .category-content-random{
+
+                    grid-column-gap: 23.43px;
+                    grid-row-gap: 0px;
+                    width: 494.16px;
+                    height: 358.55px;                
+
+                    .category-content-random-item{
+
+                        max-height: 165.43px;
+
+                        .category-img-rnd{
+
+                            max-width: 229.33px;
+                            max-height: 132.77px;
+                            margin-bottom: 7.1px;
+
+                        }
+
+                        .category-randome-title{
+
+                            font-size: 12.07px;
+                            max-width: 197.38px;
+                            max-height: 35.5px;
+
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -494,4 +810,131 @@
      height: $arrow-height;
      margin-top: $arrow-margin-top;
 
+}
+
+.category-section {
+
+    float: buttom;
+    position: relative;
+    font-family:$website-font;
+    width: 100%;
+
+    .category-container{
+
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: 100%;
+
+
+        .category-header{
+
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            color: $website-font-color;
+
+            .category-header-name{
+
+                font-weight: lighter;
+            }
+        }
+
+        hr{
+
+            border-top: 0.2px solid $website-font-color;
+            
+        }
+
+        .category-content{
+
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+
+            .category-content-main{
+
+                display: flex;
+                flex-direction: column;
+
+                .category-main-title-and-date{
+
+                    display: flex;
+                    justify-content: space-between;
+
+                    .category-main-title{
+
+                        overflow: hidden;
+                        color: #4D4F5C;
+                    }
+                    .category-main-date{
+
+                        float: left;
+                        color: #919192;
+
+                    }
+
+
+                }
+
+                .category-main-details{
+
+                    color: #7C7C91;
+                    overflow: hidden;
+                    font-weight: lighter;
+
+                }
+
+                .category-btn{
+                    
+                    float: left;
+                    font-weight: 450;
+                    
+                }
+
+            }
+
+            .category-content-random{
+
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .category-content-random-item{
+
+                .category-randome-title{
+
+                    color: #4D4F5C;
+                    overflow: hidden;
+
+                }
+            }
+        }  
+    }   
+}
+
+
+#category-image {
+
+     object-fit: fill;
+     max-width: 100%;
+     max-height: 100%;
+
+}
+
+.read-more-btn{
+
+    border: none;
+    color:$website-font-color;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.link{
+
+    text-decoration: none;
+    color: $website-font-color;
 }
