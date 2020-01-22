@@ -5,6 +5,7 @@ let $testedSpecials = [];
 let $bindedVars;
 let viewElement = document.querySelector('[view]');
 let cm = new Map();
+let id = 0;
 
 // Classes
 // Holds data required to a special atributes
@@ -138,26 +139,24 @@ function renderClass(exp, element) {
 	);
 }
 
+//Render function for "$click" special attribute.
 function renderClick(exp, element) {
+	let id = uniqueId();
+	element.setAttribute('id', id);
 	exp = exp.replace(/\$/g, "$scope.");
-	document.addEventListener('click', event => {
-		$apply(element);
-		for (let i = 0, atts = element.attributes; i < atts.length; i++){
-			atts[i].textContent = executeApply(atts[i].textContent);
-		}
-		if(!event.target.isEqualNode(element)) return;
-		event.preventDefault();
-		// Execute function
-		eval('$functions.' + exp);
-	});
+	eventListener(id, 'click', () => { eval('$functions.' + exp); });
 }
 
 function renderModel(exp, element) {
 
 }
 
+//Render function for "$change" special attribute.
 function renderChange(exp, element) {
-	
+	let id = uniqueId();
+	element.setAttribute('id', id);
+	exp = exp.replace(/\$/g, "$scope.");
+	eventListener(id, 'change', () => { eval('$functions.' + exp); });
 }
 
 //*********************************************************************//
@@ -207,13 +206,9 @@ export function $apply(doc) {
 	else {
 		str = doc.innerHTML;
 	}
-	doc.innerHTML = executeApply(str);
-	return doc;
-}
-
-function executeApply(str) {
 	str = str.replace(/(\{\{.*?\}\})/g, replaceElement);
-	return str;
+	doc.innerHTML = str;
+	return doc;
 }
 
 // Used by renderStyle
@@ -233,7 +228,7 @@ function createClass(name, attr) {
 function renderTemplate(view) {
 	let specials = specialTags(view);
 	specials.forEach(element => {
-		if($testedSpecials.filter(elem => elem.element.isEqualNode(element.element) && elem.attr == element.attr).length == 0) {
+		if ($testedSpecials.filter(elem => elem.element.isEqualNode(element.element) && elem.attr == element.attr).length == 0) {
 			$testedSpecials.push(element);
 			return element.render(element.exp, element.element);
 		}
@@ -247,4 +242,19 @@ export function render(view, model, functions) {
 	renderTemplate(view);
 	$apply(view);
 	return view;
+}
+
+function uniqueId() {
+	// Math.random should be unique because of its seeding algorithm.
+	// Convert it to base 36 (numbers + letters), and grab the first 9 characters
+	// after the decimal.
+	return '_' + Math.random().toString(36).substr(2, 9);
+};
+
+function eventListener(id, event, func) {
+	document.addEventListener(event, ev => {
+		if (ev.target.getAttribute("id") != id) return;
+		ev.preventDefault();
+		func();
+	});
 }
