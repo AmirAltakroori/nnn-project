@@ -10,5 +10,15 @@ export class HomeController
         // testing end
         this.Message = "hello";
     }
+
+    tryClick(x) {
+        alert(x);
+    }
+    testChange() {
+        console.log("hello");
+    }
+    testChange2() {
+        console.log("hello222");
+    }
 }
 

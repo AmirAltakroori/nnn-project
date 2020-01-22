@@ -1,6 +1,7 @@
 ﻿<h1 style="font-family:verdana;">This is a heading</h1>
 <tag $if="$x">if hello {{$Message}}</tag>
-<button $disabled="$x">disabeld</button>
+<button $disabled="" $click="tryClick(2)">disabeld</button>
+<!-- <button $disabled="">disabeld</button> -->
 <h1  class="hello" $class = "'hello': $x, 'meow':$x"> style test </h1>
 <h1 $style = "'background-color: red; color:yellow;' : $x, 'font-size:100px' : $x"> style test </h1>
 {{$Message}}
@@ -13,9 +14,10 @@
 </span>
 
 <div $for = "n of items">
-    {{$i}}
+    <input type="text" $change="testChange()" placeholder="firstname">
+    <p $click="tryClick($i)">OUTER: {{$i}}</p>
     <div $for = "k of items">
-        {{$i}} hello {{$k}}<br>
+        <p $click="tryClick($k)">INNER: {{$i}} hello {{$k}}</p>
     </div>
 </div>
 
@@ -24,3 +26,8 @@
         {{$h}}
     </div>
 </div> 
+<div>
+    <input type="text" $change="testChange()" placeholder="{{$Message}}">
+    <input type="text" $change="testChange2()" placeholder="firstname">
+
+</div>

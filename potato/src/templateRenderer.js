@@ -1,9 +1,11 @@
 // Define global variables
 let $scope = {};
 let $functions;
+let $testedSpecials = [];
 let $bindedVars;
 let viewElement = document.querySelector('[view]');
 let cm = new Map();
+let id = 0;
 
 // Classes
 // Holds data required to a special atributes
@@ -137,17 +139,39 @@ function renderClass(exp, element) {
 	);
 }
 
+//Render function for "$click" special attribute.
+function renderClick(exp, element) {
+	exp = exp.replace(/\$/g, "$scope.");
+	document.addEventListener('click', event => {
+		if(!event.target.isEqualNode($apply(element))) return;
+		event.preventDefault();
+		// Execute function
+		eval('$functions.' + exp);
+	});
+}
+
 function renderModel(exp, element) {
 
 }
 
-function renderClick(exp, element) {
-	
+//Render function for "$change" special attribute.
+function renderChange(exp, element) { 
+	let id = uniqueId();
+	element.setAttribute('id', id);
+	exp = exp.replace(/\$/g, "$scope.");
+    document.addEventListener('change', event => {
+	if(event.target.getAttribute("id") != id) return;
+		event.preventDefault();
+     	eval('$functions.'+ exp);
+    });
 }
 
-function renderChange(exp, element) {
-	
-}
+ function  uniqueId() {
+	// Math.random should be unique because of its seeding algorithm.
+	// Convert it to base 36 (numbers + letters), and grab the first 9 characters
+	// after the decimal.
+	return '_' + Math.random().toString(36).substr(2, 9);
+  };
 
 //*********************************************************************//
 //*********************************************************************//
@@ -183,7 +207,7 @@ function specialTags(doc) {
 function replaceElement(attrString) {
 	let value = attrString.replace('$', "$scope.");
 	value = eval(value);
-	return value || '';
+	return value == undefined ? '' : value;
 }
 
 // Replace the binded variable with its real value in html
@@ -198,6 +222,7 @@ export function $apply(doc) {
 	}
 	str = str.replace(/(\{\{.*?\}\})/g, replaceElement);
 	doc.innerHTML = str;
+	return doc;
 }
 
 // Used by renderStyle
@@ -216,7 +241,12 @@ function createClass(name, attr) {
 // Used by renderFor
 function renderTemplate(view) {
 	let specials = specialTags(view);
-	specials.forEach(element => element.render(element.exp, element.element));
+	specials.forEach(element => {
+		if($testedSpecials.filter(elem => elem.element.isEqualNode(element.element) && elem.attr == element.attr).length == 0) {
+			$testedSpecials.push(element);
+			return element.render(element.exp, element.element);
+		}
+	});
 }
 
 export function render(view, model, functions) {
