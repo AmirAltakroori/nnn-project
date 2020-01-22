@@ -9,6 +9,7 @@ export class HomeController
 
         // testing end
         this.Message = "hello";
+        this.bgc = "redBack";
     }
 
     tryClick(x) {

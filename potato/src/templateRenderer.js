@@ -141,7 +141,11 @@ function renderClass(exp, element) {
 function renderClick(exp, element) {
 	exp = exp.replace(/\$/g, "$scope.");
 	document.addEventListener('click', event => {
-		if(!event.target.isEqualNode($apply(element))) return;
+		$apply(element);
+		for (let i = 0, atts = element.attributes; i < atts.length; i++){
+			atts[i].textContent = executeApply(atts[i].textContent);
+		}
+		if(!event.target.isEqualNode(element)) return;
 		event.preventDefault();
 		// Execute function
 		eval('$functions.' + exp);
@@ -203,9 +207,13 @@ export function $apply(doc) {
 	else {
 		str = doc.innerHTML;
 	}
-	str = str.replace(/(\{\{.*?\}\})/g, replaceElement);
-	doc.innerHTML = str;
+	doc.innerHTML = executeApply(str);
 	return doc;
+}
+
+function executeApply(str) {
+	str = str.replace(/(\{\{.*?\}\})/g, replaceElement);
+	return str;
 }
 
 // Used by renderStyle
