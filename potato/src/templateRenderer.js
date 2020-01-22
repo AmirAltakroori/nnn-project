@@ -1,6 +1,7 @@
 // Define global variables
 let $scope = {};
 let $functions;
+let $testedSpecials = [];
 let $bindedVars;
 let viewElement = document.querySelector('[view]');
 let cm = new Map();
@@ -137,12 +138,18 @@ function renderClass(exp, element) {
 	);
 }
 
-function renderModel(exp, element) {
-
+function renderClick(exp, element) {
+	exp = exp.replace(/\$/g, "$scope.");
+	document.addEventListener('click', event => {
+		if(!event.target.isEqualNode($apply(element))) return;
+		event.preventDefault();
+		// Execute function
+		eval('$functions.' + exp);
+	});
 }
 
-function renderClick(exp, element) {
-	
+function renderModel(exp, element) {
+
 }
 
 function renderChange(exp, element) {
@@ -183,7 +190,7 @@ function specialTags(doc) {
 function replaceElement(attrString) {
 	let value = attrString.replace('$', "$scope.");
 	value = eval(value);
-	return value || '';
+	return value == undefined ? '' : value;
 }
 
 // Replace the binded variable with its real value in html
@@ -198,6 +205,7 @@ export function $apply(doc) {
 	}
 	str = str.replace(/(\{\{.*?\}\})/g, replaceElement);
 	doc.innerHTML = str;
+	return doc;
 }
 
 // Used by renderStyle
@@ -216,7 +224,12 @@ function createClass(name, attr) {
 // Used by renderFor
 function renderTemplate(view) {
 	let specials = specialTags(view);
-	specials.forEach(element => element.render(element.exp, element.element));
+	specials.forEach(element => {
+		if($testedSpecials.filter(elem => elem.element.isEqualNode(element.element) && elem.attr == element.attr).length == 0) {
+			$testedSpecials.push(element);
+			return element.render(element.exp, element.element);
+		}
+	});
 }
 
 export function render(view, model, functions) {

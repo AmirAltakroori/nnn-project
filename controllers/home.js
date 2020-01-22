@@ -10,5 +10,9 @@ export class HomeController
         // testing end
         this.Message = "hello";
     }
+
+    tryClick(x) {
+        alert(x);
+    }
 }
 

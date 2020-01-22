@@ -6,7 +6,7 @@ export class ContactController
         // Import the $apply function
         import("../potato/src/templateRenderer.js")
             .then(res => {
-                let $apply = res.$apply;
+                $apply = res.$apply;
             });
             
         this.FirstName = "hello";
