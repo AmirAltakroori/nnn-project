@@ -15,5 +15,11 @@ export class HomeController
     tryClick(x) {
         alert(x);
     }
+    testChange() {
+        console.log("hello");
+    }
+    testChange2() {
+        console.log("hello222");
+    }
 }
 
