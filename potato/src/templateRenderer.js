@@ -148,7 +148,9 @@ function renderClick(exp, element) {
 }
 
 function renderModel(exp, element) {
-
+	element.setAttribute('id', exp);
+    element.setAttribute('value', $scope[exp]);
+    eventListener(element, 'change', () => { $scope[exp] = document.getElementById(exp).value; });
 }
 
 //Render function for "$change" special attribute.
