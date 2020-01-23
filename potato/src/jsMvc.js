@@ -55,9 +55,8 @@ export class Mvc {
             .then((obj) => {
                 viewElement.innerHTML = obj.template;
                 let controllerObj = new obj.controller[Object.keys(obj.controller)[0]];
-                let functions = Object.values(obj.controller)[0].prototype;
                 controllerObj.routeParams = this.routeParams;
-                render(viewElement, controllerObj, functions);
+                render(viewElement, controllerObj);
             });
     }
 

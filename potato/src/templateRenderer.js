@@ -1,11 +1,9 @@
 // Define global variables
 let $scope = {};
-let $functions;
 let $testedSpecials = [];
 let $bindedVars;
 let viewElement = document.querySelector('[view]');
 let cm = new Map();
-let id = 0;
 
 // Classes
 // Holds data required to a special atributes
@@ -141,24 +139,20 @@ function renderClass(exp, element) {
 
 //Render function for "$click" special attribute.
 function renderClick(exp, element) {
-	let id = uniqueId();
-	element.setAttribute('id', id);
 	exp = exp.replace(/\$/g, "$scope.");
-	eventListener(id, 'click', () => { eval('$functions.' + exp); });
+	eventListener(element, 'click', () => { eval('$scope.' + exp); });
 }
 
 function renderModel(exp, element) {
 	element.setAttribute('id', exp);
-    element.setAttribute('value', $scope[exp]);
-    eventListener(element, 'change', () => { $scope[exp] = document.getElementById(exp).value; });
+	element.setAttribute('value', $scope[exp]);
+	eventListener(element, 'change', () => { $scope[exp] = document.getElementById(exp).value; });
 }
 
 //Render function for "$change" special attribute.
 function renderChange(exp, element) {
-	let id = uniqueId();
-	element.setAttribute('id', id);
 	exp = exp.replace(/\$/g, "$scope.");
-	eventListener(id, 'change', () => { eval('$functions.' + exp); });
+	eventListener(element, 'change', () => { eval('$scope.' + exp); });
 }
 
 //*********************************************************************//
@@ -237,9 +231,8 @@ function renderTemplate(view) {
 	});
 }
 
-export function render(view, model, functions) {
+export function render(view, model) {
 	$scope = model;
-	$functions = functions;
 	$bindedVars = view.innerHTML;
 	renderTemplate(view);
 	$apply(view);
@@ -253,7 +246,15 @@ function uniqueId() {
 	return '_' + Math.random().toString(36).substr(2, 9);
 };
 
-function eventListener(id, event, func) {
+function eventListener(element, event, func) {
+	let id;
+	let elementID = element.getAttribute('id');
+	if(elementID) {
+		id = elementID;
+	} else {
+		id = uniqueId();
+		element.setAttribute('id', id);
+	}
 	document.addEventListener(event, ev => {
 		if (ev.target.getAttribute("id") != id) return;
 		ev.preventDefault();
