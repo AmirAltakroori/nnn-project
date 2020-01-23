@@ -12,10 +12,26 @@ let routeList = [{
         url: "/addnews",
         template: "pages/addnewspage/addnewpage.html",
         title: "شبكة الوحدة الإخبارية",
-        controller: "/adminpanel/pages/addnewspage/js/index.js"
+        controller: "/adminpanel/pages/addnewspage/js/addnews.js"
 
 
     },
+    {
+        url: "/allnews",
+        template: "pages/allnews/allnews.html",
+        title: "شبكة الوحدة الإخبارية",
+        controller: "/adminpanel/pages/allnews/js/allnews.js"
+
+
+    },
+    {
+        url: "/mynews",
+        template: "pages/mynews/mynews.html",
+        title: "شبكة الوحدة الإخبارية",
+        controller: "/adminpanel/pages/mynews/js/mynews.js"
+
+
+    }
 ];
 
 mvc.addRouteList(routeList);
