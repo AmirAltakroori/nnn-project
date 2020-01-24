@@ -2,7 +2,6 @@
 let $scope = {};
 let $testedSpecials = [];
 let $bindedVars;
-let viewElement = document.querySelector('[view]');
 let cm = new Map();
 
 // Classes
@@ -193,7 +192,7 @@ function replaceElement(attrString) {
 }
 
 // Replace the binded variable with its real value in html
-export function $apply(doc) {
+function $apply(doc) {
 	let str;
 	if (!doc) {
 		str = $bindedVars;
@@ -231,7 +230,7 @@ function renderTemplate(view) {
 	});
 }
 
-export function render(view, model) {
+function render(view, model) {
 	$scope = model;
 	$bindedVars = view.innerHTML;
 	renderTemplate(view);
@@ -260,4 +259,4 @@ function eventListener(element, event, func) {
 		ev.preventDefault();
 		func();
 	});
-}
+};

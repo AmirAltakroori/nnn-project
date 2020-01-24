@@ -1,6 +1,3 @@
-import { analyzeUrl, loadMvc } from './route.js';
-import { render } from './templateRenderer.js';
-
 let viewElement = document.querySelector('[view]');
 
 class routeObj {
@@ -14,7 +11,7 @@ class routeObj {
     }
 }
 
-export class Mvc {
+class Mvc {
     constructor() {
         this._routeMap = [];
         this.controller = {};

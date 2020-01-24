@@ -1,5 +1,5 @@
 // Analyze the url and compare it with the route list 
-export function analyzeUrl(url, routeList) {
+function analyzeUrl(url, routeList) {
     let option, find = false;
     let $path = "", $routeParams = {}, $currentRoute = {};
     url = url.substr(url.search("#") + 2).split("/");
@@ -62,7 +62,7 @@ async function loadDoc(path) {
 }
 
 // Execute the above functions asynchronously
-export async function loadMvc(templatePath, controllerPath) {
+async function loadMvc(templatePath, controllerPath) {
     let template;
     let controller;
     template = await loadDoc(templatePath);

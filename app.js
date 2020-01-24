@@ -1,5 +1,3 @@
-import { Mvc } from './potato/src/jsMvc.js';
-
 let mvc = new Mvc();
 
 let routeList = [
