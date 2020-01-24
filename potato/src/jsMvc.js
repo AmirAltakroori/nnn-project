@@ -57,6 +57,17 @@ class Mvc {
             });
     }
 
+    renderByID(id)
+    {
+        
+        if(!id)
+            renderTemplate(viewElement,)
+        else
+            renderTemplate(document.getElementById(id));
+        
+        console.log("doing things to" + id);
+    }
+
     // clears the MVC
     clear() {
         this.controller = {};

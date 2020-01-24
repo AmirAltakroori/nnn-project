@@ -47,8 +47,25 @@ function renderIf(expression, element) {
 	}
 }
 
+let forid = 0;
+let formap = new Map();
 // Render function for "$for" special attribute 
-function renderFor(exp, element) {
+function renderFor(exp, element) 
+{
+	// save and restore original date to be looped on
+	let content = element.innerHTML;
+	
+	if(element.hasAttribute('data-forid'))
+	{
+		content = formap.get(element.getAttribute('data-forid'));
+	}
+	else
+	{
+		element.setAttribute('data-forid',forid);
+		formap.set(forid + "",content);
+		forid++;
+	}
+	
 	// define the iteration symbol of this for loop
 	let def = exp.split(':');
 	let iterSymbol = 'i';
@@ -65,8 +82,9 @@ function renderFor(exp, element) {
 
 	let newElement = "";
 
-	for (let i = 0; i < array.length; i++) {
-		let tempele = element.innerHTML.replace(new RegExp("\[$]" + subArr, 'g'), "$" + arrName + `[${i}]`).replace(iterregx, i);
+	for (let i = 0; i < array.length; i++) 
+	{
+		let tempele = content.replace(new RegExp("\[$]" + subArr, 'g'), "$" + arrName + `[${i}]`).replace(iterregx, i);
 		let oldval = $scope[subArr];
 		$scope[subArr] = array[i];
 
@@ -225,9 +243,10 @@ function renderTemplate(view) {
 	specials.forEach(element => {
 		if ($testedSpecials.filter(elem => elem.element.isEqualNode(element.element) && elem.attr == element.attr).length == 0) {
 			$testedSpecials.push(element);
-			return element.render(element.exp, element.element);
+			 element.render(element.exp, element.element);
 		}
 	});
+	$testedSpecials = [];
 }
 
 function render(view, model) {
