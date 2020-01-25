@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 #  NNN website.
-=======
 
 # Potato Framework
 
@@ -10,7 +8,7 @@ Potato Framework is a development platform for building web applications using J
 
 ## Structure
 
-The framework is based on MVC (Model-Veiw-Controller). 
+The framework is based on MVC (Model-Veiw-Controller).
 
 
 
@@ -169,4 +167,3 @@ Please make sure to update tests as appropriate.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
->>>>>>> 322c9183c867c458d8008fab3636e6cec29fc683
