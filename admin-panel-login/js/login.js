@@ -242,70 +242,108 @@ document.addEventListener('DOMContentLoaded', function(event) {
     });
 });
 
-function getUser(username, password) {
+async function getUser(username, password) {
     /*
         username: the username of the user
         password: the password of the user
     */
     let aimedUser = null; // the user role (0: not valid, other wise it's valid) 
-
-    // check the password and the username if it's exist
-    for (let user of users) {
-        if (user.username == username && user.password == password) {
+    dbGet("/users/",false,"admin").then( user => {
+        if(user.password == password){
             let token = getToken(user.username, user.email, user.roleId, "sha256", 60 * 60 * 1000, "PSE");
             user.token = token;
             aimedUser = user;
-            break;
         }
-    }
+        console.log(aimedUser)
+        
+    });    
+    setTimeout(() => {
+        //  hidden th popup
 
-    return aimedUser;
+        //  if the user is exist go to the home page
+        console.log("HH")
+        return aimedUser;
+    }, 1000);
+    // check the password and the username if it's exist
+    // for (let user of users) {
+    //     if (user.username == username && user.password == password) {
+    //         let token = getToken(user.username, user.email, user.roleId, "sha256", 60 * 60 * 1000, "PSE");
+    //         user.token = token;
+    //         aimedUser = user;
+    //         break;
+    //     }
+    // }
+
+    // return aimedUser;
 }
 
 function verification() {
     let username = document.getElementById("Username"); // read the username
     let password = document.getElementById("Password"); // read the password
     //  get the user role
-    let user = getUser(username.value, password.value);
-    username.value = "";
-    password.value = "";
-    let text = "";
-    color = "#ffffff"
-        //  check if the user is exist (role = 0, means it's invalid user)
-    if (user == null) {
-        text = "اسم المستخدم او كلمة المرور خاطئة";
-        color = "#ff0000";
-        //popup.style.boxshadow = "-3px 2px 6px 4px #d85656";
-    } else if (user.isActive == 0) {
-        text = "حسابك معطل راجع أحد المسؤولين";
-        color = "#e85827";
-        // popup.style.boxshadow = "-3px 2px 6px 4px #58d856";
-    } else {
-        text = "جاري تسجيل الدخول";
-        color = "#17bb24";
-        let datatoSave = {
-            "token": user.token,
-            "roleID": user.roleId,
-            "FullName": user.firstName + " " + user.lastName
+    // let user = getUser(username.value, password.value);
+    let currentUser = null;
+    dbGet("/users/",false,username.value).then( user => {
+        currentUser = user;
+        let text = "";
+        color = "#ffffff"
+       if(user.password === password.value && user.state == 1){
+            let token = getToken(user.username, user.email, user.roleId, "sha256", 60 * 60 * 1000, "PSE");
+            user.token = token;
+            text = "جاري تسجيل الدخول";
+            color = "#17bb24";
+            let datatoSave = {
+                "token": user.token,
+                "roleID": user.roleId,
+                "FullName": user.firstName + " " + user.lastName
+            }
+            saveData(datatoSave);
+        }else  if(user.password === password.value && user.state == 0){
+            text = "حسابك معطل راجع أحد المسؤولين";
+            color = "#e85827";
+        }else{
+            text = "اسم المستخدم او كلمة المرور خاطئة";
+            color = "#ff0000";
         }
-        saveData(datatoSave);
-    }
-    // display the popup
-
-    displayPopup(text, color)
+        username.value = "";
+        password.value = "";
+        displayPopup(text, color)
         // wait after the animation is end 
-    setTimeout(() => {
-        //  hidden th popup
+        setTimeout(() => {
+            //  hidden thث popup
+    
+            //  if the user is exist go to the home page
+            if (currentUser.state == 1) {
+                window.location.assign("../adminpanel/index.html");
+            }
+        }, 1000);
+    });   
+    
+   
+        //  check if the user is exist (role = 0, means it's invalid user)
+    // if (user == null) {
+    //     text = "اسم المستخدم او كلمة المرور خاطئة";
+    //     color = "#ff0000";
+    //     //popup.style.boxshadow = "-3px 2px 6px 4px #d85656";
+    // } else if (user.state == 0) {
+    //     text = "حسابك معطل راجع أحد المسؤولين";
+    //     color = "#e85827";
+    //     // popup.style.boxshadow = "-3px 2px 6px 4px #58d856";
+    // } else {
+    //     text = "جاري تسجيل الدخول";
+    //     color = "#17bb24";
+    //     let datatoSave = {
+    //         "token": user.token,
+    //         "roleID": user.roleId,
+    //         "FullName": user.firstName + " " + user.lastName
+    //     }
+    //     saveData(datatoSave);
+    // }
+    // // display the popup
 
-        //  if the user is exist go to the home page
-        if (user.isActive == 1) {
-
-            window.location.href = "../adminpanel/index.html";
-        }
-    }, 1000);
+  
 
 }
-
 function displayPopup(message, backgroundColor = "#000000") {
     let popup = document.getElementsByClassName("popup")[0];
     popup.innerHTML = message;
