@@ -23,7 +23,16 @@ let routeList = [{
         controller: "/adminpanel/pages/mynews/js/mynews.js"
 
 
-    }
+    },
+
+    {
+                url: "/newsapprove",
+                template: "pages/newsapprove/newsapprove.html",
+                title: "شبكة الوحدة الإخبارية",
+                controller: "/adminpanel/pages/newsapprove/js/newsapprove.js"
+        
+   }
+        
 ];
 
 mvc.addRouteList(routeList);
