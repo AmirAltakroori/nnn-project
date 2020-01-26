@@ -1,16 +1,17 @@
 export class addnewsController {
+    previewImg() {
+        console.log("T");
+    }
     constructor() {
         //   Check role
-
+        this.new =
+            import ("./addnew.js");
         this.richTextEditor();
         this.newsList = [];
         this.newsImage = "";
-        this.editor = null;
-        this.test =
 
-
+        console.log(this.new.then(data => data.init()));
     }
-
     richTextEditor() {
         let newsBody = document.getElementById('editor');
         console.log(newsBody);
@@ -42,9 +43,6 @@ export class addnewsController {
                 toolbar: toolbarOptions
             }
         };
-        this.editor = new Quill(newsBody, options);
-        this.editor.format('direction', 'ltr');
         // editor.format('align', 'right');
-
     }
 }

@@ -1,9 +1,9 @@
 let newsList = [];
 let newsImage = "";
-export const idSelector = (id) => { return document.getElementById(id) };
+const idSelector = (id) => { return document.getElementById(id) };
 
 
-export function setScheduleTime() {
+function setScheduleTime() {
     let createField = idSelector('createDate');
     let checkbox = idSelector('enable-checkbox');
     createField.disabled = !checkbox.checked;
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 });
 
-export function createNew(title, content, cateqory, seoTitle, seoTags, seoDescription, isActive, isMainNews, isUrgentNews, createDate) {
+function createNew(title, content, cateqory, seoTitle, seoTags, seoDescription, isActive, isMainNews, isUrgentNews, createDate) {
     let newNews = {
         title: title,
         content: content,
@@ -100,14 +100,14 @@ export function createNew(title, content, cateqory, seoTitle, seoTags, seoDescri
     return true;
 }
 
-export function changeDateFormat(date) {
+function changeDateFormat(date) {
     if (typeof(date) == 'string')
         return date;
     return date.getFullYear() + "-" + date.getMonth() + "-" + (date.getDate() + 1);
 }
 
 
-export function previewImg() {
+function previewImg() {
     let preview = document.querySelector('.addnews-img-container img');
     let file = document.querySelector('input[type="file"]').files[0];
     let reader = new FileReader();
