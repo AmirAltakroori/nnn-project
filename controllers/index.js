@@ -11,6 +11,108 @@
      File description:
 */
 
+//Navbar section
+let categoriesListDiv = document.getElementById('categories-list');
+let categoriesList = [];
+
+showCategories();
+
+/*
+    Get Urgent News.
+
+    @tparam
+
+    @param
+
+    @returns
+
+    This function used to retrieve categories in navbar from database
+*/
+
+function getCategoriesList () {
+
+    // Rewrite this function when DB was ready.
+    categoreisList = [{
+                    title: "الصفحة الرئيسية",
+                    path: "/home"
+                      }, {
+                    title: "تكنولوجيا",
+                    path: "/category/teachnology"
+                      }, {
+                    title: "علوم",
+                    path: "/category/science"
+                      }, {
+                    title: "ثقافة",
+                    path: "/category/knowledge"
+                      }, { 
+                    title: "اقتصاد",
+                    path: "/category/economy"
+                      }, {
+                    title: "رياضة",
+                    path: "/category/sport"
+                      }, {
+                    title: "فن",
+                    path: "/category/art"
+                      }, {
+                    title: "سياسة",
+                    path: "/category/politics"
+                      }, {
+                    title: "موسيقى",
+                    path: "/category/music"
+                      }];
+
+}
+
+/*
+    Show Urgent News.
+
+    @tparam
+
+    @param
+
+    @returns
+
+    This function used to show the nabar categories retrieved from database 
+*/
+
+function showCategories () {
+
+    getCategoriesList();
+
+    categoriesListDiv.innerHTML = `<ul>
+                                   <li class="tab active"><a href="${categoreisList[0].path}">${categoriesList[0].title}</a></li>`;
+
+    let currentCategory = "";
+
+    for (let i = 1; i < categoriesList.length; i++) {
+
+        if (i > 6) {
+
+            categoriesListDiv.innerHTML += `<li id="read-more" class="tab expand"><a href=#>المزيد   <img class="expand-button" src="view\img\expand-button.png" ></a>
+                                            <ul class="sub-menu">`
+
+            for (let j = i; j < categoriesList.length; j++){
+
+                currentCategory = `<li class="sub-item"><a href="${categoriesList[j].path}">${categoriesList[j].title}</a></li>`;
+                categoriesListDiv.innerHTML += currentCategory;
+            }
+            categoriesListDiv.innerHTML += `</ul>
+                                        </li>`;
+            i = j;
+        }
+
+        else {
+            
+            currentCategory = `<li class="tab"><a href="${categoriesList[i].path}">${categoriesList[i].title}</a></li>`;
+            categoriesListDiv.innerHTML += currentCategory;
+        }
+
+    }
+
+    categoriesListDiv.innerHTML += `</ul>`;
+
+} 
+
 
 let urgentNewsDiv = document.getElementById('urgent-content');
 let urgentNews = [];
