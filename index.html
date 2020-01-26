@@ -1,0 +1,85 @@
+<!--
+    NNN website.
+
+    This file is part of the NNN website.
+
+    Authors:
+    Qusai Hroub <qusaihroub.r@gmail.com>
+    Aseel Arafeh <arafehaseel@gmail.com>
+
+    File description:
+-->
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="view/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="view/css/categories.css" />
+        <link rel="stylesheet" type="text/css" href="view/css/details.css" />
+        <link rel="stylesheet" type="text/css" href="view/css/index.css" />
+    </head>
+
+    <body>
+
+        <div class="root">
+
+            <!-- HEADER -->
+            <div class="header">
+
+                <!-- NAVBAR -->
+                <div class="navbar">
+                    <div class="navbar-right">
+                        <a class="logo" href="#default"> <img class="logo-img" src="view\img\logo.png" alt="شبكة الوحدة الإخبارية"></a>
+                        <div class="categories-container">
+                            <ul>
+                                <li class="tab active"><a href=#home>الصفحة الرئيسية</a></li>
+                                <li class="tab"><a href=#>تكنولوجيا</a></li>
+                                <li class="tab"><a href=#>علوم</a></li>
+                                <li class="tab"><a href=#>ثقافة</a></li>
+                                <li class="tab"><a href=#>اقتصاد</a></li>
+                                <li class="tab"><a href=#>رياضة</a></li>
+                                <li class="tab"><a href=#>فن</a></li>
+                                <li class="tab expand"><a href=#>المزيد   <img class="expand-button" src="view\img\expand-button.png" ></a>
+                                    <ul class="sub-menu">
+                                        <li class="sub-item"><a href=#>سياسة</a></li>
+                                        <li class="sub-item"><a href=#>فن</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="navbar-left">
+                        <a herf="" class="login-button">تسجيل الدخول</a>
+                    </div>
+                </div>
+
+                <!-- URGENT -->
+                <div id="urgent-container">
+                    <div>عاجل</div>
+                    <marquee id="urgent-content" direction="right" onmouseover="stop()" onmouseout="start()"> </marquee>
+                </div>
+            </div>
+
+            <!-- VIEW CONTAINER -->
+            <div VIEW>
+
+            </div>
+
+            <!-- FOOTER -->
+            <div class="footer">
+                <div class="footer-right">
+                    <a href="#default" class="logo"> <img src="view\img\logo.png" alt="شبكة الوحدة الإخبارية"></a>
+                </div>
+            </div>
+        </div>
+		
+        <script type="module" src="app.js"></script>
+        <script src="js/index.js"></script>
+
+    </body>
+
+</html>
