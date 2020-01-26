@@ -294,7 +294,7 @@ function verification() {
             color = "#17bb24";
             let datatoSave = {
                 "token": user.token,
-                "roleID": user.roleId,
+                "roleID": user.role,
                 "FullName": user.firstName + " " + user.lastName
             }
             saveData('user',datatoSave);
