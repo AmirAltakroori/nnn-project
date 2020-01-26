@@ -297,7 +297,7 @@ function verification() {
                 "roleID": user.roleId,
                 "FullName": user.firstName + " " + user.lastName
             }
-            saveData(datatoSave);
+            saveData('user',datatoSave);
         }else  if(user.password === password.value && user.state == 0){
             text = "حسابك معطل راجع أحد المسؤولين";
             color = "#e85827";

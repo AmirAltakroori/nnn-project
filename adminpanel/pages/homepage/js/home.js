@@ -1,4 +1,4 @@
-export class HomeController {
+  export class HomeController {
     constructor() {
         this.Message = "hello";
         const userData = sessionStorage.getItem('user');
