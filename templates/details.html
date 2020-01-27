@@ -18,94 +18,101 @@
 
    -->
   
-<span $for= "related of relatedNews">
-<div class="details_page_wrapper">
-    <!-- Contains news title and photo & Show other related news -->
-    <div class="news-content">
-        <section class="news_header" id-="news">
-            <h1 $if="$related.id == id">
-             {{$related.title}}
-            </h1>
-            <div class="main_img">
-                .
+<!-- <span $for= "related of relatedNews"> -->
+    <div $if="$related.id == $routeParams.id" >
+        <div class="details_page_wrapper">
+            <!-- Contains news title and photo & Show other related news -->
+            <div class="news-content">
+                <section class="news_header" id="news">
+                    <h1 $if="$related.id == $routeParams.id">
+                     {{$related.title}}
+                    </h1>
+                    <div class="main_img">
+                        .
+                    </div>
+                </section>
+        
+                <aside class="news_related">
+                    
+                    <ul class="related_news_menu">
+        
+                        <li>
+                            <h4>ذات صلة </h4>
+                        </li>
+                        <!-- <span $for= "relatedNew of relatedNews"> -->
+                            <li $for= "relatedNew of relatedNews">
+                               <a href="#/detailes/{{$relatedNew.id}}"> <img src="../img/{{$relatedNew.img}}" alt="صورة"></a>
+                                <p>
+                                    {{$relatedNew.title}}
+                                </p>   
+                            </li>
+                        <!-- </span> -->
+                            
+                    </ul>
+                </aside>
             </div>
-        </section>
-
-        <aside class="news_related">
+            <!-- Contains the full text of the news & news sharing -->
+            <div class="news-body">
+                <article class="article" id="article">
+                    <p $if="$related.id == 1">
+                        {{$related.content}}
+                 </p>
+                </article>
+        
+                <section class="news_sharing">
+        
+                    <div id="share-button" class="share-buttons">
+        
+                        <!-- Facebook -->
+                        <a>
+                            <img src="img/facebook.png" alt="Facebook" />
+                        </a>
+        
+                        <!-- LinkedIn -->
+                        <a>
+                            <img src="img/linkedin.png" alt="LinkedIn" />
+                        </a>
+        
+                        <!-- instagram -->
+                        <a>
+                            <img src="img/instagram.png" alt="instagram" />
+                        </a>
+        
+                        <!-- share -->
+                        <a>
+                            <img src="img/share.png" alt="share" />
+                        </a>
+        
+                    </div>
+        
+                    <div class="about">
+        
+                        <!-- schedule -->
+                        <a>
+                            <img src="img/schedule.png" alt="Facebook" />
+                        </a>
+        
+                        <!-- comment -->
+                        <a>
+                            <img src="img/comment.png" alt="LinkedIn" />
+                        </a>
+        
+                        <!-- writer -->
+                        <a>
+                            <img src="img/writer.png" alt="instagram" />
+                        </a>
+        
+        
+        
+                    </div>
+        
+                </section>
+        
+            </div>
             
-            <ul class="related_news_menu">
-
-                <li>
-                    <h4>ذات صلة </h4>
-                </li>
-                    <li>
-                        <img src="../img/{{$related.img}}" alt="صورة" href="#/detailes/{{$related.id}}">
-                        <p>
-                            {{$related.title}}
-                        </p>   
-                    </li>
-            </ul>
-        </aside>
     </div>
-    <!-- Contains the full text of the news & news sharing -->
-    <div class="news-body">
-        <article class="article" id="article">
-            <p $if="$related.id == id">
-                {{$related.content}}
-         </p>
-        </article>
 
-        <section class="news_sharing">
-
-            <div id="share-button" class="share-buttons">
-
-                <!-- Facebook -->
-                <a>
-                    <img src="img/facebook.png" alt="Facebook" />
-                </a>
-
-                <!-- LinkedIn -->
-                <a>
-                    <img src="img/linkedin.png" alt="LinkedIn" />
-                </a>
-
-                <!-- instagram -->
-                <a>
-                    <img src="img/instagram.png" alt="instagram" />
-                </a>
-
-                <!-- share -->
-                <a>
-                    <img src="img/share.png" alt="share" />
-                </a>
-
-            </div>
-
-            <div class="about">
-
-                <!-- schedule -->
-                <a>
-                    <img src="img/schedule.png" alt="Facebook" />
-                </a>
-
-                <!-- comment -->
-                <a>
-                    <img src="img/comment.png" alt="LinkedIn" />
-                </a>
-
-                <!-- writer -->
-                <a>
-                    <img src="img/writer.png" alt="instagram" />
-                </a>
-
-
-
-            </div>
-
-        </section>
-
-    </div>
-</span>
+<!-- </span> -->
     <!-- Contains comments section -->
     <div class="comments">
         <div class="add_comment">

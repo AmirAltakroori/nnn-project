@@ -85,7 +85,7 @@ part1 contain the header of the new and the related news
             width: 80%;
         }
         ul li {
-            @include flex-property(row, flex-start, flex-start, 100%);
+            @include flex-property(column, flex-start, flex-start, 100%);
             list-style-type: none;
             img {
                 margin-left: 3%;
