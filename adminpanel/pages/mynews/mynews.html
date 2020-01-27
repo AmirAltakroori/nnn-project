@@ -1,10 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../../fontawesome/all.min.css">
+    <link rel="stylesheet" href="./../../css/global.css">
+    <link rel="stylesheet" href="./css/mynews.css">
+    <script src="./../../fontawesome/all.min.js"></script>
+    <script src="./js/mynews.js"></script>
+    <script src="./../../js/frontend.js"></script>
+    <script src = "./../../js/backend.js"></script>
+    <title>أخباري</title>
+</head>
+
+<body>
+
+    <header>
+
+        <div class=" main-header header-flex-container space-between item-center">
+            <div class="header-logo">
+                <img src="./../../img/logo.png" alt="logo" href="index.html">
+            </div>
+            <div class="header-left-section">
+
+
+                <div class="header-inline-block">
+                    <li class="fas fa-user"></li>
+                    وليد الجعبة
+
+                </div>
+                <div class="header-inline-block">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+
+        </div>
         <div class="row header-subheader ">
             <div>
                 الرئيسية > لوحة التحكم > الأخبار > أخباري
             </div>
         </div>
-    
+    </header>
 
 
     <div class="container">
@@ -35,56 +72,7 @@
 
                 </tr>
             </thead>
-
-           <!-- <div $for="n of myNewsPage">
-                    {{$n.title}}
-                    <div  $for="cat of categories">
-                        <div >
-                                {{$cat.name}}
-                        </div>
-                    </div> 
-                    <div $if="$n.isActive == 0">
-                        active
-                    </div>
-            </div>-->
-            
-           
-            <tbody id="tablebody" $for="n of myNewsPage">
-                    <tr class="user_info">
-                            <td class="user_no">1</td>
-                            <td class="user_full">
-                                <span class="user_name allnews-title-limit">{{$n.title}}</span>
-                            </td>
-                            
-                            <td>
-                               <div $for="c of categories">
-                                  
-                                    {{$c.name}}
-                                    <!--<div $if="$c.id == $n.categoryId">
-                                            {{$c.name}}
-                                    </div>-->
-                                    
-                               </div>
-                            </td>
-                            
-                            <td>
-                                <div $if="$n.isActive == 1">
-                                        
-                                    مفعل
-                                </div>
-                            </td>
-                            <td>
-                                <div $if="$n.isActive == 0">
-                                        
-                                    غير مفعل
-                                    
-                                </div>
-                            </td>
-                            <td>
-                                <i class="fas fa-trash-alt delete_user"></i>
-                                <i class="far fa-edit icon color-blue"></i>
-                            </td>
-                    </tr>
+            <tbody id="tablebody">
             </tbody>
         </table>
     </div>
@@ -101,3 +89,6 @@
         </div>
 
     </div>
+</body>
+
+</html>
