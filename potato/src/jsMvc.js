@@ -1,4 +1,5 @@
 let viewElement = document.querySelector('[view]');
+let controllerObj = null;
 
 class routeObj {
     constructor(title, route, template, controller) {
@@ -51,21 +52,14 @@ class Mvc {
         loadMvc(routeObj.$currentRoute.template, routeObj.$currentRoute.controller)
             .then((obj) => {
                 viewElement.innerHTML = obj.template;
-                let controllerObj = new obj.controller[Object.keys(obj.controller)[0]];
+                controllerObj = new obj.controller[Object.keys(obj.controller)[0]];
                 controllerObj.routeParams = this.routeParams;
                 render(viewElement, controllerObj);
             });
     }
 
-    renderByID(id)
-    {
-        
-        if(!id)
-            renderTemplate(viewElement,)
-        else
-            renderTemplate(document.getElementById(id));
-        
-        console.log("doing things to" + id);
+    apply() {
+        render(viewElement, controllerObj, true);
     }
 
     // clears the MVC

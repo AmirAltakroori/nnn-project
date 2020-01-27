@@ -1,7 +1,15 @@
 ﻿<div class="container">
-    {{$FirstName}} 
+    {{$FirstName}}
+    <input type="text" $model="FirstName">
 </div>
 
-<div $for = "n of arr2d">
-        {{$n}}
-</div> 
+<p $if="$x">JAJAJAJAJAJJAJAJAJAJ</p>
+
+<div $for="n of arr2d">
+    <span>{{$n.num}}</span>
+    <span>{{$n.active}}</span>
+    <div $for="j of arr2d">
+        <span>{{$j.num}}</span>
+        <span>{{$j.active}}</span>
+    </div>
+</div>

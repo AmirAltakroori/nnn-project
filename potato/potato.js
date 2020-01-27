@@ -1,1 +1,423 @@
-let viewElement=document.querySelector("[view]");class routeObj{constructor(e,n,l,a){this.title=e,this.controller=c,this.route=r,this.template=t,this.routeParams={}}}class Mvc{constructor(){this._routeMap=[],this.controller={},this.template={},this.defaultRoute=""}addRoute(e,t,r,n){this._routeMap=this._routeMap.push(new routeObj(e,r,n,t))}addRouteList(e){this._routeMap=this._routeMap.concat(e)}init(){viewElement=document.querySelector("[view]"),viewElement&&(this.defaultRoute={$currentRoute:this._routeMap[Object.getOwnPropertyNames(this._routeMap)[0]]},window.onhashchange=this.update.bind(this),this.update())}update(){(routeObj=analyzeUrl(window.location.href,this._routeMap))||(routeObj=this.defaultRoute),this.routeParams=routeObj.$routeParams,document.title=routeObj.$currentRoute.title,loadMvc(routeObj.$currentRoute.template,routeObj.$currentRoute.controller).then(e=>{viewElement.innerHTML=e.template;let t=new(e.controller[Object.keys(e.controller)[0]]);t.routeParams=this.routeParams,render(viewElement,t)})}renderByID(e){renderTemplate(e?document.getElementById(e):viewElement),console.log("doing things to"+e)}clear(){this.controller={},this.template={}}}function analyzeUrl(e,t){let r,n=!1,l="",a={},s={},i=(e=e.substr(e.search("#")+2).split("/"))[0];return e.splice(0,1),t.forEach(t=>{r=t.url.substr(t.url.search("/")+1).split("/:"),i==r[0]&&e.length==r.length-1&&(n=!0,l=r[0],r.splice(0,1),a={},r.forEach((t,r)=>{a[t]=e[r]}),s=t)}),0==n?null:{$path:l,$routeParams:a,$currentRoute:s}}async function dynamicImport(e){const t=e;try{return await import(t)}catch(t){return console.log(e+" doesnt exist"),null}}async function loadDoc(e){let t=new Promise((t,r)=>{let n;n=window.XMLHttpRequest?new XMLHttpRequest:new ActiveXObject("Microsoft.XMLHTTP"),n.onload=function(){t(n.responseText)},n.onerror=()=>{console.log(e+" doesnt exist"),r()},n.open("GET",e),n.send()});return await t}async function loadMvc(e,t){let r,n;return r=await loadDoc(e),n=await dynamicImport(t),Promise.resolve({template:r,controller:n})}let $scope={},$testedSpecials=[],$bindedVars,cm=new Map;class AttrData{constructor(e,t){this.type=e.replace("\\","").replace("$",""),this.query=e,this.render=t}}class SpecialAttr{constructor(e,t,r){this.attr=e,this.element=t,this.exp=t.getAttribute("$"+e),this.render=r}}function renderIf(expression,element){let exp=expression.replace(/\$/g,"$scope."),result=eval(exp);result?element.classList.contains("hide")&&element.classList.remove("hide"):element.classList.contains("hide")||element.classList.add("hide")}let forid=0,formap=new Map;function renderFor(exp,element){let content=element.innerHTML;element.hasAttribute("data-forid")?content=formap.get(element.getAttribute("data-forid")):(element.setAttribute("data-forid",forid),formap.set(forid+"",content),forid++);let def=exp.split(":"),iterSymbol="i";def.length>1&&(iterSymbol=def[1].trim());let subArr=def[0].split("of")[0].trim(),arrName=def[0].split("of")[1].trim(),array=eval("$scope."+arrName);if(!array)return;let iterregx=new RegExp("\\$"+iterSymbol+"(?![a-z])","g"),newElement="";for(let e=0;e<array.length;e++){let t=content.replace(new RegExp("[$]"+subArr,"g"),"$"+arrName+`[${e}]`).replace(iterregx,e),r=$scope[subArr];$scope[subArr]=array[e];var node=document.createElement("LI");node.innerHTML=t,renderTemplate(node),$apply(node),t=node.innerHTML,$scope[subArr]=r,newElement+=t}element.innerHTML=newElement}function renderDisabled(exp,element){exp=exp.replace(/\$/g,"$scope.");let result=eval(exp);element.disabled=result}function renderStyle(e,t){e.split(",").forEach(e=>{let r=e.lastIndexOf(":"),n=[];n.push(e.substring(0,r).replace(/'/g,"").trim(),e.substring(r+1).trim());let l="mvc"+function(e){var t=0;if(0==e.length)return t;for(var r=0;r<e.length;r++){t=(t<<5)-t+e.charCodeAt(r),t&=t}return t}(n[0]);createClass(l,n[0]),renderClass(`${l} : ${n[1]}`,t)})}function renderClass(exp,element){exp=exp.replace(/\$/g,"$scope.");let expGroup=exp.split(",");expGroup.forEach(ele=>{let splitStr=ele.split(":"),className=splitStr[0].replace(/'/g,"").trim();eval(splitStr[1])?element.classList.add(className):element.classList.remove(className)})}function renderClick(exp,element){exp=exp.replace(/\$/g,"$scope."),eventListener(element,"click",()=>{eval("$scope."+exp)})}function renderModel(e,t){t.setAttribute("id",e),t.setAttribute("value",$scope[e]),eventListener(t,"change",()=>{$scope[e]=document.getElementById(e).value})}function renderChange(exp,element){exp=exp.replace(/\$/g,"$scope."),eventListener(element,"change",()=>{eval("$scope."+exp)})}const specails=[new AttrData("\\$for",renderFor),new AttrData("\\$if",renderIf),new AttrData("\\$disabled",renderDisabled),new AttrData("\\$style",renderStyle),new AttrData("\\$class",renderClass),new AttrData("\\$click",renderClick),new AttrData("\\$model",renderModel),new AttrData("\\$change",renderChange)];function specialTags(e){let t=[];for(let r=0;r<specails.length;r++){let n=e.querySelectorAll(`[${specails[r].query}]`);n=[...n].map(e=>new SpecialAttr(specails[r].type,e,specails[r].render)),t=t.concat(n)}return t}function replaceElement(attrString){let value=attrString.replace("$","$scope.");return value=eval(value),null==value?"":value}function $apply(e){let t;return e?t=e.innerHTML:(t=$bindedVars,e=viewElement),t=t.replace(/(\{\{.*?\}\})/g,replaceElement),e.innerHTML=t,e}function createClass(e,t){if(!cm.has(e)){var r=document.createElement("style");r.type="text/css",r.innerHTML=`.${e} { ${t} }`,document.getElementsByTagName("head")[0].appendChild(r),cm.set(e,!0)}}function renderTemplate(e){specialTags(e).forEach(e=>{0==$testedSpecials.filter(t=>t.element.isEqualNode(e.element)&&t.attr==e.attr).length&&($testedSpecials.push(e),e.render(e.exp,e.element))}),$testedSpecials=[]}function render(e,t){return $scope=t,$bindedVars=e.innerHTML,renderTemplate(e),$apply(e),e}function uniqueId(){return"_"+Math.random().toString(36).substr(2,9)}function eventListener(e,t,r){let n,l=e.getAttribute("id");l?n=l:(n=uniqueId(),e.setAttribute("id",n)),document.addEventListener(t,e=>{e.target.getAttribute("id")==n&&(e.preventDefault(),r())})}
+let viewElement = document.querySelector('[view]');
+let controllerObj = null;
+
+class routeObj {
+    constructor(title, route, template, controller) {
+        // pathes
+        this.title = title;
+        this.controller = c;
+        this.route = r;
+        this.template = t;
+        this.routeParams = {};
+    }
+}
+
+class Mvc {
+    constructor() {
+        this._routeMap = [];
+        this.controller = {};
+        this.template = {};
+        this.defaultRoute = "";
+    }
+
+    addRoute(title, controller, route, template) {
+        this._routeMap = this._routeMap.push(new routeObj(title, route, template, controller));
+    }
+
+    addRouteList(list) {
+        this._routeMap = this._routeMap.concat(list);
+    }
+
+    init() {
+        // get View Element
+        viewElement = document.querySelector('[view]');
+        // check if view element exists
+        if (!viewElement) return;
+        // set default wrote
+        this.defaultRoute = { $currentRoute: this._routeMap[Object.getOwnPropertyNames(this._routeMap)[0]] };
+        //update page when rute Changes
+        window.onhashchange = this.update.bind(this);
+        this.update();
+    }
+
+    update() {
+        routeObj = analyzeUrl(window.location.href, this._routeMap); //get the route object        
+        //Set to default route object if no route found
+        if (!routeObj)
+            routeObj = this.defaultRoute;
+
+        this.routeParams = routeObj.$routeParams;
+        document.title = routeObj.$currentRoute.title;
+
+        loadMvc(routeObj.$currentRoute.template, routeObj.$currentRoute.controller)
+            .then((obj) => {
+                viewElement.innerHTML = obj.template;
+                controllerObj = new obj.controller[Object.keys(obj.controller)[0]];
+                controllerObj.routeParams = this.routeParams;
+                render(viewElement, controllerObj);
+            });
+    }
+
+    apply() {
+        render(viewElement, controllerObj, true);
+    }
+
+    // clears the MVC
+    clear() {
+        this.controller = {};
+        this.template = {};
+    }
+}
+
+// Analyze the url and compare it with the route list 
+function analyzeUrl(url, routeList) {
+    let option, find = false;
+    let $path = "", $routeParams = {}, $currentRoute = {};
+    url = url.substr(url.search("#") + 2).split("/");
+    let root = url[0];
+    url.splice(0, 1);
+
+    routeList.forEach(route => {
+        option = route.url.substr(route.url.search("/") + 1).split("/:");
+        if (root == option[0] && url.length == (option.length - 1)) {
+            find = true;
+            $path = option[0];
+            option.splice(0, 1);
+            $routeParams = {};
+            option.forEach((element, index) => {
+                $routeParams[element] = url[index];
+            });
+            $currentRoute = route;
+        }
+    });
+
+    if (find == false) {
+        return null;
+    }
+
+    return { $path, $routeParams, $currentRoute };
+}
+
+// Dynamicly import a component js file 
+async function dynamicImport(path) {
+    const moduleSpecifier = path;
+    try {
+        const module = await import(moduleSpecifier);
+        return module;
+    } catch (error) {
+        console.log(path + " doesnt exist");
+        return null;
+    }
+}
+
+// Returns the data of an html file
+async function loadDoc(path) {
+    let promise = new Promise((resolve, reject) => {
+        let xmlhttp;
+        //To be compatible with different browsers
+        if (window.XMLHttpRequest)
+            xmlhttp = new XMLHttpRequest();
+        else
+            xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+
+
+        xmlhttp.onload = function () {
+            resolve(xmlhttp.responseText);
+        };
+        xmlhttp.onerror = () => { console.log(path + " doesnt exist"); reject() };
+        xmlhttp.open('GET', path);
+        xmlhttp.send();
+    });
+
+    return await promise;
+}
+
+// Execute the above functions asynchronously
+async function loadMvc(templatePath, controllerPath) {
+    let template;
+    let controller;
+    template = await loadDoc(templatePath);
+    controller = await dynamicImport(controllerPath);
+    return Promise.resolve({ template, controller });
+}
+
+
+// Define global variables
+let $scope = {};
+let $testedSpecials = [];
+let $bindedVars;
+let cm = new Map();
+
+// Classes
+// Holds data required to a special atributes
+class AttrData {
+	constructor(query, render) {
+		this.type = query.replace("\\", "").replace("\$", "");
+		this.query = query;
+		this.render = render;
+	}
+}
+
+// Special attribute class
+class SpecialAttr {
+	constructor(type, element, render) {
+		this.attr = type;
+		this.element = element;
+		this.exp = element.getAttribute("$" + type);
+		this.render = render;
+	}
+}
+
+//*********************************************************************//
+//************************* Special Renders ***************************//
+//*********************************************************************//
+
+// Render function for "$if" special attribute 
+function renderIf(expression, element) {
+	let exp = expression.replace(/\$/g, "$scope.");
+	createClass('hide', 'display: none');
+	//check the expression in if attribute.  
+	let result = eval(exp);
+	//check if the expression true then the hide class will be removed if exist to display the element
+	if (result) {
+		if (element.classList.contains('hide')) {
+			element.classList.remove('hide');
+		}
+	}
+	//if false we will add hide class to hide the element.
+	else {
+		if (!element.classList.contains('hide')) {
+			element.classList.add('hide')
+		}
+	}
+}
+
+let forid = 0;
+let formap = new Map();
+// Render function for "$for" special attribute 
+function renderFor(exp, element) {
+	// save and restore original date to be looped on
+	let content = element.innerHTML;
+
+	if (element.hasAttribute('data-forid')) {
+		content = formap.get(element.getAttribute('data-forid'));
+	}
+	else {
+		element.setAttribute('data-forid', forid);
+		formap.set(forid + "", content);
+		forid++;
+	}
+
+	// define the iteration symbol of this for loop
+	let def = exp.split(':');
+	let iterSymbol = 'i';
+	if (def.length > 1)
+		iterSymbol = def[1].trim();
+
+	// define array and the element
+	let subArr = def[0].split('of')[0].trim();
+	let arrName = def[0].split('of')[1].trim();
+
+	let array = eval('$scope.' + arrName);
+	if (!array) return;
+	let iterregx = new RegExp(`\\$` + iterSymbol + '(?![a-z])', 'g');
+
+	let newElement = "";
+
+	for (let i = 0; i < array.length; i++) {
+		let tempele = content.replace(new RegExp("\[$]" + subArr, 'g'), "$" + arrName + `[${i}]`).replace(iterregx, i);
+		let oldval = $scope[subArr];
+		$scope[subArr] = array[i];
+
+		var node = document.createElement("LI");
+		node.innerHTML = tempele;
+		renderTemplate(node);
+		$apply(node);
+		tempele = node.innerHTML;
+
+		$scope[subArr] = oldval;
+		newElement += tempele;
+	}
+
+	element.innerHTML = newElement;
+}
+
+// Render function for "$disabled" special attribute 
+function renderDisabled(exp, element) {
+	exp = exp.replace(/\$/g, "$scope.");
+	let result = eval(exp);
+	element.disabled = result;
+}
+
+// Render function for "$style" special attribute 
+function renderStyle(exp, element) {
+	let hashCode = function (str) {
+		var hash = 0;
+		if (str.length == 0) {
+			return hash;
+		}
+		for (var i = 0; i < str.length; i++) {
+			var char = str.charCodeAt(i);
+			hash = ((hash << 5) - hash) + char;
+			hash = hash & hash;
+		}
+		return hash;
+	}
+
+	let expGroup = exp.split(',');
+
+	expGroup.forEach(ele => {
+		let indx = ele.lastIndexOf(":");
+		let e = [];
+		e.push(ele.substring(0, indx).replace(/'/g, "").trim(), ele.substring(indx + 1).trim());
+
+		let h = "mvc" + hashCode(e[0]);
+
+		createClass(h, e[0]);
+
+		renderClass(`${h} : ${e[1]}`, element);
+	});
+}
+
+// Render function for "$class" special attribute 
+function renderClass(exp, element) {
+	exp = exp.replace(/\$/g, "$scope.");
+	let expGroup = exp.split(',');
+
+	expGroup.forEach(ele => {
+		let splitStr = ele.split(":")
+		let className = splitStr[0].replace(/'/g, "").trim();
+		if (eval(splitStr[1]))
+			element.classList.add(className);
+		else
+			element.classList.remove(className);
+	}
+	);
+}
+
+//Render function for "$click" special attribute.
+function renderClick(exp, element) {
+	exp = exp.replace(/\$/g, "$scope.");
+	eventListener(element, 'click', () => { eval('$scope.' + exp); });
+}
+
+function renderModel(exp, element) {
+	element.setAttribute('id', exp);
+	element.setAttribute('value', $scope[exp]);
+	eventListener(element, 'change', () => { $scope[exp] = document.getElementById(exp).value; });
+}
+
+//Render function for "$change" special attribute.
+function renderChange(exp, element) {
+	exp = exp.replace(/\$/g, "$scope.");
+	eventListener(element, 'change', () => { eval('$scope.' + exp); });
+}
+
+//*********************************************************************//
+//*********************************************************************//
+//*********************************************************************//
+
+// List of all special tags with their render functionality
+const specails = [
+	new AttrData("\\$for", renderFor),
+	new AttrData("\\$if", renderIf),
+	new AttrData("\\$disabled", renderDisabled),
+	new AttrData("\\$style", renderStyle),
+	new AttrData("\\$class", renderClass),
+	new AttrData("\\$click", renderClick),
+	new AttrData("\\$model", renderModel),
+	new AttrData("\\$change", renderChange)
+];
+
+// Pulls special tags from a given html
+function specialTags(doc) {
+	let specialTags = [];
+
+	// Find all special tags and format them
+	for (let i = 0; i < specails.length; i++) {
+		let elements = doc.querySelectorAll(`[${specails[i].query}]`);
+		elements = [...elements].map(element => element = new SpecialAttr(specails[i].type, element, specails[i].render));
+		specialTags = specialTags.concat(elements);
+	}
+
+	return specialTags;
+}
+
+// Executes {{exp}} using data of a model
+function replaceElement(attrString) {
+	let value = attrString.replace('$', "$scope.");
+	value = eval(value);
+	return value == undefined ? '' : value;
+}
+
+// Replace the binded variable with its real value in html
+function $apply(doc) {
+	let str;
+	if (!doc) {
+		str = $bindedVars;
+		doc = viewElement;
+	}
+	else {
+		str = doc.innerHTML;
+	}
+	str = str.replace(/(\{\{.*?\}\})/g, replaceElement);
+	doc.innerHTML = str;
+	return doc;
+}
+
+// Used by renderStyle
+function createClass(name, attr) {
+	if (cm.has(name))
+		return;
+
+	var style = document.createElement('style');
+	style.type = 'text/css';
+	style.innerHTML = `.${name} { ${attr} }`;
+	document.getElementsByTagName('head')[0].appendChild(style);
+
+	cm.set(name, true);
+}
+
+// Used by renderFor
+function renderTemplate(view) {
+	let specials = specialTags(view);
+	specials.forEach(element => {
+		if ($testedSpecials.filter(elem => elem.element.isEqualNode(element.element) && elem.attr == element.attr).length == 0) {
+			$testedSpecials.push(element);
+			element.render(element.exp, element.element);
+		}
+	});
+	$testedSpecials = [];
+}
+
+function render(view, model, update = false) {
+	$scope = model;
+	if (update) $apply();
+	renderTemplate(view);
+	$bindedVars = view.innerHTML;
+	if (!update) $apply(view);
+	return view;
+}
+
+function uniqueId() {
+	// Math.random should be unique because of its seeding algorithm.
+	// Convert it to base 36 (numbers + letters), and grab the first 9 characters
+	// after the decimal.
+	return '_' + Math.random().toString(36).substr(2, 9);
+};
+
+function eventListener(element, event, func) {
+	let id;
+	let elementID = element.getAttribute('id');
+	if (elementID) {
+		id = elementID;
+	} else {
+		id = uniqueId();
+		element.setAttribute('id', id);
+	}
+	document.addEventListener(event, ev => {
+		if (ev.target.getAttribute("id") != id) return;
+		ev.preventDefault();
+		func();
+	});
+};
