@@ -2,18 +2,19 @@ import { Mvc } from './potato/dist/jsMvc.min.js';
 
 let mvc = new Mvc();
 
-let routeList = [{
-        url: "/",
-        template: "/templates/index.html",
-        controller: "/controllers/index.js",
-        title: "Home"
-    },
+let routeList = [
 
+    {
+        url: "/home",
+        template: "/templates/home.html",
+        controller: "/controllers/home.js",
+        title: "home"
+    },
     {
         url: "/details",
         template: "/templates/details.html",
-        controller: "/controllers/detailesClass.js",
-        title: "new"
+        controller: "/controllers/detailes.js",
+        title: "details"
     }
 ];
 
