@@ -18,8 +18,18 @@
 
    -->
 
-
-
+<span $for="n of items">
+    <span $for = "n of items">
+        <h1>
+            hello {{$index + 1}} i missed {{$n}}  {{$n}} {{$n}} {{$index}} <br>
+        </h1>
+    </span>
+</span>
+<span $for="related of relatedNews">
+    
+        {{$related}}
+   
+    </span>
 
 <div class="details_page_wrapper">
     <!-- Contains news title and photo & Show other related news -->
@@ -36,40 +46,19 @@
 
 
             <ul class="related_news_menu">
+
                 <li>
                     <h4>ذات صلة </h4>
                 </li>
-                <li>
-                    <img src="img/new.jpg" alt="صورة">
+                <span $for="related of relatedNews">
                     <p>
-                        لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
+                        {{$related}}
                     </p>
-                </li>
-                <li>
-                    <img src="img/new.jpg" alt="صورة">
-                    <p>
-                        لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
-                    </p>
-                </li>
-                <li>
-                    <img src="img/new.jpg" alt="صورة">
-                    <p>
-                        لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
-                    </p>
-                </li>
-                <li>
-                    <img src="img/new.jpg" alt="صورة">
-                    <p>
-                        لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
-                    </p>
-                </li>
-                <li>
-                    <img src="img/new.jpg" alt="صورة">
-                    <p>
-                        لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
-                    </p>
-                </li>
-
+                    <li>
+                        <img src="../img/new.jpg" alt="صورة" href="#/detailes/{{$relatedNew.id}}">
+                        
+                    </li>
+                </span>
 
             </ul>
         </aside>

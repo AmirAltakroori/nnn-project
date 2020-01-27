@@ -1,0 +1,327 @@
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:Latifa Masri and Abed Al-Fattah Hroub
+
+     File description: this filew contain scss style of the detailes page
+*/
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
+     Suhair Shareef <suhairshareef1999@gmail.com>
+     Authors:Latifa Masri
+
+     File description:this file contain shared function used in different files
+*/
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
+     Suhair Shareef <suhairshareef1999@gmail.com>
+
+     File description:
+     this variable special for slider design
+*/
+/*
+flex property
+@tparam $direction $justify $align : flex property , $w :width
+$param $direction: flex direction , $justify: justify content of flex , $align: align flex items ,$width :width of the flex
+
+*/
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
+     Suhair Shareef <suhairshareef1999@gmail.com>
+
+     File description:
+     this variable special for slider design
+*/
+/*
+part1 contain the header of the new and the related news
+*/
+@media screen and (max-height: 1080px) {
+  .news-content .news_related ul li img {
+    width: 200px;
+  }
+  .news-content .news_header .main_img img {
+    height: 570px;
+  }
+}
+
+@media screen and (max-height: 810px) {
+  .news-content .news_related ul li img {
+    width: 190px;
+  }
+  .news-content .news_header .main_img img {
+    height: 570px;
+  }
+}
+
+@media screen and (max-height: 768px) {
+  .news-content .news_related ul li img {
+    width: 180px;
+  }
+}
+
+* {
+  direction: rtl;
+}
+
+.news-content {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border-top: solid 1px #707070;
+  padding-top: 0%;
+  margin-bottom: 0%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+}
+
+.news-content .news_related {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 28%;
+}
+
+.news-content .news_related .related_news_menu {
+  width: 80%;
+}
+
+.news-content .news_related ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  list-style-type: none;
+}
+
+.news-content .news_related ul li img {
+  margin-left: 3%;
+  margin-right: 0%;
+  padding: 3%;
+}
+
+.news-content .news_related h4 {
+  margin-bottom: 20px;
+  color: #0C4D6D;
+}
+
+.news-content .news_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 72%;
+}
+
+.news-content .news_header h1 {
+  font-size: 35px;
+  margin-right: 10%;
+  margin-bottom: 2%;
+}
+
+.news-content .news_header .main_img {
+  background-image: url("../img/new.jpg");
+  width: 90%;
+  height: 570px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin-right: 10%;
+}
+
+.news-body {
+  font-size: 25px;
+  margin-right: 130px;
+}
+
+.news-body p {
+  padding-left: 50px;
+}
+
+.news-body .news_sharing {
+  direction: ltr;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  grid-gap: 10px;
+}
+
+.news-body .news_sharing .share-buttons {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.news-body .news_sharing .share-buttons a img {
+  float: left;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  border: 0;
+  -webkit-box-shadow: 0;
+          box-shadow: 0;
+}
+
+.news-body .news_sharing .about {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.news-body .news_sharing .about a img {
+  float: left;
+  width: 25px;
+  height: 25px;
+  padding: 5px;
+  border: 0;
+  -webkit-box-shadow: 0;
+          box-shadow: 0;
+}
+
+.news-body .news_sharing .about p {
+  font-size: 25px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding-bottom: 10px;
+}
+
+.comments {
+  font-size: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+  height: 400px;
+  padding-top: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.comments .add_comment {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 50% 50%;
+      grid-template-rows: 50% 50%;
+  border-left: solid 2px #707070;
+}
+
+.comments .add_comment .comment {
+  vertical-align: bottom;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30% 70%;
+      grid-template-columns: 30% 70%;
+}
+
+.comments .add_comment .comment img {
+  width: 45px;
+  height: 45px;
+  padding-right: 60%;
+  padding-top: 155px;
+}
+
+.comments .add_comment .comment p {
+  padding-left: 70%;
+  padding-top: 145px;
+}
+
+.comments .add_comment .add {
+  width: 70%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 70% 30%;
+      grid-template-columns: 70% 30%;
+  margin: 0 auto;
+}
+
+.comments .add_comment .add input {
+  height: 20%;
+  border-radius: 0 10px 10px 0;
+  border: solid 3px #EBEDED;
+}
+
+.comments .add_comment .add button {
+  height: 20%;
+  background-color: #EBEDED;
+  border: none;
+  border-radius: 10px 0 0 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.comments .list_comment {
+  margin-left: 20px;
+}
+
+.comments .list_comment li {
+  list-style-type: none;
+}
+
+.comments .list_comment img {
+  width: 45px;
+  height: 45px;
+  padding: 0px;
+}
+
+.comments .list_comment p {
+  padding-bottom: 15px;
+}
+/*# sourceMappingURL=details.css.map */

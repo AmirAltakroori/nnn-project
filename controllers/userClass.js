@@ -1,15 +1,15 @@
 /*
-*     NNN website.
-*
-*     This file is part of the NNN website.
-*
-*     Authors:
-*     Qusai Hroub <qusaihroub.r@gmail.com>
-*
-*     File description:
-*/
+ *     NNN website.
+ *
+ *     This file is part of the NNN website.
+ *
+ *     Authors:
+ *     Qusai Hroub <qusaihroub.r@gmail.com>
+ *
+ *     File description:
+ */
 
-class User {
+export class User {
     constructor() {
         this.id = "";
         this.firstName = "";
