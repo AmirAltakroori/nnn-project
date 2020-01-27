@@ -34,6 +34,7 @@ class SpecialAttr
 function renderIf(expression,element)
 {
     let exp = expression.replace(/\$/g, "$scope.");  
+    createClass('hide','display:none');
     //check the expression in if attribute.  
     let result = eval(exp);
     //check if the expression true then the hide class will be removed if exist to display the element
