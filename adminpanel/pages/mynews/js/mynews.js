@@ -9,7 +9,7 @@ export class mynews {
         seoTitle: "First news",
         seoTags: "{ 'tags':{['test','sport']} }",
         seoDescription: "This is my first news",
-        isActive: 1,
+        isActive: 0,
         isMainNews: 0,
         isUrgentNews: 1,
         createDate: new Date(),
