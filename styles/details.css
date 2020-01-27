@@ -83,7 +83,6 @@ part1 contain the header of the new and the related news
 .news-content {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   border-top: solid 1px #707070;
-  margin-top: 200px;
   margin-bottom: 0%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -152,8 +151,6 @@ part1 contain the header of the new and the related news
 }
 
 .news-content .news_header {
-  margin-top: 100px;
-  padding-top: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -172,7 +169,6 @@ part1 contain the header of the new and the related news
 
 .news-content .news_header h1 {
   font-size: 35px;
-  margin-top: 100px;
   margin-right: 10%;
   margin-bottom: 2%;
 }

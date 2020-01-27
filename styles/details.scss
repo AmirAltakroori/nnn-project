@@ -76,7 +76,7 @@ part1 contain the header of the new and the related news
 .news-content {
     font-family: $newsText-fontFamily;
     border-top: solid 1px #707070;
-    margin-top: 200px;
+    
     margin-bottom: 0%;
     @include flex-property(row, flex-end, center, 100%);
     .news_related {
@@ -99,11 +99,9 @@ part1 contain the header of the new and the related news
         }
     }
     .news_header {
-         margin-top: 100px;
-         padding-top: 100px;;
+         
         h1 {
             font-size: $font-size + 15;
-            margin-top: 100px;;
             margin-right: 10%;
             margin-bottom: 2%;
         }
