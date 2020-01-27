@@ -39,13 +39,41 @@
 
         <tbody id="tablebody" $for="n of newsPage">
             <tr class="user_info">
-                <td class="user_no">{{$n.no}}</td>
-                <td class="user_full"><span class="user_name allnews-title-limit">{{$n.title}}</span></td>
-                <td class="user_full" $for="cat of categories" $if="$cat.id==$n.categoryId">
-                    <span class="user_name">{{$cat.name}}</span>
+                    <div>
+                        <td class="user_no">
+                            {{n.no}}
+                        </td>
+                    </div>
+
+                    <div>
+                        <td class="user_full">
+                            <span class="user_name allnews-title-limit">{{$n.title}}</span>
+                        </td>
+                    </div>
+
+                    <div>
+                        <td class="user_full" $for="cat of categories" $if="$cat.id==$n.categoryId">
+                            <span class="user_name">{{$cat.name}}</span>
+                        </td>
+                    </div>
+                <td>
+
+                <div>
+                    <td class="user_full"  $if="$n.isActive == 1">
+                        <span class="user_name"> مفعل</span>
+                    </td>
+                </div>
+            
+                <div >
+                    <td class="user_full" $if="$n.isActive == 0">
+                        <span class="user_name"> غير مفعل</span>
+                    </td>
+                </div>
+
+                <td>
+                    <i class="fas fa-trash-alt delete_user"></i>
+                    <i class="far fa-edit icon color-blue"></i>
                 </td>
-                <td class="user_full"><span class="user_name">2</span></td>
-                <td class="user_full"><span class="user_name" $if="$n.isActive == 1">{{$n.isActive}}</span></td>
             </tr>
         </tbody>
     </table>
