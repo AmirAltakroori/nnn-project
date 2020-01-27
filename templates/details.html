@@ -17,14 +17,17 @@
     header & nav
 
    -->
+  
+       <span $for="n of relatedNews">
+           
+             
+                <h1>
+                  {{$n.id}}<br>
+                </h1>
+              
+        </span>
+  
 
-<span $for="n of items">
-<span $for="n of items">
-        <h1>
-            hello {{$index + 1}} i missed {{$n}}  {{$n}} {{$n}} {{$index}} <br>
-        </h1>
-    </span>
-</span>
 
 
 <div class="details_page_wrapper">
@@ -39,7 +42,12 @@
             </div>
         </section>
         <aside class="news_related">
-
+            <span $for="n of relatedNews">
+            
+                <p>
+                  {{$related.newsContent}}<br>
+                </p>    
+        </span>
 
             <ul class="related_news_menu">
 
@@ -48,10 +56,10 @@
                 </li>
                 <span $for="related of relatedNews">
                     <p>
-                        {{$related}}
+                        {{$related.newsContent}}
                     </p>
                     <li>
-                        <img src="../img/new.jpg" alt="صورة" href="#/detailes/{{$relatedNew.id}}">
+                        <img src="../img/{{$related.img}}" alt="صورة" href="#/detailes/{{$relatedNew.id}}">
                         
                     </li>
                 </span>

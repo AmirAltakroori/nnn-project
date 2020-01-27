@@ -10,8 +10,17 @@
 */
 export class details {
     constructor() {
-        // this.relatedNews = [1, 2, 3];
-        this.items = [5, 10, 20, 25, 255];
+        this.id = "";
+        this.firstName = "";
+        this.lastName = "";
+        this.userName = "";
+        this.email = "";
+        this.password = "";
+        this.token = "";
+        this.roleId = 0;
+        this.isActive = false;
+        this.createDate = Date();
+        
         this.relatedNews = [{
             id: 1,
             title: " لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
