@@ -1,62 +1,96 @@
- <div class="row header-subheader ">
-                <div>
-                    الرئيسية > لوحة التحكم >الأخبار > تأكيد الأخبار
-                </div>
-            </div>
-        
-        <div class="container">
-            <div class="content_header">
-                <div class="title">
-                    <span class="title_text">تأكيد الأخبار</span>
-                </div>
-                <div class="search_area">
-                    <div class="search_word">
-                        <span>البحث</span>
-                    </div>
-                    <div class="search">
-                        <img class="search_icon" src="./../../img/search.png">
-                        <input type="text" id="search" onkeyup="searchElement(2)" class="search_field" placeholder="أدخل اسم الفئة ">
-                    </div>
-                </div>
-            </div>
-            <table class="content">
-                <thead>
-                    <tr class="first_row">
-                        <th>#</th>
-                        <th>عنوان الخبر</th>
-                        <th>الفئة</th>
-                        <th>الحالة</th>
-                        <th>العمليات</th>
-                    </tr>
-                </thead>
-                <tbody id="tablebody" $for="n of newsPage">
-                    <tr class="user_info">
-                        <td class="user_no">{{$n.no}}</td>
-                        <td class="user_full"><span class="user_name allnews-title-limit">{{$n.title}}</span></td>
-                        <td class="user_full" $for="cat of categories" $if="$cat.id==$n.categoryId">
-                            <span class="user_name">{{$cat.name}}</span>
-                        </td>
-                        <td class="user_full"><span class="user_name">2</span></td>
-                        <td class="user_full"><span class="user_name" $if="$n.isActive == 1">{{$n.isActive}}</span></td>        
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="newsapprove-flex-box">
-            <div class="newsapprove-approve-button">
-                نشر الخبر
-            </div>
-        </div>
-        <div class="modal-delete" id="delete">
-            <div class="modal-wrapper">
-                <div class="contain">
-                    <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
-                    <div class="modal-button">
-                        <button class="modal-button button1" onclick="deleteRowElement(newsPage); hide('delete');">نعم</button>
-                        <button class="modal-button button2" onclick="hide('delete')">لا</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-    
+<div class="row header-subheader">
+    <div>
+        الرئيسية > لوحة التحكم > الأخبار > أخباري    
+    </div>
+</div>
+
+<div class="container">
+    <div class="content_header">
+        <div class="title">
+            <span class="title_text">تأكيد الأخبار</span>
+        </div>
+        <div class="search_area">
+            <div class="search_word">
+                <span>البحث</span>
+            </div>
+            <div class="search">
+                <img src="./../../img/search.png" class="search_icon">
+                <input 
+                type="text"
+                class="search_field"
+                id="search"
+                placeholder="أدخل عنوان الفئة"
+                onkeyup="searchElement(1)"
+                >
+            </div>
+        </div>
+    </div>
+
+    <table class="content">
+        <thead>
+            <tr class="first_row">
+                <th>#</th>
+                <th>عنوان الخبر</th>
+                <th>الفئة</th>
+                <th>الحالة</th>
+                <th>العمليات</th>
+            </tr>
+        </thead>
+
+        <tbody id="tablebody" $for="n of newsPage">
+            <tr class="user_info">
+                    <div>
+                        <td class="user_no">
+                            {{n.no}}
+                        </td>
+                    </div>
+
+                    <div>
+                        <td class="user_full">
+                            <span class="user_name allnews-title-limit">{{$n.title}}</span>
+                        </td>
+                    </div>
+
+                    <div>
+                        <td class="user_full" $for="cat of categories" $if="$cat.id==$n.categoryId">
+                            <span class="user_name">{{$cat.name}}</span>
+                        </td>
+                    </div>
+                <td>
+
+                <div>
+                    <td class="user_full"  $if="$n.isActive == 1">
+                        <span class="user_name"> مفعل</span>
+                    </td>
+                </div>
+            
+                <div >
+                    <td class="user_full" $if="$n.isActive == 0">
+                        <span class="user_name"> غير مفعل</span>
+                    </td>
+                </div>
+
+                <td>
+                    <i class="fas fa-trash-alt delete_user"></i>
+                    <i class="far fa-edit icon color-blue"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="newsapprove-flex-box">
+    <div class="newsapprove-approve-button">
+        نشر الخبر
+    </div>
+</div>
+<div class="modal-delete" id="delete">
+    <div class="modal-wrapper">
+        <div class="contain">
+            <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
+            <div class="modal-button">
+                <button class="modal-button button1" onclick="deleteRowElement(newsPage); hide('delete');">نعم</button>
+                <button class="modal-button button2" onclick="hide('delete')">لا</button>
+            </div>
+        </div>
+    </div>
+</div>
