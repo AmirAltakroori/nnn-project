@@ -44,11 +44,11 @@
                 </td>
 
                     <td>
-                        <div $for="cat of categories">
-                                <div $if="$myNewsPage[$i].categoryId == $categories[$i].id">
-                                        <span>{{$cat.name}}</span>
-                                </div>
-                        </div>
+                        <div $for="test of categories">
+                            <div $if="$news.categoryId == $test.id">
+                                    <span>{{$test.name}}</span>
+                            </div>
+                    </div>
                     </td>
 
                     <td>
