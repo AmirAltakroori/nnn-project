@@ -43,8 +43,12 @@
                     <span class="user_name allnews-title-limit">{{$news.title}}</span>
                 </td>
 
-             <td>
-                    test
+                    <td>
+                        <div $for="cat of categories">
+                                <div $if="$myNewsPage[$i].categoryId == $categories[$i].id">
+                                        <span>{{$cat.name}}</span>
+                                </div>
+                        </div>
                     </td>
 
                     <td>
