@@ -1,93 +1,68 @@
-
-        <div class="row header-subheader ">
-            <div>
-                الرئيسية > لوحة التحكم > الأخبار > أخباري
-            </div>
-        </div>
-    
-
-
-    <div class="container">
-        <div class="content_header">
-            <div class="title">
-                <span class="title_text">أخباري</span>
-            </div>
-            <div class="search_area">
-                <div class="search_word">
-                    <span>البحث</span>
-                </div>
-                <div class="search">
-                    <img class="search_icon" src="./../../img/search.png">
-                    <input type="text" class="search_field" placeholder="أدخل عنوان الخبر" id="search" onkeyup="searchElement(1)">
-                </div>
-            </div>
-
-        </div>
-
-        <table id="table" class="content">
-            <thead>
-                <tr class="first_row">
-                    <th>#</th>
-                    <th>عنوان الخبر</th>
-                    <th>الفئة</th>
-                    <th>الحالة</th>
-                    <th>العمليات</th>
-
-                </tr>
-            </thead>
-
-           <!-- <div $for="n of myNewsPage">
-                    {{$n.title}}
-                    <div  $for="cat of categories">
-                        <div >
-                                {{$cat.name}}
-                        </div>
-                    </div> 
-                    <div $if="$n.isActive == 0">
-                        active
-                    </div>
-            </div>-->
-            
-           
-            <tbody id="tablebody" $for="n of myNewsPage">
-                    <tr class="user_info">
-                            <td class="user_no">1</td>
-                            <td class="user_full">
-                                <span class="user_name allnews-title-limit">{{$n.title}}</span>
-                            </td>
-                            
-                            <td>
-                               <div $for="c of categories">
-                                  
-                                    {{$c.name}}
-                                    <!--<div $if="$c.id == $n.categoryId">
-                                            {{$c.name}}
-                                    </div>-->
-                                    
-                               </div>
-                            </td>
-                            
-                            <td>
-                                <div $if="$n.isActive == 1">
-                                        
-                                    مفعل
-                                </div>
-                            </td>
-                            <td>
-                                <div $if="$n.isActive == 0">
-                                        
-                                    غير مفعل
-                                    
-                                </div>
-                            </td>
-                            <td>
-                                <i class="fas fa-trash-alt delete_user"></i>
-                                <i class="far fa-edit icon color-blue"></i>
-                            </td>
-                    </tr>
-            </tbody>
-        </table>
+<div class="row header-subheader ">
+    <div>
+        الرئيسية > لوحة التحكم > الأخبار > أخباري
     </div>
+</div>
+
+
+
+<div class="container">
+    <div class="content_header">
+        <div class="title">
+            <span class="title_text">أخباري</span>
+        </div>
+        <div class="search_area">
+            <div class="search_word">
+                <span>البحث</span>
+            </div>
+            <div class="search">
+                <img class="search_icon" src="./../../img/search.png">
+                <input type="text" class="search_field" placeholder="أدخل عنوان الخبر" id="search" onkeyup="searchElement(1)">
+            </div>
+        </div>
+
+    </div>
+    <table id="table" class="content">
+        <thead>
+            <tr class="first_row">
+                <th>#</th>
+                <th>عنوان الخبر</th>
+                <th>الفئة</th>
+                <th>الحالة</th>
+                <th>العمليات</th>
+
+            </tr>
+        </thead>
+
+
+
+        <tbody id="tablebody" $for=" news of myNewsPage">
+            <tr class="user_info">
+                <td class="user_no">{{$i + 1}}</td>
+                <td class="user_full">
+                    <span class="user_name allnews-title-limit">{{$news.title}}</span>
+                </td>
+
+                <td>
+                    test
+                </td>
+
+                <td>
+                    <div $if="$myNewsPage[$i].isActive == 1">
+                        <span>مفعل</span>
+                    </div>
+                    <div $if="$myNewsPage[$i].isActive == 0">
+                        <span>غير مفعل</span>
+                    </div>
+                </td>
+                <td>
+                    <i class="fas fa-trash-alt delete_user"></i>
+                    <i class="far fa-edit icon color-blue"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
     <div class="modal-delete" id="delete">
         <div class="modal-wrapper">
             <div class="contain">
