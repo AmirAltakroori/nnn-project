@@ -39,24 +39,21 @@
 
         <tbody id="tablebody" $for="n of newsPage">
             <tr class="user_info">
-                    <div>
-                        <td class="user_no">
-                            {{n.no}}
-                        </td>
-                    </div>
+                <td class="user_no">
+                    {{$i + 1}}
+                </td>
 
-                    <div>
-                        <td class="user_full">
-                            <span class="user_name allnews-title-limit">{{$n.title}}</span>
-                        </td>
-                    </div>
-
-                    <div>
-                        <td class="user_full" $for="cat of categories" $if="$cat.id==$n.categoryId">
-                            <span class="user_name">{{$cat.name}}</span>
-                        </td>
-                    </div>
+                <td class="user_full">
+                    <span class="user_name">{{$n.title}}</span>
+                </td>
+                
                 <td>
+                    <div $for="cat of categories">
+                        <div  $if="$n.categoryId == $cat.id">
+                            <span>{{$cat.name}}</span>
+                        </div>
+                    </div>
+                </td>
 
                 <div>
                     <td class="user_full"  $if="$n.isActive == 1">
