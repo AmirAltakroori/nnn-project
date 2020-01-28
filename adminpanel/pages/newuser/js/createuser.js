@@ -3,7 +3,7 @@ let users = [];
 //Store array in database
 
 function createUser(){
-    let form = document.getElementById('adduserid');
+    const form = document.getElementById('adduserid');
     console.log("ighjghjgjgjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
     form.addEventListener("submit", (e) => {
         ConfirmedPassword = document.getElementById("ConfirmPass").value;
