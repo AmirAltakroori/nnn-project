@@ -11,10 +11,14 @@
     File description: html code for main section and right sidebar
     in category page for normal user view.
 -->
+<!--
 <link rel="stylesheet" href="./css/categories.css">
 <link rel="stylesheet" type="text/css" href="./css/index.css" />
+-->
+
+
 <div class="category-view">
-    <p class="category-view-name">الاخبار العالمية</p>
+    <p class="category-view-name">{{$name}}</p>
     <hr>
     <div class="category-view-container">
         <div class="right-col">
@@ -24,15 +28,11 @@
 
                 <!-- Right sidebar -->
                 <div class="right_sidebar">
-                    <div class="news_list">
-                        <div class="news" id="category_rightside_news_id_1" onclick="showNewsInMainSectionFromDiv(1)">
-                            <div class="centered-img-background right-side-image"></div>
-                        </div>
-                        <div class="news" id="category_rightside_news_id_2" onclick="showNewsInMainSectionFromDiv(2)">
-                            <div class="centered-img-background right-side-image"></div>
-                        </div>
-                        <div class="news" id="category_rightside_news_id_3" onclick="showNewsInMainSectionFromDiv(3)">
-                            <div class="centered-img-background right-side-image"></div>
+                    <div $for="news of listMainNews" class="news_list">
+                        <div class="news" $click="changeMainNews({{$news}})">
+                            <div class="centered-img-background right-side-image" style="background-image: url({{$news.attachments}});">
+                                <span>{{$news.title}}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -40,51 +40,77 @@
                 <!-- Main news section -->
                 <div class="main_section">
                     <div class="main_news">
-                        <div id="category_main_news_image" class="centered-img-background"></div>
+
+                        <!-- Main news image -->
+                        <div id="category_main_news_image" class="centered-img-background" style="background-image: url({{$mainNews.attachments}});"></div>
+
+                        <!-- Main news details -->
                         <div class="details">
-                            <h3 id="category_main_news_title"></h3>
+                            <h3 id="category_main_news_title">{{$mainNews.title}}</h3>
                             <div id="category_main_news_writng_details">
-                                <div id="category_main_news_writer"></div>
+                                <div id="category_main_news_writer">{{$mainNews.writer}}</div>
                                 <img src="img/calenderIcon.png" alt="calender icon">
-                                <span id="category_main_news_date"></span>
+                                <span id="category_main_news_date">{{$mainNews.createDate}}</span>
                             </div>
-                            <div id="category_main_news_content_news"></div>
+                            <div id="category_main_news_content_news">{{$mainNews.content}}</div>
                         </div>
+
+                        <!-- See more details -->
                         <div id="category_see_more">
-                            <img src="img/arrowIcon.png" alt="arrow icon">
-                            <p>اقرأ المزيد</p>
+                            <a href="/details/{{$mainNews.id}}">
+                                <img src="img/arrowIcon.png" alt="arrow icon">
+                                <p>اقرأ المزيد</p>
+                            </a>
                         </div>
+
                     </div>
                 </div>
 
             </div>
 
+
             <div class="relates_news">
+
                 <div class="related_news_left">
+                    <ul $for="news of rightNewsInCategory" id="related_news_menu_right">
+                        <a href="/details/{{$news.id}}">
+                            <li>
+                                <img src="{{$news.img}}" alt="photo">
+                                <p>{{$news.title}}</p>
+                            </li>
 
-                    <ul id="related_news_menu_left">
-
+                        </a>
 
                     </ul>
 
                 </div>
-                <div class="related_news_left">
 
-                    <ul id="related_news_menu_right">
+                <div class="related_news_left">
+                    <ul $for="news of liftNewsInCategory" id="related_news_menu_right">
+                        <a href="/details/{{$news.id}}">
+                            <li>
+                                <img src="{{$news.img}}" alt="photo">
+                                <p>{{$news.title}}</p>
+                            </li>
+                        </a>
 
                     </ul>
-
                 </div>
+
             </div>
         </div>
         <div class="left-col">
+
             <p class="title">منوعات</p>
-            <ul id="random-content">
-
-
+            <ul $for="news of randomNews" id="random-content">
+                <li class="card random-new" id="{{$news.id}}">
+                    <img src="{{$news.img}}" alt="">
+                    <a href="/details/{{$news.id}}">{{$news.title}}</a>
+                </li>
             </ul>
+
         </div>
     </div>
 </div>
 
-<script src="../controller/categories.js"></script>
+<script src="../controllers/categories.js"></script>

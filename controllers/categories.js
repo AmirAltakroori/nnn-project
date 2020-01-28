@@ -9,114 +9,249 @@
  *
  *     File description: this file contains the functions that fetch Related news category from the database
  */
-const randomNewsDiv = document.getElementById('random-content');
-let randomNews = [];
 
-showRandomNews();
+export class Category {
 
-/*
-    Show Related category News.
+    pageTypesList = ["الاخبار العالمية", "رياضة", "وفيات", "مش وفيات"];
 
-    @tparam
+    constructor() {
+        // console.log($routeParams.type);
+        //   indexType = $routeParams.type;
+        this.name = "الاخبار العالمية"; //this.pageTypesList[Number(indexType)];
+        this.randomNews = this.getRandomNewsList().slice(0, 5);
+        this.listMainNews = this.getMainNewsList().slice(0, 3);
 
-    @param
+        this.mainNews = this.listMainNews[0];
 
-    @returns
+        this.rightNewsInCategory = this.getRightNewsInCategory().slice(0, 5);
+        this.liftNewsInCategory = this.getLiftNewsInCategory().slice(0, 5);
+    }
 
-    This function used to show  the Related category News retrieved from database
-*/
-function relatedCategoryNews() {
+    changeMainNews(news) {
+        this.mainNews = news;
+    }
 
-    let newsInCategory = getDataNewsListrelated();
-    for (let whereAddNew = 0; whereAddNew < Object.keys(newsInCategory).length; whereAddNew++) {
-        let newsLi = document.createElement("li");
-        newsLi.setAttribute.Id = newsInCategory[whereAddNew].Id;
-        if (whereAddNew % 2 == 0) {
-            newsLi.innerHTML = `
-            <img src="${newsInCategory[whereAddNew].img}" alt="photo">
-             <p>${newsInCategory[whereAddNew].title}</p>
-             `
-            document.getElementById("related_news_menu_left").appendChild(newsLi);
-        } else {
-            newsLi.innerHTML = `
-            <img src="${newsInCategory[whereAddNew].img}" alt="photo">
-             <p>${newsInCategory[whereAddNew].title}</p>
-            `
-            document.getElementById("related_news_menu_right").appendChild(newsLi);
+    getMainNewsList() {
+        return [{
+                id: 4,
+                title: "شباب يطا يتعادل سلبيا مع الخضر",
+                content: "تالق فرسان يطا وضغط بشكل كبير خاصة في الشوط الاول واضاع العديد من الفرص لينتهي الشوط الاول بدون اهداف.",
+                writer: "mohammad tamimi",
+                createDate: "14/1/2017",
+                attachments: "img/4.jpeg"
+            },
+            {
+                id: 2,
+                title: "الاسبوع الثامن: انتصارات للامعري وبلاطة والسموع",
+                content: "القدس- معا- دائرة الاعلام بالاتحاد- وصلت مباريات الأسبوع الثامن من دوري المحترفين الى نهايتها ، بعد ان جرت مساء السبت 7/12/2019 ثلاث مباريات كانت كالتالي :الامعري واد النيص",
+                writer: "not amir altakroori",
+                createDate: "14/12/2019",
+                attachments: "img/2.jpeg"
+            },
+            {
+                id: 3,
+                title: "الاعلامية الرياضية نعمه خضر: لا اتصور الدوري بدون شباب الخليل",
+                content: "وتابعت الاعلامية المتميزة نعمه خضر، التي تفضل العمل بعيدا عن الشهرة والصخب الاعلامي، انها تعشق نادي شباب الخليل لدرجة لا توصف، واكدت انها لا تتصور الدوري الفلسطيني بدون نادي شباب الخليل، ووصفته بفاكهة الرياضة الفلسطينية، واعتبرت (نعمه خضر) جماهير شباب الخليل الأوسع والأمتع على مستوى الوطن،",
+                writer: "ali tamimi",
+                createDate: "14/1/2015",
+                attachments: "img/3.jpeg"
+            },
+
+            {
+                id: 1,
+                title: "هلال القدس يلاقي فريق صور العماني بملحق كأس الاتحاد الاسيوي",
+                content: "ككوالالمبور - معا- الناطق الاعلامي تامر عبيدات- يلاقي ناديامثلوالالمبور - معا- الناطق الاعلامي تامر عبيدات- يلاقي ناديامثلين",
+                writer: "amir altakroori",
+                createDate: "14/12/2010",
+                attachments: "img/1.jpeg"
+            }
+        ];
+    }
+    getRandomNewsList() {
+        return [{
+            id: 1,
+            title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
+            img: "img/new.jpg",
+
+        }, {
+            id: 2,
+            title: "إلغاء امتحانات الفاينل لهذا العام",
+            img: "img/new2.png ",
+
+        }, {
+            id: 3,
+            title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
+            img: "img/new.jpg ",
+
+        }, {
+            id: 4,
+            title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
+            img: "img/new2.png",
+
+        }, {
+            id: 5,
+            title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
+            img: "img/new.jpg ",
+
+        }];
+    }
+    getRightNewsInCategory() {
+        return [{
+            id: "1",
+            title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+            img: "img/new.jpg"
+        }, {
+            id: "2",
+            title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+            img: "img/new.jpg"
+        }, {
+            id: "3",
+            title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+            img: "img/new.jpg"
+        }, {
+            id: "4",
+            title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+            img: "img/new.jpg"
+        }, {
+            id: "5",
+            title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+            img: "img/new.jpg"
+        }];
+    }
+
+    getLiftNewsInCategory() {
+            return [{
+                id: "1",
+                title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+                img: "img/new.jpg"
+            }, {
+                id: "2",
+                title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+                img: "img/new.jpg"
+            }, {
+                id: "3",
+                title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+                img: "img/new.jpg"
+            }, {
+                id: "4",
+                title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+                img: "img/new.jpg"
+            }, {
+                id: "5",
+                title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+                img: "img/new.jpg"
+            }];
         }
-    }
-}
+        // randomNewsDiv = document.getElementById('random-content');
+        // randomNews = [];
 
-/*
-    Get Random News.
+    // showRandomNews();
 
-    @tparam
+    // /*
+    //     Show Related category News.
 
-    @param
+    //     @tparam
 
-    @returns
+    //     @param
 
-    This function used to retrieve random news from database
-*/
-function getRandomNews() {
+    //     @returns
 
-    // I'll rewrite this function when DB was ready.
-    randomNews = [{
-        id: 1,
-        title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-        img: "img/new.jpg",
+    //     This function used to show  the Related category News retrieved from database
+    // */
+    // relatedCategoryNews() {
 
-    }, {
-        id: 2,
-        title: "إلغاء امتحانات الفاينل لهذا العام",
-        img: "img/new2.png ",
+    //     let newsInCategory = getDataNewsListrelated();
+    //     for (let whereAddNew = 0; whereAddNew < Object.keys(newsInCategory).length; whereAddNew++) {
+    //         let newsLi = document.createElement("li");
+    //         newsLi.setAttribute.Id = newsInCategory[whereAddNew].Id;
+    //         if (whereAddNew % 2 == 0) {
+    //             newsLi.innerHTML = `
+    //         <img src="${newsInCategory[whereAddNew].img}" alt="photo">
+    //          <p>${newsInCategory[whereAddNew].title}</p>
+    //          `
+    //             document.getElementById("related_news_menu_left").appendChild(newsLi);
+    //         } else {
+    //             newsLi.innerHTML = `
+    //         <img src="${newsInCategory[whereAddNew].img}" alt="photo">
+    //          <p>${newsInCategory[whereAddNew].title}</p>
+    //         `
+    //             document.getElementById("related_news_menu_right").appendChild(newsLi);
+    //         }
+    //     }
+    // }
 
-    }, {
-        id: 3,
-        title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
-        img: "img/new.jpg ",
+    // /*
+    //     Get Random News.
 
-    }, {
-        id: 4,
-        title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
-        img: "img/new2.png",
+    //     @tparam
 
-    }, {
-        id: 5,
-        title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
-        img: "img/new.jpg ",
+    //     @param
 
-    }];
+    //     @returns
 
-}
+    //     This function used to retrieve random news from database
+    // */
+    // getRandomNews() {
 
-/*
-    Show Random News.
+    //     // I'll rewrite this function when DB was ready.
+    //     randomNews = [{
+    //         id: 1,
+    //         title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
+    //         img: "img/new.jpg",
 
-    @tparam
+    //     }, {
+    //         id: 2,
+    //         title: "إلغاء امتحانات الفاينل لهذا العام",
+    //         img: "img/new2.png ",
 
-    @param
+    //     }, {
+    //         id: 3,
+    //         title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
+    //         img: "img/new.jpg ",
 
-    @returns
+    //     }, {
+    //         id: 4,
+    //         title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
+    //         img: "img/new2.png",
 
-    This function used to show the random news retrieved from database
-*/
-function showRandomNews() {
+    //     }, {
+    //         id: 5,
+    //         title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
+    //         img: "img/new.jpg ",
 
-    getRandomNews();
+    //     }];
 
-    randomNewsDiv.innerHTML = "";
-    for (let i = 0; i < randomNews.length; i++) {
+    // }
 
-        let currentRandomNew = `
+    // /*
+    //     Show Random News.
 
-        <li class="card random-new" id="${randomNews[i].id}">
-        <img src="${randomNews[i].img}" alt="">
-        <a href="#">${randomNews[i].title} </a>
+    //     @tparam
 
-        </li>
-        `;
-        randomNewsDiv.innerHTML += currentRandomNew;
+    //     @param
 
-    }
+    //     @returns
+
+    //     This function used to show the random news retrieved from database
+    // */
+    // showRandomNews() {
+
+    //     getRandomNews();
+
+    //     randomNewsDiv.innerHTML = "";
+    //     for (let i = 0; i < randomNews.length; i++) {
+
+    //         let currentRandomNew = `
+
+    //     <li class="card random-new" id="${randomNews[i].id}">
+    //     <img src="${randomNews[i].img}" alt="">
+    //     <a href="#">${randomNews[i].title} </a>
+
+    //     </li>
+    //     `;
+    //         randomNewsDiv.innerHTML += currentRandomNew;
+
+    //     }
+    // }
+
 }
