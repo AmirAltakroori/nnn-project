@@ -31,6 +31,7 @@ class SpecialAttr {
 // Render function for "$if" special attribute 
 function renderIf(expression, element) {
 	let exp = expression.replace(/\$/g, "$scope.");
+	createClass('hide', 'display: none');
 	//check the expression in if attribute.  
 	let result = eval(exp);
 	//check if the expression true then the hide class will be removed if exist to display the element
@@ -50,22 +51,19 @@ function renderIf(expression, element) {
 let forid = 0;
 let formap = new Map();
 // Render function for "$for" special attribute 
-function renderFor(exp, element) 
-{
+function renderFor(exp, element) {
 	// save and restore original date to be looped on
 	let content = element.innerHTML;
-	
-	if(element.hasAttribute('data-forid'))
-	{
+
+	if (element.hasAttribute('data-forid')) {
 		content = formap.get(element.getAttribute('data-forid'));
 	}
-	else
-	{
-		element.setAttribute('data-forid',forid);
-		formap.set(forid + "",content);
+	else {
+		element.setAttribute('data-forid', forid);
+		formap.set(forid + "", content);
 		forid++;
 	}
-	
+
 	// define the iteration symbol of this for loop
 	let def = exp.split(':');
 	let iterSymbol = 'i';
@@ -82,8 +80,7 @@ function renderFor(exp, element)
 
 	let newElement = "";
 
-	for (let i = 0; i < array.length; i++) 
-	{
+	for (let i = 0; i < array.length; i++) {
 		let tempele = content.replace(new RegExp("\[$]" + subArr, 'g'), "$" + arrName + `[${i}]`).replace(iterregx, i);
 		let oldval = $scope[subArr];
 		$scope[subArr] = array[i];
@@ -243,17 +240,18 @@ function renderTemplate(view) {
 	specials.forEach(element => {
 		if ($testedSpecials.filter(elem => elem.element.isEqualNode(element.element) && elem.attr == element.attr).length == 0) {
 			$testedSpecials.push(element);
-			 element.render(element.exp, element.element);
+			element.render(element.exp, element.element);
 		}
 	});
 	$testedSpecials = [];
 }
 
-function render(view, model) {
+function render(view, model, update = false) {
 	$scope = model;
-	$bindedVars = view.innerHTML;
+	if (update) $apply();
 	renderTemplate(view);
-	$apply(view);
+	$bindedVars = view.innerHTML;
+	if (!update) $apply(view);
 	return view;
 }
 
@@ -267,7 +265,7 @@ function uniqueId() {
 function eventListener(element, event, func) {
 	let id;
 	let elementID = element.getAttribute('id');
-	if(elementID) {
+	if (elementID) {
 		id = elementID;
 	} else {
 		id = uniqueId();

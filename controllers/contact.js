@@ -1,13 +1,17 @@
-export class ContactController
-{
-    constructor()
-    {
+export class ContactController {
+    constructor() {
         this.FirstName = "hello";
-        this.arr2d = [10,20];
+        this.x = true;
+        this.arr2d = [
+            { num: 10, active: true },
+            { num: 20, active: true }
+        ];
         setTimeout(() => {
             this.FirstName = "JAJAJJAJ";
-            this.arr2d = [10,20,40];
-            mvc.renderByID();
+            this.arr2d.push({ num: 40, active: true });
+            this.arr2d[1].active = false;
+            this.x = false;
+            mvc.apply();
         }, 1000);
     }
 
