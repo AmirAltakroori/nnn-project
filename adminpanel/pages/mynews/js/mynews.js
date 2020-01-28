@@ -4,7 +4,7 @@
     
 function mynews(){
 
-   
+            
         let userdata = JSON.parse(sessionStorage.getItem("userData"));
         if (userdata != null) {
             myNewsPage[userdata.ind] = userdata;

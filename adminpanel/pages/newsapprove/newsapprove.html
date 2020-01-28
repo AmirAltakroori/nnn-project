@@ -48,27 +48,24 @@
                 </td>
                 
                 <td>
-                    <div $for="cat of categories">
-                        <div  $if="$n.categoryId == $cat.id">
-                            <span>{{$cat.name}}</span>
+                    <div $for="test of categories">
+                        <div $if="$n.categoryId == $test.id">
+                                <span>{{$test.name}}</span>
                         </div>
                     </div>
                 </td>
 
-                <div>
-                    <td class="user_full"  $if="$n.isActive == 1">
-                        <span class="user_name"> مفعل</span>
-                    </td>
-                </div>
-            
-                <div >
-                    <td class="user_full" $if="$n.isActive == 0">
-                        <span class="user_name"> غير مفعل</span>
-                    </td>
-                </div>
+                <td>
+                    <div $if="$newsPage[$i].isActive == 1">
+                        <span>مفعل</span>
+                    </div>
+                    <div $if="$newsPage[$i].isActive == 0">
+                        <span>غير مفعل</span>
+                    </div>
+                </td>
 
                 <td>
-                    <i class="fas fa-trash-alt delete_user"></i>
+                    <i class="fas fa-trash-alt delete_user" onclick="show(this,'delete', '$n.id')"></i>
                     <i class="far fa-edit icon color-blue"></i>
                 </td>
             </tr>

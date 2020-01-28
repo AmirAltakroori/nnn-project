@@ -29,7 +29,7 @@ let routeList = [{
     url: "/newsapprove",
     template: "pages/newsapprove/newsapprove.html",
     title: "شبكة الوحدة الإخبارية",
-    controller: "/adminpanel/pages/newsapprove/js/newsapprove.js"
+    controller: "/adminpanel/pages/newsapprove/js/index.js"
 
 }
 
