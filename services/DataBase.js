@@ -15,7 +15,7 @@ export class DataBase {
         init(url, authentication);
     }
 
-    #cleanData(data) {
+    cleanData(data) {
         cleanedData = [];
         for (let i = 0; i < data.rows.length; i++)
             cleanedData.push(data.rows[i]);
@@ -85,7 +85,7 @@ export class DataBase {
      *    @returns
      */
     init (url, authentication) {
-        this.#url = url;
-        this.#authentication = authentication;
+        this.url = url;
+        this.authentication = authentication;
     }
 }
