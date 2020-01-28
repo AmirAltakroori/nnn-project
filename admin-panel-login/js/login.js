@@ -259,22 +259,10 @@ async function getUser(username, password) {
     });    
     setTimeout(() => {
         //  hidden th popup
-
         //  if the user is exist go to the home page
         console.log("HH")
         return aimedUser;
     }, 1000);
-    // check the password and the username if it's exist
-    // for (let user of users) {
-    //     if (user.username == username && user.password == password) {
-    //         let token = getToken(user.username, user.email, user.roleId, "sha256", 60 * 60 * 1000, "PSE");
-    //         user.token = token;
-    //         aimedUser = user;
-    //         break;
-    //     }
-    // }
-
-    // return aimedUser;
 }
 
 function verification() {
@@ -310,8 +298,7 @@ function verification() {
         displayPopup(text, color)
         // wait after the animation is end 
         setTimeout(() => {
-            //  hidden thث popup
-    
+            //  hidden the popup
             //  if the user is exist go to the home page
             if (currentUser.state == 1) {
                 window.location.assign("../adminpanel/index.html");
@@ -319,31 +306,8 @@ function verification() {
         }, 1000);
     });   
     
-   
-        //  check if the user is exist (role = 0, means it's invalid user)
-    // if (user == null) {
-    //     text = "اسم المستخدم او كلمة المرور خاطئة";
-    //     color = "#ff0000";
-    //     //popup.style.boxshadow = "-3px 2px 6px 4px #d85656";
-    // } else if (user.state == 0) {
-    //     text = "حسابك معطل راجع أحد المسؤولين";
-    //     color = "#e85827";
-    //     // popup.style.boxshadow = "-3px 2px 6px 4px #58d856";
-    // } else {
-    //     text = "جاري تسجيل الدخول";
-    //     color = "#17bb24";
-    //     let datatoSave = {
-    //         "token": user.token,
-    //         "roleID": user.roleId,
-    //         "FullName": user.firstName + " " + user.lastName
-    //     }
-    //     saveData(datatoSave);
-    // }
-    // // display the popup
-
-  
-
 }
+
 function displayPopup(message, backgroundColor = "#000000") {
     let popup = document.getElementsByClassName("popup")[0];
     popup.innerHTML = message;
