@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="content_header">
+        <div class="title">
+            <span class="title_text">أخباري</span>
+        </div>
+        <div class="search_area">
+            <div class="search_word">
+                <span>البحث</span>
+            </div>
+            <div class="search">
+                <img class="search_icon" src="./../../img/search.png">
+               <i class="fas fa-search"></i>
+                <input type="text" class="search_field" placeholder="أدخل عنوان الخبر" id="search" onkeyup="searchElement(1)">
+            </div>
+        </div>
+
+    </div>
+    <table id="table" class="content">
+        <thead>
+            <tr class="first_row">
+                <th>#</th>
+                <th>عنوان الخبر</th>
+                <th>الفئة</th>
+                <th>الحالة</th>
+                <th>العمليات</th>
+
+            </tr>
+        </thead>
+
+
+
+        <tbody id="tablebody" $for=" news of myNewsPage">
+            <tr class="user_info">
+                <td class="user_no">{{$i + 1}}</td>
+                <td class="user_full">
+                    <span class="user_name allnews-title-limit">{{$news.title}}</span>
+                </td>
+
+                    <td>
+                        <div $for="test of categories">
+                            <div $if="$news.categoryId == $test.id">
+                                    <span>{{$test.name}}</span>
+                            </div>
+                    </div>
+                    </td>
+
+                    <td>
+                        <div $if="$myNewsPage[$i].isActive == 1">
+                            <span>مفعل</span>
+                        </div>
+                        <div $if="$myNewsPage[$i].isActive == 0">
+                            <span>غير مفعل</span>
+                        </div>
+                    </td>
+                    <td>
+                        <i class="fas fa-trash-alt delete_user"></i>
+                        <i class="far fa-edit icon color-blue"></i>
+                        <i class="fas fa-trash-alt delete_user" onclick="show(this,'delete', '$news.id')"></i>
+                        <i class="far fa-edit icon color-blue" onclick = "updateNews('$news.id',0) "></i>
+                    </td>
+            </tr>
+        </tbody>
+    </table>
+
+    </tr>
+    </thead>
+    <tbody id="tablebody">
+    </tbody>
+    </table>
+</div>
+<div class="modal-delete" id="delete">
+    <div class="modal-wrapper">
+        <div class="contain">
+            <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
+            <div class="modal-button">
+                <button class="modal-button button1" onclick="deleteRowElement(newsPage); hide('delete');">نعم</button>
+                <button class="modal-button button1" onclick="deleteRowElement(myNewsPage); hide('delete');">نعم</button>
+                <button class="modal-button button2" onclick="hide('delete')">لا</button>
+            </div>
+        </div>
+
+    </div>
+
+   </div>
+</div>
+</body>

@@ -55,17 +55,14 @@
                     </div>
                 </td>
 
-                <div>
-                    <td class="user_full"  $if="$n.isActive == 1">
-                        <span class="user_name"> مفعل</span>
-                    </td>
-                </div>
-            
-                <div >
-                    <td class="user_full" $if="$n.isActive == 0">
-                        <span class="user_name"> غير مفعل</span>
-                    </td>
-                </div>
+                <td>
+                    <div $if="$newsPage[$i].isActive == 1">
+                        <span>مفعل</span>
+                    </div>
+                    <div $if="$newsPage[$i].isActive == 0">
+                        <span>غير مفعل</span>
+                    </div>
+                </td>
 
                 <td>
                     <i class="fas fa-trash-alt delete_user"></i>
