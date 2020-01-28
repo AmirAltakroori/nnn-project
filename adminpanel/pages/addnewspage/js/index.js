@@ -6,9 +6,6 @@ export class addnewsController {
         this.newsList = [];
         this.newsImage = "";
         this.editor = null;
-        this.test =
-
-
     }
 
     richTextEditor() {

@@ -1,7 +1,7 @@
 let users = [];
 //Store array in database
 
-document.addEventListener("DOMContentLoaded", function(e) {
+function createUser(){
 
     let form = document.getElementById('adduserid');
     form.addEventListener("submit", (e) => {
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         e.preventDefault();
         return false;
     });
-});
+}
 
 function addUser() {
     let user = {
@@ -38,3 +38,4 @@ function showPopUp(id) {
         popup.style.display = "none";
     }, 2000);
 }
+export{ createUser }
