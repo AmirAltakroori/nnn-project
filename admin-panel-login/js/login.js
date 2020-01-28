@@ -215,7 +215,7 @@ let users = [{
         password: "1",
         createDate: new Date(),
         isActive: 1,
-        roleId: 1, // when we create a user its diffault role is writer which its id is 1
+        roleId: 2, // when we create a user its diffault role is writer which its id is 1
         token: "",
     },
     {
@@ -225,8 +225,8 @@ let users = [{
         email: "basil@ppu.edu",
         password: "23",
         createDate: new Date(),
-        isActive: 0,
-        roleId: 2, // when we create a user its diffault role is writer which its id is 1
+        isActive: 1,
+        roleId: 3, // when we create a user its diffault role is writer which its id is 1
         token: "",
     },
 
