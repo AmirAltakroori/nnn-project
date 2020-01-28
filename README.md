@@ -86,15 +86,15 @@ Usage example:
 
 ```
 Controller ->
-	this.name = "John Smith";
-	this.salary = 2500;
-	this.transportation = 300;
+    this.name = "John Smith";
+    this.salary = 2500;
+    this.transportation = 300;
 
 View ->
-	<p>Hello {{$name}}. Your salary is {{$salary * 0.98 + $transportation}}.
+    <p>Hello {{$name}}. Your salary is {{$salary * 0.98 + $transportation}}.
 
 Output ->
-	Hello John Smith. Your salary is 2750.
+    Hello John Smith. Your salary is 2750.
 ```
 
 ## Updating Variables
@@ -105,16 +105,15 @@ Usage Example:
 
 ```
 Controller ->
-	sendRequest(data => {
-		this.data = data;
+    sendRequest(data => {
+        this.data = data;
         mvc.apply();
-	});
+    });
 
 View ->
-	<span $for="d of data">
-		<li>{{$d.title}}</li>
-	</span>
-
+    <span $for="d of data">
+        <li>{{$d.title}}</li>
+    </span>
 ```
 
 ## Custom Attributes
@@ -142,7 +141,7 @@ You can loop an element depending on an array defined in the $scope object.
 Form:
 ```
 <tag $for="a of arr">
-	<sub-tag></sub-tag>
+    <sub-tag></sub-tag>
 </tag>
 ```
 
@@ -152,10 +151,10 @@ Usage example:
 
 ```
 <span $for="n of news">
-	<ul>
-		<li>{{$n.title}}</li>
-		<li>{{$n.date}}</li>
-	</ul>
+    <ul>
+        <li>{{$n.title}}</li>
+        <li>{{$n.date}}</li>
+    </ul>
 </span>
 ```
 
