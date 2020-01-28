@@ -5,7 +5,7 @@ const concat = require('gulp-concat');
 const jsPath = 'potato/src/*.js';
 
 gulp.task('minifyjs', function () {
-    return gulp.src(jsPath).pipe(concat('./potato/potato.js')).pipe(gulp.dest('./')); // .pipe(uglify())
+    return gulp.src(jsPath).pipe(concat('./potato/potato.js')).pipe(uglify()).pipe(gulp.dest('./'));
 });
 
 gulp.task('default', gulp.series('minifyjs'));
