@@ -73,29 +73,54 @@ part1 contain the header of the new and the related news
 }
 
 .news-content {
-    margin-top: 500px;
+    margin-top: 550px;
     font-family: $newsText-fontFamily;
     border-top: solid 1px #707070;
     margin-bottom: 0%;
     @include flex-property(row, flex-end, center, 100%);
     .news_related {
-        @include flex-property(column, flex-start, flex-start, 28%);
+        @include flex-property(column, flex-start, flex-start, 33%);
         .related_news_menu {
             width: 80%;
+            
+                @include flex-property(column, flex-start, flex-start, 100%);
+                list-style-type: none;
+                
+                .list-n{ 
+
+                   a{
+                    @include flex-property(row, flex-start, flex-start, 100%);
+
+                   }
+                   padding: 3%;
+                    img {
+                    margin-left: 2%;
+                    margin-right: 0%;
+                    
+                }
+                a:link {
+                    text-decoration: none;
+                  }
+                  
+                  a:visited {
+                    text-decoration: none;
+                    color:rgb(64, 64, 179);
+                  }
+                  
+                  a:hover {
+                    text-decoration: underline;
+                  }
+                  
+                   }
+                   h4 {
+                    margin-bottom: 20px;
+                    color: #0C4D6D;
+                }
+                  
+            
+           
         }
-        ul li {
-            @include flex-property(column, flex-start, flex-start, 100%);
-            list-style-type: none;
-            img {
-                margin-left: 3%;
-                margin-right: 0%;
-                padding: 3%;
-            }
-        }
-        h4 {
-            margin-bottom: 20px;
-            color: #0C4D6D;
-        }
+       
     }
     .news_header {
         h1 {

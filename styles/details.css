@@ -81,7 +81,7 @@ part1 contain the header of the new and the related news
 }
 
 .news-content {
-  margin-top: 500px;
+  margin-top: 550px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   border-top: solid 1px #707070;
   margin-bottom: 0%;
@@ -115,14 +115,11 @@ part1 contain the header of the new and the related news
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 28%;
+  width: 33%;
 }
 
 .news-content .news_related .related_news_menu {
   width: 80%;
-}
-
-.news-content .news_related ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -140,13 +137,46 @@ part1 contain the header of the new and the related news
   list-style-type: none;
 }
 
-.news-content .news_related ul li img {
-  margin-left: 3%;
-  margin-right: 0%;
+.news-content .news_related .related_news_menu .list-n {
   padding: 3%;
 }
 
-.news-content .news_related h4 {
+.news-content .news_related .related_news_menu .list-n a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+}
+
+.news-content .news_related .related_news_menu .list-n img {
+  margin-left: 2%;
+  margin-right: 0%;
+}
+
+.news-content .news_related .related_news_menu .list-n a:link {
+  text-decoration: none;
+}
+
+.news-content .news_related .related_news_menu .list-n a:visited {
+  text-decoration: none;
+  color: #4040b3;
+}
+
+.news-content .news_related .related_news_menu .list-n a:hover {
+  text-decoration: underline;
+}
+
+.news-content .news_related .related_news_menu h4 {
   margin-bottom: 20px;
   color: #0C4D6D;
 }

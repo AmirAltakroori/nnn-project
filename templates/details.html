@@ -9,7 +9,7 @@
                      based on the design included in the Prototype
 -->
 
-<!--<link rel="stylesheet" type="text/css" href="css/details.css" />-->
+
 
 
 <!--
@@ -18,10 +18,6 @@
 
    -->
 
-
-<!-- $if="$related.id == $routeParams.newID" -->
-
-<!-- <span $for="related of relatedNews"> -->
 <div>
     <div class="details_page_wrapper">
         <!-- Contains news title and photo & Show other related news -->
@@ -46,16 +42,19 @@
                     <li>
                         <h4>ذات صلة </h4>
                     </li>
-                    <span $for="relatedNew of relatedNews">
-                    <li>
-                        <a href="#/details/{{$relatedNew.id}}"> <img src="../img/{{$relatedNew.img}}" alt="صورة"></a>
-                        <p  >
-                            {{$relatedNew.title}}
-                        </p>
-                        
-                       
+                    
+                    <!-- <li> -->
+                    <div $for="relatedNew of relatedNews">
+                    <li class="list-n">
+                        <a href="#/details/{{$relatedNew.id}}">
+                           
+                            <img src="../img/{{$relatedNew.img}}" alt="صورة">
+                              {{$relatedNew.title}}
+                           
+                        </a>
                     </li>
-                    </span>
+                    </div>
+                    <!-- </li> -->
 
 
                 </ul>
@@ -147,11 +146,15 @@
                 </li>
                 <li>
                     <img src="img/avatar.png" alt="صورة">
-                    <p> أعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة، وهو العطاء الذي مُنح لشركة مايكروسوفت. </p>
+                    <p> أعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة
+                        مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة، وهو العطاء الذي مُنح لشركة
+                        مايكروسوفت. </p>
                 </li>
                 <li>
                     <img src="img/avatar.png" alt="صورة">
-                    <p> أعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة، وهو العطاء الذي مُنح لشركة مايكروسوفت. </p>
+                    <p> أعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة
+                        مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة، وهو العطاء الذي مُنح لشركة
+                        مايكروسوفت. </p>
                 </li>
             </ul>
         </div>
