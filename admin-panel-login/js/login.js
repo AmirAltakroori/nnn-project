@@ -155,11 +155,6 @@ function SHA256(s) {
     return binb2hex(core_sha256(str2binb(s), s.length * chrsz));
 }
 
-
-function saveData(data) {
-    sessionStorage.setItem('user', JSON.stringify(data));
-}
-
 function getToken(username, email, roleId, alg, validityTime, key) {
 
     /*
@@ -207,30 +202,6 @@ function getToken(username, email, roleId, alg, validityTime, key) {
 
     return finalTokenBased64;
 }
-let users = [{
-        firstName: "وليد",
-        lastName: "الجعبة",
-        username: "Waleed Jubeh",
-        email: "Waleed@ppu.edu",
-        password: "1",
-        createDate: new Date(),
-        isActive: 1,
-        roleId: 1, // when we create a user its diffault role is writer which its id is 1
-        token: "",
-    },
-    {
-        firstName: "باسل",
-        lastName: "عطاونه",
-        username: "basil atawneh",
-        email: "basil@ppu.edu",
-        password: "23",
-        createDate: new Date(),
-        isActive: 0,
-        roleId: 2, // when we create a user its diffault role is writer which its id is 1
-        token: "",
-    },
-
-]
 
 document.addEventListener('DOMContentLoaded', function(event) {
 
@@ -241,29 +212,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
         return false;
     });
 });
-
-async function getUser(username, password) {
-    /*
-        username: the username of the user
-        password: the password of the user
-    */
-    let aimedUser = null; // the user role (0: not valid, other wise it's valid) 
-    dbGet("/users/",false,"admin").then( user => {
-        if(user.password == password){
-            let token = getToken(user.username, user.email, user.roleId, "sha256", 60 * 60 * 1000, "PSE");
-            user.token = token;
-            aimedUser = user;
-        }
-        console.log(aimedUser)
-        
-    });    
-    setTimeout(() => {
-        //  hidden th popup
-        //  if the user is exist go to the home page
-        console.log("HH")
-        return aimedUser;
-    }, 1000);
-}
 
 function verification() {
     let username = document.getElementById("Username"); // read the username
