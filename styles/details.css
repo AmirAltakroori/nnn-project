@@ -81,7 +81,7 @@ part1 contain the header of the new and the related news
 }
 
 .news-content {
-  margin-top: 550px;
+  margin-top: 700px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   border-top: solid 1px #707070;
   margin-bottom: 0%;
@@ -119,7 +119,7 @@ part1 contain the header of the new and the related news
 }
 
 .news-content .news_related .related_news_menu {
-  width: 80%;
+  width: 75%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -137,17 +137,13 @@ part1 contain the header of the new and the related news
   list-style-type: none;
 }
 
-.news-content .news_related .related_news_menu .list-n {
-  padding: 3%;
-}
-
 .news-content .news_related .related_news_menu .list-n a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -159,8 +155,7 @@ part1 contain the header of the new and the related news
 }
 
 .news-content .news_related .related_news_menu .list-n img {
-  margin-left: 2%;
-  margin-right: 0%;
+  margin: 10px 10% 0% 2%;
 }
 
 .news-content .news_related .related_news_menu .list-n a:link {
@@ -176,9 +171,13 @@ part1 contain the header of the new and the related news
   text-decoration: underline;
 }
 
-.news-content .news_related .related_news_menu h4 {
-  margin-bottom: 20px;
+.news-content .news_related .related_news_menu .related-header {
   color: #0C4D6D;
+  margin-right: 50px;
+}
+
+.news-content .news_related .related_news_menu .related-header .border {
+  color: #707070;
 }
 
 .news-content .news_header {
@@ -195,7 +194,7 @@ part1 contain the header of the new and the related news
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 72%;
+  width: 67%;
 }
 
 .news-content .news_header h1 {
@@ -213,15 +212,16 @@ part1 contain the header of the new and the related news
   background-size: cover;
   position: relative;
   margin-right: 10%;
+  margin-bottom: 30px;
 }
 
 .news-body {
   font-size: 25px;
-  margin-right: 130px;
+  margin-right: 50px;
 }
 
 .news-body p {
-  padding-left: 50px;
+  padding: 50px;
 }
 
 .news-body .news_sharing {
