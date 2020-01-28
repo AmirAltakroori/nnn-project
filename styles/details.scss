@@ -34,7 +34,6 @@ part1 contain the header of the new and the related news
             }
         }
     }
-    
 }
 
 @media screen and (max-height: 810px) {
@@ -74,9 +73,9 @@ part1 contain the header of the new and the related news
 }
 
 .news-content {
+    margin-top: 500px;
     font-family: $newsText-fontFamily;
     border-top: solid 1px #707070;
-    
     margin-bottom: 0%;
     @include flex-property(row, flex-end, center, 100%);
     .news_related {
@@ -99,7 +98,6 @@ part1 contain the header of the new and the related news
         }
     }
     .news_header {
-         
         h1 {
             font-size: $font-size + 15;
             margin-right: 10%;
@@ -178,15 +176,14 @@ part1 contain the header of the new and the related news
             display: grid;
             grid-template-columns: 30% 70%;
             img {
-              width: 45px;
-              height: 45px;
-               padding-right: 60%;
+                width: 45px;
+                height: 45px;
+                padding-right: 60%;
                 padding-top: 155px;
             }
             p {
-              padding-left: 70%;
-               padding-top: 145px;
-
+                padding-left: 70%;
+                padding-top: 145px;
             }
         }
         .add {
