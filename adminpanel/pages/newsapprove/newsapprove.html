@@ -14,7 +14,7 @@
                 <span>البحث</span>
             </div>
             <div class="search">
-                <img src="./../../img/search.png" class="search_icon">
+                <i class="fas fa-search"></i>
                 <input 
                 type="text"
                 class="search_field"
@@ -37,7 +37,7 @@
             </tr>
         </thead>
 
-        <tbody id="tablebody" $for="n of newsPage">
+        <tbody id="tablebody" $for="n of MyNewsPage">
             <tr class="user_info">
                 <td class="user_no">
                     {{$i + 1}}
@@ -56,17 +56,17 @@
                 </td>
 
                 <td>
-                    <div $if="$newsPage[$i].isActive == 1">
+                    <div $if="$MyNewsPage[$i].isActive == 1">
                         <span>مفعل</span>
                     </div>
-                    <div $if="$newsPage[$i].isActive == 0">
+                    <div $if="$MyNewsPage[$i].isActive == 0">
                         <span>غير مفعل</span>
                     </div>
                 </td>
 
                 <td>
                     <i class="fas fa-trash-alt delete_user" onclick="show(this,'delete', '$n.id')"></i>
-                    <i class="far fa-edit icon color-blue"></i>
+                    <i class="far fa-edit icon color-blue" onclick = "updateNews('$news.id',0) "></i>
                 </td>
             </tr>
         </tbody>
@@ -82,7 +82,7 @@
         <div class="contain">
             <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
             <div class="modal-button">
-                <button class="modal-button button1" onclick="deleteRowElement(newsPage); hide('delete');">نعم</button>
+                <button class="modal-button button1" onclick="deleteRowElement(MyNewsPage); hide('delete');">نعم</button>
                 <button class="modal-button button2" onclick="hide('delete')">لا</button>
             </div>
         </div>

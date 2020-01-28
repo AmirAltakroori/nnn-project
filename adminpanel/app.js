@@ -31,6 +31,13 @@ let routeList = [{
     title: "شبكة الوحدة الإخبارية",
     controller: "/adminpanel/pages/newsapprove/js/index.js"
 
+},
+{
+    url: "/allnews",
+    template: "pages/allnews/allnews.html",
+    title: "شبكة الوحدة الإخبارية",
+    controller: "/adminpanel/pages/allnews/js/index.js"
+
 }
 
 ];

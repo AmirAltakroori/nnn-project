@@ -2,7 +2,7 @@ export class approveNewsControler {
 
     constructor(){
 
-       this.newsPage = [{
+       this.MyNewsPage = [{
             id: 1,
             title: "test is test ",
             content: "<h1>This is my first news</h1>",
