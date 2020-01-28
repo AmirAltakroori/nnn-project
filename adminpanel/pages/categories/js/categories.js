@@ -19,7 +19,8 @@ let categoriesPage = [{
         id: 4,
     }
 ]
-document.addEventListener('DOMContentLoaded', function(e) {
+
+export function onLoad(){
     displayCategories(categoriesPage);
     //Get the modal that opens when click on "إضافة فئة"
     let modal = document.getElementById("createcategory-modal");
@@ -91,7 +92,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
         }
     }
 
-});
+
+}
 
 function showModal(modalId) {
     document.getElementById(modalId).style.display = "flex";
