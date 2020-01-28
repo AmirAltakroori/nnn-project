@@ -184,7 +184,7 @@ const categorySubNewsDiv = document.getElementById('sub-news');
 let categoryTitle;
 let categoryMainNews = [];
 
-//showCategoryNews();
+showCategoryNews();
 
 /*
     Get main News in Category
