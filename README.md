@@ -194,7 +194,7 @@ View ->
 
 You can add a click attribute to an element to execute a specific function in the controller on clicking the element.
 
-Form: ```<tag $click="functionName"></tag>```
+Form: ```<tag $click="functionName()"></tag>```
 
 Usage example:
 
@@ -204,14 +204,14 @@ Controller ->
     getData() { console.log('Got Data!'); }
 
 View ->
-    <button $click="gotData">Get Data</button>
+    <button $click="gotData()">Get Data</button>
 ```
 
 ### $change
 
 You can add a change attribute to an input element to execute a specific function in the controller on changing the input value.
 
-Form: ```<tag $change="functionName"></tag>```
+Form: ```<tag $change="functionName()"></tag>```
 
 Usage example:
 
@@ -221,7 +221,7 @@ Controller ->
     updateData() { console.log('Updated Data!'); }
 
 View ->
-    <button $change="updateData">Update Data</button>
+    <button $change="updateData()">Update Data</button>
 ```
 
 ## Contributing
