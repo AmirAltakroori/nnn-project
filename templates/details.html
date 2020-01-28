@@ -17,132 +17,132 @@
     header & nav
 
    -->
-  
-<!-- <span $for= "related of relatedNews"> -->
-    <div $if="$related.id == $routeParams.id" >
-        <div class="details_page_wrapper">
-            <!-- Contains news title and photo & Show other related news -->
-            <div class="news-content">
-                <section class="news_header" id="news">
-                    <h1 $if="$related.id == $routeParams.id">
-                     {{$related.title}}
-                    </h1>
-                    <div class="main_img">
-                        .
-                    </div>
-                </section>
-        
-                <aside class="news_related">
-                    
-                    <ul class="related_news_menu">
-        
-                        <li>
-                            <h4>ذات صلة </h4>
-                        </li>
-                        <!-- <span $for= "relatedNew of relatedNews"> -->
-                            <li $for= "relatedNew of relatedNews">
-                               <a href="#/detailes/{{$relatedNew.id}}"> <img src="../img/{{$relatedNew.img}}" alt="صورة"></a>
-                                <p>
-                                    {{$relatedNew.title}}
-                                </p>   
-                            </li>
-                        <!-- </span> -->
-                            
-                    </ul>
-                </aside>
-            </div>
-            <!-- Contains the full text of the news & news sharing -->
-            <div class="news-body">
-                <article class="article" id="article">
-                    <p $if="$related.id == 1">
-                        {{$related.content}}
-                 </p>
-                </article>
-        
-                <section class="news_sharing">
-        
-                    <div id="share-button" class="share-buttons">
-        
-                        <!-- Facebook -->
-                        <a>
-                            <img src="img/facebook.png" alt="Facebook" />
-                        </a>
-        
-                        <!-- LinkedIn -->
-                        <a>
-                            <img src="img/linkedin.png" alt="LinkedIn" />
-                        </a>
-        
-                        <!-- instagram -->
-                        <a>
-                            <img src="img/instagram.png" alt="instagram" />
-                        </a>
-        
-                        <!-- share -->
-                        <a>
-                            <img src="img/share.png" alt="share" />
-                        </a>
-        
-                    </div>
-        
-                    <div class="about">
-        
-                        <!-- schedule -->
-                        <a>
-                            <img src="img/schedule.png" alt="Facebook" />
-                        </a>
-        
-                        <!-- comment -->
-                        <a>
-                            <img src="img/comment.png" alt="LinkedIn" />
-                        </a>
-        
-                        <!-- writer -->
-                        <a>
-                            <img src="img/writer.png" alt="instagram" />
-                        </a>
-        
-        
-        
-                    </div>
-        
-                </section>
-        
-            </div>
-            
-    </div>
 
-<!-- </span> -->
-    <!-- Contains comments section -->
-    <div class="comments">
-        <div class="add_comment">
-            <div class="comment">
+<span $for="related of relatedNews">
+<div $if="$related.id == $routeParams.newID">
+    <div class="details_page_wrapper">
+        <!-- Contains news title and photo & Show other related news -->
+        <div class="news-content">
+            <section class="news_header" id="news">
+                <h1 $if="$related.id == $routeParams.newID">
+                    {{$related.title}}
+                </h1>
+                <div class="main_img">
+                    .
+                </div>
+            </section>
 
-                <img src="img/avatar.png" alt="">
-                <p>user name</p>
-            </div>
-            <div class="add">
-                <input type="text" name="" value="">
-                <button type="button" name="button">اضف تعليق</button>
-            </div>
+            <aside class="news_related">
+
+                <ul class="related_news_menu">
+
+                    <li>
+                        <h4>ذات صلة </h4>
+                    </li>
+                    <span $for="relatedNew of relatedNews">
+                    <li>
+                        <a href="#/detailes/{{$relatedNew.id}}"> <img src="../img/{{$relatedNew.img}}" alt="صورة"></a>
+                        <p>
+                            {{$relatedNew.title}}
+                        </p>
+                    </li>
+                    </span>
+
+</ul>
+</aside>
+</div>
+<!-- Contains the full text of the news & news sharing -->
+<div class="news-body">
+    <article class="article" id="article">
+        <p $if="$related.id == $routeParams.newID">
+            {{$related.content}}
+        </p>
+    </article>
+
+    <section class="news_sharing">
+
+        <div id="share-button" class="share-buttons">
+
+            <!-- Facebook -->
+            <a>
+                <img src="img/facebook.png" alt="Facebook" />
+            </a>
+
+            <!-- LinkedIn -->
+            <a>
+                <img src="img/linkedin.png" alt="LinkedIn" />
+            </a>
+
+            <!-- instagram -->
+            <a>
+                <img src="img/instagram.png" alt="instagram" />
+            </a>
+
+            <!-- share -->
+            <a>
+                <img src="img/share.png" alt="share" />
+            </a>
+
         </div>
-        <div class="list_comment">
-            <ul>
-                <li>
-                    <img src="img/avatar.png" alt="صورة">
-                    <p> لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات </p>
-                </li>
-                <li>
-                    <img src="img/avatar.png" alt="صورة">
-                    <p> أعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة، وهو العطاء الذي مُنح لشركة مايكروسوفت. </p>
-                </li>
-                <li>
-                    <img src="img/avatar.png" alt="صورة">
-                    <p> أعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة، وهو العطاء الذي مُنح لشركة مايكروسوفت. </p>
-                </li>
-            </ul>
+
+        <div class="about">
+
+            <!-- schedule -->
+            <a>
+                <img src="img/schedule.png" alt="Facebook" />
+            </a>
+
+            <!-- comment -->
+            <a>
+                <img src="img/comment.png" alt="LinkedIn" />
+            </a>
+
+            <!-- writer -->
+            <a>
+                <img src="img/writer.png" alt="instagram" />
+            </a>
+
+
+
+        </div>
+
+    </section>
+
+</div>
+
+</div>
+
+</span>
+<!-- Contains comments section -->
+<div class="comments">
+    <div class="add_comment">
+        <div class="comment">
+
+            <img src="img/avatar.png" alt="">
+            <p>user name</p>
+        </div>
+        <div class="add">
+            <input type="text" name="" value="">
+            <button type="button" name="button">اضف تعليق</button>
         </div>
     </div>
+    <div class="list_comment">
+        <ul>
+            <li>
+                <img src="img/avatar.png" alt="صورة">
+                <p> لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات </p>
+            </li>
+            <li>
+                <img src="img/avatar.png" alt="صورة">
+                <p> أعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة، وهو العطاء الذي مُنح لشركة مايكروسوفت. </p>
+            </li>
+            <li>
+                <img src="img/avatar.png" alt="صورة">
+                <p> أعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة، وهو العطاء الذي مُنح لشركة مايكروسوفت. </p>
+            </li>
+        </ul>
+    </div>
+</div>
 
 </div>
 

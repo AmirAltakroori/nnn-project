@@ -11,10 +11,10 @@ let routeList = [
         title: "home"
     },
     {
-        url: "/details/:id",
+        url: "/details/:newID",
         template: "/templates/details.html",
         controller: "/controllers/detailes.js",
-        id:"",
+        id: "",
         title: "details"
     }
 ];

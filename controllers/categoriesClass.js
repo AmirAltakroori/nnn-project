@@ -72,7 +72,7 @@ export class details {
         
         This function used to retrieve urgent news from database 
     */
-    function getRelatedNews() {
+    getRelatedNews() {
 
         // I'll rewrite this function when DB was ready.
 
@@ -89,7 +89,7 @@ export class details {
         
         This function used to show the Related news retrieved from database that have the same category of clicked new at related News list
     */
-    function showRelatedNews() {
+    showRelatedNews() {
 
         getRelatedNews();
 
@@ -118,7 +118,7 @@ export class details {
 
 
 
-    function showNewsDetails() {
+    showNewsDetails() {
         getRelatedNews();
 
         newsContents.innerHTML = "";
