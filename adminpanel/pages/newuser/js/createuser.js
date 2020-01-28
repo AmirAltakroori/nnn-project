@@ -1,14 +1,17 @@
+
 let users = [];
 //Store array in database
 
 function createUser(){
-
     let form = document.getElementById('adduserid');
+    console.log("ighjghjgjgjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
     form.addEventListener("submit", (e) => {
         ConfirmedPassword = document.getElementById("ConfirmPass").value;
         password = document.getElementById("pass").value;
+        console.log("ighjghjgjgggggggggggggggg")
         if (ConfirmedPassword == password) {
             addUser();
+            console.log("ighjghjgjg")
             showPopUp('success');
         } else {
             showPopUp('warning');
@@ -27,6 +30,7 @@ function addUser() {
         password: document.getElementById("pass").value,
     };
     users.push(user);
+   // Create(user);
 
 }
 
@@ -38,4 +42,24 @@ function showPopUp(id) {
         popup.style.display = "none";
     }, 2000);
 }
+/*function getId() {
+
+    return dbGet("/settings", false, "users");
+}
+
+function Create(data) {
+
+    return new Promise((resolve, reject) => {
+        getId().then(request => {
+            const Id = request.counter + 1;
+            dbCreateOrUpdate("/users", data, Id).then(response => {
+                request.counter = request.counter + 1;
+                dbCreateOrUpdate("/settings", request, request._id).then(response2 => {
+                    resolve(response2);
+                    console.log("Added");
+                });
+            })
+        })
+    })
+}*/
 export{ createUser }
