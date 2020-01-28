@@ -31,29 +31,14 @@
                 <!-- NAVBAR -->
                 <div class="navbar">
                     <div class="navbar-right">
-                        <a class="logo" href="#default"> <img class="logo-img" src="img\logo.png" alt="شبكة الوحدة الإخبارية"></a>
+                        <a class="logo" href="templates\home.html"> <img class="logo-img" src="img\logo.png" alt="شبكة الوحدة الإخبارية"></a>
                         <div class="categories-container">
-                            <ul>
-                                <li class="tab active"><a href=#home>الصفحة الرئيسية</a></li>
-                                <li class="tab"><a href=#>تكنولوجيا</a></li>
-                                <li class="tab"><a href=#>علوم</a></li>
-                                <li class="tab"><a href=#>ثقافة</a></li>
-                                <li class="tab"><a href=#>اقتصاد</a></li>
-                                <li class="tab"><a href=#>رياضة</a></li>
-                                <li class="tab"><a href=#>فن</a></li>
-                                <li class="tab expand"><a href=#>المزيد   <img class="expand-button" src="img\expand-button.png" ></a>
-                                    <ul class="sub-menu">
-                                        <li class="sub-item"><a href=#>سياسة</a></li>
-                                        <li class="sub-item"><a href=#>فن</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-
+                            <ul id="categories-list"></ul>
                         </div>
                     </div>
 
                     <div class="navbar-left">
-                        <a herf="" class="login-button">تسجيل الدخول</a>
+                        <a herf="#adminPanel" class="login-button">تسجيل الدخول</a>
                     </div>
                 </div>
 
@@ -78,7 +63,7 @@
         </div>
 
         <script type="module" src="app.js"></script>
-        <script src="js/index.js"></script>
+        <script src="controllers/index.js"></script>
 
     </body>
 
