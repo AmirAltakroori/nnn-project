@@ -107,6 +107,7 @@ Usage Example:
 Controller ->
 	sendRequest(data => {
 		this.data = data;
+        mvc.apply();
 	});
 
 View ->
