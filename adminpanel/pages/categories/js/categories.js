@@ -1,11 +1,11 @@
 
 function loadCat(){
     console.log("gfusdi")
-    displayCategories(categoriesPage);
+    displayCategories(categories);
     //Get the modal that opens when click on "إضافة فئة"
     let modal = document.getElementById("createcategory-modal");
     //Get the button that opens the modal
-    let addBtn = document.getElementsById("addBtn");
+    let addBtn = document.getElementById("addBtn");
 
     //Get close icon that close the modal
     let span = document.getElementById("close");
@@ -111,7 +111,7 @@ function updateCategoryName() {
  * Read categories
  */
 function displayCategories(categories) {
-    categoriesPage = categories;
+    // categoriesPage = categories;
     let table = document.getElementById("tablebody");
     for (let i = 0; i < categories.length; i++) {
         let row = document.createElement("tr");

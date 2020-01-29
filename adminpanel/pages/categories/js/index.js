@@ -22,8 +22,9 @@ export class categories {
             id: 4,
         }
     ]
-    this.new =
-            import ("./categories.js");
+    this.new = import ("./categories.js");
+    console.log(this.new.then(data => data.loadCat()));
+
     }
 
 }
