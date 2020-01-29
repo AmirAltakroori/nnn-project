@@ -14,10 +14,11 @@ export class Category {
 
     pageTypesList = ["الاخبار العالمية", "رياضة", "وفيات", "مش وفيات"];
 
+
     constructor() {
-        // console.log($routeParams.type);
-        //   indexType = $routeParams.type;
-        this.name = "الاخبار العالمية"; //this.pageTypesList[Number(indexType)];
+        let indexType = mvc.routeParams.type;
+
+        this.name = this.pageTypesList[Number(indexType)];
         this.randomNews = this.getRandomNewsList().slice(0, 5);
         this.listMainNews = this.getMainNewsList().slice(0, 3);
 
@@ -25,10 +26,23 @@ export class Category {
 
         this.rightNewsInCategory = this.getRightNewsInCategory().slice(0, 5);
         this.liftNewsInCategory = this.getLiftNewsInCategory().slice(0, 5);
+
     }
 
+    tryClick() {
+        alert("sda");
+        console.log(this.mainNews);
+    }
+
+    getData() { console.log('Got Data!'); }
+
     changeMainNews(news) {
+        //     console.log(news);
+        //   console.log(this.mainNews);
+        // setMainNews(news)
         this.mainNews = news;
+        alert(news.id);
+        mvc.apply();
     }
 
     getMainNewsList() {
