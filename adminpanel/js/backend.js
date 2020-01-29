@@ -208,7 +208,7 @@ function dbGet(endpoint, isView, id) {
     return new Promise((resolve, reject) => {
         let url = BASEURL + endpoint;
         if (isView && id) {
-            url += `?key=${id}`;
+            url += `?key=\"${id}\"`;
         } else url += `/${id}`;
         let http = new XMLHttpRequest();
         http.open("GET", url);

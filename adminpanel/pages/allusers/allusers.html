@@ -40,23 +40,24 @@
                     <span class="user_name allnews-title-limit">{{$user.firstName}}</span>
                 </td>
                 <td>
+
                     <div $if = "$user.roleId==1">
                     <select class="selection">
-                        <option value="0">كاتب</option>
+                        <option  value="0">كاتب</option>
                         <option value="1">مشرف</option>
                         <option value="2">مسؤول</option>
                     </select>
                 </div>
-                <div $if = "$user.roleId==2">
+                <div $if = "$user.roleId==2" >
                     <select class="selection">
-                        <option value="0">مشرف</option>
+                        <option  value="0">مشرف</option>
                         <option value="1">كاتب</option>
                         <option value="2">مسؤول</option>
                     </select>
                 </div>
-                <div $if = "$user.roleId==3">
+                <div $if = "$user.roleId==3" >
                     <select class="selection">
-                        <option value="0">مسؤول</option>
+                        <option   value="0">مسؤول</option>
                         <option value="1">مشرف</option>
                         <option value="2">كاتب</option>
                     </select>
