@@ -20,3 +20,4 @@ let routeList = [{
 
 mvc.addRouteList(routeList);
 mvc.init();
+export {mvc};

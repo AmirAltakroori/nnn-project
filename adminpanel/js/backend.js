@@ -198,13 +198,13 @@ let AUTHENTICATION = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJs
 
 // If you want to get specific data for a document in a view , you need to set key to be the id of the document
 function cleanData(data) {
-    cleanedData = [];
+    let cleanedData = [];
     for (let i = 0; i < data.rows.length; i++)
         cleanedData.push(data.rows[i]);
     return cleanedData;
 }
 
-function dbGet(endpoint, isView, id) {
+ function dbGet(endpoint, isView, id) {
     return new Promise((resolve, reject) => {
         let url = BASEURL + endpoint;
         if (isView && id) {
@@ -217,7 +217,7 @@ function dbGet(endpoint, isView, id) {
         http.setRequestHeader("Authorization", AUTHENTICATION);
         http.onreadystatechange = function() { //Call a function when the state changes.
             if (http.readyState == 4) {
-                data = JSON.parse(http.responseText);
+                let data = JSON.parse(http.responseText);
                 if (!id || id == '')
                     data = cleanData(data);
                 resolve(data);
@@ -276,3 +276,5 @@ function dbCreateOrUpdate(endpoint, data, id) {
 //     id:"1234",
 // }
 // dbCreateOrUpdate('/users',userData,1234);create user his id equals 1234 and his data is userData objectgi
+
+export {dbGet}
