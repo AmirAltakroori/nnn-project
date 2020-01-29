@@ -1,6 +1,6 @@
 export class CategoriesController {
     constructor() {
-        this.categoriesPage = [
+        this.categories = [
             {
                 name: "الألعاب",
                 isActive: 1,
@@ -24,7 +24,8 @@ export class CategoriesController {
         ]
         this.activeId = 0;
         this.activeRow = null;
-        this.categoriesOnLoad = import ("./categories.js");
+        this.categoriesOnLoad = import ("./categories.js/index.js.js");
+        console.log(this.categoriesOnLoad.then(data => data.onLoad()));
     }
     
 
