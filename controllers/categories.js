@@ -6,45 +6,60 @@
  *     Authors:
  *     diana mujahed <diana.muj98@gmail.com>
  *     ibrahim abusamarah
+ *     Amir Altakroori
  *
- *     File description: this file contains the functions that fetch Related news category from the database
+ *     File description: this file contains the controller class of category page which applies potato MVC framework
  */
 
 export class Category {
 
     pageTypesList = ["الاخبار العالمية", "رياضة", "وفيات", "مش وفيات"];
 
-
     constructor() {
+
+        // Access page type number from url
         let indexType = mvc.routeParams.type;
 
+        // Get page type name
         this.name = this.pageTypesList[Number(indexType)];
-        this.randomNews = this.getRandomNewsList().slice(0, 5);
-        this.listMainNews = this.getMainNewsList().slice(0, 3);
 
+        // Initialize main news section
+        this.listMainNews = this.getMainNewsList().slice(0, 3);
         this.mainNews = this.listMainNews[0];
 
+        // Initialize random news and guarantee that the number of news is 5
+        this.randomNews = this.getRandomNewsList().slice(0, 5);
+
+        // Initialize related news with same category and guarantee that the number of each news list is 5
         this.rightNewsInCategory = this.getRightNewsInCategory().slice(0, 5);
         this.liftNewsInCategory = this.getLiftNewsInCategory().slice(0, 5);
 
     }
 
-    tryClick() {
-        alert("sda");
-        console.log(this.mainNews);
-    }
+    /*
+        Void function that receives news object of main news from view page
+        and set the value of main news function with same receives value
 
-    getData() { console.log('Got Data!'); }
+        @tparam news: news object
 
+        @param: identifier for needed news
+
+        @returns: 
+    */
     changeMainNews(news) {
-        //     console.log(news);
-        //   console.log(this.mainNews);
-        // setMainNews(news)
         this.mainNews = news;
-        alert(news.id);
-        mvc.apply();
+        $apply();
     }
 
+    /*
+        Test function that returns list of main news data
+        
+        @tparam:
+
+        @param:
+
+        @returns: array of news objects
+     */
     getMainNewsList() {
         return [{
                 id: 4,
@@ -81,6 +96,16 @@ export class Category {
             }
         ];
     }
+
+    /*
+        Test function that returns list of random news data
+        
+        @tparam:
+
+        @param:
+
+        @returns: array of news objects
+     */
     getRandomNewsList() {
         return [{
             id: 1,
@@ -109,6 +134,16 @@ export class Category {
 
         }];
     }
+
+    /*
+        Test function that returns list of right related news data
+        
+        @tparam:
+
+        @param:
+
+        @returns: array of news objects
+     */
     getRightNewsInCategory() {
         return [{
             id: "1",
@@ -133,139 +168,36 @@ export class Category {
         }];
     }
 
+    /*
+        Test function that returns list of lift related news data
+        
+        @tparam:
+
+        @param:
+
+        @returns: array of news objects
+     */
     getLiftNewsInCategory() {
-            return [{
-                id: "1",
-                title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
-                img: "img/new.jpg"
-            }, {
-                id: "2",
-                title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
-                img: "img/new.jpg"
-            }, {
-                id: "3",
-                title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
-                img: "img/new.jpg"
-            }, {
-                id: "4",
-                title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
-                img: "img/new.jpg"
-            }, {
-                id: "5",
-                title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
-                img: "img/new.jpg"
-            }];
-        }
-        // randomNewsDiv = document.getElementById('random-content');
-        // randomNews = [];
-
-    // showRandomNews();
-
-    // /*
-    //     Show Related category News.
-
-    //     @tparam
-
-    //     @param
-
-    //     @returns
-
-    //     This function used to show  the Related category News retrieved from database
-    // */
-    // relatedCategoryNews() {
-
-    //     let newsInCategory = getDataNewsListrelated();
-    //     for (let whereAddNew = 0; whereAddNew < Object.keys(newsInCategory).length; whereAddNew++) {
-    //         let newsLi = document.createElement("li");
-    //         newsLi.setAttribute.Id = newsInCategory[whereAddNew].Id;
-    //         if (whereAddNew % 2 == 0) {
-    //             newsLi.innerHTML = `
-    //         <img src="${newsInCategory[whereAddNew].img}" alt="photo">
-    //          <p>${newsInCategory[whereAddNew].title}</p>
-    //          `
-    //             document.getElementById("related_news_menu_left").appendChild(newsLi);
-    //         } else {
-    //             newsLi.innerHTML = `
-    //         <img src="${newsInCategory[whereAddNew].img}" alt="photo">
-    //          <p>${newsInCategory[whereAddNew].title}</p>
-    //         `
-    //             document.getElementById("related_news_menu_right").appendChild(newsLi);
-    //         }
-    //     }
-    // }
-
-    // /*
-    //     Get Random News.
-
-    //     @tparam
-
-    //     @param
-
-    //     @returns
-
-    //     This function used to retrieve random news from database
-    // */
-    // getRandomNews() {
-
-    //     // I'll rewrite this function when DB was ready.
-    //     randomNews = [{
-    //         id: 1,
-    //         title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-    //         img: "img/new.jpg",
-
-    //     }, {
-    //         id: 2,
-    //         title: "إلغاء امتحانات الفاينل لهذا العام",
-    //         img: "img/new2.png ",
-
-    //     }, {
-    //         id: 3,
-    //         title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
-    //         img: "img/new.jpg ",
-
-    //     }, {
-    //         id: 4,
-    //         title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
-    //         img: "img/new2.png",
-
-    //     }, {
-    //         id: 5,
-    //         title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
-    //         img: "img/new.jpg ",
-
-    //     }];
-
-    // }
-
-    // /*
-    //     Show Random News.
-
-    //     @tparam
-
-    //     @param
-
-    //     @returns
-
-    //     This function used to show the random news retrieved from database
-    // */
-    // showRandomNews() {
-
-    //     getRandomNews();
-
-    //     randomNewsDiv.innerHTML = "";
-    //     for (let i = 0; i < randomNews.length; i++) {
-
-    //         let currentRandomNew = `
-
-    //     <li class="card random-new" id="${randomNews[i].id}">
-    //     <img src="${randomNews[i].img}" alt="">
-    //     <a href="#">${randomNews[i].title} </a>
-
-    //     </li>
-    //     `;
-    //         randomNewsDiv.innerHTML += currentRandomNew;
-
-    //     }
-    // }
-
+        return [{
+            id: "1",
+            title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+            img: "img/new.jpg"
+        }, {
+            id: "2",
+            title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+            img: "img/new.jpg"
+        }, {
+            id: "3",
+            title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+            img: "img/new.jpg"
+        }, {
+            id: "4",
+            title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+            img: "img/new.jpg"
+        }, {
+            id: "5",
+            title: "دعوات لقطع الطرقات في اليوم الـ40 لانطلاق",
+            img: "img/new.jpg"
+        }];
+    }
 }
