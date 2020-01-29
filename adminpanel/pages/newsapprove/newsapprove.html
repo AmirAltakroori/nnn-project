@@ -20,7 +20,7 @@
                 class="search_field"
                 id="search"
                 placeholder="أدخل عنوان الفئة"
-                onkeyup="searchElement(1)"
+                onkeyup="searchElement(2)"
                 >
             </div>
         </div>
@@ -38,11 +38,10 @@
         </thead>
 
         <tbody id="tablebody" $for="n of MyNewsPage">
-            <tr class="user_info">
+            <tr class="user_info">
                 <td class="user_no">
                     {{$i + 1}}
                 </td>
-
                 <td class="user_full">
                     <span class="user_name">{{$n.title}}</span>
                 </td>
