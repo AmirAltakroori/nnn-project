@@ -118,4 +118,5 @@ function updateCategoryName() {
 }
 
 
-export { onLoad };
+
+export { onLoad};
