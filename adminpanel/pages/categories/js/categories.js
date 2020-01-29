@@ -1,5 +1,5 @@
 
-function loadCat(){
+function loadCat() {
     console.log("gfusdi")
     displayCategories(categories);
     //Get the modal that opens when click on "إضافة فئة"
@@ -24,12 +24,12 @@ function loadCat(){
     });
     addForm.addEventListener("submit", (e) => {
 
-
+        console.log("hello")
         let tbody = document.getElementsByTagName('tbody')[0];
         let categoryName = document.getElementById("categoryname").value;
         let tr = document.createElement('tr');
         let row = `
-        <td class="user_no" >${tbody.childElementCount+1}</td>
+        <td class="user_no" >${tbody.childElementCount + 1}</td>
         <td class="user_full">
             <span class="user_name" style="font-size:18px">` + categoryName + `</span>
         </td>
@@ -40,33 +40,40 @@ function loadCat(){
             </select>
         </td>
         <td>
-            <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer" onclick="show(this,'delete',${categoriesPage.id})"></i>
-            <i class="far fa-edit icon color-blue" onclick="showEditModal('createcategory-edit-modal',this,${categoriesPage.length+1})"></i>
+            <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer" onclick="show(this,'delete',${categories.id})"></i>
+            <i class="far fa-edit icon color-blue" onclick="showEditModal('createcategory-edit-modal',this,${categories.length + 1})"></i>
         </td>`;
         tr.innerHTML = row;
         tr.className = 'user_info';
         tbody.appendChild(tr);
         hideModal(modal.id);
         // to database
-        categoriesPage.push({
+        categories.push({
             isActive: 1,
-            id: categoriesPage.length + 1,
-            name: "categoryName"
+            id: categories.length + 1,
+            name: categoryName
         })
+        let category = {
+            isActive: 1,
+            id: categories.length + 1,
+            name: categoryName
+        }
+        console.log(categories);
+        CreateCat(category)
         e.preventDefault();
         return false;
     });
 
     //When the user clicks "إضافة فئة" , show the modal 
-    addBtn.onclick = function() {
-            showModal("createcategory-modal");
-        }
-        //When the user clicks close icon , close the modal
-    span.onclick = function() {
-            hideModal("createcategory-modal");
-        }
-        //When the user clicks anywhere outside of the modal, close it 
-    window.onclick = function(event) {
+    addBtn.onclick = function () {
+        showModal("createcategory-modal");
+    }
+    //When the user clicks close icon , close the modal
+    span.onclick = function () {
+        hideModal("createcategory-modal");
+    }
+    //When the user clicks anywhere outside of the modal, close it 
+    window.onclick = function (event) {
         if (event.target == modal) {
             hideModal(modal.id);
         }
@@ -165,4 +172,26 @@ function displayCategories(categories) {
         table.appendChild(row);
     }
 }
-export{ loadCat}
+function getCatId() {
+
+    return dbGet("/settings", false, "categories");
+}
+
+function CreateCat(data) {
+
+    return new Promise((resolve, reject) => {
+        getCatId().then(request => {
+            const newsId = request.counter + 1;
+            dbCreateOrUpdate("/categories", data, newsId).then(response => {
+                request.counter = request.counter + 1;
+                dbCreateOrUpdate("/settings", request, request._id).then(response2 => {
+                    resolve(response2);
+                    console.log("Added");
+                });
+            })
+        })
+    })
+}
+
+
+export { loadCat }
