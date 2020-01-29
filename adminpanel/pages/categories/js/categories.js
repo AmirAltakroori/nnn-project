@@ -23,7 +23,7 @@ let categoriesPage = [
 let activeId = 0;
 let activeRow = null;
 
-export function onLoad() {
+function onLoad() {
 
     console.log("done1")
     //Get the modal that opens when click on "إضافة فئة"
@@ -40,21 +40,19 @@ export function onLoad() {
     //When the user clicks on "انشاء", update actegories tabel with new category
     let addForm = document.getElementById("category-form");
     let editForm = document.getElementById("category-edit-form");
-    console.log("done2")
     editForm.addEventListener("submit", (e) => {
-        console.log("done3")
+        console.log("hi");
         updateCategoryName();
         hideModal("createcategory-edit-modal");
         e.preventDefault();
         return false;
     });
     addForm.addEventListener("submit", (e) => {
-        console.log("done")
-
 
         let tbody = document.getElementsByTagName('tbody')[0];
         let categoryName = document.getElementById("categoryname").value;
         let tr = document.createElement('tr');
+        tr.style.height = "28px";
         let row = `
         <td class="user_no" >${tbody.childElementCount + 1}</td>
         <td class="user_full">
@@ -113,8 +111,8 @@ function hideModal(modalId) {
 
 function updateCategoryName() {
     let newName = document.getElementById("editcategoryname").value;
-    console.log("hello");
-    categoriesPage.find(({ id }) => id === activeId).name = newName;
+    categoriesPage.find(
+        (category) => {category === activeId; }).name = newName;
     var changeName = document.getElementsByClassName("user_name")[activeId - 1];
     changeName.innerHTML = newName;
     document.getElementById("editcategoryname").value = "";
@@ -127,3 +125,7 @@ function showEditModal(modalId, row, id) {
     activeId = id;
     activeRow = row.parentElement.parentElement;
 }
+
+
+
+export { onLoad, showEditModal, updateCategoryName, hideModal };
