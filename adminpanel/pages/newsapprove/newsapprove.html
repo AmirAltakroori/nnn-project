@@ -40,7 +40,9 @@
         <tbody id="tablebody" $for="n of MyNewsPage">
             <tr class="user_info">
                 <td class="user_no">
-                    {{$i + 1}}
+                        <div class="allnews-inline-block" >
+                            <input type="checkbox" id={{$n.id}} tabindex="9"/>
+                        </div>
                 </td>
                 <td class="user_full">
                     <span class="user_name">{{$n.title}}</span>
@@ -72,8 +74,8 @@
     </table>
 </div>
 <div class="newsapprove-flex-box">
-    <div class="newsapprove-approve-button">
-        نشر الخبر
+    <div class="newsapprove-approve-button" $click="appproveNews()">
+        تأكيد الخبر
     </div>
 </div>
 <div class="modal-delete" id="delete">

@@ -9,6 +9,8 @@ function approvenews(){
     }
 }
 
+
+/*
 function deleteNews(callback, key, rev, row) {
 
 let fullUrl = URL + "news/" + key + "?rev=" + rev;
@@ -21,13 +23,13 @@ http.onreadystatechange = () => {
         row.parentElement.removeChild(row);
     }
 }
-}
+}*/
 
 /* -----------------------------------------------------------------------------------------------------------------------------------------------------*/
 //read news functions 
 
 
-function findCat(id) {
+/*function findCat(id) {
 for (let j = 0; j < categories.length; j++) {
     if (categories[j].id == id)
         return categories[j].name;
@@ -87,7 +89,7 @@ for (let i = 0; i < news.length; i++) {
 
     table.appendChild(row);
 }
-}
+}*/
 
 
 export {approvenews}

@@ -90,4 +90,13 @@ export class approveNewsControler {
         console.log(this.news.then(data => data.approvenews()));
 
     }
+     appproveNews() {
+        for (let i = 0; i < myNewsPage.length; i++)  {
+            let checkbox= document.getElementById(myNewsPage[i].id);
+            if(checkbox.checked) {
+                console.log(myNewsPage[i])
+                //change the approved falg related to that news to 1 in db
+            }
+        }
+    }
 }
