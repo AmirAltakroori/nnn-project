@@ -5,25 +5,38 @@
 // Function's names must be lowCamelCase 
 // Don't delete this comments
 // By Waleed Jubeh
-let key = "PSEU";
+let tokenKey = "PSEU";
 function getData(storeName) {
     return JSON.parse(sessionStorage.getItem(storeName));
 }
+function getStoredToken(name){
+    
+    try{
+        let user = getData(name);
+        let tokenFromJson = JSON.parse(atob(user.token));
+        return tokenFromJson;
+    }catch(e){
+        console.log(e);
+        return null;
+    }
+   
+}
 function confirm(){
-    let user = getData('user');
-    let tokenFromJson = JSON.parse(atob(user.token));
+    let user = getStoredToken('user');
 
+    if(!user)
+        window.location.href = '/admin-panel-login/login.html';
     //  Calculate the Hash for the token data with the key
-    let hash = tokenFromJson['hash'];//SHA256(tokenJson + key);
-    delete(tokenFromJson['hash']);
+    let hash = user['hash'];//SHA256(tokenJson + key);
+    delete(user['hash']);
 
     let correctHash = false;
     let correctSission = false;
-    if(hash == SHA256(JSON.stringify(tokenFromJson) + key))
+    if(hash == SHA256(JSON.stringify(user) + tokenKey))
         correctHash = true;
 
     let currentDate = new Date().getTime();
-    if(currentDate < tokenFromJson.data.exp)
+    if(currentDate < user.data.exp)
         correctSission = true;
     
     if(!correctHash || !correctSission)

@@ -35,7 +35,7 @@ function getToken(username, email, roleId, alg, validityTime, key) {
     let tokenJson = JSON.stringify(token);
 
     //  Calculate the Hash for the token data with the key
-    let hash = SHA256(tokenJson + key);
+    let hash = SHA256(tokenJson + tokenKey);
 
     //  Add the Hash to the token
     token["hash"] = hash;
@@ -69,7 +69,7 @@ function verification() {
         let text = "";
         color = "#ffffff"
        if(user.password === password.value && user.state == 1){
-            let token = getToken(user.username, user.email, user.roleId, "sha256", 60 * 60 * 1000, "PSE");
+            let token = getToken(user.username, user.email, user.role, "sha256", 60 * 60 * 1000, "PSE");
             user.token = token;
             text = "جاري تسجيل الدخول";
             color = "#17bb24";
