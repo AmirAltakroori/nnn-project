@@ -29,8 +29,8 @@
                 <!-- Right sidebar -->
                 <div class="right_sidebar">
                     <div $for="news of listMainNews" class="news_list">
-                        <div class="news" $click="changeMainNews({{$news}})">
-                            <div class="centered-img-background right-side-image" style="background-image: url({{$news.attachments}});">
+                        <div class="news">
+                            <div $click="changeMainNews($news)" class="centered-img-background right-side-image" style="background-image: url({{$news.attachments}});">
                                 <span>{{$news.title}}</span>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                     <div class="main_news">
 
                         <!-- Main news image -->
-                        <div id="category_main_news_image" class="centered-img-background" style="background-image: url({{$mainNews.attachments}});"></div>
+                        <div $click="tryClick()" id="category_main_news_image" class="centered-img-background" style="background-image: url({{$mainNews.attachments}});"></div>
 
                         <!-- Main news details -->
                         <div class="details">
