@@ -1,9 +1,6 @@
 
-let users = [];
-//Store array in database
-
 function createUser(){
-    const form = document.getElementById('adduserid');
+    let form = document.getElementById('adduserid');
     console.log("ighjghjgjgjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
     form.addEventListener("submit", (e) => {
         ConfirmedPassword = document.getElementById("ConfirmPass").value;
@@ -30,7 +27,7 @@ function addUser() {
         password: document.getElementById("pass").value,
     };
     users.push(user);
-   // Create(user);
+    CreateUserDB(user);
 
 }
 
@@ -42,12 +39,12 @@ function showPopUp(id) {
         popup.style.display = "none";
     }, 2000);
 }
-/*function getId() {
+function getId() {
 
     return dbGet("/settings", false, "users");
 }
 
-function Create(data) {
+function CreateUserDB(data) {
 
     return new Promise((resolve, reject) => {
         getId().then(request => {
@@ -61,5 +58,5 @@ function Create(data) {
             })
         })
     })
-}*/
+}
 export{ createUser }
