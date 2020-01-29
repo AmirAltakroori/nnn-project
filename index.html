@@ -19,7 +19,6 @@
     <link rel="stylesheet" type="text/css" href="styles/categories.css" />
     <link rel="stylesheet" type="text/css" href="styles/details.css" />
     <link rel="stylesheet" type="text/css" href="styles/index.css" />
-
 </head>
 
 <body>
@@ -32,31 +31,19 @@
             <!-- NAVBAR -->
             <div class="navbar">
                 <div class="navbar-right">
-                    <a class="logo" href="#default"> <img class="logo-img" src="img\logo.png" alt="شبكة الوحدة الإخبارية"></a>
+                    <a class="logo" href="templates\home.html"> <img class="logo-img" src="img\logo.png" alt="شبكة الوحدة الإخبارية"></a>
                     <div class="categories-container">
-                        <ul>
-                            <li class="tab active"><a href=#home>الصفحة الرئيسية</a></li>
-                            <li class="tab"><a href=#>تكنولوجيا</a></li>
-                            <li class="tab"><a href=#>علوم</a></li>
-                            <li class="tab"><a href=#>ثقافة</a></li>
-                            <li class="tab"><a href=#>اقتصاد</a></li>
-                            <li class="tab"><a href=#>رياضة</a></li>
-                            <li class="tab"><a href=#>فن</a></li>
-                            <li class="tab expand"><a href=#>المزيد<img class="expand-button" src="img\expand-button.png" ></a>
-                                <ul class="sub-menu">
-                                    <li class="sub-item"><a href=#>سياسة</a></li>
-                                    <li class="sub-item"><a href=#>فن</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-
+                        <ul id="categories-list"></ul>
                     </div>
                 </div>
 
                 <div class="navbar-left">
-                    <a herf="" class="login-button">تسجيل الدخول</a>
+                    <a herf="#adminPanel" class="login-button">تسجيل الدخول</a>
                 </div>
             </div>
+
+
+
 
             <!-- URGENT -->
             <div id="urgent-container">
@@ -64,27 +51,31 @@
                 <marquee id="urgent-content" direction="right" onmouseover="stop()" onmouseout="start()"> </marquee>
             </div>
         </div>
-        
-        <script type="module" src='app.js'></script>
-        <a  href="#/details/1">details</a>&nbsp;
-          <!-- VIEW CONTAINER -->
-          <div view>
-              
-          </div>
+
+
+
+        <a href="#/details/1">details</a>&nbsp;
+        <!-- VIEW CONTAINER -->
+        <div view>
+
+        </div>
 
         <!-- FOOTER -->
         <div class="footer">
             <div class="footer-right">
                 <a href="#default" class="logo"> <img src="img\logo.png" alt="شبكة الوحدة الإخبارية"></a>
-                 
-        </div>
-    </div>
-    
 
-        
-     
-    
-        
+            </div>
+        </div>
+
+        <script src="./potato/potato.js"></script>
+        <script type="module" src="app.js"></script>
+        <script src="controllers/index.js"></script>
+
+    </div>
+
+
+
 </body>
 
 </html>

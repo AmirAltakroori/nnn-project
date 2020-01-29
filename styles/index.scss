@@ -148,13 +148,13 @@ body{
 
                             .sub-menu{
 
-                                @include positioning (absolute, 80%, auto, 0, 957px);
+                                @include positioning (absolute, 75%, auto, 0, 860px);
                                 z-index:1;
                                 display: none;
                                 background-color: $main-color;
                                 color: $website-background;
-                                min-width: 114px;
-                                max-width: 114px;
+                                min-width: 135px;
+                                max-width: 135px;
                                 font-weight: 300;
                                 height: 140%;
 

@@ -256,16 +256,16 @@ body .root .header .navbar .navbar-right .categories-container ul {
 
 body .root .header .navbar .navbar-right .categories-container ul .sub-menu {
   position: absolute;
-  top: 80%;
+  top: 75%;
   bottom: auto;
   left: 0;
-  right: 957px;
+  right: 860px;
   z-index: 1;
   display: none;
   background-color: #0C4D6D;
   color: white;
-  min-width: 114px;
-  max-width: 114px;
+  min-width: 135px;
+  max-width: 135px;
   font-weight: 300;
   height: 140%;
 }
