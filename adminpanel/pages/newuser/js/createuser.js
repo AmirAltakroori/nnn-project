@@ -3,31 +3,47 @@ function createUser(){
     let form = document.getElementById('adduserid');
     console.log("ighjghjgjgjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
     form.addEventListener("submit", (e) => {
-        ConfirmedPassword = document.getElementById("ConfirmPass").value;
-        password = document.getElementById("pass").value;
+        e.preventDefault();
+
+        let ConfirmedPassword = document.getElementById("confirmpassword").value;
+        let password = document.getElementById("pass").value;
         console.log("ighjghjgjgggggggggggggggg")
         if (ConfirmedPassword == password) {
             addUser();
             console.log("ighjghjgjg")
-            showPopUp('success');
+            
         } else {
             showPopUp('warning');
         }
-        e.preventDefault();
         return false;
     });
 }
 
 function addUser() {
     let user = {
-        firstname: document.getElementById("Fname").value,
-        secondname: document.getElementById("Lname").value,
+        firstName: document.getElementById("Fname").value,
+        lastName: document.getElementById("Lname").value,
         username: document.getElementById("Uname").value,
         email: document.getElementById("Email").value,
         password: document.getElementById("pass").value,
+        _id:document.getElementById("Uname").value,
+        role:1,
+        state:1,
+        token:"",
+
     };
-    users.push(user);
-    CreateUserDB(user);
+    document.getElementById("submitbtn").disabled = true;
+    CreateUserDB(user).then( (data) => {
+        console.log(data);
+        if(data.ok == true){
+        showPopUp('success');
+        setTimeout(() => {
+            window.location.href = "#/allusers";
+        }, 2000);
+        }else {
+            document.getElementById("submitbtn").disabled = false;
+        }
+    });
 
 }
 
@@ -48,10 +64,11 @@ function CreateUserDB(data) {
 
     return new Promise((resolve, reject) => {
         getId().then(request => {
-            const Id = request.counter + 1;
-            dbCreateOrUpdate("/users", data, Id).then(response => {
+            const id = request.counter + 1;
+            request.userid = id;
+            dbCreateOrUpdate("/users", data, data.username).then(response => {
                 request.counter = request.counter + 1;
-                dbCreateOrUpdate("/settings", request, request._id).then(response2 => {
+                dbCreateOrUpdate("/settings", request,request._id).then(response2 => {
                     resolve(response2);
                     console.log("Added");
                 });
