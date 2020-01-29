@@ -8,7 +8,7 @@
 
      File description:
 */
-export class details {
+export class Details {
     constructor() {
         // this.routeParams.newID;
         this.newID = 0;

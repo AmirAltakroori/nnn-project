@@ -69,8 +69,8 @@
 body{
 
     width: 100%;
-    min-width: 1368px;
-    min-height: 768px;
+    min-width: 1352px;
+    min-height: 649px;
 
     .root{
 
@@ -78,8 +78,8 @@ body{
         @include positioning (absolute, 0, auto, auto, auto);
         background-color: $website-background;
 
-        min-width: 1368px;
-        min-height: 768px;
+        min-width: 1352px;
+        min-height: 649px;
 
         .header{
 
@@ -148,13 +148,13 @@ body{
 
                             .sub-menu{
 
-                                @include positioning (absolute, 80%, auto, 0, 957px);
+                                @include positioning (absolute, 75%, auto, 0, 860px);
                                 z-index:1;
                                 display: none;
                                 background-color: $main-color;
                                 color: $website-background;
-                                min-width: 114px;
-                                max-width: 114px;
+                                min-width: 135px;
+                                max-width: 135px;
                                 font-weight: 300;
                                 height: 140%;
 
@@ -247,11 +247,16 @@ body{
     }
 }
 
-.view {
+.view-root {
     position: relative;
-    width: 100%;
-    top: 13.658%;
-    z-index: 0;
     height: 100%;
-    background-color: white;
+    overflow: auto;
+    margin-top: 7.5%;
+    margin-bottom: 6%;
+    .view {
+        position: relative;
+        width: 100%;
+        height: auto;
+        background-color: white;
+    }
 }
