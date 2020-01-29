@@ -85,6 +85,8 @@ part1 contain the header of the new and the related news
             @include flex-property(column, flex-start, flex-start, 100%);
             list-style-type: none;
             .list-n {
+                margin-left: 20px;
+                ;
                 // border-top: rgb(114, 109, 109) solid 1px;
                 a {
                     @include flex-property(row, center, flex-start, 100%);

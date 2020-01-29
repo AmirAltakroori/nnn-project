@@ -137,6 +137,10 @@ part1 contain the header of the new and the related news
   list-style-type: none;
 }
 
+.news-content .news_related .related_news_menu .list-n {
+  margin-left: 20px;
+}
+
 .news-content .news_related .related_news_menu .list-n a {
   display: -webkit-box;
   display: -ms-flexbox;
