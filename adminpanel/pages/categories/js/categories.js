@@ -1,6 +1,5 @@
 
 function loadCat() {
-    console.log("gfusdi")
     displayCategories(categories);
     //Get the modal that opens when click on "إضافة فئة"
     let modal = document.getElementById("createcategory-modal");
@@ -23,8 +22,6 @@ function loadCat() {
         return false;
     });
     addForm.addEventListener("submit", (e) => {
-
-        console.log("hello")
         let tbody = document.getElementsByTagName('tbody')[0];
         let categoryName = document.getElementById("categoryname").value;
         let tr = document.createElement('tr');
@@ -181,8 +178,8 @@ function CreateCat(data) {
 
     return new Promise((resolve, reject) => {
         getCatId().then(request => {
-            const newsId = request.counter + 1;
-            dbCreateOrUpdate("/categories", data, newsId).then(response => {
+            const _id = request.counter + 1;
+            dbCreateOrUpdate("/categories", data, _id).then(response => {
                 request.counter = request.counter + 1;
                 dbCreateOrUpdate("/settings", request, request._id).then(response2 => {
                     resolve(response2);
