@@ -1,4 +1,5 @@
-let categoriesPage = [{
+let categoriesPage = [
+    {
         name: "الألعاب",
         isActive: 1,
         id: 1,
@@ -19,8 +20,11 @@ let categoriesPage = [{
         id: 4,
     }
 ]
+let activeId = 0;
+let activeRow = null;
 
-export function onLoad(){
+export function onLoad() {
+
     console.log("done1")
     //Get the modal that opens when click on "إضافة فئة"
     let modal = document.getElementById("createcategory-modal");
@@ -52,7 +56,7 @@ export function onLoad(){
         let categoryName = document.getElementById("categoryname").value;
         let tr = document.createElement('tr');
         let row = `
-        <td class="user_no" >${tbody.childElementCount+1}</td>
+        <td class="user_no" >${tbody.childElementCount + 1}</td>
         <td class="user_full">
             <span class="user_name" style="font-size:18px">` + categoryName + `</span>
         </td>
@@ -64,7 +68,7 @@ export function onLoad(){
         </td>
         <td>
             <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer" onclick="show(this,'delete',${categoriesPage.id})"></i>
-            <i class="far fa-edit icon color-blue" onclick="showEditModal('createcategory-edit-modal',this,${categoriesPage.length+1})"></i>
+            <i class="far fa-edit icon color-blue" onclick="showEditModal('createcategory-edit-modal',this,${categoriesPage.length + 1})"></i>
         </td>`;
         tr.innerHTML = row;
         tr.className = 'user_info';
@@ -81,38 +85,24 @@ export function onLoad(){
     });
 
     //When the user clicks "إضافة فئة" , show the modal 
-    addBtn.onclick = function() {
-            showModal("createcategory-modal");
-        }
-        //When the user clicks close icon , close the modal
-    span.onclick = function() {
-            hideModal("createcategory-modal");
-        }
-        //When the user clicks anywhere outside of the modal, close it 
-    window.onclick = function(event) {
+    addBtn.onclick = function () {
+        showModal("createcategory-modal");
+    }
+    //When the user clicks close icon , close the modal
+    span.onclick = function () {
+        hideModal("createcategory-modal");
+    }
+    //When the user clicks anywhere outside of the modal, close it 
+    window.onclick = function (event) {
         if (event.target == modal) {
             hideModal(modal.id);
         }
     }
-
-
 }
 
 function showModal(modalId) {
     document.getElementById(modalId).style.display = "flex";
     document.getElementById("categoryname").value = '';
-}
-
-let activeId = 0;
-let activeRow = null;
-
-function showEditModal(modalId, row, id) {
-    let modal = document.getElementById(modalId); //for modal
-    modal.style.display = "flex";
-
-    activeId = id;
-    activeRow = row.parentElement.parentElement;
-
 }
 
 function hideModal(modalId) {
@@ -121,16 +111,19 @@ function hideModal(modalId) {
 
 }
 
-function test(){
-    console.log('hi');
-}
-
 function updateCategoryName() {
     let newName = document.getElementById("editcategoryname").value;
+    console.log("hello");
     categoriesPage.find(({ id }) => id === activeId).name = newName;
     var changeName = document.getElementsByClassName("user_name")[activeId - 1];
     changeName.innerHTML = newName;
     document.getElementById("editcategoryname").value = "";
+}
 
+function showEditModal(modalId, row, id) {
+    let modal = document.getElementById(modalId); //for modal
+    modal.style.display = "flex";
 
+    activeId = id;
+    activeRow = row.parentElement.parentElement;
 }

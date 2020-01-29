@@ -39,16 +39,24 @@
             </tr>
         </thead>
         <tbody id="tablebody" $for="category of categories">
-            <tr >
+            <tr>
                 <td class="user_no">{{$i+1}}</td>
                 <td class="user_full">
                     <span class="user_name" style="font-size:18px">{{$category.name}}</span>
                 </td>
                 <td>
-                    <select class="selection" style="font-size:18px; border:none; font-family:'Segoe UI'">
-                        <option value="writer" >فعال</option>
-                        <option value="admin" > غير فعال</option>
-                    </select>
+                    <div $if="$category.isActive == 1">
+                        <select class="selection" style="font-size:18px; border:none; font-family:'Segoe UI'">
+                            <option value="1" selected>فعال</option>
+                            <option value="0"> غير فعال</option>
+                        </select>
+                    </div>
+                    <div $if="$category.isActive == 0">
+                        <select class="selection" style="font-size:18px; border:none; font-family:'Segoe UI'">
+                            <option value="1" selected> غير فعال</option>
+                            <option value="0">فعال</option>
+                        </select>
+                    </div>
                 </td>
                 <td>
                     <i class="fas fa-trash-alt delete_user"
@@ -113,7 +121,7 @@
             <p>هل أنت متأكد من إزالة هذه الفئة ؟</p>
             <div class="modal-button">
                 <button class="modal-button button1"
-                    onclick="deleteRowElement('$categories'); hide('delete');">نعم</button>
+                    onclick="deleteRowElement(categories); hide('delete');">نعم</button>
                 <button class="modal-button button2" onclick="hide('delete')">لا</button>
             </div>
         </div>

@@ -24,9 +24,7 @@ export class CategoriesController {
         ]
         this.activeId = 0;
         this.activeRow = null;
-        this.categoriesOnLoad = import ("./categories.js/index.js.js");
+        this.categoriesOnLoad = import("./categories.js");
         console.log(this.categoriesOnLoad.then(data => data.onLoad()));
     }
-    
-
 }
