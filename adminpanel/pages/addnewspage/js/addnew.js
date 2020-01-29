@@ -1,5 +1,6 @@
 let newsList = [];
 let newsImage = "";
+let editor;
 const idSelector = (id) => { return document.getElementById(id) };
 
 
@@ -9,16 +10,59 @@ function setScheduleTime() {
     createField.disabled = !checkbox.checked;
     createField.value = changeDateFormat(new Date());
 }
-document.addEventListener("DOMContentLoaded", (event) => {
+
+function init() {
+
+    let newsBody = document.getElementById('editor');
+
+    let toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+        ['blockquote', 'code-block'],
+
+        [{ 'header': 1 }, { 'header': 2 }], // custom button values
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+        [{ 'script': 'sub' }, { 'script': 'super' }], // superscript/subscript
+        [{ 'indent': '-1' }, { 'indent': '+1' }], // outdent/indent
+        [{ 'direction': 'rtl' }], // text direction
+
+        [{ 'size': ['small', false, 'large', 'huge'] }], // custom dropdown
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+        ['link', 'image', 'video', 'formula'], // add's image support
+        [{ 'color': [] }, { 'background': [] }], // dropdown with defaults from theme
+        [{ 'font': [] }],
+        [{ 'align': [] }],
+
+        ['clean'] // remove formatting button
+    ];
+    let options = {
+        debug: 'info',
+        placeholder: '',
+        readOnly: false,
+        theme: 'snow',
+        modules: {
+            toolbar: toolbarOptions
+        }
+    };
+
+
+    editor = new Quill(newsBody, options);
+
+    editor.format('direction', 'ltr');
+
+    console.log("Test");
     setScheduleTime();
     let userData = getData("userData");
     let createField = idSelector('createDate');
+
     let checkbox = idSelector('enable-checkbox');
     createField.disabled = !checkbox.checked;
     createField.value = changeDateFormat(new Date());
-
     let newElement = idSelector("edit_element");
     const addForm = idSelector("submit-form");
+    let file = idSelector('picture');
+    file.addEventListener("change", function(e) {
+        previewImg();
+    });
 
     if (userData != null) {
         newElement.innerHTML = "تعديل";
@@ -71,7 +115,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     } else {
         addForm.addEventListener("submit", (e) => {
 
-            if (createNew(idSelector("title").value, idSelector("editor").value, idSelector("cateqory").value, idSelector("seoTitle").value,
+            e.preventDefault();
+            if (createNew(idSelector("title").value, editor.container.firstChild.innerHTML, idSelector("category").value, idSelector("seoTitle").value,
                     idSelector("seoTags").value, idSelector("seoDescription").value, idSelector("isActive").value, idSelector("isMainNews").value,
                     idSelector("isUrgentNews").value, idSelector("createDate").value,
                 ));
@@ -79,8 +124,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             return false;
         });
     }
+};
 
-});
 
 function createNew(title, content, cateqory, seoTitle, seoTags, seoDescription, isActive, isMainNews, isUrgentNews, createDate) {
     let newNews = {
@@ -93,9 +138,71 @@ function createNew(title, content, cateqory, seoTitle, seoTags, seoDescription, 
         isActive: isActive,
         isMainNews: isMainNews,
         isUrgentNews: isUrgentNews,
-        createDate: createDate
-    }
+        createDate: createDate,
+        attachment: newsImage
+    };
+    console.log(newsImage);
     console.log(newNews.title);
     newsList.push(newNews);
+    CreateNews(newNews).then(solved => {
+        console.log(solved);
+    })
     return true;
 }
+
+
+function changeDateFormat(date) {
+    if (typeof(date) == 'string')
+        return date;
+    return date.getFullYear() + "-" + date.getMonth() + "-" + (date.getDate() + 1);
+}
+
+
+function previewImg() {
+    let preview = document.querySelector('.addnews-img-container img');
+    let file = document.querySelector('input[type="file"]').files[0];
+    let reader = new FileReader();
+
+    let fr = new FileReader();
+    if (file)
+        preview.parentElement.style.display = "flex";
+    else {
+        preview.parentElement.style.display = "none";
+        newsImage = "";
+        return false;
+    }
+    reader.readAsDataURL(file);
+
+    fr.onload = function() {
+        let image = fr.result;
+        newsImage = image;
+    };
+    reader.onload = function() {
+        preview.src = reader.result;
+
+
+    };
+    fr.readAsText(file, 'UTF-8');
+}
+
+function getNewsId() {
+
+    return dbGet("/settings", false, "news");
+}
+
+function CreateNews(data) {
+
+    return new Promise((resolve, reject) => {
+        getNewsId().then(request => {
+            const newsId = request.counter + 1;
+            dbCreateOrUpdate("/news", data, newsId).then(response => {
+                request.counter = request.counter + 1;
+                dbCreateOrUpdate("/settings", request, request._id).then(response2 => {
+                    resolve(response2);
+                    console.log("Added");
+                });
+            })
+        })
+    })
+}
+export { init, previewImg };
