@@ -20,7 +20,7 @@ let routeList = [{
         url: "/allusers",
         template: "pages/allusers/allusers.html",
         title: "شبكة الوحدة الإخبارية",
-        controller: "/adminpanel/pages/allusers/js/alluser.js"
+        controller: "/adminpanel/pages/allusers/js/users.js"
     }
 ];
 

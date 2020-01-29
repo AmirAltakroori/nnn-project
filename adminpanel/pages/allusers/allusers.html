@@ -35,26 +35,50 @@
         <tbody id="rows" $for = "user of usersPage">
            
             <tr class='user_info'>
-                <td class="user_no">{{$user.id}}</td>
+                <td class="user_no">{{$i+1}}</td>
                 <td class="user_full">
                     <span class="user_name allnews-title-limit">{{$user.firstName}}</span>
                 </td>
                 <td>
+                    <div $if = "$user.roleId==1">
                     <select class="selection">
                         <option value="0">كاتب</option>
                         <option value="1">مشرف</option>
                         <option value="2">مسؤول</option>
                     </select>
+                </div>
+                <div $if = "$user.roleId==2">
+                    <select class="selection">
+                        <option value="0">مشرف</option>
+                        <option value="1">كاتب</option>
+                        <option value="2">مسؤول</option>
+                    </select>
+                </div>
+                <div $if = "$user.roleId==3">
+                    <select class="selection">
+                        <option value="0">مسؤول</option>
+                        <option value="1">مشرف</option>
+                        <option value="2">كاتب</option>
+                    </select>
+                </div>
                 </td>
                 <td>
-                    <select class="selection">
+                    <div $if = "$user.isActive==1">
+                    <select class="selection" >
                         <option value="0">فعال</option>
                         <option value="1">غير فعال</option>
                     </select>
+                </div>
+                <div $if = "$user.isActive==0">
+                    <select class="selection" >
+                        <option value="0">غير فعال</option>
+                        <option value="1">فعال</option>
+                    </select>
+                </div>
                 </td>
               <td>
-                <i class="fas fa-trash-alt delete_user" onclick="show(this,'delete', '$news.id')"></i>
-                <i class="far fa-edit icon color-blue" onclick = "updateNews('$news.id',0) "></i>
+                <i class="fas fa-trash-alt delete_user" onclick="show(this,'delete', '$user.id')"></i>
+                <i class="far fa-edit icon color-blue" onclick = "updateUsers('$user.id') "></i>
                 </td>
             </tr>
         </tbody>
