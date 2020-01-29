@@ -66,7 +66,7 @@ function onLoad() {
         </td>
         <td>
             <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer" onclick="show(this,'delete',${categoriesPage.id})"></i>
-            <i class="far fa-edit icon color-blue" onclick="showEditModal('createcategory-edit-modal',this,${categoriesPage.length + 1})"></i>
+            <i class="far fa-edit icon color-blue" $click="showEditModal('createcategory-edit-modal',this,${categoriesPage.length + 1})"></i>
         </td>`;
         tr.innerHTML = row;
         tr.className = 'user_info';
@@ -111,21 +111,11 @@ function hideModal(modalId) {
 
 function updateCategoryName() {
     let newName = document.getElementById("editcategoryname").value;
-    categoriesPage.find(
-        (category) => {category === activeId; }).name = newName;
+    categoriesPage.find((category) => { category === activeId; }).name = newName;
     var changeName = document.getElementsByClassName("user_name")[activeId - 1];
     changeName.innerHTML = newName;
     document.getElementById("editcategoryname").value = "";
 }
 
-function showEditModal(modalId, row, id) {
-    let modal = document.getElementById(modalId); //for modal
-    modal.style.display = "flex";
 
-    activeId = id;
-    activeRow = row.parentElement.parentElement;
-}
-
-
-
-export { onLoad, showEditModal, updateCategoryName, hideModal };
+export { onLoad };
