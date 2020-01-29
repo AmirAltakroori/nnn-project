@@ -15,8 +15,34 @@ function deleteRowElement(Page) {
 
     let row = Page.findIndex((row) => row.id == newId);
     Page.splice(row, 1);
+    dbDelete('/users', 'admin1', "2-55da6d414713a91e5b1e5d3fca091b75").then(data => {
+        if (data.error)
+            showIfDeleteOrNot('false');
+        else
+            showIfDeleteOrNot('true');
+    })
     let rowDOM = newContain.parentNode.parentNode;
     rowDOM.parentElement.removeChild(rowDOM);
+
+
+}
+function showIfDeleteOrNot(e) {
+    let element = document.getElementById('ppp');
+    if (e=='true') {
+        element.innerHTML = 'تم الحذف';
+        element.style.backgroundColor = '#27ae60';
+        element.style.boxShadow = "-3px 2px 6px 4px " + '#27ae60';
+    }
+    else {
+        element.innerHTML = 'العنصر غير موجود';
+        element.style.backgroundColor = 'red';
+        element.style.boxShadow = "-3px 2px 6px 4px " + 'red';
+    }
+    element.style.display = "block";
+    setTimeout(() => {
+        element.style.display = "none";
+        return true;
+    }, 2000);
 
 
 }
