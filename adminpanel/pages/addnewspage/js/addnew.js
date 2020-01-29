@@ -12,7 +12,7 @@ function setScheduleTime() {
 }
 
 function init() {
-
+    
     let newsBody = document.getElementById('editor');
 
     let toolbarOptions = [

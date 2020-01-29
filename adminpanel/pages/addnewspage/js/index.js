@@ -2,7 +2,10 @@ export class addnewsController {
     previewImg() {
         console.log("T");
     }
+    
+    
     constructor() {
+    
         //   Check role
         this.new =
             import ("./addnew.js");
@@ -12,6 +15,7 @@ export class addnewsController {
 
         console.log(this.new.then(data => data.init()));
     }
+    
     richTextEditor() {
         let newsBody = document.getElementById('editor');
         console.log(newsBody);
