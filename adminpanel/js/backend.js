@@ -10,7 +10,6 @@ function getData(storeName) {
     return JSON.parse(sessionStorage.getItem(storeName));
 }
 function getStoredToken(name){
-    
     try{
         let user = getData(name);
         let tokenFromJson = JSON.parse(atob(user.token));
@@ -19,7 +18,6 @@ function getStoredToken(name){
         console.log(e);
         return null;
     }
-   
 }
 function confirm(){
     let user = getStoredToken('user');
@@ -41,8 +39,6 @@ function confirm(){
     
     if(!correctHash || !correctSission)
        window.location.href = '/admin-panel-login/login.html';
-
-
 }
 function saveData(storeName, data) {
     sessionStorage.setItem(storeName, JSON.stringify(data));

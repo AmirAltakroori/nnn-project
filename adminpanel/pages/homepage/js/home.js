@@ -1,12 +1,9 @@
   export class HomeController {
     constructor() {
+        confirm()
         this.Message = "hello";
-        const userData = JSON.parse(sessionStorage.getItem('user'));
-        if (!userData) {
-            window.location.href = '/admin-panel-login/login.html';
-            return;
-        }
-        this.userRole = userData.roleID;
+        const userData = getStoredToken('user');
+        this.userRole = userData.data.roleId;
         console.log(this.userRole)
     }
 }

@@ -1,6 +1,6 @@
 
 
-function getToken(username, email, roleId, alg, validityTime, key) {
+function getToken(fullName, username, email, roleId, alg, validityTime, key) {
 
     /*
         username: the username of the user
@@ -23,6 +23,7 @@ function getToken(username, email, roleId, alg, validityTime, key) {
         },
 
         "data": {
+            "fullName": fullName,
             "username": username,
             "email": email,
             "roleId": roleId,
@@ -35,7 +36,7 @@ function getToken(username, email, roleId, alg, validityTime, key) {
     let tokenJson = JSON.stringify(token);
 
     //  Calculate the Hash for the token data with the key
-    let hash = SHA256(tokenJson + tokenKey);
+    let hash = SHA256(tokenJson + key);
 
     //  Add the Hash to the token
     token["hash"] = hash;
@@ -69,17 +70,17 @@ function verification() {
         let text = "";
         color = "#ffffff"
        if(user.password === password.value && user.state == 1){
-            let token = getToken(user.username, user.email, user.role, "sha256", 60 * 60 * 1000, "PSE");
+            let token = getToken(user.firstName + " " + user.lastName,
+                                user.username, user.email, user.role,
+                                "sha256", 60 * 60 * 1000, tokenKey);
             user.token = token;
             text = "جاري تسجيل الدخول";
             color = "#17bb24";
             let datatoSave = {
                 "token": user.token,
-                "roleID": user.role,
-                "FullName": user.firstName + " " + user.lastName
             }
             saveData('user',datatoSave);
-        }else  if(user.password === password.value && user.state == 0){
+        }else if(user.password === password.value && user.state == 0){
             text = "حسابك معطل راجع أحد المسؤولين";
             color = "#e85827";
         }else{

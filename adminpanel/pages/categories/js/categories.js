@@ -1,24 +1,5 @@
-let categoriesPage = [{
-        name: "الألعاب",
-        isActive: 1,
-        id: 1,
-    },
-    {
-        name: "الرئيسية",
-        isActive: 1,
-        id: 2,
-    },
-    {
-        name: "الرياضة",
-        isActive: 0, //غير مفعل
-        id: 3,
-    },
-    {
-        name: "الفن",
-        isActive: 0,
-        id: 4,
-    }
-]
+let categoriesPage = null;
+
 document.addEventListener('DOMContentLoaded', function(e) {
     displayCategories(categoriesPage);
     //Get the modal that opens when click on "إضافة فئة"
