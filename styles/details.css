@@ -81,7 +81,7 @@ part1 contain the header of the new and the related news
 }
 
 .news-content {
-  margin-top: 700px;
+  margin-top: 800px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   border-top: solid 1px #707070;
   margin-bottom: 0%;
@@ -135,6 +135,10 @@ part1 contain the header of the new and the related news
           flex-direction: column;
   width: 100%;
   list-style-type: none;
+}
+
+.news-content .news_related .related_news_menu .list-n {
+  margin-left: 20px;
 }
 
 .news-content .news_related .related_news_menu .list-n a {
@@ -204,8 +208,6 @@ part1 contain the header of the new and the related news
 }
 
 .news-content .news_header .main_img {
-  background-image: url("../img/new.jpg");
-  width: 90%;
   height: 570px;
   background-position: center;
   background-repeat: no-repeat;
@@ -213,6 +215,7 @@ part1 contain the header of the new and the related news
   position: relative;
   margin-right: 10%;
   margin-bottom: 30px;
+  padding: 50px;
 }
 
 .news-body {
