@@ -23,6 +23,14 @@ let routeList = [{
         controller: "/adminpanel/pages/newuser/js/index.js"
 
 
+    },
+    {
+        url: "/categories",
+        template: "pages/categories/categories.html",
+        title: "شبكة الوحدة الإخبارية",
+        controller: "/adminpanel/pages/categories/js/index.js"
+
+
     }
 
 ];

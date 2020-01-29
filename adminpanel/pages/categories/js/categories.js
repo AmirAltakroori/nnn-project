@@ -1,30 +1,11 @@
-let categoriesPage = [{
-        name: "الألعاب",
-        isActive: 1,
-        id: 1,
-    },
-    {
-        name: "الرئيسية",
-        isActive: 1,
-        id: 2,
-    },
-    {
-        name: "الرياضة",
-        isActive: 0, //غير مفعل
-        id: 3,
-    },
-    {
-        name: "الفن",
-        isActive: 0,
-        id: 4,
-    }
-]
-document.addEventListener('DOMContentLoaded', function(e) {
+
+function loadCat(){
+    console.log("gfusdi")
     displayCategories(categoriesPage);
     //Get the modal that opens when click on "إضافة فئة"
     let modal = document.getElementById("createcategory-modal");
     //Get the button that opens the modal
-    let addBtn = document.getElementsByClassName("categories-add-button")[0];
+    let addBtn = document.getElementsById("addBtn");
 
     //Get close icon that close the modal
     let span = document.getElementById("close");
@@ -91,16 +72,14 @@ document.addEventListener('DOMContentLoaded', function(e) {
         }
     }
 
-});
+}
 
 function showModal(modalId) {
     document.getElementById(modalId).style.display = "flex";
     document.getElementById("categoryname").value = '';
 }
 
-function hideModal(modalId) {
-    document.getElementById(modalId).style.display = "none";
-}
+
 let activeId = 0;
 let activeRow = null;
 
@@ -186,3 +165,4 @@ function displayCategories(categories) {
         table.appendChild(row);
     }
 }
+export{ loadCat}
