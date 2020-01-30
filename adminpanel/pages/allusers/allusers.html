@@ -41,39 +41,21 @@
                 </td>
                 <td>
 
-                    <div $if = "$user.roleId==1">
-                    <select class="selection">
-                        <option  value="0">كاتب</option>
-                        <option value="1">مشرف</option>
-                        <option value="2">مسؤول</option>
-                    </select>
+                    <div $if = "$user.roleId ==1">
+                        كاتب
                 </div>
-                <div $if = "$user.roleId==2" >
-                    <select class="selection">
-                        <option  value="0">مشرف</option>
-                        <option value="1">كاتب</option>
-                        <option value="2">مسؤول</option>
-                    </select>
-                </div>
-                <div $if = "$user.roleId==3" >
-                    <select class="selection">
-                        <option   value="0">مسؤول</option>
-                        <option value="1">مشرف</option>
-                        <option value="2">كاتب</option>
-                    </select>
-                </div>
+                <div $if = "$user.roleId ==2">
+                    مشرف
+            </div>
+            <div $if = "$user.roleId ==3">
+                مسؤول
+        </div>
                 </td>
                 <td>
                     <div $if = "$user.isActive==1">
                     <select class="selection" >
-                        <option value="0">فعال</option>
+                        <option value="0" >فعال</option>
                         <option value="1">غير فعال</option>
-                    </select>
-                </div>
-                <div $if = "$user.isActive==0">
-                    <select class="selection" >
-                        <option value="0">غير فعال</option>
-                        <option value="1">فعال</option>
                     </select>
                 </div>
                 </td>
