@@ -188,8 +188,9 @@ function updateNews(id, page) {
             break;
         }
     sessionStorage.setItem("userData", JSON.stringify(aim));
-    window.location.href = "../addnewspage/addnewpage.html";
+    window.location.href = "/adminpanel/index.html#/addnews";
 }
+
 let BASEURL = 'https://541e1dc0-354b-4134-ae7d-5eaa533a1bf9-bluemix.cloudant.com';
 let AUTHENTICATION = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJsdWVtaXg6NDU2YjA3NzhjODFjOWNiMDk5NzZkODU1NjQ5MDM2YzRlYTE1MTQwZTk5NDNlNWM2MGE5ZDM1MGMwNDU5YzIwMw=='
 
@@ -275,3 +276,25 @@ function dbCreateOrUpdate(endpoint, data, id) {
 //     id:"1234",
 // }
 // dbCreateOrUpdate('/users',userData,1234);create user his id equals 1234 and his data is userData objectgi
+
+function dbFindByIndex(endpoint, fields, index,value) {
+    return new Promise((resolve, reject) => {
+        let parameters = {
+            'selector': {},
+            'fields':fields,
+        } 
+        parameters.selector[index] = value;
+        const url = BASEURL + endpoint + `/_find`;
+        let http = new XMLHttpRequest();
+        http.open("POST", url);
+        http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        http.setRequestHeader('Accept', 'application/json');
+        http.setRequestHeader("Authorization", AUTHENTICATION);
+        http.onreadystatechange = function() { //Call a function when the state changes.
+            if (http.readyState == 4) {
+                resolve(JSON.parse(http.responseText));
+            }
+        }
+        http.send(JSON.stringify((parameters)));
+    });
+}

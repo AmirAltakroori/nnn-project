@@ -1,11 +1,11 @@
 
-document.addEventListener("DOMContentLoaded", (event) => {
+function allnews() {
     let userdata = getData("userData");
     if (userdata != null) {
         allNewsPage[userdata.ind] = userdata;
         sessionStorage.removeItem("userData");
     }
-});
+}
 function deleteNews(callback, key, rev, row) {
 
     let fullUrl = URL + "news/" + key + "?rev=" + rev;
@@ -131,7 +131,4 @@ function displaynews(news) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", (event) => {
-
-    displaynews(allNewsPage);
-});
+export {allnews}

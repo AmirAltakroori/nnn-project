@@ -1,100 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./../../fontawesome/all.min.js"></script>
-    <script src="./../../js/frontend.js"></script>
-
-    <link rel="stylesheet" href="../../fontawesome/all.min.css">
-    <link rel="stylesheet" href="./../../css/global.css">
-    <link rel="stylesheet" href="./css/newsapprove.css">
-    <script src="js/newsapprove.js"></script>
-    <script  src="./../../js/frontend.js"></script>
-    <title>تأكيد الأخبار</title>
-</head>
-
-<body>
-
-    <header>
-
-        <div class=" main-header header-flex-container space-between item-center">
-            <div class="header-logo">
-                <img src="./../../img/logo.png" alt="logo" href="index.html">
-            </div>
-            <div class="header-left-section">
-
-
-                <div class="header-inline-block">
-                    <li class="fas fa-user"></li>
-                    وليد الجعبة
-
-                </div>
-                <div class="header-inline-block">
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-            </div>
-
-        </div>
-        <div class="row header-subheader ">
-            <div>
-                الرئيسية > لوحة التحكم >الأخبار > تأكيد الأخبار
-            </div>
-        </div>
-    </header>
-
-
-    <div class="container">
-        <div class="content_header">
-            <div class="title">
-                <span class="title_text">تأكيد الأخبار</span>
-            </div>
-            <div class="search_area">
-                <div class="search_word">
-                    <span>البحث</span>
-                </div>
-                <div class="search">
-                    <img class="search_icon" src="./../../img/search.png">
-                    <input type="text" id="search" onkeyup="searchElement(2)" class="search_field" placeholder="أدخل اسم الفئة ">
-                </div>
-            </div>
-
-        </div>
-
-        <table class="content">
-            <thead>
-                <tr class="first_row">
-                    <th>#</th>
-                    <th>عنوان الخبر</th>
-                    <th>الفئة</th>
-                    <th>الحالة</th>
-                    <th>العمليات</th>
-
-                </tr>
-            </thead>
-            <tbody id="tablebody">
-            </tbody>
-        </table>
+<div class="row header-subheader">
+    <div>
+        الرئيسية > لوحة التحكم > الأخبار > أخباري    
     </div>
-    <div class="newsapprove-flex-box">
-        <div class="newsapprove-approve-button">
-            نشر الخبر
+</div>
+
+<div class="container">
+    <div class="content_header">
+        <div class="title">
+            <span class="title_text">تأكيد الأخبار</span>
+        </div>
+        <div class="search_area">
+            <div class="search_word">
+                <span>البحث</span>
+            </div>
+            <div class="search">
+                <i class="fas fa-search"></i>
+                <input 
+                type="text"
+                class="search_field"
+                id="search"
+                placeholder="أدخل عنوان الفئة"
+                onkeyup="searchElement(1)"
+                >
+            </div>
         </div>
     </div>
-    <div class="modal-delete" id="delete">
-        <div class="modal-wrapper">
-            <div class="contain">
-                <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
-                <div class="modal-button">
-                    <button class="modal-button button1" onclick="deleteRowElement(newsPage); hide('delete');">نعم</button>
-                    <button class="modal-button button2" onclick="hide('delete')">لا</button>
-                </div>
-            </div>
 
-        </div>
+    <table class="content">
+        <thead>
+            <tr class="first_row">
+                <th>#</th>
+                <th>عنوان الخبر</th>
+                <th>الفئة</th>
+                <th>الحالة</th>
+                <th>العمليات</th>
+            </tr>
+        </thead>
 
+        <tbody id="tablebody" $for="n of MyNewsPage">
+            <tr class="user_info">
+                <td class="user_no">
+                    {{$i + 1}}
+                </td>
+
+                <td class="user_full">
+                    <span class="user_name">{{$n.title}}</span>
+                </td>
+                
+                <td>
+                    <div $for="test of categories">
+                        <div $if="$n.categoryId == $test.id">
+                                <span>{{$test.name}}</span>
+                        </div>
+                    </div>
+                </td>
+
+                <td>
+                    <div $if="$MyNewsPage[$i].isActive == 1">
+                        <span>مفعل</span>
+                    </div>
+                    <div $if="$MyNewsPage[$i].isActive == 0">
+                        <span>غير مفعل</span>
+                    </div>
+                </td>
+
+                <td>
+                    <i class="fas fa-trash-alt delete_user" onclick="show(this,'delete', '$n.id')"></i>
+                    <i class="far fa-edit icon color-blue" onclick = "updateNews('$news.id',0) "></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="newsapprove-flex-box">
+    <div class="newsapprove-approve-button">
+        نشر الخبر
     </div>
-</body>
-
-</html>
+</div>
+<div class="modal-delete" id="delete">
+    <div class="modal-wrapper">
+        <div class="contain">
+            <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
+            <div class="modal-button">
+                <button class="modal-button button1" onclick="deleteRowElement(MyNewsPage); hide('delete');">نعم</button>
+                <button class="modal-button button2" onclick="hide('delete')">لا</button>
+            </div>
+        </div>
+    </div>
+</div>

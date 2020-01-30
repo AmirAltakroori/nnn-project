@@ -1,0 +1,149 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+.content {
+  width: 100%;
+  position: relative;
+  height: 100%;
+  z-index: 2;
+}
+
+.content::after {
+  position: absolute;
+  content: " ";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #3a2275;
+  background-size: 100% 100%;
+  z-index: 1;
+}
+
+.logo {
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  -webkit-transform: translateY(-50%) translateX(-50%);
+          transform: translateY(-50%) translateX(-50%);
+}
+
+.logo img {
+  width: 180px;
+  height: 100px;
+  opacity: 1;
+}
+
+.form-box {
+  width: 450px;
+  height: 320px;
+  background-color: white;
+  border-radius: 5px;
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  -webkit-transform: translateY(-50%) translateX(-50%);
+          transform: translateY(-50%) translateX(-50%);
+  z-index: 2;
+}
+
+.log-form {
+  margin: 20px;
+  padding: 5px;
+  display: block;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.log-form label {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  margin: 2px;
+  margin-bottom: 5px;
+  color: black;
+}
+
+.log-form input {
+  width: 400px;
+  height: 45px;
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+.username {
+  margin-bottom: 15px;
+}
+
+.password {
+  margin-bottom: 15px;
+}
+
+.btn input {
+  background-color: #ff4546;
+  border: 1px solid #ff4546;
+  color: white;
+  font-size: 20px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.btn:hover input {
+  background-color: #ff1213;
+  border: 1px solid #ff1213;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.popup {
+  color: #ffffff;
+  width: 30%;
+  height: 5%;
+  position: relative;
+  left: 35%;
+  z-index: 20;
+  bottom: 18%;
+  min-height: 50px;
+  min-width: 100px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+  display: none;
+  line-height: 50px;
+  background-color: #ff0000;
+  -webkit-box-shadow: -3px 2px 6px 4px #d85656;
+          box-shadow: -3px 2px 6px 4px #d85656;
+  -webkit-animation: popup-animation 0.5s linear;
+          animation: popup-animation 0.5s linear;
+}
+
+@-webkit-keyframes popup-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+@keyframes popup-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+/*# sourceMappingURL=login.css.map */
