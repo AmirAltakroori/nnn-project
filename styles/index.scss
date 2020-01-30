@@ -15,7 +15,7 @@
 
 @include initialFormat();
 
-@media screen and (max-height: 1080px) {
+@media screen and (min-height: 811px) {
     .logo-img{
 
         height: 110px;
@@ -250,6 +250,7 @@ body{
 .view-root {
     position: relative;
     height: 100%;
+    width: 100%;
     overflow: auto;
     margin-top: 7.5%;
     margin-bottom: 6%;
