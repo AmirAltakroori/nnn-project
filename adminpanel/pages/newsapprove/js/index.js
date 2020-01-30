@@ -94,38 +94,38 @@ export class approveNewsControler {
     appproveNews() {
          
         let news;
+        let data;
         for (let i = 0; i < myNewsPage.length; i++)  {
             let checkbox= document.getElementById(myNewsPage[i].id);
             if(checkbox.checked) {
                 news = myNewsPage[i]; 
+                console.log(news)
+                data = {
+            
+                    "title": news.title,
+                    "content": news.content,
+                    "categoryId": news.categoryId,
+                    "seoTitle": news.seoTitle,
+                    "seoTags": news.seoTags,
+                    "seoDescription": news.seoDescription,
+                    "isActive": news.isActive,
+                    "isMainNews": news.isMainNews,
+                    "isUrgentNews": news.isUrgentNews,
+                    "createDate": news.createDate,
+                    "writerId": news.writerId,
+                    "_attachments": news._attachments,
+                    "id": news.id, 
+                    "approved": 1,
+                }
+                    
+                new Promise((resolve, reject) => {
+                        dbCreateOrUpdate("/news/_design/views/_view/notapprovedews", data, news.id).then(response => {
+                                resolve(response);
+                            });
+                        })
+                        
             }
-        }
-        let data = {
-            
-            "title": news.title,
-            "content": news.content,
-            "categoryId": news.categoryId,
-            "seoTitle": news.seoTitle,
-            "seoTags": news.seoTags,
-            "seoDescription": news.seoDescription,
-            "isActive": news.isActive,
-            "isMainNews": news.isMainNews,
-            "isUrgentNews": news.isUrgentNews,
-            "createDate": news.createDate,
-            "writerId": news.writerId,
-            "_attachments": news._attachments,
-            "id": news.id, 
-            "approved": 1,
-        }
-                
-        return new Promise((resolve, reject) => {
-                dbCreateOrUpdate("/news/_design/views/_view/notapprovedews", data, news.id).then(response => {
-                        resolve(response);
-                    });
-                })
-
-                
-            
+        }       
         
     }
 
