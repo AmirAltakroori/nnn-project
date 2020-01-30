@@ -25,8 +25,6 @@ export class Details {
         this.createDate = Date();
         this._attachments = ""; // follwing couchDB structure.
 
-        // console.log(mvc);
-
         this.relatedNews = [{
             id: 1,
             title: " 111لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
