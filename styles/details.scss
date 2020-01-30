@@ -31,6 +31,7 @@ part1 contain the header of the new and the related news
             }
 
             .main_img {
+                width: 1082px;
                 height: 570px;
             }
         }
@@ -51,6 +52,7 @@ part1 contain the header of the new and the related news
                 font-size: $font-size + 6.25;
             }
             .main_img {
+                width: 812px;
                 height: 432px;
             }
         }
@@ -71,6 +73,7 @@ part1 contain the header of the new and the related news
                 font-size: $font-size + 4.88888;
             }
             .main_img {
+                width: 770px;
                 height: 400px;
             }
         }
@@ -138,7 +141,6 @@ part1 contain the header of the new and the related news
             position: relative;
             margin-right: 10%;
             margin-bottom: 30px;
-            width: 100%;
         }
     }
 }
