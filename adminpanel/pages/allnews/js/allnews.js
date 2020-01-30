@@ -1,4 +1,4 @@
-
+let allNewsPage = null;
 document.addEventListener("DOMContentLoaded", (event) => {
     let userdata = getData("userData");
     if (userdata != null) {
@@ -130,8 +130,14 @@ function displaynews(news) {
         table.appendChild(row);
     }
 }
+function getAllNews(){
+    dbGet("/news/_design/views/_view/approved",true,"").then(data=>{
+        allNewsPage = data;
+        displaynews(allNewsPage);
+    });
 
+}
 document.addEventListener("DOMContentLoaded", (event) => {
-
-    displaynews(allNewsPage);
+    confirm();
+    getAllNews();
 });
