@@ -74,27 +74,6 @@ let myNewsPage = [{
     },
 
 ];
-let categories = [{
-        id: 1,
-        name: "الألعاب",
-        isActive: 1,
-    },
-    {
-        id: 3,
-        name: "الرئيسية",
-        isActive: 1,
-    },
-    {
-        id: 2,
-        name: "الرياضة",
-        isActive: 0, //غير مفعل
-    },
-    {
-        id: 4,
-        name: "الفن",
-        isActive: 0,
-    }
-]
 let allNewsPage = [{
         title: "النصيرات أكثر المناطق هطولاً",
         content: "<h1>This is my first news</h1>",

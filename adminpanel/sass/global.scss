@@ -1,372 +1,410 @@
 // add your style in this file  if it can be used in multiple pages
 // If your style is specific for a page you have to  create a sass file for the page and add them in it.
 // If your style is specific please use this way when naming : pagename-classname
-$header_color: #36344D;
-$sub-header:white;
+$header_color: #36344d;
+$sub-header: white;
 $path_color: #cec9c9;
-$title-color:#333333;
+$title-color: #333333;
 $font: "Segoe UI";
 $light_light_gray: #f9f9f9;
 $success-color: #27ae60;
 $cancel-color: rgb(163, 159, 159);
 $modal-font-color: rgba(0, 0, 0, 0.7);
 * {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    box-sizing: border-box;
-    direction: rtl;
-    font-family: $font;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  direction: rtl;
+  font-family: $font;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 html,
 body {
-    height: 100%;
-    margin: 0;
-    background: #eee;
+  height: 100%;
+  margin: 0;
+  background: #eee;
 }
 
 .main-header {
-    padding: 10px;
-    height: 33px;
-    background-color: $header_color;
-    box-shadow: 0px 1px 10px 1px rgba(69, 65, 78, 0.5);
-    position: relative;
+  padding: 10px;
+  height: 33px;
+  background-color: $header_color;
+  box-shadow: 0px 1px 10px 1px rgba(69, 65, 78, 0.5);
+  position: relative;
 }
 
 .header-logo {
-    img {
-        height: 60px;
-        cursor: pointer;
-    }
+  img {
+    height: 60px;
+    cursor: pointer;
+  }
 }
 
 .main-header .nav-left {
-    float: left;
+  float: left;
 }
 
 .main-header .nav-right {
-    float: right;
+  float: right;
 }
 
 .sub-header {
-    background-color: $sub-header;
-    width: 100%;
-    height: 30px;
+  background-color: $sub-header;
+  width: 100%;
+  height: 30px;
 }
 
 .row {
-    width: 100%;
-    display: block;
+  width: 100%;
+  display: block;
 }
 
 .header-subheader {
-    background: $sub-header;
-    font-size: 16px;
-    min-height: 25px;
-    >div {
-        padding: 5px;
-        padding-right: 10px;
-        cursor: pointer;
-    }
-    font-weight: 400;
-    color: black;
+  background: $sub-header;
+  font-size: 16px;
+  min-height: 25px;
+  > div {
+    padding: 5px;
+    padding-right: 10px;
+    cursor: pointer;
+  }
+  font-weight: 400;
+  color: black;
 }
 
 .header-flex-container {
-    display: flex;
-    height: 70px;
-    &.space-between {
-        justify-content: space-between;
-    }
-    &.item-center {
-        align-items: center;
-    }
+  display: flex;
+  height: 70px;
+  &.space-between {
+    justify-content: space-between;
+  }
+  &.item-center {
+    align-items: center;
+  }
 }
 
 .header-inline-block {
-    display: inline-block;
+  display: inline-block;
 }
 
 .header-left-section {
-    >div {
-        padding-right: 5px;
-        min-width: 25px;
-        min-height: 25px;
-        cursor: pointer;
-    }
-    font-size: 18px;
-    color: #b5b1dd;
+  > div {
+    padding-right: 5px;
+    min-width: 25px;
+    min-height: 25px;
+    cursor: pointer;
+  }
+  font-size: 18px;
+  color: #b5b1dd;
 }
 
-.header-left-section>div:hover {
-    color: white;
+.header-left-section > div:hover {
+  color: white;
+}
+
+.logout-model {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  font-size: 20px;
+  padding-top: 60px;
+}
+.logout-wrapper {
+    min-width: 146px;
+    min-height: 44px;
+  color: white;
+  background-color: #36344d;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  transition: all 1s;
+  animation: fade-in 0.2s ease-in forwards;
 }
 
 .container {
-    padding: 0px;
-    margin: 0px;
-    .content_header {
-        border-bottom: 1px solid $title-color;
-        width: 100%;
-        height: 100px;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .title {
-            padding: 20px;
-            .title_text {
-                font-family: $font;
-                font-size: 50px;
-                color: $title-color;
-            }
-        }
-    }
-    .search_area {
-        display: flex;
-        padding-top: 10px;
-        padding-right: 10px;
-        padding-left: 10px;
-        .search {
-            border: 1px solid $title-color;
-            height: 32px;
-            padding: 0px;
-            .search_field {
-                direction: rtl;
-                font-family: $font;
-                color: black;
-                margin-right: 19px;
-                float: right;
-                font-size: 20px;
-                border: 0px;
-            }
-             ::placeholder {
-                color: black;
-            }
-            input:focus {
-                outline: none;
-            }
-            .search_icon {
-                cursor: pointer;
-                width: 30px;
-                height: 30px;
-            }
-        }
-        .search_word {
-            font-family: $font;
-            color: $title-color;
-            font-size: 20px;
-            margin-left: 40px;
-        }
-    }
-    .content {
-        border-left: 1px solid $light_light_gray;
-        height: 100%;
-        width: 80%;
-        border-collapse: collapse;
-        font-family: $font;
-        direction: rtl;
-        text-align: right;
-        margin-top: 40px;
-        margin-right: 10%;
-        cursor: pointer;
-        .first_row {
-            border-bottom: 1px solid $title-color;
-            font-size: 20px;
-            width: 100%;
-            font-weight: 400;
-            padding: 8px;
-            background: #27ae60;
-            color: white;
-        }
-        th,
-        td {
-            border-bottom: 1px solid $title-color;
-            text-align: center;
-        }
-        thead tr {
-            text-align: center;
-        }
-        tbody tr:nth-of-type(odd) {
-            background: #eee;
-        }
-        tbody tr:hover {
-            background: lighten(#27ae60, 10%);
-            color: white;
-        }
-        .user_info {
-            width: 100%;
-            font-family: $font;
-            height: 50px;
-            .user_no {
-                font-size: 18px;
-            }
-            .user_full {
-                .user_name {
-                    font-size: 18px;
-                }
-            }
-            .selection {
-                font-size: 18px;
-                border: none;
-                font-family: $font;
-            }
-            .delete_user {
-                font-size: 20px;
-                color: red;
-                margin-left: 5px;
-                text-align: center;
-                cursor: pointer;
-            }
-        }
-    }
-}
-
-.icon {
-    font-size: 18px;
-}
-
-.color-blue {
-    color: #079;
-}
-
-.color-orange {
-    color: rgb(182, 63, 166);
-}
-
-.checkbox-size {
-    input {
-        width: 20px;
-        height: 20px;
-    }
-}
-
-.flex-container-center-all-column {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.modal-delete {
-    position: fixed;
+  padding: 0px;
+  margin: 0px;
+  .content_header {
+    border-bottom: 1px solid $title-color;
     width: 100%;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background-color: $modal-font-color;
-    display: none;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    font-size: 40px;
-    opacity: 0;
-}
-
-.modal-active {
-    display: flex;
-    opacity: 1;
-    transition: all 1s;
-    animation: fade-in 0.2s ease-in forwards;
-}
-
-.modal-wrapper {
-    min-width: 700px;
-    min-height: 350px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-}
-
-.modal-button {
-    font-size: 30px;
-    outline: none;
-    cursor: pointer;
-    border: none;
-    min-width: 200px;
-    min-height: 50px;
-    color: white;
-    &.button1 {
-        background-color: $success-color;
-    }
-    &.button2 {
-        background-color: $cancel-color;
-    }
-    &.button1:hover {
-        background-color: darken($success-color, 10%);
-    }
-    &.button2:hover {
-        background-color: darken($cancel-color, 10%);
-    }
-}
-
-.modal-delete_user:active.delete {
-    opacity: 1;
-    transition: 0.5s;
-    display: flex;
-}
-
-@keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 100%;
-    }
-}
-
-.required {
-    color: red;
-    margin: 0px 2px;
-    display: inline-block;
-}
-
-.flex-container-center-space-between-column {
+    height: 100px;
+    padding: 0;
+    margin: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-direction: column;
+    .title {
+      padding: 20px;
+      .title_text {
+        font-family: $font;
+        font-size: 50px;
+        color: $title-color;
+      }
+    }
+  }
+  .search_area {
+    display: flex;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    .search {
+      border: 1px solid $title-color;
+      height: 32px;
+      padding: 0px;
+      .search_field {
+        direction: rtl;
+        font-family: $font;
+        color: black;
+        margin-right: 19px;
+        float: right;
+        font-size: 20px;
+        border: 0px;
+      }
+      ::placeholder {
+        color: black;
+      }
+      input:focus {
+        outline: none;
+      }
+      .search_icon {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+      }
+    }
+    .search_word {
+      font-family: $font;
+      color: $title-color;
+      font-size: 20px;
+      margin-left: 40px;
+    }
+  }
+  .content {
+    border-left: 1px solid $light_light_gray;
+    height: 100%;
+    width: 80%;
+    border-collapse: collapse;
+    font-family: $font;
+    direction: rtl;
+    text-align: right;
+    margin-top: 40px;
+    margin-right: 10%;
+    cursor: pointer;
+    .first_row {
+      border-bottom: 1px solid $title-color;
+      font-size: 20px;
+      width: 100%;
+      font-weight: 400;
+      padding: 8px;
+      background: #27ae60;
+      color: white;
+    }
+    th,
+    td {
+      border-bottom: 1px solid $title-color;
+      text-align: center;
+    }
+    thead tr {
+      text-align: center;
+    }
+    tbody tr:nth-of-type(odd) {
+      background: #eee;
+    }
+    tbody tr:hover {
+      background: lighten(#27ae60, 10%);
+      color: white;
+    }
+    .user_info {
+      width: 100%;
+      font-family: $font;
+      height: 50px;
+      .user_no {
+        font-size: 18px;
+      }
+      .user_full {
+        .user_name {
+          font-size: 18px;
+        }
+      }
+      .selection {
+        font-size: 18px;
+        border: none;
+        font-family: $font;
+      }
+      .delete_user {
+        font-size: 20px;
+        color: red;
+        margin-left: 5px;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.icon {
+  font-size: 18px;
+}
+
+.color-blue {
+  color: #079;
+}
+
+.color-orange {
+  color: rgb(182, 63, 166);
+}
+
+.checkbox-size {
+  input {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.flex-container-center-all-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modal-delete {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: $modal-font-color;
+  display: none;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-size: 40px;
+  opacity: 0;
+}
+
+.modal-active {
+  display: flex;
+  opacity: 1;
+  transition: all 1s;
+  animation: fade-in 0.2s ease-in forwards;
+}
+
+.modal-wrapper {
+  min-width: 700px;
+  min-height: 350px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.modal-button {
+  font-size: 30px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  min-width: 200px;
+  min-height: 50px;
+  color: white;
+  &.button1 {
+    background-color: $success-color;
+  }
+  &.button2 {
+    background-color: $cancel-color;
+  }
+  &.button1:hover {
+    background-color: darken($success-color, 10%);
+  }
+  &.button2:hover {
+    background-color: darken($cancel-color, 10%);
+  }
+}
+
+.modal-delete_user:active.delete {
+  opacity: 1;
+  transition: 0.5s;
+  display: flex;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+.required {
+  color: red;
+  margin: 0px 2px;
+  display: inline-block;
+}
+
+.flex-container-center-space-between-column {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
 
 .mb-5 {
-    margin-bottom: 5%;
+  margin-bottom: 5%;
 }
 
 .popup {
-    color: #ffffff;
-    width: 30%;
-    height: 5%;
-    position: absolute;
-    left: 35%;
-    z-index: 20;
-    bottom: 18%;
-    min-height: 50px;
-    min-width: 100px;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 10px;
-    display: none;
-    line-height: 50px;
-    &.warning {
-        background-color: #ebb318;
-    }
-    &.success {
-        background-color: #097;
-    }
-    animation: popup-animation 0.5s linear;
+  color: #ffffff;
+  width: 30%;
+  height: 5%;
+  position: absolute;
+  left: 35%;
+  z-index: 20;
+  bottom: 18%;
+  min-height: 50px;
+  min-width: 100px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+  display: none;
+  line-height: 50px;
+  &.warning {
+    background-color: #ebb318;
+  }
+  &.success {
+    background-color: #097;
+  }
+  animation: popup-animation 0.5s linear;
 }
 
 @keyframes popup-animation {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 100%;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+.delete-from-db {
+  color: #ffffff;
+  width: 60%;
+  height: 5%;
+  position: fixed;
+  right: 21%;
+  bottom: 0;
+  min-height: 50px;
+  min-width: 100px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+  display: none;
+  line-height: 50px;
+  background-color: #27ae60;
+  box-shadow: -3px 2px 6px 4px #27ae60;
+  animation: popup-animation 0.5s linear;
 }
