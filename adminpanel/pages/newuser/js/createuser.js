@@ -55,8 +55,15 @@ function getId() {
 
 function CreateUserDB(data) {
 
-    return new Promise((resolve, reject) => {
-            dbCreateOrUpdate("/users", data, data.username).then()
+        return new Promise((resolve, reject) => {
+            getId().then(request => {
+                dbCreateOrUpdate("/users", data, data.username).then(response => {
+                    request.counter = request.counter + 1;
+                    dbCreateOrUpdate("/settings", request, request._id).then(response2 => {
+                        resolve(response2);
+                    });
+                })
+            })
         })
 }
 export { createUser }
