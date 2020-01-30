@@ -4,10 +4,9 @@
         </div>
 </div>
 <div class="body-wrapper">
-        <div $if="$userRole != 1">
-                <h2><i class="fas fa-user-circle"></i> المستخدم</h2>
-                <div class="homepage-container">
-                        <div>
+        <h2><i class="fas fa-user-circle"></i> المستخدم</h2>
+        <div class="homepage-container">
+                <div><a href='#/adduser'>
                                 <button class="homepage-btn green" id='new_user'>
                                         <div>
                                                 <i class="fas fa-user-plus  home-shadow-icon"></i>
@@ -21,59 +20,58 @@
 
 
                                 </button>
-                        </div>
-                        <div>
-                                <button class="homepage-btn blue" id='all_users'>
-                                        <div>
-                                                <i class="fas fa-users  home-shadow-icon"></i>
-                                        </div>
-                                        <div>
-                                                <i class="fas fa-users icon homepage-aboveicon"></i>
-                                        </div>
-                                        <div>
-                                                <span class="homepage-aboveicon">جميع المستخدمين</span>
-                                        </div>
+                </div></a>
+                <div>
+                        <button class="homepage-btn blue" id='all_users'>
+                                <div>
+                                        <i class="fas fa-users  home-shadow-icon"></i>
+                                </div>
+                                <div>
+                                        <i class="fas fa-users icon homepage-aboveicon"></i>
+                                </div>
+                                <div>
+                                        <span class="homepage-aboveicon">جميع المستخدمين</span>
+                                </div>
 
 
-                                </button>
-                        </div>
-
-
+                        </button>
                 </div>
+
+
         </div>
-        <div>
-                <h2>
-                        <i class="far fa-newspaper"></i> الاخبار
-                </h2>
-                <div class="homepage-container">
-                        <div $if="$userRole != 1">
-                                <button class="homepage-btn pink" id='all_news'>
-                                        <div>
-                                                <i class="fas fa-newspaper  home-shadow-icon"></i>
-                                        </div>
-                                        <div>
-                                                <i class="fa fa-newspaper icon homepage-aboveicon"></i>
-                                        </div>
-                                        <div>
-                                                <span class="homepage-aboveicon"> كافة الاخبار</span>
-                                        </div>
-                                </button>
-                        </div>
-                        <div $if="$userRole != 1">
-                                <button class="homepage-btn light-blue" id='categories'>
-                                        <div>
-                                                <i class="fas fa-qrcode  home-shadow-icon"></i>
-                                        </div>
-                                        <div>
-                                                <i class="fa fa-qrcode icon homepage-aboveicon"></i>
-                                        </div>
-                                        <div>
-                                                <span class="homepage-aboveicon"> الفئات</span>
-                                        </div>
-                                </button>
-                        </div>
-                        <div>
-                                <a href='#/addnews' '><button class="homepage-btn light-green" id=' add_new '>
+
+        <h2>
+                <i class="far fa-newspaper"></i> الاخبار
+        </h2>
+        <div class="homepage-container">
+                <div>
+                        <button class="homepage-btn pink" id='all_news'>
+                                <div>
+                                        <i class="fas fa-newspaper  home-shadow-icon"></i>
+                                </div>
+                                <div>
+                                        <i class="fa fa-newspaper icon homepage-aboveicon"></i>
+                                </div>
+                                <div>
+                                        <span class="homepage-aboveicon"> كافة الاخبار</span>
+                                </div>
+                        </button>
+                </div>
+                <div><a href='#/categories'>
+                        <button class="homepage-btn light-blue" id='categories'>
+                                <div>
+                                        <i class="fas fa-qrcode  home-shadow-icon"></i>
+                                </div>
+                                <div>
+                                        <i class="fa fa-qrcode icon homepage-aboveicon"></i>
+                                </div>
+                                <div>
+                                        <span class="homepage-aboveicon"> الفئات</span>
+                                </div>
+                        </button>
+                </div></a>
+                <div>
+                        <a href='#/addnews'><button class="homepage-btn light-green" id='add_new'>
                                 <div>
                                         <i class="fas fa-book-reader  home-shadow-icon"></i>
                                 </div>
