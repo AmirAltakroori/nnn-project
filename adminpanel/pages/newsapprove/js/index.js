@@ -118,11 +118,10 @@ export class approveNewsControler {
                     "approved": 1,
                 }
                     
-                new Promise((resolve, reject) => {
-                        dbCreateOrUpdate("/news/_design/views/_view/notapprovedews", data, news.id).then(response => {
-                                resolve(response);
-                            });
-                        })
+                this.db = dynamicImport("./js/backend.js").then(db => db.dbCreateOrUpdate("/news/_design/views/_view/notapprovedews", data, news.id).then(response => {
+                    resolve(response);
+                    mvc.apply();
+                }));
                         
             }
         }       
@@ -131,3 +130,4 @@ export class approveNewsControler {
 
    
 }
+
