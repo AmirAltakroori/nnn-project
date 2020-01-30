@@ -12,7 +12,8 @@ class routeObj {
     }
 }
 
-class Mvc {
+class Mvc 
+{
     constructor() {
         this._routeMap = [];
         this.controller = {};
@@ -67,4 +68,5 @@ class Mvc {
         this.controller = {};
         this.template = {};
     }
+    
 }
