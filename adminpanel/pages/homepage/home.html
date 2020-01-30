@@ -108,25 +108,25 @@
                         </div>
                         <div>
                                 <a href="#/mynews"><button class="homepage-btn purple" id="my_news">
-                                        <div>
-                                                <i class="fa fa-address-card  home-shadow-icon"></i>
-                                        </div>
-                                        <div>
-                                                <i class="fa fa-address-card icon homepage-aboveicon"></i>
-                                        </div>
-                                        <div>
-                                                <span class="homepage-aboveicon"> أخباري</span>
-                                        </div>
-                                </button>
-                        </a>
+                                                <div>
+                                                        <i class="fa fa-address-card  home-shadow-icon"></i>
+                                                </div>
+                                                <div>
+                                                        <i class="fa fa-address-card icon homepage-aboveicon"></i>
+                                                </div>
+                                                <div>
+                                                        <span class="homepage-aboveicon"> أخباري</span>
+                                                </div>
+                                        </button>
+                                </a>
                         </div>
                 </div>
         </div>
         <div $if="$userRole == 3">
                 <h2><i class="fas fa-globe"></i> الموقع</h2>
                 <div class="homepage-container">
-                        <div>
-                                <button class="homepage-btn red">
+                        <div $if="$mode != null">
+                                <button class="homepage-btn" $class="'light-green': $mode == 1, 'red': $mode == 0">
                                         <div>
                                                 <i class="fa fa-power-off  home-shadow-icon"> </i>
                                         </div>
@@ -135,6 +135,12 @@
                                         </div>
                                         <div>
                                                 <span class="homepage-aboveicon">حالة الموقع </span>
+                                                <div $if="$mode ==  1">
+                                                        <span>مفعل</span>
+                                                </div>
+                                                <div $if="$mode == 0">
+                                                        <span>غير مفعل</span>
+                                                </div>
                                         </div>
                                 </button>
                         </div>
