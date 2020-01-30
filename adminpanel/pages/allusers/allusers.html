@@ -52,12 +52,18 @@
         </div>
                 </td>
                 <td>
-                    <div $if = "$user.isActive==1">
-                    <select class="selection" >
-                        <option value="0" >فعال</option>
-                        <option value="1">غير فعال</option>
-                    </select>
-                </div>
+                    <div $if="$user.isActive==1">
+                        <select class="selection">
+                            <option value="0" selected>فعال</option>
+                            <option value="1">غير فعال</option>
+                        </select>
+                    </div>
+                    <div $if="$user.isActive==0">
+                        <select class="selection">
+                            <option value="0" >فعال</option>
+                            <option value="1" selected>غير فعال</option>
+                        </select>
+                    </div>
                 </td>
               <td>
                 <i class="fas fa-trash-alt delete_user" onclick="show(this,'delete', '$user.id')"></i>
