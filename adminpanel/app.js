@@ -1,5 +1,3 @@
-import { Mvc } from './js/jsMvc.min.js';
-
 let mvc = new Mvc();
 
 let routeList = [{
