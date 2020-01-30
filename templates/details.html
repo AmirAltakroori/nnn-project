@@ -10,10 +10,10 @@
 -->
 
 <div>
-    <div class="details_page_wrapper">
+    <div class="details-page-wrapper">
         <!-- Contains news title and photo & Show other related news -->
         <div class="news-content">
-            <section class="news_header" id="news">
+            <section class="news-header" id="news">
                 <span $for="relatedNew of relatedNews">
 
                     <h1 $if="$relatedNew.id == $routeParams.newID">
@@ -21,7 +21,7 @@
                     </h1>
 
                     <div $if="$relatedNew.id == $routeParams.newID">
-                        <div class="main_img" style=" background-image: url(../img/{{$relatedNew.img}});">
+                        <div class="main-img" style=" background-image: url(../img/{{$relatedNew.img}});">
                             .
                         </div>
                     </div>
@@ -29,9 +29,9 @@
                  </span>
             </section>
 
-            <aside class="news_related">
+            <aside class="news-related">
 
-                <ul class="related_news_menu">
+                <ul class="related-news-menu">
 
                     <div class="related-header">
                         <h4>ذات صلة </h4>
@@ -64,7 +64,7 @@
                 </span>
             </article>
 
-            <section class="news_sharing">
+            <section class="news-sharing">
 
                 <div id="share-button" class="share-buttons">
 
@@ -120,7 +120,7 @@
     <!-- </span> -->
     <!-- Contains comments section -->
     <div class="comments">
-        <div class="add_comment">
+        <div class="add-comment">
             <div class="comment">
 
                 <img src="img/avatar.png" alt="">
@@ -131,7 +131,7 @@
                 <button type="button" name="button">اضف تعليق</button>
             </div>
         </div>
-        <div class="list_comment">
+        <div class="list-comment">
             <ul>
                 <li>
                     <img src="img/avatar.png" alt="صورة">
