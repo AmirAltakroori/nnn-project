@@ -197,6 +197,11 @@ function renderChange(exp, element) {
 	}
 }
 
+function renderInclude(exp,element)
+{
+	
+}
+
 //*********************************************************************//
 //*********************************************************************//
 //*********************************************************************//
@@ -210,7 +215,8 @@ const specails = [
 	new AttrData("\\$class", renderClass),
 	new AttrData("\\$click", renderClick),
 	new AttrData("\\$model", renderModel),
-	new AttrData("\\$change", renderChange)
+	new AttrData("\\$change", renderChange),
+	new AttrData("\\$include", renderInclude)
 ];
 
 // Pulls special tags from a given html
