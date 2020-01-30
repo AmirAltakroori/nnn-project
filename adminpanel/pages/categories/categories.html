@@ -63,7 +63,7 @@
                         style="font-size:20px; color:red; text-align:center; cursor:pointer"
                         onclick="show(this,'delete','$category.id')"></i>
                     <i class="far fa-edit icon color-blue"
-                        $click="showEditModal('createcategory-edit-modal',$(this), '{{$categories[$i].id}}')"></i>
+                        $click="showEditModal('createcategory-edit-modal',this, '{{$categories[$i].id}}')"></i>
                 </td>
             </tr>
         </tbody>
