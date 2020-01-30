@@ -9,134 +9,118 @@
                      based on the design included in the Prototype
 -->
 
-<!--<link rel="stylesheet" type="text/css" href="css/details.css" />-->
+<div>
+    <div class="details-page-wrapper">
+        <!-- Contains news title and photo & Show other related news -->
+        <div class="news-content">
+            <section class="news-header" id="news">
+                <span $for="relatedNew of relatedNews">
+
+                    <h1 $if="$relatedNew.id == $routeParams.newID">
+                        {{$relatedNew.title}}
+                    </h1>
+
+                    <div $if="$relatedNew.id == $routeParams.newID">
+                        <div class="main-img" style=" background-image: url(../img/{{$relatedNew.img}});">
+                            .
+                        </div>
+                    </div>
+
+                 </span>
+            </section>
+
+            <aside class="news-related">
+
+                <ul class="related-news-menu">
+
+                    <div class="related-header">
+                        <h4>ذات صلة </h4>
+                    </div>
+
+                    <!-- <li> -->
+                    <div $for="relatedNew of relatedNews">
+                        <li class="list-n">
+                            <a href="#/details/{{$relatedNew.id}}">
+
+                                <img src="../img/{{$relatedNew.img}}" alt="صورة"> {{$relatedNew.title}}
+
+                            </a>
+                        </li>
+                    </div>
+                    <!-- </li> -->
 
 
-<!--
+                </ul>
+            </aside>
+        </div>
+        <!-- Contains the full text of the news & news sharing -->
+        <div class="news-body">
+            <article class="article" id="article">
+                <span $for="relatedNew of relatedNews">
 
-    header & nav
-
-   -->
-
-
-
-
-<div class="details_page_wrapper">
-    <!-- Contains news title and photo & Show other related news -->
-    <div class="news-content">
-        <section class="news_header" id-="news">
-            <h1>
-                هونغ كونغ.. انتخابات على وقع التوتر
-            </h1>
-            <div class="main_img">
-                .
-            </div>
-        </section>
-        <aside class="news_related">
-
-
-            <ul class="related_news_menu">
-                <li>
-                    <h4>ذات صلة </h4>
-                </li>
-                <li>
-                    <img src="img/new.jpg" alt="صورة">
-                    <p>
-                        لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
+                    <p $if="$relatedNew.id == $routeParams.newID">
+                        {{$relatedNew.content}}
                     </p>
-                </li>
-                <li>
-                    <img src="img/new.jpg" alt="صورة">
-                    <p>
-                        لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
-                    </p>
-                </li>
-                <li>
-                    <img src="img/new.jpg" alt="صورة">
-                    <p>
-                        لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
-                    </p>
-                </li>
-                <li>
-                    <img src="img/new.jpg" alt="صورة">
-                    <p>
-                        لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
-                    </p>
-                </li>
-                <li>
-                    <img src="img/new.jpg" alt="صورة">
-                    <p>
-                        لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات
-                    </p>
-                </li>
+                </span>
+            </article>
 
+            <section class="news-sharing">
 
-            </ul>
-        </aside>
-    </div>
-    <!-- Contains the full text of the news & news sharing -->
-    <div class="news-body">
-        <article class="article" id="article">
-            <p>
-                اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها<br> من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة<br>، وهو العطاء الذي مُنح لشركة مايكروسوفت اعلنت شركة أمازون الأميركية أنها
-                تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة<br>، وهو العطاء الذي مُنح لشركة مايكروسوفت اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب
-                استثنائها من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة<br>، وهو العطاء الذي مُنح لشركة مايكروسوفت اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة مليارات
-                دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة<br>، وهو العطاء الذي مُنح لشركة مايكروسوفت </p>
-        </article>
+                <div id="share-button" class="share-buttons">
 
-        <section class="news_sharing">
+                    <!-- Facebook -->
+                    <a>
+                        <img src="img/facebook.png" alt="Facebook" />
+                    </a>
 
-            <div id="share-button" class="share-buttons">
+                    <!-- LinkedIn -->
+                    <a>
+                        <img src="img/linkedin.png" alt="LinkedIn" />
+                    </a>
 
-                <!-- Facebook -->
-                <a>
-                    <img src="img/facebook.png" alt="Facebook" />
-                </a>
+                    <!-- instagram -->
+                    <a>
+                        <img src="img/instagram.png" alt="instagram" />
+                    </a>
 
-                <!-- LinkedIn -->
-                <a>
-                    <img src="img/linkedin.png" alt="LinkedIn" />
-                </a>
+                    <!-- share -->
+                    <a>
+                        <img src="img/share.png" alt="share" />
+                    </a>
 
-                <!-- instagram -->
-                <a>
-                    <img src="img/instagram.png" alt="instagram" />
-                </a>
+                </div>
 
-                <!-- share -->
-                <a>
-                    <img src="img/share.png" alt="share" />
-                </a>
+                <div class="about">
 
-            </div>
+                    <!-- schedule -->
+                    <a>
+                        <img src="img/schedule.png" alt="Facebook" />
+                    </a>
 
-            <div class="about">
+                    <!-- comment -->
+                    <a>
+                        <img src="img/comment.png" alt="LinkedIn" />
+                    </a>
 
-                <!-- schedule -->
-                <a>
-                    <img src="img/schedule.png" alt="Facebook" />
-                </a>
-
-                <!-- comment -->
-                <a>
-                    <img src="img/comment.png" alt="LinkedIn" />
-                </a>
-
-                <!-- writer -->
-                <a>
-                    <img src="img/writer.png" alt="instagram" />
-                </a>
+                    <!-- writer -->
+                    <a>
+                        <img src="img/writer.png" alt="instagram" />
+                    </a>
 
 
 
-            </div>
+                </div>
 
-        </section>
+            </section>
+
+        </div>
 
     </div>
+
+    <!-- </span> -->
     <!-- Contains comments section -->
     <div class="comments">
-        <div class="add_comment">
+        <div class="add-comment">
             <div class="comment">
 
                 <img src="img/avatar.png" alt="">
@@ -147,7 +131,7 @@
                 <button type="button" name="button">اضف تعليق</button>
             </div>
         </div>
-        <div class="list_comment">
+        <div class="list-comment">
             <ul>
                 <li>
                     <img src="img/avatar.png" alt="صورة">
@@ -166,12 +150,3 @@
     </div>
 
 </div>
-
-
-
-
-<!--
-
-     footer
-
-   -->
