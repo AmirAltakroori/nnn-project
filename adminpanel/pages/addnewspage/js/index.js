@@ -5,9 +5,15 @@ export class addnewsController {
     
     
     constructor() {
-       
+        
         this.newsId = mvc.routeParams.id;
+        this.title = document.getElementsByClassName('title')[0];
+        this.button = document.getElementsByClassName('button')[0];
+        this.sub_header = document.getElementsByClassName('header-subheader')[0];
         if(this.newsId) {
+            this.title.innerHTML = "تعديل خبر";
+            this.button.innerHTML = "تعديل الخبر";
+            this.sub_header.innerHTML = " الرئيسية > لوحة التحكم >الأخبار > تعديل خبر"
             this.fill(this.newsId);
 
         }
@@ -54,7 +60,7 @@ export class addnewsController {
         form.isMainNews.checked = newItem.isMainNews;
         form.isUrgentNews.checked = newItem.isUrgentNews;
         form.createDate.value = newItem.createDate;
-        //mvc.apply();
+        mvc.apply();
         console.log(newItem.title)
         console.log(form.title.value)
         
