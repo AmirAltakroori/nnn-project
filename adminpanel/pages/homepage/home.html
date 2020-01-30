@@ -1,28 +1,28 @@
 <div class="row header-subheader ">
-    <div>
-        الرئيسية > لوحة التحكم
-    </div>
+        <div>
+                الرئيسية > لوحة التحكم
+        </div>
 </div>
 <div class="body-wrapper">
-    <h2><i class="fas fa-user-circle"></i> المستخدم</h2>
-    <div class="homepage-container">
-        <div>
-            <button class="homepage-btn green" id='new_user'>
-                                <div>
-                                        <i class="fas fa-user-plus  home-shadow-icon"></i>
-                                </div>
-                                <div>
-                                        <i class="fa fa-user-plus icon homepage-aboveicon"></i>
-                                </div>
-                                <div>
-                                        <span class="homepage-aboveicon">انشاء مستخدم</span>
-                                </div>
+        <h2><i class="fas fa-user-circle"></i> المستخدم</h2>
+        <div class="homepage-container">
+                <div><a href='#/adduser'>
+                                <button class="homepage-btn green" id='new_user'>
+                                        <div>
+                                                <i class="fas fa-user-plus  home-shadow-icon"></i>
+                                        </div>
+                                        <div>
+                                                <i class="fa fa-user-plus icon homepage-aboveicon"></i>
+                                        </div>
+                                        <div>
+                                                <span class="homepage-aboveicon">انشاء مستخدم</span>
+                                        </div>
 
 
-                        </button>
-        </div>
-        <div>
-            <button class="homepage-btn blue" id='all_users'>
+                                </button>
+                </div></a>
+                <div>
+                        <button class="homepage-btn blue" id='all_users'>
                                 <div>
                                         <i class="fas fa-users  home-shadow-icon"></i>
                                 </div>
@@ -35,10 +35,10 @@
 
 
                         </button>
+                </div>
+
+
         </div>
-
-
-    </div>
 
     <h2>
         <i class="far fa-newspaper"></i> الاخبار
@@ -69,9 +69,9 @@
                                         <span class="homepage-aboveicon"> الفئات</span>
                                 </div>
                         </button>
-        </div>
-        <div>
-            <a href='#/addnews' '><button class="homepage-btn light-green" id='add_new '>
+                </div></a>
+                <div>
+                        <a href='#/addnews'><button class="homepage-btn light-green" id='add_new'>
                                 <div>
                                         <i class="fas fa-book-reader  home-shadow-icon"></i>
                                 </div>
@@ -110,20 +110,23 @@
                         </button>
         </div></a>
     </div>
-    <h2><i class="fas fa-globe"></i> الموقع</h2>
-    <div class="homepage-container">
-        <div>
-            <button class="homepage-btn red">
-                                <div>
-                                        <i class="fa fa-power-off  home-shadow-icon"> </i>
-                                </div>
-                                <div>
-                                        <i class="fa fa-power-off icon homepage-aboveicon"> </i>
-                                </div>
-                                <div>
-                                        <span class="homepage-aboveicon">حالة الموقع </span>
-                                </div>
+    </div>
+    <div $if="$userRole == 3">
+        <h2><i class="fas fa-globe"></i> الموقع</h2>
+        <div class="homepage-container">
+                <div>
+                        <button class="homepage-btn red">
+                                        <div>
+                                                <i class="fa fa-power-off  home-shadow-icon"> </i>
+                                        </div>
+                                        <div>
+                                                <i class="fa fa-power-off icon homepage-aboveicon"> </i>
+                                        </div>
+                                        <div>
+                                                <span class="homepage-aboveicon">حالة الموقع </span>
+                                        </div>
                         </button>
+                </div>
         </div>
     </div>
 </div>
