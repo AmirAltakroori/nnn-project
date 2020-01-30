@@ -1,20 +1,15 @@
 
-function createUser(){
+function createUser() {
     let form = document.getElementById('adduserid');
-    console.log("ighjghjgjgjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
     form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
         let ConfirmedPassword = document.getElementById("confirmpassword").value;
         let password = document.getElementById("pass").value;
-        console.log("ighjghjgjgggggggggggggggg")
         if (ConfirmedPassword == password) {
             addUser();
-            console.log("ighjghjgjg")
-            
         } else {
             showPopUp('warning');
         }
+        e.preventDefault();
         return false;
     });
 }
@@ -26,21 +21,19 @@ function addUser() {
         username: document.getElementById("Uname").value,
         email: document.getElementById("Email").value,
         password: document.getElementById("pass").value,
-        _id:document.getElementById("Uname").value,
-        role:1,
-        state:1,
-        token:"",
-
+        _id: document.getElementById("Uname").value,
+        role: 1,
+        state: 1,
+        token: "",
     };
     document.getElementById("submitbtn").disabled = true;
-    CreateUserDB(user).then( (data) => {
-        console.log(data);
-        if(data.ok == true){
-        showPopUp('success');
-        setTimeout(() => {
-            window.location.href = "#/allusers";
-        }, 2000);
-        }else {
+    CreateUserDB(user).then((data) => {
+        if (data.ok == true) {
+            showPopUp('success');
+            setTimeout(() => {
+                window.location.href = "#/allusers";
+            }, 2000);
+        } else {
             document.getElementById("submitbtn").disabled = false;
         }
     });
@@ -51,7 +44,7 @@ function showPopUp(id) {
     let popup = document.getElementById(id);
     popup.style.display = 'block';
     setTimeout(() => {
-        //  hidden th popup
+        //  hidde th popup
         popup.style.display = "none";
     }, 2000);
 }
@@ -63,17 +56,7 @@ function getId() {
 function CreateUserDB(data) {
 
     return new Promise((resolve, reject) => {
-        getId().then(request => {
-            const id = request.counter + 1;
-            request.userid = id;
-            dbCreateOrUpdate("/users", data, data.username).then(response => {
-                request.counter = request.counter + 1;
-                dbCreateOrUpdate("/settings", request,request._id).then(response2 => {
-                    resolve(response2);
-                    console.log("Added");
-                });
-            })
+            dbCreateOrUpdate("/users", data, data.username).then()
         })
-    })
 }
-export{ createUser }
+export { createUser }

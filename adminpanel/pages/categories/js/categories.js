@@ -90,16 +90,13 @@ let activeRow = null;
 function showEditModal(modalId, row, id) {
     let modal = document.getElementById(modalId); //for modal
     modal.style.display = "flex";
-
     activeId = id;
     activeRow = row.parentElement.parentElement;
-
 }
 
 function hideModal(modalId) {
     let modal = document.getElementById(modalId); //for modal
     modal.style.display = "none";
-
 }
 
 function updateCategoryName() {
@@ -108,8 +105,6 @@ function updateCategoryName() {
     var changeName = document.getElementsByClassName("user_name")[activeId - 1];
     changeName.innerHTML = newName;
     document.getElementById("editcategoryname").value = "";
-
-
 }
 /**************************************************************************************************
  * Read categories
@@ -123,25 +118,21 @@ function displayCategories(categories) {
         let number = document.createElement("td");
         number.className = "user_no";
         number.textContent = i + 1;
-
         let info = document.createElement("td");
         info.className = "user_full";
         let info_text = document.createElement("span");
         info_text.className = "user_name ";
         info_text.textContent = categories[i].name;
         info.appendChild(info_text);
-
         let show_selection = document.createElement("td");
         let select = document.createElement("select");
         select.className = "selection";
-
         let option1 = document.createElement("option");
         option1.value = 1;
         option1.textContent = "فعال";
         let option2 = document.createElement("option");
         option2.value = 0;
         option2.textContent = "غير فعال";
-
         select.appendChild(option1);
         select.appendChild(option2);
         select.selectedIndex = !categories[i].isActive;
@@ -156,11 +147,9 @@ function displayCategories(categories) {
         edit_icon.className = "far fa-edit icon color-blue";
         edit_icon.onclick = (e) => {
             showEditModal("createcategory-edit-modal", edit_icon, categories[i].id);
-
         }
         operations.appendChild(delete_icon);
         operations.appendChild(edit_icon);
-
         row.appendChild(number);
         row.appendChild(info);
         row.appendChild(show_selection);
@@ -170,12 +159,10 @@ function displayCategories(categories) {
     }
 }
 function getCatId() {
-
     return dbGet("/settings", false, "categories");
 }
 
 function CreateCat(data) {
-
     return new Promise((resolve, reject) => {
         getCatId().then(request => {
             const _id = request.counter + 1;
@@ -183,7 +170,6 @@ function CreateCat(data) {
                 request.counter = request.counter + 1;
                 dbCreateOrUpdate("/settings", request, request._id).then(response2 => {
                     resolve(response2);
-                    console.log("Added");
                 });
             })
         })
