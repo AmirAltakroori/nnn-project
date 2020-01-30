@@ -8,113 +8,63 @@
 
      File description:
 */
+export class Details {
+    constructor() {
+        // this.routeParams.newID;
+        this.newID = 0;
+        this.id = "";
+        this.title = "";
+        this.content = "";
+        this.categoryId = -1;
+        this.seoTitle = "";
+        this.seoTages = ""; // json string;
+        this.seoDescription = "";
+        this.isActive = false;
+        this.isMainNews = false;
+        this.isUrgentNews = false;
+        this.createDate = Date();
+        this._attachments = ""; // follwing couchDB structure.
 
+        this.relatedNews = [{
+            id: 1,
+            title: " 111لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
+            img: "new2.png",
+            content: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات الحوسبة السحابية   للوزارة ، وهو العطاء الذي مُنح لشركة مايكروسوفت111111",
+            path: "#"
+        }, {
+            id: 2,
+            title: "222 لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
+            img: "new.jpg",
+            content: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات   الحوسبة السحابية للوزارة، وهو العطاء الذي مُ نح لشركة مايكروسوفت222222 ",
+            path: "#"
 
-const relatedNewsList = document.getElementById('related-news');
-const newsContents = document.getElementById('news');
-const newArticle = document.getElementById('article');
-let relatedNews = [];
+        }, {
+            id: 3,
+            title: " 333لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
+            img: "firstNews.jpg",
+            content: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات  الحوسبة السحابية للوزارة، وهو العطاء الذي مُ نح لشركة مايكروسوفت33333 ",
+            path: "#"
+        }, {
+            id: 4,
+            title: " لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
+            img: "4.jpeg",
+            content: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة 44444الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات4444   الحوسبة السحابية للوزارة، وهو العطاء الذي مُ نح لشركة مايكروسوفت44444 444",
+            path: "#"
+        }, {
+            id: 5,
+            title: "55 لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
+            img: "new.jpg",
+            content: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات   الحوسبة السحابية  للوزارة، وهو العطاء الذي مُ نح لشركة مايكروسوفت 5555",
+            path: "#"
+        }, {
+            id: 6,
+            title: "66 لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
+            img: "3.jpeg",
+            content: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات   الحوسبة السحابية  للوزارة، وهو العطاء الذي مُ نح لشركة مايكروسوفت666 ",
+            path: "#"
+        }];
 
-showRelatedNews();
-
-/*
-    Get Related News.
-         
-    @tparam 
-     
-    @param 
-     
-    @returns 
-    
-    This function used to retrieve urgent news from database 
-*/
-function getRelatedNews() {
-
-    // I'll rewrite this function when DB was ready.
-    relatedNews = [{
-        title: " لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
-        img: "img/new.jpg",
-        newsContent: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات الحوسبة السحابية   للوزارة ، وهو العطاء الذي مُنح لشركة مايكروسوفت",
-        path: "#"
-    }, {
-        title: " لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
-        img: "img/new.jpg",
-        newsContent: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات   الحوسبة السحابية للوزارة، وهو العطاء الذي مُ نح لشركة مايكروسوفت ",
-        path: "#"
-
-    }, {
-        title: " لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
-        img: "img/new.jpg",
-        newsContent: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات  الحوسبة السحابية للوزارة، وهو العطاء الذي مُ نح لشركة مايكروسوفت ",
-        path: "#"
-    }, {
-        title: " لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
-        img: "img/new.jpg",
-        newsContent: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات   الحوسبة السحابية للوزارة، وهو العطاء الذي مُ نح لشركة مايكروسوفت ",
-        path: "#"
-    }, {
-        title: " لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
-        img: "img/new.jpg",
-        newsContent: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات   الحوسبة السحابية  للوزارة، وهو العطاء الذي مُ نح لشركة مايكروسوفت ",
-        path: "#"
-    }, {
-        title: " لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
-        img: "img/new.jpg",
-        newsContent: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات  الحوسبة السحابية   للوزارة ، وهو العطاء الذي مُنح لشركة مايكروسوفت",
-        path: "#"
-    }];
-
-}
-
-/*
-    Show Related News.
-     
-    @tparam 
-     
-    @param 
-     
-    @returns 
-    
-    This function used to show the Related news retrieved from database that have the same category of clicked new at related News list
-*/
-function showRelatedNews() {
-
-    getRelatedNews();
-
-    relatedNewsList.innerHTML = "";
-    for (let i = 0; i < relatedNews.length; i++) {
-
-        let currentRelatedNew = `<li><a href="${RelatedNews[i].path}"><img src="${relatedNews[i].img}" alt="image"><p>${RelatedNews[i].title}</p> </a></li>`;
-
-        relatedNewsList.innerHTML += currentRelatedNew;
 
     }
 
-}
-
-/*
-    Show New Article.
-     
-    @tparam 
-     
-    @param 
-     
-    @returns 
-    
-    This function used to show the Article news retrieved from database  when clicked on new
-*/
-function showNewsDetails() {
-    getRelatedNews();
-
-    newsContents.innerHTML = "";
-    newArticle.innerHTML = "";
-    for (let i = 0; i < relatedNews.length; i++) {
-
-        let currentContentNew = `<h1>${relatedNews[i].title}</h1><figure class="main_img"><img src="${RelatedNews[i].img}" alt="image"></figure> `;
-        newsContents.innerHTML += currentContentNew;
-
-    }
-
-    let currentNewsArticle = `<p>${relatedNews[i].newsContent}</p> `;
-    currentNewsArticle.innerHTML += currentNewsArticle;
 }

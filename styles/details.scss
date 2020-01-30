@@ -16,7 +16,7 @@
 part1 contain the header of the new and the related news
 */
 
-@media screen and (max-height: 1080px) {
+@media screen and (min-height: 811px) {
     .news-content {
         .news_related {
             ul li {
@@ -26,15 +26,15 @@ part1 contain the header of the new and the related news
             }
         }
         .news_header {
+            h1 {
+                font-size: $font-size + 15;
+            }
+
             .main_img {
-                img {
-                    // width: 1210px;
-                    height: 570px;
-                }
+                height: 570px;
             }
         }
     }
-    
 }
 
 @media screen and (max-height: 810px) {
@@ -47,11 +47,11 @@ part1 contain the header of the new and the related news
             }
         }
         .news_header {
+            h1 {
+                font-size: $font-size + 6.25;
+            }
             .main_img {
-                img {
-                    // width: 1200px;
-                    height: 570px;
-                }
+                height: 432px;
             }
         }
     }
@@ -66,6 +66,14 @@ part1 contain the header of the new and the related news
                 }
             }
         }
+        .news_header {
+            h1 {
+                font-size: $font-size + 4.88888;
+            }
+            .main_img {
+                height: 400px;
+            }
+        }
     }
 }
 
@@ -74,55 +82,72 @@ part1 contain the header of the new and the related news
 }
 
 .news-content {
+    margin-top: 4%;
     font-family: $newsText-fontFamily;
     border-top: solid 1px #707070;
-    padding-top: 0%;
     margin-bottom: 0%;
-    @include flex-property(row, flex-end, center, 100%);
+    @include flex-property(row, flex-end, null, 100%);
     .news_related {
-        @include flex-property(column, flex-start, flex-start, 28%);
+        @include flex-property(column, flex-start, flex-start, 33%);
         .related_news_menu {
-            width: 80%;
-        }
-        ul li {
-            @include flex-property(row, flex-start, flex-start, 100%);
+            width: 75%;
+            @include flex-property(column, flex-start, flex-start, 100%);
             list-style-type: none;
-            img {
-                margin-left: 3%;
-                margin-right: 0%;
-                padding: 3%;
+            .list-n {
+                margin-left: 20px;
+
+                a {
+                    @include flex-property(row, center, flex-start, 100%);
+                }
+                img {
+                    margin: 10px 10% 0% 2%;
+                }
+                a:link {
+                    text-decoration: none;
+                }
+                a:visited {
+                    text-decoration: none;
+                    color: rgb(64, 64, 179);
+                }
+                a:hover {
+                    text-decoration: underline;
+                }
             }
-        }
-        h4 {
-            margin-bottom: 20px;
-            color: #0C4D6D;
+            .related-header {
+                color: #0C4D6D;
+                margin-right: 8%;
+                margin-top: 2%;
+                padding-bottom: 2%;
+                width: 88%;
+                margin-bottom: 2%;
+                border-bottom: solid 1px #707070;
+            }
         }
     }
     .news_header {
+        margin-top: 2%;
         h1 {
-            font-size: $font-size + 15;
             margin-right: 10%;
             margin-bottom: 2%;
         }
-        @include flex-property(column, flex-start, flex-start, 72%);
+        @include flex-property(column, flex-start, flex-start, 67%);
         .main_img {
-            background-image: url('../img/new.jpg');
-            width: 90%;
-            height: 570px;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
             position: relative;
             margin-right: 10%;
+            margin-bottom: 30px;
+            width: 100%;
         }
     }
 }
 
 .news-body {
     font-size: $font-size + 5;
-    margin-right: 130px;
+    margin-right: 50px;
     p {
-        padding-left: 50px;
+        padding: 50px;
     }
     .news_sharing {
         direction: ltr;
@@ -177,15 +202,14 @@ part1 contain the header of the new and the related news
             display: grid;
             grid-template-columns: 30% 70%;
             img {
-              width: 45px;
-              height: 45px;
-               padding-right: 60%;
+                width: 45px;
+                height: 45px;
+                padding-right: 60%;
                 padding-top: 155px;
             }
             p {
-              padding-left: 70%;
-               padding-top: 145px;
-
+                padding-left: 70%;
+                padding-top: 145px;
             }
         }
         .add {
