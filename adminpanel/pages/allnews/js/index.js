@@ -105,6 +105,7 @@ export class myNewsControler {
         console.log(this.news.then(data => data.allnews()));
         
     }
+    
     redirect(id) {
         window.location.href = "#/addnews/"+id;
         

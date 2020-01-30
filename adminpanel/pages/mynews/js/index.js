@@ -91,34 +91,8 @@ export class myNewsControler {
 
     }
 
-   /*  newId;
-      newContain;
-      element;
-      row; 
-
-show(row, modelId, id) {
-    this.element = document.getElementById(modelId)
-    this.element.className += " modal-active";
-    this.newContain = row;
-    this.newId = id;
-    console.log(row);
-}
-//delete a row in a table
- deleteRowElement(Page) {
-
-    this.row = Page.findIndex((row) => row.id == newId);
-    Page.splice(this.row, 1);
-    this.rowDOM = this.newContain.parentNode.parentNode;
-    this.rowDOM.parentElement.removeChild(rowDOM);
-
-
-}
-
-//show and hide functions for delete modal
-
-
- hide(modelId) {
-    this.element = document.getElementById(modelId)
-    this.element.classList.remove("modal-active");
-}*/
+    redirect(id) {
+        window.location.href = "#/addnews/"+id;
+        
+    }
 }
