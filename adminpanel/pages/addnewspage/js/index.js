@@ -1,4 +1,7 @@
 export class addnewsController {
+    previewImg() {
+        console.log("T");
+    }
     constructor() {
         this.new = import("./addnew.js");
         this.richTextEditor();
@@ -7,7 +10,6 @@ export class addnewsController {
         this.editor = null;
         console.log(this.new.then(data => data.init()));
     }
-
     richTextEditor() {
         let newsBody = document.getElementById('editor');
         let toolbarOptions = [
@@ -35,9 +37,6 @@ export class addnewsController {
                 toolbar: toolbarOptions
             }
         };
-        this.editor = new Quill(newsBody, options);
-        this.editor.format('direction', 'ltr');
         // editor.format('align', 'right');
-
     }
 }

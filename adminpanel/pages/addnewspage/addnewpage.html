@@ -16,7 +16,7 @@
                         <span class="required">*</span>
                     </label>
 
-                <input type="text" id="title" name="title" class="news_element" required>
+                <input onload="init()" type="text" id="title" name="title" class="news_element" required>
             </div>
             <div class="content_label_div">
                 <label>الخبر
@@ -79,7 +79,7 @@
                 <div class="news_element">
                     <div class="inner_choice_div">
                         <div class="status_active_div">
-                            <input type="file" id="picture" value="اختيار الصورة" onchange="previewImg()" required>
+                            <input type="file" id="picture" value="اختيار الصورة" required>
                         </div>
                     </div>
                 </div>

@@ -60,7 +60,7 @@ function init() {
     let newElement = idSelector("edit_element");
     const addForm = idSelector("submit-form");
     let file = idSelector('picture');
-    file.addEventListener("change", function (e) {
+    file.addEventListener("change", function(e) {
         previewImg();
     });
 
@@ -117,9 +117,9 @@ function init() {
 
             e.preventDefault();
             if (createNew(idSelector("title").value, editor.container.firstChild.innerHTML, idSelector("category").value, idSelector("seoTitle").value,
-                idSelector("seoTags").value, idSelector("seoDescription").value, idSelector("isActive").value, idSelector("isMainNews").value,
-                idSelector("isUrgentNews").value, idSelector("createDate").value,
-            ));
+                    idSelector("seoTags").value, idSelector("seoDescription").value, idSelector("isActive").value, idSelector("isMainNews").value,
+                    idSelector("isUrgentNews").value, idSelector("createDate").value,
+                ));
             e.preventDefault();
             return false;
         });
@@ -173,11 +173,11 @@ function previewImg() {
     }
     reader.readAsDataURL(file);
 
-    fr.onload = function () {
+    fr.onload = function() {
         let image = fr.result;
         newsImage = image;
     };
-    reader.onload = function () {
+    reader.onload = function() {
         preview.src = reader.result;
 
 
@@ -199,6 +199,7 @@ function CreateNews(data) {
                 request.counter = request.counter + 1;
                 dbCreateOrUpdate("/settings", request, request._id).then(response2 => {
                     resolve(response2);
+                    console.log("Added");
                 });
             })
         })
