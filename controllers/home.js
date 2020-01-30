@@ -9,6 +9,17 @@ export class HomeController
 
         // testing end
         this.Message = "hello";
+        this.bgc = "redBack";
+    }
+
+    tryClick(x) {
+        alert(x);
+    }
+    testChange() {
+        console.log("hello");
+    }
+    testChange2() {
+        console.log("hello222");
     }
 }
 

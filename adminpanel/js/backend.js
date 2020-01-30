@@ -228,7 +228,6 @@ function dbGet(endpoint, isView, id) {
     });
 }
 // dbGet('/categories',false,'1')get all information for a category id = 1
-
 // dbGet('/users',false,'') get all users
 // dbGet('/users/_design/users/_view/viewName',true,'') get all user from a view.
 // dbGet('/users/_design/users/_view/userRole',true,"1") get uesr who his id = 1 and the data is from 'userRole'
