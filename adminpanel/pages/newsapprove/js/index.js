@@ -1,8 +1,8 @@
 export class approveNewsControler {
 
-    constructor(){
+    constructor() {
 
-       this.MyNewsPage = [{
+        this.MyNewsPage = [{
             id: 1,
             title: "test is test ",
             content: "<h1>This is my first news</h1>",
@@ -62,9 +62,9 @@ export class approveNewsControler {
             _attachments: "",
             id: 4,
         },
-    
-    ];
-     this.categories = [{
+
+        ];
+        this.categories = [{
             id: 1,
             name: "الألعاب",
             isActive: 1,
@@ -84,24 +84,34 @@ export class approveNewsControler {
             name: "الفن",
             isActive: 0,
         }
-    ];
-    
-       this.news = import('./newsapprove.js');
+        ];
+
+        this.news = import('./newsapprove.js');
         console.log(this.news.then(data => data.approvenews()));
 
-    } 
-    
+    }
+
+    /*updateNew(data, newsId) {
+        return new Promise((resolve, reject) => {
+            this.db = dynamicImport("./js/backend.js").then(db => db.dbCreateOrUpdate("/news/_design/views/_view/notapprovedews", data, newsId).then(response => {
+                resolve(response);
+                mvc.apply();
+            }));
+        }
+        )
+    }*/
+
     appproveNews() {
-         
+
         let news;
         let data;
-        for (let i = 0; i < myNewsPage.length; i++)  {
-            let checkbox= document.getElementById(myNewsPage[i].id);
-            if(checkbox.checked) {
-                news = myNewsPage[i]; 
+        for (let i = 0; i < myNewsPage.length; i++) {
+            let checkbox = document.getElementById(myNewsPage[i].id);
+            if (checkbox.checked) {
+                news = myNewsPage[i];
                 console.log(news)
                 data = {
-            
+
                     "title": news.title,
                     "content": news.content,
                     "categoryId": news.categoryId,
@@ -114,20 +124,25 @@ export class approveNewsControler {
                     "createDate": news.createDate,
                     "writerId": news.writerId,
                     "_attachments": news._attachments,
-                    "id": news.id, 
+                    "id": news.id,
                     "approved": 1,
                 }
+
+                return new Promise((resolve, reject) => {
+                   dbCreateOrUpdate("/news/_design/views/_view/notapprovedews", data, news.id).then(response => {
+                        resolve(response);
+                        mvc.apply();
+                    });
                     
-                this.db = dynamicImport("./js/backend.js").then(db => db.dbCreateOrUpdate("/news/_design/views/_view/notapprovedews", data, news.id).then(response => {
-                    resolve(response);
-                    mvc.apply();
-                }));
-                        
+                });
+                
             }
-        }       
-        
+        }
+
     }
 
-   
+
+
+
 }
 
