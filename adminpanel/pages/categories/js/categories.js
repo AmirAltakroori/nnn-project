@@ -1,31 +1,8 @@
-let categoriesPage = [
-    {
-        name: "الألعاب",
-        isActive: 1,
-        id: 1,
-    },
-    {
-        name: "الرئيسية",
-        isActive: 1,
-        id: 2,
-    },
-    {
-        name: "الرياضة",
-        isActive: 0, //غير مفعل
-        id: 3,
-    },
-    {
-        name: "الفن",
-        isActive: 0,
-        id: 4,
-    }
-]
 let activeId = 0;
 let activeRow = null;
 
 function onLoad() {
 
-    console.log("done1")
     //Get the modal that opens when click on "إضافة فئة"
     let modal = document.getElementById("createcategory-modal");
     //Get the button that opens the modal
@@ -41,7 +18,7 @@ function onLoad() {
     let addForm = document.getElementById("category-form");
     let editForm = document.getElementById("category-edit-form");
     editForm.addEventListener("submit", (e) => {
-        console.log("hi");
+
         updateCategoryName();
         hideModal("createcategory-edit-modal");
         e.preventDefault();
@@ -65,17 +42,17 @@ function onLoad() {
             </select>
         </td>
         <td>
-            <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer" onclick="show(this,'delete',${categoriesPage.id})"></i>
-            <i class="far fa-edit icon color-blue" $click="showEditModal('createcategory-edit-modal',this,${categoriesPage.length + 1})"></i>
+            <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer" onclick="show(this,'delete',${categoriesList.id})"></i>
+            <i class="far fa-edit icon color-blue" onclick="showEditModal('createcategory-edit-modal',this,${categoriesList.length + 1})"></i>
         </td>`;
         tr.innerHTML = row;
         tr.className = 'user_info';
         tbody.appendChild(tr);
         hideModal(modal.id);
         // to database
-        categoriesPage.push({
+        categoriesList.push({
             isActive: 1,
-            id: categoriesPage.length + 1,
+            id: categoriesList.length + 1,
             name: "categoryName"
         })
         e.preventDefault();
@@ -97,26 +74,5 @@ function onLoad() {
         }
     }
 }
-
-function showModal(modalId) {
-    document.getElementById(modalId).style.display = "flex";
-    document.getElementById("categoryname").value = '';
-}
-
-function hideModal(modalId) {
-    let modal = document.getElementById(modalId); //for modal
-    modal.style.display = "none";
-
-}
-
-function updateCategoryName() {
-    let newName = document.getElementById("editcategoryname").value;
-    categoriesPage.find((category) => { category === activeId; }).name = newName;
-    var changeName = document.getElementsByClassName("user_name")[activeId - 1];
-    changeName.innerHTML = newName;
-    document.getElementById("editcategoryname").value = "";
-}
-
-
 
 export { onLoad};

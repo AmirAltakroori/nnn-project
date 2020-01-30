@@ -1,14 +1,6 @@
 export class CategoriesController {
-    showEditModal(modalId, row, id) {
-        let modal = document.getElementById(modalId); //for modal
-        modal.style.display = "flex";
-
-        this.activeId = id;
-        this.activeRow = row.parentElement.parentElement;
-    }
 
     constructor() {
-
         this.categories = [
             {
                 name: "الألعاب",
