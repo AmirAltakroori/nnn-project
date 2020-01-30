@@ -10,6 +10,8 @@ function approvenews(){
 }
 
 
+
+
 /*
 function deleteNews(callback, key, rev, row) {
 
