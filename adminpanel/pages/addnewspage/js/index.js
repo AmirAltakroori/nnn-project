@@ -5,12 +5,12 @@ export class addnewsController {
     
     
     constructor() {
-        
+       
         this.newsId = mvc.routeParams.id;
         if(this.newsId) {
             this.fill(this.newsId);
-        }
 
+        }
         this.new =
             import ("./addnew.js");
         this.richTextEditor();
@@ -37,6 +37,7 @@ export class addnewsController {
             "seoTags": document.getElementById("seoTags"),
             "seoDescription": document.getElementById("seoDescription"),
             "isActive": document.getElementById("isActive"),
+            "isNotActive": document.getElementById("isNotActive"),
             "isMainNews": document.getElementById("isMainNews"),
             "isUrgentNews": document.getElementById("isUrgentNews"),
             "createDate": document.getElementById("createDate"),
@@ -49,12 +50,14 @@ export class addnewsController {
         form.seoTags.value = newItem.seoTags;
         form.seoDescription.value = newItem.seoDescription;
         form.isActive.checked = newItem.isActive;
+        form.isNotActive.checked = newItem.isActive;
         form.isMainNews.checked = newItem.isMainNews;
         form.isUrgentNews.checked = newItem.isUrgentNews;
         form.createDate.value = newItem.createDate;
-      
+        //mvc.apply();
         console.log(newItem.title)
         console.log(form.title.value)
+        
     }
 
     richTextEditor() {
