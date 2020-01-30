@@ -70,3 +70,17 @@ async function loadMvc(templatePath, controllerPath) {
     return Promise.resolve({ template, controller });
 }
 
+function DImport(path) 
+{
+    return new Promise((res,rej) =>
+    {
+        const moduleSpecifier = path;
+        try {
+            const module = import(moduleSpecifier);
+            res(module);
+        } catch (error) {
+            console.log(path + " doesnt exist");
+            rej(null);
+        }
+    });
+}
