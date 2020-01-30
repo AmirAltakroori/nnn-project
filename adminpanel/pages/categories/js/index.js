@@ -28,4 +28,28 @@ export class CategoriesController {
         this.categoriesOnLoad = import("./categories.js");
         this.categoriesOnLoad.then(data => data.onLoad());
     }
+
+
+    show(row, modelId, id) {
+        let element = document.getElementById(modelId);
+        element.className += " modal-active";
+        this.activeRow = row;
+        this.activeId = id;
+    }
+
+    hide(modelId) {
+        let element = document.getElementById(modelId);
+        element.classList.remove("modal-active");
+    }
+
+    showEditModal(modalId, row, id) {
+        let modal = document.getElementById(modalId); //for modal
+        modal.style.display = "flex";
+        console.log(this.activeId);
+
+        this.activeId = id;
+        console.log(row);
+        this.activeRow = row.parentElement.parentElement;
+    }
+
 }

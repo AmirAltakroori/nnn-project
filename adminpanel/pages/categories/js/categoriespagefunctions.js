@@ -21,20 +21,6 @@ let categoriesList = [
     }
 ];
 
-let activeId = 0;
-let activeRow = null;
-
-function showModal(modalId) {
-    document.getElementById(modalId).style.display = "flex";
-    document.getElementById("categoryname").value = '';
-}
-
-function hideModal(modalId) {
-    let modal = document.getElementById(modalId); //for modal
-    modal.style.display = "none";
-
-}
-
 function updateCategoryName() {
     let newName = document.getElementById("editcategoryname").value;
     categoriesList.find(({ id }) => { return id == activeId }).name = newName;
@@ -47,7 +33,10 @@ function updateCategoryName() {
 function showEditModal(modalId, row, id) {
     let modal = document.getElementById(modalId); //for modal
     modal.style.display = "flex";
+    console.log(activeId);
 
     activeId = id;
     activeRow = row.parentElement.parentElement;
 }
+
+

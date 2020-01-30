@@ -63,7 +63,7 @@
                         style="font-size:20px; color:red; text-align:center; cursor:pointer"
                         onclick="show(this,'delete','$category.id')"></i>
                     <i class="far fa-edit icon color-blue"
-                        onclick="showEditModal('createcategory-edit-modal',this, '{{$categories[$i].id}}')"></i>
+                        $click="showEditModal('createcategory-edit-modal',$(this), '{{$categories[$i].id}}')"></i>
                 </td>
             </tr>
         </tbody>
@@ -93,7 +93,7 @@
 <div class="createcategory-modal" id="createcategory-edit-modal" tabindex="-1"
     onfocus=" hideModal('createcategory-edit-modal')">
     <div id="createcategory-modalcontent">
-        <i class="fas fa-times-circle" id="close" onclick="hideModal('createcategory-edit-modal')"></i>
+        <i class="fas fa-times-circle" id="close" $click="hideModal('createcategory-edit-modal')"></i>
         <div class='cat-centered-row'>
             <h2 id="modal-header-for-adding">
                 تعديل اسم الفئة
@@ -119,8 +119,8 @@
             <p>هل أنت متأكد من إزالة هذه الفئة ؟</p>
             <div class="modal-button">
                 <button class="modal-button button1"
-                    onclick="deleteRowElement(categories); hide('delete');">نعم</button>
-                <button class="modal-button button2" onclick="hide('delete')">لا</button>
+                    onclick="deleteRowElement(categories); hide('delete'); ">نعم</button>
+                <button class="modal-button button2" $click="hide('delete')">لا</button>
             </div>
         </div>
     </div>
