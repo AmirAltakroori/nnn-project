@@ -28,7 +28,6 @@ part1 contain the header of the new and the related news
         .news_header {
             .main_img {
                 img {
-                    // width: 1210px;
                     height: 570px;
                 }
             }
@@ -48,7 +47,6 @@ part1 contain the header of the new and the related news
         .news_header {
             .main_img {
                 img {
-                    // width: 1200px;
                     height: 570px;
                 }
             }
@@ -73,7 +71,7 @@ part1 contain the header of the new and the related news
 }
 
 .news-content {
-    margin-top: 400px;
+    margin-top: 4%;
     font-family: $newsText-fontFamily;
     border-top: solid 1px #707070;
     margin-bottom: 0%;
@@ -86,8 +84,7 @@ part1 contain the header of the new and the related news
             list-style-type: none;
             .list-n {
                 margin-left: 20px;
-                ;
-                // border-top: rgb(114, 109, 109) solid 1px;
+
                 a {
                     @include flex-property(row, center, flex-start, 100%);
                 }

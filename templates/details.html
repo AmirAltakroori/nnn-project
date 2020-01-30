@@ -9,15 +9,6 @@
                      based on the design included in the Prototype
 -->
 
-
-
-
-<!--
-
-    header & nav
-
-   -->
-
 <div>
     <div class="details_page_wrapper">
         <!-- Contains news title and photo & Show other related news -->
@@ -28,13 +19,13 @@
                     <h1 $if="$relatedNew.id == $routeParams.newID">
                         {{$relatedNew.title}}
                     </h1>
-           
+
                     <div $if="$relatedNew.id == $routeParams.newID">
                         <div class="main_img" style=" background-image: url(../img/{{$relatedNew.img}});">
                             .
                         </div>
                     </div>
-                
+
                  </span>
             </section>
 
@@ -160,12 +151,3 @@
     </div>
 
 </div>
-
-
-
-
-<!--
-
-     footer
-
-   -->
