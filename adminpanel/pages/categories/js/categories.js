@@ -1,5 +1,3 @@
-let activeId = 0;
-let activeRow = null;
 
 function onLoad() {
 

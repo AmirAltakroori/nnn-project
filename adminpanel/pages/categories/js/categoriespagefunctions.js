@@ -49,6 +49,5 @@ function showEditModal(modalId, row, id) {
     modal.style.display = "flex";
 
     activeId = id;
-    console.log(activeId);
     activeRow = row.parentElement.parentElement;
 }
