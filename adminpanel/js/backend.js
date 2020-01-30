@@ -205,7 +205,7 @@ function cleanData(data) {
     return cleanedData;
 }
 
-function dbGet(endpoint, isView, id) {
+export function dbGet(endpoint, isView, id) {
     return new Promise((resolve, reject) => {
         let url = BASEURL + endpoint;
         if (isView && id) {
@@ -218,7 +218,7 @@ function dbGet(endpoint, isView, id) {
         http.setRequestHeader("Authorization", AUTHENTICATION);
         http.onreadystatechange = function() { //Call a function when the state changes.
             if (http.readyState == 4) {
-                data = JSON.parse(http.responseText);
+                let data = JSON.parse(http.responseText);
                 if (!id || id == '')
                     data = cleanData(data);
                 resolve(data);
@@ -253,7 +253,7 @@ function dbDelete(endpoint, id, rev) {
 // dbDelete('/users','ali',"2-cdfsidfsjdsdpifdsi") delete user his/her username =ali , here we use username because username is the primary key
 // dbDelete('/categories','1',"2-cdfasdsidfsjdsdpifdsi") delete category  id =1 , 
 
-function dbCreateOrUpdate(endpoint, data, id) {
+export function dbCreateOrUpdate(endpoint, data, id) {
     return new Promise((resolve, reject) => {
         const url = BASEURL + endpoint + `/${id}`;
         let http = new XMLHttpRequest();
