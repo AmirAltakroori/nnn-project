@@ -1,5 +1,3 @@
-import { Mvc } from './js/jsMvc.min.js';
-
 let mvc = new Mvc();
 
 let routeList = [{
@@ -20,4 +18,4 @@ let routeList = [{
 
 mvc.addRouteList(routeList);
 mvc.init();
-export {mvc};
+// export {mvc};

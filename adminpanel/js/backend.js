@@ -204,7 +204,7 @@ function cleanData(data) {
     return cleanedData;
 }
 
- function dbGet(endpoint, isView, id) {
+export function dbGet(endpoint, isView, id) {
     return new Promise((resolve, reject) => {
         let url = BASEURL + endpoint;
         if (isView && id) {
@@ -276,5 +276,3 @@ function dbCreateOrUpdate(endpoint, data, id) {
 //     id:"1234",
 // }
 // dbCreateOrUpdate('/users',userData,1234);create user his id equals 1234 and his data is userData objectgi
-
-export {dbGet}
