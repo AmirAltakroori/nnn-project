@@ -11,9 +11,9 @@
      File description:
      this is the style css code for the category page
 */
-    
+
     @import "./variables";
-    @media screen and (max-height: 1080px) {
+    @media screen and (min-height: 811px) {
         .main-category-section {
             .right-sidebar {
                 .right-side-image {
@@ -73,7 +73,6 @@
         .category-view-name {
             font-size: 30px;
             padding-right: 50px;
-            padding-top: 20px;
         }
         .card {
             margin: 5px 0 5px 5px;
@@ -130,7 +129,7 @@
             }
         }
     }
-    
+
     @media screen and (max-height: 810px) {
         .main-category-section {
             .right-sidebar {
@@ -191,7 +190,6 @@
         .category-view-name {
             font-size: 22.5px;
             padding-right: 37.5px;
-            padding-top: 15px;
         }
         .card {
             margin: 3.75px 0 3.75px 3.75px;
@@ -250,7 +248,7 @@
             }
         }
     }
-    
+
     @media screen and (max-height: 768px) {
         .main-category-section {
             .right-sidebar {
@@ -311,7 +309,6 @@
         .category-view-name {
             font-size: 21.5px;
             padding-right: 35.5px;
-            padding-top: 14px;
         }
         .card {
             margin: 3.5px 0 3.5px 3.5px;
@@ -370,12 +367,12 @@
             }
         }
     }
-    
+
     a {
         text-decoration: none;
         color: $font_color_main_details;
     }
-    
+
     .main-category-section {
         overflow: hidden;
         width: 100%;
@@ -459,26 +456,26 @@
             }
         }
     }
-    
+
     .category-view-container {
         display: flex;
         justify-content: space-between;
     }
-    
+
     .title {
         color: #0C4D6D;
     }
-    
+
     .card {
         display: flex;
         align-items: center;
     }
-    
+
     .right-col {
         width: 80%;
         position: relative;
     }
-    
+
     .left-col {
         width: 20%;
         position: relative;
@@ -487,14 +484,15 @@
             border-top-style: solid;
         }
     }
-    
+
     .random-new {
         a {
             text-decoration: none;
         }
     }
-    
+
     .category-view-name {
         color: #0C4D6D;
         color: #0C4D6D;
+        padding-top: 2%;
     }

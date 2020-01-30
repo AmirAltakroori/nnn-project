@@ -18,7 +18,7 @@ export class Category {
     constructor() {
 
         // Access page type number from url
-        let indexType = mvc.routeParams.type;
+        let indexType = mvc.routeParams.id;
 
         // Get page type name
         this.name = this.pageTypesList[Number(indexType)];
@@ -44,7 +44,7 @@ export class Category {
 
         @param: identifier for needed news
 
-        @returns: 
+        @returns:
     */
     changeMainNews(news) {
         this.mainNews = news;
@@ -53,7 +53,7 @@ export class Category {
 
     /*
         Test function that returns list of main news data
-        
+
         @tparam:
 
         @param:
@@ -99,7 +99,7 @@ export class Category {
 
     /*
         Test function that returns list of random news data
-        
+
         @tparam:
 
         @param:
@@ -137,7 +137,7 @@ export class Category {
 
     /*
         Test function that returns list of right related news data
-        
+
         @tparam:
 
         @param:
@@ -170,7 +170,7 @@ export class Category {
 
     /*
         Test function that returns list of lift related news data
-        
+
         @tparam:
 
         @param:
