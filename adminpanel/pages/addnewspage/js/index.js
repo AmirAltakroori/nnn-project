@@ -1,11 +1,11 @@
 export class addnewsController {
     constructor() {
-        //   Check role
-
+        this.new = import("./addnew.js");
         this.richTextEditor();
         this.newsList = [];
         this.newsImage = "";
         this.editor = null;
+        console.log(this.new.then(data => data.init()));
     }
 
     richTextEditor() {
