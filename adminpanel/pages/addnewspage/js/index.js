@@ -5,8 +5,12 @@ export class addnewsController {
     
     
     constructor() {
-    
-        //   Check role
+        
+        this.newsId = mvc.routeParams.id;
+        if(this.newsId) {
+            this.fill(this.newsId);
+        }
+
         this.new =
             import ("./addnew.js");
         this.richTextEditor();
@@ -15,7 +19,44 @@ export class addnewsController {
 
         console.log(this.new.then(data => data.init()));
     }
-    
+
+    fill(newsId) {
+        let newItem;
+        for(let news of allNewsPage) {
+            if(news.id == newsId) {
+                newItem = news;
+                break;
+            }
+        }
+
+        let form = {
+            "title": document.getElementById("title"),
+            "editor": document.getElementById("editor"),
+            "categoryId": document.getElementById("category"),
+            "seoTitle": document.getElementById("seoTitle"),
+            "seoTags": document.getElementById("seoTags"),
+            "seoDescription": document.getElementById("seoDescription"),
+            "isActive": document.getElementById("isActive"),
+            "isMainNews": document.getElementById("isMainNews"),
+            "isUrgentNews": document.getElementById("isUrgentNews"),
+            "createDate": document.getElementById("createDate"),
+        }
+
+        form.title.value = newItem.title;
+        editor.innerHTML = newItem.content;
+        form.categoryId.value = newItem.categoryId;
+        form.seoTitle.value = newItem.seoTitle;
+        form.seoTags.value = newItem.seoTags;
+        form.seoDescription.value = newItem.seoDescription;
+        form.isActive.checked = newItem.isActive;
+        form.isMainNews.checked = newItem.isMainNews;
+        form.isUrgentNews.checked = newItem.isUrgentNews;
+        form.createDate.value = newItem.createDate;
+      
+        console.log(newItem.title)
+        console.log(form.title.value)
+    }
+
     richTextEditor() {
         let newsBody = document.getElementById('editor');
         console.log(newsBody);

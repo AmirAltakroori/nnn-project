@@ -47,7 +47,7 @@
                 </h2>
                 <div class="homepage-container">
                         <div $if="$userRole != 1">
-                                <button class="homepage-btn pink" id='all_news'>
+                                <a href='#/allnews'><button class="homepage-btn pink" id='all_news'>
                                         <div>
                                                 <i class="fas fa-newspaper  home-shadow-icon"></i>
                                         </div>
@@ -58,7 +58,7 @@
                                                 <span class="homepage-aboveicon"> كافة الاخبار</span>
                                         </div>
                                 </button>
-                        </div>
+                        </div></a>
                         <div $if="$userRole != 1">
                                 <button class="homepage-btn light-blue" id='categories'>
                                         <div>
@@ -73,7 +73,7 @@
                                 </button>
                         </div>
                         <div>
-                                <a href='#/addnews' '><button class="homepage-btn light-green" id=' add_new '>
+                                <a href='#/addnews'><button class="homepage-btn light-green" id=' add_new '>
                                 <div>
                                         <i class="fas fa-book-reader  home-shadow-icon"></i>
                                 </div>
@@ -86,7 +86,7 @@
                         </button>
         </div></a>
         <div $if="$userRole != 1">
-            <button class="homepage-btn light-yellow" id="approve_news">
+                        <a href='#/approvenews'><button class="homepage-btn light-yellow" id="approve_news">
                                 <div>
                                         <i class="fas fa-thumbtack  home-shadow-icon"></i>
                                 </div>
@@ -99,7 +99,7 @@
                         </button>
         </div></a>
         <div>
-                <a href='#/mynews' '><button class="homepage-btn purple" id="my_news">
+                <a href='#/mynews'><button class="homepage-btn purple" id="my_news">
                                 <div>
                                         <i class="fa fa-address-card  home-shadow-icon"></i>
                                 </div>
