@@ -11,8 +11,7 @@
 
 export class DataBase {
 
-    constuctor (url, authentication) {
-        init(url, authentication);
+    constuctor () {
     }
 
     cleanData(data) {
@@ -25,20 +24,16 @@ export class DataBase {
     /*
      *    fetch data from dataBase
      *
-     *    @tparam randomNews: endpoint, url, authentication: string
+     *    @tparam randomNews: isView, id: boolean, endpoint, url, authentication: string
      *
      *    @param endpoint: direct link or view, isView if the endpoint is View this must be true else must be false
-     *                    id
+     *                    id, url is dataBase base url, authentication dataBase key;
      *
      *    @returns list of fetched data.
      */
-    getData (endpoint, isView, id) {
-        if (!this.url || !this.authentication) {
-            return null;
-        }
-
+    getData (endpoint, isView, id, baseUrl,  authentication) {
         return new Promise((resolve, reject) => {
-            let url = this.url + endpoint;
+            let url = baseUrl + endpoint;
             if (isView && id) {
                 url += `?key=\"${id}\"`;
             } else url += `/${id}`;
@@ -46,7 +41,7 @@ export class DataBase {
             http.open("GET", url);
             http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             http.setRequestHeader('Accept', 'application/json');
-            http.setRequestHeader("Authorization", this.authentication);
+            http.setRequestHeader("Authorization", authentication);
             http.onreadystatechange = function() { //Call a function when the state changes.
                 if (http.readyState == 4) {
                     data = JSON.parse(http.responseText);
@@ -57,35 +52,5 @@ export class DataBase {
             }
             http.send();
         });
-    }
-
-    /*
-     *    fetch data from dataBase
-     *
-     *    @tparam randomNews: isView, id: boolean, endpoint, url, authentication: string
-     *
-     *    @param endpoint: direct link or view, isView if the endpoint is View this must be true else must be false
-     *                    id, url is dataBase base url, authentication dataBase key;
-     *
-     *    @returns list of fetched data.
-     */
-    getData (endpoint, isView, id, url,  authentication) {
-        this.init(url, authentication);
-
-        return (this.getData(endpoint, isView, id));
-    }
-
-    /*
-     *    initialize url, authentication as private property
-     *
-     *    @tparam url, authentication: string
-     *
-     *    @param url is dataBase base url, authentication dataBase key;
-     *
-     *    @returns
-     */
-    init (url, authentication) {
-        this.url = url;
-        this.authentication = authentication;
     }
 }
