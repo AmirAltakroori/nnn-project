@@ -61,12 +61,14 @@
         <div class="imagesPrev"><img $click="plusDivs(-1)" src="../img/arrow.png" ></div>
 
         <div $for="news of randomNews" id="rendom-news-container" class="rendom-news-container">
-            <div class="slider-news-tile" style="background-image: url('{{$news.img}}');">
-                <div class="date">{{$news.publishedDate}}</div>
-                <div class="news">
-                    <a href="#/details/{{$news.id}}">{{$news.title}}</a>
+            <a href="#/details/{{$news.id}}"></a>
+                <div class="slider-news-tile" style="background-image: url('{{$news.img}}');">
+                    <div class="date">{{$news.publishedDate}}</div>
+                    <div class="news">
+                        {{$news.title}}
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="imagesNext"><img $click="plusDivs(1)" src="../img/arrow-left.png"></div>

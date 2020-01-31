@@ -736,16 +736,16 @@
 
     .rendom-news-container{
 
+        text-decoration: none;
+        
         .slider-news-tile {
 
             @extend %allNews;
+            
             .news{
                 position: relative;
                 @extend %news;
-
-                a{
-                    text-decoration: none;
-                }
+                
             }
 
             .date{
