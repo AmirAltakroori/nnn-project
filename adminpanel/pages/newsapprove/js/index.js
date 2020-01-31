@@ -48,20 +48,22 @@ export class approveNewsControler {
             _attachments: "",
         },
         {
-            title: "الاحلال يعتقل مقدسيا مسنا",
-            content: "<h1>This is my first news</h1>",
-            categoryId: 3,
-            seoTitle: "First news",
-            seoTags: "{ 'tags':{['test','sport']} }",
-            seoDescription: "This is my first news",
-            isActive: 0,
-            isMainNews: 1,
-            isUrgentNews: 1,
-            createDate: "2019-05-12",
-            writerId: 1,
-            _attachments: "",
             id: 4,
-        },
+            _rev: "1-c0c1a0422e44ca46e3c372999e599291",
+            title: "kasjdl",
+            content: "<p><br></p>",
+            categoryId: 1,
+            seoTitle: "",
+            seoTags: "",
+            seoDescription: "",
+            isActive: 1,
+            isMainNews: 0,
+            isUrgentNews: 0,
+            createDate: "2020-01-31",
+            attachment: "",
+            writerId: "admin",
+            isApproved: 0
+          }
 
         ];
         this.categories = [{
@@ -92,11 +94,12 @@ export class approveNewsControler {
     }
 
     updateNew(data, newsId) {
+
         return new Promise((resolve, reject) => {
             dbCreateOrUpdate("/news", data, newsId).then(response => {
                 resolve(response);
                 mvc.apply();
-                document.location.reload(true);
+                //document.location.reload(true);
             });
         })
     }
@@ -109,7 +112,7 @@ export class approveNewsControler {
             let checkbox = document.getElementById(myNewsPage[i].id);
             if (checkbox.checked) {
                 news = myNewsPage[i];
-                console.log(news)
+                //console.log(news)
                 data = {
 
                     "title": news.title,
@@ -125,7 +128,9 @@ export class approveNewsControler {
                     "writerId": news.writerId,
                     "attachments": news._attachments,
                     "id": news.id,
-                    "isApproved": 1,
+                    "_rev": news._rev,
+                    "writerId": news.writerId,
+                    "isApproved": 1
                 }
                 //console.log(news)
                 this.updateNew(data, news.id)
