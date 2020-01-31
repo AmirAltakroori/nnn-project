@@ -41,7 +41,7 @@ let routeList = [{
     url: "/adduser",
     template: "pages/newuser/newuser.html",
     title: "شبكة الوحدة الإخبارية",
-    controller: "/adminpanel/pages/newuser/js/index.js"
+    controller: "/adminpanel/pages/newuser/js/createuser.js"
 
 },
 {
