@@ -55,6 +55,12 @@ let routeList = [{
     template: "pages/allusers/allusers.html",
     title: "شبكة الوحدة الإخبارية",
     controller : "/adminpanel/pages/allusers/js/users.js"
+},
+{
+    url : "/newuser/:id",
+    templete : "pages/newuser/updateuser.html",
+    title :  "شبكة الوحدة الإخبارية",
+    controller:"/adminpanel/pages/newuser/js/updateController.js"
 }
 ];
 

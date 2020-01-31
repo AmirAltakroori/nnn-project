@@ -18,25 +18,25 @@
                 <div class="field">
                     <div class="first-name">الاسم الأول</div>
                     <div class="input-field">
-                        <input $model = "newFirstN" class="fname" type="text" name="fname" id="fname" required>
+                        <input class="fname" type="text" name="fname" id="fname" required>
                     </div>
                 </div>
                 <div class="field">
                     <div class="last-name">الاسم الثاني</div>
                     <div class="input-field">
-                        <input  $model = "newSecondN" class="lname" type="text" name="lname" id="lname" required>
+                        <input   class="lname" type="text" name="lname" id="lname" required>
                     </div>
                 </div>
 
                 <div class="field">
                     <div class="email-name">الإيميل</div>
                     <div class="input-field">
-                        <input $model = "newEmail" class="email" type="email" id="email" required unique>
+                        <input  class="email" type="email" id="email" required unique>
                     </div>
                 </div>
 
                 <div>
-                    <button $click = "updateUserInfo(newFirstN,newSecondN,newEmail)" name="add_news" id="edit_element" class="create-new-user ">تعديل مستخدم</button>
+                    <button name="add_news" id="edit_element" class="create-new-user ">تعديل مستخدم</button>
                 </div>
             </div>
         </form>
