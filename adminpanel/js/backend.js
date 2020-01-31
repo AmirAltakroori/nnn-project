@@ -199,7 +199,7 @@ let AUTHENTICATION = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJs
 
 // If you want to get specific data for a document in a view , you need to set key to be the id of the document
 function cleanData(data) {
-    cleanedData = [];
+    let cleanedData = [];
     for (let i = 0; i < data.rows.length; i++)
         cleanedData.push(data.rows[i]);
     return cleanedData;

@@ -231,7 +231,8 @@ function verification() {
             let datatoSave = {
                 "token": user.token,
                 "roleID": user.role,
-                "FullName": user.firstName + " " + user.lastName
+                "FullName": user.firstName + " " + user.lastName,
+                "id":user._id,
             }
             saveData('user',datatoSave);
         }else  if(user.password === password.value && user.state == 0){
