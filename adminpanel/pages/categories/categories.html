@@ -58,7 +58,7 @@
                 <td>
                     <i class="fas fa-trash-alt delete_user"
                         $style="'font-size:20px; color:red; text-align:center; cursor:pointer' : true"
-                        onclick="show(this,'delete', '$category.id')"></i>
+                        $click="showEditModal('delete',this.element, $category.id)"></i>
                     <i class="far fa-edit icon color-blue"
                         $click="showEditModal('createcategory-edit-modal', this.element, $category.id)"></i>
                 </td>
@@ -74,8 +74,8 @@
                 إضافة فئة جديدة
             </h2>
         </div>
-        <form id="category-form" class='cat-centered-row'>
-            <div class="createcategory-flex-container-center-all">
+        <form id="category-form" class='cat-centered-row' $submit='createCategory()'>
+            <div class="createcategory-flex-container-center-all" >
                 <div class='cat-centered-row mb-5'>
                     <input type="text" id="categoryname" placeholder="أدخل اسم الفئة" maxlength="20" minlength="3"
                         required>
@@ -95,7 +95,7 @@
                 تعديل اسم الفئة
             </h2>
         </div>
-        <form id="category-edit-form" class='cat-centered-row'>
+        <form id="category-edit-form" class='cat-centered-row' $submit="editCategoryName()">
             <div class=' flex-container-center-space-between-column '>
                 <div class='mb-5'>
                     <input type="text" id="editcategoryname" placeholder="أدخل اسم الفئة" maxlength="20" minlength="3"
@@ -115,8 +115,8 @@
             <p>هل أنت متأكد من إزالة هذه الفئة ؟</p>
             <div class="modal-button">
                 <button class="modal-button button1"
-                    onclick="deleteRowElement(categoriesPage); hide('delete');">نعم</button>
-                <button class="modal-button button2" onclick="hide('delete')">لا</button>
+                    $click="deleteCategory(); hideModals('delete')">نعم</button>
+                <button class="modal-button button2" $click="hideModals('delete')">لا</button>
             </div>
         </div>
     </div>
