@@ -29,26 +29,31 @@ class SpecialAttr {
 //*********************************************************************//
 
 // Render function for "$if" special attribute 
+
+
+let blockMap = [];
+
+function checkExist(badWord) {
+	for (let i = 0; i < blockMap.length; i++) {
+		console.log(blockMap[i]);
+		if (badWord.indexOf(blockMap[i]) != -1)
+			return true;
+	}
+	return false;
+}
+
 function renderIf(expression, element) {
-	try {
-		let exp = expression.replace(/\$/g, "$scope.");
-		createClass('hide', 'display: none');
-		//check the expression in if attribute.  
-		let result = eval(exp);
-		//check if the expression true then the hide class will be removed if exist to display the element
-		if (result) {
-			if (element.classList.contains('hide')) {
-				element.classList.remove('hide');
-			}
+	let exp = expression.replace(/\$/g, "$scope.");
+	if (checkExist(exp) || exp.indexOf('$scope.i') != -1)
+		return;
+	createClass('hide', 'display:none');
+	let result = eval(exp);
+	if (result) {
+		if (element.classList.contains('hide')) { element.classList.remove('hide') }
+	} else {
+		if (!element.classList.contains('hide')) {
+			element.classList.add('hide')
 		}
-		//if false we will add hide class to hide the element.
-		else {
-			if (!element.classList.contains('hide')) {
-				element.classList.add('hide')
-			}
-		}
-	} catch (err) {
-		console.log(err);
 	}
 }
 
@@ -56,65 +61,49 @@ let forid = 0;
 let formap = new Map();
 // Render function for "$for" special attribute 
 function renderFor(exp, element) {
-	try {
-		// save and restore original date to be looped on
-		let content = element.innerHTML;
+	// save and restore original date to be looped on
+	let content = element.innerHTML;
 
-		if (element.hasAttribute('data-forid')) {
-			content = formap.get(element.getAttribute('data-forid'));
-		}
-		else {
-			element.setAttribute('data-forid', forid);
-			formap.set(forid + "", content);
-			forid++;
-		}
-
-		// define the iteration symbol of this for loop
-		let def = exp.split(':');
-		let iterSymbol = 'i';
-		if (def.length > 1)
-			iterSymbol = def[1].trim();
-
-		// define array and the element
-		let subArr = def[0].split('of')[0].trim();
-		let arrName = def[0].split('of')[1].trim();
-
-		let array = eval('$scope.' + arrName);
-		if (!array) return;
-		let iterregx = new RegExp(`\\$` + iterSymbol + '(?![a-z])', 'g');
-
-		let newElement = "";
-
-		for (let i = 0; i < array.length; i++) {
-			let template = content.replace(new RegExp("\[$]" + subArr, 'g'), "$" + arrName + `[${i}]`).replace(iterregx, i);
-			let oldval = $scope[subArr];
-			$scope[subArr] = array[i];
-
-			var node = document.createElement("LI");
-			node.innerHTML = template;
-			renderTemplate(node);
-			$apply(node);
-			template = node.innerHTML;
-
-			$scope[subArr] = oldval;
-			newElement += template;
-		}
-
-		element.innerHTML = newElement;
-	} catch (err) {
-		console.log(err);
+	if (element.hasAttribute('data-forid')) {
+		content = formap.get(element.getAttribute('data-forid'));
 	}
-}
+	else {
+		element.setAttribute('data-forid', forid);
+		formap.set(forid + "", content);
+		forid++;
+	}
 
+	// define the iteration symbol of this for loop
+	let def = exp.split(':');
+	let iterSymbol = 'i';
+	if (def.length > 1)
+		iterSymbol = def[1].trim();
+
+	// define array and the element
+	let subArr = def[0].split('of')[0].trim();
+	let arrName = def[0].split('of')[1].trim();
+
+	blockMap.push('$scope.' + subArr);
+
+	let array = eval('$scope.' + arrName);
+	if (!array) return;
+	let iterregx = new RegExp(`\\$` + iterSymbol + '(?![a-z])', 'g');
+	let newElement = "";
+	for (let i = 0; i < array.length; i++) {
+		let template = element.innerHTML.replace(new RegExp("\[$]" + subArr, 'g'), "$" + arrName + `[${i}]`).replace(iterregx, i);
+		let oldval = $scope[subArr];
+		$scope[subArr] = array[i];
+		$scope[subArr] = oldval;
+		newElement += template
+	}
+	element.innerHTML = newElement;
+	renderTemplate(element);
+}
 // Render function for "$disabled" special attribute 
 function renderDisabled(exp, element) {
-	try {
-		exp = exp.replace(/\$/g, "$scope.");
-		let result = eval(exp);
-		element.disabled = result;
-	} catch (err) {
-		console.log(err);
-	}
+	exp = exp.replace(/\$/g, "$scope.");
+	let result = eval(exp);
+	element.disabled = result;
 }
 
 // Render function for "$style" special attribute 
@@ -153,48 +142,32 @@ function renderClass(exp, element) {
 	let expGroup = exp.split(',');
 
 	expGroup.forEach(ele => {
-		try {
-			let splitStr = ele.split(":")
-			let className = splitStr[0].replace(/'/g, "").trim();
-			if (eval(splitStr[1]))
-				element.classList.add(className);
-			else
-				element.classList.remove(className);
-		} catch (err) {
-			console.log(err);
-		}
+		let splitStr = ele.split(":")
+		let className = splitStr[0].replace(/'/g, "").trim();
+		if (eval(splitStr[1]))
+			element.classList.add(className);
+		else
+			element.classList.remove(className);
 	}
 	);
 }
 
 //Render function for "$click" special attribute.
 function renderClick(exp, element) {
-	try {
-		exp = exp.replace(/\$/g, "$scope.");
-		eventListener(element, 'click', () => { eval('$scope.' + exp); });
-	} catch (err) {
-		console.log(err);
-	}
+	exp = exp.replace(/\$/g, "$scope.");
+	eventListener(element, 'click', () => { eval('$scope.' + exp); });
 }
 
 function renderModel(exp, element) {
-	try {
-		element.setAttribute('id', exp);
-		element.setAttribute('value', $scope[exp]);
-		eventListener(element, 'change', () => { $scope[exp] = document.getElementById(exp).value; });
-	} catch (err) {
-		console.log(err);
-	}
+	element.setAttribute('id', exp);
+	element.setAttribute('value', $scope[exp]);
+	eventListener(element, 'change', () => { $scope[exp] = document.getElementById(exp).value; });
 }
 
 //Render function for "$change" special attribute.
 function renderChange(exp, element) {
-	try {
-		exp = exp.replace(/\$/g, "$scope.");
-		eventListener(element, 'change', () => { eval('$scope.' + exp); });
-	} catch (err) {
-		console.log(err);
-	}
+	exp = exp.replace(/\$/g, "$scope.");
+	eventListener(element, 'change', () => { eval('$scope.' + exp); });
 }
 
 //*********************************************************************//
@@ -274,12 +247,16 @@ function renderTemplate(view) {
 	$testedSpecials = [];
 }
 
-export function render(view, model, update = false) {
+export function render(view, model) {
 	$scope = model;
-	if (update) $apply();
-	renderTemplate(view);
 	$bindedVars = view.innerHTML;
-	if (!update) $apply(view);
+	renderTemplate(view);
+	$apply(view);
+	const lastChance = specialTags(document.querySelector("[view]"));
+	const filteredChance = lastChance.filter(data => data.attr == 'if');
+	console.log(filteredChance);
+	filteredChance.forEach(element => element.render(element.exp, element.element));
+
 	return view;
 }
 

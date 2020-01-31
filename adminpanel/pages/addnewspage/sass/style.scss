@@ -89,6 +89,9 @@ $btn-success-color: #27ae60;
             &:hover {
                 background: darken($btn-success-color, 10%)
             }
+            &:disabled{
+                background-color: #005aff;
+            }
         }
     }
 }

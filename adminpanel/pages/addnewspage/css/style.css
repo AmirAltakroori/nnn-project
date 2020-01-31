@@ -71,6 +71,8 @@
     cursor: pointer; }
     .add_news_form .button_div .button:hover {
       background: #1e8449; }
+    .add_news_form .button_div .button:disabled {
+      background-color: #005aff; }
 
 .ql-picker-label {
   direction: ltr; }

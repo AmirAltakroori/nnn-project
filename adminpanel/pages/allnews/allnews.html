@@ -1,48 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./js/allnews.js" defer></script>
-    <script src="./../../js/frontend.js"></script>
-    <script src="./../../js/backend.js"></script>
-    <link rel="stylesheet" href="../../fontawesome/all.min.css">
-    <link rel="stylesheet" href="./../../css/global.css">
-    <link rel="stylesheet" href="./css/allnews.css">
-
-    <title>جميع الأخبار</title>
-</head>
-
-<body>
-
-    <header>
-
-        <div class=" main-header header-flex-container space-between item-center">
-            <div class="header-logo">
-                <img src="./../../img/logo.png" alt="logo" href="index.html">
-            </div>
-            <div class="header-left-section">
-
-
-                <div class="header-inline-block">
-                    <li class="fas fa-user"></li>
-                    وليد الجعبة
-
-                </div>
-                <div class="header-inline-block">
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-            </div>
-
-        </div>
         <div class="row header-subheader ">
             <div>
                 الرئيسية > لوحة التحكم > الأخبار > جميع الأخبار
             </div>
         </div>
-    </header>
-
 
     <div class="container">
         <div class="content_header">
@@ -54,7 +15,7 @@
                     <span>البحث</span>
                 </div>
                 <div class="search">
-                    <img class="search_icon" src="./../../img/search.png">
+                    <i class="fas fa-search"></i>
                     <input type="text" class="search_field" placeholder="أدخل اسم الفئة" id="search" onkeyup="searchElement(2)">
                 </div>
             </div>
@@ -73,97 +34,56 @@
 
                 </tr>
             </thead>
-            <tbody id="tablebody">
-                <!-- <tr id="1" class="user_info">
-                    <td class="user_no">1</td>
+            <tbody id="tablebody" $for=" news of allNewsPage">
+                <tr id="1" class="user_info" >
+                    <td class="user_no">{{$i + 1}}</td>
                     <td class="user_full">
-                        <span class="user_name allnews-title-limit">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
-                    </td>
-                    <td class="user_full">
-                        <span class="user_name">عالمي</span>
+                        <span class="user_name allnews-title-limit">{{$news.title}}</span>
                     </td>
                     <td>
-                        <div class="allnews-inline-block">
-                            <input type="checkbox" id="main" tabindex="9" />
-                            <label for="main">خبر رئيسي</label>
-                        </div>
-                        <div class="allnews-inline-block">
-                            <input type="checkbox" id="urgent" tabindex="9" />
-                            <label for="urgent">خبر عاجل</label>
-
-                        </div>
-                    </td>
-                    <td>
-                            <select class="selection">
-                                    <option value="1">إظهار في الموقع</option>
-                                    <option value="0"> إخفاء من الموقع</option>
-                                  </select>
-                    </td>
-                    <td>
-                        <i value="click" class="fas fa-trash-alt delete_user" onclick="show(this,'delete',1)"></i>
-                        <i class="far fa-edit icon color-blue"></i>
-                    </td>
-                </tr>
-                <tr id="2" class="user_info">
-                        <td class="user_no">2</td>
-                        <td class="user_full">
-                            <span class="user_name allnews-title-limit">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
+                            <div $for="test of categories">
+                                <div $if="$news.categoryId == $test.id">
+                                        <span>{{$test.name}}</span>
+                                </div>
+                            </div>
                         </td>
-                        <td class="user_full">
-                            <span class="user_name">عالمي</span>
-                        </td>
-                        <td>
-                            <div class="allnews-inline-block">
-                                <input type="checkbox" id="main" tabindex="9" />
+                    <td>
+                            <div class="allnews-inline-block" $if="$news.isMainNews == 1">
+                                <input type="checkbox" id="main" tabindex="9" checked/>
                                 <label for="main">خبر رئيسي</label>
                             </div>
-                            <div class="allnews-inline-block">
-                                <input type="checkbox" id="urgent" tabindex="9" />
-                                <label for="urgent">خبر عاجل</label>
-    
-                            </div>
-                        </td>
-                        <td>
-                                <select class="selection">
-                                        <option value="1">إظهار في الموقع</option>
-                                        <option value="0"> إخفاء من الموقع</option>
-                                      </select>
-                        </td>
-                        <td>
-                            <i value="click" class="fas fa-trash-alt delete_user" onclick="show(this,'delete',2)"></i>
-                            <i class="far fa-edit icon color-blue"></i>
-                        </td>
-                    </tr>
-                    <tr id="3" class="user_info">
-                            <td class="user_no">3</td>
-                            <td class="user_full">
-                                <span class="user_name allnews-title-limit">أرامكو تعتزم تسعير سهمها عند 32 ريالاً</span>
-                            </td>
-                            <td class="user_full">
-                                <span class="user_name">عالمي</span>
-                            </td>
-                            <td>
-                                <div class="allnews-inline-block">
+                            <div class="allnews-inline-block" $if="$news.isMainNews == 0">
                                     <input type="checkbox" id="main" tabindex="9" />
                                     <label for="main">خبر رئيسي</label>
-                                </div>
-                                <div class="allnews-inline-block">
+                            </div>
+                            <div class="allnews-inline-block" $if="$news.isUrgentNews == 1">
+                                <input type="checkbox" id="urgent" tabindex="9" checked/>
+                                <label for="urgent">خبر عاجل</label>
+                            </div>
+                            <div class="allnews-inline-block" $if="$news.isUrgentNews == 0">
                                     <input type="checkbox" id="urgent" tabindex="9" />
                                     <label for="urgent">خبر عاجل</label>
-        
-                                </div>
-                            </td>
-                            <td>
+                            </div>
+                    </td>
+                    <td>
+                            <div $if="$news.isActive == 1">
+                                <select class="selection">
+                                        <option value="1" selected> إظهار في الموقع</option>
+                                        <option value="0"> إخفاء من الموقع</option>
+                                </select>
+                            </div>
+                            <div $if="$news.isActive == 0">
                                     <select class="selection">
-                                            <option value="1">إظهار في الموقع</option>
-                                            <option value="0"> إخفاء من الموقع</option>
-                                          </select>
-                            </td>
-                            <td>
-                                <i value="click" class="fas fa-trash-alt delete_user" onclick="show(this,'delete',3)"></i>
-                                <i class="far fa-edit icon color-blue"></i>
-                            </td>
-                        </tr> -->
+                                            <option value="1"> إظهار في الموقع</option>
+                                            <option value="0" selected> إخفاء من الموقع</option>
+                                    </select>
+                            </div>
+                    </td>
+                    <td>
+                        <i value="click" class="fas fa-trash-alt delete_user" onclick="show(this,'delete','$news.id')"></i>
+                        <i class="far fa-edit icon color-blue" onclick = "updateNews('$news.id',0) "></i>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -172,7 +92,7 @@
             <div class="contain">
                 <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
                 <div class="modal-button">
-                    <button class="modal-button button1" onclick="deleteRowElement(newsPage); hide('delete');">نعم</button>
+                    <button class="modal-button button1" onclick="deleteRowElement(allNewsPage); hide('delete');">نعم</button>
                     <button class="modal-button button2" onclick="hide('delete')">لا</button>
                 </div>
             </div>
@@ -180,6 +100,3 @@
         </div>
 
     </div>
-</body>
-
-</html>

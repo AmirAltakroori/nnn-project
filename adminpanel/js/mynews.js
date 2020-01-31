@@ -1,18 +1,15 @@
 
+document.addEventListener("DOMContentLoaded", (event) => {
+    let userdata = JSON.parse(sessionStorage.getItem("userData"));
+    if (userdata != null) {
+        myNewsPage[userdata.ind] = userdata;
+        sessionStorage.removeItem("userData");
+    }
+});
 
 
-    
-function mynews(){
 
-            
-        let userdata = JSON.parse(sessionStorage.getItem("userData"));
-        if (userdata != null) {
-            myNewsPage[userdata.ind] = userdata;
-            sessionStorage.removeItem("userData");
-        }
-}
-
- function deleteNews(callback, key, rev, row) {
+function deleteNews(callback, key, rev, row) {
 
     let fullUrl = URL + "news/" + key + "?rev=" + rev;
     let http = new XMLHttpRequest();
@@ -30,14 +27,14 @@ function mynews(){
 //read news functions 
 
 
- function findCat(id) {
+function findCat(id) {
     for (let j = 0; j < categories.length; j++) {
         if (categories[j].id == id)
             return categories[j].name;
     }
 }
 
- function displaynews(news) {
+function displaynews(news) {
     newsPage = news;
     let table = document.getElementById("tablebody");
     for (let i = 0; i < news.length; i++) {
@@ -92,5 +89,7 @@ function mynews(){
     }
 }
 
+document.addEventListener("DOMContentLoaded", (event) => {
 
-export {mynews}
+    displaynews(myNewsPage);
+});
