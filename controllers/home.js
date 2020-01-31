@@ -28,9 +28,21 @@ export class Home {
 
         this.categoriesList = getCategoriesList();
 
-        //this.showRandomNews(this.randomNews);
-        //this.showmainNews ();
         this.showCategoryNews();
+    }
+
+    /*
+        Change Selected news
+
+        @tparam news: news object
+
+        @param: identifier for needed news
+
+        @returns:
+    */
+    changeSelectedNews(news) {
+        this.selectedNews = news;
+        mvc.apply();
     }
 
     /*

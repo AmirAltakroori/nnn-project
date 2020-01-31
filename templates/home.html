@@ -22,10 +22,10 @@
                 <p>آخر الأخبار</p>
             </div>
             <div $for="news of mainNews" id="latest-news-list">
-                <div class="news">
-                    <a href="#/details/{{$news.id}}">
-                        <img src="../img/{{$news.img}}">
-                        <p>{{$news.title}}</p>
+                <div $click="changeSelectedNews($news)" class="news">
+                    <a $click="changeSelectedNews($news)">
+                        <img $click="changeSelectedNews($news)" src="../img/{{$news.img}}">
+                        <p $click="changeSelectedNews($news)">{{$news.title}}</p>
                     </a>
                 </div>
             </div>
