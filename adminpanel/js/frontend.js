@@ -7,7 +7,7 @@
 // Function's names must be lowCamelCase 
 // Don't delete this comments
 // By Waleed Jubeh
-// let newContain;
+
 let newId;
 //delete a row in a table
 function deleteRowElement(Page) {
@@ -22,28 +22,18 @@ function deleteRowElement(Page) {
 
 //show and hide functions for delete modal
 function show(row, modelId, id) {
-    let element = document.getElementById(modelId)
+    let element = document.getElementById(modelId);
     element.className += " modal-active";
     newContain = row;
     newId = id;
 }
 
 function hide(modelId) {
-    let element = document.getElementById(modelId)
+    let element = document.getElementById(modelId);
     element.classList.remove("modal-active");
 }
 
-// show and hide modal for edit function
-function showModal(modalId) {
-    document.getElementById(modalId).style.display = "flex";
-    document.getElementById("categoryname").value = '';
-}
 
-function hideModal(modalId) {
-    let modal = document.getElementById(modalId); //for modal
-    modal.style.display = "none";
-
-}
 /*
     This is a function for general searching used in multiple pages 
     It used in category page tot search based on it's name, used in

@@ -7,14 +7,11 @@
     </div>
 </header>
 <div class="container">
-    <!-- <div class="path">
-            <p class="path_text">لوحة التحكم > الأخبار > الفئات</p>
-        </div> -->
     <div class="content_header">
         <div class="title">
             <span class="title_text">الفئات</span>
         </div>
-        <div class="categories-add-button ">
+        <div $click="showModal('createcategory-modal')" class="categories-add-button ">
             <div class="fas fa-plus"></div>
             <div> اضافة فئة</div>
         </div>
@@ -42,17 +39,17 @@
             <tr>
                 <td class="user_no">{{$i+1}}</td>
                 <td class="user_full">
-                    <span class="user_name" style="font-size:18px">{{$category.name}}</span>
+                    <span class="user_name" $style="'font-size:18px': true">{{$category.name}}</span>
                 </td>
                 <td>
                     <div $if="$category.isActive == 1">
-                        <select class="selection" style="font-size:18px; border:none; font-family:'Segoe UI'">
+                        <select class="selection" $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true">
                             <option value="1" selected>فعال</option>
                             <option value="0"> غير فعال</option>
                         </select>
                     </div>
                     <div $if="$category.isActive == 0">
-                        <select class="selection" style="font-size:18px; border:none; font-family:'Segoe UI'">
+                        <select class="selection" $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true">
                             <option value="1" selected> غير فعال</option>
                             <option value="0">فعال</option>
                         </select>
@@ -60,10 +57,10 @@
                 </td>
                 <td>
                     <i class="fas fa-trash-alt delete_user"
-                        style="font-size:20px; color:red; text-align:center; cursor:pointer"
-                        onclick="show(this,'delete','$category.id')"></i>
+                        $style="'font-size:20px; color:red; text-align:center; cursor:pointer' : true"
+                        onclick="show(this,'delete', '$category.id')"></i>
                     <i class="far fa-edit icon color-blue"
-                        $click="showEditModal('createcategory-edit-modal',this, '{{$categories[$i].id}}')"></i>
+                        $click="showEditModal('createcategory-edit-modal', this.element, $category.id)"></i>
                 </td>
             </tr>
         </tbody>
@@ -71,7 +68,7 @@
 </div>
 <div class="createcategory-modal" id="createcategory-modal">
     <div id="createcategory-modalcontent">
-        <i class="fas fa-times-circle" id="close"></i>
+        <i class="fas fa-times-circle" id="close" $click="hideModal('createcategory-modal')"></i>
         <div style="width:100%;text-align: center;">
             <h2 id="modal-header-for-adding">
                 إضافة فئة جديدة
@@ -90,8 +87,7 @@
         </form>
     </div>
 </div>
-<div class="createcategory-modal" id="createcategory-edit-modal" tabindex="-1"
-    onfocus=" hideModal('createcategory-edit-modal')">
+<div class="createcategory-modal" id="createcategory-edit-modal" tabindex="-1">
     <div id="createcategory-modalcontent">
         <i class="fas fa-times-circle" id="close" $click="hideModal('createcategory-edit-modal')"></i>
         <div class='cat-centered-row'>
@@ -118,9 +114,8 @@
         <div class="contain">
             <p>هل أنت متأكد من إزالة هذه الفئة ؟</p>
             <div class="modal-button">
-                <button class="modal-button button1"
-                    onclick="deleteRowElement(categories); hide('delete'); ">نعم</button>
-                <button class="modal-button button2" $click="hide('delete')">لا</button>
+                <button class="modal-button button1" onclick="deleteRowElement(categories); hide('delete')">نعم</button>
+                <button class="modal-button button2" onclick="hide('delete')">لا</button>
             </div>
         </div>
     </div>

@@ -23,33 +23,31 @@ export class CategoriesController {
                 id: 4,
             }
         ]
-        this.activeId = 0;
-        this.activeRow = null;
-        this.categoriesOnLoad = import("./categories.js");
+
+        this.categoriesOnLoad = import("./categoriesonload.js");
         this.categoriesOnLoad.then(data => data.onLoad());
     }
 
-
-    show(row, modelId, id) {
-        let element = document.getElementById(modelId);
-        element.className += " modal-active";
-        this.activeRow = row;
-        this.activeId = id;
-    }
-
-    hide(modelId) {
-        let element = document.getElementById(modelId);
-        element.classList.remove("modal-active");
+    hideModal(modelId) {
+        let modal = document.getElementById(modelId);
+        modal.style.display = "none";
+        modal.classList.remove("modal-active");
     }
 
     showEditModal(modalId, row, id) {
         let modal = document.getElementById(modalId); //for modal
         modal.style.display = "flex";
-        console.log(this.activeId);
 
-        this.activeId = id;
-        console.log(row);
-        this.activeRow = row.parentElement.parentElement;
+        activeId = id;
+        activeRow = row.parentElement.parentElement;
+    }
+
+    // show  modal for edit and create functions
+    showModal(modalId) {
+        let modal = document.getElementById(modalId);
+        modal.style.display = "flex";
+        modal.className += " modal-active";
+        document.getElementById("categoryname").value = '';
     }
 
 }
