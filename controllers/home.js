@@ -28,6 +28,16 @@ export class Home {
 
         this.categoriesList = getCategoriesList();
 
+        this.isFirstTime = true;
+
+        setInterval(() => {
+            if (this.isFirstTime) {
+                this.isFirstTime = false;
+            } else {
+                this.slide(1);
+            }
+        } , 8000);
+
         this.showCategoryNews();
     }
 
