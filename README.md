@@ -68,10 +68,10 @@ Usage example:
 
 URL: ```https://example.com/#/news/2/14/```
 
-The parameters are passed in the ```$routeParams``` object. You can access it from the controller:
+The parameters are passed in the ```mvc.routeParams``` object. You can access it from the controller:
 
 ```
-console.log($routeParams.id);
+console.log(mvc.routeParams.id);
 ```
 
 Output: ```14```
@@ -82,24 +82,39 @@ Output: ```14```
 
 You can bind variables in the view pages by using this form : ```{{$varName}}```
 
-All defined variables in the controller should be defined in a global object called $scope.
-
 Usage example:
 
 ```
 Controller ->
-	$scope.name = "John Smith";
-	$scope.salary = 2500;
-	$scope.transportation = 300;
+    this.name = "John Smith";
+    this.salary = 2500;
+    this.transportation = 300;
 
 View ->
-	<p>Hello {{$name}}. Your salary is {{$salary * 0.98 + $transportation}}.
+    <p>Hello {{$name}}. Your salary is {{$salary * 0.98 + $transportation}}.
 
 Output ->
-	Hello John Smith. Your salary is 2750.
+    Hello John Smith. Your salary is 2750.
 ```
 
+## Updating Variables
 
+To update the view after getting a request or changing the data, you can use the ```mvc.apply()``` function.
+
+Usage Example:
+
+```
+Controller ->
+    sendRequest(data => {
+        this.data = data;
+        mvc.apply();
+    });
+
+View ->
+    <span $for="d of data">
+        <li>{{$d.title}}</li>
+    </span>
+```
 
 ## Custom Attributes
 
@@ -126,20 +141,20 @@ You can loop an element depending on an array defined in the $scope object.
 Form:
 ```
 <tag $for="a of arr">
-	<sub-tag></sub-tag>
+    <sub-tag></sub-tag>
 </tag>
 ```
 
-Thes <sub-tag> will be repeated for each element of the arr.
+**Note:** The <sub-tag> will be repeated for each element of the arr **not the <tag>**.
 
 Usage example:
 
 ```
 <span $for="n of news">
-	<ul>
-		<li>{{$n.title}}</li>
-		<li>{{$n.date}}</li>
-	</ul>
+    <ul>
+        <li>{{$n.title}}</li>
+        <li>{{$n.date}}</li>
+    </ul>
 </span>
 ```
 
@@ -149,15 +164,65 @@ You can add a class to an element depending on a condition.
 
 Form: ```<tag $class="'className' : condition"></tag>```
 
-Usage example: ```<p $class="'error' : $salary < 1500"></p>
+Usage example: ```<p $class="'error' : $salary < 1500"></p>```
 
 ### $style
 
 You can add a style to an element depending on a condition.
 
-Form: ```<tag $class="'css-style' : condition"></tag>```
+Form: ```<tag $style="'css-style' : condition"></tag>```
 
-Usage example: ```<p $class="'background-color: red; color: #fff;' : $salary < 1500"></p>
+Usage example: ```<p $style="'background-color: red; color: #fff;' : $salary < 1500"></p>```
+
+### $model
+
+You can link an input value with a variable in the controller. Changes in the input value will update the variable and vice versa.
+
+Form: ```<tag $model="variableName"></tag>```
+
+Usage example:
+
+```
+Controller ->
+    this.firstName = 'John';
+
+View ->
+    <input type="text" $model="firstName">
+```
+
+### $click
+
+You can add a click attribute to an element to execute a specific function in the controller on clicking the element.
+
+Form: ```<tag $click="functionName()"></tag>```
+
+Usage example:
+
+```
+Controller ->
+    constructor() { }
+    getData() { console.log('Got Data!'); }
+
+View ->
+    <button $click="gotData()">Get Data</button>
+```
+
+### $change
+
+You can add a change attribute to an input element to execute a specific function in the controller on changing the input value.
+
+Form: ```<tag $change="functionName()"></tag>```
+
+Usage example:
+
+```
+Controller ->
+    constructor() { }
+    updateData() { console.log('Updated Data!'); }
+
+View ->
+    <button $change="updateData()">Update Data</button>
+```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

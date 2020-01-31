@@ -197,9 +197,44 @@ function renderChange(exp, element) {
 	}
 }
 
-function renderInclude(exp,element)
-{
-	
+let contMap = new Map();
+let tempMap = new Map();
+async function renderInclude(exp, element) {
+	let expGroup = exp.split(',');
+	let tempPath = expGroup[0].trim();
+	let contPath = expGroup[1].trim();
+
+	let template;
+	let reload = false;
+	if (tempMap.has(tempPath))
+		template = tempMap.get(tempPath);
+	else {
+		template = await loadDoc(tempPath);
+		tempMap.set(tempPath, template);
+		reload = true;
+	}
+
+	let controller;
+	if (contMap.has(contPath))
+		controller = contMap.get(contPath);
+	else {
+		controller = await dynamicImport(contPath);
+		controller = new controller[Object.keys(controller)[0]];
+		contMap.set(contPath, controller);
+		reload = true;
+	}
+
+	let oldScope = $scope;
+	$scope = controller;
+
+	var node = document.createElement("LI");
+	node.innerHTML = template;
+	renderTemplate(node);
+	$apply(node);
+	element.innerHTML = node.innerHTML;
+
+	$scope = oldScope;
+	if (reload) mvc.apply();
 }
 
 //*********************************************************************//
@@ -281,11 +316,16 @@ function renderTemplate(view) {
 }
 
 function render(view, model, update = false) {
-	$scope = model;
+	if (model != null) $scope = model;
 	if (update) $apply();
 	renderTemplate(view);
-	$bindedVars = view.innerHTML;
-	if (!update) $apply(view);
+	if (!$bindedVars) $bindedVars = view.innerHTML;
+
+	if (!update) {
+		$bindedVars = view.innerHTML;
+		$apply(view);
+	}
+
 	return view;
 }
 
@@ -311,3 +351,14 @@ function eventListener(element, event, func) {
 		func();
 	});
 };
+
+function clearRender() {
+	contMap.forEach((value, key, mp) => {
+		delete value;
+	})
+	contMap.clear();
+	tempMap.clear();
+	var highestTimeoutId = setTimeout(";");
+	for (var i = 0; i < highestTimeoutId; i++)
+		clearTimeout(i);
+}

@@ -41,6 +41,7 @@ class Mvc {
     }
 
     update() {
+        this.clear();
         routeObj = analyzeUrl(window.location.href, this._routeMap); //get the route object        
         //Set to default route object if no route found
         if (!routeObj)
@@ -64,7 +65,11 @@ class Mvc {
 
     // clears the MVC
     clear() {
+        viewElement.innerHTML = "";
+        clearRender();
+        delete this.controller;
         this.controller = {};
         this.template = {};
     }
+
 }
