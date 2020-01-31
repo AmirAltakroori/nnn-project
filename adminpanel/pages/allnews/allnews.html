@@ -30,11 +30,14 @@
                     وليد الجعبة
 
                 </div>
-                <div class="header-inline-block">
+                <div class="header-inline-block" onclick="showLogOut()">
                     <i class="fas fa-chevron-down"></i>
-                </div>
+                    <div id="logout-model" class="logout-model">
+                        <div  class="logout-wrapper" onclick="logOut()">تسجيل الخروج</div>
+                    </div>
             </div>
 
+        </div>
         </div>
         <div class="row header-subheader ">
             <div>
@@ -55,7 +58,8 @@
                 </div>
                 <div class="search">
                     <img class="search_icon" src="./../../img/search.png">
-                    <input type="text" class="search_field" placeholder="أدخل اسم الفئة" id="search" onkeyup="searchElement(2)">
+                    <input type="text" class="search_field" placeholder="أدخل اسم الفئة" id="search"
+                        onkeyup="searchElement(2)">
                 </div>
             </div>
 
@@ -166,13 +170,15 @@
                         </tr> -->
             </tbody>
         </table>
+         <div class="delete-from-db" id="delete-from-db">تم الحذف</div>
     </div>
     <div class="modal-delete" id="delete">
         <div class="modal-wrapper">
             <div class="contain">
                 <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
                 <div class="modal-button">
-                    <button class="modal-button button1" onclick="deleteRowElement(newsPage); hide('delete');">نعم</button>
+                    <button class="modal-button button1"
+                        onclick="deleteRowElement(newsPage,'/news'); hide('delete');">نعم</button>
                     <button class="modal-button button2" onclick="hide('delete')">لا</button>
                 </div>
             </div>

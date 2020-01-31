@@ -16,7 +16,7 @@ body {
 .main-header {
   padding: 10px;
   height: 33px;
-  background-color: #36344D;
+  background-color: #36344d;
   box-shadow: 0px 1px 10px 1px rgba(69, 65, 78, 0.5);
   position: relative; }
 
@@ -72,6 +72,25 @@ body {
 
 .header-left-section > div:hover {
   color: white; }
+
+.logout-model {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  font-size: 20px;
+  padding-top: 60px; }
+
+.logout-wrapper {
+  min-width: 146px;
+  min-height: 44px;
+  color: white;
+  background-color: #36344d;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  transition: all 1s;
+  animation: fade-in 0.2s ease-in forwards; }
 
 .container {
   padding: 0px;
@@ -285,5 +304,22 @@ body {
     opacity: 0; }
   to {
     opacity: 100%; } }
+.delete-from-db {
+  color: #ffffff;
+  width: 60%;
+  height: 5%;
+  position: fixed;
+  right: 21%;
+  bottom: 0;
+  min-height: 50px;
+  min-width: 100px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+  display: none;
+  line-height: 50px;
+  background-color: #27ae60;
+  box-shadow: -3px 2px 6px 4px #27ae60;
+  animation: popup-animation 0.5s linear; }
 
 /*# sourceMappingURL=global.css.map */

@@ -9,25 +9,40 @@
 // By Waleed Jubeh
 
 // let newContain;
-let newId;
 //delete a row in a table
-function deleteRowElement(Page) {
+function deleteRowElement(Page, pageName) {
 
     let row = Page.findIndex((row) => row.id == newId);
     Page.splice(row, 1);
-    dbDelete('/users', 'admin1', "2-55da6d414713a91e5b1e5d3fca091b75").then(data => {
+    let rowDOM = newContain.parentNode.parentNode;
+    let id;
+    if (pageName == '/users')
+        id = rowDOM.childNodes[1].childNodes[0].innerHTML;
+    else
+        id = rowDOM.childNodes[0].innerHTML;
+    dbDelete(pageName, 'admin', "2-55da6d414713a91e5b1e5d3fca091b75").then(data => {
         if (data.error)
             showIfDeleteOrNot('false');
         else
             showIfDeleteOrNot('true');
     })
-    let rowDOM = newContain.parentNode.parentNode;
     rowDOM.parentElement.removeChild(rowDOM);
 
 
 }
+function showLogOut() {
+    let show = document.getElementById('logout-model');
+    if (show.style.display == 'none' || show.style.display == '')
+        show.style.display = 'flex';
+    else
+        show.style.display = 'none';
+}
+function logOut() {
+    sessionStorage.clear();
+    window.location.href = '/admin-panel-login/login.html';
+}
 function showIfDeleteOrNot(e) {
-    let element = document.getElementById('ppp');
+    let element = document.getElementById('delete-from-db');
     if (e=='true') {
         element.innerHTML = 'تم الحذف';
         element.style.backgroundColor = '#27ae60';

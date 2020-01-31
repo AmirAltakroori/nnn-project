@@ -43,7 +43,7 @@
                     <span class="user_name allnews-title-limit">{{$news.title}}</span>
                 </td>
 
-                <<<<<<< HEAD <td>
+                <td>
                     test
                     </td>
 
@@ -63,30 +63,28 @@
         </tbody>
     </table>
 
-    =======
     </tr>
     </thead>
     <tbody id="tablebody">
     </tbody>
     </table>
+    <div class="delete-from-db" id="delete-from-db">تم الحذف</div>
+
 </div>
->>>>>>> 68d5b2c5d2c505cafde3c921a19d8fd98635d2c8
 <div class="modal-delete" id="delete">
     <div class="modal-wrapper">
         <div class="contain">
             <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
             <div class="modal-button">
-                <button class="modal-button button1" onclick="deleteRowElement(newsPage); hide('delete');">نعم</button>
+                <button class="modal-button button1" onclick="deleteRowElement(newsPage,'/news'); hide('delete');">نعم</button>
                 <button class="modal-button button2" onclick="hide('delete')">لا</button>
             </div>
         </div>
 
     </div>
 
-    <<<<<<< HEAD </div>
-        =======
+   </div>
 </div>
 </body>
 
 </html>
->>>>>>> 68d5b2c5d2c505cafde3c921a19d8fd98635d2c8

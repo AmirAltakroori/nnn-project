@@ -22,7 +22,7 @@ function deleteNews(callback, key, rev, row) {
 
 /* -----------------------------------------------------------------------------------------------------------------------------------------------------*/
 //read news functions 
-
+let categories=[];
 function findcat(id) {
     for (let j = 0; j < categories.length; j++) {
         if (categories[j].id == id)
