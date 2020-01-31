@@ -91,15 +91,15 @@ export class approveNewsControler {
 
     }
 
-    /*updateNew(data, newsId) {
+    updateNew(data, newsId) {
         return new Promise((resolve, reject) => {
-            this.db = dynamicImport("./js/backend.js").then(db => db.dbCreateOrUpdate("/news/_design/views/_view/notapprovedews", data, newsId).then(response => {
+            dbCreateOrUpdate("/news", data, newsId).then(response => {
                 resolve(response);
                 mvc.apply();
-            }));
-        }
-        )
-    }*/
+                document.location.reload(true);
+            });
+        })
+    }
 
     appproveNews() {
 
@@ -123,19 +123,12 @@ export class approveNewsControler {
                     "isUrgentNews": news.isUrgentNews,
                     "createDate": news.createDate,
                     "writerId": news.writerId,
-                    "_attachments": news._attachments,
+                    "attachments": news._attachments,
                     "id": news.id,
-                    "approved": 1,
+                    "isApproved": 1,
                 }
-
-                return new Promise((resolve, reject) => {
-                   dbCreateOrUpdate("/news/_design/views/_view/notapprovedews", data, news.id).then(response => {
-                        resolve(response);
-                        mvc.apply();
-                    });
-                    
-                });
-                
+                //console.log(news)
+                this.updateNew(data, news.id)
             }
         }
 
