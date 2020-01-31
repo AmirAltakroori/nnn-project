@@ -278,7 +278,7 @@ function render(view, model, update = false) {
 	$scope = model;
 	if (update) $apply();
 	renderTemplate(view);
-	$bindedVars = view.innerHTML;
+	if (!$bindedVars) $bindedVars = view.innerHTML;
 	if (!update) $apply(view);
 	return view;
 }
