@@ -1,9 +1,12 @@
-export class approveNewsControler {
+export class approveNewsController {
 
     constructor() {
-
-        this.MyNewsPage = [{
-            id: 1,
+        this.db = null;
+        dynamicImport("./js/backend.js").then(db => {
+            this.db = db;
+        });
+        this.allnews = [{
+            _id: 1,
             title: "test is test ",
             content: "<h1>This is my first news</h1>",
             categoryId: 1,
@@ -15,10 +18,10 @@ export class approveNewsControler {
             isUrgentNews: 1,
             createDate: new Date(),
             writerId: 1,
-            _attachments: "",
+            attachments: "",
         },
         {
-            id: 2,
+            _id: 2,
             title: "test is test ",
             content: "<h1>This is my first news</h1>",
             categoryId: 1,
@@ -30,10 +33,10 @@ export class approveNewsControler {
             isUrgentNews: 1,
             createDate: new Date(),
             writerId: 1,
-            _attachments: "",
+            attachments: "",
         },
         {
-            id: 3,
+            _id: 3,
             title: "test is test ",
             content: "<h1>This is my first news</h1><br><ul><li>ههههه</li></ul>",
             categoryId: 1,
@@ -45,11 +48,11 @@ export class approveNewsControler {
             isUrgentNews: 1,
             createDate: "2019-05-12",
             writerId: 1,
-            _attachments: "",
+            attachments: "",
         },
         {
-            id: 4,
-            _rev: "1-c0c1a0422e44ca46e3c372999e599291",
+            _id: 59,
+            _rev: "3-cae7574a77d7150340789a6ed1d7bdaf",
             title: "kasjdl",
             content: "<p><br></p>",
             categoryId: 1,
@@ -86,19 +89,16 @@ export class approveNewsControler {
             name: "الفن",
             isActive: 0,
         }
-        ];
-
-        this.news = import('./newsapprove.js');
-        console.log(this.news.then(data => data.approvenews()));
-
+        ]; 
+        console.log(this.categories,this.allnews);
     }
-
     updateNew(data, newsId) {
 
         return new Promise((resolve, reject) => {
-            dbCreateOrUpdate("/news", data, newsId).then(response => {
+            this.db.dbCreateOrUpdate("/news", data, newsId).then(response => {
                 resolve(response);
                 mvc.apply();
+                console.log("Updated");
                 //document.location.reload(true);
             });
         })
@@ -108,10 +108,11 @@ export class approveNewsControler {
 
         let news;
         let data;
-        for (let i = 0; i < myNewsPage.length; i++) {
-            let checkbox = document.getElementById(myNewsPage[i].id);
+        console.log( this.allnews);
+        for (let i = 0; i < this.allnews.length; i++) {
+            let checkbox = document.getElementById(this.allnews[i]._id);
             if (checkbox.checked) {
-                news = myNewsPage[i];
+                news = this.allnews[i];
                 //console.log(news)
                 data = {
 
@@ -126,14 +127,13 @@ export class approveNewsControler {
                     "isUrgentNews": news.isUrgentNews,
                     "createDate": news.createDate,
                     "writerId": news.writerId,
-                    "attachments": news._attachments,
-                    "id": news.id,
+                    "attachments": news.attachments,
                     "_rev": news._rev,
                     "writerId": news.writerId,
                     "isApproved": 1
                 }
                 //console.log(news)
-                this.updateNew(data, news.id)
+                this.updateNew(data, news._id + '')
             }
         }
 
