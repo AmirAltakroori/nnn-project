@@ -28,7 +28,7 @@ export class CategoriesController {
         this.categoriesOnLoad.then(data => data.onLoad());
     }
 
-    hideModal(modelId) {
+    hideCreateEditModal(modelId) {
         let modal = document.getElementById(modelId);
         modal.style.display = "none";
         modal.classList.remove("modal-active");
@@ -42,8 +42,7 @@ export class CategoriesController {
         activeRow = row.parentElement.parentElement;
     }
 
-    // show  modal for edit and create functions
-    showModal(modalId) {
+    showCreateModal(modalId) {
         let modal = document.getElementById(modalId);
         modal.style.display = "flex";
         modal.className += " modal-active";

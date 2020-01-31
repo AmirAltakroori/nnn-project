@@ -11,7 +11,7 @@
         <div class="title">
             <span class="title_text">الفئات</span>
         </div>
-        <div $click="showModal('createcategory-modal')" class="categories-add-button ">
+        <div $click="showCreateModal('createcategory-modal')" class="categories-add-button ">
             <div class="fas fa-plus"></div>
             <div> اضافة فئة</div>
         </div>
@@ -68,7 +68,7 @@
 </div>
 <div class="createcategory-modal" id="createcategory-modal">
     <div id="createcategory-modalcontent">
-        <i class="fas fa-times-circle" id="close" $click="hideModal('createcategory-modal')"></i>
+        <i class="fas fa-times-circle" id="close" $click="hideCreateEditModal('createcategory-modal')"></i>
         <div style="width:100%;text-align: center;">
             <h2 id="modal-header-for-adding">
                 إضافة فئة جديدة
@@ -89,7 +89,7 @@
 </div>
 <div class="createcategory-modal" id="createcategory-edit-modal" tabindex="-1">
     <div id="createcategory-modalcontent">
-        <i class="fas fa-times-circle" id="close" $click="hideModal('createcategory-edit-modal')"></i>
+        <i class="fas fa-times-circle" id="close" $click="hideCreateEditModal('createcategory-edit-modal')"></i>
         <div class='cat-centered-row'>
             <h2 id="modal-header-for-adding">
                 تعديل اسم الفئة

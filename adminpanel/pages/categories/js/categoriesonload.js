@@ -37,8 +37,8 @@ function onLoad() {
             </select>
         </td>
         <td>
-            <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer" onclick="show(this,'delete',${categories.length+1})"></i>
-            <i class="far fa-edit icon color-blue" onclick="showEditModal('createcategory-edit-modal',this,${categories.length+1 })"></i>
+            <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer" onclick="show(this,'delete',${categories.length + 1})"></i>
+            <i class="far fa-edit icon color-blue" onclick="showEditModal('createcategory-edit-modal',this,${categories.length + 1})"></i>
         </td>`;
         tr.innerHTML = row;
         tr.className = 'user_info';

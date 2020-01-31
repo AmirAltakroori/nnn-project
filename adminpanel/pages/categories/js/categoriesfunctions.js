@@ -1,4 +1,3 @@
-
 let activeId = 0;
 let activeRow = null;
 
@@ -11,7 +10,7 @@ function updateCategoryName() {
 }
 
 function showEditModal(modalId, row, id) {
-    let modal = document.getElementById(modalId); //for modal
+    let modal = document.getElementById(modalId);
     modal.style.display = "flex";
 
     activeId = id;
