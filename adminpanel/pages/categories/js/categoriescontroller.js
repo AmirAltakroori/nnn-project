@@ -25,6 +25,8 @@ export class CategoriesController {
         ];
         this.activeRow = null;
         this.activeId = 0;
+        console.log(this.activeId);
+        
     }
 
     hideCreateEditModal(modelId) {
@@ -69,7 +71,12 @@ export class CategoriesController {
         this.hideModals("createcategory-edit-modal");
     }
 
-    createCategory() {
+    printMe()
+    {
+        console.log("H");
+    }
+    ccc() {
+        console.log("HHh");
         let tbody = document.getElementsByTagName('tbody')[0];
         console.log(tbody);
         let categoryName = document.getElementById("categoryname").value;
@@ -95,7 +102,7 @@ export class CategoriesController {
         tr.innerHTML = row;
         tr.className = 'user_info';
         tbody.appendChild(tr);
-        hideModals(modal.id);
+        this.hideModals("createcategory-modal");
         // to database
         this.categories.push({
             isActive: 1,
