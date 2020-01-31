@@ -16,7 +16,15 @@ let routeList = [{
 
 },
 {
-    url: "mynews",
+    url: "/addnews/:id",
+    template: "pages/addnewspage/addnewpage.html",
+    title: "شبكة الوحدة الإخبارية",
+    controller: "/adminpanel/pages/addnewspage/js/index.js"
+
+
+},
+{
+    url: "/mynews",
     template: "pages/mynews/mynews.html",
     title: "شبكة الوحدة الإخبارية",
     controller: "/adminpanel/pages/mynews/js/index.js"
@@ -39,15 +47,21 @@ let routeList = [{
 
 },
 {
-    url: "/addnews/:id",
-    template: "pages/addnewspage/addnewpage.html",
+    url: "/adduser",
+    template: "pages/newuser/newuser.html",
     title: "شبكة الوحدة الإخبارية",
-    controller: "/adminpanel/pages/addnewspage/js/index.js"
+    controller: "/adminpanel/pages/newuser/js/index.js"
 
-
+},
+{
+    url: "/categories",
+    template: "pages/categories/categories.html",
+    title: "شبكة الوحدة الإخبارية",
+    controller: "/adminpanel/pages/categories/js/index.js"
 }
 
 ];
 
 mvc.addRouteList(routeList);
 mvc.init();
+// export {mvc};
