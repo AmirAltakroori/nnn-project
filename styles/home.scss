@@ -47,7 +47,7 @@
 
      .news {
 
-        a{
+        p{
             margin-top: 30px;
         }
 
@@ -249,7 +249,7 @@
 
      .news {
 
-        a{
+        p{
             margin-top: 25px;
         }
 
@@ -450,7 +450,7 @@
 
      .news {
 
-        a{
+        p{
             margin-top: 20px;
         }
 
@@ -646,13 +646,14 @@
             .news{
 
                 margin-bottom: 12px;
+                text-decoration: none;
 
-                a {
+                p {
 
                     float: left;
                     margin-right: 10px;
                     color: #707070;
-                    text-decoration: none;
+                    
                 }
             }
         }

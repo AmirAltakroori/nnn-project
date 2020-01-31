@@ -23,14 +23,16 @@
             </div>
             <div $for="news of mainNews" id="latest-news-list">
                 <div class="news">
-                    <img src="../img/{{$news.img}}" width="170px" height="90px">
-                    <a href="#/details/{{$news.id}}">{{$news.title}}</a>
+                    <a href="#/details/{{$news.id}}">
+                        <img src="../img/{{$news.img}}">
+                        <p>{{$news.title}}</p>
+                    </a>
                 </div>
             </div>
         </div>
         <div id="latest-news-more-detailed-container">
             <div class="latest-news-more-detailed-image-div">
-                <img class="latest-news-more-detailed-image" src="../img/{{$selectedNews.img}}" width="620px" height="340px">
+                <img class="latest-news-more-detailed-image" src="../img/{{$selectedNews.img}}">
             </div>
             <div class="latest-news-more-detailed-title-and-date">
                 <div class="latest-news-more-detailed-title">
@@ -38,7 +40,7 @@
                 </div>
                 <div class="latest-news-more-detailed-date">
                     <p class="authorName">{{$selectedNews.authorName}}</p>
-                    <img src="../img/calenderIcon.png" width="15px" height="15px">
+                    <img src="../img/calenderIcon.png">
                     <p class="published">{{$selectedNews.publishedDate}}</p>
                 </div>
             </div>
@@ -47,7 +49,7 @@
             </div>
             <div class="latest-news-more-detailed-readmore-button">
                 <a href="#/details/{{$selectedNews.id}}">
-                    <img src="../img/arrowIcon.png" width="17px" height="17px">
+                    <img src="../img/arrowIcon.png">
                     <p>اقرأ المزيد</p>
                 </a>
             </div>
