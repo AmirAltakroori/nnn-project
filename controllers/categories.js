@@ -24,15 +24,22 @@ export class Category {
         this.name = this.pageTypesList[Number(indexType)];
 
         // Initialize main news section
-        this.listMainNews = this.getMainNewsList().slice(0, 3);
+        this.listMainNews = this.getMainNewsList();
+        if (this.listMainNews.lenght > 3) {
+            this.listMainNews = this.listMainNews.slice(0, 3);
+        }
+
         this.mainNews = this.listMainNews[0];
 
         // Initialize random news and guarantee that the number of news is 5
-        this.randomNews = this.getRandomNewsList().slice(0, 5);
+        this.randomNews = this.getRandomNewsList();
+        if (this.randomNews.lenght > 10) {
+            this.randomNews = this.randomNews.slice(0, 10);
+        }
 
         // Initialize related news with same category and guarantee that the number of each news list is 5
-        this.rightNewsInCategory = this.getRightNewsInCategory().slice(0, 5);
-        this.liftNewsInCategory = this.getLiftNewsInCategory().slice(0, 5);
+        this.rightNewsInCategory = this.getRightNewsInCategory();
+        this.liftNewsInCategory = this.getLiftNewsInCategory();
 
     }
 
@@ -108,6 +115,46 @@ export class Category {
      */
     getRandomNewsList() {
         return [{
+            id: 1,
+            title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
+            img: "img/new.jpg",
+
+        }, {
+            id: 2,
+            title: "إلغاء امتحانات الفاينل لهذا العام",
+            img: "img/new2.png ",
+
+        }, {
+            id: 3,
+            title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
+            img: "img/new.jpg ",
+
+        }, {
+            id: 4,
+            title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
+            img: "img/new2.png",
+
+        }, {
+            id: 1,
+            title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
+            img: "img/new.jpg",
+
+        }, {
+            id: 2,
+            title: "إلغاء امتحانات الفاينل لهذا العام",
+            img: "img/new2.png ",
+
+        }, {
+            id: 3,
+            title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
+            img: "img/new.jpg ",
+
+        }, {
+            id: 4,
+            title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
+            img: "img/new2.png",
+
+        }, {
             id: 1,
             title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
             img: "img/new.jpg",
