@@ -741,6 +741,10 @@
             .news{
                 position: relative;
                 @extend %news;
+
+                a{
+                    text-decoration: none;
+                }
             }
 
             .date{
