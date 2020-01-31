@@ -46,6 +46,23 @@ export class Home {
     }
 
     /*
+        Hide slide
+
+        @tparam news: news object
+
+        @param: identifier for needed news
+
+        @returns:
+    */
+    hideSlide(news) {
+        let index = this.randomNews.indexOf(news);
+        if (index > this.slideIndex + 2 || index < this.slideIndex) {
+            return true;
+        }
+        return false;
+    }
+
+    /*
         Get Main News.
 
         @tparam
@@ -196,8 +213,8 @@ export class Home {
      *
      *    @returns
      */
-    plusDivs(inc) {
-        this.showDivs(this.slideIndex += inc);
+    slide(inc) {
+        this.showSlides(this.slideIndex += inc);
     }
 
     /*
@@ -209,7 +226,7 @@ export class Home {
      *
      *    @returns
      */
-    showDivs(index) {
+    showSlides(index) {
         let i;
         let newsTileList = document.getElementsByClassName("slider-news-tile");
 

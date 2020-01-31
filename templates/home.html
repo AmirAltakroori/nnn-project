@@ -58,11 +58,11 @@
 
     <!-- RANDOM NEWS -->
     <div class="random-news">
-        <div class="imagesPrev"><img $click="plusDivs(-1)" src="../img/arrow.png" ></div>
+        <div class="imagesPrev"><img $click="slide(-1)" src="../img/arrow.png" ></div>
 
         <div $for="news of randomNews" id="rendom-news-container" class="rendom-news-container">
             <a href="#/details/{{$news.id}}">
-                <div class="slider-news-tile" style="background-image: url('{{$news.img}}');">
+                <div $style="display: 'none': $hideSlide($news)" class="slider-news-tile" style="background-image: url('{{$news.img}}');">
                     <div class="date">{{$news.publishedDate}}</div>
                     <div class="news">
                         {{$news.title}}
@@ -71,7 +71,7 @@
             </a>
         </div>
 
-        <div class="imagesNext"><img $click="plusDivs(1)" src="../img/arrow-left.png"></div>
+        <div class="imagesNext"><img $click="slide(1)" src="../img/arrow-left.png"></div>
     </div>
 
     <!-- CATEGORY SECTION -->
