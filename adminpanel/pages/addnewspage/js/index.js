@@ -1,7 +1,4 @@
 export class addnewsController {
-    previewImg() {
-        console.log("T");
-    }
     constructor() {
         //   Check role
         this.db = this.dynamicImport("./../../../js/backend.js").then(db => db.dbGet("/categories/_design/allcategories/_view/allcategories", true, "").then(cats => {
@@ -10,6 +7,7 @@ export class addnewsController {
             console.log(this.categories);
 
         }));
+        this.editor = null;
         this.richTextEditor();
         this.newsList = [];
         this.newsImage = "";
@@ -28,11 +26,9 @@ export class addnewsController {
 
         this.categories = [];
     }
-
-    print() {
-        console.log(this.isActive);
-    }
     richTextEditor() {
+        
+
         let newsBody = document.getElementById('editor');
         console.log(newsBody);
         let toolbarOptions = [
@@ -63,7 +59,9 @@ export class addnewsController {
                 toolbar: toolbarOptions
             }
         };
-        // editor.format('align', 'right');
-    }
+        editor = new Quill(newsBody, options);
+
+        editor.format('direction', 'ltr');
+            }
 
 }
