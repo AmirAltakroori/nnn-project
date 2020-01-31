@@ -6,10 +6,8 @@
 <p $if="$x">JAJAJAJAJAJJAJAJAJAJ</p>
 
 <div $for="n of arr2d">
-    <span $if="$n.active">{{$n.num}}</span>
-    <div $for="j of arr2d">
-        <span $if="$j.active">{{$j.num}}</span>
-    </div>
+    {{$n.num}}
+
 </div>
 
-<p>No. of time updated: {{$times}}</p>
+<p>No. of time updated: {{$times}}</p>controller

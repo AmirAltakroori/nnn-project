@@ -7,6 +7,7 @@ export class ContactController {
             { num: 10, active: true },
             { num: 20, active: true }
         ];
+      
         console.log(this.times);
         setTimeout(() => {
             this.FirstName = "hello";
@@ -16,7 +17,7 @@ export class ContactController {
             this.times++;
             console.log(this.times);
             mvc.apply();
-        }, 2000);
+        }, 1000);
 
         setTimeout(() => {
             this.arr2d = [{ num: 11, active: true }];
@@ -24,7 +25,7 @@ export class ContactController {
             this.times++;
             console.log(this.times);
             mvc.apply();
-        }, 4000);
+        }, 2000);
 
         setTimeout(() => {
             this.arr2d.push({ num: 22, active: true });
@@ -34,7 +35,7 @@ export class ContactController {
             this.times++;
             console.log(this.times);
             mvc.apply();
-        }, 5000);
+        }, 3000);
     }
 
     testFunction() {
