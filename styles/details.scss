@@ -82,11 +82,11 @@ part1 contain the header of the new and the related news
 }
 
 .news-content {
-    margin-top: 60px;
+    margin-top: 4%;
     font-family: $newsText-fontFamily;
     border-top: solid 1px #707070;
     margin-bottom: 0%;
-    @include flex-property(row, flex-end, flex-start, 100%);
+        @include flex-property(row, flex-end, null, 100%);
     .news-related {
         @include flex-property(column, flex-start, flex-start, 33%);
         .related-news-menu {
@@ -128,7 +128,10 @@ part1 contain the header of the new and the related news
         .news-info{
             width: 83%;
         }
-        h1 {
+      
+        
+        margin-top: 2%;       
+         h1 {
             margin-right: 10%;
             margin-bottom: 4%;
         }
@@ -162,7 +165,7 @@ part1 contain the header of the new and the related news
                 height: 20px;
             }
         
-            
+
 
         }
         .article{

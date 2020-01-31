@@ -20,10 +20,9 @@ let routeList = [
         template: "/templates/categories.html",
         controller: "/controllers/categories.js",
         id: "",
-        title: "details"
+        title: "categories"
     }
 ];
-
 
 mvc.addRouteList(routeList);
 mvc.init();
