@@ -61,7 +61,7 @@
         <div class="imagesPrev"><img $click="plusDivs(-1)" src="../img/arrow.png" ></div>
 
         <div $for="news of randomNews" id="rendom-news-container" class="rendom-news-container">
-            <a href="#/details/{{$news.id}}"></a>
+            <a href="#/details/{{$news.id}}">
                 <div class="slider-news-tile" style="background-image: url('{{$news.img}}');">
                     <div class="date">{{$news.publishedDate}}</div>
                     <div class="news">
