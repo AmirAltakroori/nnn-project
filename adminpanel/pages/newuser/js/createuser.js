@@ -1,5 +1,12 @@
 export class addusersController {
     constructor() {
+
+        const userData = JSON.parse(sessionStorage.getItem('user'));
+        if (!userData) {
+            window.location.href = '/admin-panel-login/login.html';
+            return;
+        }
+
         this.db = null;
         this.btnTitle  = 'انشاء مستخدم جديد'
         this._id = 0;
