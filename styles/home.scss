@@ -47,7 +47,7 @@
 
      .news {
 
-        p{
+        a{
             margin-top: 30px;
         }
 
@@ -249,7 +249,7 @@
 
      .news {
 
-        p{
+        a{
             margin-top: 25px;
         }
 
@@ -450,7 +450,7 @@
 
      .news {
 
-        p{
+        a{
             margin-top: 20px;
         }
 
@@ -647,11 +647,12 @@
 
                 margin-bottom: 12px;
 
-                p {
+                a {
 
                     float: left;
                     margin-right: 10px;
                     color: #707070;
+                    text-decoration: none;
                 }
             }
         }
@@ -709,19 +710,23 @@
 
 .latest-news-more-detailed-readmore-button {
     margin-top: 50px;
-    p{
-        float: left;
-        margin-left: 2px;
-        color: #0C4D6D;
-        font-size: 17px;
-        margin-top: 50px;
+    a{
+        text-decoration: none;
+        p{
+            float: left;
+            margin-left: 2px;
+            color: #0C4D6D;
+            font-size: 17px;
+            margin-top: 50px;
+        }
+        img{
+            float: left;
+            margin-top: 55px;
+            width: 17px;
+            height: 17px;
+        }
     }
-    img{
-        float: left;
-        margin-top: 55px;
-        width: 17px;
-        height: 17px;
-    }
+    
 }
 
 .random-news {

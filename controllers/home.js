@@ -52,7 +52,7 @@ export class Home {
                         path: "#",
                         authorName: "أسيل عرفه",
                         publishedDate: "12/12/2019",
-                        img:"img/firstNews.jpg",
+                        img:"firstNews.jpg",
                         description:"بسم الله الرحمن الرحيم ... هذا وصف الخبر ",
                         id: 1
                       }, {
@@ -60,7 +60,7 @@ export class Home {
                         path: "#",
                         authorName: "أسيل عرفه",
                         publishedDate: "12/12/2019",
-                        img:"img/firstNews.jpg",
+                        img:"firstNews.jpg",
                         description:"",
                         id: 2
                       }, {
@@ -68,7 +68,7 @@ export class Home {
                         path: "#",
                         authorName: "أسيل عرفه",
                         publishedDate: "12/12/2019",
-                        img:"img/firstNews.jpg",
+                        img:"firstNews.jpg",
                         description:"",
                         id: 3
                       }, {
@@ -76,7 +76,7 @@ export class Home {
                         path: "#",
                         authorName: "أسيل عرفه",
                         publishedDate: "12/12/2019",
-                        img:"img/firstNews.jpg",
+                        img:"firstNews.jpg",
                         description:"",
                         id: 4
                       }, {
@@ -84,7 +84,7 @@ export class Home {
                         path: "#",
                         authorName: "أسيل عرفه",
                         publishedDate: "12/12/2019",
-                        img:"img/firstNews.jpg",
+                        img:"firstNews.jpg",
                         description:"",
                         id: 5
                       }];
@@ -99,7 +99,7 @@ export class Home {
                         path: "#",
                         authorName: "أسيل عرفه",
                         publishedDate: "12/12/2019",
-                        img:"img/firstNews.jpg",
+                        img:"../img/firstNews.jpg",
                         description:"بسم الله الرحمن الرحيم ... هذا وصف الخبر ",
                         id: 1
                       }, {
@@ -107,7 +107,7 @@ export class Home {
                         path: "#",
                         authorName: "أسيل عرفه",
                         publishedDate: "12/12/2019",
-                        img:"img/firstNews.jpg",
+                        img:"../img/firstNews.jpg",
                         description:"",
                         id: 2
                       }, {
@@ -115,7 +115,7 @@ export class Home {
                         path: "#",
                         authorName: "أسيل عرفه",
                         publishedDate: "12/12/2019",
-                        img:"img/firstNews.jpg",
+                        img:"../img/firstNews.jpg",
                         description:"",
                         id: 3
                       }, {
@@ -123,7 +123,7 @@ export class Home {
                         path: "#",
                         authorName: "أسيل عرفه",
                         publishedDate: "12/12/2019",
-                        img:"img/firstNews.jpg",
+                        img:"../img/firstNews.jpg",
                         description:"",
                         id: 4
                       }];

@@ -23,14 +23,14 @@
             </div>
             <div $for="news of mainNews" id="latest-news-list">
                 <div class="news">
-                    <img src="{{$news.img}}" width="170px" height="90px">
-                    <p>{{$news.title}}</p>
+                    <img src="../img/{{$main.img}}" width="170px" height="90px">
+                    <a href="#/details/{{$news.id}}">{{$news.title}}</a>
                 </div>
             </div>
         </div>
         <div id="latest-news-more-detailed-container">
             <div class="latest-news-more-detailed-image-div">
-                <img class="latest-news-more-detailed-image" src="{{$selectedNews.img}}" width="620px" height="340px">
+                <img class="latest-news-more-detailed-image" src="../img/{{$selectedNews.img}}" width="620px" height="340px">
             </div>
             <div class="latest-news-more-detailed-title-and-date">
                 <div class="latest-news-more-detailed-title">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="latest-news-more-detailed-date">
                     <p class="authorName">{{$selectedNews.authorName}}</p>
-                    <img src="img/calenderIcon.png" width="15px" height="15px">
+                    <img src="../img/calenderIcon.png" width="15px" height="15px">
                     <p class="published">{{$selectedNews.publishedDate}}</p>
                 </div>
             </div>
@@ -47,7 +47,7 @@
             </div>
             <div class="latest-news-more-detailed-readmore-button">
                 <a href="#/details/{{$selectedNews.id}}">
-                    <img src="img/arrowIcon.png" width="17px" height="17px">
+                    <img src="../img/arrowIcon.png" width="17px" height="17px">
                     <p>اقرأ المزيد</p>
                 </a>
             </div>
@@ -56,10 +56,10 @@
 
     <!-- RANDOM NEWS -->
     <div class="random-news">
-        <div class="imagesPrev"><img $click="plusDivs(-1)" src="img/arrow.png" ></div>
+        <div class="imagesPrev"><img $click="plusDivs(-1)" src="../img/arrow.png" ></div>
 
         <div $for="news of randomNews" id="rendom-news-container" class="rendom-news-container">
-            <div class="slider-news-tile" style="background-image: url({{$news.img}});">
+            <div class="slider-news-tile" style="background-image: url('{{$main.img}}');">
                 <div class="date">{{$news.publishedDate}}</div>
                 <div class="news">
                     {{$news.title}}
@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class="imagesNext"><img $click="plusDivs(1)" src="img/arrow-left.png"></div>
+        <div class="imagesNext"><img $click="plusDivs(1)" src="../img/arrow-left.png"></div>
     </div>
 
     <!-- CATEGORY SECTION -->

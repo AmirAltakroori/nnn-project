@@ -16,6 +16,13 @@ let routeList = [
         title: "details"
     },
     {
+        url: "/details/:id",
+        template: "/templates/details.html",
+        controller: "/controllers/detailes.js",
+        id: "",
+        title: "details"
+    },
+    {
         url: "/categories/:id",
         template: "/templates/categories.html",
         controller: "/controllers/categories.js",
