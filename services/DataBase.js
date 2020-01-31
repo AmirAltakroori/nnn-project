@@ -63,8 +63,7 @@ export class DataBase {
      *
      *    @returns list of fetched data.
      */
-
-    FindByIndex(endpoint, fields, index, value, baseUrl, authentication) {
+     findByIndex(endpoint, fields, index, value, baseUrl, authentication) {
         return new Promise((resolve, reject) => {
             let parameters = {
                 'selector': {},
