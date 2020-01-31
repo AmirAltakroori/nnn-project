@@ -14,61 +14,61 @@
 
 <html>
 
-    <head>
-        <link rel="stylesheet" type="text/css" href="styles/style.css" />
-        <link rel="stylesheet" type="text/css" href="styles/categories.css" />
-        <link rel="stylesheet" type="text/css" href="styles/details.css" />
-        <link rel="stylesheet" type="text/css" href="styles/index.css" />
-    </head>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/categories.css" />
+    <link rel="stylesheet" type="text/css" href="styles/details.css" />
+    <link rel="stylesheet" type="text/css" href="styles/index.css" />
+</head>
 
-    <body>
+<body>
 
-        <div class="root">
+    <div class="root">
 
-            <!-- HEADER -->
-            <div class="header">
+        <!-- HEADER -->
+        <div class="header">
 
-                <!-- NAVBAR -->
-                <div class="navbar">
-                    <div class="navbar-right">
-                        <a class="logo" href="templates\home.html"> <img class="logo-img" src="img\logo.png" alt="شبكة الوحدة الإخبارية"></a>
-                        <div class="categories-container">
-                            <ul id="categories-list"></ul>
-                        </div>
-                    </div>
-
-                    <div class="navbar-left">
-                        <a herf="#adminPanel" class="login-button">تسجيل الدخول</a>
+            <!-- NAVBAR -->
+            <div class="navbar">
+                <div class="navbar-right">
+                    <a class="logo" href="templates\home.html"> <img class="logo-img" src="img\logo.png" alt="شبكة الوحدة الإخبارية"></a>
+                    <div class="categories-container">
+                        <ul id="categories-list"></ul>
                     </div>
                 </div>
 
-                <!-- URGENT -->
-                <div id="urgent-container">
-                    <div>عاجل</div>
-                    <marquee id="urgent-content" direction="right" onmouseover="stop()" onmouseout="start()"> </marquee>
+                <div class="navbar-left">
+                    <a herf="#adminPanel" class="login-button">تسجيل الدخول</a>
                 </div>
             </div>
 
-            <div class="view-root">
-
-                <!-- VIEW CONTAINER -->
-                <div class="view" VIEW>
-
-                </div>
-            </div>
-
-            <!-- FOOTER -->
-            <div class="footer">
-                <div class="footer-right">
-                    <a href="#default" class="logo"> <img src="img\logo.png" alt="شبكة الوحدة الإخبارية"></a>
-                </div>
+            <!-- URGENT -->
+            <div id="urgent-container">
+                <div>عاجل</div>
+                <marquee id="urgent-content" direction="right" onmouseover="stop()" onmouseout="start()"> </marquee>
             </div>
         </div>
 
-        <script src="./potato/potato.js"></script>
-        <script src="app.js"></script>
-        <script src="controllers/index.js"></script>
+        <div class="view-root">
 
-    </body>
+            <!-- VIEW CONTAINER -->
+            <div class="view" VIEW>
+
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="footer-right">
+                <a href="#default" class="logo"> <img src="img\logo.png" alt="شبكة الوحدة الإخبارية"></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="./potato/potato.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/index.js"></script>
+
+</body>
 
 </html>

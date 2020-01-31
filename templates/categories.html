@@ -11,80 +11,115 @@
     File description: html code for main section and right sidebar
     in category page for normal user view.
 -->
-<link rel="stylesheet" href="./css/categories.css">
-<link rel="stylesheet" type="text/css" href="./css/index.css" />
+
 <div class="category-view">
-    <p class="category-view-name">الاخبار العالمية</p>
+
+    <!-- Page contnet title -->
+    <p class="category-view-name">{{$name}}</p>
+
     <hr>
     <div class="category-view-container">
+
+        <!-- Start right category page content -->
         <div class="right-col">
 
-            <!-- Main section of category-->
-            <div class="main_category_section">
+            <!-- Start main section of category-->
+            <div class="main-category-section">
 
-                <!-- Right sidebar -->
-                <div class="right_sidebar">
-                    <div class="news_list">
-                        <div class="news" id="category_rightside_news_id_1" onclick="showNewsInMainSectionFromDiv(1)">
-                            <div class="centered-img-background right-side-image"></div>
-                        </div>
-                        <div class="news" id="category_rightside_news_id_2" onclick="showNewsInMainSectionFromDiv(2)">
-                            <div class="centered-img-background right-side-image"></div>
-                        </div>
-                        <div class="news" id="category_rightside_news_id_3" onclick="showNewsInMainSectionFromDiv(3)">
-                            <div class="centered-img-background right-side-image"></div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Right main news sidebar -->
+                <div class="right-sidebar">
 
-                <!-- Main news section -->
-                <div class="main_section">
-                    <div class="main_news">
-                        <div id="category_main_news_image" class="centered-img-background"></div>
-                        <div class="details">
-                            <h3 id="category_main_news_title"></h3>
-                            <div id="category_main_news_writng_details">
-                                <div id="category_main_news_writer"></div>
-                                <img src="img/calenderIcon.png" alt="calender icon">
-                                <span id="category_main_news_date"></span>
+                    <!-- List of main news items -->
+                    <div $for="news of listMainNews" class="news-list">
+                        <div class="news">
+                            <div $click="changeMainNews($news)" class="centered-img-background right-side-image" style="background-image: url({{$news.attachments}});">
+                                <span>{{$news.title}}</span>
                             </div>
-                            <div id="category_main_news_content_news"></div>
-                        </div>
-                        <div id="category_see_more">
-                            <img src="img/arrowIcon.png" alt="arrow icon">
-                            <p>اقرأ المزيد</p>
                         </div>
                     </div>
+
+                </div>
+
+                <!-- Start main news section -->
+                <div class="main-section">
+                    <div class="main-news">
+
+                        <!-- Main news image -->
+                        <div id="category-main-news-image" class="centered-img-background" style="background-image: url({{$mainNews.attachments}});"></div>
+
+                        <!-- Main news details -->
+                        <div class="details">
+                            <h3 id="category-main-news-title">{{$mainNews.title}}</h3>
+                            <div id="category-main-news-writng-details">
+                                <div id="category-main-news-writer">{{$mainNews.writer}}</div>
+                                <img src="img/calenderIcon.png" alt="calender icon">
+                                <span id="category-main-news-date">{{$mainNews.createDate}}</span>
+                            </div>
+                            <div id="category-main-news-content-news">{{$mainNews.content}}</div>
+                        </div>
+
+                        <!-- See more details -->
+                        <div id="category-see-more">
+                            <a href="#/details/{{$mainNews.id}}">
+                                <img src="img/arrowIcon.png" alt="arrow icon">
+                                <p>اقرأ المزيد</p>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End main news section -->
+
+            </div>
+            <!-- End main section of category-->
+
+            <!-- Start related category news -->
+            <div class="relates-news">
+
+                <!-- Lift related news list -->
+                <div class="related-news-left">
+                    <ul $for="news of rightNewsInCategory" id="related-news-menu-right">
+                        <a href="#/details/{{$news.id}}">
+                            <li>
+                                <img src="{{$news.img}}" alt="photo">
+                                <p>{{$news.title}}</p>
+                            </li>
+                        </a>
+                    </ul>
+                </div>
+
+                <!-- Right related news list -->
+                <div class="related-news-left">
+                    <ul $for="news of liftNewsInCategory" id="related-news-menu-right">
+                        <a href="#/details/{{$news.id}}">
+                            <li>
+                                <img src="{{$news.img}}" alt="photo">
+                                <p>{{$news.title}}</p>
+                            </li>
+                        </a>
+                    </ul>
                 </div>
 
             </div>
+            <!-- End related category news -->
 
-            <div class="relates_news">
-                <div class="related_news_left">
-
-                    <ul id="related_news_menu_left">
-
-
-                    </ul>
-
-                </div>
-                <div class="related_news_left">
-
-                    <ul id="related_news_menu_right">
-
-                    </ul>
-
-                </div>
-            </div>
         </div>
+        <!-- End right category page content -->
+
+
+        <!-- Lift category page content -->
         <div class="left-col">
+
+            <!-- List of random news  -->
             <p class="title">منوعات</p>
-            <ul id="random-content">
-
-
+            <ul $for="news of randomNews" id="random-content">
+                <li class="card random-new" id="{{$news.id}}">
+                    <img src="{{$news.img}}" alt="">
+                    <a href="#/details/{{$news.id}}">{{$news.title}}</a>
+                </li>
             </ul>
+
         </div>
+
     </div>
 </div>
-
-<script src="../controller/categories.js"></script>
