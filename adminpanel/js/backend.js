@@ -9,36 +9,36 @@ export let tokenKey = "PSEU";
 function getData(storeName) {
     return JSON.parse(sessionStorage.getItem(storeName));
 }
-function getStoredToken(name){
-    try{
+function getStoredToken(name) {
+    try {
         let user = getData(name);
         let tokenFromJson = JSON.parse(atob(user.token));
         return tokenFromJson;
-    }catch(e){
+    } catch (e) {
         console.log(e);
         return null;
     }
 }
-export function confirm(){
+export function confirm() {
     let user = getStoredToken('user');
 
-    if(!user)
+    if (!user)
         window.location.href = '/admin-panel-login/login.html';
     //  Calculate the Hash for the token data with the key
     let hash = user['hash'];//SHA256(tokenJson + key);
-    delete(user['hash']);
+    delete (user['hash']);
 
     let correctHash = false;
     let correctSission = false;
-    if(hash == SHA256(JSON.stringify(user) + tokenKey))
+    if (hash == SHA256(JSON.stringify(user) + tokenKey))
         correctHash = true;
 
     let currentDate = new Date().getTime();
-    if(currentDate < user.data.exp)
+    if (currentDate < user.data.exp)
         correctSission = true;
-    
-    if(!correctHash || !correctSission)
-       window.location.href = '/admin-panel-login/login.html';
+
+    if (!correctHash || !correctSission)
+        window.location.href = '/admin-panel-login/login.html';
     else
         return user;
 }
@@ -54,89 +54,88 @@ export function saveData(storeName, data) {
     sessionStorage.setItem(storeName, JSON.stringify(data));
 }
 let myNewsPage = [{
-        id: 1,
-        title: "test is test ",
-        content: "<h1>This is my first news</h1>",
-        categoryId: 1,
-        seoTitle: "First news",
-        seoTags: "{ 'tags':{['test','sport']} }",
-        seoDescription: "This is my first news",
-        isActive: 1,
-        isMainNews: 0,
-        isUrgentNews: 1,
-        createDate: new Date(),
-        writerId: 1,
-        _attachments: "",
-    },
-    {
-        id: 2,
-        title: "test is test ",
-        content: "<h1>This is my first news</h1>",
-        categoryId: 1,
-        seoTitle: "First news",
-        seoTags: "{ 'tags':{['test','sport']} }",
-        seoDescription: "This is my first news",
-        isActive: 1,
-        isMainNews: 0,
-        isUrgentNews: 1,
-        createDate: new Date(),
-        writerId: 1,
-        _attachments: "",
-    },
-    {
-        id: 3,
-        title: "test is test ",
-        content: "<h1>This is my first news</h1><br><ul><li>ههههه</li></ul>",
-        categoryId: 1,
-        seoTitle: "First news",
-        seoTags: "شسيشس شسيشس شسي شسي",
-        seoDescription: "This is my first news",
-        isActive: 1,
-        isMainNews: 0,
-        isUrgentNews: 1,
-        createDate: "2019-05-12",
-        writerId: 1,
-        _attachments: "",
-    },
-    {
-        title: "الاحلال يعتقل مقدسيا مسنا",
-        content: "<h1>This is my first news</h1>",
-        categoryId: 3,
-        seoTitle: "First news",
-        seoTags: "{ 'tags':{['test','sport']} }",
-        seoDescription: "This is my first news",
-        isActive: 0,
-        isMainNews: 1,
-        isUrgentNews: 1,
-        createDate: "2019-05-12",
-        writerId: 1,
-        _attachments: "",
-        id: 4,
-    },
+    id: 1,
+    title: "test is test ",
+    content: "<h1>This is my first news</h1>",
+    categoryId: 1,
+    seoTitle: "First news",
+    seoTags: "{ 'tags':{['test','sport']} }",
+    seoDescription: "This is my first news",
+    isActive: 1,
+    isMainNews: 0,
+    isUrgentNews: 1,
+    createDate: new Date(),
+    writerId: 1,
+    _attachments: "",
+},
+{
+    id: 2,
+    title: "test is test ",
+    content: "<h1>This is my first news</h1>",
+    categoryId: 1,
+    seoTitle: "First news",
+    seoTags: "{ 'tags':{['test','sport']} }",
+    seoDescription: "This is my first news",
+    isActive: 1,
+    isMainNews: 0,
+    isUrgentNews: 1,
+    createDate: new Date(),
+    writerId: 1,
+    _attachments: "",
+},
+{
+    id: 3,
+    title: "test is test ",
+    content: "<h1>This is my first news</h1><br><ul><li>ههههه</li></ul>",
+    categoryId: 1,
+    seoTitle: "First news",
+    seoTags: "شسيشس شسيشس شسي شسي",
+    seoDescription: "This is my first news",
+    isActive: 1,
+    isMainNews: 0,
+    isUrgentNews: 1,
+    createDate: "2019-05-12",
+    writerId: 1,
+    _attachments: "",
+},
+{
+    title: "الاحلال يعتقل مقدسيا مسنا",
+    content: "<h1>This is my first news</h1>",
+    categoryId: 3,
+    seoTitle: "First news",
+    seoTags: "{ 'tags':{['test','sport']} }",
+    seoDescription: "This is my first news",
+    isActive: 0,
+    isMainNews: 1,
+    isUrgentNews: 1,
+    createDate: "2019-05-12",
+    writerId: 1,
+    _attachments: "",
+    id: 4,
+},
 
 ];
 let categories = [{
-        id: 1,
-        name: "الألعاب",
-        isActive: 1,
-    },
-    {
-        id: 3,
-        name: "الرئيسية",
-        isActive: 1,
-    },
-    {
-        id: 2,
-        name: "الرياضة",
-        isActive: 0, //غير مفعل
-    },
-    {
-        id: 4,
-        name: "الفن",
-        isActive: 0,
-    }
+    id: 1,
+    name: "الألعاب",
+    isActive: 1,
+},
+{
+    id: 3,
+    name: "الرئيسية",
+    isActive: 1,
+},
+{
+    id: 2,
+    name: "الرياضة",
+    isActive: 0, //غير مفعل
+},
+{
+    id: 4,
+    name: "الفن",
+    isActive: 0,
+}
 ]
-
 
 function updateNews(id, page) {
     let aim = null;
@@ -182,7 +181,7 @@ export function dbGet(endpoint, isView, id) {
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         http.setRequestHeader('Accept', 'application/json');
         http.setRequestHeader("Authorization", AUTHENTICATION);
-        http.onreadystatechange = function() { //Call a function when the state changes.
+        http.onreadystatechange = function () { //Call a function when the state changes.
             if (http.readyState == 4) {
                 let data = JSON.parse(http.responseText);
                 if (!id || id == '')
@@ -207,7 +206,7 @@ function dbDelete(endpoint, id, rev) {
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         http.setRequestHeader('Accept', 'application/json');
         http.setRequestHeader("Authorization", AUTHENTICATION);
-        http.onreadystatechange = function() { //Call a function when the state changes.
+        http.onreadystatechange = function () { //Call a function when the state changes.
             if (http.readyState == 4) {
                 resolve(JSON.parse(http.responseText));
             }
@@ -227,7 +226,7 @@ export function dbCreateOrUpdate(endpoint, data, id) {
         http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         http.setRequestHeader('Accept', 'application/json');
         http.setRequestHeader("Authorization", AUTHENTICATION);
-        http.onreadystatechange = function() { //Call a function when the state changes.
+        http.onreadystatechange = function () { //Call a function when the state changes.
             if (http.readyState == 4) {
                 resolve(JSON.parse(http.responseText));
             }
@@ -235,7 +234,6 @@ export function dbCreateOrUpdate(endpoint, data, id) {
         http.send(JSON.stringify(data));
     });
 }
-
 // userData={
 //     username:"waleed",
 //     password:"32423",
@@ -402,12 +400,12 @@ export function SHA256(s) {
 
 
 
-function dbFindByIndex(endpoint, fields, index,value) {
+function dbFindByIndex(endpoint, fields, index, value) {
     return new Promise((resolve, reject) => {
         let parameters = {
             'selector': {},
-            'fields':fields,
-        } 
+            'fields': fields,
+        }
         parameters.selector[index] = value;
         const url = BASEURL + endpoint + `/_find`;
         let http = new XMLHttpRequest();
@@ -415,7 +413,7 @@ function dbFindByIndex(endpoint, fields, index,value) {
         http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         http.setRequestHeader('Accept', 'application/json');
         http.setRequestHeader("Authorization", AUTHENTICATION);
-        http.onreadystatechange = function() { //Call a function when the state changes.
+        http.onreadystatechange = function () { //Call a function when the state changes.
             if (http.readyState == 4) {
                 resolve(JSON.parse(http.responseText));
             }

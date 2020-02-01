@@ -265,6 +265,7 @@ body {
     align-items: center;
     font-size: 40px;
     opacity: 0;
+    animation: 0.3s popup-animation forwards;
 }
 
 .modal-active {

@@ -49,7 +49,7 @@ let routeList = [{
     url: "/categories",
     template: "pages/categories/categories.html",
     title: "شبكة الوحدة الإخبارية",
-    controller: "/adminpanel/pages/categories/js/index.js"
+    controller: "/adminpanel/pages/categories/js/categoriescontroller.js"
 }
 ];
 

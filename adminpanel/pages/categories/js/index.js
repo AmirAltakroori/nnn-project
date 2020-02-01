@@ -1,19 +1,6 @@
 export class categories {
 
     constructor() {
-        this.categoriesPage = null;
-        this.activeId = 0;
-        this.activeRow = null;
-        this.dp = null;
-        dynamicImport("./../../adminpanel/js/backend.js").then(db => {
-            this.db = db;
-            this.db.confirm();
-            this.getAllCat().then(cats => {
-                this.categoriesPage = this.db.cleanDataForControllers(cats);
-                mvc.apply();
-            });
-
-        });
 
     }
 
@@ -96,116 +83,6 @@ export class categories {
 
     }
 
-    showModal(modalId) {
-        document.getElementById(modalId).style.display = "flex";
-        document.getElementById("categoryname").value = '';
-    }
 
 
-
-
-    showEditModal(modalId, row, id) {
-        let modal = document.getElementById(modalId); //for modal
-        modal.style.display = "flex";
-        activeId = id;
-        activeRow = row.parentElement.parentElement;
-    }
-
-    hideModal(modalId) {
-        let modal = document.getElementById(modalId); //for modal
-        modal.style.display = "none";
-    }
-
-    updateCategoryName() {
-        let newName = document.getElementById("editcategoryname").value;
-        categoriesPage.find(({ id }) => id === activeId).name = newName;
-        var changeName = document.getElementsByClassName("user_name")[activeId - 1];
-        changeName.innerHTML = newName;
-        document.getElementById("editcategoryname").value = "";
-    }
-    /**************************************************************************************************
-     * Read categories
-     */
-    displayCategories(categories) {
-        dbGet("/categories/_design/allcategories/_view/allcategories", true, "").then(data => {
-            categoriesPage = data;
-            categories = data;
-
-            // categoriesPage = categories;
-
-            let table = document.getElementById("tablebody");
-            for (let i = 0; i < categories.length; i++) {
-                let row = document.createElement("tr");
-                row.className = "user_info";
-                let number = document.createElement("td");
-                number.className = "user_no";
-                number.textContent = i + 1;
-                let info = document.createElement("td");
-                info.className = "user_full";
-                let info_text = document.createElement("span");
-                info_text.className = "user_name ";
-                info_text.textContent = categories[i].value.name;
-                info.appendChild(info_text);
-                let show_selection = document.createElement("td");
-                let select = document.createElement("select");
-                select.className = "selection";
-                let option1 = document.createElement("option");
-                option1.value = 1;
-                option1.textContent = "فعال";
-                let option2 = document.createElement("option");
-                option2.value = 0;
-                option2.textContent = "غير فعال";
-                select.appendChild(option1);
-                select.appendChild(option2);
-                select.selectedIndex = !categories[i].value.state;
-                show_selection.appendChild(select);
-
-                let operations = document.createElement("td");
-                let delete_icon = document.createElement("i");
-                delete_icon.className = "fas fa-trash-alt delete_user";
-                delete_icon.setAttribute('onclick', "show(this,'delete'," + categories[i].id + ")");
-
-                let edit_icon = document.createElement("i");
-                edit_icon.className = "far fa-edit icon color-blue";
-                edit_icon.onclick = (e) => {
-                    showEditModal("createcategory-edit-modal", edit_icon, categories[i].id);
-                }
-                operations.appendChild(delete_icon);
-                operations.appendChild(edit_icon);
-                row.appendChild(number);
-                row.appendChild(info);
-                row.appendChild(show_selection);
-                row.appendChild(operations);
-
-                table.appendChild(row);
-            }
-
-        });
-    }
-    getCatId() {
-        return dbGet("/settings", false, "categories");
-    }
-
-    CreateCat(data) {
-        return new Promise((resolve, reject) => {
-            getCatId().then(request => {
-                const _id = request.counter + 1;
-                dbCreateOrUpdate("/categories", data, _id).then(response => {
-                    request.counter = request.counter + 1;
-                    dbCreateOrUpdate("/settings", request, request._id).then(response2 => {
-                        resolve(response2);
-                    });
-                })
-            })
-        })
-    }
-
-    getAllCat() {
-        return new Promise((resolve, reject) => {
-            this.db.dbGet("/categories/_design/allcategories/_view/allcategories", true, "").then(cats => {
-
-                resolve(cats);
-            })
-        });
-    }
 }
