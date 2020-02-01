@@ -55,20 +55,6 @@ export class Home {
     }
 
     /*
-        Change Selected news
-
-        @tparam news: news object
-
-        @param: identifier for needed news
-
-        @returns:
-    */
-    changeSelectedNews(news) {
-        this.selectedNews = news;
-        mvc.apply();
-    }
-
-    /*
         Get Main News.
 
         @tparam
@@ -231,11 +217,8 @@ export class Home {
             this.randomNewsView = this.randomNews.slice(this.slideIndex, this.slideIndex + 3);
         } else {
             this.randomNewsView = this.randomNews.slice(this.slideIndex, this.randomNews.length);
-            console.log(this.randomNewsView);
             this.randomNewsView = [...this.randomNewsView, ...(this.randomNews.slice(0, (this.slideIndex + 3) % this.randomNews.length))];
-            console.log(this.randomNewsView);
         }
-        console.log(this.slideIndex);
         mvc.apply();
     }
 
