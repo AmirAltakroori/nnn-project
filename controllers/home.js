@@ -208,7 +208,7 @@ export class Home {
     slide(inc) {
         this.slideIndex += inc;
         if (this.slideIndex < 0) {
-            this.slideIndex = this.randomNews.length - 1;
+            this.slideIndex += this.randomNews.length;
         }
         if (this.slideIndex == this.randomNews.length) {
             this.slideIndex = 0;
