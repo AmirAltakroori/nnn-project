@@ -50,18 +50,18 @@
                 </td>
                 <td>
                     <div class="allnews-inline-block">
-                        <input type="checkbox" id="main{{$i}}" tabindex="9" />
-                        <label for="main{{$i}}">خبر رئيسي</label>
+                        <input class='mainNews' type="checkbox" id="main{{$i}}" tabindex="9" />
+                        <label style="cursor: pointer;"for="main{{$i}}">خبر رئيسي</label>
 
                     </div>
                     <div class="allnews-inline-block">
-                        <input type="checkbox" id="urgent{{$i}}" tabindex="9" checked />
-                        <label for="urgent{{$i}}">خبر عاجل</label>
+                        <input  type="checkbox" id="urgent{{$i}}" tabindex="9"   class='urgentNews' />
+                        <label style="cursor: pointer;" for="urgent{{$i}}">خبر عاجل</label>
                     </div>
                 </td>
                 <td>
                     <div >
-                        <select $model='$news.isActive' $change='printMe()' class="selection">
+                        <select $model='$news.isActive' $change='updateStatus("isActive",$i)' class="selection">
                             <option value="1"> إظهار في الموقع</option>
                             <option value="0" > إخفاء من الموقع</option>
                         </select>
@@ -88,4 +88,10 @@
 
     </div>
 
+</div>
+<div class="popup success" id='success'>
+    تمت العملية
+</div>
+<div class="popup warning" id='sending'>
+    انتظر قليلا
 </div>
