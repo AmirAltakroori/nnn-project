@@ -1,7 +1,6 @@
 let mvc = new Mvc();
 
-let routeList = [
-    {
+let routeList = [{
         url: "/home",
         template: "/templates/home.html",
         controller: "/controllers/home.js",
@@ -17,7 +16,6 @@ let routeList = [
         url: "/contact",
         template: "/templates/contact.html",
         controller: "/controllers/contact.js",
-        title: "صفحة المشرف"
     },
     {
         url: "/home/:id",

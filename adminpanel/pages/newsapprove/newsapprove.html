@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,12 +38,24 @@
                 </div>
 
             </div>
+=======
+<div class="row header-subheader">
+    <div>
+        الرئيسية > لوحة التحكم > الأخبار > أخباري    
+    </div>
+</div>
+>>>>>>> f0ff7296b7d8739db13be064ccd863ea7c71793c
 
+<div class="container">
+    <div class="content_header">
+        <div class="title">
+            <span class="title_text">تأكيد الأخبار</span>
         </div>
-        <div class="row header-subheader ">
-            <div>
-                الرئيسية > لوحة التحكم >الأخبار > تأكيد الأخبار
+        <div class="search_area">
+            <div class="search_word">
+                <span>البحث</span>
             </div>
+<<<<<<< HEAD
         </div>
     </header>
 
@@ -61,9 +74,20 @@
                     <input type="text" id="search" onkeyup="searchElement(2)" class="search_field"
                         placeholder="أدخل اسم الفئة ">
                 </div>
+=======
+            <div class="search">
+                <i class="fas fa-search"></i>
+                <input 
+                type="text"
+                class="search_field"
+                id="search"
+                placeholder="أدخل عنوان الفئة"
+                onkeyup="searchElement(1)"
+                >
+>>>>>>> f0ff7296b7d8739db13be064ccd863ea7c71793c
             </div>
-
         </div>
+<<<<<<< HEAD
 
         <table class="content">
             <thead>
@@ -80,12 +104,61 @@
             </tbody>
         </table>
         <div class="delete-from-db" id="delete-from-db">تم الحذف</div>
+=======
+>>>>>>> f0ff7296b7d8739db13be064ccd863ea7c71793c
     </div>
-    <div class="newsapprove-flex-box">
-        <div class="newsapprove-approve-button">
-            نشر الخبر
-        </div>
+
+    <table id="table" class="content">
+        <thead>
+            <tr class="first_row">
+                <th>#</th>
+                <th>عنوان الخبر</th>
+                <th>الفئة</th>
+                <th>الحالة</th>
+                <th>العمليات</th>
+            </tr>
+        </thead>
+
+        <tbody id="tablebody" $for=" n of notAppNewsPage">
+            <tr class="user_info">
+                <td class="user_no">
+                    {{$i + 1}}
+                </td>
+
+                <td class="user_full">
+                    <span class="user_name">{{$n.title}}</span>
+                </td>
+                
+                <td>
+                    <div $for="test of categories">
+                        <div $if="$n.categoryId == $test.id">
+                                <span>{{$test.name}}</span>
+                        </div>
+                    </div>
+                </td>
+
+                <td>
+                    <div $if="$n.isActive == 1">
+                        <span>مفعل</span>
+                    </div>
+                    <div $if="$n.isActive == 0">
+                        <span>غير مفعل</span>
+                    </div>
+                </td>
+
+                <td>
+                    <i class="fas fa-trash-alt delete_user" onclick="show(this,'delete', '$n.id')"></i>
+                    <i class="far fa-edit icon color-blue" onclick = "updateNews('$news.id',0) "></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="newsapprove-flex-box">
+    <div class="newsapprove-approve-button">
+        نشر الخبر
     </div>
+<<<<<<< HEAD
     <div class="modal-delete" id="delete">
         <div class="modal-wrapper">
             <div class="contain">
@@ -95,11 +168,17 @@
                         onclick="deleteRowElement(newsPage,'/news'); hide('delete');">نعم</button>
                     <button class="modal-button button2" onclick="hide('delete')">لا</button>
                 </div>
+=======
+</div>
+<div class="modal-delete" id="delete">
+    <div class="modal-wrapper">
+        <div class="contain">
+            <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
+            <div class="modal-button">
+                <button class="modal-button button1" onclick="deleteRowElement(MyNewsPage); hide('delete');">نعم</button>
+                <button class="modal-button button2" onclick="hide('delete')">لا</button>
+>>>>>>> f0ff7296b7d8739db13be064ccd863ea7c71793c
             </div>
-
         </div>
-
     </div>
-</body>
-
-</html>
+</div>

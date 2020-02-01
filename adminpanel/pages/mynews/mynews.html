@@ -5,7 +5,6 @@
 </div>
 
 
-
 <div class="container">
     <div class="content_header">
         <div class="title">
@@ -16,8 +15,9 @@
                 <span>البحث</span>
             </div>
             <div class="search">
-                <img class="search_icon" src="./../../img/search.png">
-                <input type="text" class="search_field" placeholder="أدخل عنوان الخبر" id="search" onkeyup="searchElement(1)">
+                <i class="fas fa-search"></i>
+                <input type="text" class="search_field" placeholder="أدخل عنوان الخبر" id="search"
+                    onkeyup="searchElement(1)">
             </div>
         </div>
 
@@ -40,25 +40,29 @@
             <tr class="user_info">
                 <td class="user_no">{{$i + 1}}</td>
                 <td class="user_full">
-                    <span class="user_name allnews-title-limit">{{$news.title}}</span>
+                    <span class="user_name">{{$news.title}}</span>
                 </td>
 
                 <td>
-                    test
-                    </td>
+                    <div $for="test of categories">
+                        <div $if="$news.categoryId == $test._id">
+                            <span>{{$test.name}}</span>
+                        </div>
+                    </div>
+                </td>
 
-                    <td>
-                        <div $if="$myNewsPage[$i].isActive == 1">
-                            <span>مفعل</span>
-                        </div>
-                        <div $if="$myNewsPage[$i].isActive == 0">
-                            <span>غير مفعل</span>
-                        </div>
-                    </td>
-                    <td>
-                        <i class="fas fa-trash-alt delete_user"></i>
-                        <i class="far fa-edit icon color-blue"></i>
-                    </td>
+                <td>
+                    <div $if="$myNewsPage[$i].isActive == 1">
+                        <span>مفعل</span>
+                    </div>
+                    <div $if="$myNewsPage[$i].isActive == 0 ">
+                        <span>غير مفعل</span>
+                    </div>
+                </td>
+                <td>
+                    <i value="click" class="fas fa-trash-alt delete_user" $click="show('delete',$i)"></i>
+                    <i class="far fa-edit icon color-blue" onclick="updateNews('$news.id',0) "></i>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -68,23 +72,18 @@
     <tbody id="tablebody">
     </tbody>
     </table>
-    <div class="delete-from-db" id="delete-from-db">تم الحذف</div>
-
 </div>
 <div class="modal-delete" id="delete">
     <div class="modal-wrapper">
         <div class="contain">
             <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
             <div class="modal-button">
-                <button class="modal-button button1" onclick="deleteRowElement(newsPage,'/news'); hide('delete');">نعم</button>
-                <button class="modal-button button2" onclick="hide('delete')">لا</button>
+                <button class="modal-button button1" $click="deleteNews();">نعم</button>
+                <button class="modal-button button2" $click="hide('delete')">لا</button>
             </div>
         </div>
 
     </div>
 
-   </div>
 </div>
-</body>
-
-</html>
+</div>

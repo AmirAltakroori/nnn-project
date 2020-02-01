@@ -273,6 +273,7 @@ body {
 }
 
 .modal-delete {
+<<<<<<< HEAD
   position: fixed;
   width: 100%;
   top: 0;
@@ -285,6 +286,21 @@ body {
   align-items: center;
   font-size: 40px;
   opacity: 0;
+=======
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: $modal-font-color;
+    display: none;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 40px;
+    opacity: 0;
+    animation: 0.3s popup-animation forwards;
+>>>>>>> f0ff7296b7d8739db13be064ccd863ea7c71793c
 }
 
 .modal-active {
@@ -359,6 +375,7 @@ body {
 }
 
 .popup {
+<<<<<<< HEAD
   color: #ffffff;
   width: 30%;
   height: 5%;
@@ -380,7 +397,70 @@ body {
     background-color: #097;
   }
   animation: popup-animation 0.5s linear;
+=======
+    color: #ffffff;
+    width: 30%;
+    height: 5%;
+    position: fixed;
+    left: 35%;
+    z-index: 20;
+    bottom: 18%;
+    min-height: 50px;
+    min-width: 100px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 10px;
+    display: none;
+    line-height: 50px;
+    &.warning {
+        background-color: #ebb318;
+    }
+    &.success {
+        background-color: #097;
+    }
+    animation: popup-animation 0.5s linear;
+>>>>>>> f0ff7296b7d8739db13be064ccd863ea7c71793c
 }
+
+input[class='toggle'] {
+    margin: 0;
+    margin-bottom: 10px;
+    -webkit-appearance: button;
+    border:none;
+    background-color: #ccc;
+    width: 60px;
+    height: 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color .2s;
+  }
+  
+  input[class='toggle']:after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 26px;
+    height: 26px;
+    background-color: #fff;
+    margin: 2px;
+    border-radius: 50px;
+    transition: .2s all;
+  }
+  
+  input[class='toggle']:checked{
+    background-color: #414898;
+  } 
+  
+  input[class='toggle']:checked:after {
+    left: 30px;
+  }
+  
+  input[class="toggle"]:focus{
+     outline:0;
+  }
 
 @keyframes popup-animation {
   from {

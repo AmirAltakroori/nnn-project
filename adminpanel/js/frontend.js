@@ -63,17 +63,8 @@ function showIfDeleteOrNot(e) {
 }
 
 //show and hide functions for delete modal
-function show(row, modelId, id) {
-    let element = document.getElementById(modelId)
-    element.className += " modal-active";
-    newContain = row;
-    newId = id;
-}
 
-function hide(modelId) {
-    let element = document.getElementById(modelId)
-    element.classList.remove("modal-active");
-}
+
 /*
     This is a function for general searching used in multiple pages 
     It used in category page tot search based on it's name, used in

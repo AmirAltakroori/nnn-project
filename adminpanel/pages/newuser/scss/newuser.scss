@@ -28,17 +28,22 @@ body {
     flex-direction: column;
     text-align: -webkit-center;
     justify-content: space-between;
-    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.5);
     background-color: white;
     div {
         padding: 10px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+     
     }
     position: relative;
     background-color: $background-color;
     border-radius: 3%;
+    span{
+        width: 50%;
+    }
     input {
         color: #333;
-        width: 50%;
         height: 40px;
         padding: 2px;
         direction: rtl;
