@@ -7,7 +7,7 @@
         <div $if="$userRole != 1">
                 <h2><i class="fas fa-user-circle"></i> المستخدم</h2>
                 <div class="homepage-container">
-                        <div><a href='#/adduser'>
+                        <div><a href='#/adduser/0'>
                                         <button class="homepage-btn green" id='new_user'>
                                                 <div>
                                                         <i class="fas fa-user-plus  home-shadow-icon"></i>
@@ -108,33 +108,39 @@
                         </div>
                         <div>
                                 <a href="#/mynews"><button class="homepage-btn purple" id="my_news">
-                                        <div>
-                                                <i class="fa fa-address-card  home-shadow-icon"></i>
-                                        </div>
-                                        <div>
-                                                <i class="fa fa-address-card icon homepage-aboveicon"></i>
-                                        </div>
-                                        <div>
-                                                <span class="homepage-aboveicon"> أخباري</span>
-                                        </div>
-                                </button>
-                        </a>
+                                                <div>
+                                                        <i class="fa fa-address-card  home-shadow-icon"></i>
+                                                </div>
+                                                <div>
+                                                        <i class="fa fa-address-card icon homepage-aboveicon"></i>
+                                                </div>
+                                                <div>
+                                                        <span class="homepage-aboveicon"> أخباري</span>
+                                                </div>
+                                        </button>
+                                </a>
                         </div>
                 </div>
         </div>
         <div $if="$userRole == 3">
                 <h2><i class="fas fa-globe"></i> الموقع</h2>
                 <div class="homepage-container">
-                        <div>
-                                <button class="homepage-btn red">
+                        <div $if="$mode != null">
+                                <button $disabled = '$changing' $click="ChangeMode()" class="homepage-btn" $class="'light-green': $mode == 1, 'red': $mode == 0">
                                         <div>
-                                                <i class="fa fa-power-off  home-shadow-icon"> </i>
+                                                <i $click="ChangeMode()" class="fa fa-power-off  home-shadow-icon"> </i>
                                         </div>
                                         <div>
-                                                <i class="fa fa-power-off icon homepage-aboveicon"> </i>
+                                                <i $click="ChangeMode()" class="fa fa-power-off icon homepage-aboveicon"> </i>
                                         </div>
-                                        <div>
-                                                <span class="homepage-aboveicon">حالة الموقع </span>
+                                        <div >
+                                                <span $click="ChangeMode()" class="homepage-aboveicon">حالة الموقع </span>
+                                                <div  style="font-size: 18px;"  $if="$mode==  1">
+                                                        <span $click="ChangeMode()">مفعل</span>
+                                                </div >
+                                                <div style="font-size: 18px;" $if="$mode == 0">
+                                                        <span  $click="ChangeMode()">غير مفعل</span>
+                                                </div>
                                         </div>
                                 </button>
                         </div>

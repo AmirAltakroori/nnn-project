@@ -79,6 +79,9 @@ function verification() {
             color = "#17bb24";
             let datatoSave = {
                 "token": user.token,
+                "roleID": user.role,
+                "fullName": user.firstName + " " + user.lastName,
+                "id":user._id,
             }
             db.saveData('user',datatoSave);
         }else if(user.password === password.value && user.state == 0){
@@ -117,4 +120,47 @@ function displayPopup(message, backgroundColor = "#000000") {
         return true;
     }, 2000);
 
+}
+
+
+
+let BASEURL = 'https://541e1dc0-354b-4134-ae7d-5eaa533a1bf9-bluemix.cloudant.com';
+let AUTHENTICATION = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJsdWVtaXg6NDU2YjA3NzhjODFjOWNiMDk5NzZkODU1NjQ5MDM2YzRlYTE1MTQwZTk5NDNlNWM2MGE5ZDM1MGMwNDU5YzIwMw=='
+
+
+// from this function you can get all data for a database or for specific user
+
+// If you want to get specific data for a document in a view , you need to set key to be the id of the document
+function cleanData(data) {
+    cleanedData = [];
+    for (let i = 0; i < data.rows.length; i++)
+        cleanedData.push(data.rows[i]);
+    return cleanedData;
+}
+
+
+function saveData(storeName, data) {
+    sessionStorage.setItem(storeName, JSON.stringify(data));
+}
+function dbGet(endpoint, isView, id) {
+    return new Promise((resolve, reject) => {
+        let url = BASEURL + endpoint;
+        if (isView && id) {
+            url += `?key=\"${id}\"`;
+        } else url += `/${id}`;
+        let http = new XMLHttpRequest();
+        http.open("GET", url);
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        http.setRequestHeader('Accept', 'application/json');
+        http.setRequestHeader("Authorization", AUTHENTICATION);
+        http.onreadystatechange = function() { //Call a function when the state changes.
+            if (http.readyState == 4) {
+                let data = JSON.parse(http.responseText);
+                if (!id || id == '')
+                    data = cleanData(data);
+                resolve(data);
+            }
+        }
+        http.send();
+    });
 }

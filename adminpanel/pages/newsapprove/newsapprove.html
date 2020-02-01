@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <table class="content">
+    <table id="table" class="content">
         <thead>
             <tr class="first_row">
                 <th>#</th>
@@ -37,7 +37,7 @@
             </tr>
         </thead>
 
-        <tbody id="tablebody" $for="n of MyNewsPage">
+        <tbody id="tablebody" $for=" n of notAppNewsPage">
             <tr class="user_info">
                 <td class="user_no">
                     {{$i + 1}}
@@ -56,10 +56,10 @@
                 </td>
 
                 <td>
-                    <div $if="$MyNewsPage[$i].isActive == 1">
+                    <div $if="$n.isActive == 1">
                         <span>مفعل</span>
                     </div>
-                    <div $if="$MyNewsPage[$i].isActive == 0">
+                    <div $if="$n.isActive == 0">
                         <span>غير مفعل</span>
                     </div>
                 </td>

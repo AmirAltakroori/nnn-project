@@ -9,7 +9,7 @@ export class categories {
             this.db = db;
             this.db.confirm();
             this.getAllCat().then(cats => {
-                this.categoriesPage = cats;
+                this.categoriesPage = this.db.cleanDataForControllers(cats);
                 mvc.apply();
             });
 
