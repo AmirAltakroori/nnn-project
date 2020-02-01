@@ -11,7 +11,7 @@
         <div class="title">
             <span class="title_text">الفئات</span>
         </div>
-        <div $click="showCreateModal('createcategory-modal')" class="categories-add-button ">
+        <div $click="showModal('createcategory-modal')" class="categories-add-button ">
             <div class="fas fa-plus"></div>
             <div> اضافة فئة</div>
         </div>
@@ -58,9 +58,9 @@
                 <td>
                     <i class="fas fa-trash-alt delete_user"
                         $style="'font-size:20px; color:red; text-align:center; cursor:pointer' : true"
-                        $click="showEditModal('delete',this.element, $category.id)"></i>
+                        $click="showModal('delete',this.element, $category.id)"></i>
                     <i class="far fa-edit icon color-blue"
-                        $click="showEditModal('createcategory-edit-modal', this.element, $category.id)"></i>
+                        $click="showModal('createcategory-edit-modal', this.element, $category.id)"></i>
                 </td>
             </tr>
         </tbody>
@@ -68,20 +68,20 @@
 </div>
 <div class="createcategory-modal" id="createcategory-modal">
     <div id="createcategory-modalcontent">
-        <i class="fas fa-times-circle" id="close" $click="hideCreateEditModal('createcategory-modal')"></i>
+        <i class="fas fa-times-circle" id="close" $click="hideModal('createcategory-modal')"></i>
         <div style="width:100%;text-align: center;">
             <h2 id="modal-header-for-adding">
                 إضافة فئة جديدة
             </h2>
         </div>
-        <form  class='cat-centered-row' $submit="ccc()" >
-            <div class="createcategory-flex-container-center-all" >
+        <form class='cat-centered-row' $submit="createCategory()">
+            <div class="createcategory-flex-container-center-all">
                 <div class='cat-centered-row mb-5'>
                     <input type="text" id="categoryname" placeholder="أدخل اسم الفئة" maxlength="20" minlength="3"
                         required>
                 </div>
                 <div class='cat-centered-row'>
-                    <input  type="submit" id="createcategory-btn" value="انشاء">
+                    <input type="submit" id="createcategory-btn" value="انشاء">
                 </div>
             </div>
         </form>
@@ -89,13 +89,13 @@
 </div>
 <div class="createcategory-modal" id="createcategory-edit-modal" tabindex="-1">
     <div id="createcategory-modalcontent">
-        <i class="fas fa-times-circle" id="close" $click="hideCreateEditModal('createcategory-edit-modal')"></i>
+        <i class="fas fa-times-circle" id="close" $click="hideModal('createcategory-edit-modal')"></i>
         <div class='cat-centered-row'>
             <h2 id="modal-header-for-adding">
                 تعديل اسم الفئة
             </h2>
         </div>
-        <form id="category-edit-form" class='cat-centered-row' $submit="editCategoryName()">
+        <form id="category-edit-form" class='cat-centered-row' $submit="updateCategoryName()">
             <div class=' flex-container-center-space-between-column '>
                 <div class='mb-5'>
                     <input type="text" id="editcategoryname" placeholder="أدخل اسم الفئة" maxlength="20" minlength="3"
@@ -114,15 +114,10 @@
         <div class="contain">
             <p>هل أنت متأكد من إزالة هذه الفئة ؟</p>
             <div class="modal-button">
-                <button class="modal-button button1"
-                    $click="deleteCategory(); hideModals('delete')">نعم</button>
-                <button class="modal-button button2" $click="hideModals('delete')">لا</button>
+                <button class="modal-button button1" $click="deleteCategory()">نعم</button>
+                <button class="modal-button button2" $click="hideModal('delete')">لا</button>
             </div>
         </div>
     </div>
 
-</div>
-<div>
-
-        
 </div>
