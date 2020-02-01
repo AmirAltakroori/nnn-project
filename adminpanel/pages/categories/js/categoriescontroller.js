@@ -32,7 +32,7 @@ export class CategoriesController {
         modal.className += " modal-active";
         this.activeId = id;
         if (modalId != "createcategory-modal") {
-           
+
         }
         else {
             document.getElementById("categoryname").value = '';
@@ -48,8 +48,8 @@ export class CategoriesController {
         this.hideModal("createcategory-edit-modal");
     }
     deleteCategory() {
-        if(this.activeId != -1)
-        this.categories.splice(this.activeId, 1);
+        if (this.activeId != -1)
+            this.categories.splice(this.activeId, 1);
         mvc.apply();
         this.hideModal('delete');
         this.activeId = -1;
@@ -60,19 +60,18 @@ export class CategoriesController {
     getCatId() {
         return dbGet("/settings", false, "categories");
     }
-    createCategory()
-    {
+    createCategory() {
         let category = {
             isActive: 1,
             name: document.getElementById('categoryname').value,
         }
-        this.CreateCat(category).then( data => {
-            if(data.ok)
-                {
-                    this.categories.push(category);
-                    mvc.apply();
-                }
-                this.hideModal('createcategory-modal');
+        this.CreateCat(category).then(data => {
+            if (data.ok) {
+                this.categories.push(category);
+                mvc.apply();
+            }
+            this.hideModal('createcategory-modal');
+            location.reload();
         });
     }
     CreateCat(data) {
@@ -97,18 +96,29 @@ export class CategoriesController {
             })
         });
     }
-    showEditModal(modalId, row, id) {
+    showEditModal(modalId, id) {
         let modal = document.getElementById(modalId); //for modal
         modal.style.display = "flex";
-        activeId = id;
-        activeRow = row.parentElement.parentElement;
+        this.activeId = id;
     }
 
     hideModal(modalId) {
         let modal = document.getElementById(modalId); //for modal
         modal.style.display = "none";
     }
-
+    deleteCategory() {
+        if (this.activeId == -1)
+            return;
+        const id = this.activeId;
+        this.activeId = -1;
+        const category = this.categories[id];
+        this.db.dbDelete('/categories', category._id, category._rev).then(resp => {
+            if(resp.ok)
+            this.categories.splice(id, 1);
+            location.reload();
+        });
+        this.hideModal('delete');
+    }
     updateCategoryName() {
         let newName = document.getElementById("editcategoryname").value;
         categoriesPage.find(({ id }) => id === activeId).name = newName;

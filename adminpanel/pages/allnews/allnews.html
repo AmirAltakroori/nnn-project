@@ -68,8 +68,8 @@
                     </div>
                 </td>
                 <td>
-                    <i value="click" class="fas fa-trash-alt delete_user" onclick="show(this,'delete','$news.id')"></i>
-                    <i class="far fa-edit icon color-blue" onclick="updateNews('$news.id',0) "></i>
+                    <i value="click" class="fas fa-trash-alt delete_user" $click="show('delete',$i)"></i>
+                    <i class="far fa-edit icon color-blue" $click="updateNews('$news.id',0) "></i>
                 </td>
             </tr>
         </tbody>
@@ -81,8 +81,8 @@
             <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
             <div class="modal-button">
                 <button class="modal-button button1"
-                    onclick="deleteRowElement(allNewsPage); hide('delete');">نعم</button>
-                <button class="modal-button button2" onclick="hide('delete')">لا</button>
+                    $click="deleteNews();">نعم</button>
+                <button class="modal-button button2" $click="hide('delete')">لا</button>
             </div>
         </div>
 

@@ -29,6 +29,8 @@
                 <div class="header-inline-block">
                     <i class="fas fa-chevron-down"></i>
                 </div>
+                
+                
             </div>
         </div>
         <div class="row header-subheader ">
@@ -67,6 +69,8 @@
             <tbody id="rows">
             </tbody>
         </table>
+        <div class="delete-from-db" id="delete-from-db">تم الحذف</div>
+
     </div>
     <div class="modal-delete" id="delete">
         <div class="modal-wrapper">
@@ -74,7 +78,7 @@
                 <p>هل أنت متأكد من إزالة هذا المستخدم ؟</p>
                 <p style="font-size: small;font-weight: 700;">سيتم حذف جميع أخباره</p>
                 <div class="modal-button">
-                    <button class="modal-button button1" onclick="deleteRowElement(); hide('delete');">نعم</button>
+                    <button class="modal-button button1" onclick="deleteRowElement(usersPage,'/users'); hide('delete');">نعم</button>
                     <button class="modal-button button2" onclick="hide('delete')">لا</button>
                 </div>
             </div>

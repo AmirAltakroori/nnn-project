@@ -53,109 +53,6 @@ export function cleanDataForControllers(data) {
 export function saveData(storeName, data) {
     sessionStorage.setItem(storeName, JSON.stringify(data));
 }
-let myNewsPage = [{
-    id: 1,
-    title: "test is test ",
-    content: "<h1>This is my first news</h1>",
-    categoryId: 1,
-    seoTitle: "First news",
-    seoTags: "{ 'tags':{['test','sport']} }",
-    seoDescription: "This is my first news",
-    isActive: 1,
-    isMainNews: 0,
-    isUrgentNews: 1,
-    createDate: new Date(),
-    writerId: 1,
-    _attachments: "",
-},
-{
-    id: 2,
-    title: "test is test ",
-    content: "<h1>This is my first news</h1>",
-    categoryId: 1,
-    seoTitle: "First news",
-    seoTags: "{ 'tags':{['test','sport']} }",
-    seoDescription: "This is my first news",
-    isActive: 1,
-    isMainNews: 0,
-    isUrgentNews: 1,
-    createDate: new Date(),
-    writerId: 1,
-    _attachments: "",
-},
-{
-    id: 3,
-    title: "test is test ",
-    content: "<h1>This is my first news</h1><br><ul><li>ههههه</li></ul>",
-    categoryId: 1,
-    seoTitle: "First news",
-    seoTags: "شسيشس شسيشس شسي شسي",
-    seoDescription: "This is my first news",
-    isActive: 1,
-    isMainNews: 0,
-    isUrgentNews: 1,
-    createDate: "2019-05-12",
-    writerId: 1,
-    _attachments: "",
-},
-{
-    title: "الاحلال يعتقل مقدسيا مسنا",
-    content: "<h1>This is my first news</h1>",
-    categoryId: 3,
-    seoTitle: "First news",
-    seoTags: "{ 'tags':{['test','sport']} }",
-    seoDescription: "This is my first news",
-    isActive: 0,
-    isMainNews: 1,
-    isUrgentNews: 1,
-    createDate: "2019-05-12",
-    writerId: 1,
-    _attachments: "",
-    id: 4,
-},
-
-];
-let categories = [{
-    id: 1,
-    name: "الألعاب",
-    isActive: 1,
-},
-{
-    id: 3,
-    name: "الرئيسية",
-    isActive: 1,
-},
-{
-    id: 2,
-    name: "الرياضة",
-    isActive: 0, //غير مفعل
-},
-{
-    id: 4,
-    name: "الفن",
-    isActive: 0,
-}
-]
-
-function updateNews(id, page) {
-    let aim = null;
-    let aimData = null;
-
-    if (page == 0)
-        aimData = myNewsPage;
-    else if (page == 1)
-        aimData = allNewsPage;
-    for (ind in aimData)
-        if (aimData[ind].id == id) {
-            aim = aimData[ind];
-            aim["ind"] = ind;
-            aim['pageNo'] = page;
-            break;
-        }
-    sessionStorage.setItem("userData", JSON.stringify(aim));
-    window.location.href = "/adminpanel/index.html#/addnews";
-}
-
 let BASEURL = 'https://541e1dc0-354b-4134-ae7d-5eaa533a1bf9-bluemix.cloudant.com';
 let AUTHENTICATION = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJsdWVtaXg6NDU2YjA3NzhjODFjOWNiMDk5NzZkODU1NjQ5MDM2YzRlYTE1MTQwZTk5NDNlNWM2MGE5ZDM1MGMwNDU5YzIwMw=='
 
@@ -198,11 +95,11 @@ export function dbGet(endpoint, isView, id) {
 // dbGet('/users/_design/users/_view/userRole',true,"1") get uesr who his id = 1 and the data is from 'userRole'
 
 
-function dbDelete(endpoint, id, rev) {
+export function dbDelete(endpoint, id, rev) {
     return new Promise((resolve, reject) => {
         let url = BASEURL + endpoint + `/${id}?rev=${rev}`;
         let http = new XMLHttpRequest();
-        http.open("GET", url);
+        http.open("DELETE", url);
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         http.setRequestHeader('Accept', 'application/json');
         http.setRequestHeader("Authorization", AUTHENTICATION);

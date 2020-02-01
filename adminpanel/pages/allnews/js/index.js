@@ -5,13 +5,13 @@ export class myNewsControler {
         this.dp = null;
         this.allNewsPage = [];
         this.categories = [];
-
+        this.activeId = -1;
         dynamicImport("./../../adminpanel/js/backend.js").then(db => {
             this.db = db;
             this.db.confirm();
 
             this.getAllCat().then(cats => {
-                this.categories =  this.cleanData(cats);
+                this.categories = this.cleanData(cats);
                 console.log(this.categories);
 
                 this.getAllNews().then(news => {
@@ -25,6 +25,18 @@ export class myNewsControler {
 
         });
     }
+    show(modelId, id) {
+        let element = document.getElementById(modelId);
+        element.style.display = 'flex';
+        element.className += " modal-active";
+        this.activeId = id;
+        console.log(id);
+    }
+    hide(modelId) {
+        let element = document.getElementById(modelId);
+        element.style.display = 'none';
+
+    }
     allnews() {
 
         let userdata = getData("userData");
@@ -33,25 +45,26 @@ export class myNewsControler {
             sessionStorage.removeItem("userData");
         }
     }
-    deleteNews(callback, key, rev, row) {
+    deleteNews() {
+        if (this.activeId == -1)
+            return;
+        const news = this.allNewsPage[this.activeId];
+        const id = this.activeId;
+        this.activeId = -1;
+        this.db.dbDelete('/news', news._id, news._rev).then((req) => {
+            if (req.ok)
+                this.allNewsPage.splice(id, 1);
+            mvc.apply();
 
-        let fullUrl = URL + "news/" + key + "?rev=" + rev;
-        let http = new XMLHttpRequest();
-        http.open("DELETE", fullUrl);
-        http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        http.onreadystatechange = () => {
-            if (http.readyState == 4) {
-                callback(getData(http.response));
-                row.parentElement.removeChild(row);
-            }
-        }
+        });
+        this.hide('delete');
     }
 
     /* -----------------------------------------------------------------------------------------------------------------------------------------------------*/
     //read news functions 
     getAllNews() {
         return new Promise((resolve, reject) => {
-            this.db.dbGet("/news/_design/views/_view/approved", true, "").then(news => {
+            this.db.dbGet("/news/_design/views/_view/allnews", true, "").then(news => {
 
                 resolve(news);
             })
@@ -73,8 +86,7 @@ export class myNewsControler {
             })
         });
     }
-    printMe()
-    {
-        console.log(this.allNewsPage[0]);
-    }
+
+
+
 }

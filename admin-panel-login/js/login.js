@@ -108,7 +108,7 @@ function verification() {
     
 }
 
-function displayPopup(message, backgroundColor = "#000000") {
+function displayPopup(message,backgroundColor) {
     let popup = document.getElementsByClassName("popup")[0];
     popup.innerHTML = message;
     popup.style.backgroundColor = backgroundColor;
