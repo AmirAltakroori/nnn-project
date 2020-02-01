@@ -14,8 +14,21 @@
 
 export class Header {
 
-
+    
     constructor() {
+   this.flag=false;
+
+   this.urgentNews = [{
+    title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
+    path: "#"
+  }, {
+    title: "إلغاء امتحانات الفاينل لهذا العام",
+    path: "#"
+  }, {
+    title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
+    path: "#"
+ }];
+
 
    this.categoriesList = [{
     title: "الصفحة الرئيسية",
@@ -48,4 +61,5 @@ export class Header {
 
     
 }
+
 }

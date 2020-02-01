@@ -8,16 +8,26 @@
    
     File description: html code for the header of the website which includes the navebar and the urgentNews.
 -->
-<div class="header"></div>
+<div class="header">
 
     <!-- NAVBAR -->
     <div class="navbar">
         <div class="navbar-right">
             <a class="logo" href="templates\home.html"> <img class="logo-img" src="img\logo.png" alt="شبكة الوحدة الإخبارية"></a>
             <div class="categories-container">
-                <ul id="categories-list" $for="category of categoriesList">
-                    <li class="tab"><a href="{{$category.path}}">{{$category.title}} </a></li>
+                <ul id="categories-list" $for="category of categoriesList:index">
+                    <span $if=" 6 >= $index ">
+                    <li class="tab"><a href="{{$category.path}}">{{$category.title}}</a></li>
+                </span>
+                <span $if="$index > 6 && flag">
+                    <li class="tab expand"><a href=#>المزيد   <img class="expand-button" src="img/expand-button.png">
+                        <ul class="sub-menu"  $for="category of categoriesList:$i=$index">
+                            <li class="sub-item"><a href="{{$category.path}}">{{$category.title}}</a></li>
+                        </ul>
+                    </a></li>
+                </span>
                 </ul>
+                
             </div>
         </div>
 
@@ -29,6 +39,8 @@
     <!-- URGENT -->
     <div id="urgent-container">
         <div>عاجل</div>
-        <marquee id="urgent-content" direction="right" onmouseover="stop()" onmouseout="start()"> </marquee>
+        <marquee id="urgent-content" direction="right" onmouseover="stop()" onmouseout="start()" $for="new of urgentNews">
+            <a href="{{$new.path}}">{{$new.title}} </a>
+        </marquee>
     </div>
 </div>
