@@ -28,7 +28,7 @@ export class Home {
         this.isFirstTime = true;
         this.randomNewsView = this.randomNews.slice(0, 3);
         setInterval(() => {
-         // this.slide(1);
+            this.slide(1);
         } , 4000);
 
          this.categoryMainNews = this.getCategoryMainNews();
