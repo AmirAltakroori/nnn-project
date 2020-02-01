@@ -1,0 +1,34 @@
+<!--
+    NNN website.
+
+    This file is part of the NNN website.
+
+    Authors:
+    diana mujahed
+   
+    File description: html code for the header of the website which includes the navebar and the urgentNews.
+-->
+<div class="header"></div>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="navbar-right">
+            <a class="logo" href="templates\home.html"> <img class="logo-img" src="img\logo.png" alt="شبكة الوحدة الإخبارية"></a>
+            <div class="categories-container">
+                <ul id="categories-list" $for="category of categoriesList">
+                    <li class="tab"><a href="{{$category.path}}">{{$category.title}} </a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="navbar-left">
+            <a herf="#adminPanel" class="login-button">تسجيل الدخول</a>
+        </div>
+    </div>
+
+    <!-- URGENT -->
+    <div id="urgent-container">
+        <div>عاجل</div>
+        <marquee id="urgent-content" direction="right" onmouseover="stop()" onmouseout="start()"> </marquee>
+    </div>
+</div>
