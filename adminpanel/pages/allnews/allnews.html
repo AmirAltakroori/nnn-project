@@ -61,9 +61,13 @@
                 </td>
                 <td>
                     <div >
-                        <select $model='$news.isActive' $change='printMe()' class="selection">
-                            <option value="1"> إظهار في الموقع</option>
+                        <select $if="$news.isActive == 'on'" $model='$news.isActive' $change='printMe()' class="selection">
+                            <option value="1" selected> إظهار في الموقع</option>
                             <option value="0" > إخفاء من الموقع</option>
+                        </select>
+                        <select $if="$news.isActive != 'on'" $model='$news.isActive' $change='printMe()' class="selection">
+                            <option value="1" selected> إظهار في الموقع</option>
+                            <option value="0" selected> إخفاء من الموقع</option>
                         </select>
                     </div>
                 </td>
