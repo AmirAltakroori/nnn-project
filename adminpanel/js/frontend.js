@@ -23,6 +23,7 @@ function deleteRowElement(Page) {
 //show and hide functions for delete modal
 function show(row, modelId, id) {
     let element = document.getElementById(modelId);
+    element.style.display = 'flex';
     element.className += " modal-active";
     newContain = row;
     newId = id;
