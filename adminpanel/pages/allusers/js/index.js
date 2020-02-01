@@ -2,6 +2,7 @@ export class allUsers {
 
     constructor() {
         this.usersPage = null;
+        this.db = null;
         dynamicImport("./../../adminpanel/js/backend.js").then(db => {
             this.db = db;
             this.db.confirm();
