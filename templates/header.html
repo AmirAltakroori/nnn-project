@@ -9,7 +9,6 @@
     File description: html code for the header of the website which includes the navebar and the urgentNews.
 -->
 <div class="header">
-
     <!-- NAVBAR -->
     <div class="navbar">
         <div class="navbar-right">
@@ -20,16 +19,16 @@
                 <ul id="categories-list">
                     <span $for="category of mainCategoriesList">
                         <li class="tab">
-                            <a href="#/categories/{{$category.id}}">{{$category.title}}</a>
+                            <a href="#/categories/{{$category.value.id}}">{{$category.value.title}}</a>
                         </li>
                     </span>
-                    <span $if="{{$moreCategoriesList.length >0}}">
+                    <span $if="{{$moreCategoriesList.length}}">
                         <li class="tab expand">
                             <a >المزيد 
                                 <img class="expand-button" src="img/expand-button.png">
                                 <ul class="sub-menu" $for="category of moreCategoriesList">
                                     <li class="sub-item">
-                                        <a href="#/categories/{{$category.id}}">{{$category.title}}</a>
+                                        <a href="#/categories/{{$category.value.id}}">{{$category.value.title}}</a>
                                     </li>
                                 </ul>
                             </a>
@@ -49,7 +48,7 @@
         <div>عاجل</div>
         <marquee id="urgent-content" direction="right" onmouseover="stop()" onmouseout="start()"
             $for="new of urgentNews">
-            <a href="#/details/{{$new.id}}">{{$new.title}} </a>
+            <a href="#/details/{{$new.value.id}}">{{$new.value.title}} </a>
         </marquee>
     </div>
 </div>

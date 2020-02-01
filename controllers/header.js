@@ -11,69 +11,42 @@
  *     File description: this file contains the controller class of the website header which applies potato MVC framework
  */
 
+import { DataBase } from "../services/DataBase.js";
+
 export class Header {
 
-
     constructor() {
-        this.urgentNews = this.getUrgentNews();
-        this.categoriesList = this.getCategoriesList();
+        this.dataBase = new DataBase();
+        this.urgentNews;
+        this.categoriesList;
         this.mainCategoriesList;
         this.moreCategoriesList;
-        this.sliceCategoriesList();
+        this.url = 'https://541e1dc0-354b-4134-ae7d-5eaa533a1bf9-bluemix.cloudant.com';
+        this.auth = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJsdWVtaXg6NDU2YjA3NzhjODFjOWNiMDk5NzZkODU1NjQ5MDM2YzRlYTE1MTQwZTk5NDNlNWM2MGE5ZDM1MGMwNDU5YzIwMw==';
+        this.getUrgentNews();
+        this.getCategoriesList();
     }
 
     getUrgentNews() {
-        return [{
-            id: 10,
-            title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم"
-           
-        }, {
-            id: 11,
-            title: "إلغاء امتحانات الفاينل لهذا العام"
-        }, {
-            id: 12,
-            title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة "
-        }];
+        this.dataBase.getData("/news/_design/views/_view/urgent",true,'',this.url,this.auth).then( data => {
+            console.log(data);
+            this.urgentNews = data;
+            //$apply();
+        }); 
     }
 
     getCategoriesList() {
-        return [{
-            id: 1,
-            title: "الصفحة الرئيسية"
-           
-        }, {
-            id: 2,
-            title: "تكنولوجيا"
-        }, {
-            id: 3,
-            title: "علوم"
-        }, {
-            id: 4,
-            title: "ثقافة"
-        }, {
-            id: 5,
-            title: "اقتصاد"
-        }, {
-            id: 6,
-            title: "رياضة"
-        }, {
-            id: 7,
-            title: "فن"
-        }, {
-            id: 8,
-            title: "سياسة"
-        }, {
-            id: 9,
-            title: "موسيقى"
-        }];
-
-
+        this.dataBase.getData("/categories/_design/allcategories/_view/new-view",true,'',this.url,this.auth).then( data => {
+            console.log(data);
+            this.categoriesList = data;
+            this.sliceCategoriesList();
+            //$apply();
+        }); 
     }
 
 
     //this function devide the categories list into two arrays to use the more option when the categories are more than 6 
     sliceCategoriesList() {
-        this.categoriesList = this.getCategoriesList();
         if (categoriesList.length > 6) {
             this.mainCategoriesList = this.categoriesList.slice(0, 6);
             this.moreCategoriesList = this.categoriesList.slice(6, this.categoriesList.length);
