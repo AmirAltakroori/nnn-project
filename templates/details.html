@@ -16,11 +16,11 @@
             <section class="news-header" id="news">
                 <span $for="relatedNew of relatedNews">
 
-                    <h1 $if="$relatedNew.id == $routeParams.newID">
+                    <h1 $if="$relatedNew.id == $routeParams.id">
                         {{$relatedNew.title}}
                     </h1>
 
-                    <div $if="$relatedNew.id == $routeParams.newID">
+                    <div $if="$relatedNew.id == $routeParams.id">
                         <div class="main-img" style=" background-image: url(../img/{{$relatedNew.img}});">
                             .
                         </div>
@@ -58,7 +58,7 @@
             <article class="article" id="article">
                 <span $for="relatedNew of relatedNews">
 
-                    <p $if="$relatedNew.id == $routeParams.newID">
+                    <p $if="$relatedNew.id == $routeParams.id">
                         {{$relatedNew.content}}
                     </p>
                 </span>
