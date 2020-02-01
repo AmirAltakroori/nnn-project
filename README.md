@@ -243,6 +243,7 @@ it can be used in 2 differents ways
         }];
 
         <div $include = "id:contact"></div>
+        
     ```
 2- calling Template and controller
    
