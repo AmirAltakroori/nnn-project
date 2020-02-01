@@ -22,10 +22,10 @@
                 <p>آخر الأخبار</p>
             </div>
             <div $for="news of mainNews" id="latest-news-list">
-                <div class="news">
-                    <a href="#/details/{{$news.id}}">
-                        <img src="../img/{{$news.img}}">
-                        <p>{{$news.title}}</p>
+                <div $click="changeSelectedNews($news)" class="news">
+                    <a $click="changeSelectedNews($news)">
+                        <img $click="changeSelectedNews($news)" src="../img/{{$news.img}}">
+                        <p $click="changeSelectedNews($news)">{{$news.title}}</p>
                     </a>
                 </div>
             </div>
@@ -58,18 +58,20 @@
 
     <!-- RANDOM NEWS -->
     <div class="random-news">
-        <div class="imagesPrev"><img $click="plusDivs(-1)" src="../img/arrow.png" ></div>
+        <div class="imagesPrev"><img $click="slide(-1)" src="../img/arrow.png" ></div>
 
         <div $for="news of randomNews" id="rendom-news-container" class="rendom-news-container">
-            <div class="slider-news-tile" style="background-image: url('{{$news.img}}');">
-                <div class="date">{{$news.publishedDate}}</div>
-                <div class="news">
-                    <a href="#/details/{{$news.id}}">{{$news.title}}</a>
+            <a href="#/details/{{$news.id}}">
+                <div $style="display: 'none': $hideSlide($news)" class="slider-news-tile" style="background-image: url('{{$news.img}}');">
+                    <div class="date">{{$news.publishedDate}}</div>
+                    <div class="news">
+                        {{$news.title}}
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
 
-        <div class="imagesNext"><img $click="plusDivs(1)" src="../img/arrow-left.png"></div>
+        <div class="imagesNext"><img $click="slide(1)" src="../img/arrow-left.png"></div>
     </div>
 
     <!-- CATEGORY SECTION -->
@@ -103,4 +105,4 @@
     </div>
 </div>
 
-
+<script src="../controller/home.js"></script>

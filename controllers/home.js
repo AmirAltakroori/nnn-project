@@ -10,7 +10,6 @@
      File description:
 */
 
-
 export class Home {
     constructor() {
 
@@ -20,13 +19,22 @@ export class Home {
         }
 
         this.selectedNews = this.mainNews[0];
+
         this.slideIndex = 0;
         this.randomNews = this.getRandomNews();
-        this.categoriesList = this.getCategoriesList();
 
-        //this.showRandomNews(this.randomNews);
-        //this.showmainNews ();
-        
+        this.categoriesList = getCategoriesList();
+
+        this.isFirstTime = true;
+
+        setInterval(() => {
+            if (this.isFirstTime) {
+                this.isFirstTime = false;
+            } else {
+                this.slide(1);
+            }
+        } , 8000);
+
         this.categoryMainNews = this.getCategoryMainNews();
         if (this.categoryMainNews.lenght > 5) {
           this.categoryMainNews = this.categoryMainNews.slice(0, 5);
@@ -34,7 +42,37 @@ export class Home {
 
         this.firstCategoryMainNews = this.categoryMainNews[0];
         this.categoryTitle = this.getCategoryTitle();
+    }
 
+    /*
+        Change Selected news
+
+        @tparam news: news object
+
+        @param: identifier for needed news
+
+        @returns:
+    */
+    changeSelectedNews(news) {
+        this.selectedNews = news;
+        mvc.apply();
+    }
+
+    /*
+        Hide slide
+
+        @tparam news: news object
+
+        @param: identifier for needed news
+
+        @returns:
+    */
+    hideSlide(news) {
+        let index = this.randomNews.indexOf(news);
+        if (index > this.slideIndex + 2 || index < this.slideIndex) {
+            return true;
+        }
+        return false;
     }
 
     /*
@@ -188,8 +226,8 @@ export class Home {
      *
      *    @returns
      */
-    plusDivs(inc) {
-        this.showDivs(this.slideIndex += inc);
+    slide(inc) {
+        this.showSlides(this.slideIndex += inc);
     }
 
     /*
@@ -201,7 +239,7 @@ export class Home {
      *
      *    @returns
      */
-    showDivs(index) {
+    showSlides(index) {
         let i;
         let newsTileList = document.getElementsByClassName("slider-news-tile");
 
@@ -220,70 +258,60 @@ export class Home {
         }
     }
 
-    /*
-        Get main News in Category
-
-        @tparam
-
-        @param
-
-        @returns
-
-        This function used to retrieve main news in category from database
-    */
     getCategoryMainNews () {
 
-    // I'll rewrite this function when DB was ready.            
-        return [{
-                            title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
-                            path: "#",
-                            authorName: "admin",
-                            publishedDate: "12/12/2019",
-                            img:"img1.jpg",
-                            SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
-                            id = 1
-                           },{
-                            title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
-                            path: "#",
-                            authorName: "admin",
-                            publishedDate: "12/12/2019",
-                            img:"img1.jpg",
-                            SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
-                            id = 2
-                           },{
-                            title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
-                            path: "#",
-                            authorName: "admin",
-                            publishedDate: "12/12/2019",
-                            img:"img1.jpg",
-                            SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
-                            id = 3
-                           },{
-                            title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
-                            path: "#",
-                            authorName: "admin",
-                            publishedDate: "12/12/2019",
-                            img:"img1.jpg",
-                            SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
-                            id = 4
-                           },{
-                            title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
-                            path: "#",
-                            authorName: "admin",
-                            publishedDate: "12/12/2019",
-                            img:"img1.jpg",
-                            SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
-                            id = 5
-                           }];
-    }
+      // I'll rewrite this function when DB was ready.            
+          return [{
+                              title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
+                              path: "#",
+                              authorName: "admin",
+                              publishedDate: "12/12/2019",
+                              img:"img1.jpg",
+                              SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
+                              id = 1
+                             },{
+                              title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
+                              path: "#",
+                              authorName: "admin",
+                              publishedDate: "12/12/2019",
+                              img:"img1.jpg",
+                              SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
+                              id = 2
+                             },{
+                              title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
+                              path: "#",
+                              authorName: "admin",
+                              publishedDate: "12/12/2019",
+                              img:"img1.jpg",
+                              SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
+                              id = 3
+                             },{
+                              title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
+                              path: "#",
+                              authorName: "admin",
+                              publishedDate: "12/12/2019",
+                              img:"img1.jpg",
+                              SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
+                              id = 4
+                             },{
+                              title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
+                              path: "#",
+                              authorName: "admin",
+                              publishedDate: "12/12/2019",
+                              img:"img1.jpg",
+                              SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
+                              id = 5
+                             }];
+      }
 
     getCategoryTitle () {
 
       // I'll rewrite this function when DB was ready.
           return {
-                              title:"الأخبار العالمية",
-                              id:1
-                           };
-      }
+                    title:"الأخبار العالمية",
+                    id:1
+                  };
+    } 
+
 
 }
