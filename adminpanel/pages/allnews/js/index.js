@@ -1,108 +1,92 @@
+
 export class myNewsControler {
-    constructor(){
+    constructor() {
 
+        this.dp = null;
+        this.allNewsPage = [];
+        this.categories = [];
+        this.activeId = -1;
+        dynamicImport("./../../adminpanel/js/backend.js").then(db => {
+            this.db = db;
+            this.db.confirm();
 
-       this.allNewsPage = [{
-        title: "النصيرات أكثر المناطق هطولاً",
-        content: "<h1>This is my first news</h1>",
-        categoryId: 3,
-        seoTitle: "First news",
-        seoTags: "{ 'tags':{['test','sport']} }",
-        seoDescription: "This is my first news",
-        isActive: 0,
-        isMainNews: 0,
-        isUrgentNews: 1,
-        createDate: new Date(),
-        writerId: 1,
-        _attachments: "",
-        id: 1,
-    },
-    {
-        title: "الالعاب الاولمبية قريبا",
-        content: "<h1>This is my first news</h1>",
-        categoryId: 2,
-        seoTitle: "First news",
-        seoTags: "{ 'tags':{['test','sport']} }",
-        seoDescription: "This is my first news",
-        isActive: 1,
-        isMainNews: 1,
-        isUrgentNews: 2,
-        createDate: new Date(),
-        writerId: 1,
-        _attachments: "",
-        id: 2,
-    },
-    {
-        title: "أخبار الفن والفنانين والنجوم والمشاهير",
-        content: "<h1>This is my first news</h1>",
-        categoryId: 4,
-        seoTitle: "First news",
-        seoTags: "{ 'tags':{['test','sport']} }",
-        seoDescription: "This is my first news",
-        isActive: 1,
-        isMainNews: 0,
-        isUrgentNews: 0,
-        createDate: new Date(),
-        writerId: 1,
-        _attachments: "",
-        id: 3,
-    },
-    {
-        title: "الاحلال يعتقل مقدسيا مسنا",
-        content: "<h1>This is my first news</h1>",
-        categoryId: 3,
-        seoTitle: "First news",
-        seoTags: "{ 'tags':{['test','sport']} }",
-        seoDescription: "This is my first news",
-        isActive: 1,
-        isMainNews: 1,
-        isUrgentNews: 1,
-        createDate: new Date(),
-        writerId: 1,
-        _attachments: "",
-        id: 4,
-    },
-    {
-        title: "سلسلة العاب LEft 4 Dead تعود من جديد",
-        content: "<h1>This is my first news</h1>",
-        categoryId: 1,
-        seoTitle: "First news",
-        seoTags: "{ 'tags':{['test','sport']} }",
-        seoDescription: "This is my first news",
-        isActive: 0,
-        isMainNews: 1,
-        isUrgentNews: 1,
-        createDate: new Date(),
-        writerId: 1,
-        _attachments: "",
-        id: 5,
+            this.getAllCat().then(cats => {
+                this.categories = this.cleanData(cats);
+                console.log(this.categories);
+
+                this.getAllNews().then(news => {
+                    this.allNewsPage = this.cleanData(news);
+                    this.allNewsPage[0].isActive = 0;
+                    console.log(this.allNewsPage);
+                    mvc.apply();
+                });
+
+            });
+
+        });
     }
-];
+    show(modelId, id) {
+        let element = document.getElementById(modelId);
+        element.style.display = 'flex';
+        element.className += " modal-active";
+        this.activeId = id;
+        console.log(id);
+    }
+    hide(modelId) {
+        let element = document.getElementById(modelId);
+        element.style.display = 'none';
 
-     this.categories = [{
-            id: 1,
-            name: "الألعاب",
-            isActive: 1,
-        },
-        {
-            id: 3,
-            name: "الرئيسية",
-            isActive: 1,
-        },
-        {
-            id: 2,
-            name: "الرياضة",
-            isActive: 0, //غير مفعل
-        },
-        {
-            id: 4,
-            name: "الفن",
-            isActive: 0,
+    }
+    allnews() {
+
+        let userdata = getData("userData");
+        if (userdata != null) {
+            allNewsPage[userdata.ind] = userdata;
+            sessionStorage.removeItem("userData");
         }
-    ];
-    
-       this.news = import('./allnews.js');
-        console.log(this.news.then(data => data.allnews()));
-
     }
+    deleteNews() {
+        if (this.activeId == -1)
+            return;
+        const news = this.allNewsPage[this.activeId];
+        const id = this.activeId;
+        this.activeId = -1;
+        this.db.dbDelete('/news', news._id, news._rev).then((req) => {
+            if (req.ok)
+                this.allNewsPage.splice(id, 1);
+            mvc.apply();
+
+        });
+        this.hide('delete');
+    }
+
+    /* -----------------------------------------------------------------------------------------------------------------------------------------------------*/
+    //read news functions 
+    getAllNews() {
+        return new Promise((resolve, reject) => {
+            this.db.dbGet("/news/_design/views/_view/allnews", true, "").then(news => {
+
+                resolve(news);
+            })
+        });
+    }
+    cleanData(data) {
+        let rows = [];
+        for (let i = 0; i < data.length; i++) {
+            rows.push(data[i].value);
+        }
+        return rows;
+    }
+
+    getAllCat() {
+        return new Promise((resolve, reject) => {
+            this.db.dbGet("/categories/_design/allcategories/_view/allcategories", true, "").then(cats => {
+
+                resolve(cats);
+            })
+        });
+    }
+
+
+
 }

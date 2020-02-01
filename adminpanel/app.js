@@ -1,6 +1,7 @@
 let mvc = new Mvc();
 
 let routeList = [{
+
     url: "/home",
     template: "pages/homepage/home.html",
     title: "شبكة الوحدة الإخبارية",
@@ -48,7 +49,7 @@ let routeList = [{
     url: "/categories",
     template: "pages/categories/categories.html",
     title: "شبكة الوحدة الإخبارية",
-    controller: "/adminpanel/pages/categories/js/index.js"
+    controller: "/adminpanel/pages/categories/js/categoriescontroller.js"
 },
 {
     url :"/allusers",
@@ -56,12 +57,6 @@ let routeList = [{
     title: "شبكة الوحدة الإخبارية",
     controller : "/adminpanel/pages/allusers/js/users.js"
 },
-{
-    url : "/newuser/:id",
-    templete : "pages/newuser/updateuser.html",
-    title :  "شبكة الوحدة الإخبارية",
-    controller:"/adminpanel/pages/newuser/js/updateController.js"
-}
 ];
 
 mvc.addRouteList(routeList);

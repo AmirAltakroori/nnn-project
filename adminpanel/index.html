@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="./pages/newuser/css/newuser.css">
     <script src="./js/quill.min.js"></script>
     <link href="./pages/addnewspage/css/quill.snow.css" rel="stylesheet">
+    <link href="./pages/addnewspage/css/quill.core.css" rel="stylesheet">
     <script type="module" src="./js/backend.js"></script>
     <script src="./js/frontend.js"></script>
 
@@ -53,8 +54,12 @@
                         <span id="username"></span>
 
                     </div>
-                    <div class="header-inline-block">
+                   
+                    <div class="header-inline-block" onclick="showLogOut()">
                         <i class="fas fa-chevron-down"></i>
+                        <div id="logout-model" class="logout-model">
+                            <div  class="logout-wrapper" onclick="logOut()">تسجيل الخروج</div>
+                        </div>
                     </div>
                 </div>
 

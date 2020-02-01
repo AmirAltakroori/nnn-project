@@ -1,22 +1,15 @@
 <div class="row header-subheader ">
     <div>
-
         الرئيسية > لوحة التحكم > الأخبار > الفئات
     </div>
 </div>
 
-
 <div class="container">
-
-    <!-- <div class="path">
-            <p class="path_text">لوحة التحكم > الأخبار > الفئات</p>
-        </div> -->
     <div class="content_header">
         <div class="title">
             <span class="title_text">الفئات</span>
         </div>
-
-        <div class="categories-add-button" id="addBtn">
+        <div $click="showModal('createcategory-modal')" class="categories-add-button ">
             <div class="fas fa-plus"></div>
             <div> اضافة فئة</div>
         </div>
@@ -26,12 +19,11 @@
             <span>البحث</span>
         </div>
         <div class="search">
-            <img class="search_icon" src="./img/search.png">
+            <i class="fas fa-search"></i>
             <input type="text" id="search" class="search_field" placeholder="أدخل اسم الفئة "
                 onkeyup="searchElement(1)">
         </div>
     </div>
-
     <table id="content" class="content">
         <thead>
             <tr class="first_row">
@@ -41,56 +33,68 @@
                 <th>العمليات</th>
             </tr>
         </thead>
-        <tbody id="tablebody">
+        <tbody id="tablebody" $for="cta of categories">
+            <tr>
+                <td class="user_no">{{$i+1}}</td>
+                <td class="user_full">
+                    <span class="user_name" $style="'font-size:18px': true">{{$cta.name}}</span>
+                </td>
+                <td>
+                    <div >
+                        <select class="selection" $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true">
+                            <option value="1" selected> غير فعال</option>
+                            <option value="0">فعال</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <i class="fas fa-trash-alt delete_user"
+                        $style="'font-size:20px; color:red; text-align:center; cursor:pointer' : true"
+                        $click="showModal('delete','$i')"></i>
+                    <i class="far fa-edit icon color-blue"
+                        $click="showModal('createcategory-edit-modal', this.element, {{$cta._id}})"></i>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
-
-</table>
-</div>
 <div class="createcategory-modal" id="createcategory-modal">
-
     <div id="createcategory-modalcontent">
-        <i class="fas fa-times-circle" id="close"></i>
+        <i class="fas fa-times-circle" id="close" $click="hideModal('createcategory-modal')"></i>
         <div style="width:100%;text-align: center;">
             <h2 id="modal-header-for-adding">
                 إضافة فئة جديدة
             </h2>
         </div>
-
-        <form id="category-form" class='cat-centered-row'>
-            <div class="createcategory-flex-container-center-all">
+        <form  class='cat-centered-row' $submit="createCategory()" >
+            <div class="createcategory-flex-container-center-all" >
                 <div class='cat-centered-row mb-5'>
                     <input type="text" id="categoryname" placeholder="أدخل اسم الفئة" maxlength="20" minlength="3"
                         required>
                 </div>
                 <div class='cat-centered-row'>
-                    <button type="submit" id="createcategory-btn">إنشاء</button>
+                    <input type="submit" id="createcategory-btn" value="انشاء">
                 </div>
             </div>
         </form>
     </div>
 </div>
-
-<div class="createcategory-modal" id="createcategory-edit-modal" tabindex="-1"
-    onfocus=" hideModal('createcategory-edit-modal')">
-
+<div class="createcategory-modal" id="createcategory-edit-modal" tabindex="-1">
     <div id="createcategory-modalcontent">
-        <i class="fas fa-times-circle" id="close" onclick="hideModal('createcategory-edit-modal')"></i>
-
+        <i class="fas fa-times-circle" id="close" $click="hideModal('createcategory-edit-modal')"></i>
         <div class='cat-centered-row'>
             <h2 id="modal-header-for-adding">
                 تعديل اسم الفئة
             </h2>
         </div>
-        <form id="category-edit-form" class='cat-centered-row'>
+        <form id="category-edit-form" class='cat-centered-row' $submit="updateCategoryName()">
             <div class=' flex-container-center-space-between-column '>
                 <div class='mb-5'>
                     <input type="text" id="editcategoryname" placeholder="أدخل اسم الفئة" maxlength="20" minlength="3"
                         required>
                 </div>
                 <div class='cat-centered-row'>
-                    <button type="submit" id="editcategory-btn">تعديل</button>
+                    <button type="submit" id="createcategory-btn">تعديل</button>
                 </div>
             </div>
         </form>
@@ -102,12 +106,10 @@
         <div class="contain">
             <p>هل أنت متأكد من إزالة هذه الفئة ؟</p>
             <div class="modal-button">
-                <button class="modal-button button1"
-                    onclick="deleteRowElement(categoriesPage); hide('delete');">نعم</button>
-                <button class="modal-button button2" onclick="hide('delete')">لا</button>
+                <button class="modal-button button1" $click="deleteCategory()">نعم</button>
+                <button class="modal-button button2" $click="hideModal('delete')">لا</button>
             </div>
         </div>
-
     </div>
 
 </div>

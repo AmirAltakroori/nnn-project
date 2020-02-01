@@ -32,42 +32,34 @@
             </tr>
         </thead>
         <div></div>
-        <tbody id="rows" $for = "user of usersPage">
-           
+        <tbody id="rows" $for="user of usersPage">
+
             <tr class='user_info'>
                 <td class="user_no">{{$i+1}}</td>
                 <td class="user_full">
-                    <span class="user_name allnews-title-limit">{{$user.firstName}}</span>
+                    <span class="user_name allnews-title-limit">{{$user.fullName}}</span>
                 </td>
                 <td>
+                    <div>
+                        <select class="selection">
+                            <option value="1" selected>كاتب</option>
+                            <option value="2">مشرف</option>
+                            <option value="3">مسؤوب</option>
 
-                    <div $if = "$user.roleId ==1">
-                        كاتب
-                </div>
-                <div $if = "$user.roleId ==2">
-                    مشرف
-            </div>
-            <div $if = "$user.roleId ==3">
-                مسؤول
-        </div>
+                        </select>
+                    </div>
                 </td>
                 <td>
-                    <div $if="$user.isActive==1">
+                    <div>
                         <select class="selection">
                             <option value="1" selected>فعال</option>
                             <option value="0">غير فعال</option>
                         </select>
                     </div>
-                    <div $if="$user.isActive==0">
-                        <select class="selection">
-                            <option value="0" >فعال</option>
-                            <option value="1" selected>غير فعال</option>
-                        </select>
-                    </div>
                 </td>
-              <td>
-                <i class="fas fa-trash-alt delete_user" onclick="show(this,'delete', '$user.id')"></i>
-                <i class="far fa-edit icon color-blue" onclick = "updateUsers('$user.id') "></i>
+                <td>
+                    <i value="click" class="fas fa-trash-alt delete_user" $click="show('delete',$i)"></i>
+                    <i class="far fa-edit icon color-blue" $click="updateUser($i) "></i>
                 </td>
             </tr>
         </tbody>
@@ -79,8 +71,8 @@
             <p>هل أنت متأكد من إزالة هذا المستخدم ؟</p>
             <p style="font-size: small;font-weight: 700;">سيتم حذف جميع أخباره</p>
             <div class="modal-button">
-                <button class="modal-button button1" onclick="deleteRowElement(); hide('delete');">نعم</button>
-                <button class="modal-button button2" onclick="hide('delete')">لا</button>
+                <button class="modal-button button1" $click="deleteUser();">نعم</button>
+                <button class="modal-button button2" $click="hide('delete')">لا</button>
             </div>
         </div>
     </div>
