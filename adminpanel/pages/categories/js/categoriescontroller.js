@@ -29,9 +29,10 @@ export class CategoriesController {
 
     hideModal(modalId) {
         let modal = document.getElementById(modalId);
-        modal.style.display = "none";
-        modal.classList.remove("modal-active");
-
+        if (modalId != 'delete')
+            modal.style.display = "none";
+        else
+            modal.classList.remove("modal-active");
     }
 
     showModal(modalId, row, id) {
@@ -49,9 +50,6 @@ export class CategoriesController {
 
     updateCategoryName() {
         let newName = document.getElementById("editcategoryname").value;
-        console.log(this.categories);
-        console.log(this.activeId)
-
         this.categories.find(({ id }) => { return id == this.activeId }).name = newName;
         var changeName = document.getElementsByClassName("user_name")[this.activeId - 1];
         changeName.innerHTML = newName;
@@ -99,11 +97,9 @@ export class CategoriesController {
     deleteCategory() {
         let row = this.categories.findIndex((row) => row.id == this.activeId);
         this.categories.splice(row, 1);
-        console.log(this.categories);
-        console.log(this.activeRow);
         let table = document.getElementById('content');
         table.deleteRow(this.activeId);
-        this.hideModal();
+        this.hideModal('delete');
         //let rowDOM = this.activeRow.parentNode.parentNode;
         //rowDOM.parentElement.removeChild(rowDOM);
 
