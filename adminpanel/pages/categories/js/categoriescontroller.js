@@ -1,28 +1,20 @@
 export class CategoriesController {
 
     constructor() {
-        this.categories = [
-            {
-                name: "الألعاب",
-                isActive: 1,
-                id: 1,
-            },
-            {
-                name: "الرئيسية",
-                isActive: 1,
-                id: 2,
-            },
-            {
-                name: "الرياضة",
-                isActive: 0, //غير مفعل
-                id: 3,
-            },
-            {
-                name: "الفن",
-                isActive: 0,
-                id: 4,
-            }
-        ];
+        this.categories = [];
+        this.activeId = 0;
+        this.activeRow = null;
+        this.dp = null;
+        dynamicImport("./../../adminpanel/js/backend.js").then(db => {
+            this.db = db;
+            this.db.confirm();
+            console.log(this.db);
+            this.getAllCat().then(cats => {
+                this.categories = this.db.cleanDataForControllers(cats);
+                mvc.apply();
+            });
+
+        });
         this.activeRow = null;
         this.activeId = 0;
     }
@@ -33,13 +25,14 @@ export class CategoriesController {
         modal.classList.remove("modal-active");
     }
 
-    showModal(modalId, row, id) {
+    showModal(modalId, id) {
+        console.log(id);
         let modal = document.getElementById(modalId); //for modal
         modal.style.display = "flex";
         modal.className += " modal-active";
+        this.activeId = id;
         if (modalId != "createcategory-modal") {
-            this.activeId = id;
-            this.activeRow = row.parentElement.parentElement;
+           
         }
         else {
             document.getElementById("categoryname").value = '';
@@ -54,53 +47,92 @@ export class CategoriesController {
         document.getElementById("editcategoryname").value = "";
         this.hideModal("createcategory-edit-modal");
     }
-
-    createCategory() {
-        let tbody = document.getElementsByTagName('tbody')[0];
-        let categoryName = document.getElementById("categoryname").value;
-        let tr = document.createElement('tr');
-        tr.style.height = "28px";
-        let row = `
-        <td class="user_no" >${tbody.childElementCount + 1}</td>
-        <td class="user_full">
-            <span class="user_name" style="font-size:18px">` + categoryName + `</span>
-        </td>
-        <td>
-            <select 
-            class="selection" style="font-size:18px; border:none; font-family:"Segoe UI"">
-                <option value="writer">فعال</option>
-                <option value="admin"> غير فعال</option>
-            </select>
-        </td>
-        <td>
-            <i class="fas fa-trash-alt delete_user" style="font-size:20px; color:red; text-align:center; cursor:pointer" 
-                $click="show('delete',this,${this.categories.length + 1})"></i>
-            <i class="far fa-edit icon color-blue" 
-                $click="show('createcategory-edit-modal',this,${this.categories.length + 1})"></i>
-        </td>`;
-        tr.innerHTML = row;
-        tr.className = 'user_info';
-        tbody.appendChild(tr);
-        this.hideModal("createcategory-modal");
-        // to database
-        let category = {
-            name: "categoryName",
-            isActive: 1,
-            id: this.categories.length + 1
-        }
-        this.categories.push(category);
-        //CreateCat(category);
-    }
-
     deleteCategory() {
-        let row = this.categories.findIndex((row) => row.id == this.activeId);
-        this.categories.splice(row, 1);
-        let table = document.getElementById('content');
-        table.deleteRow(this.activeId);
+        if(this.activeId != -1)
+        this.categories.splice(this.activeId, 1);
+        mvc.apply();
         this.hideModal('delete');
+        this.activeId = -1;
         //let rowDOM = this.activeRow.parentNode.parentNode;
         //rowDOM.parentElement.removeChild(rowDOM);
 
+    }
+    getCatId() {
+        return dbGet("/settings", false, "categories");
+    }
+    createCategory()
+    {
+        let category = {
+            isActive: 1,
+            name: document.getElementById('categoryname').value,
+        }
+        this.CreateCat(category).then( data => {
+            if(data.ok)
+                {
+                    this.categories.push(category);
+                    mvc.apply();
+                }
+                this.hideModal('createcategory-modal');
+        });
+    }
+    CreateCat(data) {
+        return new Promise((resolve, reject) => {
+            getCatId().then(request => {
+                const _id = request.counter + 1;
+                this.db.dbCreateOrUpdate("/categories", data, _id).then(response => {
+                    request.counter = request.counter + 1;
+                    this.db.dbCreateOrUpdate("/settings", request, request._id).then(response2 => {
+                        resolve(response2);
+                    });
+                })
+            })
+        })
+    }
+
+    getAllCat() {
+        return new Promise((resolve, reject) => {
+            this.db.dbGet("/categories/_design/allcategories/_view/allcategories", true, "").then(cats => {
+
+                resolve(cats);
+            })
+        });
+    }
+    showEditModal(modalId, row, id) {
+        let modal = document.getElementById(modalId); //for modal
+        modal.style.display = "flex";
+        activeId = id;
+        activeRow = row.parentElement.parentElement;
+    }
+
+    hideModal(modalId) {
+        let modal = document.getElementById(modalId); //for modal
+        modal.style.display = "none";
+    }
+
+    updateCategoryName() {
+        let newName = document.getElementById("editcategoryname").value;
+        categoriesPage.find(({ id }) => id === activeId).name = newName;
+        var changeName = document.getElementsByClassName("user_name")[activeId - 1];
+        changeName.innerHTML = newName;
+        document.getElementById("editcategoryname").value = "";
+    }
+
+    getCatId() {
+        return this.db.dbGet("/settings", false, "categories");
+    }
+
+    CreateCat(data) {
+        return new Promise((resolve, reject) => {
+            this.getCatId().then(request => {
+                const _id = request.counter + 1;
+                this.db.dbCreateOrUpdate("/categories", data, _id).then(response => {
+                    request.counter = request.counter + 1;
+                    this.db.dbCreateOrUpdate("/settings", request, request._id).then(response2 => {
+                        resolve(response2);
+                    });
+                });
+            });
+        });
     }
 
 }

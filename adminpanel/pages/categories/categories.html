@@ -1,11 +1,9 @@
-<header>
-    <div class="row header-subheader ">
-        <div>
-
-            الرئيسية > لوحة التحكم > الأخبار > الفئات
-        </div>
+<div class="row header-subheader ">
+    <div>
+        الرئيسية > لوحة التحكم > الأخبار > الفئات
     </div>
-</header>
+</div>
+
 <div class="container">
     <div class="content_header">
         <div class="title">
@@ -35,20 +33,14 @@
                 <th>العمليات</th>
             </tr>
         </thead>
-        <tbody id="tablebody" $for="category of categories">
+        <tbody id="tablebody" $for="cta of categories">
             <tr>
                 <td class="user_no">{{$i+1}}</td>
                 <td class="user_full">
-                    <span class="user_name" $style="'font-size:18px': true">{{$category.name}}</span>
+                    <span class="user_name" $style="'font-size:18px': true">{{$cta.name}}</span>
                 </td>
                 <td>
-                    <div $if="$category.isActive == 1">
-                        <select class="selection" $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true">
-                            <option value="1" selected>فعال</option>
-                            <option value="0"> غير فعال</option>
-                        </select>
-                    </div>
-                    <div $if="$category.isActive == 0">
+                    <div >
                         <select class="selection" $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true">
                             <option value="1" selected> غير فعال</option>
                             <option value="0">فعال</option>
@@ -58,9 +50,9 @@
                 <td>
                     <i class="fas fa-trash-alt delete_user"
                         $style="'font-size:20px; color:red; text-align:center; cursor:pointer' : true"
-                        $click="showModal('delete',this.element, $category.id)"></i>
+                        $click="showModal('delete','$i')"></i>
                     <i class="far fa-edit icon color-blue"
-                        $click="showModal('createcategory-edit-modal', this.element, $category.id)"></i>
+                        $click="showModal('createcategory-edit-modal', this.element, {{$cta._id}})"></i>
                 </td>
             </tr>
         </tbody>

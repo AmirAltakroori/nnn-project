@@ -1,9 +1,7 @@
 {
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "allusers.scss"
-    ],
-    "names": [],
-    "file": "allusers.css"
+"version": 3,
+"mappings": "",
+"sources": [],
+"names": [],
+"file": "allusers.css"
 }

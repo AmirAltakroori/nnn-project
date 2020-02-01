@@ -44,7 +44,7 @@
     
                         <td>
                             <div $for="test of categories">
-                                <div $if="$news.categoryId == $test.id">
+                                <div $if="$news.categoryId == $test._id">
                                         <span>{{$test.name}}</span>
                                 </div>
                         </div>
@@ -54,7 +54,7 @@
                             <div $if="$myNewsPage[$i].isActive == 1">
                                 <span>مفعل</span>
                             </div>
-                            <div $if="$myNewsPage[$i].isActive == 0">
+                            <div $if="$myNewsPage[$i].isActive == 0 ">
                                 <span>غير مفعل</span>
                             </div>
                         </td>
