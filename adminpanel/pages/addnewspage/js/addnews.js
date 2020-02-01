@@ -6,6 +6,7 @@ export class addnewsController {
         this.allNewsPage = [];
         this.form = {};
         this.newsId = mvc.routeParams.id;
+        
         this.pageName = mvc.routeParams.pagename;
         this.title = document.getElementsByClassName('title')[0];
         this.button = document.getElementsByClassName('button')[0];
