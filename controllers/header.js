@@ -31,7 +31,7 @@ export class Header {
         this.dataBase.getData("/news/_design/views/_view/urgent",true,'',this.url,this.auth).then( data => {
             console.log(data);
             this.urgentNews = data;
-            //$apply();
+            mvc.apply();
         }); 
     }
 
@@ -40,7 +40,7 @@ export class Header {
             console.log(data);
             this.categoriesList = data;
             this.sliceCategoriesList();
-            //$apply();
+            mvc.apply();
         }); 
     }
 
