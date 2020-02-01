@@ -127,10 +127,11 @@ export class CategoriesController {
         const category = this.categories[id];
         this.db.dbDelete('/categories', category._id, category._rev).then(resp => {
             if (resp.ok){
-                this.showPopUp("success"); 
+                
                 this.categories.splice(id, 1);
                 mvc.apply();
                 this.init();
+                this.showPopUp("success"); 
             }
                
             
