@@ -29,13 +29,13 @@ export class addnewsController {
             db.dbGet("/news/_design/views/_view/allnews", true, "").then(news => {
                 this.allNewsPage = news;
                 mvc.apply();
-                //console.log(this.allNewsPage);
+                console.log(this.allNewsPage);
                 this.fill(this.newsId)
             })
 
             this.db = db;
         });
-        
+
         this.writerId = JSON.parse(sessionStorage.getItem('user')).id;
         this.editor = null;
         this.newsList = [];
@@ -77,7 +77,7 @@ export class addnewsController {
             "isMainNews": document.getElementById("isMainNews"),
             "isUrgentNews": document.getElementById("isUrgentNews"),
             "createDate": document.getElementById("createDate"),
-            "attachment": document.getElementById("picture")
+           
         }
        
         form.title.value = this.newItem.value.title;
@@ -91,7 +91,7 @@ export class addnewsController {
         if(this.newItem.value.isUrgentNews == "on"){
             form.isUrgentNews.checked = 1;}
         form.createDate.value = this.newItem.value.createDate;
-        form.attachment.value = this.newItem.value.attachment;
+        
     }
 
     richTextEditor() {

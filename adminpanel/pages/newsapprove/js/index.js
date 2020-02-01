@@ -31,5 +31,6 @@ export class approveNewsControler {
 
     redirect(id) {
         window.location.href = "#/addnews/"+id;
+        document.location.reload(true);
     }
 }
