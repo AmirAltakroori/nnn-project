@@ -10,16 +10,13 @@
      File description:
 */
 
-let categoryTitle;
-let categoryMainNews = [];
-
 export class Home {
     constructor() {
 
         this.mainNews = this.getmainNews();
         if (this.mainNews.lenght > 5) {
             this.mainNews = this.mainNews.slice(0, 5);
-        }
+        };
 
         this.selectedNews = this.mainNews[0];
 
@@ -29,14 +26,18 @@ export class Home {
         this.categoriesList = getCategoriesList();
 
         this.isFirstTime = true;
-
         this.randomNewsView = this.randomNews.slice(0, 3);
-
         setInterval(() => {
             this.slide(1);
         } , 4000);
 
-        this.showCategoryNews();
+         this.categoryMainNews = this.getCategoryMainNews();
+         this.firstCategoryMainNews = this.categoryMainNews[0];
+         this.categoryMainNews = this.categoryMainNews.slice(1, 5);
+
+
+
+        this.categoryTitle = this.getCategoryTitle();
     }
 
     /*
@@ -216,92 +217,65 @@ export class Home {
             this.randomNewsView = this.randomNews.slice(this.slideIndex, this.slideIndex + 3);
         } else {
             this.randomNewsView = this.randomNews.slice(this.slideIndex, this.randomNews.length);
-            console.log(this.randomNewsView);
             this.randomNewsView = [...this.randomNewsView, ...(this.randomNews.slice(0, (this.slideIndex + 3) % this.randomNews.length))];
-            console.log(this.randomNewsView);
         }
-        console.log(this.slideIndex);
         mvc.apply();
     }
 
-    /*
-        Get main News in Category
+     getCategoryMainNews () {
 
-        @tparam
+      // I'll rewrite this function when DB was ready.
+          return [{
+                              title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
+                              path: "#",
+                              authorName: "admin",
+                              publishedDate: "12/12/2019",
+                              img:"img1.jpg",
+                              SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
+                              id: 1
+                             },{
+                              title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
+                              path: "#",
+                              authorName: "admin",
+                              publishedDate: "12/12/2019",
+                              img:"2.jpeg",
+                              SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
+                              id: 2
+                             },{
+                              title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
+                              path: "#",
+                              authorName: "admin",
+                              publishedDate: "12/12/2019",
+                              img:"3.jpeg",
+                              SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
+                              id: 3
+                             },{
+                              title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
+                              path: "#",
+                              authorName: "admin",
+                              publishedDate: "12/12/2019",
+                              img:"4.jpeg",
+                              SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
+                              id: 4
+                             },{
+                              title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
+                              path: "#",
+                              authorName: "admin",
+                              publishedDate: "12/12/2019",
+                              img:"new.jpg",
+                              SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
+                              id: 5
+                             }];
+      }
 
-        @param
+    getCategoryTitle () {
 
-        @returns
-
-        This function used to retrieve main news in category from database
-    */
-    getCategoryNews () {
-
-    // I'll rewrite this function when DB was ready.
-        categoryTitle = [{
-                            title:"الأخبار العالمية",
-                            path:"#"
-                         }]
-
-        categoryMainNews = [{
-                            title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
-                            path: "#",
-                            authorName: "admin",
-                            publishedDate: "12/12/2019",
-                            img:"img/img1.jpg",
-                            SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم "
-                           }];
-
-
+      // I'll rewrite this function when DB was ready.
+          return {
+                    title:"الأخبار العالمية",
+                    id:1
+                  };
     }
 
-    /*
-        Show News.
-
-        @tparam
-
-        @param
-
-        @returns
-
-        This function used to show the urgent news retrieved from database at Category Section in home bage
-    */
-    showCategoryNews () {
-        const categoryTitleDiv = document.getElementById('title');
-        const categoryMainNewsDiv = document.getElementById('main-news');
-        const categorySubNewsDiv = document.getElementById('sub-news');
-        this.getCategoryNews();
-        categoryTitleDiv.innerHTML=`<div class="category-header-name"><a class="link" href="${categoryTitle.title}"></a></div>
-                                    <div class="category-read-more "><a class="read-more-btn" href=${categoryTitle.path}> المزيد &gt;</a></div>`;
-
-
-
-        if(categoryMainNews.length > 0) {
-
-            categoryMainNewsDiv.innerHTML=`<div class="category-main-image-div">
-                                                <img id="category-image" src="${categoryMainNews[0].img}" alt="${categoryMainNews[0].title}">
-                                            </div>
-                                            <div class="category-main-title-and-date">
-                                                    <div class="category-main-title"><a class="link" href="${categoryMainNews[0].path}"></a></div>
-                                                    <div class="category-main-date">${categoryMainNews[0].publishedDate}</div>
-                                            </div>
-                                            <div class="category-main-details"></div>
-                                            <a class="read-more-btn category-btn" href=${categoryMainNews[0].path}>اقرأ المزيد &gt;</a>`;
-
-
-
-        categorySubNewsDiv.innerHTML="";
-
-        for (let i = 0; i < 3; i++) {
-
-            categorySubNewsDiv.innerHTML+=`<div class="category-content-random-item">
-                                                <img class="category-img-rnd" id="category-image" src="${categoryMainNews[0].img}" alt="">
-                                                <div class="category-randome-title"><a class="link" href="${categoryMainNews[0].path}">${categoryMainNews[0].title}</a> </div>
-                                            </div>`;
-
-        }
-    }
-
-    }
 
 }
