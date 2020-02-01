@@ -29,10 +29,8 @@ export class CategoriesController {
 
     hideModal(modalId) {
         let modal = document.getElementById(modalId);
-        if (modalId != 'delete')
-            modal.style.display = "none";
-        else
-            modal.classList.remove("modal-active");
+        modal.style.display = "none";
+        modal.classList.remove("modal-active");
     }
 
     showModal(modalId, row, id) {
