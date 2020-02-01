@@ -1,4 +1,5 @@
 
+
 function loadCat() {
     displayCategories(categories);
     //Get the modal that opens when click on "إضافة فئة"
@@ -110,7 +111,12 @@ function updateCategoryName() {
  * Read categories
  */
 function displayCategories(categories) {
+    dbGet("/categories/_design/allcategories/_view/allcategories",true,"").then(data=>{
+        categoriesPage = data;
+        categories = data;
+
     // categoriesPage = categories;
+
     let table = document.getElementById("tablebody");
     for (let i = 0; i < categories.length; i++) {
         let row = document.createElement("tr");
@@ -122,7 +128,7 @@ function displayCategories(categories) {
         info.className = "user_full";
         let info_text = document.createElement("span");
         info_text.className = "user_name ";
-        info_text.textContent = categories[i].name;
+        info_text.textContent = categories[i].value.name;
         info.appendChild(info_text);
         let show_selection = document.createElement("td");
         let select = document.createElement("select");
@@ -135,7 +141,7 @@ function displayCategories(categories) {
         option2.textContent = "غير فعال";
         select.appendChild(option1);
         select.appendChild(option2);
-        select.selectedIndex = !categories[i].isActive;
+        select.selectedIndex = !categories[i].value.state;
         show_selection.appendChild(select);
 
         let operations = document.createElement("td");
@@ -157,6 +163,8 @@ function displayCategories(categories) {
 
         table.appendChild(row);
     }
+
+});
 }
 function getCatId() {
     return dbGet("/settings", false, "categories");
@@ -177,4 +185,4 @@ function CreateCat(data) {
 }
 
 
-export { loadCat }
+

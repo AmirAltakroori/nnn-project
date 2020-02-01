@@ -1,5 +1,6 @@
-
+let allNewsPage = null;
 function allnews() {
+
     let userdata = getData("userData");
     if (userdata != null) {
         allNewsPage[userdata.ind] = userdata;
@@ -130,5 +131,18 @@ function displaynews(news) {
         table.appendChild(row);
     }
 }
+function getAllNews(){
+    dynamicImport("./js/backend.js").then(db => db.dbGet("/news/_design/views/_view/approved", true, "").then(appNews => {
+        this.categories = appNews;
+        mvc.apply();
+        console.log(this.categories);
+        return appNews;
+    }));
 
-export {allnews}
+}
+
+// dynamicImport("./js/backend.js").then(db => db.dbGet("/news/_design/views/_view/approved", true, "").then(appNews => {
+//     this.categories = appNews;
+//     mvc.apply();
+//     console.log(this.categories);
+// }));
