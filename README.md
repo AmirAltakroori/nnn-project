@@ -240,7 +240,7 @@ it can be used in 2 differents ways
         url: "/contact",
         template: "/templates/contact.html",
         controller: "/controllers/contact.js",
-        title: "صفحة المشرف"
+        title: "some page"
     }];
 
     <div $include = "id:contact"></div>
