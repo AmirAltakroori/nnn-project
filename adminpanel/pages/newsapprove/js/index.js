@@ -1,6 +1,6 @@
 export class approveNewsControler {
 
-    constructor(){
+    constructor() {
 
        this.MyNewsPage = [{
             id: 1,
@@ -89,5 +89,9 @@ export class approveNewsControler {
        this.news = import('./newsapprove.js');
         console.log(this.news.then(data => data.approvenews()));
 
+    }
+
+    redirect(id) {
+        window.location.href = "#/addnews/"+id;
     }
 }
