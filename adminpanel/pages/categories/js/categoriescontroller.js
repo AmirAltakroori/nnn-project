@@ -1,4 +1,4 @@
-    export class CategoriesController {
+export class CategoriesController {
 
     constructor() {
         this.categories = [];
@@ -104,18 +104,31 @@
         this.activeId = -1;
         const category = this.categories[id];
         this.db.dbDelete('/categories', category._id, category._rev).then(resp => {
-            if(resp.ok)
-            this.categories.splice(id, 1);
+            if (resp.ok)
+                this.categories.splice(id, 1);
             location.reload();
         });
         this.hideModal('delete');
     }
     updateCategoryName() {
-        let newName = document.getElementById("editcategoryname").value;
-        categoriesPage.find(({ id }) => id === activeId).name = newName;
-        var changeName = document.getElementsByClassName("user_name")[activeId - 1];
-        changeName.innerHTML = newName;
-        document.getElementById("editcategoryname").value = "";
+        if (this.activeId == -1)
+            return;
+        const id = this.activeId;
+        this.activeId = -1;
+        const category = this.categories[id];
+        const newName = document.getElementById('editcategoryname').value;
+        category.name = newName;
+        console.log(category);
+
+        this.db.dbCreateOrUpdate('/categories', category, category._id).then(resp => {
+            if (resp.ok){
+                this.categories[id].name = newName;
+                this.categories[id]._rev = resp.rev;
+                mvc.apply();    
+            }
+        });
+        this.hideModal('createcategory-edit-modal');
+
     }
 
     getCatId() {
