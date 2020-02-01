@@ -89,7 +89,7 @@ export class addusersController {
             if (resp.ok == true) {
                 this.showPopUp('success');
                 setTimeout(() => {
-                    window.location.href = "#allusers";
+                    window.location.href = "#/allusers";
                 }, 1000);
             }
         })
@@ -141,7 +141,7 @@ export class addusersController {
             this.db.dbCreateOrUpdate("/users", data, key).then(response => {
                 console.log(response);
                 if (response.error) {
-                    window.location.href = "#/home";
+                    // window.location.href = "#/home";
                 }
                 resolve(response);
             });

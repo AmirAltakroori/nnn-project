@@ -50,7 +50,13 @@ let routeList = [{
     template: "pages/categories/categories.html",
     title: "شبكة الوحدة الإخبارية",
     controller: "/adminpanel/pages/categories/js/categoriescontroller.js"
-}
+},
+{
+    url :"/allusers",
+    template: "pages/allusers/allusers.html",
+    title: "شبكة الوحدة الإخبارية",
+    controller : "/adminpanel/pages/allusers/js/users.js"
+},
 ];
 
 mvc.addRouteList(routeList);
