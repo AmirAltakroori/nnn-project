@@ -232,18 +232,20 @@ it can be used in 2 differents ways
 1- using id:
     u need to add id proberty to the route element 
     eg:
-    ```
-        let routeList = [
-        {
-            id: "contact",
-            url: "/contact",
-            template: "/templates/contact.html",
-            controller: "/controllers/contact.js",
-            title: "صفحة المشرف"
-        }];
 
-        <div $include = "id:contact"></div>
-    ```
+```
+    let routeList = [
+    {
+        id: "contact",
+        url: "/contact",
+        template: "/templates/contact.html",
+        controller: "/controllers/contact.js",
+        title: "صفحة المشرف"
+    }];
+
+    <div $include = "id:contact"></div>
+```
+
 2- calling Template and controller
    
 
