@@ -11,8 +11,7 @@
 
 export class DataBase {
 
-    constuctor (url, authentication) {
-        init(url, authentication);
+    constuctor () {
     }
 
     cleanData(data) {
@@ -25,34 +24,39 @@ export class DataBase {
     /*
      *    fetch data from dataBase
      *
-     *    @tparam randomNews: endpoint, url, authentication: string
+     *    @tparam randomNews: isView: boolean, endpoint, baseUrl, id, authentication: string
      *
      *    @param endpoint: direct link or view, isView if the endpoint is View this must be true else must be false
-     *                    id
+     *                    id, baseUrl is dataBase base url, authentication dataBase key;
      *
      *    @returns list of fetched data.
      */
-    getData (endpoint, isView, id) {
-        if (!this.url || !this.authentication) {
-            return null;
-        }
-
+    getData (endpoint, isView, id, baseUrl, authentication) {
         return new Promise((resolve, reject) => {
-            let url = this.url + endpoint;
+            let url = baseUrl + endpoint;
             if (isView && id) {
                 url += `?key=\"${id}\"`;
-            } else url += `/${id}`;
+            } else if (id !='') {
+                url += `/${id}`;
+            }
+            
             let http = new XMLHttpRequest();
             http.open("GET", url);
             http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             http.setRequestHeader('Accept', 'application/json');
-            http.setRequestHeader("Authorization", this.authentication);
+            http.setRequestHeader("Authorization", authentication);
             http.onreadystatechange = function() { //Call a function when the state changes.
                 if (http.readyState == 4) {
-                    data = JSON.parse(http.responseText);
-                    if (!id || id == '')
-                        data = this.cleanData(data);
-                    resolve(data);
+                    let data = JSON.parse(http.responseText);
+                    let cleanedData = [];
+
+                    if (!id || id == ''){
+                        for (let i = 0; i < data.rows.length; i++)
+                            cleanedData.push(data.rows[i]);
+                        
+                    }
+                        //data = this.cleanData(data);
+                    resolve(cleanedData);
                 }
             }
             http.send();
@@ -62,30 +66,31 @@ export class DataBase {
     /*
      *    fetch data from dataBase
      *
-     *    @tparam randomNews: isView, id: boolean, endpoint, url, authentication: string
+     *    @tparam randomNews: fields, value, index, endpoint, baseUrl, authentication: string
      *
-     *    @param endpoint: direct link or view, isView if the endpoint is View this must be true else must be false
-     *                    id, url is dataBase base url, authentication dataBase key;
+     *    @param endpoint: direct link or view, baseUrl is dataBase base url, authentication dataBase key;
      *
      *    @returns list of fetched data.
      */
-    getData (endpoint, isView, id, url,  authentication) {
-        this.init(url, authentication);
-
-        return (this.getData(endpoint, isView, id));
-    }
-
-    /*
-     *    initialize url, authentication as private property
-     *
-     *    @tparam url, authentication: string
-     *
-     *    @param url is dataBase base url, authentication dataBase key;
-     *
-     *    @returns
-     */
-    init (url, authentication) {
-        this.url = url;
-        this.authentication = authentication;
+     findByIndex(endpoint, fields, index, value, baseUrl, authentication) {
+        return new Promise((resolve, reject) => {
+            let parameters = {
+                'selector': {},
+                'fields':fields,
+            }
+            parameters.selector[index] = value;
+            const url = baseUrl + endpoint + `/_find`;
+            let http = new XMLHttpRequest();
+            http.open("POST", url);
+            http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            http.setRequestHeader('Accept', 'application/json');
+            http.setRequestHeader("Authorization", authentication);
+            http.onreadystatechange = function() { //Call a function when the state changes.
+                if (http.readyState == 4) {
+                    resolve(JSON.parse(http.responseText));
+                }
+            }
+            http.send(JSON.stringify((parameters)));
+        });
     }
 }
