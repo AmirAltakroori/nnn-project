@@ -14,15 +14,13 @@
         <!-- Contains news title and photo & Show other related news -->
         <div class="news-content">
             <section class="news-header" id="news">
-                <span $for="relatedNew of relatedNews">
-
-                    <h1 $if="$relatedNew.id == $routeParams.newID">
-                        {{$relatedNew.title}}
+                <span>
+                    <h1>
+                        {{$news.title}}
                     </h1>
+                    <div>
+                        <div class="main-img" style=" background-image: url('data:image/png;base64,{{$news.attachment}}');">
 
-                    <div $if="$relatedNew.id == $routeParams.newID">
-                        <div class="main-img" style=" background-image: url(../img/{{$relatedNew.img}});">
-                            .
                         </div>
                     </div>
 
@@ -40,15 +38,14 @@
                     <!-- <li> -->
                     <div $for="relatedNew of relatedNews">
                         <li class="list-n">
-                            <a href="#/details/{{$relatedNew.id}}">
+                            <a href="#/details/{{$relatedNew._id}}">
 
-                                <img src="../img/{{$relatedNew.img}}" alt="صورة"> {{$relatedNew.title}}
+                                <img src="data:image/png;base64,{{$relatedNew.attachment}}" alt="صورة"> {{$relatedNew.title}}
 
                             </a>
                         </li>
                     </div>
                     <!-- </li> -->
-
 
                 </ul>
             </aside>
@@ -56,10 +53,9 @@
         <!-- Contains the full text of the news & news sharing -->
         <div class="news-body">
             <article class="article" id="article">
-                <span $for="relatedNew of relatedNews">
-
-                    <p $if="$relatedNew.id == $routeParams.newID">
-                        {{$relatedNew.content}}
+                <span>
+                    <p>
+                        {{$news.content}}
                     </p>
                 </span>
             </article>
