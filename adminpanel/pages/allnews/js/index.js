@@ -1,5 +1,33 @@
-let allNewsPage = null;
-function allnews() {
+
+export class myNewsControler {
+    constructor(){
+
+        this.dp = null;
+        this.allNewsPage = null;
+        this.categories = null;
+
+        dynamicImport("./js/backend.js").then(db => {
+            this.db = db;
+            console.log(getStoredToken('user'));
+            this.db.confirm();
+            this.getAllNews().then(news=>{
+                this.allNewsPage = news;
+                mvc.apply();
+            });
+            this.getAllCat().then(cats=>{
+                this.categories = cats;
+                mvc.apply();
+            });
+
+        });
+       // this.module =  import('./allnews');
+    //    this.news = import('./allnews.js');
+    //    this.allNewsPage = this.news.then(data => data.allnews());// this.news.getAllNews()
+    // 
+   
+    // console.log(this.allNewsPage);
+    }
+ allnews() {
 
     let userdata = getData("userData");
     if (userdata != null) {
@@ -7,7 +35,7 @@ function allnews() {
         sessionStorage.removeItem("userData");
     }
 }
-function deleteNews(callback, key, rev, row) {
+ deleteNews(callback, key, rev, row) {
 
     let fullUrl = URL + "news/" + key + "?rev=" + rev;
     let http = new XMLHttpRequest();
@@ -24,14 +52,14 @@ function deleteNews(callback, key, rev, row) {
 /* -----------------------------------------------------------------------------------------------------------------------------------------------------*/
 //read news functions 
 
-function findcat(id) {
+ findcat(id) {
     for (let j = 0; j < categories.length; j++) {
         if (categories[j].id == id)
             return categories[j].name;
     }
 }
 
-function displaynews(news) {
+ displaynews(news) {
     newsPage = news;
     let table = document.getElementById("tablebody");
     for (let i = 0; i < news.length; i++) {
@@ -131,14 +159,21 @@ function displaynews(news) {
         table.appendChild(row);
     }
 }
-function getAllNews(){
-    dynamicImport("./js/backend.js").then(db => db.dbGet("/news/_design/views/_view/approved", true, "").then(appNews => {
-        this.categories = appNews;
-        mvc.apply();
-        console.log(this.categories);
-        return appNews;
-    }));
-
+ getAllNews(){
+    return new Promise((resolve, reject) => {
+        this.db.dbGet("/news/_design/views/_view/approved", true, "").then(news => {
+           
+            resolve(news);
+        })
+    });
+}
+getAllCat(){
+    return new Promise((resolve, reject) => {
+        this.db.dbGet("/categories/_design/allcategories/_view/allcategories", true, "").then(cats => {
+           
+            resolve(cats);
+        })
+    });
 }
 
 // dynamicImport("./js/backend.js").then(db => db.dbGet("/news/_design/views/_view/approved", true, "").then(appNews => {
@@ -146,3 +181,4 @@ function getAllNews(){
 //     mvc.apply();
 //     console.log(this.categories);
 // }));
+}

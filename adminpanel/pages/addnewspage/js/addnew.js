@@ -63,8 +63,9 @@ function init() {
     file.addEventListener("change", function(e) {
         previewImg();
     });
-
+    //console.log("deema")
     if (userData != null) {
+       // console.log("deema2")
         newElement.innerHTML = "تعديل";
 
         let form = {
@@ -152,7 +153,7 @@ function createNew(title, content, cateqory, seoTitle, seoTags, seoDescription, 
 
 
 function changeDateFormat(date) {
-    if (typeof(date) == 'string')
+    if (typeof (date) == 'string')
         return date;
     return date.getFullYear() + "-" + date.getMonth() + "-" + (date.getDate() + 1);
 }

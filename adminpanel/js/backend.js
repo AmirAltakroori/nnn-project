@@ -5,7 +5,7 @@
 // Function's names must be lowCamelCase 
 // Don't delete this comments
 // By Waleed Jubeh
-let tokenKey = "PSEU";
+export let tokenKey = "PSEU";
 function getData(storeName) {
     return JSON.parse(sessionStorage.getItem(storeName));
 }
@@ -19,7 +19,7 @@ function getStoredToken(name){
         return null;
     }
 }
-function confirm(){
+export function confirm(){
     let user = getStoredToken('user');
 
     if(!user)
@@ -39,8 +39,10 @@ function confirm(){
     
     if(!correctHash || !correctSission)
        window.location.href = '/admin-panel-login/login.html';
+    else
+        return user;
 }
-function saveData(storeName, data) {
+export function saveData(storeName, data) {
     sessionStorage.setItem(storeName, JSON.stringify(data));
 }
 let myNewsPage = [{
@@ -144,8 +146,9 @@ function updateNews(id, page) {
             break;
         }
     sessionStorage.setItem("userData", JSON.stringify(aim));
-    window.location.href = "../addnewspage/addnewpage.html";
+    window.location.href = "/adminpanel/index.html#/addnews";
 }
+
 let BASEURL = 'https://541e1dc0-354b-4134-ae7d-5eaa533a1bf9-bluemix.cloudant.com';
 let AUTHENTICATION = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJsdWVtaXg6NDU2YjA3NzhjODFjOWNiMDk5NzZkODU1NjQ5MDM2YzRlYTE1MTQwZTk5NDNlNWM2MGE5ZDM1MGMwNDU5YzIwMw=='
 
@@ -154,13 +157,13 @@ let AUTHENTICATION = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJs
 
 // If you want to get specific data for a document in a view , you need to set key to be the id of the document
 function cleanData(data) {
-    cleanedData = [];
+    let cleanedData = [];
     for (let i = 0; i < data.rows.length; i++)
         cleanedData.push(data.rows[i]);
     return cleanedData;
 }
 
-function dbGet(endpoint, isView, id) {
+export function dbGet(endpoint, isView, id) {
     return new Promise((resolve, reject) => {
         let url = BASEURL + endpoint;
         if (isView && id) {
@@ -173,7 +176,7 @@ function dbGet(endpoint, isView, id) {
         http.setRequestHeader("Authorization", AUTHENTICATION);
         http.onreadystatechange = function() { //Call a function when the state changes.
             if (http.readyState == 4) {
-                data = JSON.parse(http.responseText);
+                let data = JSON.parse(http.responseText);
                 if (!id || id == '')
                     data = cleanData(data);
                 resolve(data);
@@ -183,7 +186,6 @@ function dbGet(endpoint, isView, id) {
     });
 }
 // dbGet('/categories',false,'1')get all information for a category id = 1
-
 // dbGet('/users',false,'') get all users
 // dbGet('/users/_design/users/_view/viewName',true,'') get all user from a view.
 // dbGet('/users/_design/users/_view/userRole',true,"1") get uesr who his id = 1 and the data is from 'userRole'
@@ -232,7 +234,8 @@ function dbCreateOrUpdate(endpoint, data, id) {
 //     id:"1234",
 // }
 // dbCreateOrUpdate('/users',userData,1234);create user his id equals 1234 and his data is userData objectgi
-function SHA256(s) {
+
+export function SHA256(s) {
 
     let chrsz = 8;
     let hexcase = 0;
@@ -387,5 +390,29 @@ function SHA256(s) {
 
     s = Utf8Encode(s);
     return binb2hex(core_sha256(str2binb(s), s.length * chrsz));
+}
+
+
+
+function dbFindByIndex(endpoint, fields, index,value) {
+    return new Promise((resolve, reject) => {
+        let parameters = {
+            'selector': {},
+            'fields':fields,
+        } 
+        parameters.selector[index] = value;
+        const url = BASEURL + endpoint + `/_find`;
+        let http = new XMLHttpRequest();
+        http.open("POST", url);
+        http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        http.setRequestHeader('Accept', 'application/json');
+        http.setRequestHeader("Authorization", AUTHENTICATION);
+        http.onreadystatechange = function() { //Call a function when the state changes.
+            if (http.readyState == 4) {
+                resolve(JSON.parse(http.responseText));
+            }
+        }
+        http.send(JSON.stringify((parameters)));
+    });
 }
 

@@ -139,3 +139,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     displayusers();
 });
+this.db = dynamicImport("./js/backend.js").then(db => db.dbGet("/categories/_design/allcategories/_view/allcategories", true, "").then(cats => {
+    this.categories = cats;
+    mvc.apply();
+    console.log(this.categories);
+}));

@@ -1,6 +1,6 @@
 
 
-function getToken(fullName, username, email, roleId, alg, validityTime, key) {
+function getToken(fullName, username, email, roleId, alg, validityTime, key, hashFunction) {
 
     /*
         username: the username of the user
@@ -36,7 +36,7 @@ function getToken(fullName, username, email, roleId, alg, validityTime, key) {
     let tokenJson = JSON.stringify(token);
 
     //  Calculate the Hash for the token data with the key
-    let hash = SHA256(tokenJson + key);
+    let hash = hashFunction(tokenJson + key);
 
     //  Add the Hash to the token
     token["hash"] = hash;
@@ -65,25 +65,27 @@ function verification() {
     //  get the user role
     // let user = getUser(username.value, password.value);
     let currentUser = null;
-    dbGet("/users/",false,username.value).then( user => {
+    dynamicImport("./../../adminpanel/js/backend.js").then(db => {
+    db.dbGet("/users/",false,username.value).then( user => {
         currentUser = user;
         let text = "";
         color = "#ffffff"
        if(user.password === password.value && user.state == 1){
             let token = getToken(user.firstName + " " + user.lastName,
                                 user.username, user.email, user.role,
-                                "sha256", 60 * 60 * 1000, tokenKey);
+                                "sha256", 60 * 60 * 1000, db.tokenKey, db.SHA256);
             user.token = token;
             text = "جاري تسجيل الدخول";
             color = "#17bb24";
             let datatoSave = {
                 "token": user.token,
             }
-            saveData('user',datatoSave);
+            db.saveData('user',datatoSave);
         }else if(user.password === password.value && user.state == 0){
             text = "حسابك معطل راجع أحد المسؤولين";
             color = "#e85827";
         }else{
+            currentUser = null;
             text = "اسم المستخدم او كلمة المرور خاطئة";
             color = "#ff0000";
         }
@@ -94,11 +96,12 @@ function verification() {
         setTimeout(() => {
             //  hidden the popup
             //  if the user is exist go to the home page
-            if (currentUser.state == 1) {
+            if (currentUser && currentUser.state == 1) {
                 window.location.assign("../adminpanel/index.html");
             }
         }, 1000);
-    });   
+    }); 
+}  );
     
 }
 
