@@ -37,28 +37,28 @@
             </tr>
         </thead>
 
-        <tbody id="tablebody" $for="news of MyNewsPage">
+        <tbody id="tablebody" $for="news of allNewsPage">
             <tr class="user_info">
                 <td class="user_no">
                     {{$i + 1}}
                 </td>
                 <td class="user_full">
-                    <span class="user_name">{{$news.title}}</span>
+                    <span class="user_name">{{$news.value.title}}</span>
                 </td>
                 
                 <td>
                     <div $for="category of categories">
-                        <div $if="$news.categoryId == $category.id">
-                                <span>{{$category.name}}</span>
+                        <div $if="$news.value.categoryId == $category.id">
+                                <span>{{$category.value.name}}</span>
                         </div>
                     </div>
                 </td>
 
                 <td>
-                    <div $if="$MyNewsPage[$i].isActive == 1">
+                    <div $if="$allNewsPage[$i].value.isActive == 'on'">
                         <span>مفعل</span>
                     </div>
-                    <div $if="$MyNewsPage[$i].isActive == 0">
+                    <div $if="$allNewsPage[$i].value.isActive != 'on'">
                         <span>غير مفعل</span>
                     </div>
                 </td>

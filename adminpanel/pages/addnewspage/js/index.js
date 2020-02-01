@@ -1,83 +1,9 @@
 
 export class addnewsController {
+
     constructor() {
 
-            this.allNewsPage = [{
-            title: "النصيرات أكثر المناطق هطولاً",
-            content: "<h1>This is my first news</h1>",
-            categoryId: 3,
-            seoTitle: "First news",
-            seoTags: "{ 'tags':{['test','sport']} }",
-            seoDescription: "This is my first news",
-            isActive: 0,
-            isMainNews: 0,
-            isUrgentNews: 1,
-            createDate: new Date(),
-            writerId: 1,
-            _attachments: "",
-            id: 1,
-        },
-        {
-            title: "الالعاب الاولمبية قريبا",
-            content: "<h1>This is my first news</h1>",
-            categoryId: 2,
-            seoTitle: "First news",
-            seoTags: "{ 'tags':{['test','sport']} }",
-            seoDescription: "This is my first news",
-            isActive: 1,
-            isMainNews: 1,
-            isUrgentNews: 2,
-            createDate: new Date(),
-            writerId: 1,
-            _attachments: "",
-            id: 2,
-        },
-        {
-            title: "أخبار الفن والفنانين والنجوم والمشاهير",
-            content: "<h1>This is my first news</h1>",
-            categoryId: 4,
-            seoTitle: "First news",
-            seoTags: "{ 'tags':{['test','sport']} }",
-            seoDescription: "This is my first news",
-            isActive: 1,
-            isMainNews: 0,
-            isUrgentNews: 0,
-            createDate: new Date(),
-            writerId: 1,
-            _attachments: "",
-            id: 3,
-        },
-        {
-            title: "الاحلال يعتقل مقدسيا مسنا",
-            content: "<h1>This is my first news</h1>",
-            categoryId: 3,
-            seoTitle: "First news",
-            seoTags: "{ 'tags':{['test','sport']} }",
-            seoDescription: "This is my first news",
-            isActive: 1,
-            isMainNews: 1,
-            isUrgentNews: 1,
-            createDate: new Date(),
-            writerId: 1,
-            _attachments: "",
-            id: 4,
-        },
-        {
-            title: "سلسلة العاب LEft 4 Dead تعود من جديد",
-            content: "<h1>This is my first news</h1>",
-            categoryId: 1,
-            seoTitle: "First news",
-            seoTags: "{ 'tags':{['test','sport']} }",
-            seoDescription: "This is my first news",
-            isActive: 0,
-            isMainNews: 1,
-            isUrgentNews: 1,
-            createDate: new Date(),
-            writerId: 1,
-            _attachments: "",
-            id: 5,
-        }
-    ];
+        this.allNewsPage = [];
         this.newsId = mvc.routeParams.id;
         this.title = document.getElementsByClassName('title')[0];
         this.button = document.getElementsByClassName('button')[0];
@@ -86,9 +12,9 @@ export class addnewsController {
             this.title.innerHTML = "تعديل خبر";
             this.button.innerHTML = "تعديل الخبر";
             this.sub_header.innerHTML = " الرئيسية > لوحة التحكم >الأخبار > تعديل خبر"
-            this.fill(this.newsId);
         }
-        //   Check role
+
+        //Check role
         this.setScheduleTime();
         dynamicImport("./js/backend.js").then(db => {
             db.dbGet("/categories/_design/allcategories/_view/allcategories", true, "").then(cats => {
@@ -99,8 +25,17 @@ export class addnewsController {
                 console.log(this.categories);
 
             })
+
+            db.dbGet("/news/_design/views/_view/allnews", true, "").then(news => {
+                this.allNewsPage = news;
+                mvc.apply();
+                //console.log(this.allNewsPage);
+                this.fill(this.newsId)
+            })
+
             this.db = db;
         });
+        
         this.writerId = JSON.parse(sessionStorage.getItem('user')).id;
         this.editor = null;
         this.newsList = [];
@@ -125,44 +60,41 @@ export class addnewsController {
     idSelector = (id) => { return document.getElementById(id) };
 
     fill(newsId) {
-        
-        let newItem;
-      
+    
         for(let news of this.allNewsPage) {
-            if(news.id == newsId) {
-                newItem = news;
+            if(news.value._id == newsId) {
+                this.newItem = news;
                 break;
             }
-        }                    
-        //console.log(newItem)
+        }                
         let form = {
             "title": document.getElementById("title"),
             "editor": document.getElementById("editor"),
-            "categoryId": document.getElementById("category"),
+            "categorye": document.getElementsByClassName("category")[0],
             "seoTitle": document.getElementById("seoTitle"),
             "seoTags": document.getElementById("seoTags"),
             "seoDescription": document.getElementById("seoDescription"),
             "isMainNews": document.getElementById("isMainNews"),
             "isUrgentNews": document.getElementById("isUrgentNews"),
             "createDate": document.getElementById("createDate"),
+            "attachment": document.getElementById("picture")
         }
-
-        form.title.value = newItem.title;
-        editor.innerHTML = newItem.content;
-        form.categoryId.value = newItem.categoryId;
-        form.seoTitle.value = newItem.seoTitle;
-        form.seoTags.value = newItem.seoTags;
-        form.seoDescription.value = newItem.seoDescription;
-        form.isMainNews.checked = newItem.isMainNews;
-        form.isUrgentNews.checked = newItem.isUrgentNews;
-        form.createDate.value = newItem.createDate;
-        mvc.apply();
-        console.log(newItem.title)
-        console.log(form.title.value)
-        
+       
+        form.title.value = this.newItem.value.title;
+        editor.innerHTML = this.newItem.value.content;
+        form.categorye.value = this.newItem.value.categoryId;
+        form.seoTitle.value = this.newItem.value.seoTitle;
+        form.seoTags.value = this.newItem.value.seoTags;
+        form.seoDescription.value = this.newItem.value.seoDescription;
+        if(this.newItem.value.isMainNews == "on") {
+            form.isMainNews.checked = 1 ;}
+        if(this.newItem.value.isUrgentNews == "on"){
+            form.isUrgentNews.checked = 1;}
+        form.createDate.value = this.newItem.value.createDate;
+        form.attachment.value = this.newItem.value.attachment;
     }
-    richTextEditor() {
 
+    richTextEditor() {
 
         let newsBody = document.getElementById('editor');
         let toolbarOptions = [

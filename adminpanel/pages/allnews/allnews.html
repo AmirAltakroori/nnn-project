@@ -42,41 +42,41 @@
                 <tr id="1" class="user_info" >
                     <td class="user_no">{{$i + 1}}</td>
                     <td class="user_full">
-                        <span class="user_name allnews-title-limit">{{$news.title}}</span>
+                        <span class="user_name allnews-title-limit">{{$news.value.title}}</span>
                     </td>
                     <td>
-                            <div $for="test of categories">
-                                <div $if="$news.categoryId == $test.id">
-                                        <span>{{$test.name}}</span>
+                            <div $for="cat of categories">
+                                <div $if="$news.value.categoryId == $cat.id">
+                                        <span>{{$cat.value.name}}</span>
                                 </div>
                             </div>
                         </td>
                     <td>
-                            <div class="allnews-inline-block" $if="$news.isMainNews == 1">
+                            <div class="allnews-inline-block" $if="$news.value.isMainNews == 'on'">
                                 <input type="checkbox" id="main" tabindex="9" checked/>
                                 <label for="main">خبر رئيسي</label>
                             </div>
-                            <div class="allnews-inline-block" $if="$news.isMainNews == 0">
+                            <div class="allnews-inline-block" $if="$news.value.isMainNews != 'on'">
                                     <input type="checkbox" id="main" tabindex="9" />
                                     <label for="main">خبر رئيسي</label>
                             </div>
-                            <div class="allnews-inline-block" $if="$news.isUrgentNews == 1">
+                            <div class="allnews-inline-block" $if="$news.value.isUrgentNews == 'on'">
                                 <input type="checkbox" id="urgent" tabindex="9" checked/>
                                 <label for="urgent">خبر عاجل</label>
                             </div>
-                            <div class="allnews-inline-block" $if="$news.isUrgentNews == 0">
+                            <div class="allnews-inline-block" $if="$news.value.isUrgentNews != 'on'">
                                     <input type="checkbox" id="urgent" tabindex="9" />
                                     <label for="urgent">خبر عاجل</label>
                             </div>
                     </td>
                     <td>
-                            <div $if="$news.isActive == 1">
+                            <div $if="$news.value.isActive == 'on'">
                                 <select class="selection">
                                         <option value="1" selected> إظهار في الموقع</option>
                                         <option value="0"> إخفاء من الموقع</option>
                                 </select>
                             </div>
-                            <div $if="$news.isActive == 0">
+                            <div $if="$news.value.isActive != 'on'">
                                     <select class="selection">
                                             <option value="1"> إظهار في الموقع</option>
                                             <option value="0" selected> إخفاء من الموقع</option>

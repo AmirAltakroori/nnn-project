@@ -32,7 +32,7 @@
                 <label>الفئة
                     <span class="required">*</span>
                 </label>
-                <select $model="categoryId" id="category" $for="ct of categories" class="news_element category" required>
+                <select $model="categoryId" id="catt" $for="ct of categories" class="news_element category" required>
 
                     <option value="{{$ct.value._id}}">{{$ct.value.name}}</option>
                 </select>
