@@ -19,9 +19,20 @@
     <link rel="stylesheet" type="text/css" href="./pages/newuser/css/newuser.css">
     <script src="./js/quill.min.js"></script>
     <link href="./pages/addnewspage/css/quill.snow.css" rel="stylesheet">
-    <script  src="./js/backend.js"></script>
-    <script  src="./js/frontend.js"></script>
+    <script type="module" src="./js/backend.js"></script>
+    <script src="./js/frontend.js"></script>
 
+    <script>
+        const userData = JSON.parse(sessionStorage.getItem('user'));
+        if (!userData) {
+            window.location.href = '/admin-panel-login/login.html';
+
+        }
+        console.log(userData);
+        document.addEventListener("DOMContentLoaded", (e) => {
+            document.getElementById("username").innerHTML = userData.fullName;
+         })
+    </script>
 
     <title>Home</title>
 </head>
@@ -39,7 +50,7 @@
 
                     <div class="header-inline-block">
                         <li class="fas fa-user"></li>
-                        وليد الجعبة
+                        <span id="username"></span>
 
                     </div>
                     <div class="header-inline-block">
