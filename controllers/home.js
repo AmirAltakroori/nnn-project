@@ -28,16 +28,30 @@ export class Home {
         this.isFirstTime = true;
         this.randomNewsView = this.randomNews.slice(0, 3);
         setInterval(() => {
-          this.slide(1);
+         // this.slide(1);
         } , 4000);
-        
+
          this.categoryMainNews = this.getCategoryMainNews();
          this.firstCategoryMainNews = this.categoryMainNews[0];
          this.categoryMainNews = this.categoryMainNews.slice(1, 5);
-        
 
-        
-        this.categoryTitle = this.getCategoryTitle(); 
+
+
+        this.categoryTitle = this.getCategoryTitle();
+    }
+
+    /*
+        Change Selected news
+
+        @tparam news: news object
+
+        @param: identifier for needed news
+
+        @returns:
+    */
+    changeSelectedNews(news) {
+        this.selectedNews = news;
+        mvc.apply();
     }
 
     /*
@@ -147,7 +161,7 @@ export class Home {
                         img:"../img/4.jpeg",
                         description:"",
                         id: 4
-                      }];
+                    }];
 
     }
 
@@ -207,24 +221,19 @@ export class Home {
      */
     slide(inc) {
         this.slideIndex += inc;
-        this.slideIndex += inc;
         if (this.slideIndex < 0) {
             this.slideIndex = this.randomNews.length - 1;
         }
         if (this.slideIndex == this.randomNews.length) {
-          this.slideIndex = 0;
+            this.slideIndex = 0;
         }
-        for (i = 0; i < newsTileList.length; i++) {
-            newsTileList[i].style.display = "none";
-        }
-
         if (this.slideIndex + 3 <= this.randomNews.length) {
-          this.randomNewsView = this.randomNews.slice(this.slideIndex, this.slideIndex + 3);
-      } else {
-          this.randomNewsView = this.randomNews.slice(this.slideIndex, this.randomNews.length);
-          console.log(this.randomNewsView);
-          this.randomNewsView = [...this.randomNewsView, ...(this.randomNews.slice(0, (this.slideIndex + 3) % this.randomNews.length))];
-          console.log(this.randomNewsView);
+            this.randomNewsView = this.randomNews.slice(this.slideIndex, this.slideIndex + 3);
+        } else {
+            this.randomNewsView = this.randomNews.slice(this.slideIndex, this.randomNews.length);
+            console.log(this.randomNewsView);
+            this.randomNewsView = [...this.randomNewsView, ...(this.randomNews.slice(0, (this.slideIndex + 3) % this.randomNews.length))];
+            console.log(this.randomNewsView);
         }
         console.log(this.slideIndex);
         mvc.apply();
@@ -232,7 +241,7 @@ export class Home {
 
      getCategoryMainNews () {
 
-      // I'll rewrite this function when DB was ready.            
+      // I'll rewrite this function when DB was ready.
           return [{
                               title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
                               path: "#",
@@ -283,7 +292,7 @@ export class Home {
                     title:"الأخبار العالمية",
                     id:1
                   };
-    }  
+    }
 
 
 }

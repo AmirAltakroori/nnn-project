@@ -653,7 +653,7 @@
                     float: left;
                     margin-right: 10px;
                     color: #707070;
-                    
+
                 }
             }
         }
@@ -727,7 +727,7 @@
             height: 17px;
         }
     }
-    
+
 }
 
 .random-news {
@@ -736,16 +736,16 @@
 
     .rendom-news-container{
 
+        text-decoration: none;
+
         .slider-news-tile {
 
             @extend %allNews;
+
             .news{
                 position: relative;
                 @extend %news;
 
-                a{
-                    text-decoration: none;
-                }
             }
 
             .date{
