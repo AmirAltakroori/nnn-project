@@ -11,20 +11,40 @@ export class CategoriesController {
             console.log(this.db);
             this.getAllCat().then(cats => {
                 this.categories = this.db.cleanDataForControllers(cats);
+
                 mvc.apply();
+                this.init();
             });
 
         });
         this.activeRow = null;
         this.activeId = 0;
     }
-
+    init() {
+        const selections = Array.from(document.getElementsByClassName('selection'));
+        let i = 0;
+        selections.forEach(el => {
+            el.value = this.categories[i].isActive;
+            i++;
+        })
+        console.log(selections);
+    }
     hideModal(modalId) {
         let modal = document.getElementById(modalId);
         modal.style.display = "none";
         modal.classList.remove("modal-active");
     }
-
+    updateCategoryStatus(id) {
+        this.showPopUp("sending"); 
+        const category = this.categories[id];
+        category.isActive = +!category.isActive;
+        this.db.dbCreateOrUpdate('/categories', category, category._id).then(resp => {
+            if (resp.ok) {
+                this.categories[id]._rev = resp.rev;
+                this.showPopUp("success"); 
+            }
+        });
+    }
     showModal(modalId, id) {
         console.log(id);
         let modal = document.getElementById(modalId); //for modal
@@ -38,20 +58,21 @@ export class CategoriesController {
             document.getElementById("categoryname").value = '';
         }
     }
+    showPopUp(id) {
+        let popup = document.getElementById(id);
+        console.log(popup);
+        popup.style.display = 'block';
+        setTimeout(() => {
+            //  hidde th popup
+            popup.style.display = "none";
+        }, 1500);
 
-    updateCategoryName() {
-        let newName = document.getElementById("editcategoryname").value;
-        this.categories.find(({ id }) => { return id == this.activeId }).name = newName;
-        var changeName = document.getElementsByClassName("user_name")[this.activeId - 1];
-        changeName.innerHTML = newName;
-        document.getElementById("editcategoryname").value = "";
-        this.hideModal("createcategory-edit-modal");
     }
-
     getCatId() {
         return dbGet("/settings", false, "categories");
     }
     createCategory() {
+        this.showPopUp("sending"); 
         let category = {
             isActive: 1,
             name: document.getElementById('categoryname').value,
@@ -60,9 +81,9 @@ export class CategoriesController {
             if (data.ok) {
                 this.categories.push(category);
                 mvc.apply();
+                this.showPopUp("success"); 
             }
             this.hideModal('createcategory-modal');
-            location.reload();
         });
     }
     CreateCat(data) {
@@ -98,21 +119,28 @@ export class CategoriesController {
         modal.style.display = "none";
     }
     deleteCategory() {
+        this.showPopUp("sending"); 
         if (this.activeId == -1)
             return;
         const id = this.activeId;
         this.activeId = -1;
         const category = this.categories[id];
         this.db.dbDelete('/categories', category._id, category._rev).then(resp => {
-            if (resp.ok)
+            if (resp.ok){
+                this.showPopUp("success"); 
                 this.categories.splice(id, 1);
-            location.reload();
+                mvc.apply();
+                this.init();
+            }
+               
+            
         });
         this.hideModal('delete');
     }
     updateCategoryName() {
         if (this.activeId == -1)
             return;
+            this.showPopUp("sending");
         const id = this.activeId;
         this.activeId = -1;
         const category = this.categories[id];
@@ -121,10 +149,12 @@ export class CategoriesController {
         console.log(category);
 
         this.db.dbCreateOrUpdate('/categories', category, category._id).then(resp => {
-            if (resp.ok){
+            if (resp.ok) {
                 this.categories[id].name = newName;
                 this.categories[id]._rev = resp.rev;
-                mvc.apply();    
+                mvc.apply();
+                this.init();
+                this.showPopUp("success");
             }
         });
         this.hideModal('createcategory-edit-modal');

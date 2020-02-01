@@ -41,9 +41,9 @@
                 </td>
                 <td>
                     <div >
-                        <select class="selection" $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true">
-                            <option value="1" selected> غير فعال</option>
-                            <option value="0">فعال</option>
+                        <select class="selection" $change='updateCategoryStatus($i)' $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true">
+                            <option value="0" > غير فعال</option>
+                            <option value="1">فعال</option>
                         </select>
                     </div>
                 </td>
@@ -112,4 +112,10 @@
         </div>
     </div>
 
+</div>
+<div class="popup success" id='success'>
+    تمت العملية
+</div>
+<div class="popup warning" id='sending'>
+    انتظر قليلا
 </div>
