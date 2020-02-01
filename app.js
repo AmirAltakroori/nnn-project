@@ -14,6 +14,7 @@ let routeList = [
         title: "صفحة المشرف"
     },
     {
+        id: "contact",
         url: "/contact",
         template: "/templates/contact.html",
         controller: "/controllers/contact.js",

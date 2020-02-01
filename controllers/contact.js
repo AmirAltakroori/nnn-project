@@ -7,7 +7,7 @@ export class ContactController {
             { num: 10, active: true },
             { num: 20, active: true }
         ];
-      
+
         console.log(this.times);
         setTimeout(() => {
             this.FirstName = "hello";
