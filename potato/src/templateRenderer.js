@@ -199,10 +199,38 @@ function renderChange(exp, element) {
 
 let contMap = new Map();
 let tempMap = new Map();
-async function renderInclude(exp, element) {
-	let expGroup = exp.split(',');
-	let tempPath = expGroup[0].trim();
-	let contPath = expGroup[1].trim();
+async function renderInclude(exp, element) 
+{
+	let tempPath, contPath;
+	if(exp.includes(":"))
+	{
+		let id = exp.trim().substr(3,exp.length);
+		let found = false;
+
+		for(let i=0;i < mvc._routeMap.length;i++)
+		{
+			if(mvc._routeMap[i].id == id)
+			{
+				found = true;
+				tempPath = mvc._routeMap[i].template;
+				contPath = mvc._routeMap[i].controller;
+				break;
+			}
+		}
+		if(!found)
+		{
+			console.error("no such id " + id);
+			return;
+		}
+
+	}
+	else
+	{
+		let expGroup = exp.split(',');
+		tempPath = expGroup[0].trim();
+		contPath = expGroup[1].trim();
+	}
+	
 
 	let template;
 	let reload = false;
