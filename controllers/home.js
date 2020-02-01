@@ -16,7 +16,7 @@ export class Home {
         this.mainNews = this.getmainNews();
         if (this.mainNews.lenght > 5) {
             this.mainNews = this.mainNews.slice(0, 5);
-        }
+        };
 
         this.selectedNews = this.mainNews[0];
 
@@ -26,22 +26,18 @@ export class Home {
         this.categoriesList = getCategoriesList();
 
         this.isFirstTime = true;
-
+        this.randomNewsView = this.randomNews.slice(0, 3);
         setInterval(() => {
-            if (this.isFirstTime) {
-                this.isFirstTime = false;
-            } else {
-                this.slide(1);
-            }
-        } , 8000);
+          this.slide(1);
+        } , 4000);
+        
+         this.categoryMainNews = this.getCategoryMainNews();
+         this.firstCategoryMainNews = this.categoryMainNews[0];
+         this.categoryMainNews = this.categoryMainNews.slice(1, 5);
+        
 
-        this.categoryMainNews = this.getCategoryMainNews();
-        if (this.categoryMainNews.lenght > 5) {
-          this.categoryMainNews = this.categoryMainNews.slice(0, 5);
-      };
-
-        this.firstCategoryMainNews = this.categoryMainNews[0];
-        this.categoryTitle = this.getCategoryTitle();
+        
+        this.categoryTitle = this.getCategoryTitle(); 
     }
 
     /*
@@ -56,23 +52,6 @@ export class Home {
     changeSelectedNews(news) {
         this.selectedNews = news;
         mvc.apply();
-    }
-
-    /*
-        Hide slide
-
-        @tparam news: news object
-
-        @param: identifier for needed news
-
-        @returns:
-    */
-    hideSlide(news) {
-        let index = this.randomNews.indexOf(news);
-        if (index > this.slideIndex + 2 || index < this.slideIndex) {
-            return true;
-        }
-        return false;
     }
 
     /*
@@ -149,7 +128,7 @@ export class Home {
                         path: "#",
                         authorName: "أسيل عرفه",
                         publishedDate: "12/12/2019",
-                        img:"../img/firstNews.jpg",
+                        img:"../img/2.jpeg",
                         description:"",
                         id: 2
                       }, {
@@ -157,7 +136,7 @@ export class Home {
                         path: "#",
                         authorName: "أسيل عرفه",
                         publishedDate: "12/12/2019",
-                        img:"../img/firstNews.jpg",
+                        img:"../img/3.jpeg",
                         description:"",
                         id: 3
                       }, {
@@ -165,7 +144,7 @@ export class Home {
                         path: "#",
                         authorName: "أسيل عرفه",
                         publishedDate: "12/12/2019",
-                        img:"../img/firstNews.jpg",
+                        img:"../img/4.jpeg",
                         description:"",
                         id: 4
                       }];
@@ -218,7 +197,7 @@ export class Home {
     }
 
     /*
-     *    increment or decrement slider start index.
+     *    load random news for view
      *
      *    @tparam inc: integer.
      *
@@ -227,38 +206,31 @@ export class Home {
      *    @returns
      */
     slide(inc) {
-        this.showSlides(this.slideIndex += inc);
-    }
-
-    /*
-     *    Show Next 3 divs.
-     *
-     *    @tparam index: integer.
-     *
-     *    @param index is the start point.
-     *
-     *    @returns
-     */
-    showSlides(index) {
-        let i;
-        let newsTileList = document.getElementsByClassName("slider-news-tile");
-
-        if (index > newsTileList.length - 3) {
-            this.slideIndex = 0;
-        } else if (index < 0) {
-            this.slideIndex = newsTileList.length - 4;
+        this.slideIndex += inc;
+        this.slideIndex += inc;
+        if (this.slideIndex < 0) {
+            this.slideIndex = this.randomNews.length - 1;
         }
-
+        if (this.slideIndex == this.randomNews.length) {
+          this.slideIndex = 0;
+        }
         for (i = 0; i < newsTileList.length; i++) {
             newsTileList[i].style.display = "none";
         }
 
-        for (i = this.slideIndex; i < this.slideIndex + 3; i++) {
-            newsTileList[i].style.display = "block";
+        if (this.slideIndex + 3 <= this.randomNews.length) {
+          this.randomNewsView = this.randomNews.slice(this.slideIndex, this.slideIndex + 3);
+      } else {
+          this.randomNewsView = this.randomNews.slice(this.slideIndex, this.randomNews.length);
+          console.log(this.randomNewsView);
+          this.randomNewsView = [...this.randomNewsView, ...(this.randomNews.slice(0, (this.slideIndex + 3) % this.randomNews.length))];
+          console.log(this.randomNewsView);
         }
+        console.log(this.slideIndex);
+        mvc.apply();
     }
 
-    getCategoryMainNews () {
+     getCategoryMainNews () {
 
       // I'll rewrite this function when DB was ready.            
           return [{
@@ -268,39 +240,39 @@ export class Home {
                               publishedDate: "12/12/2019",
                               img:"img1.jpg",
                               SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
-                              id = 1
+                              id: 1
                              },{
                               title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
                               path: "#",
                               authorName: "admin",
                               publishedDate: "12/12/2019",
-                              img:"img1.jpg",
+                              img:"2.jpeg",
                               SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
-                              id = 2
+                              id: 2
                              },{
                               title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
                               path: "#",
                               authorName: "admin",
                               publishedDate: "12/12/2019",
-                              img:"img1.jpg",
+                              img:"3.jpeg",
                               SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
-                              id = 3
+                              id: 3
                              },{
                               title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
                               path: "#",
                               authorName: "admin",
                               publishedDate: "12/12/2019",
-                              img:"img1.jpg",
+                              img:"4.jpeg",
                               SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
-                              id = 4
+                              id: 4
                              },{
                               title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
                               path: "#",
                               authorName: "admin",
                               publishedDate: "12/12/2019",
-                              img:"img1.jpg",
+                              img:"new.jpg",
                               SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
-                              id = 5
+                              id: 5
                              }];
       }
 
@@ -311,7 +283,7 @@ export class Home {
                     title:"الأخبار العالمية",
                     id:1
                   };
-    } 
+    }  
 
 
 }
