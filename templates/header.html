@@ -20,7 +20,7 @@
                 <ul id="categories-list">
                     <span $for="category of mainCategoriesList">
                         <li class="tab">
-                            <a href="{{$category.path}}">{{$category.title}}</a>
+                            <a href="#/categories/{{$category.path}}">{{$category.title}}</a>
                         </li>
                     </span>
                     <span $if="{{$moreCategoriesList.length >0}}">
@@ -29,7 +29,7 @@
                                 <img class="expand-button" src="img/expand-button.png">
                                 <ul class="sub-menu" $for="category of moreCategoriesList">
                                     <li class="sub-item">
-                                        <a href="{{$category.path}}">{{$category.title}}</a>
+                                        <a href="#/categories/{{$category.path}}">{{$category.title}}</a>
                                     </li>
                                 </ul>
                             </a>
@@ -49,7 +49,7 @@
         <div>عاجل</div>
         <marquee id="urgent-content" direction="right" onmouseover="stop()" onmouseout="start()"
             $for="new of urgentNews">
-            <a href="{{$new.path}}">{{$new.title}} </a>
+            <a href="#/details/{{$new.path}}">{{$new.title}} </a>
         </marquee>
     </div>
 </div>

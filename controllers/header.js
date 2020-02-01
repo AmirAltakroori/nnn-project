@@ -24,12 +24,15 @@ export class Header {
 
     getUrgentNews() {
         return [{
+            id: 10,
             title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
             path: "#"
         }, {
+            id: 11,
             title: "إلغاء امتحانات الفاينل لهذا العام",
             path: "#"
         }, {
+            id: 12,
             title: "اجتماع فريق ألفا يعقد مساء هذا اليوم الساعة الثامنة ",
             path: "#"
         }];
@@ -37,30 +40,39 @@ export class Header {
 
     getCategoriesList() {
         return [{
+            id: 1,
             title: "الصفحة الرئيسية",
             path: "/home"
         }, {
+            id: 2,
             title: "تكنولوجيا",
             path: "/category/teachnology"
         }, {
+            id: 3,
             title: "علوم",
             path: "/category/science"
         }, {
+            id: 4,
             title: "ثقافة",
             path: "/category/knowledge"
         }, {
+            id: 5,
             title: "اقتصاد",
             path: "/category/economy"
         }, {
+            id: 6,
             title: "رياضة",
             path: "/category/sport"
         }, {
+            id: 7,
             title: "فن",
             path: "/category/art"
         }, {
+            id: 8,
             title: "سياسة",
             path: "/category/politics"
         }, {
+            id: 9,
             title: "موسيقى",
             path: "/category/music"
         }];
