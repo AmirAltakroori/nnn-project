@@ -5,6 +5,7 @@ export class addnewsController {
 
         this.allNewsPage = [];
         this.newsId = mvc.routeParams.id;
+        this.pageName = mvc.routeParams.pagename;
         this.title = document.getElementsByClassName('title')[0];
         this.button = document.getElementsByClassName('button')[0];
         this.sub_header = document.getElementsByClassName('header-subheader')[0];
@@ -176,7 +177,7 @@ export class addnewsController {
         }
         this.CreateNews(news).then(resp => {
             this.showPopUp("success");
-            setTimeout(() => window.location.href = "#/mynews", 1000);
+            setTimeout(() => window.location.href = "#/"+this.pageName, 1000);
         });
     }
     showPopUp(id) {

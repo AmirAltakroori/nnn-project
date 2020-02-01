@@ -16,7 +16,7 @@ let routeList = [{
 
 },
 {
-    url: "/addnews/:id",
+    url: "/addnews/:id/:pagename",
     template: "pages/addnewspage/addnewpage.html",
     title: "شبكة الوحدة الإخبارية",
     controller: "/adminpanel/pages/addnewspage/js/index.js"

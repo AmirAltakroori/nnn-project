@@ -29,7 +29,7 @@ export class myNewsControler {
     }
     
     redirect(id) {
-        window.location.href = "#/addnews/"+id;
+        window.location.href = "#/addnews/"+id + "/allnews";
         document.location.reload(true);
     }
 }

@@ -30,7 +30,7 @@ export class approveNewsControler {
     }
 
     redirect(id) {
-        window.location.href = "#/addnews/"+id;
+        window.location.href = "#/addnews/"+id + "/newsapprove";
         document.location.reload(true);
     }
 }

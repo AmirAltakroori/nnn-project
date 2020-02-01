@@ -92,7 +92,7 @@ export class myNewsControler {
     }
 
     redirect(id) {
-        window.location.href = "#/addnews/"+id;
+        window.location.href = "#/addnews/"+ id + "/mynews";
         document.location.reload(true);
     }
 
