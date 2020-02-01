@@ -38,10 +38,10 @@ let routeList = [{
 
 },
 {
-    url: "/adduser",
+    url: "/adduser/:id",
     template: "pages/newuser/newuser.html",
     title: "شبكة الوحدة الإخبارية",
-    controller: "/adminpanel/pages/newuser/js/index.js"
+    controller: "/adminpanel/pages/newuser/js/createuser.js"
 
 },
 {
@@ -66,3 +66,4 @@ let routeList = [{
 
 mvc.addRouteList(routeList);
 mvc.init();
+// export {mvc};
