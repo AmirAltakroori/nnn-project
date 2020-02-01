@@ -4,6 +4,7 @@ export class addnewsController {
     constructor() {
 
         this.allNewsPage = [];
+        this.form = {};
         this.newsId = mvc.routeParams.id;
         this.pageName = mvc.routeParams.pagename;
         this.title = document.getElementsByClassName('title')[0];
@@ -68,7 +69,7 @@ export class addnewsController {
                 break;
             }
         }                
-        let form = {
+        this.form = {
             "title": document.getElementById("title"),
             "editor": document.getElementById("editor"),
             "categorye": document.getElementsByClassName("category")[0],
@@ -78,20 +79,21 @@ export class addnewsController {
             "isMainNews": document.getElementById("isMainNews"),
             "isUrgentNews": document.getElementById("isUrgentNews"),
             "createDate": document.getElementById("createDate"),
-           
+            "rev":""
         }
        
-        form.title.value = this.newItem.value.title;
-        editor.innerHTML = this.newItem.value.content;
-        form.categorye.value = this.newItem.value.categoryId;
-        form.seoTitle.value = this.newItem.value.seoTitle;
-        form.seoTags.value = this.newItem.value.seoTags;
-        form.seoDescription.value = this.newItem.value.seoDescription;
+        this.form.title.value = this.newItem.value.title;
+        this.editor.innerHTML = this.newItem.value.content;
+        this.form.categorye.value = this.newItem.value.categoryId;
+        this.form.seoTitle.value = this.newItem.value.seoTitle;
+        this.form.seoTags.value = this.newItem.value.seoTags;
+        this.form.seoDescription.value = this.newItem.value.seoDescription;
         if(this.newItem.value.isMainNews == "on") {
-            form.isMainNews.checked = 1 ;}
+            this.form.isMainNews.checked = 1 ;}
         if(this.newItem.value.isUrgentNews == "on"){
-            form.isUrgentNews.checked = 1;}
-        form.createDate.value = this.newItem.value.createDate;
+            this.form.isUrgentNews.checked = 1;}
+        this.form.createDate.value = this.newItem.value.createDate;
+       
         
     }
 
@@ -149,7 +151,37 @@ export class addnewsController {
         createField.disabled = !checkbox.checked;
         createField.value = this.changeDateFormat(new Date());
     }
+
+    updateExistedNew(data, key) {
+        return new Promise((resolve,response) => {
+            this.db.dbCreateOrUpdate("/news", data, key).then(response => {
+                console.log(response);
+                if (response.error) {
+                    window.location.href = "#/home";
+                }
+                resolve(response);
+            });
+        })
+    }
     saveNews() {
+
+
+        if (this.newsId != 0) {
+            this.form.rev = this.newItem.value._rev;
+            /*user['_id'] = this._id;*/
+            this.updateExistedNew(this.form, this.newsId).then(resp => {
+                console.log(resp);
+                if (resp.ok) {
+                    this.showPopUp("updated");
+                    setTimeout(() => {
+                        window.location.href = "#/"+this.pageName;
+                        this.$submitted = false;
+                    }, 1000);
+                }
+            });
+            return;
+        }
+
         let btn = this.idSelector('submit-btn');
         btn.disabled = true;
         btn.style.fontSize = '15px';
