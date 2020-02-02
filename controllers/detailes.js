@@ -76,7 +76,16 @@ export class Details {
             publishedDate: "18/12/2019"
         }];
 
-
+        this.disqus();
+        dynamicImport("./test.js").then(data => data.disqus_config(2));
+    }
+    disqus() {
+        // DON'T EDIT BELOW THIS LINE
+        var d = document,
+            s = d.createElement('script');
+        s.src = 'https://nnn-disqus-com.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
     }
 
 }
