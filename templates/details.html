@@ -23,7 +23,7 @@
                         {{$news.title}}
                     </h1>
                     <div>
-                        <div class="main-img" style=" background-image: url('data:image/png;base64,{{$news.attachment}}');">
+                        <div class="main-img" style=" background-image: url('{{$news.attachment}}');">
 
                         </div>
                         <div class="news-more-info">
@@ -57,7 +57,7 @@
                         <li class="list-n">
                             <a href="#/details/{{$relatedNew._id}}">
 
-                                <img src="data:image/png;base64,{{$relatedNew.attachment}}" alt="صورة"> {{$relatedNew.title}}
+                                <img src="{{$relatedNew.attachment}}" alt="صورة"> {{$relatedNew.title}}
 
                             </a>
                         </li>

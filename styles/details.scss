@@ -8,13 +8,9 @@
      File description: this filew contain scss style of the detailes page
 */
 
-// this line make import functions that exist in _function.css
+// this line make import functions that exist in -function.css
 @import "_functions.scss";
 @import "_variables.scss";
-
-/*
-part1 contain the header of the new and the related news
-*/
 
 @media screen and (min-height: 811px) {
     .news-content {
@@ -26,11 +22,12 @@ part1 contain the header of the new and the related news
             }
         }
         .news-header {
+            h1 {
+                font-size: $font-size + 15;
+            }
             .main-img {
-                img {
-                    // width: 1210px;
-                    height: 570px;
-                }
+                width: 1082px;
+                height: 570px;
             }
         }
     }
@@ -46,11 +43,12 @@ part1 contain the header of the new and the related news
             }
         }
         .news-header {
+            h1 {
+                font-size: $font-size + 6.25;
+            }
             .main-img {
-                img {
-                    // width: 1200px;
-                    height: 570px;
-                }
+                width: 812px;
+                height: 432px;
             }
         }
     }
@@ -65,11 +63,11 @@ part1 contain the header of the new and the related news
                 }
             }
         }
-        .news_header {
+        .news-header {
             h1 {
                 font-size: $font-size + 4.88888;
             }
-            .main_img {
+            .main-img {
                 width: 770px;
                 height: 400px;
             }
@@ -169,13 +167,13 @@ part1 contain the header of the new and the related news
             font-size: 18px;
             color: #919192;
             .authorName {
-                margin-left: 10%;
+                margin-left: 3%;
                 margin-right: 10%;
             }
 
             .published {
                 margin-left: 10%;
-                margin-right: 10%;
+                margin-right: 3%;
             }
 
             img {
