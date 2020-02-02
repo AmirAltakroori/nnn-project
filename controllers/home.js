@@ -10,33 +10,32 @@
      File description:
 */
 
+import { DataBase } from "../services/DataBase.js";
+
 export class Home {
+
     constructor() {
-
-        this.mainNews = this.getmainNews();
-        if (this.mainNews.lenght > 5) {
-            this.mainNews = this.mainNews.slice(0, 5);
-        };
-
-        this.selectedNews = this.mainNews[0];
-
+        this.dataBase = new DataBase();
+        this.url = 'https://541e1dc0-354b-4134-ae7d-5eaa533a1bf9-bluemix.cloudant.com';
+        this.auth = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJsdWVtaXg6NDU2YjA3NzhjODFjOWNiMDk5NzZkODU1NjQ5MDM2YzRlYTE1MTQwZTk5NDNlNWM2MGE5ZDM1MGMwNDU5YzIwMw==';
+        
+        this.mainNews = [];
+        this.selectedNews = {};////////
+        this.getmainNews();
+            
         this.slideIndex = 0;
-        this.randomNews = this.getRandomNews();
-
-        this.categoriesList = this.getCategoriesList();
-
+        this.randomNews = [];        
+        this.randomNewsView = [];
+        this.getRandomNews();
         this.isFirstTime = true;
-        this.randomNewsView = this.randomNews.slice(0, 3);
         setInterval(() => {
             this.slide(1);
         } , 4000);
 
-         this.categoryMainNews = this.getCategoryMainNews();
-         this.firstCategoryMainNews = this.categoryMainNews[0];
-         this.categoryMainNews = this.categoryMainNews.slice(1, 5);
-
-
-
+        this.categoriesList = this.getCategoriesList();
+        this.categoryMainNews = this.getCategoryMainNews();
+        this.firstCategoryMainNews = this.categoryMainNews[0];
+        this.categoryMainNews = this.categoryMainNews.slice(1, 5);
         this.categoryTitle = this.getCategoryTitle();
     }
 
@@ -51,6 +50,7 @@ export class Home {
     */
     changeSelectedNews(news) {
         this.selectedNews = news;
+        console.log(news)
         mvc.apply();
     }
 
@@ -65,90 +65,26 @@ export class Home {
 
         This function used to retrieve the most 4 main news from database
     */
+
     getmainNews () {
-
-        // I'll rewrite this function when DB was ready.... Query should retrive limited number of charachters :)
-        return [{
-                        title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-                        path: "#",
-                        authorName: "أسيل عرفه",
-                        publishedDate: "12/12/2019",
-                        img:"firstNews.jpg",
-                        description:"بسم الله الرحمن الرحيم ... هذا وصف الخبر ",
-                        id: 1
-                      }, {
-                        title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-                        path: "#",
-                        authorName: "أسيل عرفه",
-                        publishedDate: "12/12/2019",
-                        img:"firstNews.jpg",
-                        description:"",
-                        id: 2
-                      }, {
-                        title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-                        path: "#",
-                        authorName: "أسيل عرفه",
-                        publishedDate: "12/12/2019",
-                        img:"firstNews.jpg",
-                        description:"",
-                        id: 3
-                      }, {
-                        title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-                        path: "#",
-                        authorName: "أسيل عرفه",
-                        publishedDate: "12/12/2019",
-                        img:"firstNews.jpg",
-                        description:"",
-                        id: 4
-                      }, {
-                        title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-                        path: "#",
-                        authorName: "أسيل عرفه",
-                        publishedDate: "12/12/2019",
-                        img:"firstNews.jpg",
-                        description:"",
-                        id: 5
-                      }];
-
+        this.dataBase.getData("/news/_design/views/_view/mainnews?limit=5&&descending=true",true,'',this.url,this.auth).then( data => {
+            this.mainNews = data;
+            if (this.mainNews.length > 0) {                 
+                this.selectedNews = this.mainNews[0];
+            }
+            mvc.apply();
+        });
     }
 
     getRandomNews () {
-
-        // I'll rewrite this function when DB was ready.... Query should retrive limited number of charachters :)
-        return [{
-                        title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-                        path: "#",
-                        authorName: "أسيل عرفه",
-                        publishedDate: "12/12/2019",
-                        img:"../img/firstNews.jpg",
-                        description:"بسم الله الرحمن الرحيم ... هذا وصف الخبر ",
-                        id: 1
-                      }, {
-                        title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-                        path: "#",
-                        authorName: "أسيل عرفه",
-                        publishedDate: "12/12/2019",
-                        img:"../img/2.jpeg",
-                        description:"",
-                        id: 2
-                      }, {
-                        title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-                        path: "#",
-                        authorName: "أسيل عرفه",
-                        publishedDate: "12/12/2019",
-                        img:"../img/3.jpeg",
-                        description:"",
-                        id: 3
-                      }, {
-                        title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-                        path: "#",
-                        authorName: "أسيل عرفه",
-                        publishedDate: "12/12/2019",
-                        img:"../img/4.jpeg",
-                        description:"",
-                        id: 4
-                    }];
-
+        this.dataBase.getData("/news/_design/views/_view/random?limit=12",true,'',this.url,this.auth).then( data => {
+            this.randomNews = data; 
+            if(this.randomNews.length > 3) 
+                this.randomNewsView = this.randomNews.slice(0, 3); 
+            else
+                this.randomNewsView = this.randomNews; 
+            mvc.apply();
+        });
     }
 
     /*
@@ -219,7 +155,7 @@ export class Home {
             this.randomNewsView = this.randomNews.slice(this.slideIndex, this.randomNews.length);
             this.randomNewsView = [...this.randomNewsView, ...(this.randomNews.slice(0, (this.slideIndex + 3) % this.randomNews.length))];
         }
-        mvc.apply();
+        // mvc.apply();
     }
 
      getCategoryMainNews () {

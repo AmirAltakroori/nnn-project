@@ -28,31 +28,31 @@
             <div $for="news of mainNews" id="latest-news-list">
                 <div $click="changeSelectedNews($news)" class="news">
                     <a $click="changeSelectedNews($news)">
-                        <img $click="changeSelectedNews($news)" src="../img/{{$news.img}}">
-                        <p $click="changeSelectedNews($news)">{{$news.title}}</p>
+                        <!-- <img $click="changeSelectedNews($news)" src="../img/{{$news.img}}"> -->
+                        <p $click="changeSelectedNews($news)">{{$news.value.title}}</p>
                     </a>
                 </div>
             </div>
         </div>
         <div id="latest-news-more-detailed-container">
             <div class="latest-news-more-detailed-image-div">
-                <img class="latest-news-more-detailed-image" src="../img/{{$selectedNews.img}}">
+                <!-- <img class="latest-news-more-detailed-image" src="../img/{{$selectedNews.img}}"> -->
             </div>
             <div class="latest-news-more-detailed-title-and-date">
                 <div class="latest-news-more-detailed-title">
-                    <h4>{{$selectedNews.title}}</h4>
+                    <h4>{{$selectedNews.value.title}}</h4>
                 </div>
                 <div class="latest-news-more-detailed-date">
-                    <p class="authorName">{{$selectedNews.authorName}}</p>
+                    <p class="authorName">{{$selectedNews.value.writer}}</p>
                     <img src="../img/calenderIcon.png">
-                    <p class="published">{{$selectedNews.publishedDate}}</p>
+                    <p class="published">{{$selectedNews.key}}</p>
                 </div>
             </div>
             <div class="latest-news-more-detailed-paragraph">
-                <p>{{$selectedNews.description}}</p>
+                <p>{{$selectedNews.value.content}}</p>
             </div>
             <div class="latest-news-more-detailed-readmore-button">
-                <a href="#/details/{{$selectedNews.id}}">
+                <a href="#/details/{{$selectedNews.value.id}}">
                     <img src="../img/arrowIcon.png">
                     <p>اقرأ المزيد</p>
                 </a>
@@ -65,11 +65,11 @@
         <div class="imagesPrev"><img $click="slide(1)" src="../img/arrow.png" ></div>
 
         <div $for="news of randomNewsView" id="rendom-news-container" class="rendom-news-container">
-            <a href="#/details/{{$news.id}}">
-                <div class="slider-news-tile" style="background-image: url('{{$news.img}}');">
-                    <div class="date">{{$news.publishedDate}}</div>
+            <a href="#/details/{{$news.value.id}}">
+                <div class="slider-news-tile"><!--style="background-image: url('{{$news.img}}');"-->
+                    <div class="date">{{$news.value.createDate}}</div>
                     <div class="news">
-                        {{$news.title}}
+                        {{$news.value.title}}
                     </div>
                 </div>
             </a>
