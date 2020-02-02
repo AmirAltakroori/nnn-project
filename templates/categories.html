@@ -64,7 +64,7 @@
 
                         <!-- See more details -->
                         <div id="category-see-more">
-                            <a href="#/details/{{$mainNews.id}}">
+                            <a href="#/details/{{$mainNews._id}}">
                                 <img src="img/arrowIcon.png" alt="arrow icon">
                                 <p>اقرأ المزيد</p>
                             </a>
@@ -119,7 +119,7 @@
             <ul $for="news of randomNews" id="random-content">
                 <li class="card random-new" id="{{$news._id}}">
                     <img src="{{$news.attachment}}" alt="">
-                    <a href="#/details/{{$news.id}}">{{$news.title}}</a>
+                    <a href="#/details/{{$news._id}}">{{$news.title}}</a>
                 </li>
             </ul>
 
