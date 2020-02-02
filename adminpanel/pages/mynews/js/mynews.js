@@ -25,6 +25,11 @@ export class myNewsControler {
 
     }
 
+    redirect(id) {
+        window.location.href = "#/addnews/"+ id;
+        document.location.reload(true);
+    }
+
     /* -----------------------------------------------------------------------------------------------------------------------------------------------------*/
     //read news functions 
     getMyNews(username) {
@@ -41,6 +46,7 @@ export class myNewsControler {
             })
         });
     }
+
     show(modelId, id) {
         let element = document.getElementById(modelId);
         element.style.display = 'flex';
@@ -48,6 +54,7 @@ export class myNewsControler {
         this.activeId = id;
         console.log(id);
     }
+    
     hide(modelId) {
         let element = document.getElementById(modelId);
         element.style.display = 'none';

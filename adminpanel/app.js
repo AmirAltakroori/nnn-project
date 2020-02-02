@@ -1,3 +1,4 @@
+
 let mvc = new Mvc();
 
 let routeList = [{
@@ -8,10 +9,10 @@ let routeList = [{
     controller: "/adminpanel/pages/homepage/js/home.js"
 },
 {
-    url: "/addnews",
+    url: "/addnews/:id",
     template: "pages/addnewspage/addnewpage.html",
     title: "شبكة الوحدة الإخبارية",
-    controller: "/adminpanel/pages/addnewspage/js/index.js"
+    controller: "/adminpanel/pages/addnewspage/js/addnews.js"
 
 
 },
@@ -19,7 +20,7 @@ let routeList = [{
     url: "/mynews",
     template: "pages/mynews/mynews.html",
     title: "شبكة الوحدة الإخبارية",
-    controller: "/adminpanel/pages/mynews/js/index.js"
+    controller: "/adminpanel/pages/mynews/js/mynews.js"
 
 
 },
@@ -28,14 +29,14 @@ let routeList = [{
     url: "/newsapprove",
     template: "pages/newsapprove/newsapprove.html",
     title: "شبكة الوحدة الإخبارية",
-    controller: "/adminpanel/pages/newsapprove/js/index.js"
+    controller: "/adminpanel/pages/newsapprove/js/approvenews.js"
 
 },
 {
     url: "/allnews",
     template: "pages/allnews/allnews.html",
     title: "شبكة الوحدة الإخبارية",
-    controller: "/adminpanel/pages/allnews/js/index.js"
+    controller: "/adminpanel/pages/allnews/js/allnews.js"
 
 },
 {

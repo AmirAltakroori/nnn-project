@@ -61,7 +61,7 @@
                 </td>
                 <td>
                     <i value="click" class="fas fa-trash-alt delete_user" $click="show('delete',$i)"></i>
-                    <i class="far fa-edit icon color-blue" onclick="updateNews('$news.id',0) "></i>
+                    <i class="far fa-edit icon color-blue" $click="redirect($news._id) "></i>
                 </td>
             </tr>
         </tbody>

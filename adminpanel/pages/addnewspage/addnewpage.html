@@ -4,6 +4,7 @@
     </div>
 </div>
 </header>
+<!-- <span id="route-param">{{$routeParams.id}}</span> -->
 <div class="app_root">
     <form $submit="saveNews()" class="add_news_form">
         <div class="title">
@@ -16,7 +17,7 @@
                     <span class="required">*</span>
                 </label>
 
-                <input $model='title' type="text" class="news_element" required>
+                <input $model='title' id="title" type="text" class="news_element" required>
             </div>
             <div class="content_label_div">
                 <label>الخبر
@@ -31,7 +32,7 @@
                 <label>الفئة
                     <span class="required">*</span>
                 </label>
-                <select $model="categoryId" $for="ct of categories" class="news_element category" required>
+                <select $model="categoryId" id="catt" $for="ct of categories" class="news_element category" required>
 
                     <option value="{{$ct.value._id}}">{{$ct.value.name}}</option>
                 </select>
@@ -41,19 +42,19 @@
                 <label>عنوان النافذة
                     <span class="required">*</span>
                 </label>
-                <input type="text" $model="seoTitle" class="news_element" required>
+                <input type="text" $model="seoTitle" id="seoTitle" class="news_element" required>
             </div>
             <div class="content_label_div">
                 <label> الكلمات المفتاحية
                     <span class="required">*</span>
                 </label>
-                <input type="text" $model="seoTags" class="news_element" required>
+                <input type="text" $model="seoTags" id="seoTags" class="news_element" required>
             </div>
             <div class="content_label_div">
                 <label> الوصف
                     <span class="required">*</span>
                 </label>
-                <textarea type="text" $model="seoDescription" class="news_element description" required> </textarea>
+                <textarea type="text" $model="seoDescription" id="seoDescription" class="news_element description" required> </textarea>
             </div>
             <div class="content_label_div outer_choice_div">
                 <label>صورة الخبر
@@ -63,7 +64,7 @@
                     <div class="inner_choice_div">
                         <div class="status_active_div">
                             <input type="file" $change='previewImg()' id="picture" placeholder="اختيار الصورة"
-                                accept="image/*" required>
+                                accept="image/*" >
                         </div>
                     </div>
                 </div>
@@ -106,5 +107,11 @@
     تمت اضافة الخبر
 </div>
 <div class="popup success" id='sending'>
-    جاري اضافة الخبر
+    جاري الارسال
+</div>
+<div class="popup success" id='updated'>
+    تم التعديل
+</div>
+<div class="popup warning" id='danger'>
+    قم باختيار صورة
 </div>
