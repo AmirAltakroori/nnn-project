@@ -9,7 +9,8 @@ export class HomeController {
         this.db = dynamicImport("./js/backend.js");
         this.db.then( db => {
             
-            this.userRole = db.confirm().userRole;
+            this.userRole = db.confirm().data.roleId;
+            console.log(db.confirm());
             mvc.apply();
         });
         this.siteMode = null;
