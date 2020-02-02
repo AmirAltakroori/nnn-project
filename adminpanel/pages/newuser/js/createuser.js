@@ -8,7 +8,7 @@ export class addusersController {
         }
 
         this.db = null;
-        this.btnTitle  = 'انشاء مستخدم جديد'
+        this.btnTitle = 'انشاء مستخدم جديد'
         this._id = 0;
         this.firstName = "";
         this.lastName = "";
@@ -23,8 +23,6 @@ export class addusersController {
         this._rev = "";
         if (mvc.routeParams.id != 0) {
             this._id = mvc.routeParams.id;
-            console.log(this._id);
-            console.log(mvc);
         }
         dynamicImport("./js/backend.js").then(db => {
             this.db = db;
@@ -42,15 +40,14 @@ export class addusersController {
                     this.role = user.role;
                     this.state = user.state;
                     this.userid = user.userid;
-                    this.btnTitle  = "تعديل المستخدم";
-                    console.log(this._id);
+                    this.btnTitle = "تعديل المستخدم";
                     mvc.apply();
                 });
             }
         });
     }
     saveUser() {
-        let btn  = document.getElementById('savebtn');
+        let btn = document.getElementById('savebtn');
         btn.disabled = true;
         btn.style.background = '#042e64';
         if (this.repassword != this.password) {
@@ -68,12 +65,10 @@ export class addusersController {
             role: this.role,
             state: this.state,
         }
-        console.log(user);
         if (this._id != 0) {
             user['_rev'] = this._rev;
             user['_id'] = this._id;
             this.updateExistedUser(user, this._id).then(resp => {
-                console.log(resp);
                 if (resp.ok) {
                     this.showPopUp("updated");
                     setTimeout(() => {
@@ -85,7 +80,6 @@ export class addusersController {
             return;
         }
         this.CreateUserDB(user).then(resp => {
-            console.log(resp);
             if (resp.ok == true) {
                 this.showPopUp('success');
                 setTimeout(() => {
@@ -137,9 +131,8 @@ export class addusersController {
         });
     }
     updateExistedUser(data, key) {
-        return new Promise((resolve,response) => {
+        return new Promise((resolve, response) => {
             this.db.dbCreateOrUpdate("/users", data, key).then(response => {
-                console.log(response);
                 if (response.error) {
                     // window.location.href = "#/home";
                 }

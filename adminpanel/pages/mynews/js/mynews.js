@@ -15,7 +15,6 @@ export class myNewsControler {
 
                 this.getMyNews(this.user.data.username).then(news => {
                     this.myNewsPage = this.db.cleanDataForControllers(news.rows);
-                    console.log(news);
                     mvc.apply();
                 });
 
@@ -52,7 +51,6 @@ export class myNewsControler {
         element.style.display = 'flex';
         element.className += " modal-active";
         this.activeId = id;
-        console.log(id);
     }
     
     hide(modelId) {

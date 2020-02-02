@@ -8,7 +8,6 @@ export class CategoriesController {
         dynamicImport("./../../adminpanel/js/backend.js").then(db => {
             this.db = db;
             this.db.confirm();
-            console.log(this.db);
             this.getAllCat().then(cats => {
                 this.categories = this.db.cleanDataForControllers(cats);
 
@@ -27,7 +26,6 @@ export class CategoriesController {
             el.value = this.categories[i].isActive;
             i++;
         })
-        console.log(selections);
     }
     hideModal(modalId) {
         let modal = document.getElementById(modalId);
@@ -46,7 +44,6 @@ export class CategoriesController {
         });
     }
     showModal(modalId, id) {
-        console.log(id);
         let modal = document.getElementById(modalId); //for modal
         modal.style.display = "flex";
         modal.className += " modal-active";
@@ -60,7 +57,6 @@ export class CategoriesController {
     }
     showPopUp(id) {
         let popup = document.getElementById(id);
-        console.log(popup);
         popup.style.display = 'block';
         setTimeout(() => {
             //  hidde th popup
@@ -147,8 +143,6 @@ export class CategoriesController {
         const category = this.categories[id];
         const newName = document.getElementById('editcategoryname').value;
         category.name = newName;
-        console.log(category);
-
         this.db.dbCreateOrUpdate('/categories', category, category._id).then(resp => {
             if (resp.ok) {
                 this.categories[id].name = newName;

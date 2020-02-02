@@ -9,7 +9,6 @@ export class allUsers {
             this.db.confirm();
             this.getAllUsers().then(users => {
                 this.usersPage = this.db.cleanDataForControllers(users);
-                console.log(this.usersPage); 
                 mvc.apply();
             });
         });
@@ -36,7 +35,6 @@ export class allUsers {
         element.style.display = 'flex';
         element.className += " modal-active";
         this.activeId = id;
-        console.log(id);
     }
     hide(modelId) {
         let element = document.getElementById(modelId);
@@ -48,12 +46,9 @@ export class allUsers {
         if (this.activeId == -1)
             return;
         const id = this.activeId;
-        console.log(id);
         this.activeId = -1;
         const user = this.usersPage[id];
-        console.log(user);
         this.db.dbDelete('/users', user._id, user._rev).then(resp => {
-            console.log(resp);
             if(resp.ok)
             this.usersPage.splice(id, 1);
             location.reload();

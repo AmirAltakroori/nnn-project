@@ -12,12 +12,9 @@ export class myNewsControler {
 
             this.getAllCat().then(cats => {
                 this.categories = this.cleanData(cats);
-                console.log(this.categories);
 
                 this.getAllNews().then(news => {
                     this.allNewsPage = this.cleanData(news);
-                    this.allNewsPage[0].isActive = 0;
-                    console.log(this.allNewsPage);
                     mvc.apply();
                     this.init();
                 });
@@ -37,7 +34,7 @@ export class myNewsControler {
         element.style.display = 'flex';
         element.className += " modal-active";
         this.activeId = id;
-        console.log(id);
+        
     }
     hide(modelId) {
         let element = document.getElementById(modelId);
@@ -104,9 +101,7 @@ export class myNewsControler {
             }
         });
     }
-    printMe() {
-        console.log("TTT");
-    }
+
     init() {
 
         const selections = Array.from(document.getElementsByClassName('selection'));
@@ -115,7 +110,6 @@ export class myNewsControler {
             el.value = this.allNewsPage[i].isActive;
             i++;
         })
-        console.log(selections);
 
         const urgentNews = Array.from(document.getElementsByClassName('urgentNews'));
         const mainNews = Array.from(document.getElementsByClassName('mainNews'));
@@ -129,19 +123,16 @@ export class myNewsControler {
                 this.updateStatus("isMainNews", this.allNewsPage[i]._id);
             });
 
-            console.log(urgentNews[i]);
             urgentNews[i].addEventListener("change", (e) => {
                 this.allNewsPage[i].isUrgentNews = +urgentNews[i].checked;
 
                 this.updateStatus("isMainNews", this.allNewsPage[i]._id);
             })
         }
-        console.log(this.allNewsPage);
     }
 
     showPopUp(id) {
         let popup = document.getElementById(id);
-        console.log(popup);
         popup.style.display = 'block';
         setTimeout(() => {
             //  hidde th popup

@@ -29,7 +29,6 @@ export class addnewsController {
                             {
                                 window.location.href = '#/addnews/0';
                             }
-                        console.log(news);
                         mvc.apply();
                         this.fillData(news.rows[0].value);
                         this.richTextEditor();
@@ -71,7 +70,6 @@ export class addnewsController {
         this.seoTitle = data.seoTitle;
         this.seoTags = data.seoTags;
         this.seoDescription = data.seoDescription;
-        console.log(data.seoDescription)
         this.isActive = data.isActive;
         this.isMainNews = data.isMainNews;
         this.isUrgentNews = data.isUrgentNews;
@@ -83,7 +81,6 @@ export class addnewsController {
         mvc.apply();
         let preview = document.querySelector('.addnews-img-container img');
         preview.src = data.attachment;
-        console.log(preview);
         preview.parentElement.style.display = "flex";
         document.getElementById('seoDescription').value = data.seoDescription;
         this.idSelector('isMainNews').checked = this.isMainNews;
@@ -153,7 +150,6 @@ export class addnewsController {
     updateExistedNew(data, key) {
         return new Promise((resolve, response) => {
             this.db.dbCreateOrUpdate("/news", data, key).then(response => {
-                console.log(response);
                 if (response.error) {
                     window.location.href = "#/home";
                 }
@@ -200,7 +196,6 @@ export class addnewsController {
             news._rev = this.rev;
             news._id = id;
             this.updateExistedNew(news, id).then(resp => {
-                console.log(resp);
                 if (resp.ok) {
                     this.showPopUp("updated");
                     setTimeout(() => {
@@ -221,7 +216,6 @@ export class addnewsController {
     }
     showPopUp(id) {
         let popup = document.getElementById(id);
-        console.log(popup);
         popup.style.display = 'block';
         setTimeout(() => {
             //  hidde th popup
@@ -230,7 +224,6 @@ export class addnewsController {
 
     }
     evalCheckbox(value) {
-        console.log(value);
         return value;
     }
 
@@ -238,8 +231,6 @@ export class addnewsController {
         let preview = document.querySelector('.addnews-img-container img');
         let file = document.querySelector('input[type="file"]').files[0];
         let reader = new FileReader();
-        console.log(file);
-        let fr = new FileReader();
         if (file)
             preview.parentElement.style.display = "flex";
         else {
@@ -269,7 +260,6 @@ export class addnewsController {
                     request.counter = request.counter + 1;
                     this.db.dbCreateOrUpdate("/settings", request, request._id).then(response2 => {
                         resolve(response2);
-                        console.log("Added");
                     });
                 })
             })
