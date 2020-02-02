@@ -26,6 +26,12 @@ export class myNewsControler {
 
         });
     }
+
+      redirect(id) {
+                window.location.href = "#/addnews/"+id;
+                document.location.reload(true);
+    }      
+      
     show(modelId, id) {
         let element = document.getElementById(modelId);
         element.style.display = 'flex';
