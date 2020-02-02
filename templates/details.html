@@ -9,6 +9,10 @@
                      based on the design included in the Prototype
 -->
 
+
+<!-- HEADER -->
+<div class="header" $include="/templates/header.html ,/controllers/header.js"></div>
+
 <div>
     <div class="details-page-wrapper">
         <!-- Contains news title and photo & Show other related news -->
@@ -22,9 +26,22 @@
                         <div class="main-img" style=" background-image: url('data:image/png;base64,{{$news.attachment}}');">
 
                         </div>
+                        <div class="news-more-info">
+                            <p class="authorName">{{$writer.firstName}} {{$writer.lastName}}</p>
+                            <img src="../img/calenderIcon.png">
+                            <p class="published">{{$news.createDate}}</p>
+                        </div>
                     </div>
 
                  </span>
+                <article class="article" id="article">
+                    <span>
+
+                        <p>
+                            {{$news.content}}
+                        </p>
+                    </span>
+                </article>
             </section>
 
             <aside class="news-related">
@@ -50,7 +67,7 @@
                 </ul>
             </aside>
         </div>
-        <!-- Contains the full text of the news & news sharing -->
+        <!-- Contains  news sharing -->
         <div class="news-body">
             <article class="article" id="article">
                 <span>
@@ -62,50 +79,7 @@
 
             <section class="news-sharing">
 
-                <div id="share-button" class="share-buttons">
-
-                    <!-- Facebook -->
-                    <a>
-                        <img src="img/facebook.png" alt="Facebook" />
-                    </a>
-
-                    <!-- LinkedIn -->
-                    <a>
-                        <img src="img/linkedin.png" alt="LinkedIn" />
-                    </a>
-
-                    <!-- instagram -->
-                    <a>
-                        <img src="img/instagram.png" alt="instagram" />
-                    </a>
-
-                    <!-- share -->
-                    <a>
-                        <img src="img/share.png" alt="share" />
-                    </a>
-
-                </div>
-
-                <div class="about">
-
-                    <!-- schedule -->
-                    <a>
-                        <img src="img/schedule.png" alt="Facebook" />
-                    </a>
-
-                    <!-- comment -->
-                    <a>
-                        <img src="img/comment.png" alt="LinkedIn" />
-                    </a>
-
-                    <!-- writer -->
-                    <a>
-                        <img src="img/writer.png" alt="instagram" />
-                    </a>
-
-
-
-                </div>
+                <div class="sharethis-inline-share-buttons"></div>
 
             </section>
 

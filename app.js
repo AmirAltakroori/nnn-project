@@ -9,7 +9,7 @@ let routeList = [
         title: "home"
     },
     {
-        url: "/details/:newID",
+        url: "/details/:id",
         template: "/templates/details.html",
         controller: "/controllers/detailes.js",
         id: "",

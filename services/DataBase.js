@@ -36,7 +36,10 @@ export class DataBase {
             let url = baseUrl + endpoint;
             if (isView && id) {
                 url += `?key=\"${id}\"`;
-            } else url += `/${id}`;
+            } else if (id !='') {
+                url += `/${id}`;
+            }
+            
             let http = new XMLHttpRequest();
             http.open("GET", url);
             http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -44,10 +47,16 @@ export class DataBase {
             http.setRequestHeader("Authorization", authentication);
             http.onreadystatechange = function() { //Call a function when the state changes.
                 if (http.readyState == 4) {
-                    data = JSON.parse(http.responseText);
-                    if (!id || id == '')
-                        data = this.cleanData(data);
-                    resolve(data);
+                    let data = JSON.parse(http.responseText);
+                    let cleanedData = [];
+
+                    if (!id || id == ''){
+                        for (let i = 0; i < data.rows.length; i++)
+                            cleanedData.push(data.rows[i]);
+                        
+                    }
+                        //data = this.cleanData(data);
+                    resolve(cleanedData);
                 }
             }
             http.send();

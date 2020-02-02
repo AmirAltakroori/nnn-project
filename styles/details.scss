@@ -26,13 +26,11 @@ part1 contain the header of the new and the related news
             }
         }
         .news-header {
-            h1 {
-                font-size: $font-size + 15;
-            }
-
             .main-img {
-                width: 1082px;
-                height: 570px;
+                img {
+                    // width: 1210px;
+                    height: 570px;
+                }
             }
         }
     }
@@ -48,12 +46,11 @@ part1 contain the header of the new and the related news
             }
         }
         .news-header {
-            h1 {
-                font-size: $font-size + 6.25;
-            }
             .main-img {
-                width: 812px;
-                height: 432px;
+                img {
+                    // width: 1200px;
+                    height: 570px;
+                }
             }
         }
     }
@@ -89,7 +86,7 @@ part1 contain the header of the new and the related news
     font-family: $newsText-fontFamily;
     border-top: solid 1px #707070;
     margin-bottom: 0%;
-    @include flex-property(row, flex-end, null, 100%);
+        @include flex-property(row, flex-end, null, 100%);
     .news-related {
         @include flex-property(column, flex-start, flex-start, 33%);
         .related-news-menu {
@@ -128,19 +125,57 @@ part1 contain the header of the new and the related news
         }
     }
     .news-header {
+        .news-info{
+            width: 83%;
+        }
+
+
         margin-top: 2%;
-        h1 {
+         h1 {
             margin-right: 10%;
-            margin-bottom: 2%;
+            margin-bottom: 4%;
         }
         @include flex-property(column, flex-start, flex-start, 67%);
         .main-img {
+            height: 570px;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
             position: relative;
             margin-right: 10%;
             margin-bottom: 30px;
+        }
+        .news-more-info{
+            @include flex-property(row, flex-,flex-end, 100%);
+            // float: right;
+            color:#4D4F5C ;
+            margin-top: 0px;
+            font-size: 18px;
+
+            color: #919192;
+            .authorName{
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+
+            .published {
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+
+            img {
+                margin-left: 0%;
+                width: 20px;
+                height: 20px;
+            }
+
+        }
+        .article{
+            font-size: $font-size + 5;
+            margin-right: 50px;
+            p {
+                padding: 50px;
+            }
         }
     }
 }

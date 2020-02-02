@@ -55,7 +55,7 @@ export class Category {
     */
     changeMainNews(news) {
         this.mainNews = news;
-        $apply();
+        mvc.apply();
     }
 
     /*
