@@ -8,7 +8,7 @@ let routeList = [{
     controller: "/adminpanel/pages/homepage/js/home.js"
 },
 {
-    url: "/addnews",
+    url: "/addnews/:id",
     template: "pages/addnewspage/addnewpage.html",
     title: "شبكة الوحدة الإخبارية",
     controller: "/adminpanel/pages/addnewspage/js/index.js"

@@ -152,17 +152,12 @@ export class addnewsController {
             return false;
         }
         reader.readAsDataURL(file);
-
-        fr.onload = () => {
-            let image = fr.result;
-            this.attachment = image;
-        };
         reader.onload = function () {
             preview.src = reader.result;
-
-
+            let image = reader.result;
+            this.attachment = image;
+            console.log(image);
         };
-        fr.readAsText(file, 'UTF-8');
     }
 
     getNewsId() {
