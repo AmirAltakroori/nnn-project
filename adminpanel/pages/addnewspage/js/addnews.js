@@ -6,35 +6,39 @@ export class addnewsController {
         this.allNewsPage = [];
         this.form = {};
         this.newsId = mvc.routeParams.id;
-        
-        this.pageName = mvc.routeParams.pagename;
-        this.title = document.getElementsByClassName('title')[0];
-        this.button = document.getElementsByClassName('button')[0];
-        this.sub_header = document.getElementsByClassName('header-subheader')[0];
-        if(this.newsId) {
-            this.title.innerHTML = "تعديل خبر";
-            this.button.innerHTML = "تعديل الخبر";
-            this.sub_header.innerHTML = " الرئيسية > لوحة التحكم >الأخبار > تعديل خبر"
+        const title = document.getElementsByClassName('title')[0];
+        const button = document.getElementsByClassName('button')[0];
+        const sub_header = document.getElementsByClassName('header-subheader')[0];
+        if (this.newsId != 0) {
+            title.innerHTML = "تعديل خبر";
+            button.innerHTML = "تعديل الخبر";
+            sub_header.innerHTML = " الرئيسية > لوحة التحكم >الأخبار > تعديل خبر"
         }
 
         //Check role
         this.setScheduleTime();
         dynamicImport("./js/backend.js").then(db => {
+
             db.dbGet("/categories/_design/allcategories/_view/allcategories", true, "").then(cats => {
                 this.categories = cats;
                 this.categoryId = this.categories[0].id;
                 mvc.apply();
-                this.richTextEditor();
-                console.log(this.categories);
+                if (this.newsId != 0) {
+                    db.dbGet("/news/_design/views/_view/allnews", true, this.newsId).then(news => {
+                        if(news.rows.length !=1)
+                            {
+                                window.location.href = '#/addnews/0';
+                            }
+                        console.log(news);
+                        mvc.apply();
+                        this.fillData(news.rows[0].value);
+                        this.richTextEditor();
 
-            })
+                    });
 
-            db.dbGet("/news/_design/views/_view/allnews", true, "").then(news => {
-                this.allNewsPage = news;
-                mvc.apply();
-                console.log(this.allNewsPage);
-                this.fill(this.newsId)
-            })
+                }else  this.richTextEditor();
+            });
+
 
             this.db = db;
         });
@@ -54,50 +58,42 @@ export class addnewsController {
         this.isUrgentNews = '';
         this.createDate = '';
         this.attachment = '';
+        this.isApproved = 0;
         this.categories = [];
+        this.rev = '';
         this.submitted = false;
     }
+    fillData(data) {
+        this.newsImage = data.attachment;
+        this.title = data.title;
+        this.content = data.content;
+        this.categoryId = data.categoryId;
+        this.seoTitle = data.seoTitle;
+        this.seoTags = data.seoTags;
+        this.seoDescription = data.seoDescription;
+        console.log(data.seoDescription)
+        this.isActive = data.isActive;
+        this.isMainNews = data.isMainNews;
+        this.isUrgentNews = data.isUrgentNews;
+        this.createDate = data.createDate;
+        this.attachment = data.attachment;
+        this.isApproved = data.isApproved;
+        this.writerId = data.writerId;
+        this.rev = data._rev;
+        mvc.apply();
+        let preview = document.querySelector('.addnews-img-container img');
+        preview.src = data.attachment;
+        console.log(preview);
+        preview.parentElement.style.display = "flex";
+        document.getElementById('seoDescription').value = data.seoDescription;
+        this.idSelector('isMainNews').checked = this.isMainNews;
+        this.idSelector('isUrgentNews').checked = this.isUrgentNews;
 
-
-    
-    idSelector = (id) => { return document.getElementById(id) };
-
-    fill(newsId) {
-    
-        for(let news of this.allNewsPage) {
-            if(news.value._id == newsId) {
-                this.newItem = news;
-                break;
-            }
-        }                
-        this.form = {
-            "title": document.getElementById("title"),
-            "editor": document.getElementById("editor"),
-            "categorye": document.getElementsByClassName("category")[0],
-            "seoTitle": document.getElementById("seoTitle"),
-            "seoTags": document.getElementById("seoTags"),
-            "seoDescription": document.getElementById("seoDescription"),
-            "isMainNews": document.getElementById("isMainNews"),
-            "isUrgentNews": document.getElementById("isUrgentNews"),
-            "createDate": document.getElementById("createDate"),
-            "rev":""
-        }
-       
-        this.form.title.value = this.newItem.value.title;
-        this.editor.innerHTML = this.newItem.value.content;
-        this.form.categorye.value = this.newItem.value.categoryId;
-        this.form.seoTitle.value = this.newItem.value.seoTitle;
-        this.form.seoTags.value = this.newItem.value.seoTags;
-        this.form.seoDescription.value = this.newItem.value.seoDescription;
-        if(this.newItem.value.isMainNews == "on") {
-            this.form.isMainNews.checked = 1 ;}
-        if(this.newItem.value.isUrgentNews == "on"){
-            this.form.isUrgentNews.checked = 1;}
-        this.form.createDate.value = this.newItem.value.createDate;
-       
-        
+        document.getElementById('categoryId').value = this.categoryId;
     }
 
+
+    idSelector = (id) => { return document.getElementById(id) };
     richTextEditor() {
 
         let newsBody = document.getElementById('editor');
@@ -127,6 +123,7 @@ export class addnewsController {
             }
         };
         this.editor = new Quill(newsBody, options);
+        this.editor.container.firstChild.innerHTML = this.content;
 
         this.editor.format('direction', 'ltr');
 
@@ -154,7 +151,7 @@ export class addnewsController {
     }
 
     updateExistedNew(data, key) {
-        return new Promise((resolve,response) => {
+        return new Promise((resolve, response) => {
             this.db.dbCreateOrUpdate("/news", data, key).then(response => {
                 console.log(response);
                 if (response.error) {
@@ -165,24 +162,15 @@ export class addnewsController {
         })
     }
     saveNews() {
-
-
-        if (this.newsId != 0) {
-            this.form.rev = this.newItem.value._rev;
-            /*user['_id'] = this._id;*/
-            this.updateExistedNew(this.form, this.newsId).then(resp => {
-                console.log(resp);
-                if (resp.ok) {
-                    this.showPopUp("updated");
-                    setTimeout(() => {
-                        window.location.href = "#/"+this.pageName;
-                        this.$submitted = false;
-                    }, 1000);
-                }
-            });
+        if(this.attachment == '')
+            {
+                this.showPopUp('danger');
+                return ;
+            }
+        if (this.newsId == -1)
             return;
-        }
-
+        const id = this.newsId;
+        this.newsId = -1;
         let btn = this.idSelector('submit-btn');
         btn.disabled = true;
         btn.style.fontSize = '15px';
@@ -191,8 +179,6 @@ export class addnewsController {
             return;
         this.submitted = true;
         this.showPopUp("sending");
-        if (this.createDate == '')
-            this.createDate = this.changeDateFormat(new Date());
         let news = {
             title: this.title,
             content: this.editor.container.firstChild.innerHTML,
@@ -206,11 +192,31 @@ export class addnewsController {
             createDate: this.createDate,
             attachment: this.attachment,
             writerId: this.writerId,
-            isApproved: 0,
+            isApproved: this.isApproved,
         }
+        
+        if (id != 0) {
+            
+            news._rev = this.rev;
+            news._id = id;
+            this.updateExistedNew(news, id).then(resp => {
+                console.log(resp);
+                if (resp.ok) {
+                    this.showPopUp("updated");
+                    setTimeout(() => {
+                        window.location.href = "#/home";
+                        this.$submitted = false;
+                    }, 1200);
+                }
+            });
+            return;
+        }
+        if (this.createDate == '')
+            news.createDate = this.changeDateFormat(new Date());
+
         this.CreateNews(news).then(resp => {
             this.showPopUp("success");
-            setTimeout(() => window.location.href = "#/"+this.pageName, 1000);
+            setTimeout(() => window.location.href = "#/mynews", 1000);
         });
     }
     showPopUp(id) {
@@ -225,18 +231,14 @@ export class addnewsController {
     }
     evalCheckbox(value) {
         console.log(value);
-        if (value == 'on')
-            return 1;
-        else
-            return 0;
-
+        return value;
     }
 
     previewImg() {
         let preview = document.querySelector('.addnews-img-container img');
         let file = document.querySelector('input[type="file"]').files[0];
         let reader = new FileReader();
-
+        console.log(file);
         let fr = new FileReader();
         if (file)
             preview.parentElement.style.display = "flex";
@@ -247,16 +249,11 @@ export class addnewsController {
         }
         reader.readAsDataURL(file);
 
-        fr.onload = () => {
-            let image = fr.result;
+        reader.onload = () => {
+            let image = reader.result;
             this.attachment = image;
-        };
-        reader.onload = function () {
             preview.src = reader.result;
-
-
         };
-        fr.readAsText(file, 'UTF-8');
     }
 
     getNewsId() {

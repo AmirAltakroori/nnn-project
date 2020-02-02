@@ -22,13 +22,10 @@ export class approveNewsControler {
             });
 
         });
-        this.news = import('./newsapprove.js');
-        console.log(this.news.then(data => data.approvenews()));
-
     }
 
     redirect(id) {
-        window.location.href = "#/addnews/"+id + "/newsapprove";
+        window.location.href = "#/addnews/"+id ;
         document.location.reload(true);
     }
 

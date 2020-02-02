@@ -1,4 +1,4 @@
-export class CategoriesController {
+    export class CategoriesController {
 
     constructor() {
         this.categories = [];
@@ -47,16 +47,7 @@ export class CategoriesController {
         document.getElementById("editcategoryname").value = "";
         this.hideModal("createcategory-edit-modal");
     }
-    deleteCategory() {
-        if (this.activeId != -1)
-            this.categories.splice(this.activeId, 1);
-        mvc.apply();
-        this.hideModal('delete');
-        this.activeId = -1;
-        //let rowDOM = this.activeRow.parentNode.parentNode;
-        //rowDOM.parentElement.removeChild(rowDOM);
 
-    }
     getCatId() {
         return dbGet("/settings", false, "categories");
     }
