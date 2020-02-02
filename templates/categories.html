@@ -18,7 +18,7 @@
 <div class="category-view">
 
     <!-- Page contnet title -->
-    <p class="category-view-name">{{$name}}</p>
+    <p class="category-view-name">{{$category.title}}</p>
 
     <hr>
     <div class="category-view-container">
@@ -35,8 +35,8 @@
                     <!-- List of main news items -->
                     <div $for="news of listMainNews" class="news-list">
                         <div class="news">
-                            <div $click="changeMainNews($news)" class="centered-img-background right-side-image" style="background-image: url({{$news.attachments}});">
-                                <span>{{$news.title}}</span>
+                            <div $click="changeMainNews($news)" class="centered-img-background right-side-image" style="background-image: url({{$news.attachment}});">
+                                <span $click="changeMainNews($news)" >{{$news.title}}</span>
                             </div>
                         </div>
                     </div>
@@ -47,23 +47,24 @@
                 <div class="main-section">
                     <div class="main-news">
 
+
                         <!-- Main news image -->
-                        <div id="category-main-news-image" class="centered-img-background" style="background-image: url({{$mainNews.attachments}});"></div>
+                        <div id="category-main-news-image" class="centered-img-background" style="background-image: url({{$mainNews.attachment}});"></div>
 
                         <!-- Main news details -->
                         <div class="details">
                             <h3 id="category-main-news-title">{{$mainNews.title}}</h3>
                             <div id="category-main-news-writng-details">
-                                <div id="category-main-news-writer">{{$mainNews.writer}}</div>
+                                <div id="category-main-news-writer">{{$writer.firstName}} {{$writer.lastName}}</div>
                                 <img src="img/calenderIcon.png" alt="calender icon">
                                 <span id="category-main-news-date">{{$mainNews.createDate}}</span>
                             </div>
-                            <div id="category-main-news-content-news">{{$mainNews.content}}</div>
+                            <div id="category-main-news-content-news">{{$mainNews.seoDescription}}</div>
                         </div>
 
                         <!-- See more details -->
                         <div id="category-see-more">
-                            <a href="#/details/{{$mainNews.id}}">
+                            <a href="#/details/{{$mainNews._id}}">
                                 <img src="img/arrowIcon.png" alt="arrow icon">
                                 <p>اقرأ المزيد</p>
                             </a>
@@ -82,9 +83,9 @@
                 <!-- Lift related news list -->
                 <div class="related-news-left">
                     <ul $for="news of rightNewsInCategory" id="related-news-menu-right">
-                        <a href="#/details/{{$news.id}}">
+                        <a href="#/details/{{$news._id}}">
                             <li>
-                                <img src="{{$news.img}}" alt="photo">
+                                <img src="{{$news.attachment}}" alt="photo">
                                 <p>{{$news.title}}</p>
                             </li>
                         </a>
@@ -94,9 +95,9 @@
                 <!-- Right related news list -->
                 <div class="related-news-left">
                     <ul $for="news of liftNewsInCategory" id="related-news-menu-right">
-                        <a href="#/details/{{$news.id}}">
+                        <a href="#/details/{{$news._id}}">
                             <li>
-                                <img src="{{$news.img}}" alt="photo">
+                                <img src="{{$news.attachment}}" alt="photo">
                                 <p>{{$news.title}}</p>
                             </li>
                         </a>
@@ -116,9 +117,9 @@
             <!-- List of random news  -->
             <p class="title">منوعات</p>
             <ul $for="news of randomNews" id="random-content">
-                <li class="card random-new" id="{{$news.id}}">
-                    <img src="{{$news.img}}" alt="">
-                    <a href="#/details/{{$news.id}}">{{$news.title}}</a>
+                <li class="card random-new" id="{{$news._id}}">
+                    <img src="{{$news.attachment}}" alt="">
+                    <a href="#/details/{{$news._id}}">{{$news.title}}</a>
                 </li>
             </ul>
 
