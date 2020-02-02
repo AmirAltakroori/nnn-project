@@ -67,7 +67,7 @@ export class approveNewsControler {
                 "isUrgentNews": news.isUrgentNews,
                 "createDate": news.createDate,
                 "writerId": news.writerId,
-                "attachments": news.attachments,
+                "attachment": news.attachment,
                 "_rev": news._rev,
                 "writerId": news.writerId,
                 "isApproved": 1
