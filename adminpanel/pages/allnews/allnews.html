@@ -49,35 +49,21 @@
                     </div>
                 </td>
                 <td>
-                    <div class="allnews-inline-block" $if="$news.isMainNews == true">
-                        <input type="checkbox" id="main{{$i}}" tabindex="9" checked/>
-                        <label for="main{{$i}}">خبر رئيسي</label>
+                    <div class="allnews-inline-block">
+                        <input style="height: 20px;width: 20px;" class='mainNews' type="checkbox" id="main{{$i}}" tabindex="9" />
+                        <label style="cursor: pointer;"for="main{{$i}}">خبر رئيسي</label>
 
                     </div>
-                    <div class="allnews-inline-block" $if="$news.isMainNews != true">
-                        <input type="checkbox" id="main{{$i}}" tabindex="9"/>
-                        <label for="main{{$i}}">خبر رئيسي</label>
-    
-                    </div>
-                    <div class="allnews-inline-block" $if="$news.isUrgentNews == true">
-                        <input type="checkbox" id="urgent{{$i}}" tabindex="9" checked />
-                        <label for="urgent{{$i}}">خبر عاجل</label>
-                    </div>
-                    
-                    <div class="allnews-inline-block" $if="$news.isUrgentNews != true">
-                        <input type="checkbox" id="urgent{{$i}}" tabindex="9" />
-                        <label for="urgent{{$i}}">خبر عاجل</label>
+                    <div class="allnews-inline-block">
+                        <input style="height: 20px;width: 20px;"  type="checkbox" id="urgent{{$i}}" tabindex="9"   class='urgentNews' />
+                        <label style="cursor: pointer;" for="urgent{{$i}}">خبر عاجل</label>
                     </div>
                 </td>
                 <td>
                     <div >
-                        <select $if="$news.isActive == 1" $model='$news.isActive' $change='printMe()' class="selection">
-                            <option value="1" selected> إظهار في الموقع</option>
+                        <select $model='$news.isActive' $change='updateStatus("isActive",$i)' class="selection">
+                            <option value="1"> إظهار في الموقع</option>
                             <option value="0" > إخفاء من الموقع</option>
-                        </select>
-                        <select $if="$news.isActive != 1" $model='$news.isActive' $change='printMe()' class="selection">
-                            <option value="1" selected> إظهار في الموقع</option>
-                            <option value="0" selected> إخفاء من الموقع</option>
                         </select>
                     </div>
                 </td>
@@ -102,4 +88,10 @@
 
     </div>
 
+</div>
+<div class="popup success" id='success'>
+    تمت العملية
+</div>
+<div class="popup warning" id='sending'>
+    انتظر قليلا
 </div>

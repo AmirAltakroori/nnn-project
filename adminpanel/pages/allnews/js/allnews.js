@@ -12,13 +12,11 @@ export class myNewsControler {
 
             this.getAllCat().then(cats => {
                 this.categories = this.cleanData(cats);
-                console.log(this.categories);
 
                 this.getAllNews().then(news => {
                     this.allNewsPage = this.cleanData(news);
-                    this.allNewsPage[0].isActive = 0;
-                    console.log(this.allNewsPage);
                     mvc.apply();
+                    this.init();
                 });
 
             });
@@ -36,24 +34,17 @@ export class myNewsControler {
         element.style.display = 'flex';
         element.className += " modal-active";
         this.activeId = id;
-        console.log(id);
+        
     }
     hide(modelId) {
         let element = document.getElementById(modelId);
         element.style.display = 'none';
 
     }
-    allnews() {
-
-        let userdata = getData("userData");
-        if (userdata != null) {
-            allNewsPage[userdata.ind] = userdata;
-            sessionStorage.removeItem("userData");
-        }
-    }
     deleteNews() {
         if (this.activeId == -1)
             return;
+        this.showPopUp("sending");
         const news = this.allNewsPage[this.activeId];
         const id = this.activeId;
         this.activeId = -1;
@@ -61,6 +52,8 @@ export class myNewsControler {
             if (req.ok)
                 this.allNewsPage.splice(id, 1);
             mvc.apply();
+            this.init();
+            this.showPopUp("success");
 
         });
         this.hide('delete');
@@ -92,7 +85,61 @@ export class myNewsControler {
             })
         });
     }
+    updateStatus(field, id) {
+        this.showPopUp("sending");
+        let news = null;
+        if (field == 'isActive')
+            news = this.allNewsPage[id];
+        else
+         news = this.allNewsPage.find(field => field._id == id);
 
+        news[field] = +!news[field];
+        this.db.dbCreateOrUpdate('/news', news, news._id).then(resp => {
+            if (resp.ok) {
+                news._rev = resp.rev;
+                this.showPopUp("success");
+            }
+        });
+    }
+
+    init() {
+
+        const selections = Array.from(document.getElementsByClassName('selection'));
+        let i = 0;
+        selections.forEach(el => {
+            el.value = this.allNewsPage[i].isActive;
+            i++;
+        })
+
+        const urgentNews = Array.from(document.getElementsByClassName('urgentNews'));
+        const mainNews = Array.from(document.getElementsByClassName('mainNews'));
+
+        for (let i = 0; i < mainNews.length; i++) {
+            mainNews[i].checked = this.allNewsPage[i].isMainNews;
+            urgentNews[i].checked = this.allNewsPage[i].isUrgentNews;
+            mainNews[i].addEventListener("change", (e) => {
+                e.preventDefault();
+                this.allNewsPage[i].isMainNews = +mainNews[i].checked;
+                this.updateStatus("isMainNews", this.allNewsPage[i]._id);
+            });
+
+            urgentNews[i].addEventListener("change", (e) => {
+                this.allNewsPage[i].isUrgentNews = +urgentNews[i].checked;
+
+                this.updateStatus("isMainNews", this.allNewsPage[i]._id);
+            })
+        }
+    }
+
+    showPopUp(id) {
+        let popup = document.getElementById(id);
+        popup.style.display = 'block';
+        setTimeout(() => {
+            //  hidde th popup
+            popup.style.display = "none";
+        }, 1500);
+
+    }
 
 
 }

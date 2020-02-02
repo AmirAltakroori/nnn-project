@@ -15,8 +15,6 @@ export class approveNewsControler {
                 this.categories = this.db.cleanDataForControllers(cats);
                 this.getAllNotAppNews().then(news => {
                     this.notAppNewsPage = this.db.cleanDataForControllers(news);
-                    console.log(this.notAppNewsPage);
-                    console.log(this.categories);
                     mvc.apply();
                 });
             });
@@ -111,7 +109,6 @@ export class approveNewsControler {
         element.style.display = 'flex';
         element.className += " modal-active";
         this.activeId = id;
-        console.log(id);
     }
     hide(modelId) {
         let element = document.getElementById(modelId);

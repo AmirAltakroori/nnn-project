@@ -37,24 +37,40 @@
             <tr class='user_info'>
                 <td class="user_no">{{$i+1}}</td>
                 <td class="user_full">
-                    <span class="user_name allnews-title-limit">{{$user.fullName}}</span>
+                    <span class="user_name allnews-title-limit">{{$user.firstName}} {{$user.lastName}} </span>
                 </td>
                 <td>
-                    <div>
-                        <select class="selection">
-                            <option value="1" selected>كاتب</option>
+                    <div $if ='$role == 3'>
+                        <select $change='updateStatus("role",$i)' class="selection role">
+                            <option value="1">كاتب</option>
                             <option value="2">مشرف</option>
-                            <option value="3">مسؤوب</option>
+                            <option value="3">مسؤول</option>
 
                         </select>
                     </div>
+                    <div $if='$role  == 2 && $user.role  == 1'>
+                        كاتب
+                    </div>
+                    <div $if='$role == 2 && $user.role== 2'>
+                        مشرف
+                    </div>
+                    <div $if='$role == 2 && $user.role== 3'>
+                        مسؤول
+                    </div>
                 </td>
                 <td>
-                    <div>
-                        <select class="selection">
-                            <option value="1" selected>فعال</option>
+                    <div $if='$role == 2 && $user.role  == 1 || $role == 3  '>
+                        <select $change='updateStatus("state",$i)' class="selection state">
+                            <option value="1">فعال</option>
                             <option value="0">غير فعال</option>
                         </select>
+                    </div>
+
+                    <div $if='$role  == 2 && $user.role >= 2 && $user.state == 1'>
+                        فعال
+                    </div>
+                    <div $if='$role == 2 && $user.role >= 2 && $user.state == 0'>
+                        غير فعال
                     </div>
                 </td>
                 <td>
@@ -77,4 +93,16 @@
         </div>
     </div>
 
+</div>
+<div class="popup warning" id='sending'>
+    انتظر قليلا
+</div>
+<div class="popup warning" id='news'>
+     جاري حذف أخبار المستخدم
+</div>
+<div class="popup success" id='deleted'>
+    تم الحذف
+</div>
+<div class="popup success" id='success'>
+    تم الحفظ
 </div>

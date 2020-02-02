@@ -42,10 +42,10 @@
                 <td>
                     <div>
                         <div $if="$userRole==3">
-                            <select class="selection"
+                            <select class="selection" $change='updateCategoryStatus($i)'
                                 $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true">
                                 <option value="0"> غير فعال</option>
-                                <option value="1" selected>فعال</option>
+                                <option value="1">فعال</option>
                             </select>
                         </div>
                         <div $if="$userRole==2">
@@ -60,8 +60,7 @@
                     <i class="fas fa-trash-alt delete_user"
                         $style="'font-size:20px; color:red; text-align:center; cursor:pointer' : true"
                         $click="showModal('delete','$i')"></i>
-                    <i class="far fa-edit icon color-blue"
-                        $click="showModal('createcategory-edit-modal', this.element, {{$cta._id}})"></i>
+                    <i class="far fa-edit icon color-blue" $click="showModal('createcategory-edit-modal',$i)"></i>
                 </td>
             </tr>
         </tbody>
@@ -121,4 +120,10 @@
         </div>
     </div>
 
+</div>
+<div class="popup success" id='success'>
+    تمت العملية
+</div>
+<div class="popup warning" id='sending'>
+    انتظر قليلا
 </div>
