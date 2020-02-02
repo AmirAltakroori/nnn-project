@@ -23,7 +23,7 @@ export class Home {
         this.slideIndex = 0;
         this.randomNews = this.getRandomNews();
 
-        this.categoriesList = getCategoriesList();
+        this.categoriesList = this.getCategoriesList();
 
         this.isFirstTime = true;
         this.randomNewsView = this.randomNews.slice(0, 3);
@@ -165,7 +165,7 @@ export class Home {
     getCategoriesList () {
 
         // Rewrite this function when DB was ready.
-        categoriesList = [{
+        return [{
                         title: "الصفحة الرئيسية",
                         path: "/home"
                           }, {

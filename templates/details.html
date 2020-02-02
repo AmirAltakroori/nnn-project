@@ -38,7 +38,7 @@
                  </span>
                 <article class="article" id="article">
                     <span $for="relatedNew of relatedNews">
-    
+
                         <p $if="$relatedNew.id == $routeParams.id">
                             {{$relatedNew.content}}
                         </p>
@@ -76,26 +76,6 @@
             <section class="news-sharing">
 
                 <div class="sharethis-inline-share-buttons"></div>
-                <div class="about">
-
-                    <!-- schedule -->
-                    <a>
-                        <img src="img/schedule.png" alt="about" />
-                    </a>
-
-                    <!-- comment -->
-                    <a>
-                        <img src="img/comment.png" alt="about" />
-                    </a>
-
-                    <!-- writer -->
-                    <a>
-                        <img src="img/writer.png" alt="about" />
-                    </a>
-
-
-
-                </div>
 
             </section>
 
