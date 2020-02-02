@@ -1,13 +1,13 @@
 <div class="row header-subheader ">
-        <div>
-                الرئيسية > لوحة التحكم
-        </div>
+	<div>
+		الرئيسية > لوحة التحكم
+	</div>
 </div>
 <div class="body-wrapper">
         <div $if="$userRole != 1">
                 <h2><i class="fas fa-user-circle"></i> المستخدم</h2>
                 <div class="homepage-container">
-                        <div><a href='#/adduser'>
+                        <div><a href='#/adduser/0'>
                                         <button class="homepage-btn green" id='new_user'>
                                                 <div>
                                                         <i class="fas fa-user-plus  home-shadow-icon"></i>
@@ -24,7 +24,9 @@
                                 </a>
                         </div>
                         <div>
-                                <button class="homepage-btn blue" id='all_users'>
+
+                                <a href = '#/allusers'> <button class="homepage-btn blue" id='all_users'>
+
                                         <div>
                                                 <i class="fas fa-users  home-shadow-icon"></i>
                                         </div>
@@ -37,7 +39,8 @@
 
 
                                 </button>
-                        </div>
+                        </div></a>
+                     
 
 
                 </div>
@@ -77,7 +80,7 @@
                                 </a>
                         </div>
                         <div>
-                                <a href='#/addnews'><button class="homepage-btn light-green" id=' add_new '>
+                                <a href='#/addnews/0'><button class="homepage-btn light-green" id=' add_new '>
                                                 <div>
                                                         <i class="fas fa-book-reader  home-shadow-icon"></i>
                                                 </div>

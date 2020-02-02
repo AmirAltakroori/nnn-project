@@ -20,13 +20,13 @@
                 class="search_field"
                 id="search"
                 placeholder="أدخل عنوان الفئة"
-                onkeyup="searchElement(2)"
+                onkeyup="searchElement(3)"
                 >
             </div>
         </div>
     </div>
 
-    <table class="content">
+    <table id="table" class="content">
         <thead>
             <tr class="first_row">
                 <th>#</th>
@@ -37,37 +37,38 @@
             </tr>
         </thead>
 
-        <tbody id="tablebody" $for="nsw of allnews">
+        <tbody id="tablebody" $for=" n of notAppNewsPage">
             <tr class="user_info">
+            <tr class="user_info">
                 <td class="user_no">
                         <div class="allnews-inline-block" >
-                            <input type="checkbox" id='{{$nsw._id}}' tabindex="9"/>
+                            <input type="checkbox" id='{{$n._id}}' tabindex="9"/>
                         </div>
                 </td>
                 <td class="user_full">
-                    <span class="user_name">{{$nsw.title}}</span>
+                    <span class="user_name">{{$n.title}}</span>
                 </td>
                 
                 <td>
-                    <div $for="test of categories">
-                        <div $if="$nsw.categoryId == $test.id">
-                                <span>{{$test.name}}</span>
+                    <div $for="category of categories">
+                        <div $if="$n.categoryId == $category._id">
+                                <span>{{$category.name}}</span>
                         </div>
                     </div>
                 </td>
 
                 <td>
-                    <div $if="$nsw.isActive == 1">
+                    <div $if="$n.isActive == true">
                         <span>مفعل</span>
                     </div>
-                    <div $if="$nsw.isActive == 0">
+                    <div $if="$n.isActive == false">
                         <span>غير مفعل</span>
                     </div>
                 </td>
 
                 <td>
-                    <i class="fas fa-trash-alt delete_user" onclick="show(this,'delete', '$n.id')"></i>
-                    <i class="far fa-edit icon color-blue" onclick = "updateNews('$news.id',0) "></i>
+                    <i class="fas fa-trash-alt delete_user" $click="show('delete',$i)"></i>
+                    <i class="far fa-edit icon color-blue" $click="redirect($n._id)"></i>
                 </td>
             </tr>
         </tbody>
@@ -78,14 +79,23 @@
         تأكيد الخبر
     </div>
 </div>
+
 <div class="modal-delete" id="delete">
     <div class="modal-wrapper">
         <div class="contain">
-            <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
+            <p>هل أنت متأكد من إزالة هذا الخبر ؟</p>
             <div class="modal-button">
-                <button class="modal-button button1" onclick="deleteRowElement(myNewsPage); hide('delete');">نعم</button>
-                <button class="modal-button button2" onclick="hide('delete')">لا</button>
+                <button class="modal-button button1" $click="deleteNews();">نعم</button>
+                <button class="modal-button button2" $click="hide('delete')">لا</button>
             </div>
         </div>
+        
     </div>
+</div>
+</div>
+<div class="popup success" id='sending'>
+    جاري التعديل
+</div>
+<div class="popup success" id='updated'>
+   تم التعديل
 </div>

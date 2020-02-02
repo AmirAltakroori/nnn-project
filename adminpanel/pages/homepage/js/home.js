@@ -1,17 +1,18 @@
 export class HomeController {
     constructor() {
+        this.Message = "hello";
         this.mode = null;
-
-        const userData = JSON.parse(sessionStorage.getItem('user'));
-        if (!userData) {
-            window.location.href = '/admin-panel-login/login.html';
-            return;
-        }
         this.changing = false;
-        this.userRole = userData.roleID;
+        this.userRole = -1;
+
         console.log(this.userRole)
         this.db = dynamicImport("./js/backend.js");
-        console.log(this.db);
+        this.db.then( db => {
+            
+            this.userRole = db.confirm().data.roleId;
+            console.log(db.confirm());
+            mvc.apply();
+        });
         this.siteMode = null;
         this.getStatus().then(state => {
             this.siteMode = state;
