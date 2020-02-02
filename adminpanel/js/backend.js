@@ -68,7 +68,6 @@ function cleanData(data) {
 }
 
 export function dbGet(endpoint, isView, id) {
-    confirm();
     return new Promise((resolve, reject) => {
         let url = BASEURL + endpoint;
         if (isView && id) {
@@ -97,7 +96,6 @@ export function dbGet(endpoint, isView, id) {
 
 
 export function dbDelete(endpoint, id, rev) {
-    confirm();
     return new Promise((resolve, reject) => {
         let url = BASEURL + endpoint + `/${id}?rev=${rev}`;
         let http = new XMLHttpRequest();
@@ -118,7 +116,6 @@ export function dbDelete(endpoint, id, rev) {
 // dbDelete('/categories','1',"2-cdfasdsidfsjdsdpifdsi") delete category  id =1 , 
 
 export function dbCreateOrUpdate(endpoint, data, id) {
-    confirm();
     return new Promise((resolve, reject) => {
         const url = BASEURL + endpoint + `/${id}`;
         let http = new XMLHttpRequest();
