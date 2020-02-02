@@ -56,11 +56,7 @@ part1 contain the header of the new and the related news
   .news-content .news-related ul li img {
     width: 200px;
   }
-  .news-content .news-header h1 {
-    font-size: 35px;
-  }
-  .news-content .news-header .main-img {
-    width: 1082px;
+  .news-content .news-header .main-img img {
     height: 570px;
   }
 }
@@ -69,12 +65,8 @@ part1 contain the header of the new and the related news
   .news-content .news-related ul li img {
     width: 190px;
   }
-  .news-content .news-header h1 {
-    font-size: 26.25px;
-  }
-  .news-content .news-header .main-img {
-    width: 812px;
-    height: 432px;
+  .news-content .news-header .main-img img {
+    height: 570px;
   }
 }
 
@@ -215,18 +207,64 @@ part1 contain the header of the new and the related news
   width: 67%;
 }
 
+.news-content .news-header .news-info {
+  width: 83%;
+}
+
 .news-content .news-header h1 {
   margin-right: 10%;
-  margin-bottom: 2%;
+  margin-bottom: 4%;
 }
 
 .news-content .news-header .main-img {
+  height: 570px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
   margin-right: 10%;
   margin-bottom: 30px;
+}
+
+.news-content .news-header .news-more-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: flex-;
+      -ms-flex-pack: flex-;
+          justify-content: flex-;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  color: #4D4F5C;
+  margin-top: 0px;
+  font-size: 18px;
+  color: #919192;
+}
+
+.news-content .news-header .news-more-info .authorName {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.news-content .news-header .news-more-info img {
+  margin-left: 0%;
+  width: 20px;
+  height: 20px;
+}
+
+.news-content .news-header .article {
+  font-size: 25px;
+  margin-right: 50px;
+}
+
+.news-content .news-header .article p {
+  padding: 50px;
 }
 
 .news-body {
