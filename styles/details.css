@@ -1,0 +1,371 @@
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:Latifa Masri and Abed Al-Fattah Hroub
+
+     File description: this filew contain scss style of the detailes page
+*/
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
+     Suhair Shareef <suhairshareef1999@gmail.com>
+     Authors:Latifa Masri
+
+     File description:this file contain shared function used in different files
+*/
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
+     Suhair Shareef <suhairshareef1999@gmail.com>
+
+     File description:
+     this variable special for slider design
+*/
+/*
+flex property
+@tparam $direction $justify $align : flex property , $w :width
+$param $direction: flex direction , $justify: justify content of flex , $align: align flex items ,$width :width of the flex
+
+*/
+/*
+     NNN website.
+
+     This file is part of the NNN website.
+
+     Authors:
+     Aseel Arafeh <arafehaseel@gmail.com>
+     Suhair Shareef <suhairshareef1999@gmail.com>
+
+     File description:
+     this variable special for slider design
+*/
+/*
+part1 contain the header of the new and the related news
+*/
+@media screen and (min-height: 811px) {
+  .news-content .news-related ul li img {
+    width: 200px;
+  }
+  .news-content .news-header h1 {
+    font-size: 35px;
+  }
+  .news-content .news-header .main-img {
+    width: 1082px;
+    height: 570px;
+  }
+}
+
+@media screen and (max-height: 810px) {
+  .news-content .news-related ul li img {
+    width: 190px;
+  }
+  .news-content .news-header h1 {
+    font-size: 26.25px;
+  }
+  .news-content .news-header .main-img {
+    width: 812px;
+    height: 432px;
+  }
+}
+
+@media screen and (max-height: 768px) {
+  .news-content .news-related ul li img {
+    width: 180px;
+  }
+  .news-content .news_header h1 {
+    font-size: 24.88888px;
+  }
+  .news-content .news_header .main_img {
+    width: 770px;
+    height: 400px;
+  }
+}
+
+* {
+  direction: rtl;
+}
+
+.news-content {
+  margin-top: 4%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border-top: solid 1px #707070;
+  margin-bottom: 0%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+}
+
+.news-content .news-related {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 33%;
+}
+
+.news-content .news-related .related-news-menu {
+  width: 75%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  list-style-type: none;
+}
+
+.news-content .news-related .related-news-menu .list-n {
+  margin-left: 20px;
+}
+
+.news-content .news-related .related-news-menu .list-n a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+}
+
+.news-content .news-related .related-news-menu .list-n img {
+  margin: 10px 10% 0% 2%;
+}
+
+.news-content .news-related .related-news-menu .list-n a:link {
+  text-decoration: none;
+}
+
+.news-content .news-related .related-news-menu .list-n a:visited {
+  text-decoration: none;
+  color: #4040b3;
+}
+
+.news-content .news-related .related-news-menu .list-n a:hover {
+  text-decoration: underline;
+}
+
+.news-content .news-related .related-news-menu .related-header {
+  color: #0C4D6D;
+  margin-right: 8%;
+  margin-top: 2%;
+  padding-bottom: 2%;
+  width: 88%;
+  margin-bottom: 2%;
+  border-bottom: solid 1px #707070;
+}
+
+.news-content .news-header {
+  margin-top: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 67%;
+}
+
+.news-content .news-header h1 {
+  margin-right: 10%;
+  margin-bottom: 2%;
+}
+
+.news-content .news-header .main-img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin-right: 10%;
+  margin-bottom: 30px;
+}
+
+.news-body {
+  font-size: 25px;
+  margin-right: 50px;
+}
+
+.news-body p {
+  padding: 50px;
+}
+
+.news-body .news-sharing {
+  direction: ltr;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  grid-gap: 10px;
+}
+
+.news-body .news-sharing .share-buttons {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.news-body .news-sharing .share-buttons a img {
+  float: left;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  border: 0;
+  -webkit-box-shadow: 0;
+          box-shadow: 0;
+}
+
+.news-body .news-sharing .about {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.news-body .news-sharing .about a img {
+  float: left;
+  width: 25px;
+  height: 25px;
+  padding: 5px;
+  border: 0;
+  -webkit-box-shadow: 0;
+          box-shadow: 0;
+}
+
+.news-body .news-sharing .about p {
+  font-size: 25px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding-bottom: 10px;
+}
+
+.comments {
+  font-size: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+  height: 400px;
+  padding-top: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.comments .add-comment {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 50% 50%;
+      grid-template-rows: 50% 50%;
+  border-left: solid 2px #707070;
+}
+
+.comments .add-comment .comment {
+  vertical-align: bottom;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30% 70%;
+      grid-template-columns: 30% 70%;
+}
+
+.comments .add-comment .comment img {
+  width: 45px;
+  height: 45px;
+  padding-right: 60%;
+  padding-top: 155px;
+}
+
+.comments .add-comment .comment p {
+  padding-left: 70%;
+  padding-top: 145px;
+}
+
+.comments .add-comment .add {
+  width: 70%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 70% 30%;
+      grid-template-columns: 70% 30%;
+  margin: 0 auto;
+}
+
+.comments .add-comment .add input {
+  height: 20%;
+  border-radius: 0 10px 10px 0;
+  border: solid 3px #EBEDED;
+}
+
+.comments .add-comment .add button {
+  height: 20%;
+  background-color: #EBEDED;
+  border: none;
+  border-radius: 10px 0 0 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.comments .list-comment {
+  margin-left: 20px;
+}
+
+.comments .list-comment li {
+  list-style-type: none;
+}
+
+.comments .list-comment img {
+  width: 45px;
+  height: 45px;
+  padding: 0px;
+}
+
+.comments .list-comment p {
+  padding-bottom: 15px;
+}
+/*# sourceMappingURL=details.css.map */

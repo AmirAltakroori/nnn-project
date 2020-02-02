@@ -10,27 +10,40 @@
 -->
 
 
- <!-- HEADER -->
- <div class="header" $include="/templates/header.html ,/controllers/header.js"></div>
- 
+<!-- HEADER -->
+<div class="header" $include="/templates/header.html ,/controllers/header.js"></div>
+
 <div>
     <div class="details-page-wrapper">
         <!-- Contains news title and photo & Show other related news -->
         <div class="news-content">
             <section class="news-header" id="news">
-                <span $for="relatedNew of relatedNews">
+                <span $for="relatedNew of relatedNews" class="news-info">
 
                     <h1 $if="$relatedNew.id == $routeParams.id">
                         {{$relatedNew.title}}
                     </h1>
 
-                    <div $if="$relatedNew.id == $routeParams.id">
-                        <div class="main-img" style=" background-image: url(../img/{{$relatedNew.img}});">
+                    <div $if="$relatedNew.id == $routeParams.newID">
+                        <div class="main-img" style=" background-image: url(../img/{{$relatedNew.img}}); width: 100%;">
                             .
+                        </div>
+                        <div class="news-more-info">
+                            <p class="authorName">{{$relatedNew.authorName}}</p>
+                            <p class="published">{{$relatedNew.publishedDate}}</p>
+                            <img src="../img/calenderIcon.png">
                         </div>
                     </div>
 
                  </span>
+                <article class="article" id="article">
+                    <span $for="relatedNew of relatedNews">
+    
+                        <p $if="$relatedNew.id == $routeParams.newID">
+                            {{$relatedNew.content}}
+                        </p>
+                    </span>
+                </article>
             </section>
 
             <aside class="news-related">
@@ -57,16 +70,8 @@
                 </ul>
             </aside>
         </div>
-        <!-- Contains the full text of the news & news sharing -->
+        <!-- Contains  news sharing -->
         <div class="news-body">
-            <article class="article" id="article">
-                <span $for="relatedNew of relatedNews">
-
-                    <p $if="$relatedNew.id == $routeParams.id">
-                        {{$relatedNew.content}}
-                    </p>
-                </span>
-            </article>
 
             <section class="news-sharing">
 
