@@ -199,34 +199,59 @@ function renderChange(exp, element) {
 
 let contMap = new Map();
 let tempMap = new Map();
-async function renderInclude(exp,element)
+async function renderInclude(exp, element) 
 {
-	let expGroup = exp.split(',');
-	let tempPath = expGroup[0].trim();
-	let contPath = expGroup[1].trim();
-	
-	let template;
-	let reload = false;
-	if(tempMap.has(tempPath)) 
-		template = tempMap.get(tempPath);
+	let tempPath, contPath;
+	if(exp.includes(":"))
+	{
+		let id = exp.trim().substr(3,exp.length);
+		let found = false;
+
+		for(let i=0;i < mvc._routeMap.length;i++)
+		{
+			if(mvc._routeMap[i].id == id)
+			{
+				found = true;
+				tempPath = mvc._routeMap[i].template;
+				contPath = mvc._routeMap[i].controller;
+				break;
+			}
+		}
+		if(!found)
+		{
+			console.error("no such id " + id);
+			return;
+		}
+
+	}
 	else
 	{
+		let expGroup = exp.split(',');
+		tempPath = expGroup[0].trim();
+		contPath = expGroup[1].trim();
+	}
+	
+
+	let template;
+	let reload = false;
+	if (tempMap.has(tempPath))
+		template = tempMap.get(tempPath);
+	else {
 		template = await loadDoc(tempPath);
-		tempMap.set(tempPath,template);
+		tempMap.set(tempPath, template);
 		reload = true;
 	}
 
 	let controller;
-	if(contMap.has(contPath)) 
+	if (contMap.has(contPath))
 		controller = contMap.get(contPath);
-	else
-	{
+	else {
 		controller = await dynamicImport(contPath);
 		controller = new controller[Object.keys(controller)[0]];
-		contMap.set(contPath,controller);
+		contMap.set(contPath, controller);
 		reload = true;
 	}
-	
+
 	let oldScope = $scope;
 	$scope = controller;
 
@@ -237,7 +262,7 @@ async function renderInclude(exp,element)
 	element.innerHTML = node.innerHTML;
 
 	$scope = oldScope;
-	if(reload)mvc.apply();
+	if (reload) mvc.apply();
 }
 
 //*********************************************************************//
@@ -319,13 +344,12 @@ function renderTemplate(view) {
 }
 
 function render(view, model, update = false) {
-	if(model != null) $scope = model;
+	if (model != null) $scope = model;
 	if (update) $apply();
 	renderTemplate(view);
 	if (!$bindedVars) $bindedVars = view.innerHTML;
-	
-	if (!update) 
-	{
+
+	if (!update) {
 		$bindedVars = view.innerHTML;
 		$apply(view);
 	}
@@ -356,15 +380,13 @@ function eventListener(element, event, func) {
 	});
 };
 
-function clearRender()
-{
-	contMap.forEach((value,key,mp) =>
-	{
+function clearRender() {
+	contMap.forEach((value, key, mp) => {
 		delete value;
 	})
 	contMap.clear();
 	tempMap.clear();
 	var highestTimeoutId = setTimeout(";");
-	for (var i = 0 ; i < highestTimeoutId ; i++) 
-		clearTimeout(i); 
+	for (var i = 0; i < highestTimeoutId; i++)
+		clearTimeout(i);
 }
