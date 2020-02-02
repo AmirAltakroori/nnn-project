@@ -128,9 +128,9 @@ part1 contain the header of the new and the related news
         .news-info{
             width: 83%;
         }
-      
-        
-        margin-top: 2%;       
+
+
+        margin-top: 2%;
          h1 {
             margin-right: 10%;
             margin-bottom: 4%;
@@ -151,21 +151,23 @@ part1 contain the header of the new and the related news
             color:#4D4F5C ;
             margin-top: 0px;
             font-size: 18px;
-            
+
             color: #919192;
             .authorName{
                 margin-left: 10%;
                 margin-right: 10%;
-                // align-items: flex-start;
             }
-        
+
+            .published {
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+
             img {
                 margin-left: 0%;
                 width: 20px;
                 height: 20px;
             }
-        
-
 
         }
         .article{

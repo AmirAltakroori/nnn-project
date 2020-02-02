@@ -18,29 +18,27 @@
         <!-- Contains news title and photo & Show other related news -->
         <div class="news-content">
             <section class="news-header" id="news">
-                <span $for="relatedNew of relatedNews" class="news-info">
-
-                    <h1 $if="$relatedNew.id == $routeParams.id">
-                        {{$relatedNew.title}}
+                <span>
+                    <h1>
+                        {{$news.title}}
                     </h1>
+                    <div>
+                        <div class="main-img" style=" background-image: url('data:image/png;base64,{{$news.attachment}}');">
 
-                    <div $if="$relatedNew.id == $routeParams.id">
-                        <div class="main-img" style=" background-image: url(../img/{{$relatedNew.img}}); width: 100%;">
-                            .
                         </div>
                         <div class="news-more-info">
-                            <p class="authorName">{{$relatedNew.authorName}}</p>
-                            <p class="published">{{$relatedNew.publishedDate}}</p>
+                            <p class="authorName">{{$writer.firstName}} {{$writer.lastName}}</p>
                             <img src="../img/calenderIcon.png">
+                            <p class="published">{{$news.createDate}}</p>
                         </div>
                     </div>
 
                  </span>
                 <article class="article" id="article">
-                    <span $for="relatedNew of relatedNews">
+                    <span>
 
-                        <p $if="$relatedNew.id == $routeParams.id">
-                            {{$relatedNew.content}}
+                        <p>
+                            {{$news.content}}
                         </p>
                     </span>
                 </article>
@@ -57,21 +55,27 @@
                     <!-- <li> -->
                     <div $for="relatedNew of relatedNews">
                         <li class="list-n">
-                            <a href="#/details/{{$relatedNew.id}}">
+                            <a href="#/details/{{$relatedNew._id}}">
 
-                                <img src="../img/{{$relatedNew.img}}" alt="صورة"> {{$relatedNew.title}}
+                                <img src="data:image/png;base64,{{$relatedNew.attachment}}" alt="صورة"> {{$relatedNew.title}}
 
                             </a>
                         </li>
                     </div>
                     <!-- </li> -->
 
-
                 </ul>
             </aside>
         </div>
         <!-- Contains  news sharing -->
         <div class="news-body">
+            <article class="article" id="article">
+                <span>
+                    <p>
+                        {{$news.content}}
+                    </p>
+                </span>
+            </article>
 
             <section class="news-sharing">
 
