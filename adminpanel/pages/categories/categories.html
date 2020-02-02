@@ -40,19 +40,27 @@
                     <span class="user_name" $style="'font-size:18px': true">{{$cta.name}}</span>
                 </td>
                 <td>
-                    <div >
-                        <select class="selection" $change='updateCategoryStatus($i)' $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true">
-                            <option value="0" > غير فعال</option>
-                            <option value="1">فعال</option>
-                        </select>
+                    <div>
+                        <div $if="$userRole==3">
+                            <select class="selection" $change='updateCategoryStatus($i)'
+                                $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true">
+                                <option value="0"> غير فعال</option>
+                                <option value="1">فعال</option>
+                            </select>
+                        </div>
+                        <div $if="$userRole==2">
+                            <span $if="$cta.isActive"
+                                $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true">فعال</span>
+                            <span $if="!$cta.isActive"
+                                $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true"> غير فعال</span>
+                        </div>
                     </div>
                 </td>
                 <td>
                     <i class="fas fa-trash-alt delete_user"
                         $style="'font-size:20px; color:red; text-align:center; cursor:pointer' : true"
                         $click="showModal('delete','$i')"></i>
-                    <i class="far fa-edit icon color-blue"
-                        $click="showModal('createcategory-edit-modal',$i)"></i>
+                    <i class="far fa-edit icon color-blue" $click="showModal('createcategory-edit-modal',$i)"></i>
                 </td>
             </tr>
         </tbody>
@@ -66,8 +74,8 @@
                 إضافة فئة جديدة
             </h2>
         </div>
-        <form  class='cat-centered-row' $submit="createCategory()" >
-            <div class="createcategory-flex-container-center-all" >
+        <form class='cat-centered-row' $submit="createCategory()">
+            <div class="createcategory-flex-container-center-all">
                 <div class='cat-centered-row mb-5'>
                     <input type="text" id="categoryname" placeholder="أدخل اسم الفئة" maxlength="20" minlength="3"
                         required>

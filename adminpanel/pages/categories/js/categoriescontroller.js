@@ -4,6 +4,8 @@ export class CategoriesController {
         this.categories = [];
         this.activeId = 0;
         this.activeRow = null;
+        this.userData = null;
+        this.userRole = -1;
         this.dp = null;
         dynamicImport("./../../adminpanel/js/backend.js").then(db => {
             this.db = db;
@@ -16,8 +18,10 @@ export class CategoriesController {
             });
 
         });
-        this.activeRow = null;
-        this.activeId = 0;
+
+        this.userData = JSON.parse(sessionStorage.getItem('user'));
+        this.userRole = this.userData.roleID;
+
     }
     init() {
         const selections = Array.from(document.getElementsByClassName('selection'));

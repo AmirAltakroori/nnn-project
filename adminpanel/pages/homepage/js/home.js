@@ -11,6 +11,7 @@ export class HomeController {
             this.userRole = db.confirm().data.roleId;
             mvc.apply();
         });
+
         this.siteMode = null;
         this.getStatus().then(state => {
             this.siteMode = state;
