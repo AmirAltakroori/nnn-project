@@ -4,31 +4,60 @@ export class allUsers {
         this.usersPage = [];
         this.db = null;
         this.activeId = -1;
+        this.role = -1;
         dynamicImport("./../../adminpanel/js/backend.js").then(db => {
             this.db = db;
-            this.db.confirm();
+            this.role = this.db.confirm().data.roleId;
             this.getAllUsers().then(users => {
                 this.usersPage = this.db.cleanDataForControllers(users);
+                console.log(this.usersPage);
                 mvc.apply();
+                this.init();
+
             });
         });
     }
-
-    updateUsers(id) {   
-        let aim = null;
-        for (ind in usersPage)
-            if (usersPage[ind].id == id) {
-                aim = usersPage[ind];
-                aim["ind"] = ind;
-                break;
+    init() {
+        let activeSelects = Array.from(document.getElementsByClassName("state"));
+        let activeRoles = Array.from(document.getElementsByClassName("role"));
+        for (let i = 0; i < activeSelects.length; i++) {
+            activeSelects[i].value = this.usersPage[i].state;
+            activeRoles[i].value = this.usersPage[i].role;
+        }
+    }
+    updateStatus(field, id) {
+        this.showPopUp("sending");
+        let user = null;
+        user = this.usersPage[id];
+        user[field] = document.getElementsByClassName(field)[id].value;
+        this.db.dbCreateOrUpdate('/users', user, user._id).then(resp => {
+            if (resp.ok) {
+                user._rev = resp.rev;
+                this.showPopUp("success");
             }
-
-        sessionStorage.setItem("userData", JSON.stringify(aim));
-        window.location.href = "../newuser/updateuser.html";
+        });
+    }
+    showPopUp(id, delay = 2000) {
+        if (delay == -1) {
+            const popup = document.getElementById(id);
+            popup.style.display = 'block';
+            return;
+        }
+        const popup = document.getElementById(id);
+        popup.style.display = 'block';
+        setTimeout(() => {
+            //  hidde th popup
+            popup.style.display = "none";
+        }, delay);
 
     }
+    hidePopUp(id) {
 
+        const popup = document.getElementById(id);
+        popup.style.display = 'none';
+        return;
 
+    }
 
     show(modelId, id) {
         let element = document.getElementById(modelId);
@@ -45,32 +74,47 @@ export class allUsers {
     deleteUser() {
         if (this.activeId == -1)
             return;
+        this.hide('delete');
+        this.showPopUp("news");
+
         const id = this.activeId;
         this.activeId = -1;
         const user = this.usersPage[id];
-        this.db.dbDelete('/users', user._id, user._rev).then(resp => {
-            if(resp.ok)
-            this.usersPage.splice(id, 1);
-            location.reload();
+        this.getMyNews(user._id).then(news => {
+            console.log(news);
+            let j = news.rows.length;
+            for (let i = 0; i < j + 1; i++) {
+                if (i < j) {
+                    setTimeout(() => {
+                      this.db.dbDelete("/news", news.rows[i].value._id, news.rows[i].value._rev);
+                    }, 150);
+                } else {
+                    this.hidePopUp("delete");
+                    this.db.dbDelete('/users', user._id, user._rev).then(resp => {
+                        if (resp.ok) {
+                            this.usersPage.splice(id, 1);
+                            mvc.apply();
+                            this.init();
+                            this.showPopUp("deleted");
+
+                        }
+                    });
+                }
+            }
         });
-        this.hideModal('delete');
     }
-    updateUser(id)
-    {
+    getMyNews(username) {
+        return new Promise((resolve, reject) => {
+            this.db.dbGet("/news/_design/views/_view/specificUser", true, username).then(news => {
+                resolve(news);
+            })
+        });
+    }
+    updateUser(id) {
         const user = this.usersPage[id];
-        location.href="#/adduser/"+user._id;
-    
-    }
-    deleteRowElement() {
-
-        let row = usersPage.findIndex((row) => row.id == newId);
-        usersPage.splice(row, 1);
-        let rowDOM = newContain.parentNode.parentNode;
-        rowDOM.parentElement.removeChild(rowDOM);
-
+        location.href = "#/adduser/" + user._id;
 
     }
-
     getAllUsers() {
         return new Promise((resolve, reject) => {
             this.db.dbGet("/users/_design/users/_view/usersinfo", true, "").then(users => {
