@@ -40,11 +40,20 @@
                     <span class="user_name" $style="'font-size:18px': true">{{$cta.name}}</span>
                 </td>
                 <td>
-                    <div >
-                        <select class="selection" $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true">
-                            <option value="1" selected> غير فعال</option>
-                            <option value="0">فعال</option>
-                        </select>
+                    <div>
+                        <div $if="$userRole==3">
+                            <select class="selection"
+                                $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true">
+                                <option value="0"> غير فعال</option>
+                                <option value="1" selected>فعال</option>
+                            </select>
+                        </div>
+                        <div $if="$userRole==2">
+                            <span $if="$cta.isActive"
+                                $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true">فعال</span>
+                            <span $if="!$cta.isActive"
+                                $style=" 'font-size:18px; font-family:'Segoe UI'; border:none': true"> غير فعال</span>
+                        </div>
                     </div>
                 </td>
                 <td>
@@ -66,8 +75,8 @@
                 إضافة فئة جديدة
             </h2>
         </div>
-        <form  class='cat-centered-row' $submit="createCategory()" >
-            <div class="createcategory-flex-container-center-all" >
+        <form class='cat-centered-row' $submit="createCategory()">
+            <div class="createcategory-flex-container-center-all">
                 <div class='cat-centered-row mb-5'>
                     <input type="text" id="categoryname" placeholder="أدخل اسم الفئة" maxlength="20" minlength="3"
                         required>
