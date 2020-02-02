@@ -49,7 +49,6 @@ export class Details {
                                  .then( data => {
                                      let iData = data;
                                      this.news = iData.docs[0];
-                                     this.news.attachment = this.b64EncodeUnicode(this.news.attachment);
                                      mvc.apply();
                                      this.getRelatedNews(this.news.categoryId, this.news._id);
                                      this.getWriters(this.news.writerId);
@@ -59,18 +58,11 @@ export class Details {
 
 
     getRelatedNews(categoryId, newsId) {
-        this.dataBase.findByIndex("/news",
-                                ["_id", "content", "title", "attachment", "categoryId"],"categoryId", categoryId,
-                                this.url,
-                                 this.auth)
-                                 .then( data => {
-                                     let iData = data;
-                                     this.relatedNews = iData.docs.filter((el) => { return el._id != newsId});
-                                     for(news of this.relatedNews) {
-                                         news.attachment = this.b64EncodeUnicode(news.attachment);
-                                     }
-                                     mvc.apply();
-                                 });
+        this.dataBase.findByIndex("/news", ["_id", "attachment", "title",],"categoryId", categoryId, this.url, this.auth).then( data => {
+            let iData = data;
+            this.relatedNews = iData.docs.filter((el) => { return el._id != newsId});
+            mvc.apply();
+        });
     }
 
     getWriters(writerId) {
@@ -78,16 +70,6 @@ export class Details {
             this.writer = data.filter((el) => { return el.id != writerId})[0].value;
             mvc.apply();
         });
-    }
-
-    b64EncodeUnicode(utf8String) {
-        // first we use encodeURIComponent to get percent-encoded UTF-8,
-        // then we convert the percent encodings into raw bytes which
-        // can be fed into btoa.
-        return btoa(encodeURIComponent(utf8String).replace(/%([0-9A-F]{2})/g,
-            function toSolidBytes(match, p1) {
-                return String.fromCharCode('0x' + p1);
-        }));
     }
 
 }
