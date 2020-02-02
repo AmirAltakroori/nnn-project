@@ -76,8 +76,8 @@ export class Details {
             publishedDate: "18/12/2019"
         }];
 
+        dynamicImport("./disqusVariable.js").then(data => data.disqus_config(7));
         this.disqus();
-        dynamicImport("./test.js").then(data => data.disqus_config(2));
     }
     disqus() {
         // DON'T EDIT BELOW THIS LINE
