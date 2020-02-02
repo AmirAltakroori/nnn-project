@@ -1,9 +1,11 @@
-    export class CategoriesController {
+export class CategoriesController {
 
     constructor() {
         this.categories = [];
         this.activeId = 0;
         this.activeRow = null;
+        this.userData = null;
+        this.userRole = -1;
         this.dp = null;
         dynamicImport("./../../adminpanel/js/backend.js").then(db => {
             this.db = db;
@@ -15,8 +17,10 @@
             });
 
         });
-        this.activeRow = null;
-        this.activeId = 0;
+
+        this.userData = JSON.parse(sessionStorage.getItem('user'));
+        this.userRole = this.userData.roleID;
+
     }
 
     hideModal(modalId) {
@@ -104,8 +108,8 @@
         this.activeId = -1;
         const category = this.categories[id];
         this.db.dbDelete('/categories', category._id, category._rev).then(resp => {
-            if(resp.ok)
-            this.categories.splice(id, 1);
+            if (resp.ok)
+                this.categories.splice(id, 1);
             location.reload();
         });
         this.hideModal('delete');

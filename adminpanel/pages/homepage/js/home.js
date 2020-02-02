@@ -13,6 +13,7 @@ export class HomeController {
             console.log(db.confirm());
             mvc.apply();
         });
+
         this.siteMode = null;
         this.getStatus().then(state => {
             this.siteMode = state;
