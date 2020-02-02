@@ -18,29 +18,27 @@
         <!-- Contains news title and photo & Show other related news -->
         <div class="news-content">
             <section class="news-header" id="news">
-                <span $for="relatedNew of relatedNews" class="news-info">
-
-                    <h1 $if="$relatedNew.id == $routeParams.id">
-                        {{$relatedNew.title}}
+                <span>
+                    <h1>
+                        {{$news.title}}
                     </h1>
+                    <div>
+                        <div class="main-img" style=" background-image: url('data:image/png;base64,{{$news.attachment}}');">
 
-                    <div $if="$relatedNew.id == $routeParams.id">
-                        <div class="main-img" style=" background-image: url(../img/{{$relatedNew.img}}); width: 100%;">
-                            .
                         </div>
                         <div class="news-more-info">
-                            <p class="authorName">{{$relatedNew.authorName}}</p>
-                            <p class="published">{{$relatedNew.publishedDate}}</p>
+                            <p class="authorName">{{$writer.firstName}} {{$writer.lastName}}</p>
                             <img src="../img/calenderIcon.png">
+                            <p class="published">{{$news.createDate}}</p>
                         </div>
                     </div>
 
                  </span>
                 <article class="article" id="article">
-                    <span $for="relatedNew of relatedNews">
-    
-                        <p $if="$relatedNew.id == $routeParams.id">
-                            {{$relatedNew.content}}
+                    <span>
+
+                        <p>
+                            {{$news.content}}
                         </p>
                     </span>
                 </article>
@@ -57,68 +55,31 @@
                     <!-- <li> -->
                     <div $for="relatedNew of relatedNews">
                         <li class="list-n">
-                            <a href="#/details/{{$relatedNew.id}}">
+                            <a href="#/details/{{$relatedNew._id}}">
 
-                                <img src="../img/{{$relatedNew.img}}" alt="صورة"> {{$relatedNew.title}}
+                                <img src="data:image/png;base64,{{$relatedNew.attachment}}" alt="صورة"> {{$relatedNew.title}}
 
                             </a>
                         </li>
                     </div>
                     <!-- </li> -->
 
-
                 </ul>
             </aside>
         </div>
         <!-- Contains  news sharing -->
         <div class="news-body">
+            <article class="article" id="article">
+                <span>
+                    <p>
+                        {{$news.content}}
+                    </p>
+                </span>
+            </article>
 
             <section class="news-sharing">
 
-                <div id="share-button" class="share-buttons">
-
-                    <!-- Facebook -->
-                    <a>
-                        <img src="img/facebook.png" alt="Facebook" />
-                    </a>
-
-                    <!-- LinkedIn -->
-                    <a>
-                        <img src="img/linkedin.png" alt="LinkedIn" />
-                    </a>
-
-                    <!-- instagram -->
-                    <a>
-                        <img src="img/instagram.png" alt="instagram" />
-                    </a>
-
-                    <!-- share -->
-                    <a>
-                        <img src="img/share.png" alt="share" />
-                    </a>
-
-                </div>
-
-                <div class="about">
-
-                    <!-- schedule -->
-                    <a>
-                        <img src="img/schedule.png" alt="Facebook" />
-                    </a>
-
-                    <!-- comment -->
-                    <a>
-                        <img src="img/comment.png" alt="LinkedIn" />
-                    </a>
-
-                    <!-- writer -->
-                    <a>
-                        <img src="img/writer.png" alt="instagram" />
-                    </a>
-
-
-
-                </div>
+                <div class="sharethis-inline-share-buttons"></div>
 
             </section>
 
@@ -128,35 +89,6 @@
 
     <!-- </span> -->
     <!-- Contains comments section -->
-    <div class="comments">
-        <div class="add-comment">
-            <div class="comment">
-
-                <img src="img/avatar.png" alt="">
-                <p>user name</p>
-            </div>
-            <div class="add">
-                <input type="text" name="" value="">
-                <button type="button" name="button">اضف تعليق</button>
-            </div>
-        </div>
-        <div class="list-comment">
-            <ul>
-                <li>
-                    <img src="img/avatar.png" alt="صورة">
-                    <p> لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات </p>
-                </li>
-                <li>
-                    <img src="img/avatar.png" alt="صورة">
-                    <p> أعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة، وهو العطاء الذي مُنح لشركة مايكروسوفت. </p>
-                </li>
-                <li>
-                    <img src="img/avatar.png" alt="صورة">
-                    <p> أعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة، وهو العطاء الذي مُنح لشركة مايكروسوفت. </p>
-                </li>
-            </ul>
-        </div>
-    </div>
     <div id="disqus_thread">{{$disqus()}}</div>
 
 </div>
