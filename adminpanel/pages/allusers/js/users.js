@@ -26,39 +26,17 @@ export class allUsers {
         }
     }
     updateStatus(field, id) {
-        this.showPopUp("sending");
+        createToast("جاري التعديل", '', "info", "");
         let user = null;
         user = this.usersPage[id];
         user[field] = document.getElementsByClassName(field)[id].value;
         this.db.dbCreateOrUpdate('/users', user, user._id).then(resp => {
             if (resp.ok) {
                 user._rev = resp.rev;
-                this.showPopUp("success");
+                createToast("نجحت العملية", 'تم تعديل الحالة', "success", "check");
             }
         });
     }
-    showPopUp(id, delay = 2000) {
-        if (delay == -1) {
-            const popup = document.getElementById(id);
-            popup.style.display = 'block';
-            return;
-        }
-        const popup = document.getElementById(id);
-        popup.style.display = 'block';
-        setTimeout(() => {
-            //  hidde th popup
-            popup.style.display = "none";
-        }, delay);
-
-    }
-    hidePopUp(id) {
-
-        const popup = document.getElementById(id);
-        popup.style.display = 'none';
-        return;
-
-    }
-
     show(modelId, id) {
         let element = document.getElementById(modelId);
         element.style.display = 'flex';
@@ -75,7 +53,7 @@ export class allUsers {
         if (this.activeId == -1)
             return;
         this.hide('delete');
-        this.showPopUp("news");
+        createToast("جاري حذف أخبار المستخدم", '', "info", "");
 
         const id = this.activeId;
         this.activeId = -1;
@@ -89,14 +67,12 @@ export class allUsers {
                       this.db.dbDelete("/news", news.rows[i].value._id, news.rows[i].value._rev);
                     }, 150);
                 } else {
-                    this.hidePopUp("delete");
                     this.db.dbDelete('/users', user._id, user._rev).then(resp => {
                         if (resp.ok) {
                             this.usersPage.splice(id, 1);
+                            createToast("نجحت العملية", 'تم حذف الحساب', "success", "check");
                             mvc.apply();
                             this.init();
-                            this.showPopUp("deleted");
-
                         }
                     });
                 }

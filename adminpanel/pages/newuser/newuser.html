@@ -12,19 +12,6 @@
     </div>
 
 </div>
-<div class="popup success" id='success'>
-    تم انشاء الحساب
-</div>
-<div class="popup success" id='updated'>
-    تم الحفظ
-</div>
-<div class="popup warning" id='usernameDub'>
-    اسم المستخدم مستخدم من قبل
-</div>
-<div class="popup warning" id='warning'>
-    كلمتا المرور غير متطابقة
-</div>
-
 <div class="all">
     <form id="adduserid" $submit='saveUser()' class='flex-box-35'>
         <div class="contain">
@@ -41,7 +28,7 @@
                 <input class="lname" type="text" $model='lastName' placeholder="الاسم الأخير" required></div>
             <div $if="$_id ==0">
                 <span>اسم المستخدم</span>
-                <input class="name-user" type="text" $model="username" placeholder="اسم المستخدم"
+                <input class="name-user" type="text" $model="userid" placeholder="اسم المستخدم"
                     required></div>
             <div>
                 <span>البريد الالكتروني</span>

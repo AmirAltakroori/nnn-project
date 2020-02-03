@@ -15,6 +15,7 @@ $modal-font-color: rgba(0, 0, 0, 0.7);
   box-sizing: border-box;
   direction: rtl;
   font-family: $font;
+  margin: 0;
 }
 
 a {
@@ -114,8 +115,8 @@ body {
   padding-top: 60px;
 }
 .logout-wrapper {
-    min-width: 146px;
-    min-height: 44px;
+  min-width: 146px;
+  min-height: 44px;
   color: white;
   background-color: #36344d;
   display: flex;
@@ -273,7 +274,6 @@ body {
 }
 
 .modal-delete {
-<<<<<<< HEAD
   position: fixed;
   width: 100%;
   top: 0;
@@ -286,21 +286,7 @@ body {
   align-items: center;
   font-size: 40px;
   opacity: 0;
-=======
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background-color: $modal-font-color;
-    display: none;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    font-size: 40px;
-    opacity: 0;
-    animation: 0.3s popup-animation forwards;
->>>>>>> f0ff7296b7d8739db13be064ccd863ea7c71793c
+  animation: 0.3s popup-animation forwards;
 }
 
 .modal-active {
@@ -374,93 +360,91 @@ body {
   margin-bottom: 5%;
 }
 
-.popup {
-<<<<<<< HEAD
-  color: #ffffff;
-  width: 30%;
-  height: 5%;
-  position: absolute;
-  left: 35%;
+.alert-container{
+  display: flex;
+  align-items: center;
+  position: fixed;
+  flex-direction: column;
+  left: 3%;
   z-index: 20;
-  bottom: 18%;
-  min-height: 50px;
-  min-width: 100px;
-  font-size: 20px;
+  bottom: 6%;
+}
+.popup {
+  display: flex;
+  margin-bottom: 5px;
+  align-items: center;
+  color: #dff0d8;
+  width: 300px;
+  position: relative;
+  border-radius: 4px;
+  line-height: 20px;
+  min-width: 250px;
+  font-size: 12px;
+  min-height: 70px;
   text-align: center;
-  border-radius: 10px;
-  display: none;
-  line-height: 50px;
-  &.warning {
-    background-color: #ebb318;
+  // display: none;
+  border-color: #d6e9c6;
+  // animation: popup-animation 0.5s linear;
+  .icon {
+    flex-basis: 20%;
+    color: white;
+    font-size: 30px;
+  }
+  .body {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+  }
+  &.danger {
+    background-color: #a94442;
   }
   &.success {
-    background-color: #097;
+    background-color: #319145;
   }
-  animation: popup-animation 0.5s linear;
-=======
-    color: #ffffff;
-    width: 30%;
-    height: 5%;
-    position: fixed;
-    left: 35%;
-    z-index: 20;
-    bottom: 18%;
-    min-height: 50px;
-    min-width: 100px;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 10px;
-    display: none;
-    line-height: 50px;
-    &.warning {
-        background-color: #ebb318;
-    }
-    &.success {
-        background-color: #097;
-    }
-    animation: popup-animation 0.5s linear;
->>>>>>> f0ff7296b7d8739db13be064ccd863ea7c71793c
+  &.info {
+    background-color: #31708f;
+  }
 }
 
-input[class='toggle'] {
-    margin: 0;
-    margin-bottom: 10px;
-    -webkit-appearance: button;
-    border:none;
-    background-color: #ccc;
-    width: 60px;
-    height: 30px;
-    border-radius: 50px;
-    cursor: pointer;
-    position: relative;
-    transition: background-color .2s;
-  }
-  
-  input[class='toggle']:after{
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 26px;
-    height: 26px;
-    background-color: #fff;
-    margin: 2px;
-    border-radius: 50px;
-    transition: .2s all;
-  }
-  
-  input[class='toggle']:checked{
-    background-color: #414898;
-  } 
-  
-  input[class='toggle']:checked:after {
-    left: 30px;
-  }
-  
-  input[class="toggle"]:focus{
-     outline:0;
-  }
+input[class="toggle"] {
+  margin: 0;
+  margin-bottom: 10px;
+  -webkit-appearance: button;
+  border: none;
+  background-color: #ccc;
+  width: 60px;
+  height: 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+input[class="toggle"]:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  background-color: #fff;
+  margin: 2px;
+  border-radius: 50px;
+  transition: 0.2s all;
+}
+
+input[class="toggle"]:checked {
+  background-color: #414898;
+}
+
+input[class="toggle"]:checked:after {
+  left: 30px;
+}
+
+input[class="toggle"]:focus {
+  outline: 0;
+}
 
 @keyframes popup-animation {
   from {
@@ -470,21 +454,9 @@ input[class='toggle'] {
     opacity: 100%;
   }
 }
-.delete-from-db {
-  color: #ffffff;
-  width: 60%;
-  height: 5%;
-  position: fixed;
-  right: 21%;
-  bottom: 0;
-  min-height: 50px;
-  min-width: 100px;
-  font-size: 20px;
-  text-align: center;
-  border-radius: 10px;
-  display: none;
-  line-height: 50px;
-  background-color: #27ae60;
-  box-shadow: -3px 2px 6px 4px #27ae60;
-  animation: popup-animation 0.5s linear;
+.delete-toast{
+  position: absolute;
+  left: 2%;
+  top: 0;
+  cursor: pointer;
 }

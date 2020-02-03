@@ -25,7 +25,7 @@ export class myNewsControler {
     }
 
     redirect(id) {
-        window.location.href = "#/addnews/"+ id;
+        window.location.href = "#/addnews/" + id;
         document.location.reload(true);
     }
 
@@ -52,7 +52,7 @@ export class myNewsControler {
         element.className += " modal-active";
         this.activeId = id;
     }
-    
+
     hide(modelId) {
         let element = document.getElementById(modelId);
         element.style.display = 'none';
@@ -62,12 +62,18 @@ export class myNewsControler {
     deleteNews() {
         if (this.activeId == -1)
             return;
+        createToast("جاري حذف الخبر", '', "info", "");
+
         const news = this.myNewsPage[this.activeId];
         const id = this.activeId;
         this.activeId = -1;
         this.db.dbDelete('/news', news._id, news._rev).then((req) => {
-            if (req.ok)
+            if (req.ok) {
                 this.myNewsPage.splice(id, 1);
+                createToast("نجحت العملية", ' تم حذف الخبر', "success", "check");
+
+            }
+
             mvc.apply();
         });
         this.hide('delete');
