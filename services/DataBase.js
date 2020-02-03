@@ -39,7 +39,7 @@ export class DataBase {
             } else if (id !='') {
                 url += `/${id}`;
             }
-            
+
             let http = new XMLHttpRequest();
             http.open("GET", url);
             http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -53,7 +53,7 @@ export class DataBase {
                     if (!id || id == ''){
                         for (let i = 0; i < data.rows.length; i++)
                             cleanedData.push(data.rows[i]);
-                        
+
                     }
                         //data = this.cleanData(data);
                     resolve(cleanedData);
@@ -102,10 +102,8 @@ export class DataBase {
                 },
                 "sort": [{"createDate": "desc"}],
                 'fields':fields,
-               "limit":5
-            } 
+            }
             parameters.selector[index] = value;
-            console.log(JSON.stringify(parameters));
             const url = baseUrl + endpoint + `/_find`;
             let http = new XMLHttpRequest();
             http.open("POST", url);

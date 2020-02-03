@@ -18,43 +18,30 @@ export class Home {
         this.dataBase = new DataBase();
         this.url = 'https://541e1dc0-354b-4134-ae7d-5eaa533a1bf9-bluemix.cloudant.com';
         this.auth = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJsdWVtaXg6NDU2YjA3NzhjODFjOWNiMDk5NzZkODU1NjQ5MDM2YzRlYTE1MTQwZTk5NDNlNWM2MGE5ZDM1MGMwNDU5YzIwMw==';
-        
+
+        this.writers = [];
+        this.getWriters();
+
         this.mainNews = [];
-        this.selectedNews = {};////////
+        this.selectedNews = {};
         this.getmainNews();
-            
+
         this.slideIndex = 0;
-        this.randomNews = [];        
+        this.randomNews = [];
         this.randomNewsView = [];
         this.getRandomNews();
-        this.isFirstTime = true;
         setInterval(() => {
             this.slide(1);
         } , 4000);
 
-        this.categoriesList = this.getCategoriesList();
-        this.categoryMainNews = this.getCategoryMainNews();
-        this.firstCategoryMainNews = this.categoryMainNews[0];
-        this.categoryMainNews = this.categoryMainNews.slice(1, 5);
-        this.categoryTitle = this.getCategoryTitle();
+        this.allNews = [];
 
         this.allCategories = [];
-        this.allMain = [];
+        this.categoriesView = [];
         this.getAllCategories();
 
-        //this.call();
     }
-    /*
-    call() {
-        this.getAllCategories();
 
-        console.log(this.allCategories)
-        for(let i = 0; i<this.allCategories.length; i++) {
-            console.log(this.allCategories)
-            this.getNewsForCategory(this.allCategories[i].id.toString());
-
-        }
-    }*/
     /*
         Change Selected news
 
@@ -85,67 +72,27 @@ export class Home {
     getmainNews () {
         this.dataBase.getData("/news/_design/views/_view/mainnews?limit=5&&descending=true",true,'',this.url,this.auth).then( data => {
             this.mainNews = data;
-            if (this.mainNews.length > 0) {                 
+            if (this.mainNews.length > 0) {
                 this.selectedNews = this.mainNews[0];
             }
+            if (this.mainNews.length > 4) {
+                this.mainNews = this.mainNews.slice(0, 4);
+            }
+            console.log(this.writers)
+            for (let news of this.mainNews) {
+                news.writer = this.writers.filter((el) => { return el.value.id == news.value.writer})[0].value;
+                console.log(news.writer)
+            }
+            console.log(this.mainNews)
             mvc.apply();
         });
     }
 
     getRandomNews () {
         this.dataBase.getData("/news/_design/views/_view/random?limit=12",true,'',this.url,this.auth).then( data => {
-            this.randomNews = data; 
-            if(this.randomNews.length > 3) 
-                this.randomNewsView = this.randomNews.slice(0, 3); 
-            else
-                this.randomNewsView = this.randomNews; 
-            mvc.apply();
+            this.randomNews = data;
+            this.slide(0);
         });
-    }
-
-    /*
-        Get Urgent News.
-
-        @tparam
-
-        @param
-
-        @returns
-
-        This function used to retrieve categories in navbar from database
-    */
-    getCategoriesList () {
-
-        // Rewrite this function when DB was ready.
-        return [{
-                        title: "الصفحة الرئيسية",
-                        path: "/home"
-                          }, {
-                        title: "تكنولوجيا",
-                        path: "/category/teachnology"
-                          }, {
-                        title: "علوم",
-                        path: "/category/science"
-                          }, {
-                        title: "ثقافة",
-                        path: "/category/knowledge"
-                          }, {
-                        title: "اقتصاد",
-                        path: "/category/economy"
-                          }, {
-                        title: "رياضة",
-                        path: "/category/sport"
-                          }, {
-                        title: "فن",
-                        path: "/category/art"
-                          }, {
-                        title: "سياسة",
-                        path: "/category/politics"
-                          }, {
-                        title: "موسيقى",
-                        path: "/category/music"
-                          }];
-
     }
 
     /*
@@ -171,88 +118,42 @@ export class Home {
             this.randomNewsView = this.randomNews.slice(this.slideIndex, this.randomNews.length);
             this.randomNewsView = [...this.randomNewsView, ...(this.randomNews.slice(0, (this.slideIndex + 3) % this.randomNews.length))];
         }
-        // mvc.apply();
+         mvc.apply();
     }
 
-     getCategoryMainNews () {
-
-      // I'll rewrite this function when DB was ready.
-          return [{
-                              title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
-                              path: "#",
-                              authorName: "admin",
-                              publishedDate: "12/12/2019",
-                              img:"img1.jpg",
-                              SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
-                              id: 1
-                             },{
-                              title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
-                              path: "#",
-                              authorName: "admin",
-                              publishedDate: "12/12/2019",
-                              img:"2.jpeg",
-                              SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
-                              id: 2
-                             },{
-                              title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
-                              path: "#",
-                              authorName: "admin",
-                              publishedDate: "12/12/2019",
-                              img:"3.jpeg",
-                              SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
-                              id: 3
-                             },{
-                              title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
-                              path: "#",
-                              authorName: "admin",
-                              publishedDate: "12/12/2019",
-                              img:"4.jpeg",
-                              SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
-                              id: 4
-                             },{
-                              title: " القوة الخامسة للطبيعة.. اكتشاف قد يفك لغز المادة المظلمة",
-                              path: "#",
-                              authorName: "admin",
-                              publishedDate: "12/12/2019",
-                              img:"new.jpg",
-                              SubDescription:"فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم فوز البرازيل بكأس العالم ",
-                              id: 5
-                             }];
-      }
-
-    getCategoryTitle () {
-
-      // I'll rewrite this function when DB was ready.
-          return {
-                    title:"الأخبار العالمية",
-                    id:1
-                  };
-    }
 
     getAllCategories() {
         this.dataBase.getData("/categories/_design/allcategories/_view/new-view",true,'',this.url,this.auth).then( data => {
-            console.log(data);
             this.allCategories = data;
-            
-            //console.log(this.allCategories)
-            for(let i = 0; i<this.allCategories.length; i++) {
-                console.log(this.allCategories.length)
-                //console.log(this.allCategories[i].id.toString())
-                this.getNewsForCategory(this.allCategories[i].id.toString());
-
-            }
-            console.log(this.allMain)
+            this.getNewsForCategory(this.allCategories);
             mvc.apply();
         });
     }
 
-    getNewsForCategory(id) {
-        this.dataBase.dbFindByIndex("/news",['title', 'content', 'writerId', 'createDate'],"categoryId",id, this.url,this.auth).then( data => {
-            console.log(data);
-            //if(data.bookmark != "nil")
-            console.log("i am id " + id)
-            this.allMain.push(data);
-        });    
+    getNewsForCategory(categories) {
+        this.dataBase.dbFindByIndex("/news",["_id", "title", "attachment", "seoDescription", "createDate", "categoryId", "writerId"],"isActive", 1, this.url,this.auth).then( data => {
+            this.allNews = data.docs;
+            for (let category of categories) {
+                category.allMain = [];
+                category.mainNews = {};
+                let categoryNews = this.allNews.filter((el) => { return el.categoryId == category.id});
+                if (categoryNews.length > 0) {
+                    category.mainNews = categoryNews[0];
+                    category.mainNews.writer = this.writers.filter((el) => { return el.id == category.mainNews.writerId})[0];
+                    if (categoryNews.length > 1) {
+                        category.allMain = categoryNews.slice(1, 5);
+                    }
+                    this.categoriesView.push(category);
+                }
+            }
+            mvc.apply();
+        });
+    }
+
+    getWriters() {
+        this.dataBase.getData("/users/_design/users/_view/generalinfo",true,'',this.url,this.auth).then( data => {
+            this.writers = data;
+        });
     }
 
 }
