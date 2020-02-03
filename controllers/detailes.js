@@ -28,7 +28,7 @@ export class Details {
 
         this.getNews();
 
-        dynamicImport("./disqusVariable.js").then(data => data.disqus_config(7));
+        dynamicImport("./disqusVariable.js").then(data => data.disqus_config(mvc.routeParams.id));
         this.disqus();
     }
 
