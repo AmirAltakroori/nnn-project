@@ -95,16 +95,22 @@ export class myNewsControler {
             news = this.allNewsPage.find(field => field._id == id);
 
         news[field] = +!news[field];
-        setTimeout(() => {
-            this.db.dbCreateOrUpdate('/news', news, news._id).then(resp => {
-                if (resp.ok) {
-                    news._rev = resp.rev;
-                    createToast("نجحت العملية", 'تم تحديث الحالة', "success", "check");
-                }
-            }, () => {
-                this.updateStatus(field, id, false);
-            });
-        }, 250);
+        this.db.dbGet('/news/_design/views/_view/attachcontent', true, news._id).then(data => {
+            news.attachment = data.rows[0].value.attachment;
+            news.content = data.rows[0].value.content;
+            console.log(news);
+            setTimeout(() => {
+                this.db.dbCreateOrUpdate('/news', news, news._id).then(resp => {
+                    if (resp.ok) {
+                        news._rev = resp.rev;
+                        createToast("نجحت العملية", 'تم تحديث الحالة', "success", "check");
+                    }
+                }, () => {
+                    this.updateStatus(field, id, false);
+                });
+            }, 250);
+        });
+
     }
 
     init() {
