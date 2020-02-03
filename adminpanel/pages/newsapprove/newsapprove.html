@@ -70,7 +70,7 @@
         </tbody>
     </table>
 </div>
-<div  $if='!$loading' class="newsapprove-flex-box">
+<div  $if='!$loading && $notAppNewsPage.length > 0' class="newsapprove-flex-box">
     <div class="newsapprove-approve-button" $click="appproveNews()">
         تأكيد الخبر
     </div>
