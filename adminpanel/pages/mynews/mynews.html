@@ -10,17 +10,10 @@
         <div class="title">
             <span class="title_text">أخباري</span>
         </div>
-        <div class="search_area">
-            <div class="search_word">
-                <span>البحث</span>
-            </div>
-            <div class="search">
-                <i class="fas fa-search"></i>
-                <input type="text" class="search_field" placeholder="أدخل عنوان الخبر" id="search"
-                    onkeyup="searchElement(1)">
-            </div>
+        <div style="direction:ltr" class="search-box">
+            <input id='search' onkeyup='searchElement(1)' type="text" placeholder='ادخل عنوان الخبر'>
+            <i id="icon if" class="search id"></i>
         </div>
-
     </div>
     <table id="table" class="content">
         <thead>

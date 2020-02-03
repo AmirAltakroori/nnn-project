@@ -73,7 +73,7 @@ function showIfDeleteOrNot(e) {
 */
 function searchElement(columnIndex) {
     let searchInput, searchText, table, tableBody, tr, i, td, span, category;
-
+    console.log(columnIndex);
     // get text from search input
     searchInput = document.getElementById('search');
     searchText = searchInput.value;
