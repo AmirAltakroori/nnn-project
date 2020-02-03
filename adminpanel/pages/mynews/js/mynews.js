@@ -1,7 +1,7 @@
 export class myNewsControler {
     constructor() {
 
-
+        this.loading = true;
         this.myNewsPage = [];
         this.categories = [];
         this.dp = null;
@@ -15,6 +15,7 @@ export class myNewsControler {
 
                 this.getMyNews(this.user.data.username).then(news => {
                     this.myNewsPage = this.db.cleanDataForControllers(news.rows);
+                    this.loading = false;
                     mvc.apply();
                 });
 

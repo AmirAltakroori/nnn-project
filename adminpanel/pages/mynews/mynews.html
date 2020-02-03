@@ -15,7 +15,10 @@
             <i id="icon if" class="search id"></i>
         </div>
     </div>
-    <table id="table" class="content">
+    <div $if='$loading' class='flex-container-center-all-column height-100'>
+        <img src="./img/loader.gif" alt="">
+    </div>
+    <table  $if='!$loading'  id="table" class="content">
         <thead>
             <tr class="first_row">
                 <th>#</th>

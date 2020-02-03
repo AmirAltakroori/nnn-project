@@ -7,13 +7,14 @@ export class CategoriesController {
         this.userData = null;
         this.userRole = -1;
         this.submit = false;
+        this.loading = true;
         this.dp = null;
         dynamicImport("./../../adminpanel/js/backend.js").then(db => {
             this.db = db;
             this.db.confirm();
             this.getAllCat().then(cats => {
                 this.categories = this.db.cleanDataForControllers(cats);
-
+                this.loading = false;
                 mvc.apply();
                 this.init();
             });

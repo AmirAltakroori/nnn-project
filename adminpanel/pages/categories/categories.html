@@ -14,11 +14,14 @@
             <div> اضافة فئة</div>
         </div>
     </div>
-    <div style="direction:ltr"  class="search-box">
+    <div  $if='!$loading'  style="direction:ltr"  class="search-box">
         <input id='search' onkeyup='searchElement(1)' type="text"  placeholder='البحث عن طريق اسم الفئة'>
         <i id="icon if" class="search id"></i>
     </div>
-    <table id="content" class="content">
+    <div $if='$loading' class='flex-container-center-all-column height-100'>
+        <img src="./img/loader.gif" alt="">
+    </div>
+    <table $if='!$loading' id="content" class="content">
         <thead>
             <tr class="first_row">
                 <th>#</th>
@@ -28,7 +31,7 @@
             </tr>
         </thead>
         <tbody id="tablebody" $for="cta of categories">
-            <tr>
+            <tr class='user_info'> 
                 <td class="user_no">{{$i+1}}</td>
                 <td class="user_full">
                     <span class="user_name" $style="'font-size:18px': true">{{$cta.name}}</span>
@@ -56,7 +59,7 @@
                         $click="showModal('delete','$i')"></i>
                     <i class="far fa-edit icon color-blue" $click="showModal('createcategory-edit-modal',$i)"></i>
                 </td>
-            </tr>
+            </tr> 
         </tbody>
     </table>
 </div>
