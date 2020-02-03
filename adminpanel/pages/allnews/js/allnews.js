@@ -24,17 +24,17 @@ export class myNewsControler {
         });
     }
 
-      redirect(id) {
-                window.location.href = "#/addnews/"+id;
-                document.location.reload(true);
-    }      
-      
+    redirect(id) {
+        window.location.href = "#/addnews/" + id;
+        document.location.reload(true);
+    }
+
     show(modelId, id) {
         let element = document.getElementById(modelId);
         element.style.display = 'flex';
         element.className += " modal-active";
         this.activeId = id;
-        
+
     }
     hide(modelId) {
         let element = document.getElementById(modelId);
@@ -44,7 +44,7 @@ export class myNewsControler {
     deleteNews() {
         if (this.activeId == -1)
             return;
-        this.showPopUp("sending");
+        createToast("جاري حذف", '', "info", "");
         const news = this.allNewsPage[this.activeId];
         const id = this.activeId;
         this.activeId = -1;
@@ -53,7 +53,7 @@ export class myNewsControler {
                 this.allNewsPage.splice(id, 1);
             mvc.apply();
             this.init();
-            this.showPopUp("success");
+            createToast("نجحت العملية", 'تم حذف الخبر', "success", "check");
 
         });
         this.hide('delete');
@@ -85,21 +85,26 @@ export class myNewsControler {
             })
         });
     }
-    updateStatus(field, id) {
-        this.showPopUp("sending");
+    updateStatus(field, id, showToast = true) {
+        if (showToast)
+            createToast("جاري التعديل", '', "info", "");
         let news = null;
         if (field == 'isActive')
             news = this.allNewsPage[id];
         else
-         news = this.allNewsPage.find(field => field._id == id);
+            news = this.allNewsPage.find(field => field._id == id);
 
         news[field] = +!news[field];
-        this.db.dbCreateOrUpdate('/news', news, news._id).then(resp => {
-            if (resp.ok) {
-                news._rev = resp.rev;
-                this.showPopUp("success");
-            }
-        });
+        setTimeout(() => {
+            this.db.dbCreateOrUpdate('/news', news, news._id).then(resp => {
+                if (resp.ok) {
+                    news._rev = resp.rev;
+                    createToast("نجحت العملية", 'تم تحديث الحالة', "success", "check");
+                }
+            }, () => {
+                this.updateStatus(field, id, false);
+            });
+        }, 250);
     }
 
     init() {
@@ -130,16 +135,4 @@ export class myNewsControler {
             })
         }
     }
-
-    showPopUp(id) {
-        let popup = document.getElementById(id);
-        popup.style.display = 'block';
-        setTimeout(() => {
-            //  hidde th popup
-            popup.style.display = "none";
-        }, 1500);
-
-    }
-
-
 }

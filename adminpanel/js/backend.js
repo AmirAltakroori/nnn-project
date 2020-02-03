@@ -80,11 +80,19 @@ export function dbGet(endpoint, isView, id) {
         http.setRequestHeader("Authorization", AUTHENTICATION);
         http.onreadystatechange = function () { //Call a function when the state changes.
             if (http.readyState == 4) {
-                let data = JSON.parse(http.responseText);
-                if (!id || id == '')
-                    data = cleanData(data);
-                resolve(data);
+                if (http.status == 200) {
+                    let data = JSON.parse(http.responseText);
+                    if (!id || id == '')
+                        data = cleanData(data);
+                    resolve(data);
+                }
             }
+            if (http.status == 409) {
+                console.log(http.status)
+                let data = JSON.parse(http.responseText);
+                reject(data);
+            }
+
         }
         http.send();
     });
@@ -125,6 +133,11 @@ export function dbCreateOrUpdate(endpoint, data, id) {
         http.setRequestHeader("Authorization", AUTHENTICATION);
         http.onreadystatechange = function () { //Call a function when the state changes.
             if (http.readyState == 4) {
+                if (http.status == 409) {
+                    console.log(http.status)
+                    let data = JSON.parse(http.responseText);
+                    reject(data);
+                }    
                 resolve(JSON.parse(http.responseText));
             }
         }

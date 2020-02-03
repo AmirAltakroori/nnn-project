@@ -6,7 +6,7 @@ export class approveNewsControler {
         this.categories = [];
         this.dp = null;
 
-
+        this.submit = false;
         dynamicImport("./../../adminpanel/js/backend.js").then(db => {
             this.db = db;
             this.db.confirm();
@@ -28,7 +28,9 @@ export class approveNewsControler {
     }
 
     approvenews() {
-
+        if(this.submit)
+            return ;
+            this.submit = true;
 
         let userdata = JSON.parse(sessionStorage.getItem("userData"));
         if (userdata != null) {
@@ -40,7 +42,7 @@ export class approveNewsControler {
         let news;
         let data;
         let j = 0;
-        this.showPopUp("sending");
+        createToast("جاري تأكيد الأخبار المختارة", '', "info", "");
         let approved = [];
         for (let i = 0; i < this.notAppNewsPage.length; i++) {
             let checkbox = document.getElementById(this.notAppNewsPage[i]._id);
@@ -74,8 +76,9 @@ export class approveNewsControler {
             let x = this.updateNew(data, news._id + '');
             if (i == j - 1) {
                 x.then(finished => {
-                    this.showPopUp("updated");
+                    createToast("نجحت العملية", 'تم تأكيد الأخبار', "success", "check");
                     setTimeout(() => {
+                        this.submit = false;
                         window.location.reload();
                     }, 1500);
                 })
@@ -91,17 +94,6 @@ export class approveNewsControler {
                 //document.location.reload(true);
             });
         })
-    }
-
-    showPopUp(id) {
-        let popup = document.getElementById(id);
-        console.log(popup);
-        popup.style.display = 'block';
-        setTimeout(() => {
-            //  hidde th popup
-            popup.style.display = "none";
-        }, 1000);
-
     }
 
     show(modelId, id) {

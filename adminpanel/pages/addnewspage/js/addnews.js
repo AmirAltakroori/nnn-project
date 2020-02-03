@@ -160,7 +160,7 @@ export class addnewsController {
     saveNews() {
         if(this.attachment == '')
             {
-                this.showPopUp('danger');
+                createToast("خطأ", 'قم بإختيار الصورة ', "danger", "times-circle");
                 return ;
             }
         if (this.newsId == -1)
@@ -174,7 +174,6 @@ export class addnewsController {
         if (this.submitted)
             return;
         this.submitted = true;
-        this.showPopUp("sending");
         let news = {
             title: this.title,
             content: this.editor.container.firstChild.innerHTML,
@@ -192,12 +191,12 @@ export class addnewsController {
         }
         
         if (id != 0) {
-            
+            createToast("جاري التعديل", '', "info", "");
             news._rev = this.rev;
             news._id = id;
             this.updateExistedNew(news, id).then(resp => {
                 if (resp.ok) {
-                    this.showPopUp("updated");
+                    createToast("نجحت العملية", 'تم تعديل الخبر', "success", "check");
                     setTimeout(() => {
                         window.location.href = "#/home";
                         this.$submitted = false;
@@ -206,23 +205,16 @@ export class addnewsController {
             });
             return;
         }
+        createToast("نجحت العملية", 'جاري انشاء الخبر', "success", "check");
         if (this.createDate == '')
             news.createDate = this.changeDateFormat(new Date());
 
         this.CreateNews(news).then(resp => {
-            this.showPopUp("success");
+            createToast("نجحت العملية", 'تمت اضافة الخبر', "success", "check");
             setTimeout(() => window.location.href = "#/mynews", 1000);
         });
     }
-    showPopUp(id) {
-        let popup = document.getElementById(id);
-        popup.style.display = 'block';
-        setTimeout(() => {
-            //  hidde th popup
-            popup.style.display = "none";
-        }, 1000);
 
-    }
     evalCheckbox(value) {
         return value;
     }

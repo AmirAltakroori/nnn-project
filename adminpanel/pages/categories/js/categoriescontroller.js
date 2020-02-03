@@ -6,6 +6,7 @@ export class CategoriesController {
         this.activeRow = null;
         this.userData = null;
         this.userRole = -1;
+        this.submit = false;
         this.dp = null;
         dynamicImport("./../../adminpanel/js/backend.js").then(db => {
             this.db = db;
@@ -37,13 +38,16 @@ export class CategoriesController {
         modal.classList.remove("modal-active");
     }
     updateCategoryStatus(id) {
-        this.showPopUp("sending"); 
+        //opUp("sending");
+        createToast("جاري التعديل", '', "info", "");
         const category = this.categories[id];
         category.isActive = +!category.isActive;
         this.db.dbCreateOrUpdate('/categories', category, category._id).then(resp => {
             if (resp.ok) {
                 this.categories[id]._rev = resp.rev;
-                this.showPopUp("success"); 
+                //opUp("success");
+                createToast("نجحت العملية", 'تم تعديل حالة الفئة', "success", "check");
+
             }
         });
     }
@@ -59,31 +63,30 @@ export class CategoriesController {
             document.getElementById("categoryname").value = '';
         }
     }
-    showPopUp(id) {
-        let popup = document.getElementById(id);
-        popup.style.display = 'block';
-        setTimeout(() => {
-            //  hidde th popup
-            popup.style.display = "none";
-        }, 1500);
-
-    }
     getCatId() {
         return dbGet("/settings", false, "categories");
     }
     createCategory() {
-        this.showPopUp("sending"); 
+        if (this.submit)
+            return;
+        this.submit = true;
+        // //opUp("sending");
+        createToast("جاري اضافة الفئة", '', "info", "");
+
         let category = {
             isActive: 1,
             name: document.getElementById('categoryname').value,
         }
         this.CreateCat(category).then(data => {
             if (data.ok) {
+                category._rev = data.rev;
                 this.categories.push(category);
+
                 mvc.apply();
-                this.showPopUp("success"); 
+                createToast("نجحت العملية", 'تمت اضافة الفئة', "success", "check");
             }
             this.hideModal('createcategory-modal');
+            this.submit = false;
         });
     }
     CreateCat(data) {
@@ -119,29 +122,36 @@ export class CategoriesController {
         modal.style.display = "none";
     }
     deleteCategory() {
-        this.showPopUp("sending"); 
+        if (this.submit)    
+            return;
+        this.submit = true;
+        //opUp("sending");
+        createToast("جاري حذف", '', "info", "");
+
         if (this.activeId == -1)
             return;
         const id = this.activeId;
         this.activeId = -1;
         const category = this.categories[id];
         this.db.dbDelete('/categories', category._id, category._rev).then(resp => {
-            if (resp.ok){
-                
+            if (resp.ok) {
+
                 this.categories.splice(id, 1);
                 mvc.apply();
                 this.init();
-                this.showPopUp("success"); 
+                createToast("نجحت العملية", 'تم حذف الفئة', "success", "check");
             }
-               
-            
+            this.hideModal('delete');
+            this.submit = true;
+
         });
-        this.hideModal('delete');
     }
     updateCategoryName() {
         if (this.activeId == -1)
             return;
-            this.showPopUp("sending");
+        //opUp("sending");
+        createToast("جاري التعديل", '', "info", "");
+
         const id = this.activeId;
         this.activeId = -1;
         const category = this.categories[id];
@@ -153,7 +163,7 @@ export class CategoriesController {
                 this.categories[id]._rev = resp.rev;
                 mvc.apply();
                 this.init();
-                this.showPopUp("success");
+                createToast("نجحت العملية", 'تم تعديل اسم الفئة', "success", "check");
             }
         });
         this.hideModal('createcategory-edit-modal');

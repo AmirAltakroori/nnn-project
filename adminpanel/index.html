@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
@@ -24,6 +24,9 @@
     <script src="./js/frontend.js"></script>
 
     <script>
+        let alertNumber = 0;
+        let info = 0;
+
         const userData = JSON.parse(sessionStorage.getItem('user'));
         if (!userData) {
             window.location.href = '/admin-panel-login/login.html';
@@ -32,7 +35,64 @@
         console.log(userData);
         document.addEventListener("DOMContentLoaded", (e) => {
             document.getElementById("username").innerHTML = userData.fullName;
-         })
+        })
+
+        function deleteMe(e) {
+            e.parentElement.parentElement.removeChild(e.parentElement);
+        }
+        function createToast(header, message, type, icon) {
+            alertNumber++;
+            const container = document.getElementById('alert-container');
+            let div = document.createElement('div');
+            if (type == 'success') {
+                const prev = info;
+                const isInfo = document.getElementById(`info${prev}`);
+                if (isInfo) {
+                    container.removeChild(isInfo.parentElement);
+                    info--;
+                }
+            }
+            if (type == 'info') {
+                info++;
+                div.innerHTML += `  <div id="${type}${info}" class= "popup ${type}" >
+                <div class='icon'>
+                    <i class="fas fa-${icon}"></i>
+                </div>
+                <div class='body'>
+                    <h3>${header}
+                    </h3>
+                    <span>${message}</span>
+                </div>
+                <div onclick='deleteMe(this)' class='delete-toast'>
+                    <h3>x</h3>
+                </div>
+        </div >`
+                container.appendChild(div);
+                return;
+            }
+
+            div.innerHTML += `  <div id="${type}${alertNumber}" class= "popup ${type}" >
+                <div class='icon'>
+                    <i class="fas fa-${icon}"></i>
+                </div>
+                <div class='body'>
+                    <h3>${header}
+                    </h3>
+                    <span>${message}</span>
+                </div>
+                <div onclick='deleteMe(this)' class='delete-toast'>
+                    <h3>x</h3>
+                </div>
+        </div >`;
+            container.appendChild(div);
+        setTimeout(() => {
+            if(div)
+                {
+                    container.removeChild(div);
+                }
+        }, 3000);
+        }
+
     </script>
 
     <title>Home</title>
@@ -54,11 +114,11 @@
                         <span id="username"></span>
 
                     </div>
-                   
+
                     <div class="header-inline-block" onclick="showLogOut()">
                         <i class="fas fa-chevron-down"></i>
                         <div id="logout-model" class="logout-model">
-                            <div  class="logout-wrapper" onclick="logOut()">تسجيل الخروج</div>
+                            <div class="logout-wrapper" onclick="logOut()">تسجيل الخروج</div>
                         </div>
                     </div>
                 </div>
@@ -70,7 +130,7 @@
         <script src='app.js'></script>
 
     </div>
-
+    <div class='alert-container' id='alert-container'>
 </body>
 
 </html>
