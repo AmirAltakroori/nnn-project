@@ -214,7 +214,7 @@ export class addnewsController {
             });
             return;
         }
-        createToast("نجحت العملية", 'جاري انشاء الخبر', "success", "check");
+        createToast("جاري انشاء الخبر", '', "info", "");
         if (this.createDate == '')
             news.createDate = this.changeDateFormat(new Date());
 
