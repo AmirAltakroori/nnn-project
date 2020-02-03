@@ -60,6 +60,7 @@ export class addusersController {
             createToast("خطأ", 'كلمتا المرور غير متطابقات', "danger", "times-circle");
             btn.disabled = false;
             btn.style.background = '';
+            this.$submitted = false;
             return;
         }
         setTimeout(() => {

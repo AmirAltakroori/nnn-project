@@ -25,17 +25,16 @@ export class addnewsController {
                 mvc.apply();
                 if (this.newsId != 0) {
                     db.dbGet("/news/_design/views/_view/allnews", true, this.newsId).then(news => {
-                        if(news.rows.length !=1)
-                            {
-                                window.location.href = '#/addnews/0';
-                            }
+                        if (news.rows.length != 1) {
+                            window.location.href = '#/addnews/0';
+                        }
                         mvc.apply();
                         this.fillData(news.rows[0].value);
                         this.richTextEditor();
 
                     });
 
-                }else  this.richTextEditor();
+                } else this.richTextEditor();
             });
 
 
@@ -61,6 +60,7 @@ export class addnewsController {
         this.categories = [];
         this.rev = '';
         this.submitted = false;
+        this.errorMessage =0;
     }
     fillData(data) {
         this.newsImage = data.attachment;
@@ -158,22 +158,31 @@ export class addnewsController {
         })
     }
     saveNews() {
-        if(this.attachment == '')
-            {
-                createToast("خطأ", 'قم بإختيار الصورة ', "danger", "times-circle");
-                return ;
-            }
+
+
+
+        if (this.attachment == '' ) {
+            this.errorMessage++;
+            this.errorMessage = this.errorMessage%2;
+            if(this.errorMessage)
+                {
+                    createToast("خطأ", 'قم بإختيار الصورة ', "danger", "times-circle");
+                }
+            this.submitted = false;
+            return;
+        }
         if (this.newsId == -1)
             return;
+        if (this.submitted)
+            return;
+        this.submitted = true;
         const id = this.newsId;
         this.newsId = -1;
         let btn = this.idSelector('submit-btn');
         btn.disabled = true;
         btn.style.fontSize = '15px';
         btn.innerHTML = "جاري ارسال الخبر";
-        if (this.submitted)
-            return;
-        this.submitted = true;
+
         let news = {
             title: this.title,
             content: this.editor.container.firstChild.innerHTML,
@@ -189,7 +198,7 @@ export class addnewsController {
             writerId: this.writerId,
             isApproved: this.isApproved,
         }
-        
+
         if (id != 0) {
             createToast("جاري التعديل", '', "info", "");
             news._rev = this.rev;
