@@ -30,6 +30,7 @@ export class Home {
         this.randomNews = [];
         this.randomNewsView = [];
         this.getRandomNews();
+
         setInterval(() => {
             this.slide(1);
         } , 4000);
@@ -53,7 +54,6 @@ export class Home {
     */
     changeSelectedNews(news) {
         this.selectedNews = news;
-        console.log(news)
         mvc.apply();
     }
 
@@ -115,7 +115,25 @@ export class Home {
             this.randomNewsView = this.randomNews.slice(this.slideIndex, this.randomNews.length);
             this.randomNewsView = [...this.randomNewsView, ...(this.randomNews.slice(0, (this.slideIndex + 3) % this.randomNews.length))];
         }
-         mvc.apply();
+        this.showRandomNews();
+    }
+
+    showRandomNews() {
+        const rendomNewsContainer = document.getElementById('rendom-news-container');
+
+        rendomNewsContainer.innerHTML="";
+
+        for (let randomNews of this.randomNewsView) {
+            let randomNewsTile = `<a href="#/details/${randomNews.value.id}">
+                                        <div class="slider-news-tile" style="background-image: url('${randomNews.value.image}');">
+                                            <div class="date">${randomNews.value.createDate}</div>
+                                            <div class="news">
+                                                ${randomNews.value.title}
+                                            </div>
+                                        </div>
+                                    </a>`;
+            rendomNewsContainer.innerHTML += randomNewsTile;
+        }
     }
 
 
@@ -124,6 +142,7 @@ export class Home {
             this.allCategories = data;
             this.getNewsForCategory(this.allCategories);
             mvc.apply();
+            this.slide(0);
         });
     }
 
@@ -144,6 +163,7 @@ export class Home {
                 }
             }
             mvc.apply();
+            this.slide(0);
         });
     }
 

@@ -62,15 +62,8 @@
     <div class="random-news">
         <div class="imagesPrev"><img $click="slide(1)" src="../img/arrow.png" ></div>
 
-        <div $for="news of randomNewsView" id="rendom-news-container" class="rendom-news-container">
-            <a href="#/details/{{$news.value.id}}">
-                <div class="slider-news-tile" style="background-image: url('{{$news.value.image}}');">
-                    <div class="date">{{$news.value.createDate}}</div>
-                    <div class="news">
-                        {{$news.value.title}}
-                    </div>
-                </div>
-            </a>
+        <div id="rendom-news-container" class="rendom-news-container">
+            
         </div>
 
         <div class="imagesNext"><img $click="slide(-1)" src="../img/arrow-left.png"></div>
