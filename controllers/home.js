@@ -78,12 +78,9 @@ export class Home {
             if (this.mainNews.length > 4) {
                 this.mainNews = this.mainNews.slice(0, 4);
             }
-            console.log(this.writers)
             for (let news of this.mainNews) {
                 news.writer = this.writers.filter((el) => { return el.value.id == news.value.writer})[0].value;
-                console.log(news.writer)
             }
-            console.log(this.mainNews)
             mvc.apply();
         });
     }
