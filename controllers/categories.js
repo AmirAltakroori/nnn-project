@@ -99,14 +99,13 @@ export class Category {
     }
 
     getRandomNews(categoryId) {
-        this.dataBase.findByIndex("/news", ["_id", "title", "attachment", "categoryId"], "isActive" , 1 , this.url, this.auth).then( data => {
-            let iData = data;
-            this.randomNews = iData.docs.filter((el) => { return el.categoryId != categoryId});
+        this.dataBase.getData("/news/_design/views/_view/random",true,'',this.url,this.auth).then( data => {
+            this.randomNews = data;console.log(data);
             if (this.randomNews.lenght > 10) {
                 this.randomNews = this.randomNews.slice(0, 10);
             }
             mvc.apply();
-         });
+        });
     }
 
     getWriters() {

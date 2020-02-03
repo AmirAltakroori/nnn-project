@@ -117,9 +117,9 @@
             <!-- List of random news  -->
             <p class="title">منوعات</p>
             <ul $for="news of randomNews" id="random-content">
-                <li class="card random-new" id="{{$news._id}}">
-                    <img src="{{$news.attachment}}" alt="">
-                    <a href="#/details/{{$news._id}}">{{$news.title}}</a>
+                <li class="card random-new" id="{{$news.value.id}}">
+                    <img src="{{$news.value.image}}" alt="">
+                    <a href="#/details/{{$news.value.id}}">{{$news.value.title}}</a>
                 </li>
             </ul>
 
