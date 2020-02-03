@@ -34,7 +34,8 @@
             <tr class='user_info'>
                 <td class="user_no">{{$i+1}}</td>
                 <td class="user_full">
-                    <span class="user_name allnews-title-limit">{{$user.firstName}} {{$user.lastName}} </span>
+                    
+                    {{$user.firstName}} {{$user.lastName}}
                 </td>
                 <td>
                     <div $if ='$role == 3'>

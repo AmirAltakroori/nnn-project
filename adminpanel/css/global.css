@@ -170,7 +170,7 @@ body {
     .container .content tbody tr:nth-of-type(odd) {
       background: #eee; }
     .container .content tbody tr:hover {
-      background: #615d8a;
+      background: #b7b0ff;
       color: white; }
     .container .content .user_info {
       width: 100%;
