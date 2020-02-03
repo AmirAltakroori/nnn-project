@@ -650,9 +650,11 @@
                 text-decoration: none;
                 align-items: center;
                 display: flex;
+                border: 2px solid #00000000;
 
                 img {
                     display: inline-block;
+                    margin: 1% 1% 1% 2%;
                 }
 
                 p {
@@ -663,6 +665,10 @@
                     justify-content: flex-start;
 
                 }
+            }
+
+            .news:hover {
+                border: 2px solid #184392;
             }
         }
     }

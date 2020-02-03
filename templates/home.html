@@ -27,10 +27,8 @@
             </div>
             <div $for="news of mainNews" id="latest-news-list">
                 <div $click="changeSelectedNews($news)" class="news">
-                    <a $click="changeSelectedNews($news)">
-                        <img $click="changeSelectedNews($news)" src="{{$news.value.attachment}}">
-                        <p $click="changeSelectedNews($news)">{{$news.value.title}}</p>
-                    </a>
+                    <img $click="changeSelectedNews($news)" src="{{$news.value.attachment}}">
+                    <p $click="changeSelectedNews($news)">{{$news.value.title}}</p>
                 </div>
             </div>
         </div>
