@@ -54,12 +54,9 @@
 
                     <!-- <li> -->
                     <div $for="relatedNew of relatedNews">
-                        <li class="list-n">
-                            <a href="#/details/{{$relatedNew._id}}">
-
-                                <img src="{{$relatedNew.attachment}}" alt="صورة"> {{$relatedNew.title}}
-
-                            </a>
+                        <li class="list-n" id="{{$relatedNew._id}}">
+                            <img src="{{$relatedNew.attachment}}" alt="">
+                            <a href="#/details/{{$relatedNew._id}}">{{$relatedNew.title}}</a>
                         </li>
                     </div>
                     <!-- </li> -->

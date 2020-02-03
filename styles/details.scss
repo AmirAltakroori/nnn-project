@@ -15,12 +15,21 @@
 @media screen and (min-height: 811px) {
     .news-content {
         .news-related {
-            ul li {
-                img {
-                    width: 200px;
+            font-size: 19px;
+            .related-news-menu {
+                .list-n {
+                    img {
+                        min-width: 200px;
+                        max-width: 200px;
+                        height: 120px;
+                    }
+                    a {
+                        max-width: 350px;
+                    }
                 }
             }
         }
+
         .news-header {
             h1 {
                 font-size: $font-size + 15;
@@ -36,9 +45,17 @@
 @media screen and (max-height: 810px) {
     .news-content {
         .news-related {
-            ul li {
-                img {
-                    width: 190px;
+            font-size: 19px;
+            .related-news-menu {
+                .list-n {
+                    img {
+                        min-width: 150px;
+                        max-width: 150px;
+                        height: 90px;
+                    }
+                    a {
+                        max-width: 262.5px;
+                    }
                 }
             }
         }
@@ -57,9 +74,17 @@
 @media screen and (max-height: 768px) {
     .news-content {
         .news-related {
-            ul li {
-                img {
-                    width: 180px;
+            font-size: 19px;
+            .related-news-menu {
+                .list-n {
+                    img {
+                        min-width: 142px;
+                        max-width: 142px;
+                        height: 85px;
+                    }
+                    a {
+                        max-width: 250px;
+                    }
                 }
             }
         }
@@ -106,17 +131,24 @@
     @include flex-property(row, flex-end, null, 100%);
     .news-related {
         @include flex-property(column, flex-start, flex-start, 33%);
+        position: relative;
+
         .related-news-menu {
             width: 75%;
             @include flex-property(column, flex-start, flex-start, 100%);
             list-style-type: none;
             .list-n {
+                display: flex;
+                align-items: center;
                 margin-left: 20px;
                 a {
-                    @include flex-property(row, center, flex-start, 100%);
+                    @include flex-property(row, flex-start, flex-start, 100%);
+                    text-decoration: none;
+                    display: inline-block;
                 }
                 img {
                     margin: 10px 10% 0% 2%;
+                    display: inline-block;
                 }
                 a:link {
                     text-decoration: none;
