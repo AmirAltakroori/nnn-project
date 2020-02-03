@@ -37,8 +37,24 @@ export class Home {
         this.firstCategoryMainNews = this.categoryMainNews[0];
         this.categoryMainNews = this.categoryMainNews.slice(1, 5);
         this.categoryTitle = this.getCategoryTitle();
-    }
 
+        this.allCategories = [];
+        this.allMain = [];
+        this.getAllCategories();
+
+        //this.call();
+    }
+    /*
+    call() {
+        this.getAllCategories();
+
+        console.log(this.allCategories)
+        for(let i = 0; i<this.allCategories.length; i++) {
+            console.log(this.allCategories)
+            this.getNewsForCategory(this.allCategories[i].id.toString());
+
+        }
+    }*/
     /*
         Change Selected news
 
@@ -213,5 +229,30 @@ export class Home {
                   };
     }
 
+    getAllCategories() {
+        this.dataBase.getData("/categories/_design/allcategories/_view/new-view",true,'',this.url,this.auth).then( data => {
+            console.log(data);
+            this.allCategories = data;
+            
+            //console.log(this.allCategories)
+            for(let i = 0; i<this.allCategories.length; i++) {
+                console.log(this.allCategories.length)
+                //console.log(this.allCategories[i].id.toString())
+                this.getNewsForCategory(this.allCategories[i].id.toString());
+
+            }
+            console.log(this.allMain)
+            mvc.apply();
+        });
+    }
+
+    getNewsForCategory(id) {
+        this.dataBase.dbFindByIndex("/news",['title', 'content', 'writerId', 'createDate'],"categoryId",id, this.url,this.auth).then( data => {
+            console.log(data);
+            //if(data.bookmark != "nil")
+            console.log("i am id " + id)
+            this.allMain.push(data);
+        });    
+    }
 
 }

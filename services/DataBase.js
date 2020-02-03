@@ -72,13 +72,40 @@ export class DataBase {
      *
      *    @returns list of fetched data.
      */
-     findByIndex(endpoint, fields, index, value, baseUrl, authentication) {
+    findByIndex(endpoint, fields, index, value, baseUrl, authentication) {
         return new Promise((resolve, reject) => {
             let parameters = {
                 'selector': {},
                 'fields':fields,
             }
             parameters.selector[index] = value;
+            const url = baseUrl + endpoint + `/_find`;
+            let http = new XMLHttpRequest();
+            http.open("POST", url);
+            http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            http.setRequestHeader('Accept', 'application/json');
+            http.setRequestHeader("Authorization", authentication);
+            http.onreadystatechange = function() { //Call a function when the state changes.
+                if (http.readyState == 4) {
+                    resolve(JSON.parse(http.responseText));
+                }
+            }
+            http.send(JSON.stringify((parameters)));
+        });
+    }
+
+    dbFindByIndex(endpoint, fields, index, value, baseUrl, authentication) {
+        return new Promise((resolve, reject) => {
+            let parameters = {
+                'selector': {
+                    "createDate": {"$gte": null}
+                },
+                "sort": [{"createDate": "desc"}],
+                'fields':fields,
+               "limit":5
+            } 
+            parameters.selector[index] = value;
+            console.log(JSON.stringify(parameters));
             const url = baseUrl + endpoint + `/_find`;
             let http = new XMLHttpRequest();
             http.open("POST", url);
