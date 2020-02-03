@@ -9,19 +9,20 @@
         <div class="title">
             <span class="title_text">جميع الأخبار</span>
         </div>
-        <div class="search_area">
-            <div class="search_word">
-                <span>البحث</span>
-            </div>
-            <div class="search">
-                <i class="fas fa-search"></i>
-                <input type="text" class="search_field" placeholder="أدخل اسم الفئة" id="search"
-                    onkeyup="searchElement(2)">
-            </div>
+        <div  $if='!$loading' style="direction:ltr" class="search-box">
+            <input id='search' onkeyup='searchElement(1)' type="text" placeholder='ادخل عنوان الخبر'>
+            <i id="icon if" class="search id"></i>
         </div>
 
     </div>
-    <table class="content" id='table'>
+    <div $if='$loading' class='flex-container-center-all-column height-100'>
+        <img src="./img/loader.gif" alt="">
+    </div>
+    <div $if='!$loading && $allNewsPage.length == 0' class='flex-container-center-all-column height-100'>
+
+        <h1>لا يوجد أخبار </h1>
+    </div>
+    <table  $if='!$loading && $allNewsPage.length > 0' class="content" id='table'>
         <thead>
             <tr class="first_row">
                 <th>#</th>

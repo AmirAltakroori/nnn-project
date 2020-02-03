@@ -6,6 +6,7 @@ export class myNewsControler {
         this.allNewsPage = [];
         this.categories = [];
         this.activeId = -1;
+        this.loading = true;
         dynamicImport("./../../adminpanel/js/backend.js").then(db => {
             this.db = db;
             this.db.confirm();
@@ -15,6 +16,7 @@ export class myNewsControler {
 
                 this.getAllNews().then(news => {
                     this.allNewsPage = this.cleanData(news);
+                    this.loading = false;
                     mvc.apply();
                     this.init();
                 });
@@ -98,7 +100,6 @@ export class myNewsControler {
         this.db.dbGet('/news/_design/views/_view/attachcontent', true, news._id).then(data => {
             news.attachment = data.rows[0].value.attachment;
             news.content = data.rows[0].value.content;
-            console.log(news);
             setTimeout(() => {
                 this.db.dbCreateOrUpdate('/news', news, news._id).then(resp => {
                     if (resp.ok) {

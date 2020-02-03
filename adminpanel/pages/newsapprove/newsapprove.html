@@ -1,6 +1,6 @@
 <div class="row header-subheader">
     <div>
-        الرئيسية > لوحة التحكم > الأخبار > أخباري    
+        الرئيسية > لوحة التحكم > الأخبار > أخباري
     </div>
 </div>
 
@@ -9,24 +9,20 @@
         <div class="title">
             <span class="title_text">تأكيد الأخبار</span>
         </div>
-        <div class="search_area">
-            <div class="search_word">
-                <span>البحث</span>
-            </div>
-            <div class="search">
-                <i class="fas fa-search"></i>
-                <input 
-                type="text"
-                class="search_field"
-                id="search"
-                placeholder="أدخل عنوان الفئة"
-                onkeyup="searchElement(3)"
-                >
-            </div>
+        <div  $if='!$loading'    style="direction:ltr" class="search-box">
+            <input onkeyup='searchElement(1)' type="text" placeholder='أدخل عنوان الخبر'>
+            <i id="icon if" class="search id"></i>
         </div>
     </div>
+    <div $if='$loading' class='flex-container-center-all-column height-100'>
+        <img src="./img/loader.gif" alt="">
+    </div>
+    <div $if='!$loading && $notAppNewsPage.length == 0' class='flex-container-center-all-column height-100'>
 
-    <table id="table" class="content">
+        <h1>جميع الأخبار مؤكدة</h1>
+    </div>
+
+    <table $if='!$loading  && $notAppNewsPage.length > 0' id="table" class="content">
         <thead>
             <tr class="first_row">
                 <th>#</th>
@@ -41,18 +37,18 @@
             <tr class="user_info">
             <tr class="user_info">
                 <td class="user_no">
-                        <div class="allnews-inline-block" >
-                            <input style="height: 30px;width:30px" type="checkbox" id='{{$n._id}}' tabindex="9"/>
-                        </div>
+                    <div class="allnews-inline-block">
+                        <input style="height: 30px;width:30px" type="checkbox" id='{{$n._id}}' tabindex="9" />
+                    </div>
                 </td>
                 <td class="user_full">
                     <span class="user_name">{{$n.title}}</span>
                 </td>
-                
+
                 <td>
                     <div $for="category of categories">
                         <div $if="$n.categoryId == $category._id">
-                                <span>{{$category.name}}</span>
+                            <span>{{$category.name}}</span>
                         </div>
                     </div>
                 </td>
@@ -74,7 +70,7 @@
         </tbody>
     </table>
 </div>
-<div class="newsapprove-flex-box">
+<div  $if='!$loading' class="newsapprove-flex-box">
     <div class="newsapprove-approve-button" $click="appproveNews()">
         تأكيد الخبر
     </div>
@@ -89,7 +85,7 @@
                 <button class="modal-button button2" $click="hide('delete')">لا</button>
             </div>
         </div>
-        
+
     </div>
 </div>
 </div>

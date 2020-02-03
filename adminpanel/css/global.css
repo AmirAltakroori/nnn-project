@@ -158,8 +158,9 @@ body {
       width: 100%;
       font-weight: 400;
       padding: 8px;
-      background: #27ae60;
-      color: white; }
+      background: #36344d;
+      color: white;
+      height: 40px; }
     .container .content th,
     .container .content td {
       border-bottom: 1px solid #333333;
@@ -169,7 +170,7 @@ body {
     .container .content tbody tr:nth-of-type(odd) {
       background: #eee; }
     .container .content tbody tr:hover {
-      background: #36d278;
+      background: #615d8a;
       color: white; }
     .container .content .user_info {
       width: 100%;
@@ -363,5 +364,77 @@ input[class="toggle"]:focus {
   left: 2%;
   top: 0;
   cursor: pointer; }
+
+.search-box {
+  margin: 1%;
+  display: flex;
+  width: 250px;
+  border: none;
+  position: relative;
+  height: 60px;
+  background: #5e43ff;
+  border-radius: 15px;
+  box-shadow: 0 3px 5px #beb4ff;
+  color: white;
+  font-weight: 600;
+  cursor: text; }
+  .search-box input {
+    direction: rtl;
+    padding: 5px;
+    font-size: 16px;
+    position: absolute;
+    z-index: 0;
+    width: 250px;
+    height: 60px;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    font-weight: 600;
+    background: #36344d;
+    padding-left: 60px; }
+    .search-box input::placeholder {
+      color: white;
+      font-size: 16px; }
+    .search-box input:focus {
+      outline: none; }
+      .search-box input:focus + .search {
+        transform: perspective(400px) rotateY(89deg);
+        padding: 3px 0;
+        opacity: 0; }
+  .search-box i.search {
+    height: 20px;
+    width: 20px;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    transform: rotatez(-45deg);
+    top: 17px;
+    left: 5%;
+    transition: 0.2s all;
+    transform-style: preserve-3d;
+    perspective: 400px; }
+    .search-box i.search::after {
+      content: "";
+      display: block;
+      width: 5px;
+      height: 15px;
+      background: #fff;
+      position: absolute;
+      left: calc(50% - 2px);
+      border-radius: 10px;
+      top: 101%; }
+
+.screen-center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; }
+
+@keyframes blinker {
+  50% {
+    opacity: 0; } }
 
 /*# sourceMappingURL=global.css.map */

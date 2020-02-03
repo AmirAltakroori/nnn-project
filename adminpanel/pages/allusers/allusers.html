@@ -9,19 +9,17 @@
         <div class="title">
             <span class="title_text">جميع المستخدمين</span>
         </div>
-        <div class="search_area">
-            <div class="search_word">
-                <span>البحث</span>
-            </div>
-            <div class="search">
-                <i class="fas fa-search"></i>
-                <input id="search" type="text" class="search_field" placeholder="أدخل اسم المستخدم"
-                    onkeyup="searchElement(1)">
-            </div>
+        <div  $if='!$loading' style="direction:ltr"  class="search-box">
+            <input id='search' onkeyup='searchElement(1)' type="text"  placeholder='ادخل اسم المستخدم'>
+            <i id="icon if" class="search id"></i>
         </div>
+    
 
     </div>
-    <table class="content">
+    <div $if='$loading' class='flex-container-center-all-column height-100'>
+        <img src="./img/loader.gif" alt="">
+    </div>
+    <table  $if='!$loading' class="content">
         <thead>
             <tr class="first_row">
                 <th>#</th>
@@ -31,7 +29,6 @@
                 <th>العمليات</th>
             </tr>
         </thead>
-        <div></div>
         <tbody id="rows" $for="user of usersPage">
 
             <tr class='user_info'>

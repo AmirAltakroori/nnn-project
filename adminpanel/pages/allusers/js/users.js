@@ -5,12 +5,14 @@ export class allUsers {
         this.db = null;
         this.activeId = -1;
         this.role = -1;
+        this.loading = true;
         dynamicImport("./../../adminpanel/js/backend.js").then(db => {
             this.db = db;
             this.role = this.db.confirm().data.roleId;
             this.getAllUsers().then(users => {
                 this.usersPage = this.db.cleanDataForControllers(users);
                 console.log(this.usersPage);
+                this.loading = false;
                 mvc.apply();
                 this.init();
 

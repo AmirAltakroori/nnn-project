@@ -5,7 +5,7 @@ export class approveNewsControler {
         this.notAppNewsPage = [];
         this.categories = [];
         this.dp = null;
-
+        this.loading = true;
         this.submit = false;
         dynamicImport("./../../adminpanel/js/backend.js").then(db => {
             this.db = db;
@@ -15,6 +15,7 @@ export class approveNewsControler {
                 this.categories = this.db.cleanDataForControllers(cats);
                 this.getAllNotAppNews().then(news => {
                     this.notAppNewsPage = this.db.cleanDataForControllers(news);
+                    this.loading = false;
                     mvc.apply();
                 });
             });
