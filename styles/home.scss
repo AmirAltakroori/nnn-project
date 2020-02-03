@@ -48,7 +48,6 @@
      .news {
 
          p{
-             margin-top: 30px;
              max-width: 400px;
          }
 
@@ -252,7 +251,6 @@
      .news {
 
         p{
-            margin-top: 25px;
             max-width: 300px;
         }
 
@@ -454,7 +452,6 @@
      .news {
 
         p{
-            margin-top: 20px;
             max-width: 184px;
         }
 
@@ -651,12 +648,19 @@
 
                 margin-bottom: 12px;
                 text-decoration: none;
+                align-items: center;
+                display: flex;
+
+                img {
+                    display: inline-block;
+                }
 
                 p {
 
-                    float: left;
                     margin-right: 10px;
                     color: #707070;
+                    display: inline-block;
+                    justify-content: flex-start;
 
                 }
             }
