@@ -75,8 +75,8 @@ export class Home {
             if (this.mainNews.length > 0) {
                 this.selectedNews = this.mainNews[0];
             }
-            if (this.mainNews.length > 4) {
-                this.mainNews = this.mainNews.slice(0, 4);
+            if (this.mainNews.length > 5) {
+                this.mainNews = this.mainNews.slice(0, 5);
             }
             for (let news of this.mainNews) {
                 news.writer = this.writers.filter((el) => { return el.value.id == news.value.writer})[0].value;

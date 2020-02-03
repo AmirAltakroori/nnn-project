@@ -47,9 +47,10 @@
 
      .news {
 
-        p{
-            margin-top: 30px;
-        }
+         p{
+             margin-top: 30px;
+             max-width: 400px;
+         }
 
         img {
 
@@ -75,7 +76,6 @@
             background-size: 446px 251px;
 
             .news{
-
                 bottom: -70px;
                 font-size: 19px;
             }
@@ -114,7 +114,7 @@
     }
 
     .category-section{
-        
+
         top:20px;
         height: 653px;
 
@@ -253,6 +253,7 @@
 
         p{
             margin-top: 25px;
+            max-width: 300px;
         }
 
         img {
@@ -454,6 +455,7 @@
 
         p{
             margin-top: 20px;
+            max-width: 184px;
         }
 
         img {
