@@ -23,7 +23,7 @@
                         {{$news.title}}
                     </h1>
                     <div>
-                        <div class="main-img" style=" background-image: url('data:image/png;base64,{{$news.attachment}}');">
+                        <div class="main-img" style=" background-image: url('{{$news.attachment}}');">
 
                         </div>
                         <div class="news-more-info">
@@ -57,7 +57,7 @@
                         <li class="list-n">
                             <a href="#/details/{{$relatedNew._id}}">
 
-                                <img src="data:image/png;base64,{{$relatedNew.attachment}}" alt="صورة"> {{$relatedNew.title}}
+                                <img src="{{$relatedNew.attachment}}" alt="صورة"> {{$relatedNew.title}}
 
                             </a>
                         </li>
@@ -69,13 +69,6 @@
         </div>
         <!-- Contains  news sharing -->
         <div class="news-body">
-            <article class="article" id="article">
-                <span>
-                    <p>
-                        {{$news.content}}
-                    </p>
-                </span>
-            </article>
 
             <section class="news-sharing">
 
@@ -111,34 +104,6 @@
 
     <!-- </span> -->
     <!-- Contains comments section -->
-    <div class="comments">
-        <div class="add-comment">
-            <div class="comment">
-
-                <img src="img/avatar.png" alt="">
-                <p>user name</p>
-            </div>
-            <div class="add">
-                <input type="text" name="" value="">
-                <button type="button" name="button">اضف تعليق</button>
-            </div>
-        </div>
-        <div class="list-comment">
-            <ul>
-                <li>
-                    <img src="img/avatar.png" alt="صورة">
-                    <p> لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات </p>
-                </li>
-                <li>
-                    <img src="img/avatar.png" alt="صورة">
-                    <p> أعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة، وهو العطاء الذي مُنح لشركة مايكروسوفت. </p>
-                </li>
-                <li>
-                    <img src="img/avatar.png" alt="صورة">
-                    <p> أعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات "الحوسبة السحابية" للوزارة، وهو العطاء الذي مُنح لشركة مايكروسوفت. </p>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <div id="disqus_thread">{{$disqus()}}</div>
 
 </div>

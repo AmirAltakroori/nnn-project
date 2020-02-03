@@ -8,13 +8,9 @@
      File description: this filew contain scss style of the detailes page
 */
 
-// this line make import functions that exist in _function.css
+// this line make import functions that exist in -function.css
 @import "_functions.scss";
 @import "_variables.scss";
-
-/*
-part1 contain the header of the new and the related news
-*/
 
 @media screen and (min-height: 811px) {
     .news-content {
@@ -26,11 +22,12 @@ part1 contain the header of the new and the related news
             }
         }
         .news-header {
+            h1 {
+                font-size: $font-size + 15;
+            }
             .main-img {
-                img {
-                    // width: 1210px;
-                    height: 570px;
-                }
+                width: 1082px;
+                height: 570px;
             }
         }
     }
@@ -46,11 +43,12 @@ part1 contain the header of the new and the related news
             }
         }
         .news-header {
+            h1 {
+                font-size: $font-size + 6.25;
+            }
             .main-img {
-                img {
-                    // width: 1200px;
-                    height: 570px;
-                }
+                width: 812px;
+                height: 432px;
             }
         }
     }
@@ -65,11 +63,11 @@ part1 contain the header of the new and the related news
                 }
             }
         }
-        .news_header {
+        .news-header {
             h1 {
                 font-size: $font-size + 4.88888;
             }
-            .main_img {
+            .main-img {
                 width: 770px;
                 height: 400px;
             }
@@ -81,12 +79,31 @@ part1 contain the header of the new and the related news
     direction: rtl;
 }
 
+#disqus_thread {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#disqus_thread {
+    position: relative;
+}
+
+#disqus_thread:after {
+    content: "";
+    display: block;
+    height: 55px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: white;
+}
+
 .news-content {
     margin-top: 4%;
     font-family: $newsText-fontFamily;
     border-top: solid 1px #707070;
     margin-bottom: 0%;
-        @include flex-property(row, flex-end, null, 100%);
+    @include flex-property(row, flex-end, null, 100%);
     .news-related {
         @include flex-property(column, flex-start, flex-start, 33%);
         .related-news-menu {
@@ -95,7 +112,6 @@ part1 contain the header of the new and the related news
             list-style-type: none;
             .list-n {
                 margin-left: 20px;
-
                 a {
                     @include flex-property(row, center, flex-start, 100%);
                 }
@@ -125,13 +141,11 @@ part1 contain the header of the new and the related news
         }
     }
     .news-header {
-        .news-info{
+        .news-info {
             width: 83%;
         }
-
-
         margin-top: 2%;
-         h1 {
+        h1 {
             margin-right: 10%;
             margin-bottom: 4%;
         }
@@ -145,22 +159,21 @@ part1 contain the header of the new and the related news
             margin-right: 10%;
             margin-bottom: 30px;
         }
-        .news-more-info{
-            @include flex-property(row, flex-,flex-end, 100%);
+        .news-more-info {
+            @include flex-property(row, flex-, flex-end, 100%);
             // float: right;
-            color:#4D4F5C ;
+            color: #4D4F5C;
             margin-top: 0px;
             font-size: 18px;
-
             color: #919192;
-            .authorName{
-                margin-left: 10%;
+            .authorName {
+                margin-left: 3%;
                 margin-right: 10%;
             }
 
             .published {
                 margin-left: 10%;
-                margin-right: 10%;
+                margin-right: 3%;
             }
 
             img {
@@ -168,9 +181,8 @@ part1 contain the header of the new and the related news
                 width: 20px;
                 height: 20px;
             }
-
         }
-        .article{
+        .article {
             font-size: $font-size + 5;
             margin-right: 50px;
             p {
@@ -180,110 +192,21 @@ part1 contain the header of the new and the related news
     }
 }
 
-.news-body {
-    font-size: $font-size + 5;
-    margin-right: 50px;
-    p {
-        padding: 50px;
-    }
-    .news-sharing {
-        direction: ltr;
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-gap: 10px;
-        .share-buttons {
-            text-align: center;
-            margin: 0 auto;
-            a img {
-                float: left;
-                width: 30px;
-                height: 30px;
-                padding: 5px;
-                border: 0;
-                box-shadow: 0;
-            }
-        }
-        .about {
-            text-align: center;
-            margin: 0 auto;
-            a img {
-                float: left;
-                width: 25px;
-                height: 25px;
-                padding: 5px;
-                border: 0;
-                box-shadow: 0;
-            }
-            p {
-                font-size: $font-size + 5;
-                font-family: $newsText-fontFamily;
-                padding-bottom: 10px;
-            }
-        }
-    }
-}
-
-.comments {
-    font-size: 20px;
+.news-sharing {
+    direction: ltr;
     display: grid;
-    grid-template-columns: 50% 50%;
-    height: 400px;
-    padding-top: 20px;
-    justify-content: center;
-    .add-comment {
-        display: grid;
-        grid-template-rows: 50% 50%;
-        border-left: solid 2px #707070;
-        .comment {
-            vertical-align: bottom;
-            display: grid;
-            grid-template-columns: 30% 70%;
-            img {
-                width: 45px;
-                height: 45px;
-                padding-right: 60%;
-                padding-top: 155px;
-            }
-            p {
-                padding-left: 70%;
-                padding-top: 145px;
-            }
-        }
-        .add {
-            width: 70%;
-            display: grid;
-            grid-template-columns: 70% 30%;
-            margin: 0 auto;
-            input {
-                height: 20%;
-                border-radius: 0 10px 10px 0;
-                border: solid 3px #EBEDED;
-            }
-            button {
-                height: 20%;
-                background-color: #EBEDED;
-                border: none;
-                border-radius: 10px 0 0 10px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 15px;
-                cursor: pointer;
-            }
-        }
-    }
-    .list-comment {
-        margin-left: 20px;
-        li {
-            list-style-type: none;
-        }
-        img {
-            width: 45px;
-            height: 45px;
-            padding: 0px;
-        }
-        p {
-            padding-bottom: 15px;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    .share-buttons {
+        text-align: center;
+        margin: 0 auto;
+        a img {
+            float: left;
+            width: 30px;
+            height: 30px;
+            padding: 5px;
+            border: 0;
+            box-shadow: 0;
         }
     }
 }
