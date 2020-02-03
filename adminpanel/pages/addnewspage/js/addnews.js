@@ -24,7 +24,7 @@ export class addnewsController {
                 this.categoryId = this.categories[0].id;
                 mvc.apply();
                 if (this.newsId != 0) {
-                    db.dbGet("/news/_design/views/_view/allnews", true, this.newsId).then(news => {
+                    db.dbGet("/news/_design/views/_view/editnews", true, this.newsId).then(news => {
                         if (news.rows.length != 1) {
                             window.location.href = '#/addnews/0';
                         }

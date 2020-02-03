@@ -158,8 +158,9 @@ body {
       width: 100%;
       font-weight: 400;
       padding: 8px;
-      background: #27ae60;
-      color: white; }
+      background: #36344d;
+      color: white;
+      height: 40px; }
     .container .content th,
     .container .content td {
       border-bottom: 1px solid #333333;
@@ -169,7 +170,7 @@ body {
     .container .content tbody tr:nth-of-type(odd) {
       background: #eee; }
     .container .content tbody tr:hover {
-      background: #36d278;
+      background: #615d8a;
       color: white; }
     .container .content .user_info {
       width: 100%;
@@ -423,6 +424,14 @@ input[class="toggle"]:focus {
       left: calc(50% - 2px);
       border-radius: 10px;
       top: 101%; }
+
+.screen-center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; }
 
 @keyframes blinker {
   50% {

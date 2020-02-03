@@ -201,8 +201,9 @@ body {
       width: 100%;
       font-weight: 400;
       padding: 8px;
-      background: #27ae60;
+      background: #36344d;
       color: white;
+      height: 40px;
     }
     th,
     td {
@@ -216,7 +217,7 @@ body {
       background: #eee;
     }
     tbody tr:hover {
-      background: lighten(#27ae60, 10%);
+      background: lighten(#36344d, 20%);
       color: white;
     }
     .user_info {
@@ -528,7 +529,14 @@ input[class="toggle"]:focus {
     }
   }
 }
-
+.screen-center{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
 @keyframes blinker {
   50% {
     opacity: 0;

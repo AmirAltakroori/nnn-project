@@ -18,7 +18,11 @@
     <div $if='$loading' class='flex-container-center-all-column height-100'>
         <img src="./img/loader.gif" alt="">
     </div>
-    <table  $if='!$loading' class="content" id='table'>
+    <div $if='!$loading && $allNewsPage.length == 0' class='flex-container-center-all-column height-100'>
+
+        <h1>لا يوجد أخبار </h1>
+    </div>
+    <table  $if='!$loading && $allNewsPage.length > 0' class="content" id='table'>
         <thead>
             <tr class="first_row">
                 <th>#</th>
