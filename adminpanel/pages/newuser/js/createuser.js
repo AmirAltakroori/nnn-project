@@ -111,7 +111,7 @@ export class addusersController {
 
         return new Promise((resolve, reject) => {
             this.getNewId().then(request => {
-                this.db.dbCreateOrUpdate("/users", data, data.username).then(response => {
+                this.db.dbCreateOrUpdate("/users", data, data.userid).then(response => {
                     request.counter = request.counter + 1;
                     if (response.error) {
                         createToast("خطأ", 'اسم المستخدم مستعمل', "danger", "times-circle");
