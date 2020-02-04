@@ -34,8 +34,7 @@
             <tr class='user_info'>
                 <td class="user_no">{{$i+1}}</td>
                 <td class="user_full">
-                    
-                    {{$user.firstName}} {{$user.lastName}}
+                  <span>  {{$user.firstName}} {{$user.lastName}}</span>
                 </td>
                 <td>
                     <div $if ='$role == 3'>
@@ -72,8 +71,8 @@
                     </div>
                 </td>
                 <td>
-                    <i value="click" class="fas fa-trash-alt delete_user" $click="show('delete',$i)"></i>
-                    <i class="far fa-edit icon color-blue" $click="updateUser($i) "></i>
+                    <i $if=' $user.role != 3' value="click" class="fas fa-trash-alt delete_user" $click="show('delete',$i)"></i>
+                    <i $if=' $user.role != 3' class="far fa-edit icon color-blue" $click="updateUser($i) "></i>
                 </td>
             </tr>
         </tbody>
