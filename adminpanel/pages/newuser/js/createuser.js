@@ -113,14 +113,13 @@ export class addusersController {
             this.getNewId().then(request => {
                 this.db.dbCreateOrUpdate("/users", data, data.username).then(response => {
                     request.counter = request.counter + 1;
-                    if (response.error) {
-                        createToast("خطأ", 'اسم المستخدم مستعمل', "danger", "times-circle");
-                        resolve(response);
-                        
-                    } else
                         this.db.dbCreateOrUpdate("/settings", request, request._id).then(response2 => {
                             resolve(response2);
                         });
+                }, ()=> {
+                    createToast("خطأ", 'اسم المستخدم مستعمل', "danger", "times-circle");
+                    resolve(response);
+                    
                 })
             })
         })
