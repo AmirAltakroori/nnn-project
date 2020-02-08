@@ -4,16 +4,15 @@
     This file is part of the NNN website.
 
     Authors:
-    Qusai Hroub <qusaihroub.r@gmail.com>
-    Aseel Arafeh <arafehaseel@gmail.com>
+        Qusai Hroub <qusaihroub.r@gmail.com>
+        Aseel Arafeh <arafehaseel@gmail.com>
 
     File description:
+        This file contains HTML code for the index page.
 -->
 
 <!DOCTYPE html>
-
 <html>
-
 <head>
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
     <link rel="stylesheet" type="text/css" href="styles/categories.css" />
@@ -21,21 +20,14 @@
     <link rel="stylesheet" type="text/css" href="styles/index.css" />
     <link rel="stylesheet" type="text/css" href="styles/home.css" />
 </head>
-
 <body>
-
     <div class="root">
-
-
-
         <div class="view-root">
-
             <!-- VIEW CONTAINER -->
             <div class="view" VIEW>
                 <a href="#/home">Home</a>&nbsp;
             </div>
         </div>
-
         <!-- FOOTER -->
         <div class="footer">
             <div class="footer-right">
@@ -49,7 +41,6 @@
             this.language = config.language;
             this.page.url = config.tpage;
         }
-
         function disqus_config() {
             let config = JSON.parse(localStorage.getItem("config"));
             this.language = config.language;
@@ -60,7 +51,5 @@
     <script src="./potato/potato.js"></script>
     <script src="app.js"></script>
     <script src="controllers/index.js"></script>
-    
 </body>
-
 </html>

@@ -4,34 +4,28 @@
     This file is part of the NNN website.
 
     Authors:
-    diana mujahed
-    Amir Altakroori
-    Ibrahim Abusamrah
+        Diana Mujahed <diana.muj98@gmail.com>
+        Amir Altakroori <ameertakrouri99@gmail.com>
+        Ibrahim Abusamrah <ibrahim.abusamrah123@gmail.com>
 
-    File description: html code for main section and right sidebar
-    in category page for normal user view.
+    File description: 
+        This file contains HTML code for the categories page.
 -->
 
- <!-- HEADER -->
- <div class="header" $include="/templates/header.html ,/controllers/header.js"></div>
+<!-- HEADER -->
+<div class="header" $include="/templates/header.html ,/controllers/header.js"></div>
 
 <div class="category-view">
-
     <!-- Page contnet title -->
     <p class="category-view-name">{{$category.title}}</p>
-
     <hr>
     <div class="category-view-container">
-
         <!-- Start right category page content -->
         <div class="right-col">
-
             <!-- Start main section of category-->
             <div class="main-category-section">
-
                 <!-- Right main news sidebar -->
                 <div class="right-sidebar">
-
                     <!-- List of main news items -->
                     <div $for="news of listMainNews" class="news-list">
                         <div class="news">
@@ -40,17 +34,12 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
                 <!-- Start main news section -->
                 <div class="main-section">
                     <div class="main-news">
-
-
                         <!-- Main news image -->
                         <div id="category-main-news-image" class="centered-img-background" style="background-image: url({{$mainNews.attachment}});"></div>
-
                         <!-- Main news details -->
                         <div class="details">
                             <h3 id="category-main-news-title">{{$mainNews.title}}</h3>
@@ -61,7 +50,6 @@
                             </div>
                             <div id="category-main-news-content-news">{{$mainNews.seoDescription}}</div>
                         </div>
-
                         <!-- See more details -->
                         <div id="category-see-more">
                             <a href="#/details/{{$mainNews._id}}">
@@ -69,18 +57,14 @@
                                 <p>اقرأ المزيد</p>
                             </a>
                         </div>
-
                     </div>
                 </div>
                 <!-- End main news section -->
-
             </div>
             <!-- End main section of category-->
-
             <!-- Start related category news -->
             <div class="relates-news">
-
-                <!-- Lift related news list -->
+                <!-- Left related news list -->
                 <div class="related-news-left">
                     <ul $for="news of rightNewsInCategory" id="related-news-menu-right">
                         <a href="#/details/{{$news._id}}">
@@ -91,7 +75,6 @@
                         </a>
                     </ul>
                 </div>
-
                 <!-- Right related news list -->
                 <div class="related-news-left">
                     <ul $for="news of liftNewsInCategory" id="related-news-menu-right">
@@ -103,17 +86,12 @@
                         </a>
                     </ul>
                 </div>
-
             </div>
             <!-- End related category news -->
-
         </div>
         <!-- End right category page content -->
-
-
-        <!-- Lift category page content -->
+        <!-- Left category page content -->
         <div class="left-col">
-
             <!-- List of random news  -->
             <p class="title">منوعات</p>
             <ul $for="news of randomNews" id="random-content">
@@ -122,8 +100,6 @@
                     <a href="#/details/{{$news.value.id}}">{{$news.value.title}}</a>
                 </li>
             </ul>
-
         </div>
-
     </div>
 </div>

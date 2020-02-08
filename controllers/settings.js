@@ -1,9 +1,0 @@
-/*
-*     NNN website.
-*
-*     This file is part of the NNN website.
-*
-*     Authors:
-*
-*     File description:
-*/

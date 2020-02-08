@@ -1,13 +1,13 @@
 /*
-     NNN website.
+    NNN website.
 
-     This file is part of the NNN website.
+    This file is part of the NNN website.
 
-     Authors:
-     Suhair Shareef <suhairshareef1999@gmail.com>
+    Authors:
+        Suhair Shareef <suhairshareef1999@gmail.com>
 
-     File description:
-     this file for slider design
+    File description:
+        This file contains style code for the index file.
 */
 
 @import './variables';
@@ -137,7 +137,7 @@ body{
                         .active {
 
                             border-block-start: solid 5px $main-color;
-                            //font-weight: bold;
+
                         }
 
                         ul{

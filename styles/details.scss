@@ -1,14 +1,16 @@
 /*
-     NNN website.
+    NNN website.
 
-     This file is part of the NNN website.
+    This file is part of the NNN website.
 
-     Authors:Latifa Masri and Abed Al-Fattah Hroub
+    Authors:
+        Latifa Masri <latifa.masri1998@gmail.com>
+        Abed Al-Fattah Hroub <abedhb8@gmail.com>
 
-     File description: this filew contain scss style of the detailes page
+    File description: 
+        This file contains style code for the details page.
 */
 
-// this line make import functions that exist in -function.css
 @import "_functions.scss";
 @import "_variables.scss";
 
@@ -199,7 +201,6 @@
         }
         .news-more-info {
             @include flex-property(row, flex-, flex-end, 100%);
-            // float: right;
             color: #4D4F5C;
             margin-top: 0px;
             font-size: 18px;
