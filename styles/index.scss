@@ -104,10 +104,13 @@ body{
                     @include positioning (absolute, 0, auto, auto, 0.1042%);
 
                     .logo-img{
-
+//delete this ////////////////
                         @include positioning (relative, 5px, auto, auto, 1.042%);
                         resize: both;
                         overflow: hidden;
+///////////////////////////////////////
+                        width: 165px;
+                        margin-right: 10px;
                     }
 
                     .categories-container{
