@@ -111,7 +111,7 @@ export class Category {
     getWriters() {
         this.dataBase.getData("/users/_design/users/_view/generalinfo",true,'',this.url,this.auth).then( data => {
             this.writers = data;
-            this.writer = this.writers.filter((el) => { return el.id != this.mainNews.writerId})[0].value;
+            this.writer = this.writers.filter((el) => { return el.id == this.mainNews.writerId})[0].value;
             mvc.apply();
         });
     }
