@@ -105,9 +105,8 @@ body{
 
                     .logo-img{
 
-                        @include positioning (relative, 5px, auto, auto, 1.042%);
-                        resize: both;
-                        overflow: hidden;
+                        width: 165px;
+                        margin-right: 10px;
                     }
 
                     .categories-container{
