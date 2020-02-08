@@ -88,7 +88,7 @@
                             <div class="category-main-date">{{$category.mainNews.createDate}}</div>
                     </div>
                     <div class="category-main-details">{{$category.mainNews.seoDescription}}</div>
-                    <a class="read-more-btn category-btn" href=#/details/{{$category.mainNews.id}}>اقرأ المزيد &gt;</a>
+                    <a class="read-more-btn category-btn" href=#/details/{{$category.mainNews._id}}>اقرأ المزيد &gt;</a>
                 </div>
                 <div $for= "mainNews of category.allMain" class="category-content-random" id="sub-news">
                     <div class="category-content-random-item">
