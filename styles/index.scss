@@ -119,12 +119,10 @@ body{
                         .tab{
 
                             color: $font-color;
-                            min-width: 100px;
+                            width: 13%;
+                            padding-top: 1%;
+                            padding-bottom: 1%;
                             text-align: center;
-                            list-style-type: none;
-                            list-style-type: none;
-                            margin: 0;
-                            padding: $tab-padding;
                             border-block-start: solid 5px white;
                             font-weight: 300;
 
@@ -139,34 +137,35 @@ body{
                             border-block-start: solid 5px $main-color;
 
                         }
-
-                        ul{
-
-                            align-items: center;
-                            justify-content: center;
-                            min-height: 100%;
+                        .expand{
+                            cursor: pointer;
+                        }
 
                             .sub-menu{
 
-                                @include positioning (absolute, 75%, auto, 0, 860px);
+                                align-items: center;
+                                justify-content: center;
+                                min-height: 100%;
+                                @include positioning (sticky, 20px, auto, 0, auto);
                                 z-index:1;
                                 display: none;
                                 background-color: $main-color;
                                 color: $website-background;
-                                min-width: 135px;
-                                max-width: 135px;
+                                width: 100%;
                                 font-weight: 300;
-                                height: 140%;
+                                height: 100%;
 
                                 .sub-item{
-
-                                    min-width: 114px;
-                                    padding: 10px;
+                                    
+                                    width: 100%;
+                                    height: 100%;
+                                    padding-top: 10px;
+                                    padding-bottom: 10px;
 
                                     a{
                                         color: $button-font-color;
                                         text-decoration: none;
-                                        padding: 14px;
+                                        padding: 3px;
                                     }
                                 }
 
@@ -189,7 +188,7 @@ body{
 
                                     ul{
 
-                                        display: block;
+                                        display: inline-block;
                                     }
                                 }
 
@@ -197,10 +196,8 @@ body{
 
                                     color: $font-color;
                                     text-decoration: none;
-                                    padding: 14px;
                                 }
                             }
-                        }
 
                         .expand-button{
 
@@ -213,7 +210,7 @@ body{
 
                 .navbar-left{
 
-                    width: 15%;
+                    width: 10%;
                     height: 100%;
                     @include positioning (absolute, 0, auto, 0, auto);
 
@@ -224,7 +221,16 @@ body{
                         font-weight: 300;
                         font-size: 100%;
                         border-radius: 5%;
-                        cursor: pointer;
+                        -webkit-transition-duration: 0.4s; 
+                        transition-duration: 0.4s;
+
+                        &:hover{
+                            
+                            opacity: 0.7;
+                            cursor: pointer;
+                            transition: all 0.6s
+                        }
+                        
                     }
                 }
             }
