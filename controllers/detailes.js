@@ -67,7 +67,7 @@ export class Details {
 
     getWriters(writerId) {
         this.dataBase.getData("/users/_design/users/_view/generalinfo",true,'',this.url,this.auth).then( data => {
-            this.writer = data.filter((el) => { return el.id != writerId})[0].value;
+            this.writer = data.filter((el) => { return el.id == writerId})[0].value;
             mvc.apply();
         });
     }
