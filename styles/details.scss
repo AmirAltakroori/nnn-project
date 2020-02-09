@@ -10,105 +10,109 @@
     File description: 
         This file contains style code for the details page.
 */
-        
-        @import "_functions.scss";
-        @import "_variables.scss";
-        @media screen and (min-height: 811px) {
-            .news-content {
-                .news-related {
-                    font-size: 19px;
-                    .related-news-menu {
-                        .list-n {
-                            img {
-                                min-width: 200px;
-                                max-width: 200px;
-                                height: 120px;
-                            }
-                            a {
-                                max-width: 350px;
-                            }
-                        }
-                    }
-                }
-                .news-header {
-                    h1 {
-                        font-size: $font-size + 15;
-                    }
-                    .main-img {
-                        width: 1082px;
-                        height: 570px;
-                    }
-                }
-            }
-        }
-        
-        @media screen and (max-height: 810px) {
-            .news-content {
-                .news-related {
-                    font-size: 19px;
-                    .related-news-menu {
-                        .list-n {
-                            img {
-                                min-width: 150px;
-                                max-width: 150px;
-                                height: 90px;
-                            }
-                            a {
-                                max-width: 262.5px;
+            
+            @import "_functions.scss";
+            @import "_variables.scss";
+            @media screen and (min-height: 811px) {
+                .news-content {
+                    .news-related {
+                        font-size: 19px;
+                        .related-news-menu {
+                            .list-n {
+                                img {
+                                    min-width: 200px;
+                                    max-width: 200px;
+                                    height: 120px;
+                                }
+                                a {
+                                    max-width: 350px;
+                                }
                             }
                         }
                     }
-                }
-                .news-header {
-                    h1 {
-                        font-size: $font-size + 6.25;
-                    }
-                    .main-img {
-                        width: 812px;
-                        height: 432px;
-                    }
-                }
-            }
-        }
-        
-        @media screen and (max-height: 768px) {
-            .news-content {
-                .news-related {
-                    font-size: 19px;
-                    .related-news-menu {
-                        .list-n {
-                            img {
-                                min-width: 142px;
-                                max-width: 142px;
-                                height: 85px;
-                            }
-                            a {
-                                max-width: 250px;
-                            }
+                    .news-header {
+                        h1 {
+                            font-size: $font-size + 15;
+                        }
+                        .main-img {
+                            width: 1082px;
+                            height: 570px;
                         }
                     }
                 }
-                .news-header {
-                    h1 {
-                        font-size: $font-size + 4.88888;
+            }
+            
+            @media screen and (max-height: 810px) {
+                .news-content {
+                    .news-related {
+                        font-size: 19px;
+                        .related-news-menu {
+                            .list-n {
+                                img {
+                                    min-width: 150px;
+                                    max-width: 150px;
+                                    height: 90px;
+                                }
+                                a {
+                                    max-width: 262.5px;
+                                }
+                            }
+                        }
                     }
-                    .main-img {
-                        width: 770px;
-                        height: 400px;
+                    .news-header {
+                        h1 {
+                            font-size: $font-size + 6.25;
+                        }
+                        .main-img {
+                            width: 812px;
+                            height: 432px;
+                        }
                     }
                 }
             }
-        }
-        
-        * {
-            direction: rtl;
+            
+            @media screen and (max-height: 768px) {
+                .news-content {
+                    .news-related {
+                        font-size: 19px;
+                        .related-news-menu {
+                            .list-n {
+                                img {
+                                    min-width: 142px;
+                                    max-width: 142px;
+                                    height: 85px;
+                                }
+                                a {
+                                    max-width: 250px;
+                                }
+                            }
+                        }
+                    }
+                    .news-header {
+                        h1 {
+                            font-size: $font-size + 4.88888;
+                        }
+                        .main-img {
+                            width: 770px;
+                            height: 400px;
+                        }
+                    }
+                }
+            }
+            
+            * {
+                direction: rtl;
+            }
+            
             #disqus_thread {
                 margin-right: 10px;
                 margin-left: 10px;
             }
+            
             #disqus_thread {
                 position: relative;
             }
+            
             #disqus_thread:after {
                 content: "";
                 display: block;
@@ -118,6 +122,7 @@
                 bottom: 0;
                 background: white;
             }
+            
             .news-content {
                 margin-top: 4%;
                 @include textJustify();
@@ -221,6 +226,7 @@
                     }
                 }
             }
+            
             .news-sharing {
                 direction: ltr;
                 display: grid;
