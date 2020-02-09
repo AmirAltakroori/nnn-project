@@ -72,7 +72,9 @@
         }
     }
 }
-
+html{
+    overflow-x: hidden;
+}
 body{
 
     width: 100%;
@@ -270,8 +272,7 @@ body{
     position: relative;
     height: 100%;
     width: 100%;
-    overflow: auto;
-    margin-top: 7.5%;
+    margin-top: 20%;
     margin-bottom: 6%;
     .view {
         position: relative;
