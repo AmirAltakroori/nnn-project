@@ -19,6 +19,9 @@
             </a>
             <div class="categories-container">
                 <ul id="categories-list">
+                    <li class="tab">
+                        <a href="#/home">الصفحة الرئيسية</a>
+                    </li>
                     <span $for="category of mainCategoriesList">
                         <li class="tab">
                             <a href="#/categories/{{$category.value.id}}">{{$category.value.title}}</a>

@@ -82,10 +82,10 @@ export class Header {
     */
     sliceCategoriesList() {
 
-        if (this.categoriesList.length > 6) {
+        if (this.categoriesList.length > 5) {
 
-            this.mainCategoriesList = this.categoriesList.slice(0, 6);
-            this.moreCategoriesList = this.categoriesList.slice(6, this.categoriesList.length);
+            this.mainCategoriesList = this.categoriesList.slice(0, 5);
+            this.moreCategoriesList = this.categoriesList.slice(5, this.categoriesList.length);
 
         } else {
 
