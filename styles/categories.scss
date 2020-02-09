@@ -13,14 +13,13 @@
 */
 
 @import "./variables";
-
 @media screen and (min-height: 811px) {
     .main-category-section {
         .right-sidebar {
             .right-side-image {
                 height: 173px;
                 width: 309px;
-                font-size: 17px;
+                font-size: $font-size - 3;
             }
         }
         .main-section {
@@ -31,10 +30,12 @@
                 }
                 #category-main-news-title {
                     font-size: 28px;
+                    margin-bottom: 2%;
                 }
                 #category-main-news-writer,
                 #category-main-news-date {
-                    font-size: 14px;
+                    font-size: $font-size - 6;
+                    @include textJustify();
                 }
                 #category-main-news-writng-details {
                     img {
@@ -42,7 +43,8 @@
                     }
                 }
                 p {
-                    font-size: 20px;
+                    font-size: $font-size;
+                    @include textJustify();
                 }
                 #category-see-more {
                     img {
@@ -50,14 +52,15 @@
                         width: 7.5px;
                     }
                     p {
-                        font-size: 20px;
+                        font-size: $font-size;
+                        @include textJustify();
                     }
                 }
             }
         }
     }
     .random-new {
-        font-size: 19px;
+        font-size: $font-size - 5;
         img {
             width: 174px;
             height: 97px;
@@ -68,12 +71,13 @@
         }
     }
     .title {
-        font-size: 22px;
+        font-size: $font-size + 2;
         margin: 3px;
     }
     .category-view-name {
-        font-size: 30px;
+        font-size: $font-size + 10;
         padding-right: 50px;
+        @include textJustify();
     }
     .card {
         margin: 5px 0 5px 5px;
@@ -114,9 +118,10 @@
                     padding: 10px;
                 }
                 p {
+                    @include textJustify();
                     padding-top: 45px;
                     padding-bottom: 45px;
-                    font-size: 25px;
+                    font-size: $font-size + 5;
                     width: 345px;
                     height: 118px;
                     font-family: Regular;
