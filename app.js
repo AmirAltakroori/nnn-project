@@ -35,6 +35,12 @@ let routeList = [
         controller: "/controllers/categories.js",
         id: "",
         title: "categories"
+    },
+    {
+        url: "/notFound",
+        template: "/templates/404.html",
+        controller: "/controllers/404.js",
+        title: "Page not found"
     }
 ];
 
