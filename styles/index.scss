@@ -30,6 +30,10 @@
             }
         }
     }
+
+    .navbar{
+        font-size: 20px;
+    }
 }
 
 @media screen and (max-height: 810px) {
@@ -46,6 +50,9 @@
                 height: 82.5px;
             }
         }
+    }
+    .navbar{
+        font-size: 14.22px;
     }
 }
 
@@ -128,6 +135,7 @@ body{
                             &:hover{
                                 border-block-start: solid 5px $main-color;
                                 font-weight: 450;
+                                cursor: pointer;
                             }
                         }
 
@@ -137,6 +145,11 @@ body{
 
                         }
                         .expand{
+                            
+                            &:hover{
+                                
+                                position: absolute;
+                            }
                             cursor: pointer;
                         }
 
