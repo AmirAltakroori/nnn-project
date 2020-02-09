@@ -224,6 +224,35 @@ Controller ->
 View ->
     <button $change="updateData()">Update Data</button>
 ```
+### $include
+
+include is used to import other view into the current view to reduce redundancy 
+
+it can be used in 2 differents ways
+
+1- using id:
+    u need to add id proberty to the route element 
+    eg:
+
+```
+    let routeList = [
+    {
+        id: "contact",
+        url: "/contact",
+        template: "/templates/contact.html",
+        controller: "/controllers/contact.js",
+        title: "some page"
+    }];
+
+    <div $include = "id:contact"></div>
+```
+
+2- calling Template and controller
+   
+
+```
+    <div $include = "/templates/contact.html , /controllers/contact.js"></div>
+```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

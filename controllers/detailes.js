@@ -1,69 +1,112 @@
 /*
-     NNN website.
+    NNN website.
 
-     This file is part of the NNN website.
+    This file is part of the NNN website.
 
-     Authors:
-     Latifa Masri
+    Authors:
+        Latifa Masri <latifa.masri1998@gmail.com>
+        Qusai Hroub <qusaihroub.r@gmail.com>
 
-     File description:
+    File description:
+        This file contains the controller class of details page which applies Potato Framework.
 */
+
+import { DataBase } from "../services/DataBase.js";
+
 export class Details {
+
     constructor() {
-        // this.routeParams.newID;
-        this.newID = 0;
-        this.id = "";
-        this.title = "";
-        this.content = "";
-        this.categoryId = -1;
-        this.seoTitle = "";
-        this.seoTages = ""; // json string;
-        this.seoDescription = "";
-        this.isActive = false;
-        this.isMainNews = false;
-        this.isUrgentNews = false;
-        this.createDate = Date();
-        this._attachments = ""; // follwing couchDB structure.
 
-        this.relatedNews = [{
-            id: 1,
-            title: " 111لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
-            img: "new2.png",
-            content: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات الحوسبة السحابية   للوزارة ، وهو العطاء الذي مُنح لشركة مايكروسوفت111111",
-            path: "#"
-        }, {
-            id: 2,
-            title: "222 لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
-            img: "new.jpg",
-            content: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات   الحوسبة السحابية للوزارة، وهو العطاء الذي مُ نح لشركة مايكروسوفت222222 ",
-            path: "#"
+        this.dataBase = new DataBase();
+        this.news = {};
+        this.relatedNews = [];
+        this.writer = {};
+        this.url = 'https://541e1dc0-354b-4134-ae7d-5eaa533a1bf9-bluemix.cloudant.com';
+        this.auth = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJsdWVtaXg6NDU2YjA3NzhjODFjOWNiMDk5NzZkODU1NjQ5MDM2YzRlYTE1MTQwZTk5NDNlNWM2MGE5ZDM1MGMwNDU5YzIwMw==';
+        this.getNews();
+        dynamicImport("./disqusVariable.js").then(data => data.disqus_config(mvc.routeParams.id));
+        this.disqus();
 
-        }, {
-            id: 3,
-            title: " 333لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
-            img: "firstNews.jpg",
-            content: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات  الحوسبة السحابية للوزارة، وهو العطاء الذي مُ نح لشركة مايكروسوفت33333 ",
-            path: "#"
-        }, {
-            id: 4,
-            title: " لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
-            img: "4.jpeg",
-            content: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة 44444الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات4444   الحوسبة السحابية للوزارة، وهو العطاء الذي مُ نح لشركة مايكروسوفت44444 444",
-            path: "#"
-        }, {
-            id: 5,
-            title: "55 لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
-            img: "new.jpg",
-            content: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات   الحوسبة السحابية  للوزارة، وهو العطاء الذي مُ نح لشركة مايكروسوفت 5555",
-            path: "#"
-        }, {
-            id: 6,
-            title: "66 لبنان.. دعوات لقطع الطرقات في اليوم الـ40 لانطلاق الاحتجاجات ",
-            img: "3.jpeg",
-            content: " اعلنت شركة أمازون الأميركية أنها تقاضي وزارة الدفاع (بنتاغون) بسبب استثنائها  من عطاء بقيمة عشرة مليارات دولار لتقديم ما يسمى خدمات   الحوسبة السحابية  للوزارة، وهو العطاء الذي مُ نح لشركة مايكروسوفت666 ",
-            path: "#"
-        }];
+    }
 
+    /*
+        This function used to assign ?? with ??? 
+
+        @tparam:
+
+        @param: 
+
+        @returns:
+    */
+    disqus() {
+
+        // DON'T EDIT BELOW THIS LINE
+        var d = document,
+            s = d.createElement('script');
+        s.src = 'https://nnn-disqus-com.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+
+    }
+
+    /*
+        This function used to assign ?? with ??? 
+
+        @tparam:
+
+        @param: 
+
+        @returns:
+    */
+    getNews() {
+
+        this.dataBase.findByIndex("/news",
+                                ["_id", "content", "createDate", "title", "writerId", "isActive", "attachment", "categoryId"],"_id", mvc.routeParams.id,
+                                this.url, this.auth)
+                                 .then( data => {
+                                     let iData = data;
+                                     this.news = iData.docs[0];
+                                     mvc.apply();
+                                     this.getRelatedNews(this.news.categoryId, this.news._id);
+                                     this.getWriters(this.news.writerId);
+                                 });
+
+    }
+
+    /*
+        This function used to assign ?? with ??? 
+
+        @tparam:
+
+        @param: 
+
+        @returns:
+    */
+    getRelatedNews(categoryId, newsId) {
+
+        this.dataBase.findByIndex("/news", ["_id", "attachment", "title",],"categoryId", categoryId, this.url, this.auth).then( data => {
+            let iData = data;
+            this.relatedNews = iData.docs.filter((el) => { return el._id != newsId});
+            mvc.apply();
+        });
+
+    }
+    
+    /*
+        This function used to assign ?? with ??? 
+
+        @tparam:
+
+        @param: 
+
+        @returns:
+    */
+    getWriters(writerId) {
+
+        this.dataBase.getData("/users/_design/users/_view/generalinfo",true,'',this.url,this.auth).then( data => {
+            this.writer = data.filter((el) => { return el.id == writerId})[0].value;
+            mvc.apply();
+        });
 
     }
 

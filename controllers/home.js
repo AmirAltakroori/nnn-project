@@ -1,185 +1,238 @@
 /*
-     NNN website.
+    NNN website.
 
-     This file is part of the NNN website.
+    This file is part of the NNN website.
 
-     Authors:
-     Aseel Arafeh <arafehaseel@gmail.com>
-     Qusai Hroub <qusaihroub.r@gmail.com>
+    Authors:
+        Aseel Arafeh <arafehaseel@gmail.com>
+        Qusai Hroub <qusaihroub.r@gmail.com>
 
-     File description:
+    File description:
+        This file contains the controller class of home page which applies Potato Framework.
 */
 
- let mainNews = [];
- let slideIndex = 0;
- const mainNewDiv = document.getElementById('latest-news-more-detailed-container');
- const mainNewsDiv = document.getElementById('latest-news-list');
+import { DataBase } from "../services/DataBase.js";
 
-/*
-    Get Main News.
+export class Home {
 
-    @tparam
+    constructor() {
 
-    @param
-
-    @returns
-
-    This function used to retrieve the most 4 main news from database
-*/
-function getmainNews () {
-
-    // I'll rewrite this function when DB was ready.... Query should retrive limited number of charachters :)
-    mainNews = [{
-                    title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-                    path: "#",
-                    authorName: "أسيل عرفه",
-                    publishedDate: "12/12/2019",
-                    img:"img/firstNews.jpg",
-                    description:"بسم الله الرحمن الرحيم ... هذا وصف الخبر "
-                  }, {
-                    title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-                    path: "#",
-                    authorName: "أسيل عرفه",
-                    publishedDate: "12/12/2019",
-                    img:"img/firstNews.jpg",
-                    description:""
-                  }, {
-                    title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-                    path: "#",
-                    authorName: "أسيل عرفه",
-                    publishedDate: "12/12/2019",
-                    img:"img/firstNews.jpg",
-                    description:""
-                  }, {
-                    title: "الإضراب الشامل يعم مدينة الخليل في هذا اليوم",
-                    path: "#",
-                    authorName: "أسيل عرفه",
-                    publishedDate: "12/12/2019",
-                    img:"img/firstNews.jpg",
-                    description:""
-                  }];
-
-}
-
-/*
-    Show Main News.
-
-    @tparam
-
-    @param
-
-    @returns
-
-    This function used to show the 4 main news retrieved from database at main section
-*/
-function showmainNews () {
-
-    getmainNews();
-    mainNewDiv.innerHTML="";
-    if(mainNews.length > 0) {
-
-        let currentMainNew = `<div class="latest-news-more-detailed-image-div">
-                                <img class="latest-news-more-detailed-image" src="${mainNews[0].img}" width="620px" height="340px">
-                            </div>
-                            <div class="latest-news-more-detailed-title-and-date">
-                                <div class="latest-news-more-detailed-title">
-                                    <h4>${mainNews[0].title}</h4>
-                                </div>
-                                <div class="latest-news-more-detailed-date">
-                                    <p class="authorName">${mainNews[0].authorName}</p>
-                                    <img src="img/calenderIcon.png" width="15px" height="15px">
-                                    <p class="published">${mainNews[0].publishedDate}</p>
-                                </div>
-                            </div>
-                            <div class="latest-news-more-detailed-paragraph">
-                                <p>${mainNews[0].description}</p>
-                            </div>
-                            <div class="latest-news-more-detailed-readmore-button">
-                                <img src="img/arrowIcon.png" width="17px" height="17px">
-                                <p>اقرأ المزيد</p>
-                            </div>`;
-        mainNewDiv.innerHTML += currentMainNew;
+        this.dataBase = new DataBase();
+        this.url = 'https://541e1dc0-354b-4134-ae7d-5eaa533a1bf9-bluemix.cloudant.com';
+        this.auth = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJsdWVtaXg6NDU2YjA3NzhjODFjOWNiMDk5NzZkODU1NjQ5MDM2YzRlYTE1MTQwZTk5NDNlNWM2MGE5ZDM1MGMwNDU5YzIwMw==';
+        this.writers = [];
+        this.getWriters();
+        this.mainNews = [];
+        this.selectedNews = {};
+        this.getmainNews();
+        this.slideIndex = 0;
+        this.randomNews = [];
+        this.randomNewsView = [];
+        this.getRandomNews();
+        setInterval(() => {
+            this.slide(1);
+        } , 4000);
+        this.allNews = [];
+        this.allCategories = [];
+        this.categoriesView = [];
+        this.getAllCategories();
 
     }
 
-    mainNewsDiv.innerHTML="";
-    for (let i = 1; i < mainNews.length; i++) {
+    /*
+        Change Selected news
 
-        let currentMainNew = `<div class="news" id="news${i}">
-                                <img src="${mainNews[i].img}" width="170px" height="90px">
-                                <p>${mainNews[0].title}</p>
-                              </div>`;
-        mainNewsDiv.innerHTML += currentMainNew;
+        @tparam news: news object
+
+        @param: identifier for needed news
+
+        @returns:
+    */
+    changeSelectedNews(news) {
+
+        this.selectedNews = news;
+        mvc.apply();
+
+    }
+
+    /*
+        This function used to retrieve the most 4 main news from database
+
+        @tparam
+
+        @param
+
+        @returns
+
+    */
+    getmainNews () {
+
+        this.dataBase.getData("/news/_design/views/_view/mainnews?limit=5&&descending=true",true,'',this.url,this.auth).then( data => {
+            this.mainNews = data;
+            if (this.mainNews.length > 0) {
+                this.selectedNews = this.mainNews[0];
+            }
+            if (this.mainNews.length > 5) {
+                this.mainNews = this.mainNews.slice(0, 5);
+            }
+            for (let news of this.mainNews) {
+                news.writer = this.writers.filter((el) => { return el.value.id == news.value.writer})[0].value;
+            }
+            mvc.apply();
+        });
 
     }
 
-}
+    /*
+        This function used to retrieve 12 random news from database and assign randomNews array with them.
 
-/*
- *    increment or decrement slider start index.
- *
- *    @tparam inc: integer.
- *
- *    @param inc: value of increment or decrement.
- *
- *    @returns
- */
-function plusDivs(inc) {
-    showDivs(slideIndex += inc);
-}
+        @tparam
 
-/*
- *    Show Next 3 divs.
- *
- *    @tparam index: integer.
- *
- *    @param index is the start point.
- *
- *    @returns
- */
-function showDivs(index) {
-    let i;
-    let newsTileList = document.getElementsByClassName("slider-news-tile");
+        @param
 
-    if (index > newsTileList.length - 3) {
-        slideIndex = 0;
-    } else if (index < 0) {
-        slideIndex = newsTileList.length - 4;
-    }
+        @returns
 
-    for (i = 0; i < newsTileList.length; i++) {
-        newsTileList[i].style.display = "none";
-    }
+    */
+    getRandomNews () {
 
-    for (i = slideIndex; i < slideIndex + 3; i++) {
-        newsTileList[i].style.display = "block";
-    }
-}
-
-/*
- *    show random news on random news container.
- *
- *    @tparam randomNews: array of News.
- *
- *    @param randomNews is list of news selected randomly.
- *
- *    @returns
- */
-function showRandomNews(randomNews) {
-
-    const rendomNewsContainer = document.getElementById('rendom-news-container');
-
-    rendomNewsContainer.innerHTML="";
-
-    for (let i = 0; i < randomNews.length; i++) {
-
-        let randomNewsTile = `<div class="slider-news-tile" style="background-image: url(${randomNews[i].img});">
-                                <div class="date">${randomNews[i].publishedDate}</div>
-                                <div class="news">
-                                    ${randomNews[i].title}
-                                </div>
-                            </div>`;
-        rendomNewsContainer.innerHTML += randomNewsTile;
+        this.dataBase.getData("/news/_design/views/_view/random?limit=12",true,'',this.url,this.auth).then( data => {
+            this.randomNews = data;
+            this.slide(0);
+        });
 
     }
+
+    /*
+        Load random news for view
+     
+        @tparam inc: integer
+    
+        @param inc: value of increment or decrement
+    
+        @returns
+     */
+    slide(inc) {
+
+        this.slideIndex += inc;
+        if (this.slideIndex < 0) {
+            this.slideIndex += this.randomNews.length;
+        }
+        if (this.slideIndex == this.randomNews.length) {
+            this.slideIndex = 0;
+        }
+        if (this.slideIndex + 3 <= this.randomNews.length) {
+            this.randomNewsView = this.randomNews.slice(this.slideIndex, this.slideIndex + 3);
+        } else {
+            this.randomNewsView = this.randomNews.slice(this.slideIndex, this.randomNews.length);
+            this.randomNewsView = [...this.randomNewsView, ...(this.randomNews.slice(0, (this.slideIndex + 3) % this.randomNews.length))];
+        }
+        this.showRandomNews();
+
+    }
+
+    /*
+        This function used to show random news at its section.
+
+        @tparam
+
+        @param
+
+        @returns
+
+    */
+    showRandomNews() {
+
+        const rendomNewsContainer = document.getElementById('rendom-news-container');
+        rendomNewsContainer.innerHTML="";
+
+        for (let randomNews of this.randomNewsView) {
+
+            let randomNewsTile = `<a href="#/details/${randomNews.value.id}">
+                                        <div class="slider-news-tile" style="background-image: url('${randomNews.value.image}');">
+                                            <div class="date">${randomNews.value.createDate}</div>
+                                            <div class="news">
+                                                ${randomNews.value.title}
+                                            </div>
+                                        </div>
+                                    </a>`;
+            rendomNewsContainer.innerHTML += randomNewsTile;
+
+        }
+
+    }
+
+    /*
+        This function used to retrieve all categories name from database and assign allCategories array with them.
+
+        @tparam
+
+        @param
+
+        @returns
+
+    */
+    getAllCategories() {
+
+        this.dataBase.getData("/categories/_design/allcategories/_view/new-view",true,'',this.url,this.auth).then( data => {
+            this.allCategories = data;
+            this.getNewsForCategory(this.allCategories);
+            mvc.apply();
+            this.slide(0);
+        });
+
+    }
+
+    /*
+        This function used to retrieve 5 newest news for each category at categories array.
+
+        @tparam categories: array
+
+        @param categories: array for all caetegories  
+
+        @returns
+
+    */
+    getNewsForCategory(categories) {
+
+        this.dataBase.dbFindByIndex("/news",["_id", "title", "attachment", "seoDescription", "createDate", "categoryId", "writerId"],"isActive", 1, this.url,this.auth).then( data => {
+            this.allNews = data.docs;
+            for (let category of categories) {
+
+                category.allMain = [];
+                category.mainNews = {};
+                let categoryNews = this.allNews.filter((el) => { return el.categoryId == category.id});
+                if (categoryNews.length > 0) {
+                    category.mainNews = categoryNews[0];
+                    category.mainNews.writer = this.writers.filter((el) => { return el.id == category.mainNews.writerId})[0];
+                    if (categoryNews.length > 1) {
+                        category.allMain = categoryNews.slice(1, 5);
+                    }
+                    this.categoriesView.push(category);
+                }
+
+            }
+            mvc.apply();
+            this.slide(0);
+        });
+
+    }
+
+    /*
+        This function used to ???
+
+        @tparam 
+
+        @param 
+
+        @returns
+
+    */
+    getWriters() {
+
+        this.dataBase.getData("/users/_design/users/_view/generalinfo",true,'',this.url,this.auth).then( data => {
+            this.writers = data;
+        });
+
+    }
+
 }

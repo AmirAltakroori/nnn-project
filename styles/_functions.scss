@@ -1,85 +1,74 @@
 /*
-     NNN website.
+    NNN website.
 
-     This file is part of the NNN website.
+    This file is part of the NNN website.
 
-     Authors:
-     Aseel Arafeh <arafehaseel@gmail.com>
-     Suhair Shareef <suhairshareef1999@gmail.com>
-     Authors:Latifa Masri
+    Authors:
+        Aseel Arafeh <arafehaseel@gmail.com>
+        Suhair Shareef <suhairshareef1999@gmail.com>
+        Latifa Masri <latifa.masri1998@gmail.com>
 
-     File description:this file contain shared function used in different files
+    File description:
+        This file contains shared functions used for different page style.
 */
 
 @import './variables';
-
 @mixin initialFormat () {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: map-get($map: $fonts, $key: websiteFont);
+    }
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+        direction: rtl;
+    }
+}
 
-     * {
+//this function specifies the justification property and font family of the text 
+@mixin textJustify () {
+    font-family: $newsText-fontFamily;
+    text-align: justify;
+    text-justify: auto;
+}
 
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-         font-family: map-get($map: $fonts, $key: websiteFont);
-
-     }
-
-     html, body {
-
-         height: 100%;
-         width: 100%;
-         direction: rtl;
-
-     }
-
- }
-
- @mixin flexFunction ($justifyContent, $alignItems, $width, $height, $direction ) {
-
-     display: flex;
-     justify-content: $justifyContent;
-     align-items: $alignItems;
-     width: $width;
-     height: $height;
-     //flex-wrap: wrap;
-     flex-direction: $direction;
-
- }
+@mixin flexFunction ($justifyContent, $alignItems, $width, $height, $direction) {
+    display: flex;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+    width: $width;
+    height: $height;
+    flex-direction: $direction;
+}
 
 @mixin positioning ($position, $top, $bottom, $left, $right) {
-
-     position: $position;
-     top: $top;
-     bottom: $bottom;
-     left: $left;
-     right: $right;
+    position: $position;
+    top: $top;
+    bottom: $bottom;
+    left: $left;
+    right: $right;
 }
 
 @mixin transform ($property) {
-
-     -webkit-transform: $property;
-     -ms-transform: $property;
-     transform: $property;
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
 }
 
-@mixin createButton($background-color, $border, $font-color, $padding, $text-align, $font-size) {
-
-     background-color:$background-color;
-     border: $border;
-     color:$font-color;
-     padding: $padding;
-     text-align: $text-align;
-     text-decoration: none;
-     display: inline-block;
-     font-size: $font-size;
+@mixin createButton ($background-color, $border, $font-color, $padding, $text-align, $font-size) {
+    background-color: $background-color;
+    border: $border;
+    color: $font-color;
+    padding: $padding;
+    text-align: $text-align;
+    text-decoration: none;
+    display: inline-block;
+    font-size: $font-size;
 }
 
-/*
-flex property
-@tparam $direction $justify $align : flex property , $w :width
-$param $direction: flex direction , $justify: justify content of flex , $align: align flex items ,$width :width of the flex
-
-*/
 @mixin flex-property($direction, $justify, $align, $w) {
     display: flex;
     justify-content: $justify;

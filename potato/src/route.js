@@ -65,16 +65,18 @@ async function loadDoc(path) {
 async function loadMvc(templatePath, controllerPath) {
     let template;
     let controller;
-    template = await loadDoc(templatePath);
-    controller = await dynamicImport(controllerPath);
+
+    if (templatePath)
+        template = await loadDoc(templatePath);
+
+    if (controllerPath)
+        controller = await dynamicImport(controllerPath);
+
     return Promise.resolve({ template, controller });
 }
 
-
-function DImport(path) 
-{
-    return new Promise((res,rej) =>
-    {
+function DImport(path) {
+    return new Promise((res, rej) => {
         const moduleSpecifier = path;
         try {
             const module = import(moduleSpecifier);

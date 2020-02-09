@@ -197,6 +197,74 @@ function renderChange(exp, element) {
 	}
 }
 
+let contMap = new Map();
+let tempMap = new Map();
+async function renderInclude(exp, element) 
+{
+	let tempPath, contPath;
+	if(exp.includes(":"))
+	{
+		let id = exp.trim().substr(3,exp.length);
+		let found = false;
+
+		for(let i=0;i < mvc._routeMap.length;i++)
+		{
+			if(mvc._routeMap[i].id == id)
+			{
+				found = true;
+				tempPath = mvc._routeMap[i].template;
+				contPath = mvc._routeMap[i].controller;
+				break;
+			}
+		}
+		if(!found)
+		{
+			console.error("no such id " + id);
+			return;
+		}
+
+	}
+	else
+	{
+		let expGroup = exp.split(',');
+		tempPath = expGroup[0].trim();
+		contPath = expGroup[1].trim();
+	}
+	
+
+	let template;
+	let reload = false;
+	if (tempMap.has(tempPath))
+		template = tempMap.get(tempPath);
+	else {
+		template = await loadDoc(tempPath);
+		tempMap.set(tempPath, template);
+		reload = true;
+	}
+
+	let controller;
+	if (contMap.has(contPath))
+		controller = contMap.get(contPath);
+	else {
+		controller = await dynamicImport(contPath);
+		controller = new controller[Object.keys(controller)[0]];
+		contMap.set(contPath, controller);
+		reload = true;
+	}
+
+	let oldScope = $scope;
+	$scope = controller;
+
+	var node = document.createElement("LI");
+	node.innerHTML = template;
+	renderTemplate(node);
+	$apply(node);
+	element.innerHTML = node.innerHTML;
+
+	$scope = oldScope;
+	if (reload) mvc.apply();
+}
+
 //*********************************************************************//
 //*********************************************************************//
 //*********************************************************************//
@@ -210,7 +278,8 @@ const specails = [
 	new AttrData("\\$class", renderClass),
 	new AttrData("\\$click", renderClick),
 	new AttrData("\\$model", renderModel),
-	new AttrData("\\$change", renderChange)
+	new AttrData("\\$change", renderChange),
+	new AttrData("\\$include", renderInclude)
 ];
 
 // Pulls special tags from a given html
@@ -275,11 +344,16 @@ function renderTemplate(view) {
 }
 
 function render(view, model, update = false) {
-	$scope = model;
+	if (model != null) $scope = model;
 	if (update) $apply();
 	renderTemplate(view);
-	$bindedVars = view.innerHTML;
-	if (!update) $apply(view);
+	if (!$bindedVars) $bindedVars = view.innerHTML;
+
+	if (!update) {
+		$bindedVars = view.innerHTML;
+		$apply(view);
+	}
+
 	return view;
 }
 
@@ -305,3 +379,14 @@ function eventListener(element, event, func) {
 		func();
 	});
 };
+
+function clearRender() {
+	contMap.forEach((value, key, mp) => {
+		delete value;
+	})
+	contMap.clear();
+	tempMap.clear();
+	var highestTimeoutId = setTimeout(";");
+	for (var i = 0; i < highestTimeoutId; i++)
+		clearTimeout(i);
+}
