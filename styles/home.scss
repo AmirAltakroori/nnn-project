@@ -84,7 +84,6 @@
     }
     .category-section {
         top: 20px;
-        height: 653px;
         .category-container {
             right: 253px;
             width: 1419px;
@@ -222,7 +221,6 @@
     }
     .category-section {
         top: 20px / 1080 * 900;
-        height: 653px / 1080 * 900;
         .category-container {
             right: 253px / 1080 * 900;
             width: 1419px / 1080 * 900;
@@ -360,7 +358,6 @@
     }
     .category-section {
         top: 20px;
-        height: 489.75px;
         .category-container {
             right: 189.75px;
             width: 1064.25px;
@@ -498,7 +495,6 @@
     }
     .category-section {
         top: 20px;
-        height: 463.63px;
         .category-container {
             right: 179.63px;
             width: 1007.49px;
@@ -749,6 +745,7 @@
     position: relative;
     font-family: $website-font;
     width: 100%;
+    height: auto;
     .category-container {
         display: flex;
         flex-direction: column;
@@ -830,4 +827,8 @@
 .link {
     text-decoration: none;
     color: $website-font-color;
+}
+
+.home-view {
+    height: auto;
 }
