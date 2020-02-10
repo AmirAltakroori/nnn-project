@@ -1,34 +1,40 @@
+/*
+    NNN website.
+
+    This file is part of the NNN website.
+
+    Authors:
+        Qusai Hroub <qusaihroub.r@gmail.com>
+        Aseel Arafeh <arafehaseel@gmail.com>
+        Amir Altakroori <ameertakrouri99@gmail.com>
+        Latifa Masri <latifa.masri1998@gmail.com>
+
+    File description: 
+        This file contains routeList for home, details, categoies pages.
+*/
+
 let mvc = new Mvc();
 
-let routeList = [{
+let routeList = [
+    {
         url: "/home",
         template: "/templates/home.html",
         controller: "/controllers/home.js",
-        title: "شبكة الوحدة الإخبارية"
+        title: "home"
     },
     {
-        url: "/admin",
-        template: "/templates/admin.html",
-        controller: "/controllers/admin.js",
-        title: "صفحة المشرف"
+        url: "/details/:id",
+        template: "/templates/details.html",
+        controller: "/controllers/detailes.js",
+        id: "",
+        title: "details"
     },
     {
-        id: "contact",
-        url: "/contact",
-        template: "/templates/contact.html",
-        controller: "/controllers/contact.js",
-    },
-    {
-        url: "/home/:id",
-        template: "/templates/home1.html",
-        controller: "/controllers/home1.js",
-        title: "شبكة الوحدة الإخبارية"
-    },
-    {
-        url: "/home/:id/:titel/:ex",
-        template: "/templates/home2.html",
-        controller: "/controllers/home2.js",
-        title: "شبكة الوحدة الإخبارية"
+        url: "/categories/:id",
+        template: "/templates/categories.html",
+        controller: "/controllers/categories.js",
+        id: "",
+        title: "categories"
     }
 ];
 

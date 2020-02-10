@@ -81,14 +81,17 @@ export class CategoriesController {
         this.CreateCat(category).then(data => {
             if (data.ok) {
                 category._rev = data.rev;
+                category._id = data.id;
                 this.categories.push(category);
-
                 mvc.apply();
                 createToast("نجحت العملية", 'تمت اضافة الفئة', "success", "check");
+                location.reload();
             }
+
             this.hideModal('createcategory-modal');
             this.submit = false;
         });
+
     }
     CreateCat(data) {
         return new Promise((resolve, reject) => {
@@ -143,7 +146,7 @@ export class CategoriesController {
                 createToast("نجحت العملية", 'تم حذف الفئة', "success", "check");
             }
             this.hideModal('delete');
-            this.submit = true;
+            this.submit = false;
 
         });
     }

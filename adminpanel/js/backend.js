@@ -85,14 +85,14 @@ export function dbGet(endpoint, isView, id) {
                     if (!id || id == '')
                         data = cleanData(data);
                     resolve(data);
+                }  else {
+                    console.log(http.status)
+                    let data = JSON.parse(http.responseText);
+                    reject(data);
                 }
+    
             }
-            if (http.status == 409) {
-                console.log(http.status)
-                let data = JSON.parse(http.responseText);
-                reject(data);
-            }
-
+          
         }
         http.send();
     });

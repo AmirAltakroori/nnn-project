@@ -66,7 +66,7 @@ function verification() {
     // let user = getUser(username.value, password.value);
     let currentUser = null;
     dynamicImport("./../../adminpanel/js/backend.js").then(db => {
-    db.dbGet("/users/",false,username.value).then( user => {
+    db.dbGet("/users",false,username.value).then( user => {
         currentUser = user;
         let text = "";
         color = "#ffffff"
@@ -103,6 +103,10 @@ function verification() {
                 window.location.assign("../adminpanel/index.html");
             }
         }, 1000);
+    }, () => {
+        text = "اسم المستخدم او كلمة المرور خاطئة";
+        color = "#ff0000";
+        displayPopup(text, color)
     }); 
 }  );
     

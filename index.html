@@ -1,21 +1,55 @@
+<!--
+    NNN website.
+
+    This file is part of the NNN website.
+
+    Authors:
+        Qusai Hroub <qusaihroub.r@gmail.com>
+        Aseel Arafeh <arafehaseel@gmail.com>
+
+    File description:
+        This file contains HTML code for the index page.
+-->
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>MVC Project</title>
-        <link rel="stylesheet" href="./styles/style.css">
-    </head>
-    <body>
-        <div class="NavLinkContainer">
-            <a class="NavLink" href="index.html#/home">Home</a>&nbsp;
-            
-            <a class="NavLink" href="index.html#/contact">Contact</a>&nbsp;
-            
-            <a class="NavLink" href="index.html#/admin">Admin</a>&nbsp;
+<head>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/categories.css" />
+    <link rel="stylesheet" type="text/css" href="styles/details.css" />
+    <link rel="stylesheet" type="text/css" href="styles/index.css" />
+    <link rel="stylesheet" type="text/css" href="styles/home.css" />
+</head>
+<body>
+    <div class="root">
+        <div class="view-root">
+            <!-- VIEW CONTAINER -->
+            <div class="view" VIEW>
+                <a href="#/home">Home</a>&nbsp;
+            </div>
         </div>
-        
-        <h3>View</h3>
-        <div view></div>
-        <script src="./potato/potato.js"></script>
-        <script src="app.js"></script>
-    </body>
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="footer-right">
+                <a href="#/home" class="logo"> <img src="img\logo.png" alt="شبكة الوحدة الإخبارية"></a>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onhashchange = function() {
+            let config = JSON.parse(localStorage.getItem("config"));
+            this.language = config.language;
+            this.page.url = config.tpage;
+        }
+        function disqus_config() {
+            let config = JSON.parse(localStorage.getItem("config"));
+            this.language = config.language;
+            this.page.url = config.tpage;
+            // Replace PAGE_URL with your page's canonical URL variable this.page.identifier = 'postid=1'; // Replace PAGE_IDENTIFIER with your page's unique identifier
+        };
+    </script>
+    <script src="./potato/potato.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/index.js"></script>
+</body>
 </html>
