@@ -51,7 +51,7 @@ export class Category {
     changeMainNews(news) {
 
         this.mainNews = news;
-        this.writer = this.writers.filter((el) => { return el.id != this.mainNews.writerId})[0].value;
+        this.writer = this.writers.filter((el) => { return el.id == this.mainNews.writerId})[0].value;
         mvc.apply();
     }
 
@@ -161,6 +161,7 @@ export class Category {
 
         this.dataBase.getData("/users/_design/users/_view/generalinfo",true,'',this.url,this.auth).then( data => {
             this.writers = data;
+            console.log(data)
             this.writer = this.writers.filter((el) => { return el.id == this.mainNews.writerId})[0].value;
             mvc.apply();
         }, () => {
