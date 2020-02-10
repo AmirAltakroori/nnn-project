@@ -79,6 +79,8 @@ export class Home {
                 news.writer = this.writers.filter((el) => { return el.value.id == news.value.writer})[0].value;
             }
             mvc.apply();
+        }, () => {
+            this.getmainNews();
         });
 
     }
@@ -98,17 +100,19 @@ export class Home {
         this.dataBase.getData("/news/_design/views/_view/random?limit=12",true,'',this.url,this.auth).then( data => {
             this.randomNews = data;
             this.slide(0);
+        }, () => {
+            this.getRandomNews();
         });
 
     }
 
     /*
         Load random news for view
-     
+
         @tparam inc: integer
-    
+
         @param inc: value of increment or decrement
-    
+
         @returns
      */
     slide(inc) {
@@ -178,6 +182,8 @@ export class Home {
             this.getNewsForCategory(this.allCategories);
             mvc.apply();
             this.slide(0);
+        }, () => {
+            this.getAllCategories();
         });
 
     }
@@ -187,7 +193,7 @@ export class Home {
 
         @tparam categories: array
 
-        @param categories: array for all caetegories  
+        @param categories: array for all caetegories
 
         @returns
 
@@ -213,6 +219,8 @@ export class Home {
             }
             mvc.apply();
             this.slide(0);
+        }, () => {
+            this.getNewsForCategory();
         });
 
     }
@@ -220,9 +228,9 @@ export class Home {
     /*
         This function used to ???
 
-        @tparam 
+        @tparam
 
-        @param 
+        @param
 
         @returns
 
@@ -231,6 +239,8 @@ export class Home {
 
         this.dataBase.getData("/users/_design/users/_view/generalinfo",true,'',this.url,this.auth).then( data => {
             this.writers = data;
+        }, () => {
+            this.getWriters();
         });
 
     }

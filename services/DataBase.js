@@ -7,7 +7,7 @@
         Qusai Hroub <qusaihroub.r@gmail.com>
         Aseel Arafeh <arafehaseel@gmail.com>
 
-    File description: 
+    File description:
         This file contains functions used to deal with database
 */
 
@@ -43,24 +43,27 @@ export class DataBase {
             http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             http.setRequestHeader('Accept', 'application/json');
             http.setRequestHeader("Authorization", authentication);
-            http.onreadystatechange = function() { 
+            http.onreadystatechange = function() {
 
                 if (http.readyState == 4) {
 
-                    let data = JSON.parse(http.responseText);
-                    let cleanedData = [];
+                    if (http.status == 200) {
+                        let data = JSON.parse(http.responseText);
+                        let cleanedData = [];
 
-                    if (!id || id == ''){
+                        if (!id || id == ''){
 
-                        for (let i = 0; i < data.rows.length; i++)
-                            cleanedData.push(data.rows[i]);
+                            for (let i = 0; i < data.rows.length; i++)
+                                cleanedData.push(data.rows[i]);
 
+                        }
+                        resolve(cleanedData);
+                    } else {
+                        reject();
                     }
-                    resolve(cleanedData);
-
                 }
             }
-            http.send(); 
+            http.send();
         });
     }
 
@@ -90,15 +93,19 @@ export class DataBase {
             http.setRequestHeader('Accept', 'application/json');
             http.setRequestHeader("Authorization", authentication);
             http.onreadystatechange = function() { //Call a function when the state changes.
-                
-                if (http.readyState == 4) 
-                    resolve(JSON.parse(http.responseText));
-                    
+
+                if (http.readyState == 4)
+                    if (http.status == 200) {
+                        resolve(JSON.parse(http.responseText));
+                    } else {
+                        reject();
+                    }
+
             }
             http.send(JSON.stringify((parameters)));
         });
     }
-    
+
     /*
      *    Fetch data from dataBase
      *
@@ -128,9 +135,13 @@ export class DataBase {
             http.setRequestHeader('Accept', 'application/json');
             http.setRequestHeader("Authorization", authentication);
             http.onreadystatechange = function() {
-                
-                if (http.readyState == 4) 
-                    resolve(JSON.parse(http.responseText));
+
+                if (http.readyState == 4)
+                    if (http.status == 200) {
+                        resolve(JSON.parse(http.responseText));
+                    } else {
+                        reject();
+                    }
             }
             http.send(JSON.stringify((parameters)));
         });
