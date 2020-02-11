@@ -9,7 +9,7 @@
         Amir Altakroori <ameertakrouri99@gmail.com>
         Qusai Hroub <qusaihroub.r@gmail.com>
 
-    File description: 
+    File description:
         This file contains the controller class of categories page which applies Potato Framework.
  */
 
@@ -51,15 +51,14 @@ export class Category {
     changeMainNews(news) {
 
         this.mainNews = news;
-        this.writer = this.writers.filter((el) => { return el.id != this.mainNews.writerId})[0].value;
+        this.writer = this.writers.filter((el) => { return el.id == this.mainNews.writerId})[0].value;
         mvc.apply();
-
     }
 
     /*
-        This function used to assign category with ??? 
+        This function used to fetch category with specific id and assign it to "category" local variable for storing it.
 
-        @tparam news: ??
+        @tparam categoryId: int or string
 
         @param: identifier for needed category
 
@@ -70,16 +69,17 @@ export class Category {
         this.dataBase.getData("/categories/_design/allcategories/_view/new-view",true,'',this.url,this.auth).then( data => {
             this.category = data.filter((el) => { return el.id == categoryId})[0].value;
             mvc.apply();
+        }, () => {
+            this.getCategory();
         });
-
     }
 
     /*
-        This function used to assign ?? with ??? 
+        This function used to fetch main news for specific category and assign it "listMainNews" to local variable for storing it.
 
         @tparam:
 
-        @param: 
+        @param:
 
         @returns:
     */
@@ -87,68 +87,73 @@ export class Category {
 
         this.dataBase.findByIndex("/news",
                                 ["_id", "title", "attachment", "seoDescription", "isMainNews", "createDate"], "categoryId", mvc.routeParams.id,
-                                this.url, this.auth)
-                                 .then( data => {
-                                     let iData = data;
-                                     this.listMainNews = iData.docs.filter((el) => { return el.isMainNews});
-                                     if (this.listMainNews.lenght > 3) {
-                                         this.listMainNews = this.listMainNews.slice(0, 3);
-                                     }
-                                     this.mainNews = this.listMainNews[0];
-                                     this.getWriters();
-                                     mvc.apply();
-                                 });
+                                this.url, this.auth).then( data => {
 
+            let iData = data;
+            this.listMainNews = iData.docs.filter((el) => { return el.isMainNews});
+            if (this.listMainNews.lenght > 3) {
+                this.listMainNews = this.listMainNews.slice(0, 3);
+            }
+            this.mainNews = this.listMainNews[0];
+            this.getWriters();
+            mvc.apply();
+        }, () => {
+            this.getNews();
+        });
     }
 
     /*
-        This function used to assign ?? with ??? 
+        This function used to fetch all news for specific category and assign it to "liftNewsInCategory and rightNewsInCategory" local variables for storing it.
 
         @tparam:
 
-        @param: 
+        @param:
 
         @returns:
     */
     getAllNews() {
-        
+
         this.dataBase.findByIndex("/news", ["_id", "title", "attachment"],"categoryId", mvc.routeParams.id, this.url, this.auth).then( data => {
             let iData = data;
             let length = iData.docs.length;
             this.liftNewsInCategory = iData.docs.slice(0, length / 2);
             this.rightNewsInCategory = iData.docs.slice(length / 2, length);
             mvc.apply();
-         });
-
-    }
-
-    /*
-        This function used to assign category with ??? 
-
-        @tparam news: ??
-
-        @param: identifier for needed category
-
-        @returns:
-    */
-    getRandomNews(categoryId) {
-
-        this.dataBase.getData("/news/_design/views/_view/random",true,'',this.url,this.auth).then( data => {
-            this.randomNews = data;console.log(data);
-            if (this.randomNews.lenght > 10) {
-                this.randomNews = this.randomNews.slice(0, 10);
-            }
-            mvc.apply();
+        }, () => {
+            this.getAllNews();
         });
 
     }
 
     /*
-        This function used to assign category with ??? 
+        This function used to fetch random news and assign it to "randomNews" local variable for storing it.
 
-        @tparam news: ??
+        @tparam:
 
-        @param: identifier for needed category
+        @param:
+
+        @returns:
+    */
+    getRandomNews() {
+
+        this.dataBase.getData("/news/_design/views/_view/random",true,'',this.url,this.auth).then( data => {
+            this.randomNews = data;
+            if (this.randomNews.lenght > 10) {
+                this.randomNews = this.randomNews.slice(0, 10);
+            }
+            mvc.apply();
+        }, () => {
+            this.getRandomNews();
+        });
+
+    }
+
+    /*
+        This function used to fetch Writers Data and assign it to "writers" local variable for storing it.
+
+        @tparam:
+
+        @param:
 
         @returns:
     */
@@ -158,6 +163,8 @@ export class Category {
             this.writers = data;
             this.writer = this.writers.filter((el) => { return el.id == this.mainNews.writerId})[0].value;
             mvc.apply();
+        }, () => {
+            this.getWriters();
         });
 
     }

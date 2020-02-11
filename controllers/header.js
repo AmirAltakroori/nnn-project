@@ -8,7 +8,7 @@
         Qusai Hroub <qusaihroub.r@gmail.com>
         Aseel Arafeh <arafehaseel@gmail.com>
 
-    File description: 
+    File description:
         This file contains the controller class of header which applies Potato Framework.
  */
 
@@ -45,6 +45,8 @@ export class Header {
         this.dataBase.getData("/news/_design/views/_view/urgent",true,'',this.url,this.auth).then( data => {
             this.urgentNews = data;
             mvc.apply();
+        }, () => {
+            this.getUrgentNews();
         });
 
     }
@@ -65,12 +67,14 @@ export class Header {
             this.categoriesList = data;
             this.sliceCategoriesList();
             mvc.apply();
+        }, () => {
+            this.getCategoriesList();
         });
 
     }
 
     /*
-        This function devides the categories list into two arrays to use the more option 
+        This function devides the categories list into two arrays to use the more option
         when the categories are more than 6
 
         @tparam

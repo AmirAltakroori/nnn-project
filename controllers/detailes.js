@@ -30,11 +30,11 @@ export class Details {
     }
 
     /*
-        This function used to assign ?? with ??? 
+        This function used to assign ?? with ???
 
         @tparam:
 
-        @param: 
+        @param:
 
         @returns:
     */
@@ -50,35 +50,36 @@ export class Details {
     }
 
     /*
-        This function used to assign ?? with ??? 
+        This function used to fetch news with specific id and assign it to "news" local variable for storing it.
 
         @tparam:
 
-        @param: 
+        @param:
 
         @returns:
     */
     getNews() {
 
-        this.dataBase.findByIndex("/news",
-                                ["_id", "content", "createDate", "title", "writerId", "isActive", "attachment", "categoryId"],"_id", mvc.routeParams.id,
-                                this.url, this.auth)
-                                 .then( data => {
-                                     let iData = data;
-                                     this.news = iData.docs[0];
-                                     mvc.apply();
-                                     this.getRelatedNews(this.news.categoryId, this.news._id);
-                                     this.getWriters(this.news.writerId);
-                                 });
+        this.dataBase.findByIndex("/news", ["_id", "content", "createDate", "title", "writerId", "isActive", "attachment", "categoryId"],"_id", mvc.routeParams.id,
+                                this.url, this.auth).then( data => {
+
+            let iData = data;
+            this.news = iData.docs[0];
+            mvc.apply();
+            this.getRelatedNews(this.news.categoryId, this.news._id);
+            this.getWriters(this.news.writerId);
+        }, () => {
+            this.getNews();
+        });
 
     }
 
     /*
-        This function used to assign ?? with ??? 
+        This function used to fetch related news with specific news and assign it to "relatedNews" local variable for storing it.
 
-        @tparam:
+        @tparam: categoryId, newsId: int or string
 
-        @param: 
+        @param:
 
         @returns:
     */
@@ -88,16 +89,18 @@ export class Details {
             let iData = data;
             this.relatedNews = iData.docs.filter((el) => { return el._id != newsId});
             mvc.apply();
+        }, () => {
+            this.getRelatedNews();
         });
 
     }
-    
+
     /*
-        This function used to assign ?? with ??? 
+        This function used to fetch writer data for specific id and assign it to "writer" local variable for storing it.
 
         @tparam:
 
-        @param: 
+        @param:
 
         @returns:
     */
@@ -106,6 +109,8 @@ export class Details {
         this.dataBase.getData("/users/_design/users/_view/generalinfo",true,'',this.url,this.auth).then( data => {
             this.writer = data.filter((el) => { return el.id == writerId})[0].value;
             mvc.apply();
+        }, () => {
+            this.getWriters(writerId);
         });
 
     }
