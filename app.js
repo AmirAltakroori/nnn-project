@@ -20,27 +20,27 @@ let routeList = [
         url: "/home",
         template: "/templates/home.html",
         controller: "/controllers/home.js",
-        title: "home"
+        title: "شبكة الوحدة الإعلامية"
     },
     {
         url: "/details/:id",
         template: "/templates/details.html",
         controller: "/controllers/detailes.js",
         id: "",
-        title: "details"
+        title: "شبكة الوحدة الإعلامية"
     },
     {
         url: "/categories/:id",
         template: "/templates/categories.html",
         controller: "/controllers/categories.js",
         id: "",
-        title: "categories"
+        title: "شبكة الوحدة الإعلامية"
     },
     {
-        url: "/notFound",
-        template: "/templates/404.html",
-        controller: "/controllers/404.js",
-        title: "Page not found"
+        url: "/underMaintenance",
+        template: "/templates/underMaintenance.html",
+        controller: "/controllers/underMaintenance.js",
+        title: "شبكة الوحدة الإعلامية"
     }
 ];
 
