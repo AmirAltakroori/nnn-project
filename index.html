@@ -38,11 +38,24 @@
         </div>
     </div>
     <script>
+        
+        let isUnderMaintenance = getWebsiteStatus(); 
+        if (isUnderMaintenance) {
+            window.location.href = '/#/notFound';
+        } else {
+            window.location.href = '/#/home';
+        }
+        function getWebsiteStatus() {
+            // update the logic here to get website status from db
+            return false;
+        }
+
         window.onhashchange = function() {
             let config = JSON.parse(localStorage.getItem("config"));
             this.language = config.language;
             this.page.url = config.tpage;
         }
+
         function disqus_config() {
             let config = JSON.parse(localStorage.getItem("config"));
             this.language = config.language;
@@ -52,6 +65,6 @@
     </script>
     <script src="./potato/potato.js"></script>
     <script src="app.js"></script>
-    <script src="controllers/index.js"></script>
+    <!-- <script src="controllers/index.js"></script> -->
 </body>
 </html>
