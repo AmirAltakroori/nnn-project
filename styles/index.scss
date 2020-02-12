@@ -14,7 +14,15 @@
 @import './functions';
 
 @include initialFormat();
-
+@media print{
+    .footer{
+        visibility: hidden;
+    }
+    .header{
+        visibility: hidden;
+    }
+    
+}
 @media screen and (min-height: 901px) {
     .logo-img{
 

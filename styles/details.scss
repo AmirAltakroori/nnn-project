@@ -38,8 +38,24 @@
                 width: 1082px;
                 height: 570px;
             }
+            .main-img img{
+                visibility: hidden;
+              }
         }
     }
+}
+@media print{
+.view-in-print{
+    visibility: visible;
+    width: 800px;
+    height: 500px;
+}
+.news-related{
+    visibility: hidden;
+}
+#disqus_thread{
+    width: 1000px;
+}
 }
 
 @media screen and (max-height: 900px) {
@@ -67,6 +83,9 @@
                 width: 901.66667px;
                 height: 475px;
             }
+            .main-img img{
+                visibility: hidden;
+              }
         }
     }
 }
@@ -96,6 +115,9 @@
                 width: 812px;
                 height: 432px;
             }
+            .main-img img{
+                visibility: hidden;
+              }
         }
     }
 }
@@ -125,6 +147,9 @@
                 width: 770px;
                 height: 400px;
             }
+            .main-img img{
+                visibility: hidden;
+              }
         }
     }
 }
