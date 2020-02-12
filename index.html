@@ -47,7 +47,7 @@
         function websiteStatus() {
             getData("/settings", false, "sitemode", url, auth).then(state => {
                 if (!state.state) {
-                    window.location.href = '/#/notFound';
+                    window.location.href = '/#/underMaintenance';
                 }
             });
         }
