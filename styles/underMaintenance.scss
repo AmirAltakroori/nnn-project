@@ -16,7 +16,7 @@
 
 .animated-header:before {
   animation: show-background 60s .5s cubic-bezier(0,1,.5,1) forwards;
-  background: url(../image/space2.jpg) repeat center;
+  background: url(./../img/space2.jpg) repeat center;
   background-size: cover;
   content: "";
   opacity: 0;
