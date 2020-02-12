@@ -19,7 +19,7 @@
         <div class="news-content">
             <section class="news-header" id="news">
                 <span>
-                    <h1>
+                    <h1 >
                         {{$news.title}}
                     </h1>
                     <div>
@@ -51,7 +51,7 @@
                     <div $for="relatedNew of relatedNews">
                         <li class="list-n" id="{{$relatedNew._id}}">
                             <img src="{{$relatedNew.attachment}}" alt="">
-                            <a href="#/details/{{$relatedNew._id}}">{{$relatedNew.title}}</a>
+                            <a href="#/details/{{$relatedNew._id}}" class="text-overflow two-line-text-overflow">{{$relatedNew.title}}</a>
                         </li>
                     </div>
                     <!-- </li> -->
