@@ -281,21 +281,34 @@ body{
     }
 }
 
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 11%;
-    text-align: center;
-    background-color: white;
-    .footer-right {
-        right: 1.042%;
-        position: fixed;
-        img {
-            float: right;
-        }
-    }
+.new-footer {
+  background-color: #C2C2C2;
+  color: #000;
+  line-height: 1.5;
+  width: 100%;
+  display: flex;
+  color: 000;
+
+
+
+   a {
+     img {
+       width: 150px;
+     }
+   }
 }
+
+.footer-bottom {
+  width: 100%;
+  padding: 2px;
+  color: #bbb;
+  background-color: #858585;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
 
 .view-root {
     position: relative;
