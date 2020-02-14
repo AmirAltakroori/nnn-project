@@ -1,8 +1,18 @@
 export let tokenKey = "PSEU";
 
+/*  
+getData is a function to get any data stored in the sesttionStorage 
+@param: storeName string
+@return: object
+*/
 export function getData(storeName) {
     return JSON.parse(sessionStorage.getItem(storeName));
 }
+/*  
+getStoredToken is a function to get user token data
+@param: name string
+@return: token object
+*/
 export function getStoredToken(name) {
     try {
         let user = getData(name);
@@ -13,18 +23,19 @@ export function getStoredToken(name) {
         return null;
     }
 }
-export function cleanDataForControllers(data) {
-    let rows = [];
-    for (let i = 0; i < data.length; i++) {
-        rows.push(data[i].value);
-    }
-    return rows;
-}
 
+/*  
+saveData is a function save data in sessionStorage
+@param: storeName string
+@param: data string
+*/
 export function saveData(storeName, data) {
     sessionStorage.setItem(storeName, JSON.stringify(data));
 }
-
+/*  
+SHA256 is a function to create usertoken
+@param: s, data as string
+*/
 export function SHA256(s) {
 
     let chrsz = 8;
@@ -115,6 +126,7 @@ export function SHA256(s) {
 
         return HASH;
     }
+
 
     function str2binb(str) {
 

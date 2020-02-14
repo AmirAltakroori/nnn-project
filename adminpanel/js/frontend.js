@@ -5,6 +5,11 @@ function showLogOut() {
     else
         show.style.display = 'none';
 }
+/*  
+logOut is a function used to clear the data stored in sessionStorage and redirect the user to login 
+@param: none
+@return: none
+*/
 function logOut() {
     sessionStorage.clear();
     window.location.href = '#/login.html';
@@ -14,6 +19,12 @@ function logOut() {
     It used in category page tot search based on it's name, used in
     all users page to search based on user name and used in all news
     page to search based on news category name 
+*/
+/*  
+searchElement is a function used to filter the data in the table by specific column index
+@param: columnIndex, number 
+@return: none
+It edit directly the table
 */
 function searchElement(columnIndex) {
     let searchInput, searchText, table, tableBody, tr, i, td, span, category;
