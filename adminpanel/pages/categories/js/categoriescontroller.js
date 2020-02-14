@@ -96,7 +96,7 @@ export class CategoriesController {
      *  @return {Object} category information 
      */
     getCatId() {
-        return dbGet("/settings", false, "categories");
+        return this.db.dbGet("/settings", false, "categories");
     }
 
 
