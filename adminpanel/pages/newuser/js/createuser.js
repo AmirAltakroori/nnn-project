@@ -160,7 +160,8 @@ export class addusersController {
     }
     /** 
            This function used to update user's data   
-           @param: (data) user's information , (key) user's id 
+           @param: (data) user's information 
+           @param: (key) user's id 
            @returns:status of opration ,if success or fail 
     */
     updateExistedUser(data, key) {
