@@ -14,6 +14,11 @@ export class loginController {
             this.enc = enc;
         });
     }
+        /*  
+        toggleHeader is a function for show or hide the header by editing the display css proparty 
+        @param: none
+        @return: none
+    */
     toggleHeader() {
         const header = document.getElementsByTagName('header')[0];
         if(header.style.display!='none')
@@ -23,7 +28,17 @@ export class loginController {
             header.style.display='block';
 
     }
-
+        /*  
+        Redirect function is used to direct the user to a new page to edit the new selected
+        @param: fullName string
+        @param: username string
+        @param: email string
+        @param: roleId string
+        @param: alg encryption algorithm
+        @param: validityTime session time
+        @param: hashFunction the function that used for hashing
+        @return: Token of the user
+    */
     getToken(fullName, username, email, roleId, alg, validityTime, key, hashFunction) {
 
         /*
@@ -72,6 +87,11 @@ export class loginController {
 
         return finalTokenBased64;
     }
+        /*  
+        Make login process when user enter the username and password. It provide messages for each state
+        @return: nothing 
+        It redirect the user to dashboard if the login is success.
+    */
     login() {
         if (this.submit)
             return;

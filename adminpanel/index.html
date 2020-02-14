@@ -47,7 +47,6 @@
         })
         function checkName() {
             const userData = JSON.parse(sessionStorage.getItem('user'));
-            console.log(userData);
             if (!userData) {
                 setTimeout(() => {
                     checkName();
