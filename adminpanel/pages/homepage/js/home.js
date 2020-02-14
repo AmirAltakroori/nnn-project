@@ -1,11 +1,10 @@
 export class HomeController {
     constructor() {
-        this.Message = "hello";
         this.mode = null;
         this.changing = false;
         this.userRole = -1;
 
-        this.db = dynamicImport("./js/backend.js");
+        this.db = dynamicImport("./js/database.js");
         this.db.then( db => {
             
             this.userRole = db.confirm().data.roleId;
@@ -21,7 +20,7 @@ export class HomeController {
 
 
     }
-    ChangeMode() {
+    changeMode() {
         if(this.changing)
             return ;
         this.changing = true;

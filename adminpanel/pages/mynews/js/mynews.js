@@ -10,13 +10,14 @@ export class myNewsControler {
         this.dp = null;
         this.user = null;
         this.activeId = -1;
-        dynamicImport("./../../adminpanel/js/backend.js").then(db => {
+        dynamicImport("./../../adminpanel/js/database.js").then(db => {
             this.db = db;
             this.user = this.db.confirm();
+            this.user = this.db.getUser('user');
+            console.log(this.user);
             this.getAllCat().then(cats => {
                 this.categories = this.db.cleanDataForControllers(cats)
-
-                this.getMyNews(this.user.data.username).then(news => {
+                this.getMyNews(this.user.id).then(news => {
                     this.myNewsPage = this.db.cleanDataForControllers(news.rows);
                     this.loading = false;
                     mvc.apply();

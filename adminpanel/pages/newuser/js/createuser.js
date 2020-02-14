@@ -24,7 +24,7 @@ export class addusersController {
         if (mvc.routeParams.id != 0) {
             this._id = mvc.routeParams.id;
         }
-        dynamicImport("./js/backend.js").then(db => {
+        dynamicImport("./js/database.js").then(db => {
             this.db = db;
             if (this._id != 0) {
                 this.getExistedUser().then(user => {

@@ -7,7 +7,7 @@ export class myNewsControler {
         this.categories = [];
         this.activeId = -1;
         this.loading = true;
-        dynamicImport("./../../adminpanel/js/backend.js").then(db => {
+        dynamicImport("./../../adminpanel/js/database.js").then(db => {
             this.db = db;
             this.db.confirm();
 
@@ -91,12 +91,15 @@ export class myNewsControler {
         if (showToast)
             createToast("جاري التعديل", '', "info", "");
         let news = null;
-        if (field == 'isActive')
+        if (field == 'isActive') {
             news = this.allNewsPage[id];
-        else
+            news[field] = +!news[field];
+        }
+        else {
             news = this.allNewsPage.find(field => field._id == id);
+        }
+        console.log(news);
 
-        news[field] = +!news[field];
         this.db.dbGet('/news/_design/views/_view/attachcontent', true, news._id).then(data => {
             news.attachment = data.rows[0].value.attachment;
             news.content = data.rows[0].value.content;
@@ -132,6 +135,7 @@ export class myNewsControler {
             mainNews[i].addEventListener("change", (e) => {
                 e.preventDefault();
                 this.allNewsPage[i].isMainNews = +mainNews[i].checked;
+                console.log(this.allNewsPage[i].isMainNews);
                 this.updateStatus("isMainNews", this.allNewsPage[i]._id);
             });
 
