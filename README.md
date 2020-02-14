@@ -136,7 +136,7 @@ Usage example: ```<button $disabled="$isSubmitDisabled"></button>```
 
 ### $for
 
-You can loop an element depending on an array defined in the $scope object.
+You can loop an element depending on an array defined in the scope object.
 
 Form:
 ```
