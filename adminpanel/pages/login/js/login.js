@@ -109,5 +109,8 @@ export class loginController {
             createToast("خطأ", "أسم المستخدم أو كلمة المرور خاطئة", "danger", 'times-circle');
             this.submit = false;
         });
+        setTimeout(() => {
+            this.submit = false;
+        }, 1000);
     }
 }
