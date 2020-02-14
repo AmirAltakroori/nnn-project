@@ -141,7 +141,7 @@ export class CategoriesController {
      */
     CreateCat(data) {
         return new Promise((resolve, reject) => {
-            getCatId().then(request => {
+            this.getCatId().then(request => {
                 const _id = request.counter + 1;
                 this.db.dbCreateOrUpdate("/categories", data, _id).then(response => {
                     request.counter = request.counter + 1;
