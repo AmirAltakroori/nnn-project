@@ -7,7 +7,7 @@ export class approveNewsControler {
         this.dp = null;
         this.loading = true;
         this.submit = false;
-        dynamicImport("./../../adminpanel/js/backend.js").then(db => {
+        dynamicImport("./../../adminpanel/js/database.js").then(db => {
             this.db = db;
             this.db.confirm();
 

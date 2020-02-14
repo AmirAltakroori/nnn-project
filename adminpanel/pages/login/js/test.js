@@ -1,53 +1,5 @@
 
 
-function getToken(fullName, username, email, roleId, alg, validityTime, key, hashFunction) {
-
-    /*
-        username: the username of the user
-        email: the email of the user
-        roleId: the role of the user
-        alg: the hash algorithm that used
-        validityTime: the life time of the token in milliseconds 
-        key: the secret that used in signature  
-    */
-
-    let date = new Date();
-    let currentDate = date.getTime(); // The current date in milliseconds 
-    let expDate = currentDate + validityTime; // the exp data after add the validity time 
-
-    //  Generate the token fields  
-    let token = {
-        "header": {
-            "alg": alg,
-            "typ": "JWT"
-        },
-
-        "data": {
-            "fullName": fullName,
-            "username": username,
-            "email": email,
-            "roleId": roleId,
-            "start": currentDate,
-            "exp": expDate
-        }
-    }
-
-    //  Convert token object to JSON
-    let tokenJson = JSON.stringify(token);
-
-    //  Calculate the Hash for the token data with the key
-    let hash = hashFunction(tokenJson + key);
-
-    //  Add the Hash to the token
-    token["hash"] = hash;
-
-    //  conver the token object after add the hash to json then
-    // encode it to base64
-    let finalToken = JSON.stringify(token);
-    let finalTokenBased64 = btoa(finalToken);
-
-    return finalTokenBased64;
-}
 
 document.addEventListener('DOMContentLoaded', function(event) {
 
@@ -60,13 +12,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 });
 
 function verification() {
-    let username = document.getElementById("Username"); // read the username
-    let password = document.getElementById("Password"); // read the password
-    //  get the user role
-    // let user = getUser(username.value, password.value);
-    let currentUser = null;
-    dynamicImport("./../../adminpanel/js/backend.js").then(db => {
-    db.dbGet("/users",false,username.value).then( user => {
+  
         currentUser = user;
         let text = "";
         color = "#ffffff"

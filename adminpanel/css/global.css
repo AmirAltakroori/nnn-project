@@ -436,5 +436,39 @@ input[class="toggle"]:focus {
 @keyframes blinker {
   50% {
     opacity: 0; } }
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"] {
+  font-family: "Segoe UI";
+  font-size: 15px;
+  line-height: 1.5;
+  color: #555555;
+  border: 1px solid #eee;
+  padding: 0 22px 0 22px;
+  outline: none; }
+  input[type="text"]::placeholder,
+  input[type="password"]::placeholder,
+  input[type="number"]::placeholder,
+  input[type="email"]::placeholder {
+    font-size: 15px; }
+  input[type="text"]:focus, input[type="text"]:not(:placeholder-shown),
+  input[type="password"]:focus,
+  input[type="password"]:not(:placeholder-shown),
+  input[type="number"]:focus,
+  input[type="number"]:not(:placeholder-shown),
+  input[type="email"]:focus,
+  input[type="email"]:not(:placeholder-shown) {
+    border: 2px solid #719ECE; }
+  input[type="text"]:required:not(:placeholder-shown):invalid,
+  input[type="password"]:required:not(:placeholder-shown):invalid,
+  input[type="number"]:required:not(:placeholder-shown):invalid,
+  input[type="email"]:required:not(:placeholder-shown):invalid {
+    border: 2px solid red; }
+  input[type="text"]:required:not(:placeholder-shown):valid,
+  input[type="password"]:required:not(:placeholder-shown):valid,
+  input[type="number"]:required:not(:placeholder-shown):valid,
+  input[type="email"]:required:not(:placeholder-shown):valid {
+    border: 2px solid #57b846; }
 
 /*# sourceMappingURL=global.css.map */

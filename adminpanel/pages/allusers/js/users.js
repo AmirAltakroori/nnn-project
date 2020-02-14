@@ -6,7 +6,7 @@ export class allUsers {
         this.activeId = -1;
         this.role = -1;
         this.loading = true;
-        dynamicImport("./../../adminpanel/js/backend.js").then(db => {
+        dynamicImport("./../../adminpanel/js/database.js").then(db => {
             this.db = db;
             this.role = this.db.confirm().data.roleId;
             this.getAllUsers().then(users => {

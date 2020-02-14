@@ -17,7 +17,7 @@ export class addnewsController {
 
         //Check role
         this.setScheduleTime();
-        dynamicImport("./js/backend.js").then(db => {
+        dynamicImport("./js/database.js").then(db => {
 
             db.dbGet("/categories/_design/allcategories/_view/allcategories", true, "").then(cats => {
                 this.categories = cats;

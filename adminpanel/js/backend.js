@@ -1,15 +1,9 @@
-// TODO
-// This file contains all functions that will be used to interact with the database are written here
-// Please write here a generic functions that can be used everywhere
-// Functions here written to perform the CRUD operation 
-// Function's names must be lowCamelCase 
-// Don't delete this comments
-// By Waleed Jubeh
 export let tokenKey = "PSEU";
-function getData(storeName) {
+
+export function getData(storeName) {
     return JSON.parse(sessionStorage.getItem(storeName));
 }
-function getStoredToken(name) {
+export function getStoredToken(name) {
     try {
         let user = getData(name);
         let tokenFromJson = JSON.parse(atob(user.token));
@@ -18,29 +12,6 @@ function getStoredToken(name) {
         console.log(e);
         return null;
     }
-}
-export function confirm() {
-    let user = getStoredToken('user');
-
-    if (!user)
-        window.location.href = '/admin-panel-login/login.html';
-    //  Calculate the Hash for the token data with the key
-    let hash = user['hash'];//SHA256(tokenJson + key);
-    delete (user['hash']);
-
-    let correctHash = false;
-    let correctSission = false;
-    if (hash == SHA256(JSON.stringify(user) + tokenKey))
-        correctHash = true;
-
-    let currentDate = new Date().getTime();
-    if (currentDate < user.data.exp)
-        correctSission = true;
-
-    if (!correctHash || !correctSission)
-        window.location.href = '/admin-panel-login/login.html';
-    else
-        return user;
 }
 export function cleanDataForControllers(data) {
     let rows = [];
@@ -53,103 +24,6 @@ export function cleanDataForControllers(data) {
 export function saveData(storeName, data) {
     sessionStorage.setItem(storeName, JSON.stringify(data));
 }
-let BASEURL = 'https://541e1dc0-354b-4134-ae7d-5eaa533a1bf9-bluemix.cloudant.com';
-let AUTHENTICATION = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJsdWVtaXg6NDU2YjA3NzhjODFjOWNiMDk5NzZkODU1NjQ5MDM2YzRlYTE1MTQwZTk5NDNlNWM2MGE5ZDM1MGMwNDU5YzIwMw=='
-
-
-// from this function you can get all data for a database or for specific user
-
-// If you want to get specific data for a document in a view , you need to set key to be the id of the document
-function cleanData(data) {
-    let cleanedData = [];
-    for (let i = 0; i < data.rows.length; i++)
-        cleanedData.push(data.rows[i]);
-    return cleanedData;
-}
-
-export function dbGet(endpoint, isView, id) {
-    return new Promise((resolve, reject) => {
-        let url = BASEURL + endpoint;
-        if (isView && id) {
-            url += `?key=\"${id}\"`;
-        } else url += `/${id}`;
-        let http = new XMLHttpRequest();
-        http.open("GET", url);
-        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        http.setRequestHeader('Accept', 'application/json');
-        http.setRequestHeader("Authorization", AUTHENTICATION);
-        http.onreadystatechange = function () { //Call a function when the state changes.
-            if (http.readyState == 4) {
-                if (http.status == 200) {
-                    let data = JSON.parse(http.responseText);
-                    if (!id || id == '')
-                        data = cleanData(data);
-                    resolve(data);
-                }  else {
-                    console.log(http.status)
-                    let data = JSON.parse(http.responseText);
-                    reject(data);
-                }
-    
-            }
-          
-        }
-        http.send();
-    });
-}
-// dbGet('/categories',false,'1')get all information for a category id = 1
-// dbGet('/users',false,'') get all users
-// dbGet('/users/_design/users/_view/viewName',true,'') get all user from a view.
-// dbGet('/users/_design/users/_view/userRole',true,"1") get uesr who his id = 1 and the data is from 'userRole'
-
-
-export function dbDelete(endpoint, id, rev) {
-    return new Promise((resolve, reject) => {
-        let url = BASEURL + endpoint + `/${id}?rev=${rev}`;
-        let http = new XMLHttpRequest();
-        http.open("DELETE", url);
-        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        http.setRequestHeader('Accept', 'application/json');
-        http.setRequestHeader("Authorization", AUTHENTICATION);
-        http.onreadystatechange = function () { //Call a function when the state changes.
-            if (http.readyState == 4) {
-                resolve(JSON.parse(http.responseText));
-            }
-        }
-        http.send();
-    });
-}
-
-// dbDelete('/users','ali',"2-cdfsidfsjdsdpifdsi") delete user his/her username =ali , here we use username because username is the primary key
-// dbDelete('/categories','1',"2-cdfasdsidfsjdsdpifdsi") delete category  id =1 , 
-
-export function dbCreateOrUpdate(endpoint, data, id) {
-    return new Promise((resolve, reject) => {
-        const url = BASEURL + endpoint + `/${id}`;
-        let http = new XMLHttpRequest();
-        http.open("PUT", url);
-        http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        http.setRequestHeader('Accept', 'application/json');
-        http.setRequestHeader("Authorization", AUTHENTICATION);
-        http.onreadystatechange = function () { //Call a function when the state changes.
-            if (http.readyState == 4) {
-                if (http.status == 409) {
-                    console.log(http.status)
-                    let data = JSON.parse(http.responseText);
-                    reject(data);
-                }    
-                resolve(JSON.parse(http.responseText));
-            }
-        }
-        http.send(JSON.stringify(data));
-    });
-}
-// userData={
-//     username:"waleed",
-//     password:"32423",
-//     id:"1234",
-// }
-// dbCreateOrUpdate('/users',userData,1234);create user his id equals 1234 and his data is userData objectgi
 
 export function SHA256(s) {
 
@@ -306,29 +180,5 @@ export function SHA256(s) {
 
     s = Utf8Encode(s);
     return binb2hex(core_sha256(str2binb(s), s.length * chrsz));
-}
-
-
-
-function dbFindByIndex(endpoint, fields, index, value) {
-    return new Promise((resolve, reject) => {
-        let parameters = {
-            'selector': {},
-            'fields': fields,
-        }
-        parameters.selector[index] = value;
-        const url = BASEURL + endpoint + `/_find`;
-        let http = new XMLHttpRequest();
-        http.open("POST", url);
-        http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        http.setRequestHeader('Accept', 'application/json');
-        http.setRequestHeader("Authorization", AUTHENTICATION);
-        http.onreadystatechange = function () { //Call a function when the state changes.
-            if (http.readyState == 4) {
-                resolve(JSON.parse(http.responseText));
-            }
-        }
-        http.send(JSON.stringify((parameters)));
-    });
 }
 

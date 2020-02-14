@@ -9,7 +9,7 @@ export class CategoriesController {
         this.submit = false;
         this.loading = true;
         this.dp = null;
-        dynamicImport("./../../adminpanel/js/backend.js").then(db => {
+        dynamicImport("./../../adminpanel/js/database.js").then(db => {
             this.db = db;
             this.db.confirm();
             this.getAllCat().then(cats => {
