@@ -92,8 +92,7 @@ body {
     min-width: 1352px;
     min-height: 649px;
     .root {
-        @include flexFunction(center, center, 100%, 100%, column);
-        @include positioning (absolute, 0, auto, auto, auto);
+        @include positioning (relative, 0, auto, auto, auto);
         background-color: $website-background;
         min-width: 1352px;
         min-height: 649px;
@@ -251,8 +250,8 @@ body {
     position: relative;
     height: auto;
     width: 100%;
-    margin-top: 20%;
-    margin-bottom: 6%;
+    margin-top: 7%;
+    margin-bottom: 2%;
     .view {
         position: relative;
         width: 100%;
@@ -275,4 +274,8 @@ body {
 
 .two-line-text-overflow {
     -webkit-line-clamp: 2 !important;
+}
+
+.footer {
+    position: relative;
 }
