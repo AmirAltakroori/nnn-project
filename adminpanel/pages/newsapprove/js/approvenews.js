@@ -22,7 +22,7 @@ export class approveNewsControler {
 
         });
     }
-    
+
     /*  
         redirect function is used to direct the user to a edit news page to edit the selected news
         @param: id of the selected news
@@ -40,6 +40,9 @@ export class approveNewsControler {
         @return: none
     */
     appproveNews() {
+        if (this.submit)
+            return;
+        this.submit = true;
         let news;
         let data;
         let j = 0;
@@ -81,9 +84,13 @@ export class approveNewsControler {
                         this.submit = false;
                         window.location.reload();
                     }, 1500);
-                })
+                });
+                this.submit = false;
             }
         }
+        setTimeout(() => {
+            this.submit = false;
+        }, 5000);
     }
 
     /*  
@@ -113,11 +120,11 @@ export class approveNewsControler {
         this.activeId = id;
     }
 
-      /*  
-       hide function is used to hide the popup shown from the user
-       @param: modelId: to distinguish the type of the popup
-       @return: none
-    */
+    /*  
+     hide function is used to hide the popup shown from the user
+     @param: modelId: to distinguish the type of the popup
+     @return: none
+  */
     hide(modelId) {
         let element = document.getElementById(modelId);
         element.style.display = 'none';
@@ -145,11 +152,11 @@ export class approveNewsControler {
 
     }
 
-     /*  
-        getAllNotAppNews function is used to get all nonapproved news from the database
-        @param:  none
-        @return: {promise} for read news from the database
-    */
+    /*  
+       getAllNotAppNews function is used to get all nonapproved news from the database
+       @param:  none
+       @return: {promise} for read news from the database
+   */
     getAllNotAppNews() {
         return new Promise((resolve, reject) => {
             this.db.dbGet("/news/_design/views/_view/notapproved", true, "").then(news => {

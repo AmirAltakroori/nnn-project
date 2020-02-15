@@ -13,6 +13,7 @@ logOut is a function used to clear the data stored in sessionStorage and redirec
 function logOut() {
     sessionStorage.clear();
     window.location.href = '#/login.html';
+    checkName();
 }
 /*
     This is a function for general searching used in multiple pages 
