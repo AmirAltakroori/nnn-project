@@ -11,7 +11,7 @@
         This file contains the controller class of details page which applies Potato Framework.
 */
 
-import { DataBase } from "../services/DataBase.js";
+import { DataBase } from "../../services/database.js";
 
 export class Details {
 
@@ -21,11 +21,10 @@ export class Details {
         this.news = {};
         this.relatedNews = [];
         this.writer = {};
-        this.url = 'https://541e1dc0-354b-4134-ae7d-5eaa533a1bf9-bluemix.cloudant.com';
-        this.auth = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJsdWVtaXg6NDU2YjA3NzhjODFjOWNiMDk5NzZkODU1NjQ5MDM2YzRlYTE1MTQwZTk5NDNlNWM2MGE5ZDM1MGMwNDU5YzIwMw==';
+
         this.getNews();
         dynamicImport("./disqusVariable.js").then(data => data.disqus_config(mvc.routeParams.id));
-        this.disqus();
+        this.loadDisqus();
 
     }
 
@@ -38,7 +37,7 @@ export class Details {
 
         @returns:
     */
-    disqus() {
+    loadDisqus() {
 
         // DON'T EDIT BELOW THIS LINE
         var d = document,
@@ -46,7 +45,6 @@ export class Details {
         s.src = 'https://nnn-disqus-com.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
-
     }
 
     /*
@@ -60,14 +58,18 @@ export class Details {
     */
     getNews() {
 
-        this.dataBase.findByIndex("/news", ["_id", "content", "createDate", "title", "writerId", "isActive", "attachment", "categoryId"],"_id", mvc.routeParams.id,
-                                this.url, this.auth).then( data => {
+        this.dataBase.findByIndex("/news",
+                                    ["_id", "content", "createDate", "title", "writerId", "isActive", "attachment", "categoryId"],"_id",
+                                     mvc.routeParams.id).then( data => {
 
-            let iData = data;
-            this.news = iData.docs[0];
-            mvc.apply();
-            this.getRelatedNews(this.news.categoryId, this.news._id);
-            this.getWriters(this.news.writerId);
+            if (data) {
+                this.news = data.docs[0];
+                mvc.apply();
+                this.getRelatedNews(this.news.categoryId, this.news._id);
+                this.getWriter(this.news.writerId);
+            } else {
+                this.getNews();
+            }
         }, () => {
             this.getNews();
         });
@@ -85,10 +87,13 @@ export class Details {
     */
     getRelatedNews(categoryId, newsId) {
 
-        this.dataBase.findByIndex("/news", ["_id", "attachment", "title",],"categoryId", categoryId, this.url, this.auth).then( data => {
-            let iData = data;
-            this.relatedNews = iData.docs.filter((el) => { return el._id != newsId});
-            mvc.apply();
+        this.dataBase.findByIndex("/news", ["_id", "attachment", "title",],"categoryId", categoryId).then( data => {
+            if (data) {
+                this.relatedNews = data.docs.filter((el) => { return el._id != newsId});
+                mvc.apply();
+            } else {
+                this.getRelatedNews();
+            }
         }, () => {
             this.getRelatedNews();
         });
@@ -104,13 +109,17 @@ export class Details {
 
         @returns:
     */
-    getWriters(writerId) {
+    getWriter(writerId) {
 
-        this.dataBase.getData("/users/_design/users/_view/generalinfo",true,'',this.url,this.auth).then( data => {
-            this.writer = data.filter((el) => { return el.id == writerId})[0].value;
-            mvc.apply();
+        this.dataBase.getData("/users/_design/users/_view/generalinfo", true, '').then( data => {
+            if (data) {
+                this.writer = data.filter((el) => { return el.id == writerId})[0].value;
+                mvc.apply();
+            } else {
+                this.getWriter();
+            }
         }, () => {
-            this.getWriters(writerId);
+            this.getWriter(writerId);
         });
 
     }
