@@ -13,7 +13,7 @@
         This file contains the controller class of categories page which applies Potato Framework.
  */
 
-import { DataBase } from "../../services/database.js";
+import { DataBase } from "../services/database.js";
 
 export class Category {
 
