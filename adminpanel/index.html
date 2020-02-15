@@ -116,36 +116,38 @@
 </head>
 
 <body>
-    <header>
-        <div class=" main-header header-flex-container space-between item-center">
-            <div class="header-logo">
-                <a href='#/home'><img src="./img/logo.png" alt="logo" href="index.html"></a>
-            </div>
-            <div class="header-left-section">
-
-
-                <div class="header-inline-block">
-                    <li class="fas fa-user"></li>
-                    <span id="username"></span>
-
+    <div class="root-flex-container">
+        <header>
+            <div class=" main-header header-flex-container space-between item-center">
+                <div class="header-logo">
+                    <a href='#/home'><img src="./img/logo.png" alt="logo" href="index.html"></a>
                 </div>
+                <div class="header-left-section">
 
-                <div class="header-inline-block" onclick="showLogOut()">
-                    <i class="fas fa-chevron-down"></i>
-                    <div id="logout-model" class="logout-model">
-                        <div class="logout-wrapper" onclick="logOut()">تسجيل الخروج</div>
+
+                    <div class="header-inline-block">
+                        <li class="fas fa-user"></li>
+                        <span id="username"></span>
+
+                    </div>
+
+                    <div class="header-inline-block" onclick="showLogOut()">
+                        <i class="fas fa-chevron-down"></i>
+                        <div id="logout-model" class="logout-model">
+                            <div class="logout-wrapper" onclick="logOut()">تسجيل الخروج</div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-    </header>
-    <div view style="height: 100%;"></div>
-    <script src='potato.js'></script>
-    <script src='app.js'></script>
+            </div>
+        </header>
+        <div view></div>
+        <script src='potato.js'></script>
+        <script src='app.js'></script>
 
     </div>
     <div class='alert-container' id='alert-container'>
+    </div>
 </body>
 
 </html>

@@ -2,47 +2,39 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
 .app_root {
-  height: calc(100% - 31px); }
+  height: calc(100% - 100px);
+  background-color: white; }
 
 .add_news_form {
   height: 100%; }
   .add_news_form .title {
-    font-size: 50px; }
+    padding: 20px;
+    font-size: 30px; }
   .add_news_form .center_items {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    height: calc(100% - 50px);
-    padding-top: 10px;
-    justify-content: center; }
+    flex-direction: row; }
   .add_news_form .right-part {
     width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center; }
   .add_news_form .left-part {
     width: 50%;
-    height: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center; }
   .add_news_form .content_label_div {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
     width: 100%;
-    padding-bottom: 20px; }
+    padding-bottom: 16px; }
   .add_news_form .news_element {
     width: 500px;
     height: 25px; }
   .add_news_form .news {
-    height: auto;
-    border: 0.5px solid grey; }
+    height: auto; }
     .add_news_form .news .news_body {
       height: 258px; }
   .add_news_form .description {
@@ -57,7 +49,6 @@
     .add_news_form .outer_choice_div .inner_choice_div {
       display: flex;
       flex-direction: row;
-      align-items: center;
       justify-content: space-between; }
   .add_news_form .category {
     height: 30px;
@@ -77,9 +68,7 @@
   .add_news_form .button_div {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px; }
+    justify-content: center; }
     .add_news_form .button_div .button {
       justify-content: center;
       width: 200px;

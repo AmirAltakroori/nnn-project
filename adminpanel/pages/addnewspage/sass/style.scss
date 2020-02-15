@@ -5,7 +5,6 @@ $btn-success-color: #27ae60;
 @mixin flexbox($direction) {
     display: flex;
     flex-direction: $direction;
-    align-items: center;
 }
 
 * {
@@ -14,21 +13,19 @@ $btn-success-color: #27ae60;
 }
 
 .app_root {
-    height: calc(100% - 31px);
+    height: calc(100% - 100px);
+    background-color: white;
 }
 
 .add_news_form {
     height: 100%;
     .title {
-        font-size: 50px;
+        padding: 20px;
+        font-size: 30px;
     }
 
     .center_items {
         @include flexbox(row);
-        width: 100%;
-        height: calc(100% - 50px);
-        padding-top: 10px;
-        justify-content: center;
 
     }
 
@@ -42,7 +39,6 @@ $btn-success-color: #27ae60;
 
     .left-part {
         width: 50%;
-        height: 100%;
         @include flexbox(row);
         justify-content: center;
 
@@ -52,7 +48,7 @@ $btn-success-color: #27ae60;
         @include flexbox(row);
         justify-content: center;
         width: 100%;
-        padding-bottom: 20px;
+        padding-bottom: 16px;
     }
 
     .news_element {
@@ -62,8 +58,6 @@ $btn-success-color: #27ae60;
 
     .news {
         height: auto;
-        border: 0.5px solid grey;
-
         .news_body {
             height: 258px;
         }
@@ -115,7 +109,6 @@ $btn-success-color: #27ae60;
     .button_div {
         @include flexbox(row);
         justify-content: center;
-        margin-bottom: 30px;
 
         .button {
             justify-content: center;
