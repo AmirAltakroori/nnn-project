@@ -13,7 +13,7 @@
 -->
 
 <!-- HEADER -->
-<div class="header" $include="/website/templates/header.html ,/website/controllers/header.js"></div>
+<div class="header" $include="/templates/header.html ,/controllers/header.js"></div>
 
 <div class="category-view">
     <!-- Page contnet title -->
@@ -45,7 +45,7 @@
                             <h3 id="category-main-news-title" class="text-overflow one-line-text-overflow">{{$mainNews.title}}</h3>
                             <div id="category-main-news-writng-details">
                                 <div id="category-main-news-writer">{{$writer.firstName}} {{$writer.lastName}}</div>
-                                <img src="website/img/calenderIcon.png" alt="calender icon">
+                                <img src="img/calenderIcon.png" alt="calender icon">
                                 <span id="category-main-news-date">{{$mainNews.createDate}}</span>
                             </div>
                             <div id="category-main-news-content-news" class="text-overflow two-line-text-overflow">{{$mainNews.seoDescription}}</div>
@@ -53,7 +53,7 @@
                         <!-- See more details -->
                         <div id="category-see-more">
                             <a href="#/details/{{$mainNews._id}}">
-                                <img src="website/img/arrowIcon.png" alt="arrow icon">
+                                <img src="img/arrowIcon.png" alt="arrow icon">
                                 <p>اقرأ المزيد</p>
                             </a>
                         </div>
