@@ -109,7 +109,7 @@ body {
       padding: 20px; }
       .container .content_header .title .title_text {
         font-family: "Segoe UI";
-        font-size: 50px;
+        font-size: 32px;
         color: #333333; }
   .container .search_area {
     display: flex;
@@ -203,6 +203,10 @@ body {
 .checkbox-size input {
   width: 20px;
   height: 20px; }
+
+.root-flex-container {
+  display: flex;
+  flex-direction: column; }
 
 .flex-container-center-all-column {
   display: flex;
