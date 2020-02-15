@@ -29,7 +29,7 @@
             <div $for="news of mainNews" id="latest-news-list">
                 <div $click="changeSelectedNews($news)" class="news">
                     <img $click="changeSelectedNews($news)" src="{{$news.value.attachment}}">
-                    <p $click="changeSelectedNews($news)">{{$news.value.title}}</p>
+                    <p $click="changeSelectedNews($news)" class="text-overflow two-line-text-overflow">{{$news.value.title}}</p>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
             </div>
             <div class="latest-news-more-detailed-title-and-date">
                 <div class="latest-news-more-detailed-title">
-                    <h4>{{$selectedNews.value.title}}</h4>
+                    <h4 class="text-overflow one-line-text-overflow">{{$selectedNews.value.title}}</h4>
                 </div>
                 <div class="latest-news-more-detailed-date">
                     <p class="authorName">{{$selectedNews.writer.firstName}} {{$selectedNews.writer.lastName}}</p>
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="latest-news-more-detailed-paragraph">
-                <p>{{$selectedNews.value.content}}</p>
+                <p class="text-overflow two-line-text-overflow">{{$selectedNews.value.content}}</p>
             </div>
             <div class="latest-news-more-detailed-readmore-button">
                 <a href="#/details/{{$selectedNews.value.id}}">
@@ -71,7 +71,7 @@
     </div>
 
     <!-- CATEGORY SECTION -->
-    <div $for= "category of categoriesView" class="category-section">
+    <div $for="category of categoriesView" class="category-section">
         <div class="category-container">
             <div class="category-header" id="title">
                 <div class="category-header-name"><a class="link" href="#/categories/{{$category.value.id}}">{{$category.value.title}}</a></div>
@@ -84,16 +84,16 @@
                         <img id="category-image" src="{{$category.mainNews.attachment}}" alt="{{$category.value.title}}">
                     </div>
                     <div class="category-main-title-and-date">
-                            <div class="category-main-title"><a class="link" href="#/details/{{$category.mainNews._id}}">{{$category.mainNews.title}}</a></div>
-                            <div class="category-main-date">{{$category.mainNews.createDate}}</div>
+                        <div class="category-main-title"><a class="link text-overflow one-line-text-overflow" href="#/details/{{$category.mainNews._id}}">{{$category.mainNews.title}}</a></div>
+                        <div class="category-main-date">{{$category.mainNews.createDate}}</div>
                     </div>
-                    <div class="category-main-details">{{$category.mainNews.seoDescription}}</div>
+                    <div class="category-main-details text-overflow two-line-text-overflow">{{$category.mainNews.seoDescription}}</div>
                     <a class="read-more-btn category-btn" href="#/details/{{$category.mainNews._id}}">اقرأ المزيد &gt;</a>
                 </div>
-                <div $for= "mainNews of category.allMain" class="category-content-random" id="sub-news">
+                <div $for="mainNews of category.allMain" class="category-content-random" id="sub-news">
                     <div class="category-content-random-item">
                         <img class="category-img-rnd" id="category-image" src="{{$mainNews.attachment}}" alt="">
-                        <div class="category-randome-title"><a class="link" href="#/details/{{$mainNews._id}}">{{$mainNews.title}}</a> </div>
+                        <div class="category-randome-title"><a class="link text-overflow two-line-text-overflow" href="#/details/{{$mainNews._id}}">{{$mainNews.title}}</a> </div>
                     </div>
                 </div>
             </div>
