@@ -19,6 +19,9 @@ export class allUsers {
             });
         });
     }
+    /*
+    init function used to set the status of the users [role, state].  
+    */
     init() {
         let activeSelects = Array.from(document.getElementsByClassName("state"));
         let activeRoles = Array.from(document.getElementsByClassName("role"));
@@ -27,6 +30,11 @@ export class allUsers {
             activeRoles[i].value = this.usersPage[i].role;
         }
     }
+    /** 
+    updateStatus function used to set the update the data of the user after any data change 
+    @parm field :String, attribute name in object data
+    @parm id:number, index of the user in table
+    */
     updateStatus(field, id) {
         createToast("جاري التعديل", '', "info", "");
         let user = null;
@@ -39,18 +47,30 @@ export class allUsers {
             }
         });
     }
+     /** 
+    show function used to show modal in the page
+    @parm modelId :String, modal name [id attribute]
+    @parm id:number,index of row that trigger the function
+    */
     show(modelId, id) {
         let element = document.getElementById(modelId);
         element.style.display = 'flex';
         element.className += " modal-active";
         this.activeId = id;
     }
+    /** 
+    hide function used to hide modal in the page
+    @parm modelId :String, modal name [id attribute]
+    */
     hide(modelId) {
         let element = document.getElementById(modelId);
         element.style.display = 'none';
 
     }
 
+    /** 
+    deleteUser function used to delete a user from database
+    */
     deleteUser() {
         if (this.activeId == -1)
             return;
@@ -81,6 +101,12 @@ export class allUsers {
             }
         });
     }
+
+        /** 
+    getMyNews function used to get all news for specific user
+    @parm username : username of the user
+    */
+
     getMyNews(username) {
         return new Promise((resolve, reject) => {
             this.db.dbGet("/news/_design/views/_view/specificUser", true, username).then(news => {
@@ -88,11 +114,21 @@ export class allUsers {
             })
         });
     }
+    
+    /** 
+    updateUser function used to get redirect to edit user page
+    @parm id : username of the user
+    */
     updateUser(id) {
         const user = this.usersPage[id];
         location.href = "#/adduser/" + user._id;
 
     }
+
+    /** 
+    getAllUsers function used to get users information from database
+    
+    */
     getAllUsers() {
         return new Promise((resolve, reject) => {
             this.db.dbGet("/users/_design/users/_view/usersinfo", true, "").then(users => {

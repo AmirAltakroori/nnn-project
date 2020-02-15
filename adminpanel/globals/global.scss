@@ -567,3 +567,8 @@ input[type="email"] {
     border: 2px solid #57b846;
   }
 }
+.root-flex-container{
+  display: flex;
+  height: 100%;
+  flex-direction: column;;
+}
