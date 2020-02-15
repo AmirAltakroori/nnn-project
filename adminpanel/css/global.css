@@ -206,7 +206,8 @@ body {
 
 .root-flex-container {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  height: 100%; }
 
 .flex-container-center-all-column {
   display: flex;
