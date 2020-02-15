@@ -142,7 +142,7 @@ body {
       padding: 20px;
       .title_text {
         font-family: $font;
-        font-size: 32px;
+        font-size: 50px;
         color: $title-color;
       }
     }
@@ -267,11 +267,6 @@ body {
   }
 }
 
-.root-flex-container{
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
 .flex-container-center-all-column {
   display: flex;
   justify-content: center;
@@ -571,4 +566,9 @@ input[type="email"] {
   &:required:not(:placeholder-shown):valid{
     border: 2px solid #57b846;
   }
+}
+.root-flex-container{
+  display: flex;
+  height: 100%;
+  flex-direction: column;;
 }

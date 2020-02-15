@@ -85,6 +85,11 @@
                 </div>
         </div >`
                 container.appendChild(div);
+                setTimeout(() => {
+                if (div) {
+                    container.removeChild(div);
+                }
+            }, 10000);
                 return;
             }
 
@@ -140,7 +145,7 @@
 
             </div>
         </header>
-        <div view style="flex-grow:1"></div>
+        <div view style="flex-grow: 1;"></div>
         <script src='potato.js'></script>
         <script src='app.js'></script>
 

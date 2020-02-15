@@ -109,7 +109,7 @@ body {
       padding: 20px; }
       .container .content_header .title .title_text {
         font-family: "Segoe UI";
-        font-size: 32px;
+        font-size: 50px;
         color: #333333; }
   .container .search_area {
     display: flex;
@@ -203,11 +203,6 @@ body {
 .checkbox-size input {
   width: 20px;
   height: 20px; }
-
-.root-flex-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%; }
 
 .flex-container-center-all-column {
   display: flex;
@@ -475,5 +470,10 @@ input[type="email"] {
   input[type="number"]:required:not(:placeholder-shown):valid,
   input[type="email"]:required:not(:placeholder-shown):valid {
     border: 2px solid #57b846; }
+
+.root-flex-container {
+  display: flex;
+  height: 100%;
+  flex-direction: column; }
 
 /*# sourceMappingURL=global.css.map */

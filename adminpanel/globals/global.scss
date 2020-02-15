@@ -142,7 +142,7 @@ body {
       padding: 20px;
       .title_text {
         font-family: $font;
-        font-size: 32px;
+        font-size: 50px;
         color: $title-color;
       }
     }
@@ -267,10 +267,6 @@ body {
   }
 }
 
-.root-flex-container{
-  display: flex;
-  flex-direction: column;
-}
 .flex-container-center-all-column {
   display: flex;
   justify-content: center;
