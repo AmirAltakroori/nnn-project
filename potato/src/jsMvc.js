@@ -47,6 +47,7 @@ class Mvc {
         this.controller = {};
         this.template = {};
         this.defaultRoute = "";
+        this.routeParams = {};
     }
 
     addRoute(title, controller, route, template) {
@@ -76,7 +77,7 @@ class Mvc {
         if (!routeObj)
             routeObj = this.defaultRoute;
 
-        this.routeParams = routeObj.$routeParams;
+        this.routeParams = routeObj.routeParams;
         document.title = routeObj.currentRoute.title;
 
         loadMvc(routeObj.currentRoute.template, routeObj.currentRoute.controller)

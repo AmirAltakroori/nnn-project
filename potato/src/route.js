@@ -14,7 +14,7 @@ function analyzeUrl(url, routeList) {
             option.splice(0, 1);
             routeParams = {};
             option.forEach((element, index) => {
-                $routeParams[element] = url[index];
+                routeParams[element] = url[index];
             });
             currentRoute = route;
         }
