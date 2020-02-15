@@ -7,7 +7,7 @@ export class approveNewsControler {
         this.dp = null;
         this.loading = true;
         this.submit = false;
-        dynamicImport("./../../adminpanel/js/backend.js").then(db => {
+        dynamicImport("./../../adminpanel/js/database.js").then(db => {
             this.db = db;
             this.db.confirm();
 
@@ -22,23 +22,23 @@ export class approveNewsControler {
 
         });
     }
-
+    
+    /*  
+        redirect function is used to direct the user to a edit news page to edit the selected news
+        @param: id of the selected news
+        @return: none
+    */
     redirect(id) {
         window.location.href = "#/addnews/" + id;
         document.location.reload(true);
     }
 
-    approvenews() {
-        if(this.submit)
-            return ;
-            this.submit = true;
-
-        let userdata = JSON.parse(sessionStorage.getItem("userData"));
-        if (userdata != null) {
-            myNewsPage[userdata.ind] = userdata;
-            sessionStorage.removeItem("userData");
-        }
-    }
+    /*  
+        appproveNews function is used to approve all selected news and update its approvition status in the database 
+        and show a confirmation message to user for that. 
+        @param: none
+        @return: none
+    */
     appproveNews() {
         let news;
         let data;
@@ -55,7 +55,6 @@ export class approveNewsControler {
         for (let i = 0; i < j; i++) {
 
             news = this.notAppNewsPage[approved[i]];
-            //console.log(news)
             data = {
                 "title": news.title,
                 "content": news.content,
@@ -73,7 +72,7 @@ export class approveNewsControler {
                 "writerId": news.writerId,
                 "isApproved": 1
             }
-            //console.log(news)
+
             let x = this.updateNew(data, news._id + '');
             if (i == j - 1) {
                 x.then(finished => {
@@ -86,29 +85,51 @@ export class approveNewsControler {
             }
         }
     }
+
+    /*  
+        updateNew function is used to update a specific news in the database
+        @param: id of the news , modified data for the news
+        @return: {promise} for the database update
+    */
     updateNew(data, newsId) {
         return new Promise((resolve, reject) => {
             this.db.dbCreateOrUpdate("/news", data, newsId).then(response => {
                 resolve(response);
                 mvc.apply();
                 console.log("Updated");
-                //document.location.reload(true);
             });
         })
     }
 
+    /*  
+       show function is used to display popup to the user 
+       @param: modelId: to distinguish the type of the popup, id: row number 
+       @return: none
+    */
     show(modelId, id) {
         let element = document.getElementById(modelId);
         element.style.display = 'flex';
         element.className += " modal-active";
         this.activeId = id;
     }
+
+      /*  
+       hide function is used to hide the popup shown from the user
+       @param: modelId: to distinguish the type of the popup
+       @return: none
+    */
     hide(modelId) {
         let element = document.getElementById(modelId);
         element.style.display = 'none';
 
     }
 
+    /*  
+        deleteNews function is used to delete the selected news from the database
+        and from the news table either
+        @param:  none
+        @return: none
+    */
     deleteNews() {
         if (this.activeId == -1)
             return;
@@ -123,6 +144,12 @@ export class approveNewsControler {
         this.hide('delete');
 
     }
+
+     /*  
+        getAllNotAppNews function is used to get all nonapproved news from the database
+        @param:  none
+        @return: {promise} for read news from the database
+    */
     getAllNotAppNews() {
         return new Promise((resolve, reject) => {
             this.db.dbGet("/news/_design/views/_view/notapproved", true, "").then(news => {
@@ -131,6 +158,11 @@ export class approveNewsControler {
             })
         });
     }
+
+    /*
+       getAllCat function is used to  get all categories information from the database
+       @returns {Promise} for read categories from the database
+    */
     getAllCat() {
         return new Promise((resolve, reject) => {
             this.db.dbGet("/categories/_design/allcategories/_view/allcategories", true, "").then(cats => {

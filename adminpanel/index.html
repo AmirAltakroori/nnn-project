@@ -17,26 +17,43 @@
     <link rel="stylesheet" type="text/css" href="./pages/mynews/css/mynews.css">
     <link rel="stylesheet" type="text/css" href="./pages/newsapprove/css/newsapprove.css">
     <link rel="stylesheet" type="text/css" href="./pages/newuser/css/newuser.css">
+    <link rel="stylesheet" type="text/css" href="./pages/login/css/login.css">
+
     <script src="./js/quill.min.js"></script>
     <link href="./pages/addnewspage/css/quill.snow.css" rel="stylesheet">
     <link href="./pages/addnewspage/css/quill.core.css" rel="stylesheet">
     <script type="module" src="./js/backend.js"></script>
+    <script type="module" src="./js/database.js"></script>
+
     <script src="./js/frontend.js"></script>
 
     <script>
         let alertNumber = 0;
         let info = 0;
 
-        const userData = JSON.parse(sessionStorage.getItem('user'));
-        if (!userData) {
-            window.location.href = '/admin-panel-login/login.html';
+        window.onhashchange = function () {
+            const userData = JSON.parse(sessionStorage.getItem('user'));
+            document.getElementById("username").innerHTML = userData.id;
+
 
         }
-        console.log(userData);
-        document.addEventListener("DOMContentLoaded", (e) => {
-            document.getElementById("username").innerHTML = userData.fullName;
-        })
+        const userData = JSON.parse(sessionStorage.getItem('user'));
+        if (!userData) {
+            window.location.href = '#/login.html';
 
+        }
+        document.addEventListener("DOMContentLoaded", (e) => {
+            checkName();
+        })
+        function checkName() {
+            const userData = JSON.parse(sessionStorage.getItem('user'));
+            if (!userData) {
+                setTimeout(() => {
+                    checkName();
+                }, 1000);
+            } else
+                document.getElementById("username").innerHTML = userData.id;
+        }
         function deleteMe(e) {
             e.parentElement.parentElement.removeChild(e.parentElement);
         }
@@ -44,7 +61,7 @@
             alertNumber++;
             const container = document.getElementById('alert-container');
             let div = document.createElement('div');
-            if (type == 'success') {
+            if (type != 'info') {
                 const prev = info;
                 const isInfo = document.getElementById(`info${prev}`);
                 if (isInfo) {
@@ -68,6 +85,11 @@
                 </div>
         </div >`
                 container.appendChild(div);
+                setTimeout(() => {
+                if (div) {
+                    container.removeChild(div);
+                }
+            }, 10000);
                 return;
             }
 
@@ -85,12 +107,11 @@
                 </div>
         </div >`;
             container.appendChild(div);
-        setTimeout(() => {
-            if(div)
-                {
+            setTimeout(() => {
+                if (div) {
                     container.removeChild(div);
                 }
-        }, 3000);
+            }, 3000);
         }
 
     </script>
@@ -99,9 +120,8 @@
 </head>
 
 <body>
-    <div>
+    <div class="root-flex-container">
         <header>
-
             <div class=" main-header header-flex-container space-between item-center">
                 <div class="header-logo">
                     <a href='#/home'><img src="./img/logo.png" alt="logo" href="index.html"></a>
@@ -125,12 +145,13 @@
 
             </div>
         </header>
-        <div view></div>
+        <div view style="flex-grow: 1;"></div>
         <script src='potato.js'></script>
         <script src='app.js'></script>
 
     </div>
     <div class='alert-container' id='alert-container'>
+    </div>
 </body>
 
 </html>

@@ -129,20 +129,20 @@
                 <h2><i class="fas fa-globe"></i> الموقع</h2>
                 <div class="homepage-container">
                         <div $if="$mode != null">
-                                <button $disabled = '$changing' $click="ChangeMode()" class="homepage-btn" $class="'light-green': $mode == 1, 'red': $mode == 0">
+                                <button $disabled = '$changing' $click="changeMode()" class="homepage-btn" $class="'light-green': $mode == 1, 'red': $mode == 0">
                                         <div>
-                                                <i $click="ChangeMode()" class="fa fa-power-off  home-shadow-icon"> </i>
+                                                <i $click="changeMode()" class="fa fa-power-off  home-shadow-icon"> </i>
                                         </div>
                                         <div>
-                                                <i $click="ChangeMode()" class="fa fa-power-off icon homepage-aboveicon"> </i>
+                                                <i $click="changeMode()" class="fa fa-power-off icon homepage-aboveicon"> </i>
                                         </div>
                                         <div >
-                                                <span $click="ChangeMode()" class="homepage-aboveicon">حالة الموقع </span>
+                                                <span $click="changeMode()" class="homepage-aboveicon">حالة الموقع </span>
                                                 <div  style="font-size: 18px;"  $if="$mode==  1">
-                                                        <span $click="ChangeMode()">مفعل</span>
+                                                        <span $click="changeMode()">مفعل</span>
                                                 </div >
                                                 <div style="font-size: 18px;" $if="$mode == 0">
-                                                        <span  $click="ChangeMode()">غير مفعل</span>
+                                                        <span  $click="changeMode()">غير مفعل</span>
                                                 </div>
                                         </div>
                                 </button>

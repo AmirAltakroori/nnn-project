@@ -7,7 +7,7 @@ export class myNewsControler {
         this.categories = [];
         this.activeId = -1;
         this.loading = true;
-        dynamicImport("./../../adminpanel/js/backend.js").then(db => {
+        dynamicImport("./../../adminpanel/js/database.js").then(db => {
             this.db = db;
             this.db.confirm();
 
@@ -25,12 +25,23 @@ export class myNewsControler {
 
         });
     }
-
+    /*
+        This function used to redirect the news to edit page
+        according to the news id.
+        @param: 
+            id: new id.
+    */
     redirect(id) {
         window.location.href = "#/addnews/" + id;
         document.location.reload(true);
     }
-
+    /*
+        This function used to show the popup for the user when delete icon
+        is clicked.
+        @param: 
+            id: new id.
+            modelId: element id.
+    */
     show(modelId, id) {
         let element = document.getElementById(modelId);
         element.style.display = 'flex';
@@ -38,11 +49,20 @@ export class myNewsControler {
         this.activeId = id;
 
     }
+    /*
+        This function used to hide the delete popup.
+        @param: 
+            modelId: element id.
+    */
     hide(modelId) {
         let element = document.getElementById(modelId);
         element.style.display = 'none';
 
     }
+    /*
+        This function used to delete the news.
+        
+    */
     deleteNews() {
         if (this.activeId == -1)
             return;
@@ -62,7 +82,9 @@ export class myNewsControler {
     }
 
     /* -----------------------------------------------------------------------------------------------------------------------------------------------------*/
-    //read news functions 
+     /*
+        This function used to read all the news.
+    */
     getAllNews() {
         return new Promise((resolve, reject) => {
             this.db.dbGet("/news/_design/views/_view/allnews", true, "").then(news => {
@@ -71,6 +93,10 @@ export class myNewsControler {
             })
         });
     }
+    /*
+        This function used to clean the data that come from
+        the quere.
+    */
     cleanData(data) {
         let rows = [];
         for (let i = 0; i < data.length; i++) {
@@ -78,7 +104,9 @@ export class myNewsControler {
         }
         return rows;
     }
-
+    /*
+        This function used to read all the categories.
+    */
     getAllCat() {
         return new Promise((resolve, reject) => {
             this.db.dbGet("/categories/_design/allcategories/_view/allcategories", true, "").then(cats => {
@@ -87,16 +115,26 @@ export class myNewsControler {
             })
         });
     }
+    /*
+        This function used to update the status of the news.  
+        @param: 
+            field: news field.
+            id: news id.
+            showToast: if you want to show the popup or not.
+    */
     updateStatus(field, id, showToast = true) {
         if (showToast)
             createToast("جاري التعديل", '', "info", "");
         let news = null;
-        if (field == 'isActive')
+        if (field == 'isActive') {
             news = this.allNewsPage[id];
-        else
+            news[field] = +!news[field];
+        }
+        else {
             news = this.allNewsPage.find(field => field._id == id);
+        }
+        console.log(news);
 
-        news[field] = +!news[field];
         this.db.dbGet('/news/_design/views/_view/attachcontent', true, news._id).then(data => {
             news.attachment = data.rows[0].value.attachment;
             news.content = data.rows[0].value.content;
@@ -132,6 +170,7 @@ export class myNewsControler {
             mainNews[i].addEventListener("change", (e) => {
                 e.preventDefault();
                 this.allNewsPage[i].isMainNews = +mainNews[i].checked;
+                console.log(this.allNewsPage[i].isMainNews);
                 this.updateStatus("isMainNews", this.allNewsPage[i]._id);
             });
 
