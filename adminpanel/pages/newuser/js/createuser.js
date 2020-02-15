@@ -71,11 +71,13 @@ export class addusersController {
             btn.disabled = false;
             btn.style.background = '';
             this.$submitted = false;
+            mvc.apply();
             return;
         }
         setTimeout(() => {
             this.$submitted = false;
-        }, 500);
+            mvc.apply();
+        }, 2500);
         let user = {
             firstName: this.firstName,
             lastName: this.lastName,
@@ -96,6 +98,7 @@ export class addusersController {
                     setTimeout(() => {
                         window.location.href = "#/allusers";
                         this.$submitted = false;
+                        mvc.apply();
                     }, 1000);
                 }
             });
@@ -135,7 +138,7 @@ export class addusersController {
                     });
                 }, () => {
                     createToast("خطأ", 'اسم المستخدم مستعمل', "danger", "times-circle");
-                    resolve(response);
+                    resolve({error:"used"});
 
                 })
             })
