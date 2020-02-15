@@ -12,7 +12,7 @@ class routeObj {
     }
 }
 
-// Mvc 
+// Mvc Class
 // ************* Methods *************
 // - add route 
 //      adds route information to route map

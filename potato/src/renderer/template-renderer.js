@@ -76,7 +76,7 @@ function apply(doc) {
 
 // render a specific element
 function renderTemplate(view) {
-	let specials = collectSpecialTag(view);
+	let specials = collectSpecialTags(view);
 	specials.forEach(element => {
 		if (testedSpecials.filter(elem => elem.element.isEqualNode(element.element) && elem.attr == element.attr).length == 0) {
 			testedSpecials.push(element);

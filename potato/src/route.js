@@ -24,7 +24,7 @@ function analyzeUrl(url, routeList) {
         return null;
     }
 
-    return { path, $routeParams, currentRoute };
+    return { path, routeParams, currentRoute };
 }
 
 // Dynamicly import a component js file 
