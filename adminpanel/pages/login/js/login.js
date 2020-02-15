@@ -1,7 +1,9 @@
 
 export class loginController {
     constructor() {
-        this.toggleHeader();
+        setTimeout(() => {
+            this.toggleHeader(); 
+        }, 100);
         this.usernameInput = '';
         this.password = '';
         this.submit = false;
