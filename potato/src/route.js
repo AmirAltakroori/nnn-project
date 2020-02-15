@@ -1,7 +1,7 @@
 // Analyze the url and compare it with the route list 
 function analyzeUrl(url, routeList) {
     let option, find = false;
-    let $path = "", $routeParams = {}, $currentRoute = {};
+    let path = "", routeParams = {}, currentRoute = {};
     url = url.substr(url.search("#") + 2).split("/");
     let root = url[0];
     url.splice(0, 1);
@@ -10,13 +10,13 @@ function analyzeUrl(url, routeList) {
         option = route.url.substr(route.url.search("/") + 1).split("/:");
         if (root == option[0] && url.length == (option.length - 1)) {
             find = true;
-            $path = option[0];
+            path = option[0];
             option.splice(0, 1);
-            $routeParams = {};
+            routeParams = {};
             option.forEach((element, index) => {
                 $routeParams[element] = url[index];
             });
-            $currentRoute = route;
+            currentRoute = route;
         }
     });
 
@@ -24,7 +24,7 @@ function analyzeUrl(url, routeList) {
         return null;
     }
 
-    return { $path, $routeParams, $currentRoute };
+    return { path, routeParams, currentRoute };
 }
 
 // Dynamicly import a component js file 
@@ -75,6 +75,7 @@ async function loadMvc(templatePath, controllerPath) {
     return Promise.resolve({ template, controller });
 }
 
+// import scripts in run time
 function DImport(path) {
     return new Promise((res, rej) => {
         const moduleSpecifier = path;
