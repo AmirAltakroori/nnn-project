@@ -25,7 +25,7 @@ export class Home {
         this.mainNews = [];
         this.selectedNews = {};
 
-        this.getmainNews();
+        this.getMainNews();
 
         this.slideIndex = 0;
         this.randomNews = [];
@@ -71,22 +71,26 @@ export class Home {
         @returns
 
     */
-    getmainNews () {
+    getMainNews () {
 
         this.dataBase.getData("/news/_design/views/_view/mainnews?limit=5&&descending=true", true, '').then( data => {
-            this.mainNews = data;
-            if (this.mainNews.length > 0) {
-                this.selectedNews = this.mainNews[0];
+            if (data) {
+                this.mainNews = data;
+                if (this.mainNews.length > 0) {
+                    this.selectedNews = this.mainNews[0];
+                }
+                if (this.mainNews.length > 5) {
+                    this.mainNews = this.mainNews.slice(0, 5);
+                }
+                for (let news of this.mainNews) {
+                    news.writer = this.writers.filter((el) => { return el.value.id == news.value.writer})[0].value;
+                }
+                mvc.apply();
+            } else {
+                this.getMainNews();
             }
-            if (this.mainNews.length > 5) {
-                this.mainNews = this.mainNews.slice(0, 5);
-            }
-            for (let news of this.mainNews) {
-                news.writer = this.writers.filter((el) => { return el.value.id == news.value.writer})[0].value;
-            }
-            mvc.apply();
         }, () => {
-            this.getmainNews();
+            this.getMainNews();
         });
 
     }
@@ -104,8 +108,12 @@ export class Home {
     getRandomNews () {
 
         this.dataBase.getData("/news/_design/views/_view/random?limit=12", true, '').then( data => {
-            this.randomNews = data;
-            this.slide(0);
+            if (data) {
+                this.randomNews = data;
+                this.slide(0);
+            } else {
+                this.getRandomNews();
+            }
         }, () => {
             this.getRandomNews();
         });
@@ -184,10 +192,14 @@ export class Home {
     getAllCategories() {
 
         this.dataBase.getData("/categories/_design/allcategories/_view/new-view", true, '').then( data => {
-            this.allCategories = data;
-            this.getNewsForCategory(this.allCategories);
-            mvc.apply();
-            this.slide(0);
+            if (data) {
+                this.allCategories = data;
+                this.getNewsForCategory(this.allCategories);
+                mvc.apply();
+                this.slide(0);
+            } else {
+                this.getAllCategories();
+            }
         }, () => {
             this.getAllCategories();
         });
@@ -207,24 +219,28 @@ export class Home {
     getNewsForCategory(categories) {
 
         this.dataBase.dbFindByIndex("/news",["_id", "title", "attachment", "seoDescription", "createDate", "categoryId", "writerId"],"isActive", 1).then( data => {
-            this.allNews = data.docs;
-            for (let category of categories) {
+            if (data) {
+                this.allNews = data.docs;
+                for (let category of categories) {
 
-                category.allMain = [];
-                category.mainNews = {};
-                let categoryNews = this.allNews.filter((el) => { return el.categoryId == category.id});
-                if (categoryNews.length > 0) {
-                    category.mainNews = categoryNews[0];
-                    category.mainNews.writer = this.writers.filter((el) => { return el.id == category.mainNews.writerId})[0];
-                    if (categoryNews.length > 1) {
-                        category.allMain = categoryNews.slice(1, 5);
+                    category.allMain = [];
+                    category.mainNews = {};
+                    let categoryNews = this.allNews.filter((el) => { return el.categoryId == category.id});
+                    if (categoryNews.length > 0) {
+                        category.mainNews = categoryNews[0];
+                        category.mainNews.writer = this.writers.filter((el) => { return el.id == category.mainNews.writerId})[0];
+                        if (categoryNews.length > 1) {
+                            category.allMain = categoryNews.slice(1, 5);
+                        }
+                        this.categoriesView.push(category);
                     }
-                    this.categoriesView.push(category);
-                }
 
+                }
+                mvc.apply();
+                this.slide(0);
+            } else {
+                this.getNewsForCategory();
             }
-            mvc.apply();
-            this.slide(0);
         }, () => {
             this.getNewsForCategory();
         });
@@ -244,7 +260,11 @@ export class Home {
     getWriters() {
 
         this.dataBase.getData("/users/_design/users/_view/generalinfo", true, '').then( data => {
-            this.writers = data;
+            if (data) {
+                this.writers = data;
+            } else {
+                this.getWriters();
+            }
         }, () => {
             this.getWriters();
         });

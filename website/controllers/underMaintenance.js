@@ -7,7 +7,7 @@
         Qusai Hroub <qusaihroub.r@gmail.com>
 
     File description:
-        This file contains the controller class of categories page which applies Potato Framework.
+        This file contains the controller class of underMaintenance page which applies Potato Framework.
  */
 
 export class underMaintenance {

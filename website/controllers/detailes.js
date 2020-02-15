@@ -62,11 +62,14 @@ export class Details {
                                     ["_id", "content", "createDate", "title", "writerId", "isActive", "attachment", "categoryId"],"_id",
                                      mvc.routeParams.id).then( data => {
 
-            let iData = data;
-            this.news = iData.docs[0];
-            mvc.apply();
-            this.getRelatedNews(this.news.categoryId, this.news._id);
-            this.getWriters(this.news.writerId);
+            if (data) {
+                this.news = data.docs[0];
+                mvc.apply();
+                this.getRelatedNews(this.news.categoryId, this.news._id);
+                this.getWriter(this.news.writerId);
+            } else {
+                this.getNews();
+            }
         }, () => {
             this.getNews();
         });
@@ -85,9 +88,12 @@ export class Details {
     getRelatedNews(categoryId, newsId) {
 
         this.dataBase.findByIndex("/news", ["_id", "attachment", "title",],"categoryId", categoryId).then( data => {
-            let iData = data;
-            this.relatedNews = iData.docs.filter((el) => { return el._id != newsId});
-            mvc.apply();
+            if (data) {
+                this.relatedNews = data.docs.filter((el) => { return el._id != newsId});
+                mvc.apply();
+            } else {
+                this.getRelatedNews();
+            }
         }, () => {
             this.getRelatedNews();
         });
@@ -103,13 +109,17 @@ export class Details {
 
         @returns:
     */
-    getWriters(writerId) {
+    getWriter(writerId) {
 
         this.dataBase.getData("/users/_design/users/_view/generalinfo", true, '').then( data => {
-            this.writer = data.filter((el) => { return el.id == writerId})[0].value;
-            mvc.apply();
+            if (data) {
+                this.writer = data.filter((el) => { return el.id == writerId})[0].value;
+                mvc.apply();
+            } else {
+                this.getWriter();
+            }
         }, () => {
-            this.getWriters(writerId);
+            this.getWriter(writerId);
         });
 
     }

@@ -41,8 +41,12 @@ export class Header {
     getUrgentNews() {
 
         this.dataBase.getData("/news/_design/views/_view/urgent", true, '').then( data => {
-            this.urgentNews = data;
-            mvc.apply();
+            if (data) {
+                this.urgentNews = data;
+                mvc.apply();
+            } else {
+                this.getUrgentNews();
+            }
         }, () => {
             this.getUrgentNews();
         });
@@ -62,9 +66,13 @@ export class Header {
     getCategoriesList() {
 
         this.dataBase.getData("/categories/_design/allcategories/_view/new-view", true, '').then( data => {
-            this.categoriesList = data;
-            this.sliceCategoriesList();
-            mvc.apply();
+            if (data) {
+                this.categoriesList = data;
+                this.sliceCategoriesList();
+                mvc.apply();
+            } else {
+                this.getCategoriesList();
+            }
         }, () => {
             this.getCategoriesList();
         });
