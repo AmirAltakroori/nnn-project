@@ -13,14 +13,14 @@
         This file contains the controller class of categories page which applies Potato Framework.
  */
 
-import { DataBase } from "../services/DataBase.js";
+import { DataBase } from "../../services/database.js";
 
 export class Category {
 
     constructor() {
 
         this.dataBase = new DataBase();
-        let indexType = mvc.routeParams.id;
+        this.indexType = mvc.routeParams.id;
         this.category = {};
         this.listMainNews = [];
         this.mainNews = {};
@@ -29,12 +29,11 @@ export class Category {
         this.writer = {};
         this.rightNewsInCategory = [];
         this.liftNewsInCategory = [];
-        this.url = 'https://541e1dc0-354b-4134-ae7d-5eaa533a1bf9-bluemix.cloudant.com';
-        this.auth = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJsdWVtaXg6NDU2YjA3NzhjODFjOWNiMDk5NzZkODU1NjQ5MDM2YzRlYTE1MTQwZTk5NDNlNWM2MGE5ZDM1MGMwNDU5YzIwMw==';
-        this.getCategory(indexType);
+
+        this.getCategory(this.indexType);
         this.getAllNews();
         this.getNews();
-        this.getRandomNews(indexType);
+        this.getRandomNews(this.indexType);
 
     }
 
@@ -66,7 +65,7 @@ export class Category {
     */
     getCategory(categoryId) {
 
-        this.dataBase.getData("/categories/_design/allcategories/_view/new-view",true,'',this.url,this.auth).then( data => {
+        this.dataBase.getData("/categories/_design/allcategories/_view/new-view",true,'').then( data => {
             this.category = data.filter((el) => { return el.id == categoryId})[0].value;
             mvc.apply();
         }, () => {
@@ -86,8 +85,7 @@ export class Category {
     getNews() {
 
         this.dataBase.findByIndex("/news",
-                                ["_id", "title", "attachment", "seoDescription", "isMainNews", "createDate"], "categoryId", mvc.routeParams.id,
-                                this.url, this.auth).then( data => {
+                                ["_id", "title", "attachment", "seoDescription", "isMainNews", "createDate"], "categoryId", mvc.routeParams.id).then( data => {
 
             let iData = data;
             this.listMainNews = iData.docs.filter((el) => { return el.isMainNews});
@@ -113,7 +111,7 @@ export class Category {
     */
     getAllNews() {
 
-        this.dataBase.findByIndex("/news", ["_id", "title", "attachment"],"categoryId", mvc.routeParams.id, this.url, this.auth).then( data => {
+        this.dataBase.findByIndex("/news", ["_id", "title", "attachment"],"categoryId", mvc.routeParams.id).then( data => {
             let iData = data;
             let length = iData.docs.length;
             this.liftNewsInCategory = iData.docs.slice(0, length / 2);
@@ -136,7 +134,7 @@ export class Category {
     */
     getRandomNews() {
 
-        this.dataBase.getData("/news/_design/views/_view/random",true,'',this.url,this.auth).then( data => {
+        this.dataBase.getData("/news/_design/views/_view/random", true, '',).then( data => {
             this.randomNews = data;
             if (this.randomNews.lenght > 10) {
                 this.randomNews = this.randomNews.slice(0, 10);
@@ -159,7 +157,7 @@ export class Category {
     */
     getWriters() {
 
-        this.dataBase.getData("/users/_design/users/_view/generalinfo",true,'',this.url,this.auth).then( data => {
+        this.dataBase.getData("/users/_design/users/_view/generalinfo", true, '').then( data => {
             this.writers = data;
             this.writer = this.writers.filter((el) => { return el.id == this.mainNews.writerId})[0].value;
             mvc.apply();

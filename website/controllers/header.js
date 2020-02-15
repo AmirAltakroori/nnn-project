@@ -12,7 +12,7 @@
         This file contains the controller class of header which applies Potato Framework.
  */
 
-import { DataBase } from "../services/DataBase.js";
+import { DataBase } from "../../services/database.js";
 
 export class Header {
 
@@ -23,11 +23,9 @@ export class Header {
         this.categoriesList = [];
         this.mainCategoriesList = [];
         this.moreCategoriesList = [];
-        this.url = 'https://541e1dc0-354b-4134-ae7d-5eaa533a1bf9-bluemix.cloudant.com';
-        this.auth = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJsdWVtaXg6NDU2YjA3NzhjODFjOWNiMDk5NzZkODU1NjQ5MDM2YzRlYTE1MTQwZTk5NDNlNWM2MGE5ZDM1MGMwNDU5YzIwMw==';
+
         this.getUrgentNews();
         this.getCategoriesList();
-
     }
 
     /*
@@ -42,7 +40,7 @@ export class Header {
     */
     getUrgentNews() {
 
-        this.dataBase.getData("/news/_design/views/_view/urgent",true,'',this.url,this.auth).then( data => {
+        this.dataBase.getData("/news/_design/views/_view/urgent", true, '').then( data => {
             this.urgentNews = data;
             mvc.apply();
         }, () => {
@@ -63,7 +61,7 @@ export class Header {
     */
     getCategoriesList() {
 
-        this.dataBase.getData("/categories/_design/allcategories/_view/new-view",true,'',this.url,this.auth).then( data => {
+        this.dataBase.getData("/categories/_design/allcategories/_view/new-view", true, '').then( data => {
             this.categoriesList = data;
             this.sliceCategoriesList();
             mvc.apply();
