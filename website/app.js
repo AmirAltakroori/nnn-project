@@ -18,28 +18,28 @@ let mvc = new Mvc();
 let routeList = [
     {
         url: "/home",
-        template: "/website/templates/home.html",
-        controller: "/website/controllers/home.js",
+        template: "./templates/home.html",
+        controller: "./website/controllers/home.js",
         title: "شبكة الوحدة الإعلامية"
     },
     {
         url: "/details/:id",
-        template: "/website/templates/details.html",
-        controller: "/website/controllers/detailes.js",
+        template: "./templates/details.html",
+        controller: "./website/controllers/detailes.js",
         id: "",
         title: "شبكة الوحدة الإعلامية"
     },
     {
         url: "/categories/:id",
-        template: "/website/templates/categories.html",
-        controller: "/website/controllers/categories.js",
+        template: "./templates/categories.html",
+        controller: "./website/controllers/categories.js",
         id: "",
         title: "شبكة الوحدة الإعلامية"
     },
     {
         url: "/underMaintenance",
-        template: "/website/templates/underMaintenance.html",
-        controller: "/website/controllers/underMaintenance.js",
+        template: "./templates/underMaintenance.html",
+        controller: "./website/controllers/underMaintenance.js",
         title: "شبكة الوحدة الإعلامية"
     }
 ];
