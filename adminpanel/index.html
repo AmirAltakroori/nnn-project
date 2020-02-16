@@ -30,20 +30,19 @@
     <script>
         let alertNumber = 0;
         let info = 0;
-
-        window.onhashchange = function () {
-            const userData = JSON.parse(sessionStorage.getItem('user'));
-            document.getElementById("username").innerHTML = userData.id;
-            checkHeader();
-
-        }
         function checkHeader() {
-            const header = document.getElementsByTagName('header')[0];
-            if (location.hash == '#/login.html') {
+            setTimeout(() => {
+                const header = document.getElementById('header');
+                // console.log(header);
                 if (header) {
-                    header.style.display = 'none';
+                    if (location.hash == '#/login.html' || location.href == "") {
+                        if (header) {
+                            header.style.display = 'none';
+                        }
+                    } else header.style.display = 'block';
                 }
-            } else header.style.display = 'block';
+                checkHeader();
+            }, 1000);
         }
         const userData = JSON.parse(sessionStorage.getItem('user'));
         if (!userData) {
@@ -51,6 +50,7 @@
         }
         document.addEventListener("DOMContentLoaded", (e) => {
             checkName();
+            checkHeader();
         })
         function checkName() {
             const userData = JSON.parse(sessionStorage.getItem('user'));
@@ -92,11 +92,14 @@
                 </div>
         </div >`
                 container.appendChild(div);
-                setTimeout(() => {
-                    if (div) {
-                        container.removeChild(div);
-                    }
-                }, 10000);
+                try {
+                    setTimeout(() => {
+
+                        if (div) {
+                            container.removeChild(div);
+                        }
+                    }, 10000);
+                } catch (e) { };
                 return;
             }
 
@@ -114,11 +117,14 @@
                 </div>
         </div >`;
             container.appendChild(div);
-            setTimeout(() => {
-                if (div) {
-                    container.removeChild(div);
-                }
-            }, 3000);
+            try {
+                setTimeout(() => {
+
+                    if (div) {
+                        container.removeChild(div);
+                    }
+                }, 3000);
+            } catch (e) { };
         }
 
     </script>
@@ -128,7 +134,7 @@
 
 <body>
     <div class="root-flex-container">
-        <header>
+        <header id="header">
             <div class=" main-header header-flex-container space-between item-center">
                 <div class="header-logo">
                     <a href='#/home'><img src="./img/logo.png" alt="logo" href="index.html"></a>
