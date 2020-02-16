@@ -34,14 +34,20 @@
         window.onhashchange = function () {
             const userData = JSON.parse(sessionStorage.getItem('user'));
             document.getElementById("username").innerHTML = userData.id;
+            checkHeader();
 
-
+        }
+        function checkHeader() {
+            const header = document.getElementsByTagName('header')[0];
+            if (location.hash == '#/login.html') {
+                if (header) {
+                    header.style.display = 'none';
+                }
+            } else header.style.display = 'block';
         }
         const userData = JSON.parse(sessionStorage.getItem('user'));
         if (!userData) {
             window.location.href = '#/login.html';
-            
-
         }
         document.addEventListener("DOMContentLoaded", (e) => {
             checkName();
@@ -87,10 +93,10 @@
         </div >`
                 container.appendChild(div);
                 setTimeout(() => {
-                if (div) {
-                    container.removeChild(div);
-                }
-            }, 10000);
+                    if (div) {
+                        container.removeChild(div);
+                    }
+                }, 10000);
                 return;
             }
 

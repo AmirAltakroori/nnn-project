@@ -3,7 +3,7 @@ export class loginController {
     constructor() {
         setTimeout(() => {
             this.toggleHeader(); 
-        }, 700);
+        }, 300);
         this.usernameInput = '';
         this.password = '';
         this.submit = false;
