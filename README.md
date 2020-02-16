@@ -27,7 +27,7 @@ Website is created with:
 
 - CouchDB
 
-- [Potato framework]("./potato/README.md" "hover")
+- [Potato framework]( "./potato/README.md" "hover")
 
 ## Website Pages
 
