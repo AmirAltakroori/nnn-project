@@ -4,9 +4,9 @@ export class HomeController {
         this.changing = false;
         this.userRole = -1;
 
-        this.db = dynamicImport("./js/database.js");
+        this.db = dynamicImport("../adminpanel/js/database.js");
         this.db.then(db => {
-
+        console.log(db);
             this.userRole = db.confirm().data.roleId;
             mvc.apply();
         });

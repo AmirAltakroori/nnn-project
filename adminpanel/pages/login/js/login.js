@@ -1,6 +1,9 @@
 
 export class loginController {
     constructor() {
+        setTimeout(() => {
+            this.toggleHeader(); 
+        }, 100);
         this.usernameInput = '';
         this.password = '';
         this.submit = false;
@@ -13,7 +16,19 @@ export class loginController {
             this.enc = enc;
         });
     }
- 
+        /*  
+        toggleHeader is a function for show or hide the header by editing the display css proparty 
+        @param: none
+        @return: none
+    */
+    toggleHeader() {
+        const header = document.getElementsByTagName('header')[0];
+        if(header.style.display!='none')
+            {
+                header.style.display='none';
+            }
+
+    }
         /*  
         Redirect function is used to direct the user to a new page to edit the new selected
         @param: fullName string
