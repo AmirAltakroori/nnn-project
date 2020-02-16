@@ -3,7 +3,7 @@
 
   
 
-<img  align="right"  src="./website/img/logo.png"  />
+<img  align="right"  src="./website/img/logo.png"  | width=100/>
 
   
 
