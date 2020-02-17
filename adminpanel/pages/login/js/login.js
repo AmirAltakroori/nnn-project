@@ -26,8 +26,7 @@ export class loginController {
         if(header.style.display!='none')
             {
                 header.style.display='none';
-            }else 
-            header.style.display='block';
+            }
 
     }
         /*  

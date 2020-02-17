@@ -68,6 +68,18 @@ let routeList = [
 
 ];
 
+mvc.extendDirectives('\\$submit', (exp, element) =>
+{
+    try {
+        exp = exp.replace(/\$/g, "scope."), eventListener(element, "submit", () => {
+            eval("scope." + exp)
+        })
+    } catch (e) {
+        console.log(e)
+    }
+});
+
+
 mvc.addRouteList(routeList);
 mvc.init();
 // export {mvc};

@@ -11,22 +11,18 @@
         This file contains functions used to deal with database
 */
 
-import { environment } from "../environments/environment.js"
+let BASEURL = 'https://541e1dc0-354b-4134-ae7d-5eaa533a1bf9-bluemix.cloudant.com';
+let AUTHENTICATION = 'Basic NTQxZTFkYzAtMzU0Yi00MTM0LWFlN2QtNWVhYTUzM2ExYmY5LWJsdWVtaXg6NDU2YjA3NzhjODFjOWNiMDk5NzZkODU1NjQ5MDM2YzRlYTE1MTQwZTk5NDNlNWM2MGE5ZDM1MGMwNDU5YzIwMw=='
 
 export class DataBase {
-
-    constructor () {
-        this.baseUrl = environment.baseUrl;
-        this.authentication = environment.authentication;
-    }
 
     /*
      *    Fetch data from dataBase
      *
-     *    @tparam randomNews: isView: boolean, endpoint, id: string
+     *    @tparam randomNews: isView: boolean, endpoint, BASEURL, id, AUTHENTICATION: string
      *
      *    @param endpoint: direct link or view, isView if the endpoint is View this must be true else must be false
-     *                    id element id;
+     *                    id, BASEURL is dataBase base url, AUTHENTICATION dataBase key;
      *
      *    @returns list of fetched data.
      */
@@ -34,7 +30,7 @@ export class DataBase {
 
         return new Promise((resolve, reject) => {
 
-            let url = this.baseUrl + endpoint;
+            let url = BASEURL + endpoint;
             if (isView && id) {
 
                 url += `?key=\"${id}\"`;
@@ -49,7 +45,7 @@ export class DataBase {
             http.open("GET", url);
             http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             http.setRequestHeader('Accept', 'application/json');
-            http.setRequestHeader("Authorization", this.authentication);
+            http.setRequestHeader("Authorization", AUTHENTICATION);
             http.onreadystatechange = function() {
 
                 if (http.readyState == 4) {
@@ -79,7 +75,7 @@ export class DataBase {
      *
      *    @tparam randomNews: fields, value, index, endpoint: string
      *
-     *    @param endpoint: direct link or view;
+     *    @param endpoint: direct link or view, BASEURL is dataBase base url, AUTHENTICATION dataBase key;
      *
      *    @returns list of fetched data.
      */
@@ -93,12 +89,12 @@ export class DataBase {
             }
 
             parameters.selector[index] = value;
-            const url = this.baseUrl + endpoint + `/_find`;
+            const url = BASEURL + endpoint + `/_find`;
             let http = new XMLHttpRequest();
             http.open("POST", url);
             http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             http.setRequestHeader('Accept', 'application/json');
-            http.setRequestHeader("Authorization", this.authentication);
+            http.setRequestHeader("Authorization", AUTHENTICATION);
             http.onreadystatechange = function() { //Call a function when the state changes.
 
                 if (http.readyState == 4)
@@ -118,7 +114,7 @@ export class DataBase {
      *
      *    @tparam randomNews: fields, value, index, endpoint: string
      *
-     *    @param endpoint: direct link or view;
+     *    @param endpoint: direct link or view, BASEURL is dataBase base url, AUTHENTICATION dataBase key;
      *
      *    @returns list of fetched data.
      */
@@ -135,12 +131,12 @@ export class DataBase {
             }
 
             parameters.selector[index] = value;
-            const url = this.baseUrl + endpoint + `/_find`;
+            const url = BASEURL + endpoint + `/_find`;
             let http = new XMLHttpRequest();
             http.open("POST", url);
             http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             http.setRequestHeader('Accept', 'application/json');
-            http.setRequestHeader("Authorization", this.authentication);
+            http.setRequestHeader("Authorization", AUTHENTICATION);
             http.onreadystatechange = function() {
 
                 if (http.readyState == 4)
