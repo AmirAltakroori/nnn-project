@@ -7,7 +7,6 @@
         Ibrahim Abusamarah <ibrahim.abusamrah123@gmail.com>
 
     File description:
-        This file contains the controller class of categories page which applies Potato Framework.
  */
 
 
