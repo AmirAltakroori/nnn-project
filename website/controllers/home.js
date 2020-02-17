@@ -18,6 +18,9 @@ export class Home {
     constructor() {
 
         this.dataBase = new DataBase();
+
+        this.websiteStatus();
+
         this.writers = [];
 
         this.getWriters();
@@ -43,6 +46,23 @@ export class Home {
 
         this.getAllCategories();
 
+    }
+
+    /*
+        get website state from database and rout if it under maintenance.
+
+        @tparam:
+
+        @param:
+
+        @returns:
+    */
+    websiteStatus() {
+        this.dataBase.getDataWithoutClean("/settings", false, "sitemode").then(state => {
+            if (!state.state) {
+                window.location.href = '/#/underMaintenance';
+            }
+        });
     }
 
     /*
