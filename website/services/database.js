@@ -153,4 +153,50 @@ export class DataBase {
             http.send(JSON.stringify((parameters)));
         });
     }
+
+    /*
+     *    Fetch data from dataBase
+     *
+     *    @tparam randomNews: isView: boolean, endpoint, id: string
+     *
+     *    @param endpoint: direct link or view, isView if the endpoint is View this must be true else must be false
+     *                    id element id;
+     *
+     *    @returns list of fetched data .
+     */
+    getDataWithoutClean (endpoint, isView, id) {
+
+        return new Promise((resolve, reject) => {
+
+            let url = this.baseUrl + endpoint;
+            if (isView && id) {
+
+                url += `?key=\"${id}\"`;
+
+            } else if (id !='') {
+
+                url += `/${id}`;
+
+            }
+
+            let http = new XMLHttpRequest();
+            http.open("GET", url);
+            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            http.setRequestHeader('Accept', 'application/json');
+            http.setRequestHeader("Authorization", this.authentication);
+            http.onreadystatechange = function() {
+
+                if (http.readyState == 4) {
+
+                    if (http.status == 200) {
+                        let data = JSON.parse(http.responseText);
+                        resolve(data);
+                    } else {
+                        reject();
+                    }
+                }
+            }
+            http.send();
+        });
+    }
 }

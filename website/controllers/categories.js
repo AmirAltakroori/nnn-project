@@ -20,6 +20,9 @@ export class Category {
     constructor() {
 
         this.dataBase = new DataBase();
+
+        this.websiteStatus();
+
         this.indexType = mvc.routeParams.id;
         this.category = {};
         this.listMainNews = [];
@@ -35,6 +38,23 @@ export class Category {
         this.getNews();
         this.getRandomNews(this.indexType);
 
+    }
+
+    /*
+        get website state from database and rout if it under maintenance.
+
+        @tparam:
+
+        @param:
+
+        @returns:
+    */
+    websiteStatus() {
+        this.dataBase.getDataWithoutClean("/settings", false, "sitemode").then(state => {
+            if (!state.state) {
+                window.location.href = '/#/underMaintenance';
+            }
+        });
     }
 
     /*

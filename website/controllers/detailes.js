@@ -18,6 +18,9 @@ export class Details {
     constructor() {
 
         this.dataBase = new DataBase();
+
+        this.websiteStatus();
+
         this.news = {};
         this.relatedNews = [];
         this.writer = {};
@@ -26,6 +29,23 @@ export class Details {
         dynamicImport("./disqusVariable.js").then(data => data.disqus_config(mvc.routeParams.id));
         this.loadDisqus();
 
+    }
+
+    /*
+        get website state from database and rout if it under maintenance.
+
+        @tparam:
+
+        @param:
+
+        @returns:
+    */
+    websiteStatus() {
+        this.dataBase.getDataWithoutClean("/settings", false, "sitemode").then(state => {
+            if (!state.state) {
+                window.location.href = '/#/underMaintenance';
+            }
+        });
     }
 
     /*
