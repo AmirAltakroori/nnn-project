@@ -117,24 +117,26 @@ Built and maintained by the PSEU students team.
 
 - **Admin-Panel Team**
 
-  - **[Deema Hafez]([https://github.com/deema1999](https://github.com/deema1999))**, Master
+  - **[Deema Hafez](https://github.com/deema1999)**, Master
 
-  - **[Waleed Jubeh]([https://github.com/WaleedJubeh](https://github.com/WaleedJubeh))**, Technical Lead
+  - **[Waleed Jubeh](https://github.com/WaleedJubeh)**, Technical Lead
+  
+  - **[Afnan Madhoun](https://github.com/AfnanMadhoun)**
+  
+  - **[Basil Atawneh](https://github.com/basilatawneh)**
+  
+  - **[Faris Abu3ram](https://github.com/farisabu3ram)**
+  
+  - **[Majd Ewewi](https://github.com/majdew)**
+  
+  - **[Ruba Irshid]**
+   
+  - **[Samar Jamjom](https://github.com/samarjamjom)**
 
-  - **[Shaima Wazwaz]([https://github.com/shaimawaz](https://github.com/shaimawaz))**
+  - **[Shaima Wazwaz](https://github.com/shaimawaz)**
 
-  - **[Samar Jamjom]([https://github.com/samarjamjom](https://github.com/samarjamjom))**
+  - **[Wafa Yaser](https://github.com/wafa395)**
+ 
+  - **[Yafa Farajallah]**
 
-  - **[Majd Ewewi]([https://github.com/majdew](https://github.com/majdew))**
-
-  - **[Faris Abu3ram]([https://github.com/farisabu3ram](https://github.com/farisabu3ram))**
-
-  - **[Afnan Madhoun]([https://github.com/AfnanMadhoun](https://github.com/AfnanMadhoun))**
-
-  - **[Basil Atawneh]([https://github.com/basilatawneh](https://github.com/basilatawneh))**
-
-  - **[Ruba Irshid]()**
-
-  - **[Yafa Farajallah]()**
-
-  - **[Wafa Yaser]()**
+  
