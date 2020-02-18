@@ -129,7 +129,7 @@ Built and maintained by the PSEU students team.
   
   - **[Majd Ewewi](https://github.com/majdew)**
   
-  - **[Ruba Irshid]**
+  - **[Ruba Irshid](https://github.com/rubairshaid)**
    
   - **[Samar Jamjom](https://github.com/samarjamjom)**
 
@@ -137,6 +137,6 @@ Built and maintained by the PSEU students team.
 
   - **[Wafa Yaser](https://github.com/wafa395)**
  
-  - **[Yafa Farajallah]**
+  - **Yafa Farajallah**
 
   
